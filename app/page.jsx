@@ -1,9 +1,18 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './page.module.css';
+
+// Hero rotation — one per discipline, warm-graded 1920×1080 crops
+const HERO_PHOTOS = [
+  '/photos/i-s7zBdzk-hero.jpg',   // sports: football
+  '/photos/i-TSHFjz3-hero.jpg',   // sports: lacrosse
+  '/photos/i-q7LzKSb-hero.jpg',   // events: barn swallows
+  '/photos/i-rvRX82g-hero.jpg',   // portraits
+  '/photos/i-hdjLNfF-hero.jpg',   // design: track poster
+];
 
 // Local photos
 const SM = {
@@ -61,6 +70,15 @@ const WORK_GRID = [
 
 export default function Home() {
   const heroRef = useRef(null);
+  const [heroIdx, setHeroIdx] = useState(0);
+
+  // Hero rotation — 6s per slide
+  useEffect(() => {
+    const t = setInterval(() => {
+      setHeroIdx(i => (i + 1) % HERO_PHOTOS.length);
+    }, 6000);
+    return () => clearInterval(t);
+  }, []);
 
   // Scroll reveal
   useEffect(() => {
@@ -81,20 +99,27 @@ export default function Home() {
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className={styles.hero}>
-        <div
-          className={styles.heroImg}
-          style={{ backgroundImage: `url('${SM.footballTeam}')` }}
-        />
+        {HERO_PHOTOS.map((src, i) => (
+          <div
+            key={src}
+            className={styles.heroImg}
+            style={{
+              backgroundImage: `url('${src}')`,
+              opacity: i === heroIdx ? 1 : 0,
+              transition: 'opacity 1.8s ease-in-out',
+            }}
+          />
+        ))}
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <p className={`eyebrow ${styles.heroEyebrow}`}>
             Somerville, NJ &nbsp;·&nbsp; Sports · Portraits · Events · Design
           </p>
           <h1 className={styles.heroTitle}>
-            The moments<br />athletes <em>remember.</em>
+            Every image<br /><em>tells a story.</em>
           </h1>
           <p className={styles.heroSub}>
-            High school sports, senior portraits, events, and design — photographed with the precision that makes images worth keeping for life.
+            Portraits, sports, events, and design — photographed with the care and precision that makes images worth keeping for life.
           </p>
           <Link href="/sports" className="btn">View the Work</Link>
         </div>
