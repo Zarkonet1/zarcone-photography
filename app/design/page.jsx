@@ -6,7 +6,7 @@ import Lightbox from '@/components/Lightbox';
 import Link from 'next/link';
 import styles from './page.module.css';
 
-const CATEGORIES = ['All', 'Senior Posters', 'Wrestling', 'Lacrosse', 'Track'];
+const CATEGORIES = ['All', 'Senior Posters', 'Wrestling', 'Lacrosse', 'Track', 'Baseball', 'Softball', 'Custom'];
 
 // Local design / poster photos
 const PIECES = [
@@ -25,6 +25,19 @@ const PIECES = [
   { src: '/photos/i-4VRDpGg.jpg', category: 'Lacrosse',  title: 'Lacrosse — Senior Poster',     size: 'wide' },
   { src: '/photos/i-2CHdSJx.jpg', category: 'Lacrosse',  title: 'Lacrosse — Senior Design',     size: 'half' },
   { src: '/photos/i-Cf5RqJt.jpg', category: 'Lacrosse',  title: 'Lacrosse — Senior Composite',  size: 'half' },
+  // Baseball / Team Posters
+  { src: '/photos/DESIGN-20WinsPoster.jpg',              category: 'Baseball',      title: 'Baseball — 20 Wins Celebration',   size: 'wide' },
+  { src: '/photos/DESIGN-PanthersElite18U-Team-Poster.jpg', category: 'Baseball',  title: 'Baseball — Panthers Elite 18U',    size: 'wide' },
+  // Softball Designs
+  { src: '/photos/DESIGN-BR16USoftballPanthers.jpg',     category: 'Softball',     title: 'Softball — BR Panthers 16U',       size: 'wide' },
+  { src: '/photos/DESIGN-SoftballTeamActionFigures.jpg', category: 'Softball',     title: 'Softball — Team Action Figures',   size: 'wide' },
+  // Senior Posters (additional)
+  { src: '/photos/DESIGN-Kayla_FinalWeb.jpg',            category: 'Senior Posters', title: 'Senior — Kayla',                 size: 'half' },
+  { src: '/photos/DESIGN-LeapPoster.jpg',                category: 'Senior Posters', title: 'Senior — Leap Poster',           size: 'half' },
+  { src: '/photos/DESIGN-SENIOR-PANO.jpg',               category: 'Senior Posters', title: 'Senior — Panorama Composite',    size: 'wide' },
+  // Custom Work
+  { src: '/photos/DESIGN-JackieFlag1_pp.jpg',            category: 'Custom',       title: 'Custom — Flag Tribute',            size: 'wide' },
+  { src: '/photos/DESIGN-Example10v1.jpg',               category: 'Custom',       title: 'Custom — Design Portfolio',        size: 'half' },
 ];
 
 export default function DesignPage() {

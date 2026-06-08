@@ -5,7 +5,7 @@ import PageHero from '@/components/PageHero';
 import Link from 'next/link';
 import styles from './page.module.css';
 
-const CATEGORIES = ['All', 'Music', 'Prom', 'Celebration'];
+const CATEGORIES = ['All', 'Music', 'Prom', 'Celebration', 'Events'];
 
 const BARN_SWALLOWS = '/photos/i-q7LzKSb.jpg';
 const SM = (id, hash) => `https://photos.smugmug.com/photos/${id}/0/${hash}/XL/${id}-XL.jpg`;
@@ -37,6 +37,88 @@ const EVENTS = [
       SM('i-TpwgjhG','LpNB5RXQrGJjVsfzdSKGnXWr6DpVmmBVfjmDLLkLK'),
     ],
     layout: 'single',
+  },
+  {
+    category: 'Celebration',
+    title: "Family Celebrations",
+    desc: "Baptisms, birthdays, and family gatherings — the moments that bring everyone together and deserve to be remembered.",
+    images: [
+      '/photos/EVENT-ELLA-BAPTISM.jpg',
+      '/photos/EVENT-Grace-53.jpg',
+    ],
+    layout: 'double',
+  },
+  {
+    category: 'Music',
+    title: "Live Performances",
+    desc: "The energy of live music captured in motion — the stage, the crowd, the emotion before it fades.",
+    images: [
+      '/photos/EVENT-Zarcone-Photography-55-Final-stabilize.jpg',
+      '/photos/EVENT-Zarcone-Photography-98-Final-motion.jpg',
+    ],
+    layout: 'double',
+  },
+  {
+    category: 'Events',
+    title: "Event Coverage",
+    desc: "Professional documentation of the gatherings, ceremonies, and community events that define the moments people remember.",
+    images: [
+      '/photos/EVENT-Zarcone-Photography-043.jpg',
+      '/photos/EVENT-Zarcone-Photography-047.jpg',
+    ],
+    layout: 'double',
+  },
+  {
+    category: 'Events',
+    title: "More Coverage",
+    desc: "Every event tells a story. From the quiet moments between action to the big celebrations worth framing.",
+    images: [
+      '/photos/EVENT-Zarcone-Photography-0008.jpg',
+      '/photos/EVENT-Zarcone-Photography-0073.jpg',
+    ],
+    layout: 'double',
+  },
+  {
+    category: 'Events',
+    title: "On Location",
+    desc: "Candid documentation of people and gatherings in their element — natural light, real moments, no staging.",
+    images: [
+      '/photos/EVENT-Zarcone-Photography-11.jpg',
+      '/photos/EVENT-Zarcone-Photography-13.jpg',
+    ],
+    layout: 'double',
+  },
+  {
+    category: 'Events',
+    title: "Additional Events",
+    desc: "Ceremonies, receptions, and special occasions — photographed with the same attention given to every assignment.",
+    images: [
+      '/photos/EVENT-Zarcone-Photography-201.jpg',
+      '/photos/EVENT-Zarcone-Photography-28.jpg',
+    ],
+    layout: 'double',
+    reverse: true,
+  },
+  {
+    category: 'Events',
+    title: "Recent Work",
+    desc: "A selection of recent event coverage spanning celebrations, community gatherings, and milestone moments.",
+    images: [
+      '/photos/EVENT-Zarcone-Photography-65.jpg',
+      '/photos/EVENT-Zarcone-Photography-74-topaz.jpg',
+    ],
+    layout: 'double',
+  },
+  {
+    category: 'Events',
+    title: "In Motion",
+    desc: "Movement, energy, and atmosphere — event photography that captures the feeling of being there.",
+    images: [
+      '/photos/EVENT-Zarcone-Photography-79.jpg',
+      '/photos/EVENT-Zarcone-PhotographyZarcone-Photography-38-Motion.jpg',
+    ],
+    layout: 'double',
+    reverse: true,
   },
 ];
 
