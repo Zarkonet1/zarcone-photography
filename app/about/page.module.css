@@ -2,11 +2,13 @@
 .hero {
   margin-top: var(--nav-h);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.75fr 1.25fr;
   min-height: calc(80vh - var(--nav-h));
 }
 .heroImg {
-  background-size: cover; background-position: center;
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
   min-height: 400px;
 }
 .heroText {
