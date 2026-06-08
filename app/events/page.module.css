@@ -1,0 +1,75 @@
+.filterBar {
+  display: flex; align-items: center;
+  padding: 0 60px; border-bottom: 1px solid var(--rule); overflow-x: auto;
+}
+.filterBtn {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--muted); background: none; border: none;
+  border-bottom: 2px solid transparent; padding: 20px 24px;
+  cursor: pointer; transition: color 0.2s, border-color 0.2s;
+  margin-bottom: -1px; white-space: nowrap;
+}
+.filterBtn:hover { color: var(--text); }
+.filterActive { color: var(--accent) !important; border-bottom-color: var(--accent) !important; }
+
+.grid {
+  padding: 60px 60px 80px;
+  display: flex; flex-direction: column; gap: 80px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  align-items: stretch;
+}
+.row.reverse { direction: rtl; }
+.row.reverse > * { direction: ltr; }
+
+.imgSide {
+  height: 480px;
+  overflow: hidden;
+  position: relative;
+}
+.imgSide.double {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.imgWrap { flex: 1; overflow: hidden; position: relative; }
+
+.img {
+  width: 100%; height: 100%;
+  background-size: cover; background-position: center;
+  transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s;
+  filter: brightness(0.88);
+}
+.row:hover .img { transform: scale(1.04); filter: brightness(1); }
+
+.info {
+  background: var(--bg-mid);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 60px 56px;
+}
+.cat { margin-bottom: 16px; }
+.title {
+  font-family: var(--serif); font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 400; color: var(--text); margin-bottom: 20px; line-height: 1.2;
+}
+.desc {
+  font-size: 13px; color: var(--muted); line-height: 1.8; margin-bottom: 32px;
+}
+.evLink {
+  font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--accent); display: inline-flex; align-items: center; gap: 10px;
+  transition: gap 0.2s;
+}
+.evLink:hover { gap: 16px; }
+
+@media (max-width: 900px) {
+  .grid { padding: 40px 20px 60px; gap: 48px; }
+  .row { grid-template-columns: 1fr; direction: ltr !important; }
+  .row > * { direction: ltr !important; }
+  .imgSide { height: 280px; }
+  .imgSide.double { flex-direction: row; }
+  .info { padding: 40px 28px; }
+  .filterBar { padding: 0 20px; }
+}

@@ -1,0 +1,131 @@
+/* ─── Design System ─────────────────────────────────────────────── */
+:root {
+  --bg:        #0c0c0c;
+  --bg-mid:    #111111;
+  --bg-low:    #0f0f0f;
+  --text:      #ece8e1;
+  --muted:     #7a7570;
+  --rule:      rgba(255, 255, 255, 0.08);
+  --accent:    #c8b89a;
+  --serif:     'Georgia', 'Times New Roman', serif;
+  --sans:      -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --nav-h:     72px;
+  --max-w:     1400px;
+}
+
+/* ─── Reset ──────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── Shared Utilities ───────────────────────────────────────────── */
+.eyebrow {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.section-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.btn {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 14px 30px;
+  transition: border-color 0.2s, color 0.2s;
+  cursor: pointer;
+  background: none;
+}
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn-solid {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0c0c0c;
+  font-weight: 700;
+}
+.btn-solid:hover {
+  background: transparent;
+  color: var(--accent);
+}
+
+/* ─── Scroll Reveal ─────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── CTA Strip (shared) ─────────────────────────────────────────── */
+.cta-strip {
+  background: var(--bg-mid);
+  border-top: 1px solid var(--rule);
+  padding: 80px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.cta-strip h2 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 400;
+  color: var(--text);
+  max-width: 520px;
+  line-height: 1.3;
+}
+.cta-strip h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+@media (max-width: 750px) {
+  .cta-strip {
+    flex-direction: column;
+    padding: 60px 24px;
+    text-align: center;
+  }
+}

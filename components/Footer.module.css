@@ -1,0 +1,34 @@
+.footer {
+  padding: 36px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--rule);
+  gap: 24px;
+}
+.logo { display: block; line-height: 0; }
+.nav {
+  display: flex;
+  gap: 28px;
+}
+.nav a {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.nav a:hover { color: var(--text); }
+.copy {
+  font-size: 10px;
+  color: rgba(122,117,112,0.45);
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 750px) {
+  .footer {
+    flex-direction: column;
+    padding: 32px 24px;
+    text-align: center;
+  }
+}

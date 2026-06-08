@@ -1,0 +1,61 @@
+.filterBar {
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  border-bottom: 1px solid var(--rule);
+  overflow-x: auto;
+}
+.filterBtn {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--muted); background: none; border: none;
+  border-bottom: 2px solid transparent; padding: 20px 24px;
+  cursor: pointer; transition: color 0.2s, border-color 0.2s;
+  margin-bottom: -1px; white-space: nowrap;
+}
+.filterBtn:hover { color: var(--text); }
+.filterActive { color: var(--accent) !important; border-bottom-color: var(--accent) !important; }
+
+.gallery {
+  padding: 48px 60px 80px;
+  columns: 3;
+  column-gap: 4px;
+}
+.item {
+  break-inside: avoid;
+  margin-bottom: 4px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  line-height: 0;
+  display: block;
+}
+.img {
+  width: 100%; display: block;
+  filter: brightness(0.9);
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s;
+}
+.item:hover .img { transform: scale(1.04); filter: brightness(1); }
+.itemOverlay {
+  position: absolute; inset: 0;
+  background: rgba(12,12,12,0);
+  transition: background 0.3s;
+  display: flex; align-items: flex-end;
+}
+.item:hover .itemOverlay { background: rgba(12,12,12,0.35); }
+.itemLabel {
+  display: block;
+  padding: 20px;
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(236,232,225,0.85);
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.item:hover .itemLabel { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  .gallery { columns: 2; padding: 32px 20px 60px; }
+  .filterBar { padding: 0 20px; }
+}
+@media (max-width: 560px) {
+  .gallery { columns: 1; }
+}
