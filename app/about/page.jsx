@@ -29,7 +29,6 @@ const GEAR = [
   { name: 'Nikkor Z 70–200mm f/2.8 VR S II',       type: 'Sports / Events'  },
   { name: 'Nikkor Z 85mm f/1.2 S',                 type: 'Portraits'        },
   { name: 'Godox QT III Series (AC) · AD200 Pro II (Battery)', type: 'Studio Lighting' },
-  { name: 'Profoto B10 Plus',     type: 'Studio Lighting' },
 ];
 
 const TESTIMONIALS = [
