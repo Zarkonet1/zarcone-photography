@@ -90,13 +90,13 @@
 /* ── Disciplines ────────────────────────────────────────────────── */
 .disciplines {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2px;
 }
 .card {
   position: relative;
-  height: 70vh;
-  min-height: 480px;
+  height: 65vh;
+  min-height: 420px;
   overflow: hidden;
   display: block;
 }
