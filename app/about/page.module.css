@@ -20,7 +20,7 @@
   margin: 20px 0 24px;
 }
 .h1 em { font-style: italic; color: var(--accent); }
-.lead { font-size: 15px; line-height: 1.85; color: rgba(236,232,225,0.65); max-width: 420px; }
+.lead { font-size: 17px; line-height: 1.85; color: rgba(236,232,225,0.65); max-width: 420px; }
 
 /* ── Stats ────────────────────────────────────────────────────── */
 .statsBar {
@@ -52,7 +52,7 @@
   display: flex; flex-direction: column; gap: 24px;
   padding-left: 80px; border-left: 1px solid var(--rule);
 }
-.storyBody p { font-size: 15px; line-height: 1.9; color: rgba(236,232,225,0.65); }
+.storyBody p { font-size: 17px; line-height: 1.9; color: rgba(236,232,225,0.65); }
 .storyBody strong { color: var(--text); font-weight: 500; }
 
 /* ── Pullquote Break ──────────────────────────────────────────── */
@@ -83,7 +83,7 @@
 .approachCard { background: var(--bg-mid); padding: 48px 40px; }
 .cardNum { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
 .cardTitle { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--text); margin-bottom: 16px; }
-.cardBody { font-size: 13px; line-height: 1.8; color: var(--muted); }
+.cardBody { font-size: 15px; line-height: 1.8; color: var(--muted); }
 
 /* ── Gear ─────────────────────────────────────────────────────── */
 .gearSection {
@@ -92,7 +92,7 @@
 }
 .gearH2 { font-family: var(--serif); font-size: clamp(24px,2.5vw,36px); font-weight: 400; color: var(--text); line-height: 1.2; }
 .gearH2 em { font-style: italic; color: var(--accent); }
-.gearDesc { font-size: 13px; color: var(--muted); line-height: 1.8; margin-top: 12px; }
+.gearDesc { font-size: 15px; color: var(--muted); line-height: 1.8; margin-top: 12px; }
 .gearList { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
 .gearItem {
   padding: 20px 0; border-bottom: 1px solid var(--rule);

@@ -114,7 +114,7 @@ export default function Home() {
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <p className={`eyebrow ${styles.heroEyebrow}`}>
-            Somerville, NJ &nbsp;·&nbsp; Sports · Portraits · Events · Design
+            Bridgewater, NJ &nbsp;·&nbsp; Sports · Portraits · Events · Design
           </p>
           <h1 className={styles.heroTitle}>
             Every image<br /><em>tells a story.</em>
@@ -178,7 +178,7 @@ export default function Home() {
             I've spent over three decades with a camera, learning that the best images aren't made — they're discovered. Whether I'm trackside at a sports event or in a quiet studio session, my approach is the same: slow down, observe, and wait for the real moment.
           </p>
           <p className={styles.aboutP}>
-            Based in Somerville, NJ — serving New Jersey, New York City, and Philadelphia.
+            Based in Bridgewater, NJ — serving New Jersey, New York City, and Philadelphia.
           </p>
           <div className={styles.statRow}>
             <div><div className={styles.statNum}>30+</div><div className={styles.statLabel}>Years Experience</div></div>

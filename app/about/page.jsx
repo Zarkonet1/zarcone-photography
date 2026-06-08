@@ -112,7 +112,7 @@ export default function AboutPage() {
         {[
           { num: '30+', label: 'Years Experience' },
           { num: '4',   label: 'Disciplines' },
-          { num: 'NJ',  label: 'Based in Somerville' },
+          { num: 'NJ',  label: 'Based in Bridgewater' },
           { num: 'NYC · PHL', label: 'Service Area' },
         ].map(s => (
           <div key={s.label} className={`${styles.statCell} reveal`}>
@@ -131,7 +131,7 @@ export default function AboutPage() {
           <p>Photography found me early. What started as curiosity turned into craft, and craft turned into a career that has taken me trackside at youth championships, into quiet studio sessions, and across ballrooms full of people celebrating the biggest moments of their lives.</p>
           <p><strong>I photograph three things: people, athletes, and events.</strong> They sound different, but they share the same core challenge — something true is happening in front of you, and you have a fraction of a second to decide if you're ready for it.</p>
           <p>Over 30 years, I've learned that the best images don't come from controlling the situation. They come from understanding it — knowing where to stand, when to wait, and when to move.</p>
-          <p>I'm based in Somerville, NJ and work regularly throughout New Jersey, New York City, and the Philadelphia area.</p>
+          <p>I'm based in Bridgewater, NJ and work regularly throughout New Jersey, New York City, and the Philadelphia area.</p>
         </div>
       </section>
 
@@ -208,7 +208,7 @@ export default function AboutPage() {
             style={{ backgroundImage: "url('/photos/tom-portrait.jpg')" }}
           />
           <div className={styles.contactImgText}>
-            <p className="eyebrow">Based in Somerville, NJ</p>
+            <p className="eyebrow">Based in Bridgewater, NJ</p>
             <h3 className={styles.contactImgH3}>Serving New Jersey,<br />New York City &amp; Philadelphia</h3>
           </div>
         </div>

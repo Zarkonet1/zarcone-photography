@@ -4,10 +4,10 @@ import Footer from '@/components/Footer';
 
 export const metadata = {
   title: 'Zarcone Photography',
-  description: 'Portraits, Sports & Events Photography — Somerville, NJ · New York City · Philadelphia',
+  description: 'Portraits, Sports & Events Photography — Bridgewater, NJ · New York City · Philadelphia',
   openGraph: {
     title: 'Zarcone Photography',
-    description: 'Portraits, Sports & Events Photography — Somerville, NJ · New York City · Philadelphia',
+    description: 'Portraits, Sports & Events Photography — Bridgewater, NJ · New York City · Philadelphia',
     type: 'website',
   },
 };
