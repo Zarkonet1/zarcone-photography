@@ -122,7 +122,7 @@
 .contactImg {
   position: absolute; inset: 0;
   background-size: cover;
-  background-position: center;
+  background-position: center 20%;
   filter: brightness(0.45);
 }
 .contactImgText { position: absolute; bottom: 0; left: 0; right: 0; padding: 48px; }
