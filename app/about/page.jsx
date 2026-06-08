@@ -28,7 +28,8 @@ const GEAR = [
   { name: 'Nikkor Z 24–70mm f/2.8 S',              type: 'Workhorse Zoom'   },
   { name: 'Nikkor Z 70–200mm f/2.8 VR S II',       type: 'Sports / Events'  },
   { name: 'Nikkor Z 85mm f/1.2 S',                 type: 'Portraits'        },
-  { name: 'Godox QT III Series (AC) · AD200 Pro II (Battery)', type: 'Studio Lighting' },
+  { name: 'Godox QT III Series (AC)',    type: 'Studio Lighting'  },
+  { name: 'Godox AD200 Pro II · AD300', type: 'Mobile Lighting'  },
 ];
 
 const TESTIMONIALS = [
