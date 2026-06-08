@@ -15,7 +15,7 @@ const xl = (id, hash, ext = 'jpg') => `${SM_BASE}/${id}/0/${hash}/XL/${id}-XL.${
 const PHOTOS = [
   // Seniors
   { src: '/photos/i-rvRX82g.jpg', category: 'Senior' },
-  { src: xl('i-4mMh8Gp','KWRFxQtqFCNLDPBZWLSwKnLLSHpQB9bxWgFH6w3nW'), category: 'Senior' },
+
   { src: xl('i-h8mgrwL','NRBWb4rh3HwtCcpFZBb686ZKRnQrnxcz5pb5BSwnX'), category: 'Senior' },
   { src: xl('i-MfnnVjj','LnJSMq37QPdhmhRRhkknX2w8PHG4VZ6dBPfPgkwvd'), category: 'Senior' },
   { src: xl('i-4H3CTdR','MdnC3j8Vq8PnG3WxnDj7Ccz9GSk7gBpQ2zZPxq3tb'), category: 'Senior' },

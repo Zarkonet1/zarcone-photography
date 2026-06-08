@@ -26,7 +26,7 @@ const SM = {
   barnSwallows:    '/photos/i-q7LzKSb.jpg',
   designPoster:    '/photos/i-hdjLNfF.jpg',
   lacrosse:        '/photos/i-TSHFjz3.jpg',
-  portrait2:       'https://photos.smugmug.com/photos/i-4mMh8Gp/0/KWRFxQtqFCNLDPBZWLSwKnLLSHpQB9bxWgFH6w3nW/XL/i-4mMh8Gp-XL.jpg',
+
 };
 
 const DISCIPLINES = [
@@ -63,7 +63,7 @@ const DISCIPLINES = [
 const WORK_GRID = [
   { src: SM.footballCatch,    tall: true },
   { src: SM.wrestlingStates },
-  { src: SM.portrait2 },
+
   { src: SM.barnSwallows,     tall: true },
   { src: SM.lacrosse },
   { src: SM.designPoster },
