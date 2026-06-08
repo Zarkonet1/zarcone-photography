@@ -121,8 +121,10 @@
 .contactImgSide { position: relative; overflow: hidden; min-height: 600px; }
 .contactImg {
   position: absolute; inset: 0;
-  background-size: cover; background-position: center;
-  filter: brightness(0.45);
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center 15%;
+  filter: brightness(0.55);
 }
 .contactImgText { position: absolute; bottom: 0; left: 0; right: 0; padding: 48px; }
 .contactImgH3 {
