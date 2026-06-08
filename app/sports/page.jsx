@@ -8,22 +8,20 @@ import styles from './page.module.css';
 
 const CATEGORIES = ['All', 'Football', 'Wrestling', 'Lacrosse'];
 
-const SM = (id, hash) => `https://photos.smugmug.com/photos/${id}/0/${hash}/XL/${id}-XL.jpg`;
-
-// All real SmugMug sports photos
+// Local sports photos
 const PHOTOS = [
-  { src: SM('i-s7zBdzk','KJ5D24NzNT4NNP8B7PK33Wb3XrZqpbxxNjhchx7tW'), category: 'Football',  size: 'wide' },
-  { src: SM('i-HkmJPk8','LGPB3Mm22vMVCp6qD8g3DbxWL8BhdTfJJSDRK6rqh'), category: 'Football',  size: 'half' },
-  { src: SM('i-dkcFTnj','KtfSs8mzbdf5khV9ZzQbLSHRCXFKh9LrvSCCnrggd'), category: 'Wrestling', size: 'half' },
-  { src: SM('i-wBrCNrq','L5wpZjwGwZRK3hjkQ5rjnFMRfx8P22tQqgVJmQTZD'), category: 'Wrestling', size: 'half' },
-  { src: SM('i-Lv2PXKm','Km8qgRtmpGqNCM3qd369qMLkjgQGgbfDVPsbwsNwh'), category: 'Wrestling', size: 'wide' },
-  { src: SM('i-mhgq9Xp','K3dqbv75fgQxgT45bMJMrRWgN48LqphH8t65vJJVZ'), category: 'Wrestling', size: 'half' },
-  { src: SM('i-zshvpsK','MTp5nrLcqhcFKnd9gwdk4CbLjXL7HFDPbxbfJDzfG'), category: 'Wrestling', size: 'half' },
-  { src: SM('i-kRHbmsg','LfFfphmgdFgPZbzz9J2fF62Qzh5tFq9pRBGjQb4wR'), category: 'Wrestling', size: 'half' },
-  { src: SM('i-TSHFjz3','KZMCdHKVVchnrbNwJHLhVCRDHfLCs79zvpDtR8rnn'), category: 'Lacrosse',  size: 'wide' },
-  { src: SM('i-J8KsnKp','LVDXbxxmKb9sBKdRSWLDrhxjDWzPKcSvCqK3f44Rz'), category: 'Lacrosse',  size: 'half' },
-  { src: SM('i-mkM2LBS','KvW79zsG5DRRffz5Vw9QNQRndB26MTLncmgTzv5tB'), category: 'Lacrosse',  size: 'half' },
-  { src: SM('i-DDRrCRz','K9Wb3mp5mZ6N9fvXC2nhDG3XpjsXtPWjw9Mm7xxhk'), category: 'Lacrosse',  size: 'half' },
+  { src: '/photos/i-s7zBdzk.jpg', category: 'Football',  size: 'wide' },
+  { src: '/photos/i-HkmJPk8.jpg', category: 'Football',  size: 'half' },
+  { src: '/photos/i-dkcFTnj.jpg', category: 'Wrestling', size: 'half' },
+  { src: '/photos/i-wBrCNrq.jpg', category: 'Wrestling', size: 'half' },
+  { src: '/photos/i-Lv2PXKm.jpg', category: 'Wrestling', size: 'wide' },
+  { src: '/photos/i-mhgq9Xp.jpg', category: 'Wrestling', size: 'half' },
+  { src: '/photos/i-zshvpsK.jpg', category: 'Wrestling', size: 'half' },
+  { src: '/photos/i-kRHbmsg.jpg', category: 'Wrestling', size: 'half' },
+  { src: '/photos/i-TSHFjz3.jpg', category: 'Lacrosse',  size: 'wide' },
+  { src: '/photos/i-J8KsnKp.jpg', category: 'Lacrosse',  size: 'half' },
+  { src: '/photos/i-mkM2LBS.jpg', category: 'Lacrosse',  size: 'half' },
+  { src: '/photos/i-DDRrCRz.jpg', category: 'Lacrosse',  size: 'half' },
 ];
 
 export default function SportsPage() {
@@ -38,7 +36,7 @@ export default function SportsPage() {
         eyebrow="01 / Sports"
         title="Sports"
         description="Football. Wrestling. Tournament stages and Friday night lights. High school athletes deserve photos that match the effort they put in — captured with the speed and precision each moment demands."
-        imageSrc="https://photos.smugmug.com/photos/i-s7zBdzk/0/KJ5D24NzNT4NNP8B7PK33Wb3XrZqpbxxNjhchx7tW/XL/i-s7zBdzk-XL.jpg"
+        imageSrc="/photos/i-s7zBdzk.jpg"
       />
 
       <div className={styles.filterBar}>

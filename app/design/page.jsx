@@ -8,26 +8,23 @@ import styles from './page.module.css';
 
 const CATEGORIES = ['All', 'Senior Posters', 'Wrestling', 'Lacrosse', 'Track'];
 
-const SM = (id, hash, ver = '0', ext = 'jpg') =>
-  `https://photos.smugmug.com/photos/${id}/${ver}/${hash}/XL/${id}-XL.${ext}`;
-
-// Real SmugMug composite / poster designs
+// Local design / poster photos
 const PIECES = [
   // Track Senior Posters
-  { src: SM('i-hdjLNfF','KrP5DD9cF983RPDmp33B3xngwdk27GZXLC2gpLbvH'), category: 'Track',         title: 'Track — Senior Poster',       size: 'wide' },
-  { src: SM('i-CjRtd4L','NZcjN6V6F22RhrCjbgDH7hjXQHvkTL3fJ8Q7qwqvk'), category: 'Track',         title: 'Track — Senior Composite',    size: 'half' },
-  { src: SM('i-GRNTs87','LNTvwx4CvQdBbKTdz84L2qQDshfLW7LvvnvkvRSkw'), category: 'Track',         title: 'Track — Senior Design',       size: 'half' },
-  { src: SM('i-JdzdDzw','M4HQ65Dr75qvQtpZkXdcS9RgsqDM7HVcLvn66SpwG'), category: 'Track',         title: 'Track — Senior Poster',       size: 'half' },
-  { src: SM('i-2bzMvNC','MtWkxFPNvjt738zBFtwpr2wVX2HVZWkk47G5Qt3zP'), category: 'Track',         title: 'Track — Senior Composite',    size: 'half' },
+  { src: '/photos/i-hdjLNfF.jpg', category: 'Track',     title: 'Track — Senior Poster',        size: 'wide' },
+  { src: '/photos/i-CjRtd4L.jpg', category: 'Track',     title: 'Track — Senior Composite',     size: 'half' },
+  { src: '/photos/i-GRNTs87.jpg', category: 'Track',     title: 'Track — Senior Design',        size: 'half' },
+  { src: '/photos/i-JdzdDzw.jpg', category: 'Track',     title: 'Track — Senior Poster',        size: 'half' },
+  { src: '/photos/i-2bzMvNC.jpg', category: 'Track',     title: 'Track — Senior Composite',     size: 'half' },
   // Wrestling Senior Posters
-  { src: SM('i-L2f9FWq','LtKpXNdmpwqSf9q2fDvMmkvbPx5BspRXTN6TLh5v2'), category: 'Wrestling',     title: 'Wrestling — Senior Design',   size: 'wide' },
-  { src: SM('i-JgVQLHd','NGLSDnJT9bHP5SLmw7GJsC4DKPDVBcP7KF3vC8GPr'), category: 'Wrestling',     title: 'Wrestling — Senior Composite', size: 'half' },
-  { src: SM('i-h4PXdgk','LjdWPCVT6k7W8xMWCvTJhwKB94NwJT2bPLKTt9TCK'), category: 'Wrestling',     title: 'Wrestling — Senior Poster',   size: 'half' },
-  { src: SM('i-rgvSB9k','LhkGRtmpm4LhxSkcq4ncPqLbJDZ9zjmX7pw5M2WXp'), category: 'Wrestling',     title: 'Wrestling — Senior Design',   size: 'half' },
+  { src: '/photos/i-L2f9FWq.jpg', category: 'Wrestling', title: 'Wrestling — Senior Design',    size: 'wide' },
+  { src: '/photos/i-JgVQLHd.jpg', category: 'Wrestling', title: 'Wrestling — Senior Composite', size: 'half' },
+  { src: '/photos/i-h4PXdgk.jpg', category: 'Wrestling', title: 'Wrestling — Senior Poster',    size: 'half' },
+  { src: '/photos/i-rgvSB9k.jpg', category: 'Wrestling', title: 'Wrestling — Senior Design',    size: 'half' },
   // Girls Lacrosse Senior Posters
-  { src: SM('i-4VRDpGg','LmWWfpk578SCkwSf6kTZ7cMW7xH3CxXKZGbRMs4Pv','1'), category: 'Lacrosse', title: 'Lacrosse — Senior Poster',    size: 'wide' },
-  { src: SM('i-2CHdSJx','KnwcgkxJwHCmvxGGGTgpgQ4LghG4h6B3XMwbSRwPB'), category: 'Lacrosse',     title: 'Lacrosse — Senior Design',    size: 'half' },
-  { src: SM('i-Cf5RqJt','LZs4VQG5D7rg22qF7GQw5vkxbkHgDp7KWkQ4qfKRN'), category: 'Lacrosse',     title: 'Lacrosse — Senior Composite', size: 'half' },
+  { src: '/photos/i-4VRDpGg.jpg', category: 'Lacrosse',  title: 'Lacrosse — Senior Poster',     size: 'wide' },
+  { src: '/photos/i-2CHdSJx.jpg', category: 'Lacrosse',  title: 'Lacrosse — Senior Design',     size: 'half' },
+  { src: '/photos/i-Cf5RqJt.jpg', category: 'Lacrosse',  title: 'Lacrosse — Senior Composite',  size: 'half' },
 ];
 
 export default function DesignPage() {
@@ -42,7 +39,7 @@ export default function DesignPage() {
         eyebrow="04 / Design"
         title="Design"
         description="Senior poster composites, sports graphics, and branded imagery — where photography meets design. Built for athletes who want something worth hanging on a wall."
-        imageSrc="https://photos.smugmug.com/photos/i-hdjLNfF/0/KrP5DD9cF983RPDmp33B3xngwdk27GZXLC2gpLbvH/XL/i-hdjLNfF-XL.jpg"
+        imageSrc="/photos/i-hdjLNfF.jpg"
       />
 
       <div className={styles.filterBar}>

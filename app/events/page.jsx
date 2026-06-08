@@ -7,7 +7,7 @@ import styles from './page.module.css';
 
 const CATEGORIES = ['All', 'Music', 'Prom', 'Celebration'];
 
-const BARN_SWALLOWS = 'https://photos.smugmug.com/Beneath-the-Barn-Swallows-2/i-q7LzKSb/0/NdJQsVfjpscZGKBPc72XtsSxxWkhmb3K6NW5GhW8P/XL/Zarcone%20Photography-2-Final-sharpen-XL.jpg';
+const BARN_SWALLOWS = '/photos/i-q7LzKSb.jpg';
 const SM = (id, hash) => `https://photos.smugmug.com/photos/${id}/0/${hash}/XL/${id}-XL.jpg`;
 
 const EVENTS = [
@@ -23,8 +23,8 @@ const EVENTS = [
     title: 'BRHS Prom 2026',
     desc: 'Before the limo, at the venue, in the moment. Prom coverage that captures the energy, the outfits, and the faces that make these nights unforgettable.',
     images: [
-      SM('i-zNvJJ9F','KDcpqZk9zCWkSfX4dv8g6kPgGMPLmbcbfc4qQq3HF'),
-      SM('i-H5zGXVk','M2c5Q68t4zRd7z7hkWGBkWpHK4nkHnRbB6Xf4HXNs'),
+      '/photos/i-zNvJJ9F.jpg',
+      '/photos/i-H5zGXVk.jpg',
     ],
     layout: 'double',
     reverse: true,

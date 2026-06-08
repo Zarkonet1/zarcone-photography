@@ -5,20 +5,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './page.module.css';
 
-const sm = (id, hash) => `https://photos.smugmug.com/photos/${id}/0/${hash}/XL/${id}-XL.jpg`;
-
-// Real SmugMug photos
+// Local photos
 const SM = {
-  footballTeam:    sm('i-s7zBdzk','KJ5D24NzNT4NNP8B7PK33Wb3XrZqpbxxNjhchx7tW'),
-  footballCatch:   sm('i-HkmJPk8','LGPB3Mm22vMVCp6qD8g3DbxWL8BhdTfJJSDRK6rqh'),
-  wrestlingStates: sm('i-Lv2PXKm','Km8qgRtmpGqNCM3qd369qMLkjgQGgbfDVPsbwsNwh'),
-  wrestlingThrow:  sm('i-dkcFTnj','KtfSs8mzbdf5khV9ZzQbLSHRCXFKh9LrvSCCnrggd'),
-  wrestlingGrapple:sm('i-wBrCNrq','L5wpZjwGwZRK3hjkQ5rjnFMRfx8P22tQqgVJmQTZD'),
-  portrait:        sm('i-rvRX82g','MJzr4MQDSkdG6K45b5RNpvHFgPwCtGRsDbv4wdHKm'),
-  barnSwallows:    'https://photos.smugmug.com/Beneath-the-Barn-Swallows-2/i-q7LzKSb/0/NdJQsVfjpscZGKBPc72XtsSxxWkhmb3K6NW5GhW8P/XL/Zarcone%20Photography-2-Final-sharpen-XL.jpg',
-  designPoster:    sm('i-hdjLNfF','KrP5DD9cF983RPDmp33B3xngwdk27GZXLC2gpLbvH'),
-  lacrosse:        sm('i-TSHFjz3','KZMCdHKVVchnrbNwJHLhVCRDHfLCs79zvpDtR8rnn'),
-  portrait2:       sm('i-4mMh8Gp','KWRFxQtqFCNLDPBZWLSwKnLLSHpQB9bxWgFH6w3nW'),
+  footballTeam:    '/photos/i-s7zBdzk.jpg',
+  footballCatch:   '/photos/i-HkmJPk8.jpg',
+  wrestlingStates: '/photos/i-Lv2PXKm.jpg',
+  wrestlingThrow:  '/photos/i-dkcFTnj.jpg',
+  wrestlingGrapple:'/photos/i-wBrCNrq.jpg',
+  portrait:        '/photos/i-rvRX82g.jpg',
+  barnSwallows:    '/photos/i-q7LzKSb.jpg',
+  designPoster:    '/photos/i-hdjLNfF.jpg',
+  lacrosse:        '/photos/i-TSHFjz3.jpg',
+  portrait2:       'https://photos.smugmug.com/photos/i-4mMh8Gp/0/KWRFxQtqFCNLDPBZWLSwKnLLSHpQB9bxWgFH6w3nW/XL/i-4mMh8Gp-XL.jpg',
 };
 
 const DISCIPLINES = [
