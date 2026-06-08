@@ -8,7 +8,7 @@ import styles from './page.module.css';
 // Hero rotation — one per discipline, warm-graded 1920×1080 crops
 const HERO_PHOTOS = [
   '/photos/i-s7zBdzk-hero.jpg',   // sports: football
-  '/photos/i-TSHFjz3-hero.jpg',   // sports: lacrosse
+  '/photos/softball-action-hero.jpg', // sports: softball action
   '/photos/i-q7LzKSb-hero.jpg',   // events: barn swallows
   '/photos/chloe-portrait-hero.jpg', // portraits
   '/photos/i-hdjLNfF-hero.jpg',   // design: track poster
