@@ -167,7 +167,7 @@ export default function Home() {
         <div className={`${styles.aboutImgWrap} reveal`}>
           <div
             className={styles.aboutImg}
-            style={{ backgroundImage: `url('/photos/tom-portrait.jpg')` }}
+            style={{ backgroundImage: `url('/photos/tz-headshot.jpg')` }}
           />
           <span className={styles.aboutImgLabel}>Tom Zarcone</span>
         </div>

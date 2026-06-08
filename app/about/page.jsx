@@ -98,7 +98,7 @@ export default function AboutPage() {
       <div className={styles.hero}>
         <div
           className={styles.heroImg}
-          style={{ backgroundImage: "url('/photos/tom-portrait.jpg')" }}
+          style={{ backgroundImage: "url('/photos/tz-headshot.jpg')" }}
         />
         <div className={styles.heroText}>
           <p className="eyebrow">About Tom Zarcone</p>
@@ -205,7 +205,7 @@ export default function AboutPage() {
         <div className={styles.contactImgSide}>
           <div
             className={styles.contactImg}
-            style={{ backgroundImage: "url('/photos/tom-portrait.jpg')" }}
+            style={{ backgroundImage: "url('/photos/tz-headshot.jpg')" }}
           />
           <div className={styles.contactImgText}>
             <p className="eyebrow">Based in Bridgewater, NJ</p>
