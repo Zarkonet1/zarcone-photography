@@ -205,7 +205,7 @@ export default function AboutPage() {
         <div className={styles.contactImgSide}>
           <div
             className={styles.contactImg}
-            style={{ backgroundImage: "url('/photos/tz-headshot.jpg')" }}
+            style={{ backgroundImage: "url('/photos/tz-shoot.jpg')" }}
           />
           <div className={styles.contactImgText}>
             <p className="eyebrow">Based in Bridgewater, NJ</p>
