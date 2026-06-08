@@ -7,11 +7,12 @@ import styles from './page.module.css';
 
 // Hero rotation — one per discipline, warm-graded 1920×1080 crops
 const HERO_PHOTOS = [
-  '/photos/i-s7zBdzk-hero.jpg',   // sports: football
-  '/photos/softball-action-hero.jpg', // sports: softball action
-  '/photos/i-q7LzKSb-hero.jpg',   // events: barn swallows
-  '/photos/chloe-portrait-hero.jpg', // portraits
-  '/photos/i-hdjLNfF-hero.jpg',   // design: track poster
+  '/photos/i-s7zBdzk-hero.jpg',      // football
+  '/photos/chloe-portrait-hero.jpg',  // portrait
+  '/photos/softball-action-hero.jpg', // softball
+  '/photos/i-q7LzKSb-hero.jpg',      // barn swallows
+  '/photos/gymnastics-bars-hero.jpg', // gymnastics
+  '/photos/wrestling-throw-hero.jpg', // wrestling
 ];
 
 // Local photos
