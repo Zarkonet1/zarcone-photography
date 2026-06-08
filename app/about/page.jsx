@@ -23,11 +23,12 @@ const APPROACH = [
 ];
 
 const GEAR = [
-  { name: 'Canon EOS R5',        type: 'Primary Body'     },
-  { name: 'Canon EOS R6 Mark II', type: 'Secondary Body'  },
-  { name: 'RF 24–70mm f/2.8L',   type: 'Workhorse Zoom'  },
-  { name: 'RF 70–200mm f/2.8L',  type: 'Sports / Events' },
-  { name: 'RF 85mm f/1.2L',      type: 'Portraits'       },
+  { name: 'Nikon Z9',                              type: 'Primary Body'     },
+  { name: 'Nikon Z8',                              type: 'Secondary Body'   },
+  { name: 'Nikkor Z 24–70mm f/2.8 S',              type: 'Workhorse Zoom'   },
+  { name: 'Nikkor Z 70–200mm f/2.8 VR S II',       type: 'Sports / Events'  },
+  { name: 'Nikkor Z 85mm f/1.2 S',                 type: 'Portraits'        },
+  { name: 'Godox QT III Series (AC) · AD200 Pro II (Battery)', type: 'Studio Lighting' },
   { name: 'Profoto B10 Plus',     type: 'Studio Lighting' },
 ];
 
@@ -169,7 +170,7 @@ export default function AboutPage() {
       <section className={styles.gearSection}>
         <div className="reveal">
           <h2 className={styles.gearH2}>The <em>gear.</em></h2>
-          <p className={styles.gearDesc}>Professional Canon equipment capable of delivering in any light or pace — because reliability should never be a question on a shoot.</p>
+          <p className={styles.gearDesc}>Professional Nikon Z-system equipment capable of delivering in any light or pace — because reliability should never be a question on a shoot.</p>
         </div>
         <div className={`${styles.gearList} reveal`}>
           {GEAR.map(g => (
