@@ -166,7 +166,7 @@ export default function Home() {
         <div className={`${styles.aboutImgWrap} reveal`}>
           <div
             className={styles.aboutImg}
-            style={{ backgroundImage: `url('${SM.wrestlingThrow}')` }}
+            style={{ backgroundImage: `url('/photos/tom-portrait.jpg')` }}
           />
           <span className={styles.aboutImgLabel}>Tom Zarcone</span>
         </div>
