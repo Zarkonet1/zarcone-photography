@@ -10,7 +10,7 @@ const HERO_PHOTOS = [
   '/photos/i-s7zBdzk-hero.jpg',   // sports: football
   '/photos/i-TSHFjz3-hero.jpg',   // sports: lacrosse
   '/photos/i-q7LzKSb-hero.jpg',   // events: barn swallows
-  '/photos/i-rvRX82g-hero.jpg',   // portraits
+  '/photos/chloe-portrait-hero.jpg', // portraits
   '/photos/i-hdjLNfF-hero.jpg',   // design: track poster
 ];
 
