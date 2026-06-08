@@ -16,7 +16,7 @@ const SM = {
   wrestlingGrapple:sm('i-wBrCNrq','L5wpZjwGwZRK3hjkQ5rjnFMRfx8P22tQqgVJmQTZD'),
   portrait:        sm('i-rvRX82g','MJzr4MQDSkdG6K45b5RNpvHFgPwCtGRsDbv4wdHKm'),
   barnSwallows:    'https://photos.smugmug.com/Beneath-the-Barn-Swallows-2/i-q7LzKSb/0/NdJQsVfjpscZGKBPc72XtsSxxWkhmb3K6NW5GhW8P/XL/Zarcone%20Photography-2-Final-sharpen-XL.jpg',
-  designPoster:    sm('i-mV3z6gK','LvFmmrHMg9VmZ3pbLrXWCNcLjjTFSm3K28j2PwcSX'),
+  designPoster:    sm('i-hdjLNfF','KrP5DD9cF983RPDmp33B3xngwdk27GZXLC2gpLbvH'),
   lacrosse:        sm('i-TSHFjz3','KZMCdHKVVchnrbNwJHLhVCRDHfLCs79zvpDtR8rnn'),
   portrait2:       sm('i-4mMh8Gp','KWRFxQtqFCNLDPBZWLSwKnLLSHpQB9bxWgFH6w3nW'),
 };

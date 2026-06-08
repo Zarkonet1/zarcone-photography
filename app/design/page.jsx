@@ -20,8 +20,7 @@ const PIECES = [
   { src: SM('i-JdzdDzw','M4HQ65Dr75qvQtpZkXdcS9RgsqDM7HVcLvn66SpwG'), category: 'Track',         title: 'Track — Senior Poster',       size: 'half' },
   { src: SM('i-2bzMvNC','MtWkxFPNvjt738zBFtwpr2wVX2HVZWkk47G5Qt3zP'), category: 'Track',         title: 'Track — Senior Composite',    size: 'half' },
   // Wrestling Senior Posters
-  { src: SM('i-mV3z6gK','LvFmmrHMg9VmZ3pbLrXWCNcLjjTFSm3K28j2PwcSX'), category: 'Wrestling',     title: 'Wrestling — Senior Poster',   size: 'wide' },
-  { src: SM('i-L2f9FWq','LtKpXNdmpwqSf9q2fDvMmkvbPx5BspRXTN6TLh5v2'), category: 'Wrestling',     title: 'Wrestling — Senior Design',   size: 'half' },
+  { src: SM('i-L2f9FWq','LtKpXNdmpwqSf9q2fDvMmkvbPx5BspRXTN6TLh5v2'), category: 'Wrestling',     title: 'Wrestling — Senior Design',   size: 'wide' },
   { src: SM('i-JgVQLHd','NGLSDnJT9bHP5SLmw7GJsC4DKPDVBcP7KF3vC8GPr'), category: 'Wrestling',     title: 'Wrestling — Senior Composite', size: 'half' },
   { src: SM('i-h4PXdgk','LjdWPCVT6k7W8xMWCvTJhwKB94NwJT2bPLKTt9TCK'), category: 'Wrestling',     title: 'Wrestling — Senior Poster',   size: 'half' },
   { src: SM('i-rgvSB9k','LhkGRtmpm4LhxSkcq4ncPqLbJDZ9zjmX7pw5M2WXp'), category: 'Wrestling',     title: 'Wrestling — Senior Design',   size: 'half' },
@@ -43,7 +42,7 @@ export default function DesignPage() {
         eyebrow="04 / Design"
         title="Design"
         description="Senior poster composites, sports graphics, and branded imagery — where photography meets design. Built for athletes who want something worth hanging on a wall."
-        imageSrc="https://photos.smugmug.com/photos/i-mV3z6gK/0/LvFmmrHMg9VmZ3pbLrXWCNcLjjTFSm3K28j2PwcSX/XL/i-mV3z6gK-XL.jpg"
+        imageSrc="https://photos.smugmug.com/photos/i-hdjLNfF/0/KrP5DD9cF983RPDmp33B3xngwdk27GZXLC2gpLbvH/XL/i-hdjLNfF-XL.jpg"
       />
 
       <div className={styles.filterBar}>
