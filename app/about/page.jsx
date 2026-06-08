@@ -97,7 +97,7 @@ export default function AboutPage() {
       <div className={styles.hero}>
         <div
           className={styles.heroImg}
-          style={{ backgroundImage: "url('/assets/tom-zarcone.jpg')" }}
+          style={{ backgroundImage: "url('/photos/tom-portrait.jpg')" }}
         />
         <div className={styles.heroText}>
           <p className="eyebrow">About Tom Zarcone</p>
@@ -139,7 +139,7 @@ export default function AboutPage() {
         <div
           className={styles.imgBreakInner}
           ref={parallaxRef}
-          style={{ backgroundImage: "url('/assets/tom-zarcone.jpg')" }}
+          style={{ backgroundImage: "url('/photos/tom-portrait.jpg')" }}
         />
         <div className={styles.imgBreakOverlay}>
           <p className={`${styles.blockQuote} reveal`}>
@@ -204,7 +204,7 @@ export default function AboutPage() {
         <div className={styles.contactImgSide}>
           <div
             className={styles.contactImg}
-            style={{ backgroundImage: "url('/assets/tom-zarcone.jpg')" }}
+            style={{ backgroundImage: "url('/photos/tom-portrait.jpg')" }}
           />
           <div className={styles.contactImgText}>
             <p className="eyebrow">Based in Somerville, NJ</p>
