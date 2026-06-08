@@ -73,6 +73,9 @@ const PHOTOS = [
   { src: '/photos/PORTRAIT-Zarcone-PhotographyZarcone-Photography-21-smb-1.jpg',  category: 'Individual' },
   { src: '/photos/PORTRAIT-Zarcone-PhotographyZarcone-Photography-61-Standard.jpg', category: 'Headshot' },
   { src: '/photos/PORTRAIT-Zarcone-PhotographyZarcone-Photography-63-Motion.jpg', category: 'Individual' },
+  { src: '/photos/chloe-portrait.jpg',    category: 'Individual' },
+  { src: '/photos/danielle-portrait.jpg', category: 'Individual' },
+  { src: '/photos/courtney-portrait.jpg', category: 'Individual' },
 ];
 
 export default function PortraitsPage() {

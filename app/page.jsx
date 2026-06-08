@@ -41,7 +41,7 @@ const DISCIPLINES = [
     slug: 'portraits',
     title: 'Portraits',
     desc: 'Seniors, individuals, and headshots. Sessions designed to reveal character, not just a smile.',
-    img: SM.portrait,
+    img: '/photos/chloe-portrait.jpg',
   },
   {
     num: '03',
