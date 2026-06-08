@@ -55,7 +55,7 @@ const DISCIPLINES = [
     slug: 'design',
     title: 'Design',
     desc: 'Senior poster composites, sports graphics, and branded imagery. Photography meets design.',
-    img: SM.designPoster,
+    img: '/photos/DESIGN-20WinsPoster.jpg',
   },
 ];
 
