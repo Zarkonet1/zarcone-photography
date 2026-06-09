@@ -23,8 +23,8 @@ const EVENTS = [
     title: 'BRHS Prom 2026',
     desc: 'Before the limo, at the venue, in the moment. Prom coverage that captures the energy, the outfits, and the faces that make these nights unforgettable.',
     images: [
-      '/photos/i-zNvJJ9F.jpg',
-      '/photos/i-H5zGXVk.jpg',
+      '/photos/PORTRAIT-Zarcone-Photography-73.jpg',
+      '/photos/PORTRAIT-Zarcone-Photography-83.jpg',
     ],
     layout: 'double',
     reverse: true,
@@ -44,7 +44,7 @@ const EVENTS = [
     desc: "Baptisms, birthdays, and family gatherings — the moments that bring everyone together and deserve to be remembered.",
     images: [
       '/photos/EVENT-ELLA-BAPTISM.jpg',
-      '/photos/EVENT-Grace-53.jpg',
+      '/photos/PORTRAIT-Zarcone-Photography-00085.jpg',
     ],
     layout: 'double',
   },
