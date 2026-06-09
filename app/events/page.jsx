@@ -34,7 +34,7 @@ const EVENTS = [
     title: 'Milestone Events',
     desc: 'Award ceremonies, signings, retirements, and personal milestones. These moments deserve to be documented with care and intention.',
     images: [
-      SM('i-TpwgjhG','LpNB5RXQrGJjVsfzdSKGnXWr6DpVmmBVfjmDLLkLK'),
+      {src: '/photos/EVENT-ELLA-BAPTISM.jpg', pos: 'center 20%' },
     ],
     layout: 'single',
   },
@@ -43,10 +43,9 @@ const EVENTS = [
     title: "Family Celebrations",
     desc: "Baptisms, birthdays, and family gatherings — the moments that bring everyone together and deserve to be remembered.",
     images: [
-      {src: '/photos/EVENT-ELLA-BAPTISM.jpg', pos: 'center 20%' },
-      {src: '/photos/PORTRAIT-Zarcone-Photography-00085.jpg', pos: 'center 20%' }
+         {src: '/photos/PORTRAIT-Zarcone-Photography-00085.jpg', pos: 'center 20%' }
     ],
-    layout: 'double',
+    layout: 'single',
   },
   {
     category: 'Music',
