@@ -61,7 +61,7 @@ const EVENTS = [
     title: "Event Coverage",
     desc: "Professional documentation of the gatherings, ceremonies, and community events that define the moments people remember.",
     images: [
-{src: '/photos/EVENT-Zarcone-Photography-043.jpg', pos: 'center 20%' },
+{src: '/photos/EVENT-Zarcone-Photography-0008.jpg', pos: 'center 20%' },
 {src: '/photos/EVENT-Zarcone-Photography-047.jpg', pos: 'center 20%' },
     ],
     layout: 'double',
@@ -71,8 +71,9 @@ const EVENTS = [
     title: "More Coverage",
     desc: "Every event tells a story. From the quiet moments between action to the big celebrations worth framing.",
     images: [
-      '/photos/EVENT-Zarcone-Photography-0008.jpg',
-      '/photos/EVENT-Zarcone-Photography-0073.jpg',
+{src: '/photos/EVENT-Zarcone-Photography-043.jpg', pos: 'center 20%' },
+{src: '/photos/EVENT-Zarcone-Photography-0073.jpg', pos: 'center 20%' },  
+   
     ],
     layout: 'double',
   },
