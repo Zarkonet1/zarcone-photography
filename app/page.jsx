@@ -61,12 +61,11 @@ const DISCIPLINES = [
 ];
 
 const WORK_GRID = [
-  { src: SM.footballCatch,    tall: true },
-  { src: SM.wrestlingStates },
-
-  { src: SM.barnSwallows,     tall: true },
-  { src: SM.lacrosse },
-  { src: SM.designPoster },
+  { src: '/photos/chloe-portrait.jpg', tall: true },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg' },
+  { src: '/photos/EVENT-Zarcone-Photography-28.jpg', tall: true },
+  { src: '/photos/i-mkM2LBS.jpg' },
+  { src: '/photos/danielle-portrait.jpg' },
 ];
 
 export default function Home() {
