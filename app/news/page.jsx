@@ -11,7 +11,7 @@ const EVENTS = [
     date:        'July 4, 2026',
     location:    'The Pet Boutique · Bridgewater, NJ',
     description: 'Celebrate the 4th with a mini portrait session for you and your pet. Partnering with The Pet Boutique for a fun, patriotic shoot — indoor and outdoor setups, quick turnaround, and pre-payment handled through Calendly.',
-    image:       '/photos/i-rvRX82g.jpg',
+    image:       '/photos/sst-ig-v2.jpg',
     link:        'https://bit.ly/4eiV0Su',
     linkLabel:   'Book Your Spot',
     status:      'upcoming',  // 'upcoming' or 'past'

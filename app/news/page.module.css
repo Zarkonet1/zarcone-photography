@@ -52,9 +52,11 @@
 
 .cardImg {
   position: relative;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
-  filter: brightness(0.85);
+  background-color: #0c0c0c;
+  filter: brightness(0.95);
 }
 .badge {
   position: absolute;
