@@ -101,7 +101,7 @@ export default function PortraitsPage() {
         eyebrow="02 / Portraits"
         title="Portraits"
         description="Seniors, individuals, families, and professional headshots. Every session is relaxed, unhurried, and built around revealing who you actually are."
-        imageSrc="/photos/i-rvRX82g.jpg"
+        imageSrc="/photos/PORTRAIT-Zarcone-Photography-0002.jpg"
       />
 
       {/* Filter Bar */}
