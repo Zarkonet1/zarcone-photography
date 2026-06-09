@@ -23,8 +23,8 @@ const EVENTS = [
     title: 'BRHS Prom 2026',
     desc: 'Before the limo, at the venue, in the moment. Prom coverage that captures the energy, the outfits, and the faces that make these nights unforgettable.',
     images: [
-      '/photos/PORTRAIT-Zarcone-Photography-73.jpg',
-      '/photos/PORTRAIT-Zarcone-Photography-83.jpg',
+      { src: '/photos/PORTRAIT-Zarcone-Photography-73.jpg', pos: 'center 20%' },
+      { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg', pos: 'center 20%' },
     ],
     layout: 'double',
     reverse: true,
@@ -163,11 +163,15 @@ export default function EventsPage() {
         {filtered.map((event, i) => (
           <div key={i} className={`${styles.row} ${event.reverse ? styles.reverse : ''} reveal`}>
             <div className={`${styles.imgSide} ${event.layout === 'double' ? styles.double : ''}`}>
-              {event.images.map((src, j) => (
-                <div key={j} className={styles.imgWrap}>
-                  <div className={styles.img} style={{ backgroundImage: `url('${src}')` }} />
-                </div>
-              ))}
+              {event.images.map((img, j) => {
+                const src = typeof img === 'string' ? img : img.src;
+                const pos = typeof img === 'string' ? 'center' : (img.pos || 'center');
+                return (
+                  <div key={j} className={styles.imgWrap}>
+                    <div className={styles.img} style={{ backgroundImage: `url('${src}')`, backgroundPosition: pos }} />
+                  </div>
+                );
+              })}
             </div>
             <div className={styles.info}>
               <p className={`eyebrow ${styles.cat}`}>{event.category}</p>
