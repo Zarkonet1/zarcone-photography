@@ -16,6 +16,17 @@ const EVENTS = [
     linkLabel:   'Book Your Spot',
     status:      'upcoming',  // 'upcoming' or 'past'
   },
+  {
+    title:       "Andi's Team 5K Walk & Run",
+    badge:       'Charity Event',
+    date:        'October 11, 2026',
+    location:    'Duke Island Park · Bridgewater, NJ',
+    description: "Proud sponsors and official photographers of Andi's Team Fourth Annual 5K Walk & Run, benefiting the A-T Children's Project. Andi is a seven-year-old Bridgewater girl living with ataxia-telangiectasia — a rare, terminal genetic disease. Join us for a 5K walk or run, kids fun run, food trucks, vendors, and more. All proceeds fund A-T research.",
+    image:       '/photos/andis-team-cover.jpg',
+    link:        'https://atcp.org/andis-team-5k-register',
+    linkLabel:   'Register Now',
+    status:      'upcoming',
+  },
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
