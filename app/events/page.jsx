@@ -52,10 +52,9 @@ const EVENTS = [
     title: "Live Performances",
     desc: "The energy of live music captured in motion — the stage, the crowd, the emotion before it fades.",
     images: [
-      '/photos/EVENT-Zarcone-Photography-55-Final-stabilize.jpg',
-      '/photos/EVENT-Zarcone-Photography-98-Final-motion.jpg',
+      {src: '/photos/EVENT - Zarcone Photography-35.jpg', pos: 'center' }
     ],
-    layout: 'double',
+    layout: 'single',
   },
   {
     category: 'Events',
