@@ -24,7 +24,7 @@ const EVENTS = [
     desc: 'Before the limo, at the venue, in the moment. Prom coverage that captures the energy, the outfits, and the faces that make these nights unforgettable.',
     images: [
       { src: '/photos/PORTRAIT-Zarcone-Photography-73.jpg', pos: 'center 20%' },
-      { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg', pos: 'center 20%' },
+      { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg', pos: 'center 10%' },
     ],
     layout: 'double',
     reverse: true,
@@ -43,8 +43,8 @@ const EVENTS = [
     title: "Family Celebrations",
     desc: "Baptisms, birthdays, and family gatherings — the moments that bring everyone together and deserve to be remembered.",
     images: [
-      '/photos/EVENT-ELLA-BAPTISM.jpg',
-      '/photos/PORTRAIT-Zarcone-Photography-00085.jpg',
+      '/photos/EVENT-ELLA-BAPTISM.jpg', pos: 'center 20%' }
+      '/photos/PORTRAIT-Zarcone-Photography-00085.jpg', pos: 'center 20%' }
     ],
     layout: 'double',
   },
