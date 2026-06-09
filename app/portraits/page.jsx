@@ -16,20 +16,16 @@ const PHOTOS = [
   // Seniors
   { src: '/photos/i-rvRX82g.jpg', category: 'Senior' },
 
-  { src: xl('i-h8mgrwL','NRBWb4rh3HwtCcpFZBb686ZKRnQrnxcz5pb5BSwnX'), category: 'Senior' },
-  { src: xl('i-MfnnVjj','LnJSMq37QPdhmhRRhkknX2w8PHG4VZ6dBPfPgkwvd'), category: 'Senior' },
-  { src: xl('i-4H3CTdR','MdnC3j8Vq8PnG3WxnDj7Ccz9GSk7gBpQ2zZPxq3tb'), category: 'Senior' },
+  { src: '/photos/GiadaField.jpg', category: 'Senior' },
   // Individuals / headshots
   { src: '/photos/i-LdgcRk9.jpg', category: 'Individual' },
   { src: '/photos/i-rkggQ5F.jpg', category: 'Headshot' },
-  { src: xl('i-WQ3qLhx','MX4RnGQ4SKgjv2K6vkzB29WLsp3SDzNQJ6gDvKQb8'), category: 'Individual' },
-  { src: xl('i-fLbtP97','NhCqGhtshBLC4NrP33RWdS265GMggvBHKhkfTG48N'), category: 'Headshot' },
+  { src: '/photos/MonicaAsh.jpg', category: 'Individual' },
   // Families
   { src: '/photos/i-pnGfzmw.jpg', category: 'Family' },
   { src: '/photos/i-3JzdPqR.jpg', category: 'Family' },
-  { src: xl('i-V8jpQJc','Kj8C3R6FhmhcQzbwrFvKm2LHBs94bb6S7BZP82Qsk'), category: 'Family' },
-  { src: xl('i-PwrWz93','KPvSkhCpXTqsXLSWSLnsQprnMZsS996HmHsX5vGTp'), category: 'Family' },
-  { src: xl('i-r5WjMkh','KhBsGNpctCDrKWdmKFnpP2mRC8ZhdQFVVrJzJ3d4F'), category: 'Family' },
+  { src: '/photos/Reedxmas1.jpg', category: 'Family' },
+  { src: '/photos/Reedxmas2.jpg', category: 'Family' },
   // Additional portraits
   { src: '/photos/PORTRAIT-Pics-11.jpg',                                          category: 'Individual' },
   { src: '/photos/PORTRAIT-Zarcone-Photograph-013.jpg',                           category: 'Individual' },
