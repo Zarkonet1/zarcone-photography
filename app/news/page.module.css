@@ -128,13 +128,47 @@
   margin-top: 8px;
 }
 
+/* ── Studio Notes ─────────────────────────────────────────────── */
+.noteGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.noteCard {
+  background: var(--bg-mid);
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.noteDate {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--accent);
+}
+.noteTitle {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.25;
+}
+.noteBody {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(236,232,225,0.6);
+}
+
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 1000px) {
   .card { grid-template-columns: 1fr; }
   .cardImg { height: 280px; }
   .cardBody { padding: 40px 36px; }
+  .noteGrid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
   .hero { padding: 60px 24px; }
   .section { padding: 60px 24px; }
+  .noteGrid { grid-template-columns: 1fr; }
 }
