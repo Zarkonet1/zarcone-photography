@@ -26,6 +26,7 @@ export default function Nav() {
     { href: '/events',        label: 'Events'    },
     { href: '/design',        label: 'Design'    },
     { href: '/blog',          label: 'Blog'      },
+    { href: '/news',          label: 'News'      },
     { href: '/about',         label: 'About'     },
     { href: '/about#contact', label: 'Inquire' },
   ];
