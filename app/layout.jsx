@@ -1,5 +1,6 @@
 import './globals.css';
 import Nav from '@/components/Nav';
+import AnnouncementBar from '@/components/AnnouncementBar';
 import Footer from '@/components/Footer';
 
 export const metadata = {
@@ -17,7 +18,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Nav />
-        <main>{children}</main>
+        <AnnouncementBar />
+        <main style={{ paddingTop: 'var(--bar-h)' }}>{children}</main>
         <Footer />
       </body>
     </html>
