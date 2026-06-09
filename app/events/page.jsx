@@ -93,8 +93,9 @@ const EVENTS = [
     title: "Additional Events",
     desc: "Ceremonies, receptions, and special occasions — photographed with the same attention given to every assignment.",
     images: [
-      '/photos/EVENT-Zarcone-Photography-201.jpg',
-      '/photos/EVENT-Zarcone-Photography-28.jpg',
+{src: '/photos/EVENT-Zarcone-Photography-201.jpg', pos: 'center 10%' },
+{src: '/photos/EVENT-Zarcone-Photography-28.jpg', pos: 'center 10%' },     
+
     ],
     layout: 'double',
     reverse: true,
