@@ -43,8 +43,8 @@ const EVENTS = [
     title: "Family Celebrations",
     desc: "Baptisms, birthdays, and family gatherings — the moments that bring everyone together and deserve to be remembered.",
     images: [
-      '/photos/EVENT-ELLA-BAPTISM.jpg', pos: 'center 20%' }
-      '/photos/PORTRAIT-Zarcone-Photography-00085.jpg', pos: 'center 20%' }
+      {src: '/photos/EVENT-ELLA-BAPTISM.jpg', pos: 'center 20%' },
+      {src: '/photos/PORTRAIT-Zarcone-Photography-00085.jpg', pos: 'center 20%' }
     ],
     layout: 'double',
   },
