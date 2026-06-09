@@ -61,8 +61,8 @@ const EVENTS = [
     title: "Event Coverage",
     desc: "Professional documentation of the gatherings, ceremonies, and community events that define the moments people remember.",
     images: [
-      '/photos/EVENT-Zarcone-Photography-043.jpg',
-      '/photos/EVENT-Zarcone-Photography-047.jpg',
+{src: '/photos/EVENT-Zarcone-Photography-043.jpg', pos: 'center 20%' },
+{src: '/photos/EVENT-Zarcone-Photography-047.jpg', pos: 'center 20%' },
     ],
     layout: 'double',
   },
