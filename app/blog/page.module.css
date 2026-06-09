@@ -1,0 +1,96 @@
+/* ── Hero ─────────────────────────────────────────────────────── */
+.hero {
+  margin-top: var(--nav-h);
+  padding: 100px 60px 80px;
+  border-bottom: 1px solid var(--rule);
+}
+.heroContent { max-width: 640px; }
+.h1 {
+  font-family: var(--serif);
+  font-size: clamp(42px, 6vw, 80px);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--text);
+  margin: 20px 0 24px;
+}
+.h1 em { font-style: italic; color: var(--accent); }
+.lead {
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(236,232,225,0.6);
+  max-width: 460px;
+}
+
+/* ── Grid ─────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  padding: 2px;
+}
+.empty {
+  padding: 80px 60px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* ── Card ─────────────────────────────────────────────────────── */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-mid);
+  overflow: hidden;
+  transition: background 0.2s;
+}
+.card:hover { background: #161616; }
+
+.cardImg {
+  height: 260px;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.85);
+  transition: filter 0.4s, transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.card:hover .cardImg {
+  filter: brightness(0.95);
+  transform: scale(1.03);
+}
+
+.cardBody {
+  padding: 36px 36px 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cardTitle {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.25;
+}
+.cardExcerpt {
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(236,232,225,0.55);
+  flex: 1;
+}
+.cardDate {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .hero { padding: 60px 24px; }
+  .grid { grid-template-columns: 1fr; }
+}
