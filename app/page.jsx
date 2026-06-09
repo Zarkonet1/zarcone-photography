@@ -61,11 +61,11 @@ const DISCIPLINES = [
 ];
 
 const WORK_GRID = [
-  { src: '/photos/chloe-portrait.jpg', tall: true },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0035-2.jpg', tall: true },
   { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg' },
   { src: '/photos/EVENT-Zarcone-Photography-28.jpg', tall: true },
-  { src: '/photos/i-mkM2LBS.jpg' },
   { src: '/photos/danielle-portrait.jpg' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0076.jpg' },
 ];
 
 export default function Home() {
