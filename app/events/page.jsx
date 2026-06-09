@@ -82,8 +82,8 @@ const EVENTS = [
     title: "On Location",
     desc: "Candid documentation of people and gatherings in their element — natural light, real moments, no staging.",
     images: [
-{src: '/photos/EVENT-Zarcone-Photography-11.jpg', pos: 'center 20%' },
-{src: '/photos/EVENT-Zarcone-Photography-13.jpg', pos: 'center 20%' },   
+{src: '/photos/EVENT-Zarcone-Photography-11.jpg', pos: 'center 10%' },
+{src: '/photos/EVENT-Zarcone-Photography-13.jpg', pos: 'center 10%' },   
   
     ],
     layout: 'double',
