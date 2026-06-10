@@ -172,23 +172,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* ── Process ────────────────────────────────────────── */}
-      <section className={styles.process}>
-        <div className={`${styles.approachHeader} reveal`}>
-          <h2 className={styles.approachH2}>How It Works</h2>
-          <span className="section-rule" />
-        </div>
-        <div className={styles.processGrid}>
-          {PROCESS.map(p => (
-            <div key={p.num} className={`${styles.processStep} reveal`}>
-              <p className={styles.processNum}>{p.num}</p>
-              <h3 className={styles.cardTitle}>{p.title}</h3>
-              <p className={styles.cardBody}>{p.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── Approach ───────────────────────────────────────── */}
       <section className={styles.approach}>
         <div className={`${styles.approachHeader} reveal`}>

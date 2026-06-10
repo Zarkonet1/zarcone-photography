@@ -2,6 +2,13 @@ import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import styles from './page.module.css';
 
+const PROCESS = [
+  { num: '01', title: 'Reach Out', body: "Tell me about your project — the what, when, and where. I'll respond within 24 hours with questions, availability, and a custom quote." },
+  { num: '02', title: 'We Plan', body: 'We lock in the details together — location, timing, wardrobe, shot list. No surprises on the day.' },
+  { num: '03', title: 'We Shoot', body: 'A relaxed, unhurried session built around real moments. I bring the direction; you bring yourself.' },
+  { num: '04', title: 'You Receive', body: 'Professionally edited images delivered to a private gallery within the agreed timeframe — ready to download, share, and print.' },
+];
+
 export const metadata = {
   title: 'Pricing — Zarcone Photography',
   description: 'Photography and videography pricing for portraits, sports, events, and design — Bridgewater, NJ.',
@@ -100,6 +107,22 @@ export default function PricingPage() {
               {p.note && <p className={styles.note}>{p.note}</p>}
             </div>
           ))}
+        </div>
+
+        <div className={styles.processSection}>
+          <div className={styles.processSectionHeader}>
+            <p className={`eyebrow ${styles.eyebrow}`}>The Process</p>
+            <h2 className={styles.processSectionTitle}>How It Works</h2>
+          </div>
+          <div className={styles.processGrid}>
+            {PROCESS.map(p => (
+              <div key={p.num} className={styles.processStep}>
+                <p className={styles.processNum}>{p.num}</p>
+                <h3 className={styles.processTitle}>{p.title}</h3>
+                <p className={styles.processBody}>{p.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className={styles.ctaStrip}>

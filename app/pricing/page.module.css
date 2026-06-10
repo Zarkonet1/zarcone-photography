@@ -99,6 +99,58 @@
   line-height: 1.6;
 }
 
+.processSection {
+  padding: 80px 0 40px;
+}
+
+.processSectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.processSectionTitle {
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 400;
+  color: var(--text);
+}
+
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+}
+
+.processStep {
+  background: var(--bg);
+  padding: 40px 36px;
+}
+
+.processNum {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.processTitle {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.processBody {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .ctaStrip {
   background: var(--bg-mid);
   border: 1px solid var(--rule);
@@ -139,5 +191,10 @@
   .wrap { padding: 48px 24px; }
   .grid { grid-template-columns: 1fr; }
   .card { padding: 36px 28px; }
+  .processGrid { grid-template-columns: 1fr 1fr; }
   .ctaStrip { flex-direction: column; align-items: flex-start; padding: 40px 28px; }
+}
+
+@media (max-width: 640px) {
+  .processGrid { grid-template-columns: 1fr; }
 }

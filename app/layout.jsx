@@ -56,11 +56,13 @@ const jsonLd = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+      </head>
+      <body>
         <Nav />
         <AnnouncementBar />
         <main style={{ paddingTop: 'var(--bar-h)' }}>{children}</main>
