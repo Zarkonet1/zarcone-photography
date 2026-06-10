@@ -3,7 +3,7 @@ title: The Best Spots for Senior Portrait Sessions in Somerset County, NJ
 date: 2026-06-10
 excerpt: You don't have to travel far for a stunning backdrop. Here are the locations I return to again and again for senior portraits in Central Jersey.
 category: Senior Portraits
-coverImage: /photos/PORTRAITS-Zarcone-Photography-0049.jpg
+coverImage: /photos/AidenSr.jpg
 ---
 
 One of the first questions I get from families booking a senior portrait session is: *where should we go?*
