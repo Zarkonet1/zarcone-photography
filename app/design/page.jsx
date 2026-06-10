@@ -53,6 +53,7 @@ export default function DesignPage() {
         title="Design"
         description="Senior poster composites, sports graphics, and branded imagery — where photography meets design. Built for athletes who want something worth hanging on a wall."
         imageSrc="/photos/DESIGN-Kayla_FinalWeb.jpg"
+        imagePosition="center 15%"
       />
 
       <div className={styles.filterBar}>

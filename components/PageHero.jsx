@@ -1,11 +1,11 @@
 import styles from './PageHero.module.css';
 
-export default function PageHero({ eyebrow, title, description, imageSrc }) {
+export default function PageHero({ eyebrow, title, description, imageSrc, imagePosition = 'center' }) {
   return (
     <div className={styles.hero}>
       <div
         className={styles.img}
-        style={{ backgroundImage: `url('${imageSrc}')` }}
+        style={{ backgroundImage: `url('${imageSrc}')`, backgroundPosition: imagePosition }}
       />
       <div className={styles.overlay} />
       <div className={styles.content}>
