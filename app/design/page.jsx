@@ -52,7 +52,7 @@ export default function DesignPage() {
         eyebrow="04 / Design"
         title="Design"
         description="Senior poster composites, sports graphics, and branded imagery — where photography meets design. Built for athletes who want something worth hanging on a wall."
-        imageSrc="/photos/i-hdjLNfF.jpg"
+        imageSrc="/photos/DESIGN-Kayla_FinalWeb.jpg"
       />
 
       <div className={styles.filterBar}>
