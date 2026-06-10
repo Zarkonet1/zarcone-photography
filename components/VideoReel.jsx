@@ -5,7 +5,7 @@ import styles from './VideoReel.module.css';
 // Add a .mp4 file to public/videos/ and set the path below.
 // Recommended: 1920×1080, H.264, compressed to ~10–20MB, no audio needed.
 // Example: const VIDEO_SRC = '/videos/zarcone-reel-2026.mp4';
-const VIDEO_SRC = null; // set this when your reel is ready
+const VIDEO_SRC = '/videos/portraits-prosecco-reel.mp4';
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function VideoReel() {
