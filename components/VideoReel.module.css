@@ -6,7 +6,7 @@
 .inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 520px;
+  max-height: 420px;
 }
 
 .videoWrap {
