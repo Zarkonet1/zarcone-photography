@@ -6,6 +6,7 @@ import Image from 'next/image';
 import styles from './page.module.css';
 import Testimonials from '@/components/Testimonials';
 import VideoReel from '@/components/VideoReel';
+import InstagramFeed from '@/components/InstagramFeed';
 
 // Hero rotation — one per discipline, warm-graded 1920×1080 crops
 const HERO_PHOTOS = [
@@ -194,6 +195,9 @@ export default function Home() {
 
       {/* ── Testimonials ──────────────────────────────────────── */}
       <Testimonials />
+
+      {/* ── Instagram Feed ────────────────────────────────────── */}
+      <InstagramFeed />
 
       {/* ── Contact CTA ───────────────────────────────────────── */}
       <div className={styles.contactStrip}>
