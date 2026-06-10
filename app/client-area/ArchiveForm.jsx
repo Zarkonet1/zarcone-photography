@@ -108,7 +108,7 @@ export default function ArchiveForm() {
                   </div>
 
                   <div className={styles.field}>
-                    <label className={styles.label}>Session Description</label>
+                    <label className={styles.label}>Session Description & Date</label>
                     <input
                       name="session"
                       type="text"
@@ -116,7 +116,7 @@ export default function ArchiveForm() {
                       value={form.session}
                       onChange={handleChange}
                       className={styles.input}
-                      placeholder="e.g. Senior portraits, May 2024 · Bridgewater NJ"
+                      placeholder="e.g. Senior portraits · May 2024 · Bridgewater NJ"
                     />
                   </div>
 
