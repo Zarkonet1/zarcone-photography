@@ -5,23 +5,32 @@ import styles from './Footer.module.css';
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <Link href="/" className={styles.logo}>
-        <Image
-          src="/assets/logo-white.png"
-          alt="Zarcone Photography"
-          width={120}
-          height={40}
-          style={{ height: '28px', width: 'auto', objectFit: 'contain', opacity: 0.45 }}
-        />
-      </Link>
-      <nav className={styles.nav}>
-        <Link href="/portraits">Portraits</Link>
-        <Link href="/sports">Sports</Link>
-        <Link href="/events">Events</Link>
-        <Link href="/about">About</Link>
-        <Link href="/about#contact">Inquire</Link>
-      </nav>
-      <span className={styles.copy}>© {new Date().getFullYear()} Zarcone Photography, LLC</span>
+      <div className={styles.top}>
+        <Link href="/" className={styles.logo}>
+          <Image
+            src="/assets/logo-white.png"
+            alt="Zarcone Photography"
+            width={120}
+            height={40}
+            style={{ height: '28px', width: 'auto', objectFit: 'contain', opacity: 0.45 }}
+          />
+        </Link>
+        <nav className={styles.nav}>
+          <Link href="/portraits">Portraits</Link>
+          <Link href="/sports">Sports</Link>
+          <Link href="/events">Events</Link>
+          <Link href="/about">About</Link>
+          <Link href="/about#contact">Inquire</Link>
+        </nav>
+      </div>
+      <div className={styles.bottom}>
+        <span className={styles.copy}>© {new Date().getFullYear()} Zarcone Photography, LLC</span>
+        <nav className={styles.legal}>
+          <Link href="/privacy">Privacy Policy</Link>
+          <Link href="/terms">Terms &amp; Conditions</Link>
+          <Link href="/acceptable-use">Acceptable Use</Link>
+        </nav>
+      </div>
     </footer>
   );
 }

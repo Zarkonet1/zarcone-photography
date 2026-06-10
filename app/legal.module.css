@@ -1,0 +1,107 @@
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 120px 40px 100px;
+}
+
+.hero {
+  margin-bottom: 60px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.updated {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.body h2 {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text);
+  margin: 48px 0 16px;
+  padding-top: 40px;
+  border-top: 1px solid var(--rule);
+}
+
+.body h2:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.body p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: rgba(236,232,225,0.65);
+  margin-bottom: 16px;
+}
+
+.body ul,
+.body ol {
+  margin: 0 0 20px 24px;
+  padding: 0;
+}
+
+.body li {
+  font-size: 14px;
+  line-height: 1.85;
+  color: rgba(236,232,225,0.65);
+  margin-bottom: 6px;
+}
+
+.body strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.body a:hover {
+  color: var(--text);
+}
+
+.contactBox {
+  margin-top: 48px;
+  padding: 32px 36px;
+  border: 1px solid var(--rule);
+  background: var(--bg-mid);
+}
+
+.contactBox p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.contactBox a {
+  color: var(--accent);
+}
+
+@media (max-width: 700px) {
+  .page { padding: 100px 24px 80px; }
+}
