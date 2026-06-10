@@ -116,13 +116,10 @@ export default function SportsPage() {
         {filtered.map((photo, i) => (
           <div
             key={i}
-            className={`${styles.item} ${styles[photo.size] || ''}`}
+            className={styles.item}
             onClick={() => setLbIndex(i)}
           >
-            <div
-              className={styles.img}
-              style={{ backgroundImage: `url('${photo.src}')` }}
-            />
+            <img src={photo.src} alt={photo.category} />
             <div className={styles.overlay}>
               <span className={styles.label}>{photo.category}</span>
             </div>
