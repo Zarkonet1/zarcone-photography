@@ -26,6 +26,7 @@ export default function Footer() {
       <div className={styles.bottom}>
         <span className={styles.copy}>© {new Date().getFullYear()} Zarcone Photography, LLC</span>
         <nav className={styles.legal}>
+          <Link href="/faq">FAQ</Link>
           <Link href="/privacy">Privacy Policy</Link>
           <Link href="/terms">Terms &amp; Conditions</Link>
           <Link href="/acceptable-use">Acceptable Use</Link>
