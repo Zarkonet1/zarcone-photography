@@ -27,6 +27,7 @@ export default function Nav() {
     { href: '/design',        label: 'Design'    },
     { href: '/blog',          label: 'Blog'      },
     { href: '/news',          label: 'News'      },
+    { href: '/pricing',       label: 'Pricing'      },
     { href: '/about',         label: 'About'        },
     { href: '/client-area',   label: 'Client Area'  },
     { href: '/about#contact', label: 'Inquire'      },

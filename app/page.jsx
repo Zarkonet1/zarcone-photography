@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './page.module.css';
+import Testimonials from '@/components/Testimonials';
+import VideoReel from '@/components/VideoReel';
 
 // Hero rotation — one per discipline, warm-graded 1920×1080 crops
 const HERO_PHOTOS = [
@@ -187,13 +189,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Testimonial ───────────────────────────────────────── */}
-      <div className={styles.testimonial}>
-        <blockquote className={styles.quote}>
-          "Tom has a gift for making you forget the camera is there. The images he captured felt completely natural — like he'd somehow frozen our real life."
-        </blockquote>
-        <cite className={styles.cite}>— Sarah &amp; Michael R. &nbsp;·&nbsp; Portrait Session</cite>
-      </div>
+      {/* ── Video Reel ────────────────────────────────────────── */}
+      <VideoReel />
+
+      {/* ── Testimonials ──────────────────────────────────────── */}
+      <Testimonials />
 
       {/* ── Contact CTA ───────────────────────────────────────── */}
       <div className={styles.contactStrip}>

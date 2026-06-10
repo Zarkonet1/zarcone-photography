@@ -77,6 +77,14 @@
 }
 .blockQuote em { color: var(--accent); font-style: normal; }
 
+/* ── Process ──────────────────────────────────────────────────── */
+.process { padding: 100px 60px; background: var(--bg); }
+.processGrid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--rule); }
+.processStep { background: var(--bg); padding: 48px 40px; position: relative; }
+.processStep::before { content: ''; position: absolute; top: 48px; right: 0; width: 1px; height: 24px; background: var(--accent); opacity: 0.4; }
+.processStep:last-child::before { display: none; }
+.processNum { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+
 /* ── Approach ─────────────────────────────────────────────────── */
 .approach { padding: 100px 60px; background: var(--bg-mid); }
 .approachHeader { display: flex; align-items: baseline; gap: 24px; margin-bottom: 60px; }
@@ -187,6 +195,7 @@
   .heroText { padding: 60px 40px; }
   .statsBar { grid-template-columns: repeat(2,1fr); }
   .statCell:nth-child(2) { border-right: none; }
+  .processGrid { grid-template-columns: 1fr 1fr; }
   .approachGrid { grid-template-columns: 1fr 1fr; }
   .testimonialsGrid { grid-template-columns: 1fr; }
   .contactSection { grid-template-columns: 1fr; }
@@ -197,6 +206,8 @@
   .story { grid-template-columns: 1fr; padding: 60px 24px; }
   .storyLabel { position: static; }
   .storyBody { padding-left: 0; border-left: none; padding-top: 28px; border-top: 1px solid var(--rule); }
+  .process { padding: 60px 24px; }
+  .processGrid { grid-template-columns: 1fr; }
   .approach { padding: 60px 24px; }
   .approachGrid { grid-template-columns: 1fr; }
   .gearSection { padding: 60px 24px; }

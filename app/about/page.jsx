@@ -32,21 +32,44 @@ const GEAR = [
   { name: 'Godox AD200 Pro II · AD300', type: 'Mobile Lighting'  },
 ];
 
+const PROCESS = [
+  {
+    num: '01',
+    title: 'Reach Out',
+    body: 'Tell me about your project — the what, when, and where. I\'ll respond within 24 hours with questions, availability, and a custom quote.',
+  },
+  {
+    num: '02',
+    title: 'We Plan',
+    body: 'We lock in the details together — location, timing, wardrobe, shot list. No surprises on the day.',
+  },
+  {
+    num: '03',
+    title: 'We Shoot',
+    body: 'A relaxed, unhurried session built around real moments. I bring the direction; you bring yourself.',
+  },
+  {
+    num: '04',
+    title: 'You Receive',
+    body: 'Professionally edited images delivered to a private gallery within the agreed timeframe — ready to download, share, and print.',
+  },
+];
+
 const TESTIMONIALS = [
   {
-    text: 'Tom has a gift for making you forget the camera is there. The images he captured felt completely natural — like he\'d somehow frozen our real life, not a performance of it.',
-    name: 'Sarah & Michael R.',
+    text: 'Tom was amazing, so professional and the pictures came out amazing. He even went above and beyond to design my daughters senior poster. Thank you so much Tom for going above and beyond!',
+    name: 'Patricia',
+    project: 'Senior Portrait & Design',
+  },
+  {
+    text: 'Tom did my son\'s senior pictures and they came out amazing. He made my son comfortable right from the start and the photos show it. We are 100% satisfied and will be recommending him to others.',
+    name: 'Joseph',
+    project: 'Senior Portrait',
+  },
+  {
+    text: 'Tom was very professional, responsive and thorough. He went above and beyond taking photos and truly cared about providing excellent photos. I would highly recommend Tom to anyone looking for a quality photographer for any occasion.',
+    name: 'Julia',
     project: 'Portrait Session',
-  },
-  {
-    text: 'We hired Tom to cover our youth football league for the season. The action shots were incredible — he understood the sport, knew where to be, and delivered images the kids and families absolutely loved.',
-    name: 'Coach D. Williams',
-    project: 'Youth Football',
-  },
-  {
-    text: 'Our annual gala has never been so well documented. Tom blended into the event seamlessly and the images captured the energy of the evening perfectly.',
-    name: 'Jennifer M.',
-    project: 'Corporate Gala',
   },
 ];
 
@@ -148,6 +171,23 @@ export default function AboutPage() {
           </p>
         </div>
       </div>
+
+      {/* ── Process ────────────────────────────────────────── */}
+      <section className={styles.process}>
+        <div className={`${styles.approachHeader} reveal`}>
+          <h2 className={styles.approachH2}>How It Works</h2>
+          <span className="section-rule" />
+        </div>
+        <div className={styles.processGrid}>
+          {PROCESS.map(p => (
+            <div key={p.num} className={`${styles.processStep} reveal`}>
+              <p className={styles.processNum}>{p.num}</p>
+              <h3 className={styles.cardTitle}>{p.title}</h3>
+              <p className={styles.cardBody}>{p.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* ── Approach ───────────────────────────────────────── */}
       <section className={styles.approach}>

@@ -1,0 +1,143 @@
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 80px 60px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.card {
+  background: var(--bg-mid);
+  border: 1px solid var(--rule);
+  padding: 52px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cardHead {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.eyebrow {
+  display: block;
+}
+
+.category {
+  font-family: var(--serif);
+  font-size: clamp(26px, 2.5vw, 36px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.from {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.amount {
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.rule {
+  height: 1px;
+  background: var(--rule);
+}
+
+.includes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.includesItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.note {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+.ctaStrip {
+  background: var(--bg-mid);
+  border: 1px solid var(--rule);
+  padding: 60px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.ctaText {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 560px;
+}
+
+.ctaTitle {
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.ctaTitle em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.ctaDesc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  .wrap { padding: 48px 24px; }
+  .grid { grid-template-columns: 1fr; }
+  .card { padding: 36px 28px; }
+  .ctaStrip { flex-direction: column; align-items: flex-start; padding: 40px 28px; }
+}
