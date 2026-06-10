@@ -39,6 +39,39 @@
 .link:hover { color: var(--text); }
 .link.active  { color: var(--accent); }
 
+/* Inquire CTA button */
+.inquireBtn {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 8px 18px;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.inquireBtn:hover {
+  background: var(--accent);
+  color: #0c0c0c;
+}
+
+/* Mobile inquire button */
+.mobileInquireBtn {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 14px 36px;
+  transition: background 0.2s, color 0.2s;
+}
+.mobileInquireBtn:hover {
+  background: var(--accent);
+  color: #0c0c0c;
+}
+
 /* Hamburger */
 .hamburger {
   display: none;

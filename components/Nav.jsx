@@ -30,7 +30,6 @@ export default function Nav() {
     { href: '/pricing',       label: 'Pricing'      },
     { href: '/about',         label: 'About'        },
     { href: '/client-area',   label: 'Client Area'  },
-    { href: '/about#contact', label: 'Inquire'      },
   ];
 
   return (
@@ -58,6 +57,11 @@ export default function Nav() {
             </Link>
           </li>
         ))}
+        <li>
+          <Link href="/about#contact" className={styles.inquireBtn}>
+            Inquire
+          </Link>
+        </li>
       </ul>
 
       {/* Mobile hamburger */}
@@ -83,6 +87,9 @@ export default function Nav() {
               {label}
             </Link>
           ))}
+          <Link href="/about#contact" className={styles.mobileInquireBtn}>
+            Inquire
+          </Link>
         </div>
       )}
     </nav>
