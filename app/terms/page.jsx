@@ -80,7 +80,7 @@ export default function Terms() {
           <p>
             <strong>Questions about these terms?</strong><br />
             Zarcone Photography, LLC &nbsp;·&nbsp; Bridgewater, NJ<br />
-            Email: <a href="mailto:tom.zarcone@mac.com">tom.zarcone@mac.com</a> &nbsp;·&nbsp;
+            Email: <a href="mailto:info@zarconephotography.com">info@zarconephotography.com</a> &nbsp;·&nbsp;
             Phone: <a href="tel:9087770631">(908) 777-0631</a>
           </p>
         </div>

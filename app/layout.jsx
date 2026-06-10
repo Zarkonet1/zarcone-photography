@@ -21,7 +21,7 @@ const jsonLd = {
   description: 'Professional photographer and videographer specializing in portraits, sports, and events. Based in Bridgewater, NJ — serving New Jersey, New York City, and Philadelphia.',
   url: 'https://zarconephotography.com',
   telephone: '',
-  email: 'tom.zarcone@mac.com',
+  email: 'info@zarconephotography.com',
   image: 'https://zarconephotography.com/photos/tz-headshot.jpg',
   priceRange: '$$',
   address: {

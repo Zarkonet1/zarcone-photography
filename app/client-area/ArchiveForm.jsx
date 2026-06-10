@@ -5,7 +5,7 @@ import styles from './ArchiveForm.module.css';
 
 // ─── Replace this with your Formspree form ID ────────────────────────────────
 // 1. Go to https://formspree.io and sign up (free)
-// 2. Create a new form — set the email to tom.zarcone@mac.com
+// 2. Create a new form — set the email to info@zarconephotography.com
 // 3. Copy the form ID (looks like "xabc1234") and paste it below
 const FORMSPREE_ID = 'mlgklzvy';
 // ─────────────────────────────────────────────────────────────────────────────
