@@ -298,7 +298,7 @@
   min-height: 460px;
 }
 .contactImg {
-  background: url('https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=900&q=80') center/cover no-repeat;
+  background: url('/photos/chloe-portrait.jpg') center/cover no-repeat;
   filter: brightness(0.45);
 }
 .contactBody {

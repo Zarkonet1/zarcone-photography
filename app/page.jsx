@@ -7,6 +7,7 @@ import styles from './page.module.css';
 import Testimonials from '@/components/Testimonials';
 import VideoReel from '@/components/VideoReel';
 import InstagramFeed from '@/components/InstagramFeed';
+import NewsletterCapture from '@/components/NewsletterCapture';
 
 // Hero rotation — one per discipline, warm-graded 1920×1080 crops
 const HERO_PHOTOS = [
@@ -195,6 +196,9 @@ export default function Home() {
 
       {/* ── Testimonials ──────────────────────────────────────── */}
       <Testimonials />
+
+      {/* ── Newsletter Capture ────────────────────────────────── */}
+      <NewsletterCapture />
 
       {/* ── Instagram Feed ────────────────────────────────────── */}
       <InstagramFeed />
