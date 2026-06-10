@@ -14,7 +14,7 @@
 
 /* Masonry */
 .grid {
-  columns: 3;
+  columns: 4;
   column-gap: 4px;
   padding: 4px 60px 80px;
 }
