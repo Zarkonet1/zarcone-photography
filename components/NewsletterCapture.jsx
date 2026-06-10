@@ -7,29 +7,44 @@ export default function NewsletterCapture() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle'); // idle | submitting | success | error
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     if (!email) return;
     setStatus('submitting');
-    try {
-      const res = await fetch('https://formspree.io/f/mlgklzvy', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          email,
-          _subject: 'New Newsletter Signup — Zarcone Photography',
-          type: 'newsletter',
-        }),
-      });
-      if (res.ok) {
+
+    // Use Mailchimp JSONP endpoint (no API key / no CORS issues)
+    const callbackName = '_mc_cb_' + Date.now();
+    const url =
+      `https://zarconephotography.us2.list-manage.com/subscribe/post-json` +
+      `?u=2f558ed24ee358ab87bfca777&id=3cf2a2a124` +
+      `&EMAIL=${encodeURIComponent(email)}&c=${callbackName}`;
+
+    const timeout = setTimeout(() => {
+      setStatus('error');
+      cleanup();
+    }, 8000);
+
+    function cleanup() {
+      clearTimeout(timeout);
+      delete window[callbackName];
+      const s = document.getElementById(callbackName);
+      if (s) s.remove();
+    }
+
+    window[callbackName] = (data) => {
+      cleanup();
+      if (data.result === 'success') {
         setStatus('success');
         setEmail('');
       } else {
         setStatus('error');
       }
-    } catch {
-      setStatus('error');
-    }
+    };
+
+    const script = document.createElement('script');
+    script.id = callbackName;
+    script.src = url;
+    document.body.appendChild(script);
   }
 
   return (
