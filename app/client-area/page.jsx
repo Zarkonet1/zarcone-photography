@@ -63,7 +63,7 @@ export default function ClientAreaPage() {
             <div className={styles.cardText}>
               <h2 className={styles.cardTitle}>Previous Sessions</h2>
               <p className={styles.cardDesc}>
-                Sessions prior to June 1, 2026 were delivered via a private gallery link sent directly to your email. If you still have that link, use it to access your photos. If you've lost it, I can resend it — just fill out the short form and I'll get it back to you within 24 hours.
+                Sessions prior to June 1, 2026 were hosted on a previous platform. Those gallery links are no longer active — but your photos are safe. Fill out the short form and I'll send you an updated link within 24 hours.
               </p>
               <ul className={styles.featureList}>
                 <li>Private link delivered to your email</li>
@@ -73,7 +73,7 @@ export default function ClientAreaPage() {
             </div>
             <div className={styles.cardAction}>
               <ArchiveForm />
-              <p className={styles.hint}>Can't find your original email? Request your link above.</p>
+              <p className={styles.hint}>Previous gallery links are no longer active. Request an updated link above.</p>
             </div>
           </div>
         </div>
