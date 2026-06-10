@@ -71,13 +71,10 @@ export default function DesignPage() {
         {filtered.map((piece, i) => (
           <div
             key={i}
-            className={`${styles.item} ${styles[piece.size] || ''}`}
+            className={styles.item}
             onClick={() => setLbIndex(i)}
           >
-            <div
-              className={styles.img}
-              style={{ backgroundImage: `url('${piece.src}')` }}
-            />
+            <img src={piece.src} alt={piece.title} />
             <div className={styles.overlay}>
               <div className={styles.overlayContent}>
                 <span className={styles.label}>{piece.category}</span>
