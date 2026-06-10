@@ -40,6 +40,14 @@
   gap: 12px;
 }
 
+.nameRow {
+  display: flex;
+  gap: 12px;
+}
+.nameRow .input {
+  flex: 1;
+}
+
 .input {
   background: var(--bg);
   border: 1px solid var(--rule);

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import styles from './NewsletterCapture.module.css';
 
 export default function NewsletterCapture() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle'); // idle | submitting | success | error
 
@@ -17,7 +19,10 @@ export default function NewsletterCapture() {
     const url =
       `https://zarconephotography.us2.list-manage.com/subscribe/post-json` +
       `?u=2f558ed24ee358ab87bfca777&id=3cf2a2a124` +
-      `&EMAIL=${encodeURIComponent(email)}&c=${callbackName}`;
+      `&EMAIL=${encodeURIComponent(email)}` +
+      `&FNAME=${encodeURIComponent(firstName)}` +
+      `&LNAME=${encodeURIComponent(lastName)}` +
+      `&c=${callbackName}`;
 
     const timeout = setTimeout(() => {
       setStatus('error');
@@ -35,6 +40,8 @@ export default function NewsletterCapture() {
       cleanup();
       if (data.result === 'success') {
         setStatus('success');
+        setFirstName('');
+        setLastName('');
         setEmail('');
       } else {
         setStatus('error');
@@ -68,10 +75,28 @@ export default function NewsletterCapture() {
               </p>
             </div>
             <form className={styles.form} onSubmit={handleSubmit}>
+              <div className={styles.nameRow}>
+                <input
+                  type="text"
+                  placeholder="First name"
+                  value={firstName}
+                  onChange={e => setFirstName(e.target.value)}
+                  className={styles.input}
+                  disabled={status === 'submitting'}
+                />
+                <input
+                  type="text"
+                  placeholder="Last name"
+                  value={lastName}
+                  onChange={e => setLastName(e.target.value)}
+                  className={styles.input}
+                  disabled={status === 'submitting'}
+                />
+              </div>
               <input
                 type="email"
                 required
-                placeholder="Your email address"
+                placeholder="Email address"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 className={styles.input}
