@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
+import ArchiveForm from './ArchiveForm';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -62,24 +63,17 @@ export default function ClientAreaPage() {
             <div className={styles.cardText}>
               <h2 className={styles.cardTitle}>Previous Sessions</h2>
               <p className={styles.cardDesc}>
-                Galleries from sessions prior to 2025 are hosted on SmugMug. If you were provided a direct gallery link, use that. Otherwise, browse the archive below.
+                Sessions prior to June 1, 2026 were delivered via a private gallery link sent directly to your email. If you still have that link, use it to access your photos. If you've lost it, I can resend it — just fill out the short form and I'll get it back to you within 24 hours.
               </p>
               <ul className={styles.featureList}>
-                <li>All sessions prior to 2025</li>
+                <li>Private link delivered to your email</li>
                 <li>High-resolution downloads</li>
                 <li>Print ordering available</li>
               </ul>
             </div>
             <div className={styles.cardAction}>
-              <a
-                href="https://zarconephotography.smugmug.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`btn`}
-              >
-                Browse Archive →
-              </a>
-              <p className={styles.hint}>Use the direct link from your delivery email if you have one.</p>
+              <ArchiveForm />
+              <p className={styles.hint}>Can't find your original email? Request your link above.</p>
             </div>
           </div>
         </div>
