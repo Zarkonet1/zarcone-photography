@@ -6,13 +6,15 @@
 .inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  max-height: 420px;
+  height: 420px;
+  overflow: hidden;
 }
 
 .videoWrap {
   position: relative;
   overflow: hidden;
   background: #050505;
+  height: 100%;
 }
 
 .video {
