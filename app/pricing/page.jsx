@@ -33,7 +33,7 @@ const PACKAGES = [
     num: '02',
     category: 'Sports',
     eyebrow: 'Teams · Athletes · Events · Season Coverage',
-    starting: '300',
+    starting: '550',
     includes: [
       'On-site event or game coverage',
       'Action & portrait photography',
@@ -47,7 +47,7 @@ const PACKAGES = [
     num: '03',
     category: 'Events',
     eyebrow: 'Celebrations · Music · Corporate · Charity',
-    starting: '400',
+    starting: '750',
     includes: [
       'Full event coverage',
       'Professional editing & delivery',
