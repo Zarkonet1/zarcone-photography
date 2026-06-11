@@ -242,6 +242,14 @@ export default function AboutPage() {
           <h2 className={styles.contactH2}>Let's make something<br /><em>worth keeping.</em></h2>
           {/* HoneyBook lead form */}
           <div className="hb-p-5f380abc6556542c7717ad80-4" />
+          <a
+            href="https://g.page/r/Ca6PJ5ScxSapEAI/review"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.reviewLink}
+          >
+            ★★★★★ &nbsp; Happy with your experience? Leave us a Google review
+          </a>
           <img height="1" width="1" style={{ display: 'none' }} src="https://www.honeybook.com/p.png?pid=5f380abc6556542c7717ad80" alt="" />
         </div>
       </div>

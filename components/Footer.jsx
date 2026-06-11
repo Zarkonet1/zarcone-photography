@@ -25,7 +25,7 @@ export default function Footer() {
         </nav>
       </div>
       <div className={styles.bottom}>
-        <span className={styles.copy}>© {new Date().getFullYear()} Zarcone Photography, LLC &nbsp;·&nbsp; Service-Disabled Veteran-Owned Small Business</span>
+        <span className={styles.copy}>© {new Date().getFullYear()} Zarcone Photography, LLC &nbsp;·&nbsp; Service-Disabled Veteran-Owned Small Business &nbsp;·&nbsp; <a href="tel:9087770631" style={{color:'inherit'}}>(908) 777-0631</a> &nbsp;·&nbsp; <a href="mailto:info@zarconephotography.com" style={{color:'inherit'}}>info@zarconephotography.com</a></span>
         <nav className={styles.legal}>
           <Link href="/faq">FAQ</Link>
           <Link href="/privacy">Privacy Policy</Link>

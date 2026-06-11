@@ -29,7 +29,7 @@ export default function Nav() {
     { href: '/news',          label: 'News'      },
     { href: '/pricing',       label: 'Pricing'      },
     { href: '/about',         label: 'About'        },
-    { href: '/client-area',   label: 'Client Area'  },
+    { href: '/client-area',   label: 'View Your Gallery'  },
   ];
 
   return (
