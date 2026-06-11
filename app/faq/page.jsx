@@ -135,7 +135,7 @@ const FAQS = [
       },
       {
         q: 'How do I access my gallery after the session?',
-        a: 'You\'ll receive a private link to your Pic-Time gallery by email. Galleries are accessible for a set period after delivery — save your downloads before the link expires.',
+        a: 'You\'ll receive a private link to your Pic-Time gallery by email. Galleries remain available after delivery — download your images at any time.',
       },
       {
         q: 'I have a question that isn\'t answered here.',
