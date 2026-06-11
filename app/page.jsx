@@ -8,6 +8,7 @@ import Testimonials from '@/components/Testimonials';
 import VideoReel from '@/components/VideoReel';
 import InstagramFeed from '@/components/InstagramFeed';
 import NewsletterCapture from '@/components/NewsletterCapture';
+import TrustStrip from '@/components/TrustStrip';
 
 // Hero rotation — one per discipline, warm-graded 1920×1080 crops
 const HERO_PHOTOS = [
@@ -193,6 +194,9 @@ export default function Home() {
 
       {/* ── Video Reel ────────────────────────────────────────── */}
       <VideoReel />
+
+      {/* ── Trust Strip ───────────────────────────────────────── */}
+      <TrustStrip />
 
       {/* ── Testimonials ──────────────────────────────────────── */}
       <Testimonials />
