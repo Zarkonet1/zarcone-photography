@@ -21,18 +21,42 @@
 
 .logo { display: block; line-height: 0; }
 
-.nav {
+.navGroup {
   display: flex;
-  gap: 28px;
+  gap: 64px;
+  align-items: flex-start;
 }
-.nav a {
+
+.navColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.navLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(122,117,112,0.4);
+  margin-bottom: 4px;
+}
+
+.navColumn a {
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
   transition: color 0.2s;
 }
-.nav a:hover { color: var(--text); }
+.navColumn a:hover { color: var(--text); }
+
+/* keep old .nav for any remaining references */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
 .copy {
   font-size: 12px;
@@ -57,11 +81,15 @@
   .top, .bottom {
     flex-direction: column;
     padding: 28px 24px;
-    text-align: center;
-    gap: 16px;
+    align-items: flex-start;
+    gap: 24px;
   }
-  .nav, .legal {
+  .navGroup {
+    gap: 40px;
     flex-wrap: wrap;
-    justify-content: center;
+  }
+  .legal {
+    flex-wrap: wrap;
+    gap: 16px;
   }
 }
