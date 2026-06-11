@@ -1,8 +1,9 @@
 .wrap {
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
-  padding: 40px 60px;
+  padding: 40px 0;
   background: var(--bg-mid);
+  overflow: hidden;
 }
 
 .label {
@@ -12,39 +13,57 @@
   color: var(--muted);
   text-align: center;
   margin-bottom: 32px;
+  padding: 0 60px;
+}
+
+/* Marquee */
+.marqueeOuter {
+  overflow: hidden;
+  width: 100%;
 }
 
 .track {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px 56px;
+  gap: 0;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 48px;
+  flex-shrink: 0;
 }
 
 .logo img {
-  height: 44px;
+  height: 60px;
   width: auto;
-  max-width: 120px;
+  max-width: 160px;
   object-fit: contain;
-  filter: grayscale(1);
+  /* invert+screen: turns white bg black so it disappears on dark site */
+  filter: invert(1) grayscale(1);
   mix-blend-mode: screen;
-  opacity: 0.45;
+  opacity: 0.55;
   transition: opacity 0.3s;
 }
 
 .logo img:hover {
-  opacity: 0.85;
+  opacity: 1;
 }
 
 @media (max-width: 700px) {
-  .wrap { padding: 36px 24px; }
-  .track { gap: 28px 40px; }
-  .logo img { height: 36px; }
+  .logo { padding: 0 32px; }
+  .logo img { height: 48px; }
 }
