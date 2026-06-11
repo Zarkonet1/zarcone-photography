@@ -4,6 +4,7 @@ date: 2026-06-01
 excerpt: Thirty years of photography and I've never written about it. That changes now.
 category: Behind the Scenes
 coverImage: /photos/tz-shoot-portrait.jpg
+imagePosition: 20% center
 ---
 
 Thirty years behind a camera and I've never taken the time to write about what I see through the viewfinder. That changes now.

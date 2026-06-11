@@ -31,7 +31,7 @@ export default function PostPage({ params }) {
         {post.coverImage && (
           <div
             className={styles.heroImg}
-            style={{ backgroundImage: `url('${post.coverImage}')` }}
+            style={{ backgroundImage: `url('${post.coverImage}')`, backgroundPosition: post.imagePosition }}
           />
         )}
         <div className={styles.heroOverlay} />
