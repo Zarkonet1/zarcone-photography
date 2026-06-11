@@ -37,7 +37,7 @@
   font-family: var(--serif); font-size: clamp(32px,4vw,52px);
   font-weight: 400; color: var(--text); line-height: 1; margin-bottom: 8px;
 }
-.statLabel { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+.statLabel { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
 
 /* ── Story ────────────────────────────────────────────────────── */
 .story {
@@ -83,7 +83,7 @@
 .processStep { background: var(--bg); padding: 48px 40px; position: relative; }
 .processStep::before { content: ''; position: absolute; top: 48px; right: 0; width: 1px; height: 24px; background: var(--accent); opacity: 0.4; }
 .processStep:last-child::before { display: none; }
-.processNum { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+.processNum { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
 
 /* ── Approach ─────────────────────────────────────────────────── */
 .approach { padding: 100px 60px; background: var(--bg-mid); }
@@ -91,7 +91,7 @@
 .approachH2 { font-family: var(--serif); font-size: clamp(28px,3vw,42px); font-weight: 400; color: var(--text); }
 .approachGrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--rule); }
 .approachCard { background: var(--bg-mid); padding: 48px 40px; }
-.cardNum { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+.cardNum { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
 .cardTitle { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--text); margin-bottom: 16px; }
 .cardBody { font-size: 15px; line-height: 1.8; color: var(--muted); }
 
@@ -111,7 +111,7 @@
 .gearItem:nth-child(odd)  { padding-right: 40px; border-right: 1px solid var(--rule); }
 .gearItem:nth-child(even) { padding-left: 40px; }
 .gearName { font-size: 13px; color: var(--text); }
-.gearType { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.gearType { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
 
 /* ── Testimonials ─────────────────────────────────────────────── */
 .testimonials { padding: 100px 60px; background: var(--bg-low); border-top: 1px solid var(--rule); }
@@ -122,7 +122,7 @@
 .tMark { font-family: var(--serif); font-size: 48px; line-height: 1; color: var(--accent); margin-bottom: 20px; opacity: 0.6; }
 .tText { font-family: var(--serif); font-size: 15px; line-height: 1.7; font-style: italic; color: var(--text); margin-bottom: 24px; }
 .tRule { width: 32px; height: 1px; background: var(--accent); margin-bottom: 14px; }
-.tName { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
+.tName { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
 
 /* ── Contact ──────────────────────────────────────────────────── */
 .contactSection { display: grid; grid-template-columns: 1fr 1fr; }
@@ -153,7 +153,7 @@
 .formRow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
 .formGroup { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
 .formGroup label {
-  font-size: 9px; font-weight: 600; letter-spacing: 0.22em;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
   text-transform: uppercase; color: var(--muted);
 }
 .formGroup input,
@@ -176,13 +176,13 @@
 
 .submitBtn {
   display: block; width: 100%;
-  font-size: 9px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
   color: #0c0c0c; background: var(--accent); border: none;
   padding: 18px 32px; cursor: pointer; transition: background 0.2s; margin-top: 8px;
 }
 .submitBtn:hover:not(:disabled) { background: var(--text); }
 .submitBtn:disabled { opacity: 0.6; cursor: wait; }
-.formNote { font-size: 10px; color: rgba(122,117,112,0.6); margin-top: 14px; line-height: 1.6; }
+.formNote { font-size: 12px; color: rgba(122,117,112,0.6); margin-top: 14px; line-height: 1.6; }
 
 .formSuccess { text-align: center; padding: 40px 0; }
 .successTitle { font-family: var(--serif); font-size: 24px; color: var(--text); margin-bottom: 12px; }

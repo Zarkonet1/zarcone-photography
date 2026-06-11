@@ -3,7 +3,7 @@
   padding: 0 60px; border-bottom: 1px solid var(--rule); overflow-x: auto;
 }
 .filterBtn {
-  font-size: 9px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
   color: var(--muted); background: none; border: none;
   border-bottom: 2px solid transparent; padding: 20px 24px;
   cursor: pointer; transition: color 0.2s, border-color 0.2s;
@@ -45,7 +45,7 @@
 
 .label {
   padding: 20px;
-  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
   color: rgba(236,232,225,0.85);
   opacity: 0; transform: translateY(6px);
   transition: opacity 0.3s, transform 0.3s;
