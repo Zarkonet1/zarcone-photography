@@ -155,6 +155,7 @@ export default function AboutPage() {
           <p><strong>I photograph three things: people, athletes, and events.</strong> They sound different, but they share the same core challenge — something true is happening in front of you, and you have a fraction of a second to decide if you're ready for it.</p>
           <p>Over 30 years, I've learned that the best images don't come from controlling the situation. They come from understanding it — knowing where to stand, when to wait, and when to move.</p>
           <p>I'm based in Bridgewater, NJ and work regularly throughout New Jersey, New York City, and the Philadelphia area.</p>
+          <p>Zarcone Photography is a <strong>Service-Disabled Veteran-Owned Small Business</strong>, certified in New Jersey and with the U.S. Small Business Administration. It's a designation earned through service, and it shapes how I approach every commitment I make.</p>
         </div>
       </section>
 
