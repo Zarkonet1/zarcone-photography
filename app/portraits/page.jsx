@@ -117,7 +117,7 @@ export default function PortraitsPage() {
       <div className={styles.gallery}>
         {filtered.map((photo, i) => (
           <div key={i} className={`${styles.item} reveal`} onClick={() => setLbIndex(i)}>
-            <img src={photo.src} alt={photo.category} className={styles.img} />
+            <img src={photo.src} alt={photo.category} className={styles.img} loading="lazy" decoding="async" />
             <div className={styles.itemOverlay}>
               <span className={styles.itemLabel}>{photo.category}</span>
             </div>

@@ -63,7 +63,7 @@ export default function EventsPage() {
             className={styles.item}
             onClick={() => setLbIndex(i)}
           >
-            <img src={photo.src} alt={photo.category} />
+            <img src={photo.src} alt={photo.category} loading="lazy" decoding="async" />
             <div className={styles.overlay}>
               <span className={styles.label}>{photo.category}</span>
             </div>

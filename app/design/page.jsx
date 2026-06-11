@@ -75,7 +75,7 @@ export default function DesignPage() {
             className={styles.item}
             onClick={() => setLbIndex(i)}
           >
-            <img src={piece.src} alt={piece.title} />
+            <img src={piece.src} alt={piece.title} loading="lazy" decoding="async" />
             <div className={styles.overlay}>
               <div className={styles.overlayContent}>
                 <span className={styles.label}>{piece.category}</span>
