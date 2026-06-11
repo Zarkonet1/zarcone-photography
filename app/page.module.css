@@ -298,7 +298,7 @@
   min-height: 460px;
 }
 .contactImg {
-  background: url('/photos/chloe-portrait.jpg') center/cover no-repeat;
+  background: url('/photos/chloe-portrait.jpg') top/cover no-repeat;
   filter: brightness(0.45);
 }
 .contactBody {
