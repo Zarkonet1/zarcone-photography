@@ -3,7 +3,7 @@ title: What to Wear to Your Senior Portrait Session
 date: 2026-06-10
 excerpt: Outfit choices make or break senior photos. Here's how to think about what to wear — and what to leave at home.
 category: Senior Portraits
-coverImage: /photos/Sniors.jpg
+coverImage: /photos/BLOG-WhatToWear.jpeg
 ---
 
 One of the most common questions I hear before a senior portrait session — right after "where should we go?" — is: *what should I wear?*
