@@ -41,7 +41,7 @@ export default function ClientAreaPage() {
             </div>
             <div className={styles.cardAction}>
               <a
-                href="https://zarconephotographyllc.pic-time.com"
+                href="https://galleries.zarconephotography.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`btn ${styles.primaryBtn}`}

@@ -19,7 +19,7 @@ const PACKAGES = [
     num: '01',
     category: 'Portraits',
     eyebrow: 'Seniors · Individuals · Families · Headshots',
-    starting: '250',
+    starting: '350',
     includes: [
       'On-location or studio session',
       'Professional editing & retouching',
