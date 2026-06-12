@@ -1,0 +1,580 @@
+/* ── Hero ───────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  height: 90vh;
+  min-height: 560px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.heroImg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 20%;
+  transform: scale(1.04);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.75) 0%,
+    rgba(0,0,0,0.3) 50%,
+    rgba(0,0,0,0.1) 100%
+  );
+}
+
+.heroText {
+  position: relative;
+  z-index: 2;
+  padding: 0 60px 80px;
+  max-width: 700px;
+}
+
+.heroText .eyebrow {
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.h1 {
+  font-family: var(--serif);
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.0;
+  margin-bottom: 20px;
+}
+
+.h1 em {
+  font-style: italic;
+}
+
+.lead {
+  font-size: clamp(15px, 1.6vw, 18px);
+  color: rgba(255,255,255,0.85);
+  line-height: 1.65;
+  max-width: 520px;
+  margin-bottom: 32px;
+}
+
+.heroCta {
+  display: inline-block;
+}
+
+/* ── Concept ────────────────────────────────────────────── */
+.concept {
+  padding: 100px 60px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.conceptInner {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.conceptLabel {
+  padding-top: 8px;
+}
+
+.conceptH2 {
+  font-family: var(--serif);
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+
+.conceptH2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.conceptText {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  max-width: 600px;
+}
+
+.conceptQuote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--text);
+  line-height: 1.5;
+  margin-top: 32px;
+  padding-left: 24px;
+  border-left: 2px solid var(--accent);
+}
+
+/* ── How It Works ───────────────────────────────────────── */
+.flow {
+  background: var(--bg-mid);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 80px 60px;
+  max-width: 100%;
+}
+
+.flowHeader {
+  max-width: var(--max-w);
+  margin: 0 auto 56px;
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.flowH2 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 400;
+  color: var(--text);
+}
+
+.flowGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.flowStep {
+  background: var(--bg);
+  padding: 48px 44px;
+}
+
+.flowNum {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.flowTitle {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.flowBody {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* ── Pricing ────────────────────────────────────────────── */
+.pricing {
+  padding: 100px 60px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.pricingHeader {
+  margin-bottom: 56px;
+}
+
+.pricingH2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 48px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.15;
+  margin-top: 12px;
+}
+
+.pricingH2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-bottom: 24px;
+}
+
+.tier {
+  background: var(--bg-mid);
+  border: 1px solid var(--rule);
+  padding: 52px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+}
+
+.tierFeatured {
+  background: var(--text);
+  border-color: var(--text);
+}
+
+.tierFeatured .tierName,
+.tierFeatured .tierAmount,
+.tierFeatured .tierTag,
+.tierFeatured .tierItem {
+  color: rgba(255,255,255,0.95);
+}
+
+.tierFeatured .tierRule {
+  background: rgba(255,255,255,0.2);
+}
+
+.tierFeatured .tierDot {
+  background: rgba(255,255,255,0.7);
+}
+
+.tierBadge {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.tierHead {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tierName {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tierPrice {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.tierAmount {
+  font-family: var(--serif);
+  font-size: 56px;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.tierTag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tierRule {
+  height: 1px;
+  background: var(--rule);
+}
+
+.tierIncludes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  flex: 1;
+}
+
+.tierItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.tierDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.pricingNote {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* ── Host Rewards ───────────────────────────────────────── */
+.hostSection {
+  background: var(--bg-mid);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 100px 60px;
+}
+
+.hostInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.hostH2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.2;
+  margin: 12px 0 20px;
+}
+
+.hostH2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hostDesc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.hostRight {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 8px;
+}
+
+.rewardRow {
+  display: grid;
+  grid-template-columns: 100px 24px 1fr;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg);
+  padding: 24px 28px;
+}
+
+.rewardGuests {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.rewardArrow {
+  font-size: 16px;
+  color: var(--muted);
+  opacity: 0.4;
+}
+
+.rewardDesc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── Themes ─────────────────────────────────────────────── */
+.themes {
+  padding: 100px 60px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.themesHeader {
+  margin-bottom: 48px;
+}
+
+.themesH2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.15;
+  margin-top: 12px;
+}
+
+.themesH2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.themesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 24px;
+}
+
+.themeCard {
+  background: var(--bg);
+  padding: 36px 32px;
+}
+
+.themeTitle {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.themeDesc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.themesNote {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* ── Venues ─────────────────────────────────────────────── */
+.venues {
+  background: var(--bg-mid);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 80px 60px;
+}
+
+.venuesInner {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 60px;
+  align-items: start;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.venueDivider {
+  background: var(--rule);
+  align-self: stretch;
+}
+
+.venueTitle {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 12px 0 16px;
+}
+
+.venueBody {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* ── Book ───────────────────────────────────────────────── */
+.bookSection {
+  padding: 100px 60px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.bookInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.bookH2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.2;
+  margin: 12px 0 20px;
+}
+
+.bookH2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.bookDesc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.bookDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bookDetail {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.bookDetail strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .heroText { padding: 0 32px 60px; }
+  .concept, .pricing, .themes, .bookSection { padding: 72px 32px; }
+  .flow, .hostSection, .venues { padding: 72px 32px; }
+  .conceptInner { grid-template-columns: 1fr; gap: 24px; }
+  .pricingGrid { grid-template-columns: 1fr; }
+  .hostInner { grid-template-columns: 1fr; gap: 48px; }
+  .themesGrid { grid-template-columns: repeat(2, 1fr); }
+  .venuesInner { grid-template-columns: 1fr; }
+  .venueDivider { display: none; }
+  .bookInner { grid-template-columns: 1fr; gap: 48px; }
+  .flowGrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .hero { height: 80vh; min-height: 500px; }
+  .heroText { padding: 0 24px 48px; }
+  .h1 { font-size: clamp(42px, 11vw, 64px); }
+  .concept, .pricing, .themes, .bookSection { padding: 56px 24px; }
+  .flow, .hostSection, .venues { padding: 56px 24px; }
+  .tier { padding: 36px 28px; }
+  .tierAmount { font-size: 44px; }
+  .themesGrid { grid-template-columns: 1fr; }
+  .rewardRow { grid-template-columns: 90px 20px 1fr; padding: 20px; }
+}

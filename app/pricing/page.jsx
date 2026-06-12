@@ -2,6 +2,7 @@ import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import styles from './page.module.css';
 
+
 const PROCESS = [
   { num: '01', title: 'Reach Out', body: "Tell me about your project — the what, when, and where. I'll respond within 24 hours with questions, availability, and a custom quote." },
   { num: '02', title: 'We Plan', body: 'We lock in the details together — location, timing, wardrobe, shot list. No surprises on the day.' },
@@ -123,6 +124,19 @@ export default function PricingPage() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Portrait Parties callout */}
+        <div className={styles.partiesStrip}>
+          <div className={styles.ctaText}>
+            <p className={`eyebrow ${styles.eyebrow}`}>Something Different</p>
+            <h2 className={styles.ctaTitle}>Portrait <em>Parties</em></h2>
+            <p className={styles.ctaDesc}>
+              Host a social photography experience for your friends, book club, or colleague group.
+              Professional portraits woven into an evening worth having — starting at $99 per guest.
+            </p>
+          </div>
+          <Link href="/portrait-parties" className="btn btn-outline">Learn More →</Link>
         </div>
 
         <div className={styles.ctaStrip}>

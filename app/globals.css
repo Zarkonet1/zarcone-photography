@@ -96,6 +96,15 @@ a {
   background: transparent;
   color: var(--accent);
 }
+.btn-outline {
+  background: transparent;
+  border-color: var(--text);
+  color: var(--text);
+}
+.btn-outline:hover {
+  background: var(--text);
+  color: var(--bg);
+}
 
 /* ─── Scroll Reveal ─────────────────────────────────────────────── */
 .reveal {

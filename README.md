@@ -41,7 +41,7 @@ app/
   about/                            — About + contact form
   blog/                             — Blog index + [slug] post pages
   news/                             — News & upcoming events
-  pricing/                          — Pricing page (Portraits $250, Sports $550, Events $750, Design $75)
+  pricing/                          — Pricing page (Portraits $350+, Sports $550, Events $750, Design $75)
   404/                              — Custom 404 page
   senior-portrait-photographer-nj/  — SEO landing page
   sports-photographer-nj/           — SEO landing page
@@ -91,7 +91,7 @@ Current rates (website + HoneyBook in sync as of June 2026):
 
 | Service | Price |
 |---|---|
-| Portraits | $250 |
+| Portraits | $350+ |
 | Sports / Game Day | $550 |
 | Events – 1 Photographer | $750 |
 | Events – 2 Photographers | $1,200 |
@@ -120,9 +120,26 @@ Using Formspree (`https://formspree.io/forms/mlgklzvy`). No env vars needed — 
 
 ---
 
+## HoneyBook Integration
+
+- **Client portal:** `book.zarconephotography.com` (CNAME `book → ssl.honeybook.com`, live as of June 11, 2026)
+- **Lead forms:** All 6 forms have Scheduler actions (Introductory Call, 30-min phone). See `business-process-audit.md` for full table.
+- **HoneyBook PID:** `5f380abc6556542c7717ad80` (used in About page contact form embed)
+
+---
+
 ## Pending / Known Issues
 
-- **Domain** — point `zarconephotography.com` to Vercel: A record `76.76.21.21`, CNAME `cname.vercel-dns.com` (via GoDaddy)
 - **Next.js upgrade** — on 14.2.3; known security advisories; upgrade to v15 when ready
 - **Trust strip logos** — several logos have generic filenames and need proper alt text
-- **Andi's Team cover** — swap for real event photos after Oct 11 2026
+- **Andi's Team cover** — swap for real event photos after the event (Oct 11, 2026)
+- **HoneyBook automation segmentation** — all 3 inquiry automations (Event, Portrait, Sports) fire for every lead form submission; segmenting by form type is a future improvement (low urgency)
+
+---
+
+## Recent Changes (June 2026)
+
+- **About page copy** — rewrote Story section: West Point / Army service woven in, "storyteller" positioning through copy not labels. Key line: "Every one of those moments has a story. My job is to find it before it disappears."
+- **Stats bar** — updated to: 30+ Years Experience · 5,000+ Athletes Photographed · 500+ Events Covered · NJ · NYC · PHL Service Area
+- **Portrait pricing** — updated site from $250 to $350+ (matches HoneyBook)
+- **Business process audit** — all 12 items resolved; platforms (Website, HoneyBook, Pic-Time) are fully aligned. See `business-process-audit.md`.

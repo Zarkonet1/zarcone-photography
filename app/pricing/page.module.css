@@ -151,6 +151,17 @@
   line-height: 1.7;
 }
 
+.partiesStrip {
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  padding: 60px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 2px;
+}
+
 .ctaStrip {
   background: var(--bg-mid);
   border: 1px solid var(--rule);
