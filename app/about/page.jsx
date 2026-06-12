@@ -133,10 +133,10 @@ export default function AboutPage() {
       {/* ── Stats ──────────────────────────────────────────── */}
       <div className={styles.statsBar}>
         {[
-          { num: '30+', label: 'Years Experience' },
-          { num: '4',   label: 'Disciplines' },
-          { num: 'NJ',  label: 'Based in Bridgewater' },
-          { num: 'NYC · PHL', label: 'Service Area' },
+          { num: '30+',    label: 'Years Experience' },
+          { num: '5,000+', label: 'Athletes Photographed' },
+          { num: '500+',   label: 'Events Covered' },
+          { num: 'NJ · NYC · PHL', label: 'Service Area' },
         ].map(s => (
           <div key={s.label} className={`${styles.statCell} reveal`}>
             <div className={styles.statNum}>{s.num}</div>
@@ -151,8 +151,9 @@ export default function AboutPage() {
           <h2 className={styles.storyH2}>The<br /><em>story</em></h2>
         </div>
         <div className={`${styles.storyBody} reveal`}>
-          <p>Photography found me early. What started as curiosity turned into craft, and craft turned into a career that has taken me trackside at youth championships, into quiet studio sessions, and across ballrooms full of people celebrating the biggest moments of their lives.</p>
-          <p><strong>I photograph three things: people, athletes, and events.</strong> They sound different, but they share the same core challenge — something true is happening in front of you, and you have a fraction of a second to decide if you're ready for it.</p>
+          <p>Photography found me early. Before West Point. Before the Army. Before I understood what it meant to commit to something completely. But what I learned in uniform — about presence, discipline, and showing up when it matters — turned out to be exactly what great photography requires.</p>
+          <p>What started as curiosity became craft, and craft became a career that has taken me trackside at youth championships, into quiet studio sessions, and across ballrooms full of people celebrating the biggest moments of their lives. Every one of those moments has a story. My job is to find it before it disappears.</p>
+          <p><strong>I photograph three things: athletes, people, and events.</strong> They sound different, but they share the same core challenge — something true is happening in front of you, and you have a fraction of a second to decide if you're ready for it.</p>
           <p>Over 30 years, I've learned that the best images don't come from controlling the situation. They come from understanding it — knowing where to stand, when to wait, and when to move.</p>
           <p>I'm based in Bridgewater, NJ and work regularly throughout New Jersey, New York City, and the Philadelphia area.</p>
           <p>Zarcone Photography is a <strong>Service-Disabled Veteran-Owned Small Business</strong>, certified in New Jersey and with the U.S. Small Business Administration. It's a designation earned through service, and it shapes how I approach every commitment I make.</p>
