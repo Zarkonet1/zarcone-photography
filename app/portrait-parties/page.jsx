@@ -143,6 +143,29 @@ export default function PortraitPartiesPage() {
         </div>
       </section>
 
+      {/* ── Video ──────────────────────────────────────────── */}
+      <section className={styles.videoSection}>
+        <div className={styles.videoInner}>
+          <div className={styles.videoLabel}>
+            <p className="eyebrow">From Tom</p>
+          </div>
+          <div className={styles.videoWrap}>
+            {/* Replace src with your hosted video URL (Vimeo, YouTube embed, or direct .mp4) */}
+            <div className={styles.videoPlaceholder}>
+              <p className={styles.videoPlaceholderText}>Video coming soon</p>
+            </div>
+            {/* Uncomment and replace src once video is ready:
+            <iframe
+              src="https://player.vimeo.com/video/YOUR_VIDEO_ID?autoplay=0&title=0&byline=0&portrait=0"
+              className={styles.videoEmbed}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+            */}
+          </div>
+        </div>
+      </section>
+
       {/* ── Pricing ────────────────────────────────────────── */}
       <section className={styles.pricing} id="pricing">
         <div className={styles.pricingHeader}>
