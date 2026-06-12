@@ -116,6 +116,22 @@
   border-left: 2px solid var(--accent);
 }
 
+/* ── Photo Strip ────────────────────────────────────────── */
+.photoStrip {
+  height: 420px;
+  background-size: cover;
+  background-position: center 40%;
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .photoStrip { height: 300px; }
+}
+
+@media (max-width: 600px) {
+  .photoStrip { height: 220px; }
+}
+
 /* ── How It Works ───────────────────────────────────────── */
 .flow {
   background: var(--bg-mid);

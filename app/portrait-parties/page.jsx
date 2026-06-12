@@ -86,7 +86,7 @@ export default function PortraitPartiesPage() {
       <div className={styles.hero}>
         <div
           className={styles.heroImg}
-          style={{ backgroundImage: "url('/photos/chloe-portrait.jpg')" }}
+          style={{ backgroundImage: "url('/photos/PP1%20-%20Zarcone%20Photography-1-9.jpg')" }}
         />
         <div className={styles.heroOverlay} />
         <div className={styles.heroText}>
@@ -117,6 +117,13 @@ export default function PortraitPartiesPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Photo Strip ────────────────────────────────────── */}
+      <div
+        className={styles.photoStrip}
+        style={{ backgroundImage: "url('/photos/PP3-%20Zarcone%20Photography-1-2.jpg')" }}
+        aria-hidden="true"
+      />
 
       {/* ── How It Works ───────────────────────────────────── */}
       <section className={styles.flow}>
