@@ -59,7 +59,7 @@ const FLOW = [
   {
     num: '02',
     title: 'Everyone Gets a Few Minutes',
-    body: 'Throughout the evening, each guest takes a quick turn in front of the camera — 5 to 10 minutes, right there in the room. Relaxed, low-key, no big production. Then straight back to the party.',
+    body: 'Throughout the evening, guests take turns in front of the camera — solo, in pairs, in groups. Some of the best images aren\'t the posed individual shots. They\'re two friends mid-laugh, or the whole table together. That\'s where the magic usually happens.',
   },
   {
     num: '03',
