@@ -53,18 +53,18 @@ const THEMES = [
 const FLOW = [
   {
     num: '01',
-    title: 'Guests Arrive',
-    body: 'Your guests arrive, mix, and settle in. Food, drinks, and conversation — no rushing. The party is already happening before anyone steps in front of the camera.',
+    title: 'You Host a Great Evening',
+    body: 'Your guest list. Your vibe. Your refreshments. A normal fun night with people you like — the kind of evening that would have happened with or without a photographer in the room.',
   },
   {
     num: '02',
-    title: 'Portrait Sessions',
-    body: 'Each guest gets a relaxed 5–10 minute session. I bring the lighting, backdrop, and direction. Your guests bring themselves. No posing experience needed.',
+    title: 'Everyone Gets a Few Minutes',
+    body: 'During the evening, each guest slips away for a quick 5–10 minutes with me. Relaxed, low-key, no big production. Then they\'re right back at the party. Most guests barely notice the gap.',
   },
   {
     num: '03',
-    title: 'Gallery Delivery',
-    body: 'Within a few days, every guest receives a link to their private gallery. They select their included images, download at full resolution, and can order prints directly.',
+    title: 'Photos Show Up a Few Days Later',
+    body: 'Everyone gets a private gallery — and most are genuinely surprised by how good they look. That\'s the point. Leave with photos you\'re actually proud to post.',
   },
 ];
 
@@ -122,7 +122,7 @@ export default function PortraitPartiesPage() {
       <section className={styles.flow}>
         <div className={styles.flowHeader}>
           <p className="eyebrow">How It Works</p>
-          <h2 className={styles.flowH2}>Three simple steps</h2>
+          <h2 className={styles.flowH2}>Here's how it actually works</h2>
           <span className="section-rule" />
         </div>
         <div className={styles.flowGrid}>
