@@ -239,19 +239,28 @@
   border-color: var(--text);
 }
 
-.tierFeatured .tierName,
-.tierFeatured .tierAmount,
-.tierFeatured .tierTag,
+.tierFeatured .tierName {
+  color: #7a7570;
+}
+
+.tierFeatured .tierAmount {
+  color: #0c0c0c;
+}
+
+.tierFeatured .tierTag {
+  color: #5a5550;
+}
+
 .tierFeatured .tierItem {
-  color: rgba(255,255,255,0.95);
+  color: #3a3530;
 }
 
 .tierFeatured .tierRule {
-  background: rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.12);
 }
 
 .tierFeatured .tierDot {
-  background: rgba(255,255,255,0.7);
+  background: #0c0c0c;
 }
 
 .tierBadge {
@@ -262,9 +271,9 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
+  color: #5a5550;
+  background: rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.15);
   padding: 4px 10px;
   border-radius: 2px;
 }
