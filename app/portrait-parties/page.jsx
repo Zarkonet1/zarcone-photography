@@ -59,7 +59,7 @@ const FLOW = [
   {
     num: '02',
     title: 'Everyone Gets a Few Minutes',
-    body: 'During the evening, each guest slips away for a quick 5–10 minutes with me. Relaxed, low-key, no big production. Then they\'re right back at the party. Most guests barely notice the gap.',
+    body: 'Throughout the evening, each guest takes a quick turn in front of the camera — 5 to 10 minutes, right there in the room. Relaxed, low-key, no big production. Then straight back to the party.',
   },
   {
     num: '03',
