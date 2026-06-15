@@ -23,6 +23,8 @@ const PHOTOS = [
   { src: '/photos/i-mkM2LBS.jpg', category: 'Lacrosse',  size: 'half' },
   { src: '/photos/i-DDRrCRz.jpg', category: 'Lacrosse',  size: 'half' },
   // Additional sports photos — recategorize as needed
+  { src: '/photos/Ironman_Bike_Dylan.jpg', category: 'Other', size: 'wide' },
+  { src: '/photos/Ironman_Run_Dante.jpg', category: 'Other', size: 'half' },
   { src: '/photos/SPORTS-AFC-Gold-Classic-13JUL19-51.jpg', category: 'Other', size: 'wide' },
   { src: '/photos/SPORTS-DSC_5128-1.jpg', category: 'Football', size: 'half' },
   { src: '/photos/SPORTS-FB100.jpg', category: 'Football', size: 'wide' },
