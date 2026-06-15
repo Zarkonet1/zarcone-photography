@@ -68,8 +68,8 @@ const DISCIPLINES = [
 
 const WORK_GRID = [
   { src: '/photos/Ironman_Bike_Dylan.jpg' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0035-2.jpg', tall: true },
-  { src: '/photos/Ironman_Run_Dante.jpg', tall: true },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0035-2.jpg' },
+  { src: '/photos/Ironman_Run_Dante.jpg' },
   { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg' },
   { src: '/photos/EVENT-Zarcone-Photography-28.jpg' },
   { src: '/photos/danielle-portrait.jpg' },
@@ -161,8 +161,8 @@ export default function Home() {
         </div>
         <div className={styles.workGrid}>
           {WORK_GRID.map((item, i) => (
-            <div key={i} className={`${styles.workItem} ${item.tall ? styles.tall : ''}`}>
-              <div className={styles.workImg} style={{ backgroundImage: `url('${item.src}')` }} />
+            <div key={i} className={styles.workItem}>
+              <img src={item.src} alt="" loading="lazy" decoding="async" className={styles.workImg} />
             </div>
           ))}
         </div>
