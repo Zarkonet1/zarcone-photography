@@ -23,10 +23,6 @@ const PROCESS = [
   { num: '04', title: 'You Receive', body: 'Professionally edited images delivered to a private gallery within the agreed timeframe — ready to download, share, and print.' },
 ];
 
-export const metadata = {
-  title: 'Pricing — Zarcone Photography',
-  description: 'Photography and videography pricing for portraits, sports, events, and design — Bridgewater, NJ.',
-};
 
 const PACKAGES = [
   {

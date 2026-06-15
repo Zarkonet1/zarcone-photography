@@ -16,10 +16,6 @@ export const metadata = {
   },
 };
 
-export const metadata = {
-  title: 'Client Area — Zarcone Photography',
-  description: 'Access your private photo gallery from Zarcone Photography.',
-};
 
 export default function ClientAreaPage() {
   return (
