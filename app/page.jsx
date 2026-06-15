@@ -67,7 +67,7 @@ const DISCIPLINES = [
 ];
 
 const WORK_GRID = [
-  { src: '/photos/Ironman_Bike_Dylan.jpg' },
+  { src: '/photos/Ironman_Bike_Dylan.jpg', objPos: '35% center' },
   { src: '/photos/PORTRAIT-Zarcone-Photography-0035-2.jpg' },
   { src: '/photos/Ironman_Run_Dante.jpg' },
   { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg' },
@@ -162,7 +162,7 @@ export default function Home() {
         <div className={styles.workGrid}>
           {WORK_GRID.map((item, i) => (
             <div key={i} className={styles.workItem}>
-              <img src={item.src} alt="" loading="lazy" decoding="async" className={styles.workImg} />
+              <img src={item.src} alt="" loading="lazy" decoding="async" className={styles.workImg} style={item.objPos ? { objectPosition: item.objPos } : undefined} />
             </div>
           ))}
         </div>
