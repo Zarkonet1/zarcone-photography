@@ -6,9 +6,11 @@ import Lightbox from '@/components/Lightbox';
 import Link from 'next/link';
 import styles from './page.module.css';
 
-const CATEGORIES = ['All', 'Music', 'Prom', 'Celebration', 'Events'];
+const CATEGORIES = ['All', 'Triathlon', 'Music', 'Prom', 'Celebration', 'Events'];
 
 const PHOTOS = [
+  { src: '/photos/Ironman_Bike_Dylan.jpg',                                  category: 'Triathlon' },
+  { src: '/photos/Ironman_Run_Dante.jpg',                                   category: 'Triathlon' },
   { src: '/photos/i-q7LzKSb.jpg',                                          category: 'Music' },
   { src: '/photos/EVENT - Zarcone Photography-35.jpg',                      category: 'Music' },
   { src: '/photos/PORTRAIT-Zarcone-Photography-73.jpg',                     category: 'Prom' },
