@@ -12,12 +12,13 @@ import TrustStrip from '@/components/TrustStrip';
 
 // Hero rotation — one per discipline, warm-graded 1920×1080 crops
 const HERO_PHOTOS = [
-  '/photos/i-s7zBdzk-hero.jpg',      // football
-  '/photos/chloe-portrait-hero.jpg',  // portrait
-  '/photos/softball-action-hero.jpg', // softball
-  '/photos/i-q7LzKSb-hero.jpg',      // barn swallows
-  '/photos/gymnastics-bars-hero.jpg', // gymnastics
-  '/photos/wrestling-throw-hero.jpg', // wrestling
+  '/photos/i-s7zBdzk-hero.jpg',        // football
+  '/photos/chloe-portrait-hero.jpg',    // portrait
+  '/photos/softball-action-hero.jpg',   // softball
+  '/photos/i-q7LzKSb-hero.jpg',        // barn swallows
+  '/photos/gymnastics-bars-hero.jpg',   // gymnastics
+  '/photos/wrestling-throw-hero.jpg',   // wrestling
+  '/photos/Ironman_Bike_Dylan.jpg',     // triathlon
 ];
 
 // Local photos
@@ -66,11 +67,12 @@ const DISCIPLINES = [
 ];
 
 const WORK_GRID = [
+  { src: '/photos/Ironman_Bike_Dylan.jpg' },
   { src: '/photos/PORTRAIT-Zarcone-Photography-0035-2.jpg', tall: true },
+  { src: '/photos/Ironman_Run_Dante.jpg', tall: true },
   { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg' },
-  { src: '/photos/EVENT-Zarcone-Photography-28.jpg', tall: true },
+  { src: '/photos/EVENT-Zarcone-Photography-28.jpg' },
   { src: '/photos/danielle-portrait.jpg' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0076.jpg' },
 ];
 
 export default function Home() {
