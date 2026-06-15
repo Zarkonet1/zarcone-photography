@@ -3,8 +3,16 @@ import { getAllPosts } from '@/lib/posts';
 import styles from './page.module.css';
 
 export const metadata = {
-  title: 'Blog — Zarcone Photography',
-  description: 'Behind the lens — stories, sessions, and the craft of photography.',
+  title: 'Photography Blog | Behind the Lens | Zarcone Photography',
+  description: 'Tips, behind-the-scenes stories, and photography insights from Tom Zarcone — NJ portrait, sports, and event photographer based in Bridgewater.',
+  alternates: {
+    canonical: '/blog',
+  },
+  openGraph: {
+    title: 'Photography Blog | Zarcone Photography',
+    description: 'Tips, behind-the-scenes stories, and photography insights from Tom Zarcone.',
+    url: 'https://zarconephotography.com/blog',
+  },
 };
 
 export default function BlogPage() {

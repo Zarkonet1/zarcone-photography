@@ -4,6 +4,19 @@ import ArchiveForm from './ArchiveForm';
 import styles from './page.module.css';
 
 export const metadata = {
+  title: 'Client Gallery | Access Your Photos | Zarcone Photography',
+  description: 'Access your private photo gallery from Zarcone Photography. View, download, and order prints from your portrait, sports, or event session.',
+  alternates: {
+    canonical: '/client-area',
+  },
+  openGraph: {
+    title: 'Client Gallery | Zarcone Photography',
+    description: 'Access your private photo gallery from Zarcone Photography.',
+    url: 'https://zarconephotography.com/client-area',
+  },
+};
+
+export const metadata = {
   title: 'Client Area — Zarcone Photography',
   description: 'Access your private photo gallery from Zarcone Photography.',
 };

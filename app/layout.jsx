@@ -5,14 +5,14 @@ import Footer from '@/components/Footer';
 
 export const metadata = {
   metadataBase: new URL('https://zarconephotography.com'),
-  title: 'Zarcone Photography',
-  description: 'Portraits, Sports & Events Photography — Bridgewater, NJ · New York City · Philadelphia',
+  title: 'Zarcone Photography | NJ Photographer — Portraits, Sports & Events',
+  description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events. Serving New Jersey, New York City, and Philadelphia.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Zarcone Photography',
-    description: 'Portraits, Sports & Events Photography — Bridgewater, NJ · New York City · Philadelphia',
+    title: 'Zarcone Photography | NJ Photographer — Portraits, Sports & Events',
+    description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events. Serving New Jersey, New York City, and Philadelphia.',
     type: 'website',
     url: 'https://zarconephotography.com',
   },
