@@ -4,12 +4,17 @@ import AnnouncementBar from '@/components/AnnouncementBar';
 import Footer from '@/components/Footer';
 
 export const metadata = {
+  metadataBase: new URL('https://zarconephotography.com'),
   title: 'Zarcone Photography',
   description: 'Portraits, Sports & Events Photography — Bridgewater, NJ · New York City · Philadelphia',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Zarcone Photography',
     description: 'Portraits, Sports & Events Photography — Bridgewater, NJ · New York City · Philadelphia',
     type: 'website',
+    url: 'https://zarconephotography.com',
   },
 };
 
