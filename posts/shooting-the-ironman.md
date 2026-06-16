@@ -51,7 +51,7 @@ Dante in the same stretch. What I'm reading in the position, the helmet angle, t
 
 ## The Run: Where Everything Shows
 
-By the half-marathon, athletes have been racing for four or five hours. The veneer is gone. The face you see on the run is the real one — the one that's done the math about how much is left and decided to keep moving anyway.
+By the half-marathon, athletes have been racing for hours. The veneer is gone. The face you see on the run is the real one — the one that's done the math about how much is left and decided to keep moving anyway.
 
 ![Dylan on the run leg of the Ironman](/photos/IRONMAN%20-%20Zarcone%20Photography-35.jpg)
 
