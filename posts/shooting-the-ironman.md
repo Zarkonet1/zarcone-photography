@@ -3,7 +3,7 @@ title: "From the Sidelines to the Finish Line"
 date: "2026-06-12"
 excerpt: "What it takes to photograph the IRONMAN 70.3 Eagleman — and why triathlon might be the most demanding subject in sports photography."
 category: "Sports"
-coverImage: "/photos/IRONMAN - Dylan_Bike_Banner.jpg"
+coverImage: "/photos/IRONMAN - Zarcone Photography-58.jpg"
 imagePosition: "center 40%"
 ---
 
@@ -39,13 +39,13 @@ Dylan entering the Choptank. One moment he's standing in that queue on the bank,
 
 ## The Bike Leg: 56 Miles of Decisions
 
-![Dylan on the bike leg of the Ironman](/photos/IRONMAN%20-%20Dylan_Bike_Banner.jpg)
+![Dylan on the bike leg of the Ironman](/photos/IRONMAN%20-%20Zarcone%20Photography-27.jpg)
 
 This is Dylan, mid-race on the bike. By the time I got this shot, he'd already swum 1.2 miles in the Choptank and had another 30 miles to go before he'd even lace up his running shoes. You'd never know it from his position — head down, power through the pedals, completely absorbed in the work.
 
 The Eagleman bike course is flat, which sounds like a relief until you realize what that means: no downhills to recover on, no climbs to shift your muscle groups, just sustained output across the farmland of Dorchester County with the Eastern Shore wind doing whatever it wants. Photographing cyclists here means finding a spot with a clean sightline and committing to it. You're working with fast shutter speeds to freeze motion, pre-focusing on a point on the road because you don't have time to track and acquire as the athlete comes through. You get one pass. You have to be committed to your frame before they arrive.
 
-![Dante on the bike leg of the Ironman](/photos/IRONMAN%20-%20Dante_Bike_Banner.jpg)
+![Dante on the bike leg of the Ironman](/photos/IRONMAN%20-%20Zarcone%20Photography-17.jpg)
 
 Dante in the same stretch. What I'm reading in the position, the helmet angle, the grip on the bars — this athlete is managing his effort, not surviving it. That's the difference between a good bike photo and an interesting one. Anyone can photograph a cyclist in motion. The image worth keeping is the one that shows you who the person is *inside* the race.
 
@@ -53,11 +53,11 @@ Dante in the same stretch. What I'm reading in the position, the helmet angle, t
 
 By the half-marathon, athletes have been racing for four or five hours. The veneer is gone. The face you see on the run is the real one — the one that's done the math about how much is left and decided to keep moving anyway.
 
-![Dylan on the run leg of the Ironman](/photos/IRONMAN%20-%20Dylan_Run_Banner.jpg)
+![Dylan on the run leg of the Ironman](/photos/IRONMAN%20-%20Zarcone%20Photography-35.jpg)
 
 Dylan here has already covered 1.2 miles in the river and all 56 miles on the bike. His form is still purposeful. There's a version of this photo that shows someone grimacing, shuffling, reduced — that's a real moment too, and sometimes athletes treasure those most because they show what the race actually cost. But there's something equally honest in a frame where the training is still visible: a person doing exactly what they prepared to do, exactly as hard as they planned.
 
-![Dante on the run leg of the Ironman](/photos/IRONMAN%20-%20Dante_Run_Banner.jpg)
+![Dante on the run leg of the Ironman](/photos/IRONMAN%20-%20Zarcone%20Photography-18.jpg)
 
 Dante in the same miles. You can read everything you need to know from a runner's posture — the shoulder set, the cadence, where the gaze is going. The run photos are the ones athletes come back to years later. The bike photo is impressive. The run photo is honest.
 
