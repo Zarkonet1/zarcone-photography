@@ -13,7 +13,7 @@ The Cuisine Solutions IRONMAN 70.3 Eagleman — nicknamed "Wings of Fire" — is
 
 ## Why Triathlon Is the Hardest Sport to Photograph
 
-A football game has a field. Wrestling has a mat. Even a marathon has a defined finish chute where you know something is going to happen. Triathlon gives you a 56-mile bike course, an open road, and hundreds of athletes spread across it. There is no single vantage point. You have to make decisions.
+A football game has a field. Wrestling has a mat. Even a marathon has a defined finish chute where you know something is going to happen. Triathlon gives you a 56-mile bike course, an open road, and thousands of athletes spread across it. There is no single vantage point. You have to make decisions.
 
 The swim is nearly impossible — athletes are in the Choptank River, often before full light, and from the bank you're photographing caps and white water. The transition areas are chaotic and fast. The bike leg is where you can really work, if you've scouted the course and positioned yourself somewhere with clean light and a good background. The run is where the story lives.
 
@@ -21,7 +21,7 @@ What I've learned is that the best race photos rarely come from the obvious spot
 
 ## Before the Gun
 
-I was following two athletes on this particular day: Dylan and Dante — friends since high school who decided in 2025 to take on a new challenge together. They started training as a team and crossed the same starting line side by side, standing in the queue at the Choptank River with hundreds of other competitors waiting for the same horn.
+I was following two athletes on this particular day: Dylan and Dante — friends since high school who decided in 2025 to take on a new challenge together. They started training as a team and crossed the same starting line side by side, standing in the queue at the Choptank River with thousands of other competitors waiting for the same horn.
 
 ![Dylan in the pre-race queue](/photos/IRONMAN%20-%20Dylan_Queue.jpg)
 
@@ -73,7 +73,7 @@ Dylan crossing and finding Dante. The suffering stops. The math stops. What's le
 
 ## What You're Really Hiring a Photographer For
 
-Most race finishers have an official finish-line photo. It's fine. You're wearing your medal, you're crossing the timing mat, there are hundreds of people crossing that same mat that day and the photo looks like all of them.
+Most race finishers have an official finish-line photo. It's fine. You're wearing your medal, you're crossing the timing mat, there are thousands of people crossing that same mat that day and the photo looks like all of them.
 
 What a dedicated race photographer gives you is the race itself — the queue on the riverbank before the gun, the step into the Choptank, the miles in between where nobody is watching, and the moment at the end that makes all of it mean something. Those images are harder to make, but they're the ones that actually tell your story.
 
