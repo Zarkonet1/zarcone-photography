@@ -25,6 +25,24 @@ The swim is nearly impossible — athletes are in the water, often before sunris
 
 What I've learned is that the best race photos rarely come from the obvious spots. Everyone clusters at the finish line. The images that actually mean something to an athlete are the ones from the middle — mile 60 on the bike, mile 18 of the run — when they weren't thinking about the camera. When they were just in it.
 
+## Before the Gun
+
+I was following two athletes on this particular day: Dylan and Dante, training partners who'd put in months of work together and were now standing in a queue with 2,000 other people waiting for the same starting horn.
+
+![Dylan in the pre-race queue](/photos/IRONMAN%20-%20Dylan_Queue.jpg)
+
+There's a particular look athletes get in the minutes before a race starts — especially an Ironman. The work is done. The taper is done. Everything that could have been prepared has been prepared. What's left is just waiting for permission to go. Dylan here has that look: settled, focused, somewhere in his own head.
+
+![Dante in the pre-race queue](/photos/IRONMAN%20-%20Dante_Queue.jpg)
+
+Dante beside him. Same stillness. This is one of my favorite moments to photograph because the race hasn't started yet and the athlete is completely unguarded. They're not performing for anyone. They're just present.
+
+Then the gun goes.
+
+<video controls playsinline style="width:100%;margin:32px 0;"><source src="/videos/IRONMAN%20-%20DTZ_Start.mp4" type="video/mp4" /></video>
+
+Dylan entering the water. One moment he's standing in that queue, then he's in the Hudson with 2,000 other athletes and the race is real. I always try to get this transition — the step from waiting to moving. It's fast and it doesn't repeat.
+
 ## The Bike Leg: 112 Miles of Decisions
 
 ![Dylan on the bike leg of the Ironman](/photos/IRONMAN%20-%20Dylan_Bike_Banner.jpg)
@@ -35,7 +53,7 @@ Photographing cyclists at race speed is a technical problem first. You're workin
 
 ![Dante on the bike leg of the Ironman](/photos/IRONMAN%20-%20Dante_Bike_Banner.jpg)
 
-Dante is in the same stretch. What I'm reading in the position, the helmet angle, the grip on the bars — this athlete is managing his effort, not surviving it. That's the difference between a good bike photo and an interesting one. Anyone can photograph a cyclist in motion. The image worth keeping is the one that shows you who the person is *inside* the race.
+Dante in the same stretch. What I'm reading in the position, the helmet angle, the grip on the bars — this athlete is managing his effort, not surviving it. That's the difference between a good bike photo and an interesting one. Anyone can photograph a cyclist in motion. The image worth keeping is the one that shows you who the person is *inside* the race.
 
 ## The Run: Where Everything Shows
 
@@ -53,15 +71,17 @@ Dante in the same miles. You can read everything you need to know from a runner'
 
 ![Dylan and Dante at the Ironman finish](/photos/IRONMAN%20-%20Dylan_Dante_Finish.jpg)
 
-This is the frame I always want to be in position for — two athletes who trained together, raced the same day, and made it to the other side of 140.6 miles. The finish line energy is something else entirely. The suffering stops. The math stops. What's left is just the fact of having done it.
+This is the frame I always want to be in position for — two athletes who trained together, raced the same day, and made it to the other side of 140.6 miles.
 
-I've photographed a lot of finish lines. The thing that never gets ordinary is watching someone cross who wasn't sure they could.
+<video controls playsinline style="width:100%;margin:32px 0;"><source src="/videos/IRONMAN%20-%20DTZ_Finish.mp4" type="video/mp4" /></video>
+
+Dylan crossing and finding Dante. The suffering stops. The math stops. What's left is just the fact of having done it — and someone who understands exactly what it took. I've photographed a lot of finish lines. The thing that never gets ordinary is watching someone cross who wasn't sure they could.
 
 ## What You're Really Hiring a Photographer For
 
 Most race finishers have an official finish-line photo. It's fine. You're wearing your medal, you're crossing the timing mat, there are a thousand people crossing that same mat that day and the photo looks like all of them.
 
-What a dedicated race photographer gives you is the race itself — the miles before the finish, the moments when you were just an athlete doing the work. Those images are harder to make because they require being in the right place at the right time with enough experience to know what to look for. But they're the ones that actually tell your story.
+What a dedicated race photographer gives you is the race itself — the queue before the gun, the step into the water, the miles in between where nobody is watching, and the moment at the end that makes all of it mean something. Those images are harder to make, but they're the ones that actually tell your story.
 
 > "The best sports images aren't made at the finish line. They're made somewhere in the middle, when the athlete forgot anyone was watching."
 
