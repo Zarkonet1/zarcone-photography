@@ -9,7 +9,7 @@ imagePosition: "center 40%"
 
 The alarm goes off early and you are already awake. That's how race day works. By the time you've loaded the car and driven to Cambridge, Maryland, the transition area is already buzzing — athletes checking tire pressure, mixing nutrition, pulling on wetsuits in the pre-dawn quiet. The energy is something you can't manufacture. You either show up for it or you don't.
 
-The Cuisine Solutions IRONMAN 70.3 Eagleman — nicknamed "Wings of Fire" — is one of the most iconic half-iron distance races in the country. Held in Cambridge on Maryland's Eastern Shore, the course is 70.3 miles total: a 1.2-mile open-water swim in the Choptank River, 56 miles on a flat bike course through the farmland of Dorchester County, and a 13.1-mile run to the finish. Flat doesn't mean easy. It means you have nowhere to hide.
+The Cuisine Solutions IRONMAN 70.3 Eagleman — nicknamed "Wings of Fire" — is one of the most iconic half-ironman distance races in the country. Held in Cambridge on Maryland's Eastern Shore, the course is 70.3 miles total: a 1.2-mile open-water swim in the Choptank River, 56 miles on a flat bike course through the farmland of Dorchester County, and a 13.1-mile run to the finish. Flat doesn't mean easy. It means you have nowhere to hide.
 
 ## Why Triathlon Is the Hardest Sport to Photograph
 
