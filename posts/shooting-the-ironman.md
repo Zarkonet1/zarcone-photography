@@ -3,7 +3,7 @@ title: "From the Sidelines to the Finish Line"
 date: "2026-06-12"
 excerpt: "What it takes to photograph the IRONMAN 70.3 Eagleman — and why triathlon might be the most demanding subject in sports photography."
 category: "Sports"
-coverImage: "/photos/IRONMAN - Zarcone Photography-27.jpg"
+coverImage: "/photos/IRONMAN - Zarcone Photography-25.jpg"
 imagePosition: "center 40%"
 ---
 
