@@ -3,7 +3,7 @@ title: "From the Sidelines to the Finish Line"
 date: "2026-06-12"
 excerpt: "What it takes to photograph the IRONMAN 70.3 Eagleman — and why triathlon might be the most demanding subject in sports photography."
 category: "Sports"
-coverImage: "/photos/IRONMAN - Zarcone Photography-58.jpg"
+coverImage: "/photos/IRONMAN - Zarcone Photography-27.jpg"
 imagePosition: "center 40%"
 ---
 
@@ -63,7 +63,7 @@ Dante in the same miles. You can read everything you need to know from a runner'
 
 ## The Finish
 
-![Dylan and Dante at the Ironman finish](/photos/IRONMAN%20-%20Dylan_Dante_Finish.jpg)
+![Dylan and Dante at the Ironman finish](/photos/IRONMAN%20-%20Zarcone%20Photography-58.jpg)
 
 This is the frame I always want to be in position for — two friends who decided to chase this goal together, trained side by side through 2025, and made it to the other side of 70.3 miles in Cambridge.
 
