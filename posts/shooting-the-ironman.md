@@ -1,7 +1,7 @@
 ---
 title: "From the Sidelines to the Finish Line"
 date: "2026-06-12"
-excerpt: "What it takes to photograph 140.6 miles of racing — and why triathlon might be the most demanding subject in sports photography."
+excerpt: "What it takes to photograph 70.3 miles of racing — and why triathlon might be the most demanding subject in sports photography."
 category: "Sports"
 coverImage: "/photos/IRONMAN - Dylan_Bike_Banner.jpg"
 imagePosition: "center 40%"
@@ -9,23 +9,23 @@ imagePosition: "center 40%"
 
 The alarm goes off at 4:45 AM and you are already awake. That's how race day works. By the time you've loaded the car and driven to the course, the transition area is already buzzing — thousands of athletes checking tire pressure, mixing nutrition, pulling on wetsuits in the dark. The energy is something you can't manufacture. You either show up for it or you don't.
 
-An Ironman is 140.6 miles: 2.4 miles of open-water swimming, 112 miles on the bike, and a full marathon to finish. The fastest professionals are done in eight hours. Most competitors are out there for twelve, fourteen, sixteen. The cutoff is midnight. All of that — the aspiration, the suffering, the quiet negotiation athletes have with themselves somewhere around mile 80 on the bike — is what you're trying to find with a camera.
+An IRONMAN 70.3 is exactly what the name suggests — 70.3 miles total: 1.2 miles of open-water swimming, 53 miles on the bike, and a half-marathon to finish. It's half the distance of a full Ironman, but anyone who's done one will tell you it's not half the challenge. All of that — the aspiration, the suffering, the quiet negotiation athletes have with themselves somewhere around mile 40 on the bike — is what you're trying to find with a camera.
 
 ## Why Triathlon Is the Hardest Sport to Photograph
 
-A football game has a field. Wrestling has a mat. Even a marathon has a defined finish chute where you know something is going to happen. Triathlon gives you a 112-mile bike course, an open road, and 2,000 athletes spread across it. There is no single vantage point. You have to make decisions.
+A football game has a field. Wrestling has a mat. Even a marathon has a defined finish chute where you know something is going to happen. Triathlon gives you a 53-mile bike course, an open road, and 2,000 athletes spread across it. There is no single vantage point. You have to make decisions.
 
 The swim is nearly impossible — athletes are in the water, often before sunrise, and from shore you're photographing caps and white water. The transition areas are chaotic and fast. The bike leg is where you can really work, if you've scouted the course and positioned yourself somewhere with clean light and a good background. The run is where the story lives.
 
-What I've learned is that the best race photos rarely come from the obvious spots. Everyone clusters at the finish line. The images that actually mean something to an athlete are the ones from the middle — mile 60 on the bike, mile 18 of the run — when they weren't thinking about the camera. When they were just in it.
+What I've learned is that the best race photos rarely come from the obvious spots. Everyone clusters at the finish line. The images that actually mean something to an athlete are the ones from the middle — mile 35 on the bike, mile 9 of the run — when they weren't thinking about the camera. When they were just in it.
 
 ## Before the Gun
 
-I was following two athletes on this particular day: Dylan and Dante, training partners who'd put in months of work together and were now standing in a queue with 2,000 other people waiting for the same starting horn.
+I was following two athletes on this particular day: Dylan and Dante — friends since high school who decided in 2025 to take on a new challenge together. They started training as a team and crossed the same starting line side by side, now standing in a queue with 2,000 other competitors waiting for the same horn.
 
 ![Dylan in the pre-race queue](/photos/IRONMAN%20-%20Dylan_Queue.jpg)
 
-There's a particular look athletes get in the minutes before a race starts — especially an Ironman. The work is done. The taper is done. Everything that could have been prepared has been prepared. What's left is just waiting for permission to go. Dylan here has that look: settled, focused, somewhere in his own head.
+There's a particular look athletes get in the minutes before a race starts — especially a 70.3. The work is done. The taper is done. Everything that could have been prepared has been prepared. What's left is just waiting for permission to go. Dylan here has that look: settled, focused, somewhere in his own head.
 
 ![Dante in the pre-race queue](/photos/IRONMAN%20-%20Dante_Queue.jpg)
 
@@ -37,11 +37,11 @@ Then the gun goes.
 
 Dylan entering the water. One moment he's standing in that queue, then he's in the Hudson with 2,000 other athletes and the race is real. I always try to get this transition — the step from waiting to moving. It's fast and it doesn't repeat.
 
-## The Bike Leg: 112 Miles of Decisions
+## The Bike Leg: 53 Miles of Decisions
 
 ![Dylan on the bike leg of the Ironman](/photos/IRONMAN%20-%20Dylan_Bike_Banner.jpg)
 
-This is Dylan, mid-race on the bike. By the time I got this shot, he'd already swum 2.4 miles and had another 50 miles to go before he'd even lace up his running shoes. You'd never know it from his position — head down, power through the pedals, completely absorbed in the work.
+This is Dylan, mid-race on the bike. By the time I got this shot, he'd already swum 1.2 miles and had another 25 miles to go before he'd even lace up his running shoes. You'd never know it from his position — head down, power through the pedals, completely absorbed in the work.
 
 Photographing cyclists at race speed is a technical problem first. You're working with fast shutter speeds to freeze motion without losing the sense of movement, pre-focusing on a point on the road because you don't have time to track and acquire as the athlete comes through. You get one pass. Sometimes two if the course has a nearby turnaround. You have to be committed to your frame before they arrive.
 
@@ -51,11 +51,11 @@ Dante in the same stretch. What I'm reading in the position, the helmet angle, t
 
 ## The Run: Where Everything Shows
 
-By the marathon, athletes have been racing for six, eight, ten hours. The veneer is gone. The face you see on the run is the real one — the one that's done the math about how much is left and decided to keep moving anyway.
+By the half-marathon run, athletes have been racing for four, five, six hours. The veneer is gone. The face you see on the run is the real one — the one that's done the math about how much is left and decided to keep moving anyway.
 
 ![Dylan on the run leg of the Ironman](/photos/IRONMAN%20-%20Dylan_Run_Banner.jpg)
 
-Dylan here has already covered the swim and the full 112 miles. His form is still purposeful. There's a version of this photo that shows someone grimacing, shuffling, reduced — that's a real moment too, and sometimes athletes treasure those most because they show what the race actually cost. But there's something equally honest in a frame where the training is still visible: a person doing exactly what they prepared to do, exactly as hard as they planned.
+Dylan here has already covered the swim and all 53 miles on the bike. His form is still purposeful. There's a version of this photo that shows someone grimacing, shuffling, reduced — that's a real moment too, and sometimes athletes treasure those most because they show what the race actually cost. But there's something equally honest in a frame where the training is still visible: a person doing exactly what they prepared to do, exactly as hard as they planned.
 
 ![Dante on the run leg of the Ironman](/photos/IRONMAN%20-%20Dante_Run_Banner.jpg)
 
@@ -65,7 +65,7 @@ Dante in the same miles. You can read everything you need to know from a runner'
 
 ![Dylan and Dante at the Ironman finish](/photos/IRONMAN%20-%20Dylan_Dante_Finish.jpg)
 
-This is the frame I always want to be in position for — two athletes who trained together, raced the same day, and made it to the other side of 140.6 miles.
+This is the frame I always want to be in position for — two friends who decided to chase this goal together, trained side by side for over a year, and made it to the other side of 70.3 miles.
 
 <video controls playsinline style="width:100%;margin:32px 0;"><source src="/videos/IRONMAN%20-%20DTZ_Finish.mp4" type="video/mp4" /></video>
 
