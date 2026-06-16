@@ -62,6 +62,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Preload first hero image for LCP */}
+        <link rel="preload" as="image" href="/photos/i-s7zBdzk-hero.jpg" fetchPriority="high" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -106,17 +106,21 @@ export default function Home() {
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className={styles.hero}>
-        {HERO_PHOTOS.map((src, i) => (
-          <div
-            key={src}
-            className={styles.heroImg}
-            style={{
-              backgroundImage: `url('${src}')`,
-              opacity: i === heroIdx ? 1 : 0,
-              transition: 'opacity 1.8s ease-in-out',
-            }}
-          />
-        ))}
+        {HERO_PHOTOS.map((src, i) => {
+          const nextIdx = (heroIdx + 1) % HERO_PHOTOS.length;
+          const shouldLoad = i === heroIdx || i === nextIdx || i === 0;
+          return (
+            <div
+              key={src}
+              className={styles.heroImg}
+              style={{
+                backgroundImage: shouldLoad ? `url('${src}')` : undefined,
+                opacity: i === heroIdx ? 1 : 0,
+                transition: 'opacity 1.8s ease-in-out',
+              }}
+            />
+          );
+        })}
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <p className={`eyebrow ${styles.heroEyebrow}`}>
