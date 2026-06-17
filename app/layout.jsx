@@ -2,6 +2,7 @@ import './globals.css';
 import Nav from '@/components/Nav';
 import AnnouncementBar from '@/components/AnnouncementBar';
 import Footer from '@/components/Footer';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   metadataBase: new URL('https://zarconephotography.com'),
@@ -74,6 +75,7 @@ export default function RootLayout({ children }) {
         <AnnouncementBar />
         <main style={{ paddingTop: 'var(--bar-h)' }}>{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
