@@ -121,7 +121,7 @@ export default function SportsPage() {
             className={styles.item}
             onClick={() => setLbIndex(i)}
           >
-            <img src={photo.src} alt={photo.category} loading="lazy" decoding="async" />
+            <img src={photo.src} alt={`${photo.category} photography — Zarcone Photography, New Jersey`} loading="lazy" decoding="async" />
             <div className={styles.overlay}>
               <span className={styles.label}>{photo.category}</span>
             </div>
@@ -136,7 +136,7 @@ export default function SportsPage() {
 
       {lbIndex !== null && (
         <Lightbox
-          images={filtered.map(p => p.src)}
+          images={filtered.map(p => ({ src: p.src, alt: `${p.category} photography — Zarcone Photography, New Jersey` }))}
           currentIndex={lbIndex}
           onClose={() => setLbIndex(null)}
           onPrev={() => setLbIndex((lbIndex - 1 + filtered.length) % filtered.length)}

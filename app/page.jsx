@@ -67,12 +67,12 @@ const DISCIPLINES = [
 ];
 
 const WORK_GRID = [
-  { src: '/photos/Ironman_Bike_Dylan.jpg', objPos: '35% center' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0035-2.jpg' },
-  { src: '/photos/Ironman_Run_Dante.jpg' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg' },
-  { src: '/photos/EVENT-Zarcone-Photography-28.jpg' },
-  { src: '/photos/danielle-portrait.jpg' },
+  { src: '/photos/Ironman_Bike_Dylan.jpg', objPos: '35% center', alt: 'Triathlon cyclist at IRONMAN 70.3 Eagleman — Zarcone Photography NJ' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0035-2.jpg', alt: 'Portrait photography session — Zarcone Photography, Bridgewater NJ' },
+  { src: '/photos/Ironman_Run_Dante.jpg', alt: 'Triathlon runner at IRONMAN 70.3 Eagleman — Zarcone Photography NJ' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg', alt: 'Portrait photographer New Jersey — Zarcone Photography' },
+  { src: '/photos/EVENT-Zarcone-Photography-28.jpg', alt: 'Event photography New Jersey — Zarcone Photography' },
+  { src: '/photos/danielle-portrait.jpg', alt: 'Senior portrait session — Zarcone Photography, Bridgewater NJ' },
 ];
 
 export default function Home() {
@@ -166,7 +166,7 @@ export default function Home() {
         <div className={styles.workGrid}>
           {WORK_GRID.map((item, i) => (
             <div key={i} className={styles.workItem}>
-              <img src={item.src} alt="" loading="lazy" decoding="async" className={styles.workImg} style={item.objPos ? { objectPosition: item.objPos } : undefined} />
+              <img src={item.src} alt={item.alt} loading="lazy" decoding="async" className={styles.workImg} style={item.objPos ? { objectPosition: item.objPos } : undefined} />
             </div>
           ))}
         </div>

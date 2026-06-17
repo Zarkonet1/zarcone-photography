@@ -20,7 +20,9 @@ export default function Lightbox({ images, currentIndex, onClose, onPrev, onNext
     };
   }, [handleKey]);
 
-  const src = images[currentIndex];
+  const current = images[currentIndex];
+  const src = typeof current === 'string' ? current : current.src;
+  const alt = typeof current === 'string' ? '' : (current.alt || '');
 
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -28,7 +30,7 @@ export default function Lightbox({ images, currentIndex, onClose, onPrev, onNext
       <button className={`${styles.nav} ${styles.prev}`} onClick={e => { e.stopPropagation(); onPrev(); }}>← Prev</button>
 
       <div className={styles.imgWrap} onClick={e => e.stopPropagation()}>
-        <img src={src} alt="" className={styles.img} />
+        <img src={src} alt={alt} className={styles.img} />
       </div>
 
       <button className={`${styles.nav} ${styles.next}`} onClick={e => { e.stopPropagation(); onNext(); }}>Next →</button>

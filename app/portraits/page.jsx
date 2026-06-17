@@ -117,7 +117,7 @@ export default function PortraitsPage() {
       <div className={styles.gallery}>
         {filtered.map((photo, i) => (
           <div key={i} className={`${styles.item} reveal`} onClick={() => setLbIndex(i)}>
-            <img src={photo.src} alt={photo.category} className={styles.img} loading="lazy" decoding="async" />
+            <img src={photo.src} alt={`${photo.category} portrait photography — Zarcone Photography, New Jersey`} className={styles.img} loading="lazy" decoding="async" />
             <div className={styles.itemOverlay}>
               <span className={styles.itemLabel}>{photo.category}</span>
             </div>
@@ -134,7 +134,7 @@ export default function PortraitsPage() {
       {/* Lightbox */}
       {lbIndex !== null && (
         <Lightbox
-          images={filtered.map(p => p.src)}
+          images={filtered.map(p => ({ src: p.src, alt: `${p.category} portrait photography — Zarcone Photography, New Jersey` }))}
           currentIndex={lbIndex}
           onClose={() => setLbIndex(null)}
           onPrev={() => setLbIndex((lbIndex - 1 + filtered.length) % filtered.length)}
