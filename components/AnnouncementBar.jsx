@@ -17,7 +17,7 @@ export default function AnnouncementBar() {
       setTimeout(() => {
         setIdx(i => (i + 1) % upcoming.length);
         setVisible(true);
-      }, 400);
+      }, 500);
     }, 4000);
     return () => clearInterval(t);
   }, [upcoming.length]);
