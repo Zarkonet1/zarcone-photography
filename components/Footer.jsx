@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>
-        <Link href="/" className={styles.logo}>
+        <Link href="/" className={styles.logo} aria-label="Zarcone Photography — home">
           <Image
             src="/assets/logo-white.png"
             alt="Zarcone Photography"

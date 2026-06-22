@@ -34,7 +34,7 @@ export default function Nav() {
 
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
-      <Link href="/" className={styles.logo}>
+      <Link href="/" className={styles.logo} aria-label="Zarcone Photography — home">
         <Image
           src="/assets/logo-white.png"
           alt="Zarcone Photography"

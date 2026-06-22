@@ -161,7 +161,7 @@ export default function Home() {
           <span className="eyebrow">Selected Work</span>
           <h2 className={styles.sectionTitle}>Recent Images</h2>
           <span className="section-rule" />
-          <Link href="/portraits" className={styles.sectionLink}>View All →</Link>
+          <Link href="/portraits" className={styles.sectionLink} aria-label="View all portrait photos">View All →</Link>
         </div>
         <div className={styles.workGrid}>
           {WORK_GRID.map((item, i) => (
