@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import PageHero from '@/components/PageHero';
 import Lightbox from '@/components/Lightbox';
 import Link from 'next/link';
@@ -40,11 +40,21 @@ const PIECES = [
   { src: '/photos/DESIGN-Example10v1.jpg',               category: 'Custom',       title: 'Custom — Design Portfolio',        size: 'half' },
 ];
 
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default function DesignPage() {
   const [active, setActive] = useState('All');
   const [lbIndex, setLbIndex] = useState(null);
 
-  const filtered = active === 'All' ? PIECES : PIECES.filter(p => p.category === active);
+  const shuffled = useMemo(() => shuffle(PIECES), []);
+  const filtered = active === 'All' ? shuffled : shuffled.filter(p => p.category === active);
 
   return (
     <>
