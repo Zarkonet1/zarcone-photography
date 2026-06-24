@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
 import styles from './page.module.css';
 
-// Revalidate every hour so new blog posts appear without a full redeploy
-export const revalidate = 3600;
+// Force server-side rendering so new posts always appear immediately
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Photography Blog | Behind the Lens | Zarcone Photography',
