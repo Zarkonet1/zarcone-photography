@@ -228,6 +228,44 @@ Then retry your git command.
 
 ---
 
+## Update SEO Metadata for a Page
+
+Every page/section has its own metadata in its `layout.jsx` (or `page.jsx` for the SEO landing pages). The root defaults live in `app/layout.jsx`.
+
+**To change a page title, description, or OG image**, open the relevant layout file and edit the `metadata` export:
+
+```js
+export const metadata = {
+  title: 'Page Title | Zarcone Photography',
+  description: 'Page description...',
+  openGraph: {
+    title: 'Page Title | Zarcone Photography',
+    description: 'Page description...',
+    url: 'https://zarconephotography.com/page-slug',
+    images: [
+      {
+        url: 'https://zarconephotography.com/photos/your-image.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Descriptive alt text',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://zarconephotography.com/photos/your-image.jpg'],
+  },
+};
+```
+
+**Key rule:** always keep `og:title` and `<title>` in sync.
+
+**robots.txt** lives at `public/robots.txt` — do not delete it; it tells Google where the sitemap is.
+
+**JSON-LD schema** (LocalBusiness) lives in `app/layout.jsx` — includes phone, email, social links, services, and geo coordinates.
+
+---
+
 ## Common File Map
 
 | What | File |
