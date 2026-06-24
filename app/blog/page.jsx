@@ -45,6 +45,7 @@ export default function BlogPage() {
                   style={{
                     backgroundImage: `url('${post.coverImage}')`,
                     backgroundPosition: post.imagePosition || 'center 15%',
+                    backgroundSize: post.imageSize || 'cover',
                   }}
                 />
               )}
