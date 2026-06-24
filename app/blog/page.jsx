@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
 import styles from './page.module.css';
 
+// Revalidate every hour so new blog posts appear without a full redeploy
+export const revalidate = 3600;
+
 export const metadata = {
   title: 'Photography Blog | Behind the Lens | Zarcone Photography',
   description: 'Tips, behind-the-scenes stories, and photography insights from Tom Zarcone — NJ portrait, sports, and event photographer based in Bridgewater.',
