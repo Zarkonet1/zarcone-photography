@@ -4,7 +4,7 @@ date: "2026-06-15"
 excerpt: "What it takes to photograph the IRONMAN 70.3 Eagleman — and why triathlon might be the most demanding subject in sports photography."
 category: "Sports"
 coverImage: "/photos/IRONMAN - Zarcone Photography-25.jpg"
-imagePosition: "center 40%"
+imagePosition: "center 10%"
 ---
 
 The alarm goes off early and you are already awake. That's how race day works. By the time you've loaded the car and driven to Cambridge, Maryland, the transition area is already buzzing — athletes checking tire pressure, mixing nutrition, pulling on wetsuits in the pre-dawn quiet. The energy is something you can't manufacture. You either show up for it or you don't.

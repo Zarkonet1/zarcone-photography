@@ -42,7 +42,10 @@ export default function BlogPage() {
               {post.coverImage && (
                 <div
                   className={styles.cardImg}
-                  style={{ backgroundImage: `url('${post.coverImage}')` }}
+                  style={{
+                    backgroundImage: `url('${post.coverImage}')`,
+                    backgroundPosition: post.imagePosition || 'center 15%',
+                  }}
                 />
               )}
               <div className={styles.cardBody}>

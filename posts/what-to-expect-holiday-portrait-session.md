@@ -4,7 +4,7 @@ date: "2026-06-24"
 excerpt: "First time booking a portrait session? Here's exactly what happens — from setup to final images — so you can show up relaxed and ready."
 category: "Portraits"
 coverImage: "/photos/what-to-expect-blog-hero.jpg"
-imagePosition: "center 60%"
+imagePosition: "65% 80%"
 ---
 
 Booking your first portrait session can feel like a leap of faith. You're trusting someone to show up at your home, set up gear you've never seen before, and somehow get your kids — or your whole family — to cooperate long enough to make something worth keeping. It's a reasonable thing to wonder about.
