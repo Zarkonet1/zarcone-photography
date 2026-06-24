@@ -10,6 +10,18 @@ export const metadata = {
     description: 'Sports photographer based in Bridgewater, NJ. High school sports, youth leagues, and athlete portraits throughout New Jersey.',
     url: 'https://zarconephotography.com/sports-photographer-nj',
     type: 'website',
+    images: [
+      {
+        url: 'https://zarconephotography.com/photos/i-s7zBdzk.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Sports photography NJ — Zarcone Photography',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://zarconephotography.com/photos/i-s7zBdzk.jpg'],
   },
   alternates: {
     canonical: 'https://zarconephotography.com/sports-photographer-nj',

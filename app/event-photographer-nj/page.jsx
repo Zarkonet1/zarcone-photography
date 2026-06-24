@@ -10,6 +10,18 @@ export const metadata = {
     description: 'Event photographer based in Bridgewater, NJ. Proms, corporate events, live music, and milestone celebrations across New Jersey.',
     url: 'https://zarconephotography.com/event-photographer-nj',
     type: 'website',
+    images: [
+      {
+        url: 'https://zarconephotography.com/photos/EVENT-Zarcone-Photography-28.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Event photography NJ — Zarcone Photography',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://zarconephotography.com/photos/EVENT-Zarcone-Photography-28.jpg'],
   },
   alternates: {
     canonical: 'https://zarconephotography.com/event-photographer-nj',

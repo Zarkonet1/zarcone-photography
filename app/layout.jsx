@@ -16,6 +16,20 @@ export const metadata = {
     description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events. Serving New Jersey, New York City, and Philadelphia.',
     type: 'website',
     url: 'https://zarconephotography.com',
+    images: [
+      {
+        url: 'https://zarconephotography.com/photos/tz-headshot.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Zarcone Photography — NJ Photographer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Zarcone Photography | NJ Photographer — Portraits, Sports & Events',
+    description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events. Serving New Jersey, New York City, and Philadelphia.',
+    images: ['https://zarconephotography.com/photos/tz-headshot.jpg'],
   },
 };
 
@@ -26,7 +40,7 @@ const jsonLd = {
   name: 'Zarcone Photography',
   description: 'Professional photographer and videographer specializing in portraits, sports, and events. Based in Bridgewater, NJ — serving New Jersey, New York City, and Philadelphia.',
   url: 'https://zarconephotography.com',
-  telephone: '',
+  telephone: '(908) 777-0631',
   email: 'info@zarconephotography.com',
   image: 'https://zarconephotography.com/photos/tz-headshot.jpg',
   priceRange: '$$',
@@ -46,7 +60,10 @@ const jsonLd = {
     { '@type': 'City', name: 'New York City' },
     { '@type': 'City', name: 'Philadelphia' },
   ],
-  sameAs: [],
+  sameAs: [
+    'https://www.instagram.com/zarconephotography',
+    'https://www.facebook.com/zarconephotography',
+  ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Photography Services',

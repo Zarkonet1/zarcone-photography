@@ -10,6 +10,18 @@ export const metadata = {
     description: 'Professional senior portrait photographer serving New Jersey. Based in Bridgewater, NJ — Somerset County and beyond.',
     url: 'https://zarconephotography.com/senior-portrait-photographer-nj',
     type: 'website',
+    images: [
+      {
+        url: 'https://zarconephotography.com/photos/i-rvRX82g.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Senior portrait photography NJ — Zarcone Photography',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://zarconephotography.com/photos/i-rvRX82g.jpg'],
   },
   alternates: {
     canonical: 'https://zarconephotography.com/senior-portrait-photographer-nj',
