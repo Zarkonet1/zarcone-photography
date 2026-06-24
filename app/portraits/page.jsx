@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import PageHero from '@/components/PageHero';
 import Lightbox from '@/components/Lightbox';
 import Link from 'next/link';
@@ -74,11 +74,21 @@ const PHOTOS = [
   { src: '/photos/courtney-portrait.jpg', category: 'Individual' },
 ];
 
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default function PortraitsPage() {
   const [active, setActive] = useState('All');
   const [lbIndex, setLbIndex] = useState(null);
 
-  const filtered = active === 'All' ? PHOTOS : PHOTOS.filter(p => p.category === active);
+  const shuffled = useMemo(() => shuffle(PHOTOS), []);
+  const filtered = active === 'All' ? shuffled : shuffled.filter(p => p.category === active);
 
   useEffect(() => {
     const els = document.querySelectorAll('.reveal');

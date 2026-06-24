@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import PageHero from '@/components/PageHero';
 import Lightbox from '@/components/Lightbox';
 import Link from 'next/link';
@@ -31,11 +31,21 @@ const PHOTOS = [
   { src: '/photos/EVENT-Zarcone-PhotographyZarcone-Photography-38-Motion.jpg', category: 'Events' },
 ];
 
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default function EventsPage() {
   const [active, setActive] = useState('All');
   const [lbIndex, setLbIndex] = useState(null);
 
-  const filtered = active === 'All' ? PHOTOS : PHOTOS.filter(p => p.category === active);
+  const shuffled = useMemo(() => shuffle(PHOTOS), []);
+  const filtered = active === 'All' ? shuffled : shuffled.filter(p => p.category === active);
 
   return (
     <>
