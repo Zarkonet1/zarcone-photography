@@ -1,0 +1,128 @@
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.eyebrow {
+  white-space: nowrap;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 60px;
+  align-items: center;
+  background: var(--bg-mid);
+  border: 1px solid var(--rule);
+  padding: 52px 56px;
+}
+
+.cardTitle {
+  font-family: var(--serif);
+  font-size: clamp(26px, 2.5vw, 38px);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.cardDesc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.featureList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.featureList li {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.featureList li::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.cardAction {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.primaryBtn {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #0c0c0c !important;
+  font-weight: 700 !important;
+}
+
+.primaryBtn:hover {
+  background: transparent !important;
+  color: var(--accent) !important;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 240px;
+}
+
+.helpStrip {
+  border-top: 1px solid var(--rule);
+  padding-top: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.helpStrip p {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .wrap { padding: 48px 24px; gap: 48px; }
+  .card {
+    grid-template-columns: 1fr;
+    padding: 36px 28px;
+    gap: 32px;
+  }
+  .helpStrip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
