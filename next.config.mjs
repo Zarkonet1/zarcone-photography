@@ -9,6 +9,15 @@ const nextConfig = {
     ],
   },
 
+  async headers() {
+    return [
+      {
+        source: '/blog',
+        headers: [{ key: 'Cache-Control', value: 'no-store' }],
+      },
+    ];
+  },
+
   async redirects() {
     return [
       // Legacy Sports-Photos gallery URLs → client area
