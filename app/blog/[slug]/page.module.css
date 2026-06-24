@@ -128,7 +128,7 @@
   text-transform: uppercase;
   color: var(--muted);
 }
-.asideValue { font-size: 14px; color: var(--text); }
+.asideValue { font-size: 15px; color: var(--text); }
 
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 900px) {

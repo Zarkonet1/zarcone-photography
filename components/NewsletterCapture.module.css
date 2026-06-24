@@ -27,7 +27,7 @@
 }
 
 .sub {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.7;
   color: var(--muted);
   max-width: 360px;
@@ -108,7 +108,7 @@
   margin-bottom: 10px;
 }
 .successP {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--muted);
   line-height: 1.7;
 }

@@ -44,7 +44,7 @@
 }
 .heroTitle em { font-style: italic; color: var(--accent); }
 .heroSub {
-  font-size: 13px;
+  font-size: 15px;
   letter-spacing: 0.04em;
   color: rgba(236,232,225,0.55);
   margin-bottom: 40px;
@@ -150,7 +150,7 @@
   margin-bottom: 10px;
 }
 .cardDesc {
-  font-size: 11px;
+  font-size: 13px;
   color: rgba(236,232,225,0.55);
   line-height: 1.7;
   max-width: 220px;
@@ -243,7 +243,7 @@
 }
 .aboutH2 em { font-style: italic; color: var(--accent); }
 .aboutP {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
   color: rgba(236,232,225,0.6);
   margin-bottom: 16px;
@@ -323,7 +323,7 @@
   margin: 16px 0 16px;
 }
 .contactP {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--muted);
   line-height: 1.7;
   margin-bottom: 32px;

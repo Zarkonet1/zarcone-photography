@@ -78,7 +78,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--muted);
   line-height: 1.5;
 }
@@ -146,7 +146,7 @@
 }
 
 .processBody {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--muted);
   line-height: 1.7;
 }
@@ -193,7 +193,7 @@
 }
 
 .ctaDesc {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--muted);
   line-height: 1.8;
 }

@@ -40,7 +40,7 @@
   cursor: pointer;
   text-align: left;
   color: var(--text);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   line-height: 1.4;
   transition: color 0.2s;
@@ -62,7 +62,7 @@
   padding: 0 0 24px;
 }
 .answer p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.85;
   color: rgba(236,232,225,0.6);
   max-width: 680px;
@@ -89,7 +89,7 @@
   margin: 14px 0 16px;
 }
 .ctaP {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--muted);
   line-height: 1.7;
   margin-bottom: 32px;
@@ -101,5 +101,5 @@
 @media (max-width: 700px) {
   .page { padding: 60px 24px 80px; }
   .cta { padding: 40px 24px; }
-  .question { font-size: 14px; }
+  .question { font-size: 16px; }
 }
