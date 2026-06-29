@@ -126,7 +126,7 @@ export default function AboutPage() {
         <div className={styles.heroText}>
           <p className="eyebrow">About Tom Zarcone</p>
           <h1 className={styles.h1}>Three decades behind<br />the <em>lens.</em></h1>
-          <p className={styles.lead}>What's stayed constant through every format change and every gear upgrade is the same thing that drew me to photography in the first place — the moment just before everything changes.</p>
+          <p className={styles.lead}>You've probably seen what happens when the photographer at an event isn't paying attention — blurry action shots, stiff portraits that don't look like anyone, images that land in a folder and never get printed. That's the problem this is built to solve.</p>
         </div>
       </div>
 

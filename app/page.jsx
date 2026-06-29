@@ -40,14 +40,14 @@ const DISCIPLINES = [
     num: '01',
     slug: 'sports',
     title: 'Sports',
-    desc: 'Football. Wrestling. The moments athletes and families remember for life — captured with the speed and precision each one demands.',
+    desc: 'Your athlete has been putting in the work for years. The photos should show it. High school sports end faster than anyone expects — these are the images that prove it happened.',
     img: SM.footballTeam,
   },
   {
     num: '02',
     slug: 'portraits',
     title: 'Portraits',
-    desc: 'Seniors, individuals, and headshots. Sessions designed to reveal character, not just a smile.',
+    desc: 'There\'s a version of you — right now, in this season of your life — that won\'t exist next year. Sessions built to capture who you actually are before this moment passes.',
     img: '/photos/chloe-portrait.jpg',
   },
   {
@@ -127,10 +127,10 @@ export default function Home() {
             Bridgewater, NJ &nbsp;·&nbsp; Sports · Portraits · Events · Design
           </p>
           <h1 className={styles.heroTitle}>
-            Every image<br /><em>tells a story.</em>
+            The photos worth keeping<br /><em>for the rest of your life.</em>
           </h1>
           <p className={styles.heroSub}>
-            Portraits, sports, events, and design — photographed with the care and precision that makes images worth keeping for life.
+            Senior year doesn't slow down. Game day doesn't replay. The moments that define this season are happening right now — and they deserve more than a phone shot from the bleachers.
           </p>
           <Link href="/sports" className="btn">View the Work</Link>
         </div>
@@ -138,6 +138,11 @@ export default function Home() {
           <div className={styles.scrollLine} />
           <span className={styles.scrollLabel}>Scroll</span>
         </div>
+      </section>
+
+      {/* ── Pain Intro ───────────────────────────────────────── */}
+      <section className={styles.painIntro}>
+        <p>Most families end up with the same story: a milestone passes, the phone photos don't do it justice, and the moment is gone. That's what this is for — photography built for the seasons, people, and events that are actually worth documenting properly.</p>
       </section>
 
       {/* ── Disciplines ──────────────────────────────────────── */}
@@ -183,7 +188,7 @@ export default function Home() {
         </div>
         <div className={`${styles.aboutText} reveal`}>
           <p className="eyebrow">About</p>
-          <h2 className={styles.aboutH2}>Photography is about<br /><em>being present.</em></h2>
+          <h2 className={styles.aboutH2}>These are the photos<br /><em>she'll still have at 40.</em></h2>
           <p className={styles.aboutP}>
             I've spent over three decades with a camera, learning that the best images aren't made — they're discovered. Whether I'm trackside at a sports event or in a quiet studio session, my approach is the same: slow down, observe, and wait for the real moment.
           </p>

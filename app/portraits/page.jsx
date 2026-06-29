@@ -106,9 +106,13 @@ export default function PortraitsPage() {
       <PageHero
         eyebrow="02 / Portraits"
         title="Portraits"
-        description="Seniors, individuals, families, and professional headshots. Every session is relaxed, unhurried, and built around revealing who you actually are."
+        description="Senior year. Your daughter at 17, exactly as she is right now. You won't get this version of her back — but you can have a photograph that does it justice."
         imageSrc="/photos/PORTRAIT-Zarcone-Photography-0002.jpg"
       />
+
+      <p className={styles.painLine}>
+        Most portrait sessions feel rushed, generic, and forgettable. These don't. Every session is unhurried and built around the person in front of the camera — not a pose checklist.
+      </p>
 
       {/* Filter Bar */}
       <div className={styles.filterBar}>
@@ -137,7 +141,8 @@ export default function PortraitsPage() {
 
       {/* CTA */}
       <div className="cta-strip">
-        <h2>Ready to book a <em>portrait session?</em></h2>
+        <h2>Ready to have something <em>worth keeping?</em></h2>
+        <p>Let's make it happen.</p>
         <Link href="/about#contact" className="btn">Get In Touch</Link>
       </div>
 

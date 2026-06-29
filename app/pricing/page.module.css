@@ -66,6 +66,14 @@
   background: var(--rule);
 }
 
+.painNote {
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(236,232,225,0.5);
+  font-style: italic;
+  margin-bottom: -8px;
+}
+
 .includes {
   list-style: none;
   display: flex;

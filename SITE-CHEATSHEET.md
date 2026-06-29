@@ -14,6 +14,8 @@ git push
 ```
 Vercel auto-deploys in ~2 minutes after push.
 
+**Batch before you push.** Make all your changes — copy edits, image swaps, layout tweaks — then deploy once. Rapid back-to-back deploys (7+ in 2 hours) cause Next.js "Server Action skew" errors for anyone who has the site open in a browser tab at the moment of redeploy. One push per work session keeps things clean.
+
 ---
 
 ## Add a Photo to a Gallery (Sports / Portraits / Design)

@@ -20,7 +20,7 @@ const PROCESS = [
   { num: '01', title: 'Reach Out', body: "Tell me about your project — the what, when, and where. I'll respond within 24 hours with questions, availability, and a custom quote." },
   { num: '02', title: 'We Plan', body: 'We lock in the details together — location, timing, wardrobe, shot list. No surprises on the day.' },
   { num: '03', title: 'We Shoot', body: 'A relaxed, unhurried session built around real moments. I bring the direction; you bring yourself.' },
-  { num: '04', title: 'You Receive', body: 'Professionally edited images delivered to a private gallery within the agreed timeframe — ready to download, share, and print.' },
+  { num: '04', title: 'You Receive', body: 'Professionally edited images delivered to your private gallery — ready to download, share, and print. The kind of images that end up framed, gifted, and kept for decades.' },
 ];
 
 
@@ -30,12 +30,13 @@ const PACKAGES = [
     category: 'Portraits',
     eyebrow: 'Seniors · Individuals · Families · Headshots',
     starting: '350',
+    pain: 'Most clients come to us after a session that felt rushed and delivered images that looked like everyone else\'s. Here\'s what\'s included instead:',
     includes: [
-      'On-location or studio session',
-      'Professional editing & retouching',
-      'Private online gallery delivery',
-      'High-resolution digital files',
-      'Print ordering available',
+      'Unhurried on-location or studio session',
+      'Professional editing delivered within 2 weeks',
+      'Private online gallery, yours to access anytime',
+      'Full-resolution files — print at any size, forever',
+      'Print ordering available through the gallery',
     ],
     note: 'Packages available for extended sessions and multi-subject shoots.',
   },
@@ -44,12 +45,13 @@ const PACKAGES = [
     category: 'Sports',
     eyebrow: 'Teams · Athletes · Events · Season Coverage',
     starting: '550',
+    pain: 'Most game-day photos end up too dark, too blurry, or taken from the wrong angle. Here\'s how this works instead:',
     includes: [
-      'On-site event or game coverage',
-      'Action & portrait photography',
-      'Professional editing & delivery',
-      'High-resolution digital files',
-      'Individual & team graphic design available',
+      'On-site coverage with professional sports-spec equipment',
+      'Action and portrait photography in one session',
+      'Professionally edited and delivered within the agreed timeframe',
+      'Full-resolution files — download, print, share',
+      'Custom graphic design add-on available (senior posters, sports graphics)',
     ],
     note: 'Season packages and recurring event rates available.',
   },
@@ -89,7 +91,7 @@ export default function PricingPage() {
       <PageHero
         eyebrow="Pricing"
         title="Investment"
-        description="Every project is different. These starting points give you a sense of what to expect — reach out and I'll put together something specific to your needs."
+        description="These images last decades. The session is one afternoon. Starting points are listed below — reach out and I'll build something specific to your project and what actually matters to you."
         imageSrc="/photos/tz-shoot-portrait.jpg"
       />
 
@@ -106,6 +108,7 @@ export default function PricingPage() {
                 </div>
               </div>
               <div className={styles.rule} />
+              {p.pain && <p className={styles.painNote}>{p.pain}</p>}
               <ul className={styles.includes}>
                 {p.includes.map((item, i) => (
                   <li key={i} className={styles.includesItem}>

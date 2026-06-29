@@ -89,6 +89,20 @@
   100% { top: 100%; }
 }
 
+/* ── Pain Intro ─────────────────────────────────────────────────── */
+.painIntro {
+  padding: 64px 60px;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+.painIntro p {
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.75;
+  color: rgba(236,232,225,0.65);
+  letter-spacing: 0.02em;
+}
+
 /* ── Disciplines ────────────────────────────────────────────────── */
 .disciplines {
   display: grid;

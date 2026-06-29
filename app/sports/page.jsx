@@ -108,9 +108,13 @@ export default function SportsPage() {
       <PageHero
         eyebrow="01 / Sports"
         title="Sports"
-        description="Football. Wrestling. Tournament stages and Friday night lights. High school athletes deserve photos that match the effort they put in — captured with the speed and precision each moment demands."
+        description="Four years of early mornings, weight rooms, and Friday nights — and it ends in a single season. Your athlete gave everything. The photos should prove it."
         imageSrc="/photos/i-s7zBdzk.jpg"
       />
+
+      <p className={styles.painLine}>
+        Most high school athletes finish their careers with a handful of sideline phone photos. They gave more than that. So did you.
+      </p>
 
       <div className={styles.filterBar}>
         {CATEGORIES.map(cat => (
@@ -140,7 +144,8 @@ export default function SportsPage() {
       </div>
 
       <div className="cta-strip">
-        <h2>Ready to document <em>your season?</em></h2>
+        <h2>The season ends. <em>These don't.</em></h2>
+        <p>Let's make sure it was documented right.</p>
         <Link href="/about#contact" className="btn">Get In Touch</Link>
       </div>
 
