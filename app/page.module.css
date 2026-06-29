@@ -285,6 +285,41 @@
   margin-top: 4px;
 }
 
+/* ── Google Badge ───────────────────────────────────────────────── */
+.googleBadge {
+  display: flex;
+  justify-content: center;
+  padding: 40px 60px 0;
+  border-top: 1px solid var(--rule);
+}
+.googleBadgeLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.googleBadgeLink:hover { opacity: 0.75; }
+.googleStars {
+  font-size: 20px;
+  color: #c9a84c;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.googleRating {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1;
+}
+.googleLabel {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 /* ── Testimonial ────────────────────────────────────────────────── */
 .testimonial {
   padding: 100px 60px;

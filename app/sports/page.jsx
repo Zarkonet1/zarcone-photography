@@ -143,6 +143,17 @@ export default function SportsPage() {
         ))}
       </div>
 
+      <div className={styles.testimonials}>
+        <div className={styles.testimonialCard}>
+          <blockquote className={styles.testimonialText}>"Working with Zarcone Photography this season was a great experience. Tom is an excellent sports photographer who captured incredible photos that showcased the energy, emotion, and personality of our athletes. He also went beyond photography by helping create individual graphics, senior posters, postseason group graphics, and photo gifts. Looking forward to working with him again next season!"</blockquote>
+          <cite className={styles.testimonialCite}>— Erika</cite>
+        </div>
+        <div className={styles.testimonialCard}>
+          <blockquote className={styles.testimonialText}>"Tom was an absolute pleasure to work with. He was patient, clear and detailed. My team had a wonderful experience taking photos for their senior night. We had a large group and it was no challenge for him to manage. I highly recommend Tom and his team for any projects that you may have."</blockquote>
+          <cite className={styles.testimonialCite}>— Coach Adam</cite>
+        </div>
+      </div>
+
       <div className="cta-strip">
         <h2>The season ends. <em>These don't.</em></h2>
         <p>Let's make sure it was documented right.</p>

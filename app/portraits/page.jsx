@@ -139,6 +139,18 @@ export default function PortraitsPage() {
         ))}
       </div>
 
+      {/* Testimonials */}
+      <div className={styles.testimonials}>
+        <div className={styles.testimonialCard}>
+          <blockquote className={styles.testimonialText}>"Photo shoot was great and the pictures came out amazing!! Will definitely be using Zarcone Photography again. Tom was super helpful with everything from start to finish including some special editing I wanted done."</blockquote>
+          <cite className={styles.testimonialCite}>— Joseph</cite>
+        </div>
+        <div className={styles.testimonialCard}>
+          <blockquote className={styles.testimonialText}>"I had a session booked for holiday photos and we had our baby with us. Super professional and the photos were phenomenal even though the baby wasn't quite in the mood. They followed up to make sure everything went ok — I can't wait to do more with them!"</blockquote>
+          <cite className={styles.testimonialCite}>— Julia</cite>
+        </div>
+      </div>
+
       {/* CTA */}
       <div className="cta-strip">
         <h2>Ready to have something <em>worth keeping?</em></h2>

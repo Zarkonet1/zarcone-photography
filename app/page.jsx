@@ -197,6 +197,7 @@ export default function Home() {
           </p>
           <div className={styles.statRow}>
             <div><div className={styles.statNum}>30+</div><div className={styles.statLabel}>Years Experience</div></div>
+            <div><div className={styles.statNum}>500+</div><div className={styles.statLabel}>Client Galleries</div></div>
             <div><div className={styles.statNum}>NJ · NYC · PHL</div><div className={styles.statLabel}>Coverage Area</div></div>
           </div>
           <Link href="/about" className="btn">Learn More</Link>
@@ -208,6 +209,20 @@ export default function Home() {
 
       {/* ── Trust Strip ───────────────────────────────────────── */}
       <TrustStrip />
+
+      {/* ── Google Rating ─────────────────────────────────────── */}
+      <div className={styles.googleBadge}>
+        <a
+          href="https://g.page/r/Ca6PJ5ScxSapEAI/review"
+          target="_blank"
+          rel="noreferrer"
+          className={styles.googleBadgeLink}
+        >
+          <span className={styles.googleStars}>★★★★★</span>
+          <span className={styles.googleRating}>4.8</span>
+          <span className={styles.googleLabel}>on Google</span>
+        </a>
+      </div>
 
       {/* ── Testimonials ──────────────────────────────────────── */}
       <Testimonials />
