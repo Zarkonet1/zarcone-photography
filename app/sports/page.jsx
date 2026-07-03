@@ -145,6 +145,10 @@ export default function SportsPage() {
 
       <div className={styles.testimonials}>
         <div className={styles.testimonialCard}>
+          <blockquote className={styles.testimonialText}>"The quality of his photography and graphic design work has taken BRHS Wrestling's social media presence to another level. Every photo captures the intensity and emotion of the sport, and his graphics consistently look sharp, professional, and engaging."</blockquote>
+          <cite className={styles.testimonialCite}>— Kyle Murphy, Head Wrestling Coach, BRHS</cite>
+        </div>
+        <div className={styles.testimonialCard}>
           <blockquote className={styles.testimonialText}>"Working with Zarcone Photography this season was a great experience. Tom is an excellent sports photographer who captured incredible photos that showcased the energy, emotion, and personality of our athletes. He also went beyond photography by helping create individual graphics, senior posters, postseason group graphics, and photo gifts. Looking forward to working with him again next season!"</blockquote>
           <cite className={styles.testimonialCite}>— Erika</cite>
         </div>

@@ -96,6 +96,13 @@ export default function DesignPage() {
         ))}
       </div>
 
+      <div className={styles.testimonial}>
+        <blockquote className={styles.testimonialText}>
+          "The quality of his photography and graphic design work has taken BRHS Wrestling's social media presence to another level — his graphics consistently look sharp, professional, and engaging."
+        </blockquote>
+        <cite className={styles.testimonialCite}>— Kyle Murphy, Head Wrestling Coach, BRHS</cite>
+      </div>
+
       <div className="cta-strip">
         <h2>Want a poster for your <em>athlete?</em></h2>
         <Link href="/about#contact" className="btn">Get In Touch</Link>

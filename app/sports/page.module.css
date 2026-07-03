@@ -64,7 +64,7 @@
 /* ── Testimonials ───────────────────────────────────────────────── */
 .testimonials {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2px;
   border-top: 1px solid var(--rule);
 }
