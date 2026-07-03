@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getPostBySlug, getAllPosts } from '@/lib/posts';
 import { marked } from 'marked';
 import styles from './page.module.css';
+import ProgramInquiryForm from '@/components/ProgramInquiryForm';
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -48,10 +49,13 @@ export default function PostPage({ params }) {
 
       {/* Body */}
       <div className={styles.layout}>
-        <article
-          className={styles.body}
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        <div>
+          <article
+            className={styles.body}
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+          {post.showProgramForm && <ProgramInquiryForm />}
+        </div>
         <aside className={styles.aside}>
           <Link href="/blog" className={styles.back}>← All Posts</Link>
           <div className={styles.asideMeta}>

@@ -54,14 +54,14 @@ const DISCIPLINES = [
     num: '03',
     slug: 'events',
     title: 'Events',
-    desc: 'Music, milestones, and celebrations documented with authenticity and intention.',
+    desc: 'Quinceañeras, graduations, galas, concerts — every room has a story worth documenting properly.',
     img: SM.barnSwallows,
   },
   {
     num: '04',
     slug: 'design',
     title: 'Design',
-    desc: 'Senior poster composites, sports graphics, and branded imagery. Photography meets design.',
+    desc: 'Senior posters, team graphics, and memory books — custom-built around your photos from the same session.',
     img: '/photos/DESIGN-20WinsPoster.jpg',
   },
 ];
@@ -190,10 +190,10 @@ export default function Home() {
           <p className="eyebrow">About</p>
           <h2 className={styles.aboutH2}>These are the photos<br /><em>she'll still have at 40.</em></h2>
           <p className={styles.aboutP}>
-            I've spent over three decades with a camera, learning that the best images aren't made — they're discovered. Whether I'm trackside at a sports event or in a quiet studio session, my approach is the same: slow down, observe, and wait for the real moment.
+            Thirty years of experience means you don't have to worry about direction, lighting, or whether you're going to like the results. You just show up. I take care of the rest.
           </p>
           <p className={styles.aboutP}>
-            Based in Bridgewater, NJ — serving New Jersey, New York City, and Philadelphia.
+            One of the only NJ studios offering sports photography, portraits, and graphic design under one roof — so your athlete can walk away with the action shots and the senior poster from the same session. Based in Bridgewater, NJ. Serving NJ, NYC, and Philadelphia.
           </p>
           <div className={styles.statRow}>
             <div><div className={styles.statNum}>30+</div><div className={styles.statLabel}>Years Experience</div></div>
@@ -240,7 +240,7 @@ export default function Home() {
           <p className="eyebrow">Get In Touch</p>
           <h2 className={styles.contactH2}>Let's make something<br />worth keeping.</h2>
           <p className={styles.contactP}>
-            Every project starts with a conversation. Tell me what you're working on and I'll get back to you within 24 hours.
+            You describe the moment you want captured. I'll handle everything else — location, timing, and a gallery delivered within days, not weeks. Response guaranteed within 24 hours.
           </p>
           <Link href="/about#contact" className="btn btn-solid">Send a Message</Link>
           <div className={styles.contactMeta}>

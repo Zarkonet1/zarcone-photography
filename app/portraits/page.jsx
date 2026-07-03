@@ -156,6 +156,7 @@ export default function PortraitsPage() {
         <h2>Ready to have something <em>worth keeping?</em></h2>
         <p>Let's make it happen.</p>
         <Link href="/about#contact" className="btn">Get In Touch</Link>
+        <p style={{ fontSize: '12px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(236,232,225,0.4)', marginTop: '16px' }}>Response within 24 hours &nbsp;·&nbsp; No booking commitment required</p>
       </div>
 
       {/* Lightbox */}

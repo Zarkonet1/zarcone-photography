@@ -51,7 +51,7 @@ const PROCESS = [
   {
     num: '04',
     title: 'You Receive',
-    body: 'Professionally edited images delivered to a private gallery within the agreed timeframe — ready to download, share, and print.',
+    body: 'Professionally edited images delivered to a private gallery — typically within 3 days for sports, 7–10 days for portraits. Ready to download, share, and print.',
   },
 ];
 
