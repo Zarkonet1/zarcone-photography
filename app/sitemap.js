@@ -17,6 +17,7 @@ export default function sitemap() {
     '/sports-photographer-nj',
     '/senior-portrait-photographer-nj',
     '/event-photographer-nj',
+    '/schools-athletic-programs-nj',
   ];
 
   return staticRoutes.map((route) => ({

@@ -124,10 +124,10 @@ export default function Home() {
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <p className={`eyebrow ${styles.heroEyebrow}`}>
-            Bridgewater, NJ &nbsp;·&nbsp; Sports · Portraits · Events · Design
+            Serving New Jersey, New York City &amp; Philadelphia
           </p>
           <h1 className={styles.heroTitle}>
-            The photos<br />worth keeping<br /><em>for life.</em>
+            New Jersey's sports,<br />portrait &amp; event<br /><em>photography.</em>
           </h1>
           <p className={styles.heroSub}>
             Senior year doesn't slow down. Game day doesn't replay. The moments that define this season are happening right now — and they deserve more than a phone shot from the bleachers.

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './TrustStrip.module.css';
 
 const LOGOS = [
@@ -31,6 +32,9 @@ export default function TrustStrip() {
           ))}
         </div>
       </div>
+      <Link href="/schools-athletic-programs-nj" className={styles.cta}>
+        Run an athletic program? See how a season partnership works →
+      </Link>
     </section>
   );
 }

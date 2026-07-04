@@ -21,6 +21,7 @@ export default function Footer() {
             <Link href="/senior-portrait-photographer-nj">Senior Portraits</Link>
             <Link href="/sports-photographer-nj">Sports Coverage</Link>
             <Link href="/event-photographer-nj">Event Coverage</Link>
+            <Link href="/schools-athletic-programs-nj">Schools &amp; Programs</Link>
           </div>
           <nav className={styles.navColumn}>
             <span className={styles.navLabel}>Navigation</span>
