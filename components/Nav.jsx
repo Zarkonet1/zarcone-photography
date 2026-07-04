@@ -25,6 +25,7 @@ export default function Nav() {
     { href: '/portraits',     label: 'Portraits' },
     { href: '/events',        label: 'Events'    },
     { href: '/design',        label: 'Design'    },
+    { href: '/schools-athletic-programs-nj', label: 'Schools & Programs' },
     { href: '/blog',          label: 'Blog'      },
     { href: '/news',          label: 'News'      },
     { href: '/pricing',       label: 'Pricing'      },
