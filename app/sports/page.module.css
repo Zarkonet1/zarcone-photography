@@ -62,9 +62,33 @@
 .item:hover .label { opacity: 1; transform: translateY(0); }
 
 /* ── Testimonials ───────────────────────────────────────────────── */
+/* ── Pull-quote (above the fold, under pain line) ─────────────────── */
+.pullQuote {
+  padding: 8px 60px 44px;
+  max-width: 760px;
+}
+.pullQuoteText {
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0 0 12px;
+  padding-left: 20px;
+  border-left: 2px solid var(--accent);
+}
+.pullQuoteCite {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-style: normal;
+  padding-left: 22px;
+}
+
 .testimonials {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 2px;
   border-top: 1px solid var(--rule);
 }
@@ -97,6 +121,7 @@
   .filterBar { padding: 0 20px; }
   .testimonials { grid-template-columns: 1fr; }
   .testimonialCard { padding: 40px 24px; }
+  .pullQuote { padding: 8px 20px 32px; }
 }
 @media (max-width: 560px) {
   .grid { columns: 1; }
