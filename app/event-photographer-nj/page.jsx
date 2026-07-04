@@ -50,8 +50,8 @@ const jsonLd = {
   offers: {
     '@type': 'Offer',
     priceCurrency: 'USD',
-    price: '400',
-    description: 'Event photography coverage starting at $400',
+    price: '750',
+    description: 'Event photography coverage starting at $750',
   },
 };
 

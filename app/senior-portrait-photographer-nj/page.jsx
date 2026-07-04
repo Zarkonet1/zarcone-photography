@@ -50,8 +50,8 @@ const jsonLd = {
   offers: {
     '@type': 'Offer',
     priceCurrency: 'USD',
-    price: '250',
-    description: 'Senior portrait session starting at $250',
+    price: '600',
+    description: 'Senior portrait session starting at $600',
   },
 };
 
