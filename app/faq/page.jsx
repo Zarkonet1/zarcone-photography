@@ -145,21 +145,6 @@ const FAQS = [
   },
 ];
 
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: FAQS.flatMap(section =>
-    section.items.map(item => ({
-      '@type': 'Question',
-      name: item.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.a,
-      },
-    }))
-  ),
-};
-
 export default function FAQPage() {
   const [open, setOpen] = useState({});
 
@@ -170,10 +155,6 @@ export default function FAQPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <PageHero
         eyebrow="Support"
         title="Frequently Asked Questions"

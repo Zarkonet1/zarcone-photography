@@ -124,13 +124,13 @@ export default function Home() {
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <p className={`eyebrow ${styles.heroEyebrow}`}>
-            Bridgewater, NJ &nbsp;·&nbsp; Official Media Partner, BRHS Panther Football
+            Bridgewater, NJ &nbsp;·&nbsp; Sports · Portraits · Events · Design
           </p>
           <h1 className={styles.heroTitle}>
-            New Jersey's sports,<br />portrait &amp; event<br /><em>photography studio.</em>
+            The photos<br />worth keeping<br /><em>for life.</em>
           </h1>
           <p className={styles.heroSub}>
-            Trusted by athletic programs, booster clubs, and families across NJ, NYC, and Philadelphia. Senior year doesn't slow down. Game day doesn't replay. These moments deserve more than a phone shot from the bleachers.
+            Senior year doesn't slow down. Game day doesn't replay. The moments that define this season are happening right now — and they deserve more than a phone shot from the bleachers.
           </p>
           <Link href="/sports" className="btn">View the Work</Link>
         </div>
@@ -158,17 +158,6 @@ export default function Home() {
             </div>
           </Link>
         ))}
-      </div>
-
-      {/* ── Institutional CTA ─────────────────────────────────── */}
-      <div className="cta-strip">
-        <div>
-          <h2>Run an athletic program? <em>Let's talk.</em></h2>
-          <p style={{ fontSize: '14px', color: 'var(--muted)', marginTop: '12px', maxWidth: '480px', lineHeight: '1.7' }}>
-            Season-long media partnerships for schools, athletic departments, and booster clubs — game coverage, Media Day portraits, Senior Night, and organizational licensing.
-          </p>
-        </div>
-        <Link href="/schools-athletic-programs-nj" className="btn btn-solid">Schools &amp; Athletic Programs →</Link>
       </div>
 
       {/* ── Selected Work ────────────────────────────────────── */}
