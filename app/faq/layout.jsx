@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'FAQ | Zarcone Photography — Bridgewater, NJ',
-  description: 'Answers to common questions about booking, sessions, turnaround times, galleries, and more. Zarcone Photography serving New Jersey, NYC, and Philadelphia.',
+  description: 'Answers to common questions about booking, sessions, turnaround times, and galleries. Bridgewater, NJ photographer.',
   alternates: {
     canonical: '/faq',
   },

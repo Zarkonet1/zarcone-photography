@@ -48,7 +48,7 @@ export default function PrivacyPolicy() {
           <li><strong>Mailchimp</strong> — manages newsletter subscriptions. See <a href="https://mailchimp.com/legal/privacy/" target="_blank" rel="noreferrer">Mailchimp's Privacy Policy</a>.</li>
           <li><strong>Vercel</strong> — hosts this website. See <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noreferrer">Vercel's Privacy Policy</a>.</li>
           <li><strong>Elfsight</strong> — powers the Instagram feed widget. See <a href="https://elfsight.com/privacy-policy/" target="_blank" rel="noreferrer">Elfsight's Privacy Policy</a>.</li>
-          <li><strong>HoneyBook</strong> — manages client contracts, invoices, and project communications. See <a href="https://www.honeybook.com/privacy" target="_blank" rel="noreferrer">HoneyBook's Privacy Policy</a>.</li>
+          <li><strong>HoneyBook</strong> — manages client contracts, invoices, and project communications. See <a href="https://www.honeybook.com/legal/privacy" target="_blank" rel="noreferrer">HoneyBook's Privacy Policy</a>.</li>
         </ul>
 
         <h2>Cookies</h2>
