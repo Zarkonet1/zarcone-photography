@@ -1,11 +1,11 @@
 export const metadata = {
-  title: 'Portrait Parties NJ — Private Photography Events | Zarcone Photography',
-  description: 'Host a portrait party in NJ — a premium social experience where your guests leave with professional photos. Perfect for girls nights, book clubs, and themed events. Bridgewater, NJ.',
+  title: 'Portrait Parties NJ | Zarcone Photography',
+  description: 'Host a portrait party in NJ — a premium social experience where guests leave with professional photos. Bridgewater, NJ.',
   alternates: {
     canonical: '/portrait-parties',
   },
   openGraph: {
-    title: 'Portrait Parties NJ — Private Photography Events | Zarcone Photography',
+    title: 'Portrait Parties NJ | Zarcone Photography',
     description: 'Host a portrait party in NJ — a premium social experience where your guests leave with professional photos.',
     url: 'https://zarconephotography.com/portrait-parties',
   },

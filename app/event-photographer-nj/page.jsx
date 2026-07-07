@@ -4,7 +4,7 @@ import styles from '@/app/seo-page.module.css';
 
 export const metadata = {
   title: 'Event Photographer — New Jersey | Zarcone Photography',
-  description: 'Professional event photographer serving New Jersey — proms, corporate events, live music, galas, and celebrations. Based in Bridgewater, NJ. Fast delivery, unobtrusive coverage.',
+  description: 'Professional event photographer serving New Jersey — proms, corporate events, live music, and galas. Based in Bridgewater, NJ.',
   openGraph: {
     title: 'Event Photographer — New Jersey | Zarcone Photography',
     description: 'Event photographer based in Bridgewater, NJ. Proms, corporate events, live music, and milestone celebrations across New Jersey.',

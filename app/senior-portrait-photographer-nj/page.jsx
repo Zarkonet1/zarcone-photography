@@ -3,8 +3,8 @@ import PageHero from '@/components/PageHero';
 import styles from '@/app/seo-page.module.css';
 
 export const metadata = {
-  title: 'Senior Portrait Photographer — New Jersey | Zarcone Photography',
-  description: 'Professional senior portrait photographer serving New Jersey — Bridgewater, Somerset County, and surrounding towns. Relaxed sessions, stunning locations, fast delivery.',
+  title: 'Senior Portrait Photographer NJ | Zarcone Photography',
+  description: 'Professional senior portrait photographer serving Bridgewater, Somerset County, and NJ. Relaxed sessions, fast delivery.',
   openGraph: {
     title: 'Senior Portrait Photographer — New Jersey | Zarcone Photography',
     description: 'Professional senior portrait photographer serving New Jersey. Based in Bridgewater, NJ — Somerset County and beyond.',
@@ -119,7 +119,7 @@ const PREVIEWS = [
   '/photos/i-rvRX82g.jpg',
   '/photos/GiadaField.jpg',
   '/photos/PORTRAIT-Zarcone-Photography-0002.jpg',
-  '/photos/PORTRAIT-Zarcone-Photography-45.jpg',
+  '/photos/PORTRAIT-Zarcone-Photography-045.jpg',
 ];
 
 export default function SeniorPortraitPhotographerNJ() {

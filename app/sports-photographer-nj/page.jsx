@@ -4,7 +4,7 @@ import styles from '@/app/seo-page.module.css';
 
 export const metadata = {
   title: 'Sports Photographer — New Jersey | Zarcone Photography',
-  description: 'Professional sports photographer serving high schools, leagues, and athletes across New Jersey. Action photography, team coverage, athlete portraits — based in Bridgewater, NJ.',
+  description: 'Professional sports photographer serving high schools, leagues, and athletes across New Jersey. Based in Bridgewater, NJ.',
   openGraph: {
     title: 'Sports Photographer — New Jersey | Zarcone Photography',
     description: 'Sports photographer based in Bridgewater, NJ. High school sports, youth leagues, and athlete portraits throughout New Jersey.',

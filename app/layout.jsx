@@ -6,14 +6,14 @@ import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   metadataBase: new URL('https://zarconephotography.com'),
-  title: 'Zarcone Photography | NJ Photographer — Portraits, Sports & Events',
-  description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events. Serving New Jersey, New York City, and Philadelphia.',
+  title: 'Zarcone Photography — NJ Portrait & Sports Photographer',
+  description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events across NJ, NYC & Philly.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Zarcone Photography | NJ Photographer — Portraits, Sports & Events',
-    description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events. Serving New Jersey, New York City, and Philadelphia.',
+    title: 'Zarcone Photography — NJ Portrait & Sports Photographer',
+    description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events across NJ, NYC & Philly.',
     type: 'website',
     url: 'https://zarconephotography.com',
     images: [
@@ -27,8 +27,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Zarcone Photography | NJ Photographer — Portraits, Sports & Events',
-    description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events. Serving New Jersey, New York City, and Philadelphia.',
+    title: 'Zarcone Photography — NJ Portrait & Sports Photographer',
+    description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events across NJ, NYC & Philly.',
     images: ['https://zarconephotography.com/photos/tz-headshot.jpg'],
   },
 };

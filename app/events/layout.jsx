@@ -1,11 +1,11 @@
 export const metadata = {
-  title: 'Event Photographer New Jersey | Corporate & Charity Events | Zarcone Photography',
-  description: 'Professional event photographer in New Jersey — corporate events, charity fundraisers, galas, and celebrations. Based in Bridgewater, NJ, serving NJ, NYC, and Philadelphia.',
+  title: 'Event Photographer NJ | Corporate & Charity | Zarcone',
+  description: 'Professional event photographer in New Jersey — corporate events, charity fundraisers, galas, and celebrations. Bridgewater, NJ.',
   alternates: {
     canonical: '/events',
   },
   openGraph: {
-    title: 'Event Photographer New Jersey | Corporate & Charity Events | Zarcone Photography',
+    title: 'Event Photographer NJ | Corporate & Charity | Zarcone',
     description: 'Professional event photographer in New Jersey — corporate events, charity fundraisers, galas, and celebrations.',
     url: 'https://zarconephotography.com/events',
     images: [

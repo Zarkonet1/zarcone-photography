@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'NJ High School Sports Photographer | Zarcone Photography',
-  description: 'Action sports photography for NJ high school athletes — football, wrestling, lacrosse, basketball, gymnastics, baseball, and more. Based in Bridgewater, NJ.',
+  description: 'Action sports photography for NJ high school athletes — football, wrestling, lacrosse, basketball, and more. Bridgewater, NJ.',
   alternates: {
     canonical: '/sports',
   },

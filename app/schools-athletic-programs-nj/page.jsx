@@ -3,8 +3,8 @@ import PageHero from '@/components/PageHero';
 import styles from '@/app/seo-page.module.css';
 
 export const metadata = {
-  title: 'Schools & Athletic Programs — Sports Photography Partner | Zarcone Photography',
-  description: 'Dedicated media partnerships for NJ high schools, athletic departments, and booster clubs. Season-long game coverage, Media Day portraits, Senior Night, and organizational licensing — based in Bridgewater, NJ.',
+  title: 'Schools & Athletic Programs NJ | Zarcone Photography',
+  description: 'Dedicated media partnerships for NJ high schools and athletic departments — season-long coverage, Media Day, and licensing.',
   openGraph: {
     title: 'Schools & Athletic Programs — Zarcone Photography',
     description: 'Season-long media partnerships for NJ athletic programs. Game coverage, team portraits, Senior Night, and recruiting-ready imagery.',
