@@ -105,7 +105,7 @@ function EventCard({ event, dim }) {
         </div>
         <h2 className={styles.title}>{event.title}</h2>
         <p className={styles.desc}>{event.description}</p>
-        {event.link && (
+        {event.link && event.status !== 'past' && (
           <a
             href={event.link}
             target="_blank"
