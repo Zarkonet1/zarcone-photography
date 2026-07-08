@@ -238,6 +238,25 @@
 }
 .btnSilver:hover { filter: brightness(0.96); transform: translateY(-1px); }
 
+/* ─── Campaign banner — full-bleed "Built Different" graphic ────── */
+.campaignBanner {
+  padding: 0 !important;
+  background: var(--bp-navy-deep);
+  border-bottom: 1px solid var(--bp-line);
+}
+.campaignBanner img { display: block; width: 100%; height: auto; }
+.campaignBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 60px;
+  flex-wrap: wrap;
+}
+@media (max-width: 900px) {
+  .campaignBar { padding: 16px 24px; }
+}
+
 /* ─── Partnership ───────────────────────────────────────────────── */
 .partnership {
   border-bottom: 1px solid var(--bp-line);

@@ -183,10 +183,19 @@ export default function BRHSPantherWrestlingPage() {
         </div>
       </section>
 
+      {/* ── Built Different campaign banner ─────────────────────── */}
+      <section className={styles.campaignBanner}>
+        <Image src="/photos/BRHSWrestling2026-2027FBCOVER_C.png" alt="BRHS Panther Wrestling — Built Different, 2026-27 campaign graphic" width={1942} height={809} sizes="100vw" />
+        <div className={styles.campaignBar}>
+          <span className={styles.eyebrowLight}>2026-27 Campaign Graphic</span>
+          <span className={styles.eyebrowLight} style={{ opacity: 0.6 }}>Designed by Zarcone Photography</span>
+        </div>
+      </section>
+
       {/* ── Partnership ─────────────────────────────────────────── */}
       <section className={styles.partnership}>
         <div className={styles.logoBlock}>
-          <Image src="/photos/BRHSWrestling2026-2027FBProfile_C.jpg" alt="BRHS Panther Wrestling — Built Different, 2026-27" width={1568} height={1568} sizes="220px" style={{ width: '100%', height: 'auto' }} />
+          <Image src="/photos/BRHSWrestling2026-2027FBProfile_C_transparent.png" alt="BRHS Panther Wrestling — Built Different, 2026-27" width={1568} height={1568} sizes="220px" style={{ width: '100%', height: 'auto' }} />
           <span className={styles.sponsorTag}>Official Partner · 2026-27 Season</span>
         </div>
         <div className={styles.partnershipBody}>
@@ -345,7 +354,7 @@ export default function BRHSPantherWrestlingPage() {
       {/* ── Senior Night ─────────────────────────────────────────── */}
       <div className={`${styles.featureRow} ${styles.reverse}`}>
         <div className={styles.featurePanel}>
-          <Image src="/photos/BRHSWrestling2026-2027FBProfile_C.jpg" alt="BRHS Panther Wrestling badge" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'contain', background: 'var(--bp-navy-deep)' }} />
+          <Image src="/photos/BRHSWrestling2026-2027FBProfile_C_transparent.png" alt="BRHS Panther Wrestling badge" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'contain', background: 'var(--bp-navy-deep)' }} />
         </div>
         <div className={styles.featureText}>
           <span className={styles.featureDate}>Senior Night</span>
