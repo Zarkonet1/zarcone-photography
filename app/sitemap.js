@@ -19,12 +19,15 @@ export default function sitemap() {
     '/event-photographer-nj',
     '/schools-athletic-programs-nj',
     '/brhs-panther-football',
+    '/brhs-panther-wrestling',
   ];
+
+  const weeklyPages = ['/brhs-panther-football', '/brhs-panther-wrestling'];
 
   return staticRoutes.map((route) => ({
     url: `${base}${route}`,
     lastModified: new Date(),
-    changeFrequency: route === '' ? 'weekly' : route === '/brhs-panther-football' ? 'weekly' : 'monthly',
-    priority: route === '' ? 1.0 : route === '/portrait-parties' ? 0.9 : route === '/brhs-panther-football' ? 0.9 : 0.8,
+    changeFrequency: route === '' ? 'weekly' : weeklyPages.includes(route) ? 'weekly' : 'monthly',
+    priority: route === '' ? 1.0 : route === '/portrait-parties' ? 0.9 : weeklyPages.includes(route) ? 0.9 : 0.8,
   }));
 }

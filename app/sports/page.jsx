@@ -129,6 +129,10 @@ export default function SportsPage() {
         <Link href="/brhs-panther-football" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
           BRHS Panther Football →
         </Link>
+        {' '}and the 2026-27 season as official photography &amp; social media partner of{' '}
+        <Link href="/brhs-panther-wrestling" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
+          BRHS Panther Wrestling →
+        </Link>
       </p>
 
       <div className={styles.filterBar}>
