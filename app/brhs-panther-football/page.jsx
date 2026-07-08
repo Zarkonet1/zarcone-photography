@@ -8,39 +8,57 @@ import Testimonials from '@/components/Testimonials';
 import styles from './page.module.css';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
+const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Football';
 
-const CATEGORIES = ['All', 'Game Action', 'Sidelines', 'Team', 'Media Day', 'Senior Night', 'Championship Moments', 'Behind the Scenes'];
-
+// Only genuine football action photos — no cross-sport placeholders.
 const PHOTOS = [
-  { src: '/photos/i-s7zBdzk.jpg', width: 2400, height: 1600, category: 'Game Action', size: 'wide' },
-  { src: '/photos/SPORTS-FB100.jpg', width: 1600, height: 1066, category: 'Game Action' },
-  { src: '/photos/SPORTS-Zarcone-Photography-45.jpg', width: 1600, height: 1066, category: 'Game Action' },
-  { src: '/photos/i-Lv2PXKm.jpg', width: 2400, height: 1600, category: 'Game Action', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0136-2.jpg', width: 1600, height: 1066, category: 'Sidelines' },
-  { src: '/photos/SPORTS-DSC_5128-1.jpg', width: 1600, height: 1059, category: 'Sidelines' },
-  { src: '/photos/DESIGN-PanthersElite18U-Team-Poster.jpg', width: 2400, height: 1200, category: 'Team', size: 'wide' },
-  { src: '/photos/EVENT-Zarcone-Photography-0008.jpg', width: 1600, height: 1066, category: 'Behind the Scenes' },
-  { src: '/photos/i-q7LzKSb.jpg', width: 2400, height: 1599, category: 'Behind the Scenes', size: 'wide' },
-  { src: '/photos/EVENT-Zarcone-Photography-047.jpg', width: 1600, height: 1065, category: 'Behind the Scenes' },
-  { src: '/photos/EVENT-Zarcone-Photography-11.jpg', width: 1600, height: 1066, category: 'Behind the Scenes' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0007.jpg', width: 1599, height: 1280, category: 'Championship Moments' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0431.jpg', width: 1600, height: 1280, category: 'Championship Moments' },
-  { src: '/photos/DESIGN-SENIOR-PANO.jpg', width: 2400, height: 800, category: 'Senior Night', size: 'wide' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0002.jpg', width: 1599, height: 1280, category: 'Media Day' },
+  { src: '/photos/i-s7zBdzk.jpg', width: 2400, height: 1600, size: 'wide' },
+  { src: '/photos/SPORTS-FB100.jpg', width: 1600, height: 1066, size: 'wide' },
+  { src: '/photos/SPORTS-Zarcone-Photography-45.jpg', width: 1600, height: 1066 },
+  { src: '/photos/SPORTS-Zarcone-Photography-0136-2.jpg', width: 1600, height: 1066, size: 'wide' },
+  { src: '/photos/SPORTS-DSC_5128-1.jpg', width: 1600, height: 1059 },
+  { src: '/photos/i-HkmJPk8.jpg', width: 1600, height: 2400 },
+  { src: '/photos/SPORTS-Zarcone-Photography-0006.jpg', width: 1066, height: 1600 },
+  { src: '/photos/SPORTS-Zarcone-Photography-0016.jpg', width: 1066, height: 1600 },
+  { src: '/photos/SPORTS-Zarcone-Photography-0025-2.jpg', width: 1600, height: 1066 },
+  { src: '/photos/SPORTS-Zarcone-Photography-0072.jpg', width: 1066, height: 1600 },
+  { src: '/photos/SPORTS-Zarcone-Photography-0073-2.jpg', width: 1066, height: 1600 },
+  { src: '/photos/SPORTS-Zarcone-Photography-0088.jpg', width: 1600, height: 1066 },
+  { src: '/photos/SPORTS-Zarcone-Photography-0133.jpg', width: 1066, height: 1600 },
 ];
 
 const CAROUSEL = [
   { src: '/photos/i-s7zBdzk.jpg', width: 2400, height: 1600, caption: 'Friday Night Lights' },
-  { src: '/photos/i-Lv2PXKm.jpg', width: 2400, height: 1600, caption: 'Every Snap Tells A Story' },
+  { src: '/photos/SPORTS-FB100.jpg', width: 1600, height: 1066, caption: 'Every Snap Tells A Story' },
   { src: '/photos/SPORTS-Zarcone-Photography-45.jpg', width: 1600, height: 1066, caption: 'Game Day, Every Week' },
-  { src: '/photos/DESIGN-SENIOR-PANO.jpg', width: 2400, height: 800, caption: 'Senior Night, Done Right' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0002.jpg', width: 1599, height: 1280, caption: 'Media Day — July 29' },
+  { src: '/photos/i-HkmJPk8.jpg', width: 1600, height: 2400, caption: 'This Is Panther Football' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0088.jpg', width: 1600, height: 1066, caption: '2025: A Season For The Record Books' },
+];
+
+// 2026 schedule as published by MaxPreps / NJ Skyland Conference (subject to change — confirm kickoff times before heading to games).
+const SCHEDULE_2026 = [
+  { date: 'Thu, Aug 27', time: '6:00 PM', opponent: 'at Woodbridge', home: false },
+  { date: 'Thu, Sep 10', time: '6:00 PM', opponent: 'vs Hillsborough', home: true, league: true },
+  { date: 'Fri, Sep 18', time: '6:00 PM', opponent: 'vs Ridge', home: true, league: true },
+  { date: 'Fri, Oct 2', time: '6:00 PM', opponent: 'vs Hunterdon Central', home: true },
+  { date: 'Fri, Oct 9', time: '7:00 PM', opponent: 'at Union', home: false },
+  { date: 'Fri, Oct 16', time: '7:00 PM', opponent: 'at Phillipsburg', home: false, league: true },
+];
+
+// Real coverage of the program — no invented headlines.
+const ARTICLES = [
+  { title: 'Football: Bridgewater-Raritan Wins First Sectional Championship, 21-14, Over Bayonne', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bayonne/sections/sports/articles/football-bridgewater-raritan-wins-first-sectional-championship-21-14-over-bayonne' },
+  { title: 'North 2, Group 5 Final Preview: Bridgewater-Raritan Panthers vs. Bayonne Bees', source: 'CJ Sports Radio', url: 'https://cjsportsradio.com/2025/11/14/north-2-group-5-final-preview-bridgewater-raritan-panthers-vs-bayonne-bees/' },
+  { title: "Bridgewater-Raritan Tops Union City At Home, 22-7, To Clinch First Sectional Finals Berth Since '17", source: 'CJ Sports Radio', url: 'https://cjsportsradio.com/2025/11/07/bridgewater-raritan-tops-union-city-at-home-22-7-to-clinch-first-sectional-finals-berth-since-17/' },
+  { title: 'Bridgewater-Raritan Cruised Past Linden In State Football Playoff Opener', source: 'The Prowler (BRHS Student News)', url: 'https://brhsprowler.org/5012/sports/bridgewater-raritan-cruised-past-linden-in-state-football-playoff-opener/' },
+  { title: 'History On The Line: Bridgewater-Raritan HS Seeks To Win 1st Ever State Sectional Football Championship', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/history-line-bridgewater-raritan-hs-seeks-win-1st-ever-state-sectional' },
+  { title: 'Standout Tackle Justin Simpson Of The Record-Setting Bridgewater-Raritan Football Team Is Headed To Bucknell', source: 'BRRSD Athletics', url: 'https://www.brrsd.org/o/brrhs/article/2580305' },
 ];
 
 const FAQ = [
   {
     q: 'Where do I order photos?',
-    a: <>Every image from Panther Football coverage is delivered to a private online gallery through <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer">Pic-Time</a>, where you can view, download, and order prints directly.</>,
+    a: <>The 2025–26 season gallery is live now on <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer">SmugMug</a>, where you can view, download, and order prints directly. 2026 season galleries will be delivered through <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer">Pic-Time</a>, our current client gallery platform.</>,
   },
   {
     q: 'How quickly are galleries posted?',
@@ -91,7 +109,6 @@ const SERVICES = [
 ];
 
 export default function BRHSPantherFootballPage() {
-  const [activeCategory, setActiveCategory] = useState('All');
   const [lbIndex, setLbIndex] = useState(null);
   const [slide, setSlide] = useState(0);
   const [form, setForm] = useState({ name: '', email: '', phone: '', athleteName: '', sport: 'Football', interestedIn: 'Prints', message: '' });
@@ -101,8 +118,6 @@ export default function BRHSPantherFootballPage() {
     const t = setInterval(() => setSlide(s => (s + 1) % CAROUSEL.length), 5000);
     return () => clearInterval(t);
   }, []);
-
-  const filtered = activeCategory === 'All' ? PHOTOS : PHOTOS.filter(p => p.category === activeCategory);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -173,8 +188,8 @@ export default function BRHSPantherFootballPage() {
           <h1 className={styles.heroTitle}>Official Media Partner of<br /><span>Bridgewater-Raritan Panther Football</span></h1>
           <p className={styles.heroSub}>Capturing Every Season. Every Athlete. Every Story.</p>
           <div className={styles.heroCtas}>
-            <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View This Season's Galleries</a>
-            <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnSilver}>Order Photos</a>
+            <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Season Galleries</a>
+            <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnSilver}>Order Photos</a>
             <a href="#inquire" className={styles.btnGhost}>Book Zarcone Photography</a>
           </div>
         </div>
@@ -203,10 +218,70 @@ export default function BRHSPantherFootballPage() {
           </p>
           <div className={styles.partnershipStats}>
             <div><div className={styles.statNum}>30+</div><div className={styles.statLabel}>Years Experience</div></div>
-            <div><div className={styles.statNum}>2026</div><div className={styles.statLabel}>Season Partner</div></div>
+            <div><div className={styles.statNum}>'25 Champs</div><div className={styles.statLabel}>1st Sectional Title Ever</div></div>
             <div><div className={styles.statNum}>Jul 29</div><div className={styles.statLabel}>Media Day</div></div>
           </div>
           <Link href="/blog/brhs-panther-football-2026-media-partnership" className={styles.partnershipLink}>Read the Full Partnership Announcement →</Link>
+        </div>
+      </section>
+
+      {/* ── Schedule & Results ───────────────────────────────────── */}
+      <section>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>2026 Season</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Schedule <em>&amp; Results</em></h2>
+          </div>
+          <p className={styles.sectionSub}>Coming off the program's first-ever NJSIAA sectional championship. Here's what's next.</p>
+        </div>
+
+        <div className={styles.championBanner}>
+          <div className={styles.championBannerNum}>21–14</div>
+          <div>
+            <div className={styles.championBannerTitle}>North 2, Group 5 Sectional Champions</div>
+            <div className={styles.championBannerBody}>
+              Defeated Bayonne 21–14 on Nov. 14, 2025 at Basilone Memorial Field — the first sectional title in program history, after three straight finals losses in 2015–2017.
+            </div>
+          </div>
+        </div>
+
+        <table className={styles.scheduleTable}>
+          <thead>
+            <tr><th>Date</th><th>Time</th><th>Opponent</th><th>Result</th></tr>
+          </thead>
+          <tbody>
+            {SCHEDULE_2026.map((g, i) => (
+              <tr key={i} className={g.league ? styles.leagueRow : ''}>
+                <td>{g.date}</td>
+                <td>{g.time}</td>
+                <td>{g.opponent}{g.league && <span className={styles.leagueTag}>League</span>}</td>
+                <td className={styles.resultCell}>—</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className={styles.sampleCaption}>
+          Schedule per <a href="https://www.maxpreps.com/nj/bridgewater/bridgewater-raritan-panthers/football/schedule/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--br-red)' }}>MaxPreps</a> as of late June 2026 — additional games and playoff dates are added as the season is finalized. Kickoff times are subject to change; confirm before heading to a game via <a href="https://brhspantherfb.org/schedules/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--br-red)' }}>the official team site</a>. Results post here after each game.
+        </p>
+      </section>
+
+      {/* ── In The News ──────────────────────────────────────────── */}
+      <section style={{ background: 'rgba(255,255,255,0.02)' }}>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Coverage</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>In The <em>News</em></h2>
+          </div>
+          <p className={styles.sectionSub}>Real coverage of the team, the championship run, and the players — from local press and the school itself.</p>
+        </div>
+        <div className={styles.newsGrid}>
+          {ARTICLES.map((a, i) => (
+            <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" className={styles.newsCard}>
+              <span className={styles.newsSource}>{a.source}</span>
+              <span className={styles.newsTitle}>{a.title}</span>
+              <span className={styles.newsLink}>Read Article →</span>
+            </a>
+          ))}
         </div>
       </section>
 
@@ -215,59 +290,52 @@ export default function BRHSPantherFootballPage() {
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>From The Sidelines</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>2026 Season <em>Gallery</em></h2>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Season <em>Gallery</em></h2>
           </div>
-          <p className={styles.sectionSub}>Game action, sidelines, Senior Night, Media Day, and championship moments — organized and ready to browse.</p>
+          <p className={styles.sectionSub}>Game action from Panther Football, shot by Zarcone Photography.</p>
         </div>
 
         <div className={styles.noticeBar}>
           <span className={styles.noticeDot} />
-          Season galleries update live throughout 2026 — Media Day coverage begins July 29. Images below preview the categories your season gallery will include.
+          Looking for a specific game? The full <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>2025–26 season gallery</a> is live now. 2026 season galleries post here after each game.
         </div>
 
-        <div className={styles.filterBar}>
-          {CATEGORIES.map(cat => (
-            <button key={cat} className={`${styles.filterBtn} ${activeCategory === cat ? styles.filterActive : ''}`} onClick={() => setActiveCategory(cat)}>
-              {cat}
-            </button>
-          ))}
+        <div className={styles.galleryFooter} style={{ marginTop: 0, marginBottom: 36, justifyContent: 'flex-start', gap: 14 }}>
+          <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>Browse 2025–26 Season Gallery</a>
+          <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnGhost}>Order Prints &amp; Downloads</a>
         </div>
 
         <div className={styles.masonry}>
-          {filtered.map((photo, i) => (
+          {PHOTOS.map((photo, i) => (
             <div key={i} className={styles.tile} onClick={() => setLbIndex(i)}>
               <Image
                 src={photo.src}
-                alt={`${photo.category} — Zarcone Photography, New Jersey`}
+                alt="Bridgewater-Raritan Panther Football — Zarcone Photography, New Jersey"
                 width={photo.width}
                 height={photo.height}
                 sizes="(max-width: 700px) 50vw, (max-width: 1100px) 33vw, 25vw"
                 style={{ width: '100%', height: 'auto' }}
               />
-              <div className={styles.tileLabel}>{photo.category}</div>
             </div>
           ))}
         </div>
 
-        <div className={styles.galleryFooter}>
-          <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Full Galleries</a>
-        </div>
-
         {lbIndex !== null && (
           <Lightbox
-            images={filtered.map(p => ({ src: p.src, alt: `${p.category} — Zarcone Photography, New Jersey` }))}
+            images={PHOTOS.map(p => ({ src: p.src, alt: 'Bridgewater-Raritan Panther Football — Zarcone Photography, New Jersey' }))}
             currentIndex={lbIndex}
             onClose={() => setLbIndex(null)}
-            onPrev={() => setLbIndex((lbIndex - 1 + filtered.length) % filtered.length)}
-            onNext={() => setLbIndex((lbIndex + 1) % filtered.length)}
+            onPrev={() => setLbIndex((lbIndex - 1 + PHOTOS.length) % PHOTOS.length)}
+            onNext={() => setLbIndex((lbIndex + 1) % PHOTOS.length)}
           />
         )}
       </section>
 
       {/* ── Media Day ────────────────────────────────────────────── */}
       <div className={styles.featureRow}>
-        <div className={styles.featureMedia}>
-          <Image src="/photos/PORTRAIT-Zarcone-Photography-0002.jpg" alt="Media Day portrait coverage" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'cover', filter: 'brightness(0.8)' }} />
+        <div className={styles.featurePanel}>
+          <span className={styles.featurePanelDate}>Jul 29</span>
+          <span className={styles.featurePanelLabel}>Media Day</span>
         </div>
         <div className={styles.featureText}>
           <span className={styles.featureDate}>July 29, 2026</span>
@@ -283,14 +351,7 @@ export default function BRHSPantherFootballPage() {
             <li>Coach portraits</li>
             <li>Recruiting content</li>
           </ul>
-          <div>
-            <div className={styles.sampleStrip}>
-              <Image src="/photos/DESIGN-Kayla_FinalWeb.jpg" alt="Sample senior poster design" width={1800} height={2400} style={{ height: 140, width: 'auto' }} />
-              <Image src="/photos/DESIGN-LeapPoster.jpg" alt="Sample poster design" width={1920} height={2400} style={{ height: 140, width: 'auto' }} />
-              <Image src="/photos/DESIGN-SENIOR-PANO.jpg" alt="Sample panorama composite design" width={2400} height={800} style={{ height: 140, width: 'auto' }} />
-            </div>
-            <p className={styles.sampleCaption}>Sample design work from previous seasons — 2026 Panther Football Media Day graphics arrive July 29.</p>
-          </div>
+          <p className={styles.sampleCaption}>Photos and graphics from Media Day are added here starting July 29.</p>
           <div style={{ marginTop: 28 }}>
             <a href="#inquire" className={styles.btnRed}>Book Media Day</a>
           </div>
@@ -299,8 +360,9 @@ export default function BRHSPantherFootballPage() {
 
       {/* ── Senior Experience ────────────────────────────────────── */}
       <div className={`${styles.featureRow} ${styles.reverse}`}>
-        <div className={styles.featureMedia}>
-          <Image src="/photos/DESIGN-SENIOR-PANO.jpg" alt="Senior Night composite" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'cover', filter: 'brightness(0.8)' }} />
+        <div className={styles.featurePanel}>
+          <span className={styles.featurePanelDate}>Senior</span>
+          <span className={styles.featurePanelLabel}>Night</span>
         </div>
         <div className={styles.featureText}>
           <span className={styles.featureDate}>Senior Night</span>
@@ -342,7 +404,7 @@ export default function BRHSPantherFootballPage() {
           </ul>
           <p style={{ fontSize: 14, color: 'var(--br-silver)' }}>Professionally edited · High-resolution downloads · Print ordering built in</p>
           <div style={{ marginTop: 20 }}>
-            <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Game Galleries</a>
+            <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Game Galleries</a>
           </div>
         </div>
       </div>
@@ -506,7 +568,7 @@ export default function BRHSPantherFootballPage() {
         <h2 className={styles.finalCtaTitle}>Every Season Has A Story.<br /><span>We're Honored To Preserve Yours.</span></h2>
         <p className={styles.finalCtaSub}>Official media partner of Bridgewater-Raritan Panther Football — 2026 season.</p>
         <div className={styles.finalCtaBtns}>
-          <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Galleries</a>
+          <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Galleries</a>
           <a href="#inquire" className={styles.btnSilver}>Book Photography</a>
           <Link href="/about#contact" className={styles.btnGhost}>Contact Us</Link>
         </div>
