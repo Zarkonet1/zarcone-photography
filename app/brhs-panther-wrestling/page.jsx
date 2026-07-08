@@ -231,11 +231,6 @@ export default function BRHSPantherWrestlingPage() {
         </div>
       </section>
 
-      {/* ── Official support line ────────────────────────────────── */}
-      <section className={styles.supportLine}>
-        Proudly supporting Bridgewater-Raritan Wrestling through photography, storytelling, and season-long media coverage.
-      </section>
-
       {/* ── Live Season Tracker — the page's weekly-update engine ─── */}
       <section className={styles.latestBar}>
         <div className={styles.latestHead}>
@@ -256,6 +251,11 @@ export default function BRHSPantherWrestlingPage() {
             );
           })}
         </div>
+      </section>
+
+      {/* ── Official support line ────────────────────────────────── */}
+      <section className={styles.supportLine}>
+        Proudly supporting Bridgewater-Raritan Wrestling through photography, storytelling, and season-long media coverage.
       </section>
 
       {/* ── Program stat bar ─────────────────────────────────────── */}
