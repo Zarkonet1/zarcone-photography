@@ -345,7 +345,7 @@ export default function BRHSPantherWrestlingPage() {
       {/* ── Senior Night ─────────────────────────────────────────── */}
       <div className={`${styles.featureRow} ${styles.reverse}`}>
         <div className={styles.featurePanel}>
-          <Image src="/photos/BRHSWrestling2026_2027FBProfile.png" alt="BRHS Panther Wrestling badge" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
+          <Image src="/photos/BRHSWrestling2026_2027FBProfile.png" alt="BRHS Panther Wrestling badge" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'contain', background: 'var(--bp-navy-deep)' }} />
         </div>
         <div className={styles.featureText}>
           <span className={styles.featureDate}>Senior Night</span>
