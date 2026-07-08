@@ -101,8 +101,8 @@
 /* ─── Hero ──────────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  height: 92vh;
-  min-height: 620px;
+  height: 68vh;
+  min-height: 480px;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -140,8 +140,8 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 @media (max-width: 900px) {
-  .heroContent { padding: 0 24px 48px; }
-  .hero { height: 86vh; }
+  .heroContent { padding: 0 24px 40px; }
+  .hero { height: 62vh; min-height: 440px; }
 }
 .heroBadgeRow {
   display: flex;
