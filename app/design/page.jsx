@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Lightbox from '@/components/Lightbox';
 import Link from 'next/link';
@@ -11,33 +12,33 @@ const CATEGORIES = ['All', 'Senior Posters', 'Wrestling', 'Lacrosse', 'Track', '
 // Local design / poster photos
 const PIECES = [
   // Track Senior Posters
-  { src: '/photos/i-hdjLNfF.jpg', category: 'Track',     title: 'Track — Senior Poster',        size: 'wide' },
-  { src: '/photos/i-CjRtd4L.jpg', category: 'Track',     title: 'Track — Senior Composite',     size: 'half' },
-  { src: '/photos/i-GRNTs87.jpg', category: 'Track',     title: 'Track — Senior Design',        size: 'half' },
-  { src: '/photos/i-JdzdDzw.jpg', category: 'Track',     title: 'Track — Senior Poster',        size: 'half' },
-  { src: '/photos/i-2bzMvNC.jpg', category: 'Track',     title: 'Track — Senior Composite',     size: 'half' },
+  { src: '/photos/i-hdjLNfF.jpg', width: 1600, height: 2400, category: 'Track',     title: 'Track — Senior Poster',        size: 'wide' },
+  { src: '/photos/i-CjRtd4L.jpg', width: 1600, height: 2400, category: 'Track',     title: 'Track — Senior Composite',     size: 'half' },
+  { src: '/photos/i-GRNTs87.jpg', width: 1600, height: 2400, category: 'Track',     title: 'Track — Senior Design',        size: 'half' },
+  { src: '/photos/i-JdzdDzw.jpg', width: 1600, height: 2400, category: 'Track',     title: 'Track — Senior Poster',        size: 'half' },
+  { src: '/photos/i-2bzMvNC.jpg', width: 1600, height: 2400, category: 'Track',     title: 'Track — Senior Composite',     size: 'half' },
   // Wrestling Senior Posters
-  { src: '/photos/i-L2f9FWq.jpg', category: 'Wrestling', title: 'Wrestling — Senior Design',    size: 'wide' },
-  { src: '/photos/i-JgVQLHd.jpg', category: 'Wrestling', title: 'Wrestling — Senior Composite', size: 'half' },
-  { src: '/photos/i-h4PXdgk.jpg', category: 'Wrestling', title: 'Wrestling — Senior Poster',    size: 'half' },
-  { src: '/photos/i-rgvSB9k.jpg', category: 'Wrestling', title: 'Wrestling — Senior Design',    size: 'half' },
+  { src: '/photos/i-L2f9FWq.jpg', width: 1600, height: 2400, category: 'Wrestling', title: 'Wrestling — Senior Design',    size: 'wide' },
+  { src: '/photos/i-JgVQLHd.jpg', width: 1600, height: 2400, category: 'Wrestling', title: 'Wrestling — Senior Composite', size: 'half' },
+  { src: '/photos/i-h4PXdgk.jpg', width: 1600, height: 2400, category: 'Wrestling', title: 'Wrestling — Senior Poster',    size: 'half' },
+  { src: '/photos/i-rgvSB9k.jpg', width: 1600, height: 2400, category: 'Wrestling', title: 'Wrestling — Senior Design',    size: 'half' },
   // Girls Lacrosse Senior Posters
-  { src: '/photos/i-4VRDpGg.jpg', category: 'Lacrosse',  title: 'Lacrosse — Senior Poster',     size: 'wide' },
-  { src: '/photos/i-2CHdSJx.jpg', category: 'Lacrosse',  title: 'Lacrosse — Senior Design',     size: 'half' },
-  { src: '/photos/i-Cf5RqJt.jpg', category: 'Lacrosse',  title: 'Lacrosse — Senior Composite',  size: 'half' },
+  { src: '/photos/i-4VRDpGg.jpg', width: 1600, height: 2400, category: 'Lacrosse',  title: 'Lacrosse — Senior Poster',     size: 'wide' },
+  { src: '/photos/i-2CHdSJx.jpg', width: 1600, height: 2400, category: 'Lacrosse',  title: 'Lacrosse — Senior Design',     size: 'half' },
+  { src: '/photos/i-Cf5RqJt.jpg', width: 1600, height: 2400, category: 'Lacrosse',  title: 'Lacrosse — Senior Composite',  size: 'half' },
   // Baseball / Team Posters
-  { src: '/photos/DESIGN-20WinsPoster.jpg',              category: 'Baseball',      title: 'Baseball — 20 Wins Celebration',   size: 'wide' },
-  { src: '/photos/DESIGN-PanthersElite18U-Team-Poster.jpg', category: 'Baseball',  title: 'Baseball — Panthers Elite 18U',    size: 'wide' },
+  { src: '/photos/DESIGN-20WinsPoster.jpg', width: 2400, height: 1920,              category: 'Baseball',      title: 'Baseball — 20 Wins Celebration',   size: 'wide' },
+  { src: '/photos/DESIGN-PanthersElite18U-Team-Poster.jpg', width: 2400, height: 1200, category: 'Baseball',  title: 'Baseball — Panthers Elite 18U',    size: 'wide' },
   // Softball Designs
-  { src: '/photos/DESIGN-BR16USoftballPanthers.jpg',     category: 'Softball',     title: 'Softball — BR Panthers 16U',       size: 'wide' },
-  { src: '/photos/DESIGN-SoftballTeamActionFigures.jpg', category: 'Softball',     title: 'Softball — Team Action Figures',   size: 'wide' },
+  { src: '/photos/DESIGN-BR16USoftballPanthers.jpg', width: 2400, height: 1920,     category: 'Softball',     title: 'Softball — BR Panthers 16U',       size: 'wide' },
+  { src: '/photos/DESIGN-SoftballTeamActionFigures.jpg', width: 2400, height: 1200, category: 'Softball',     title: 'Softball — Team Action Figures',   size: 'wide' },
   // Senior Posters (additional)
-  { src: '/photos/DESIGN-Kayla_FinalWeb.jpg',            category: 'Senior Posters', title: 'Senior — Kayla',                 size: 'half' },
-  { src: '/photos/DESIGN-LeapPoster.jpg',                category: 'Senior Posters', title: 'Senior — Leap Poster',           size: 'half' },
-  { src: '/photos/DESIGN-SENIOR-PANO.jpg',               category: 'Senior Posters', title: 'Senior — Panorama Composite',    size: 'wide' },
+  { src: '/photos/DESIGN-Kayla_FinalWeb.jpg', width: 1800, height: 2400,            category: 'Senior Posters', title: 'Senior — Kayla',                 size: 'half' },
+  { src: '/photos/DESIGN-LeapPoster.jpg', width: 1920, height: 2400,                category: 'Senior Posters', title: 'Senior — Leap Poster',           size: 'half' },
+  { src: '/photos/DESIGN-SENIOR-PANO.jpg', width: 2400, height: 800,               category: 'Senior Posters', title: 'Senior — Panorama Composite',    size: 'wide' },
   // Custom Work
-  { src: '/photos/DESIGN-JackieFlag1_pp.jpg',            category: 'Custom',       title: 'Custom — Flag Tribute',            size: 'wide' },
-  { src: '/photos/DESIGN-Example10v1.jpg',               category: 'Custom',       title: 'Custom — Design Portfolio',        size: 'half' },
+  { src: '/photos/DESIGN-JackieFlag1_pp.jpg', width: 2400, height: 1600,            category: 'Custom',       title: 'Custom — Flag Tribute',            size: 'wide' },
+  { src: '/photos/DESIGN-Example10v1.jpg', width: 1920, height: 2400,               category: 'Custom',       title: 'Custom — Design Portfolio',        size: 'half' },
 ];
 
 function shuffle(arr) {
@@ -85,7 +86,14 @@ export default function DesignPage() {
             className={styles.item}
             onClick={() => setLbIndex(i)}
           >
-            <img src={piece.src} alt={piece.title} loading="lazy" decoding="async" />
+            <Image
+              src={piece.src}
+              alt={piece.title}
+              width={piece.width}
+              height={piece.height}
+              sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw"
+              style={{ width: '100%', height: 'auto' }}
+            />
             <div className={styles.overlay}>
               <div className={styles.overlayContent}>
                 <span className={styles.label}>{piece.category}</span>

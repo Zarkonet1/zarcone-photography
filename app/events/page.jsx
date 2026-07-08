@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Lightbox from '@/components/Lightbox';
 import Link from 'next/link';
@@ -9,26 +10,26 @@ import styles from './page.module.css';
 const CATEGORIES = ['All', 'Triathlon', 'Music', 'Prom', 'Celebration', 'Events'];
 
 const PHOTOS = [
-  { src: '/photos/Ironman_Bike_Dylan.jpg',                                  category: 'Triathlon' },
-  { src: '/photos/Ironman_Run_Dante.jpg',                                   category: 'Triathlon' },
-  { src: '/photos/i-q7LzKSb.jpg',                                          category: 'Music' },
-  { src: '/photos/EVENT - Zarcone Photography-35.jpg',                      category: 'Music' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-73.jpg',                     category: 'Prom' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg',                     category: 'Prom' },
-  { src: '/photos/EVENT-ELLA-BAPTISM.jpg',                                  category: 'Celebration' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-00085.jpg',                  category: 'Celebration' },
-  { src: '/photos/EVENT-Zarcone-Photography-0008.jpg',                      category: 'Events' },
-  { src: '/photos/EVENT-Zarcone-Photography-047.jpg',                       category: 'Events' },
-  { src: '/photos/EVENT-Zarcone-Photography-043.jpg',                       category: 'Events' },
-  { src: '/photos/EVENT-Zarcone-Photography-0073.jpg',                      category: 'Events' },
-  { src: '/photos/EVENT-Zarcone-Photography-11.jpg',                        category: 'Events' },
-  { src: '/photos/EVENT-Zarcone-Photography-13.jpg',                        category: 'Events' },
-  { src: '/photos/EVENT-Zarcone-Photography-201.jpg',                       category: 'Events' },
-  { src: '/photos/EVENT-Zarcone-Photography-28.jpg',                        category: 'Events' },
-  { src: '/photos/EVENT-Zarcone-Photography-65.jpg',                        category: 'Events' },
-  { src: '/photos/EVENT-Zarcone-Photography-74-topaz.jpg',                  category: 'Events' },
-  { src: '/photos/EVENT-Zarcone-Photography-79.jpg',                        category: 'Events' },
-  { src: '/photos/EVENT-Zarcone-PhotographyZarcone-Photography-38-Motion.jpg', category: 'Events' },
+  { src: '/photos/Ironman_Bike_Dylan.jpg', width: 2400, height: 1600,                                  category: 'Triathlon' },
+  { src: '/photos/Ironman_Run_Dante.jpg', width: 1600, height: 2400,                                   category: 'Triathlon' },
+  { src: '/photos/i-q7LzKSb.jpg', width: 2400, height: 1599,                                          category: 'Music' },
+  { src: '/photos/EVENT - Zarcone Photography-35.jpg', width: 2048, height: 1638,                      category: 'Music' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-73.jpg', width: 1600, height: 1280,                     category: 'Prom' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg', width: 1600, height: 1280,                     category: 'Prom' },
+  { src: '/photos/EVENT-ELLA-BAPTISM.jpg', width: 1600, height: 1280,                                  category: 'Celebration' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-00085.jpg', width: 1600, height: 1267,                  category: 'Celebration' },
+  { src: '/photos/EVENT-Zarcone-Photography-0008.jpg', width: 1600, height: 1066,                      category: 'Events' },
+  { src: '/photos/EVENT-Zarcone-Photography-047.jpg', width: 1600, height: 1065,                       category: 'Events' },
+  { src: '/photos/EVENT-Zarcone-Photography-043.jpg', width: 1600, height: 1066,                       category: 'Events' },
+  { src: '/photos/EVENT-Zarcone-Photography-0073.jpg', width: 1600, height: 1279,                      category: 'Events' },
+  { src: '/photos/EVENT-Zarcone-Photography-11.jpg', width: 1600, height: 1066,                        category: 'Events' },
+  { src: '/photos/EVENT-Zarcone-Photography-13.jpg', width: 1600, height: 1280,                        category: 'Events' },
+  { src: '/photos/EVENT-Zarcone-Photography-201.jpg', width: 1600, height: 1279,                       category: 'Events' },
+  { src: '/photos/EVENT-Zarcone-Photography-28.jpg', width: 1280, height: 1600,                        category: 'Events' },
+  { src: '/photos/EVENT-Zarcone-Photography-65.jpg', width: 1600, height: 1280,                        category: 'Events' },
+  { src: '/photos/EVENT-Zarcone-Photography-74-topaz.jpg', width: 1600, height: 1279,                  category: 'Events' },
+  { src: '/photos/EVENT-Zarcone-Photography-79.jpg', width: 1600, height: 1280,                        category: 'Events' },
+  { src: '/photos/EVENT-Zarcone-PhotographyZarcone-Photography-38-Motion.jpg', width: 1600, height: 1279, category: 'Events' },
 ];
 
 function shuffle(arr) {
@@ -75,7 +76,14 @@ export default function EventsPage() {
             className={styles.item}
             onClick={() => setLbIndex(i)}
           >
-            <img src={photo.src} alt={`${photo.category} photography — Zarcone Photography, New Jersey`} loading="lazy" decoding="async" />
+            <Image
+              src={photo.src}
+              alt={`${photo.category} photography — Zarcone Photography, New Jersey`}
+              width={photo.width}
+              height={photo.height}
+              sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw"
+              style={{ width: '100%', height: 'auto' }}
+            />
             <div className={styles.overlay}>
               <span className={styles.label}>{photo.category}</span>
             </div>

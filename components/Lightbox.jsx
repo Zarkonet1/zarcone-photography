@@ -30,7 +30,7 @@ export default function Lightbox({ images, currentIndex, onClose, onPrev, onNext
       <button className={`${styles.nav} ${styles.prev}`} onClick={e => { e.stopPropagation(); onPrev(); }}>← Prev</button>
 
       <div className={styles.imgWrap} onClick={e => e.stopPropagation()}>
-        <img src={src} alt={alt} className={styles.img} />
+        <Image src={src} alt={alt} fill sizes="90vw" className={styles.img} />
       </div>
 
       <button className={`${styles.nav} ${styles.next}`} onClick={e => { e.stopPropagation(); onNext(); }}>Next →</button>

@@ -8,17 +8,12 @@
   justify-content: center;
 }
 .imgWrap {
-  max-width: 90vw;
-  max-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  width: 90vw;
+  height: 90vh;
 }
 .img {
-  max-width: 90vw;
-  max-height: 90vh;
   object-fit: contain;
-  display: block;
 }
 .close {
   position: absolute;

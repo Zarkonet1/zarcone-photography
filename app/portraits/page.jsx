@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Lightbox from '@/components/Lightbox';
 import Link from 'next/link';
@@ -14,64 +15,64 @@ const xl = (id, hash, ext = 'jpg') => `${SM_BASE}/${id}/0/${hash}/XL/${id}-XL.${
 
 const PHOTOS = [
   // Seniors
-  { src: '/photos/i-rvRX82g.jpg', category: 'Senior' },
+  { src: '/photos/i-rvRX82g.jpg', width: 1920, height: 2400, category: 'Senior' },
 
-  { src: '/photos/GiadaField.jpg', category: 'Senior' },
+  { src: '/photos/GiadaField.jpg', width: 1920, height: 2400, category: 'Senior' },
   // Individuals / headshots
-  { src: '/photos/i-LdgcRk9.jpg', category: 'Individual' },
-  { src: '/photos/i-rkggQ5F.jpg', category: 'Headshot' },
-  { src: '/photos/MonicaAsh.jpg', category: 'Individual' },
+  { src: '/photos/i-LdgcRk9.jpg', width: 2400, height: 1920, category: 'Individual' },
+  { src: '/photos/i-rkggQ5F.jpg', width: 2400, height: 1920, category: 'Headshot' },
+  { src: '/photos/MonicaAsh.jpg', width: 2400, height: 1920, category: 'Individual' },
   // Families
-  { src: '/photos/i-pnGfzmw.jpg', category: 'Family' },
-  { src: '/photos/i-3JzdPqR.jpg', category: 'Family' },
-  { src: '/photos/Reedxmas1.jpg', category: 'Family' },
-  { src: '/photos/Reedxmas2.jpg', category: 'Family' },
+  { src: '/photos/i-pnGfzmw.jpg', width: 2400, height: 1920, category: 'Family' },
+  { src: '/photos/i-3JzdPqR.jpg', width: 2400, height: 1920, category: 'Family' },
+  { src: '/photos/Reedxmas1.jpg', width: 2400, height: 1920, category: 'Family' },
+  { src: '/photos/Reedxmas2.jpg', width: 2400, height: 1920, category: 'Family' },
   // Additional portraits
-  { src: '/photos/PORTRAIT-Pics-11.jpg',                                          category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photograph-013.jpg',                           category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-DeBoer0006.jpg',                   category: 'Family' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0002.jpg',                         category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0007-2.jpg',                       category: 'Senior' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-00072.jpg',                        category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-00085.jpg',                        category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0013.jpg',                         category: 'Senior' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0014-2.jpg',                       category: 'Senior' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0020.jpg',                         category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-003.jpg',                          category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0035-2.jpg',                       category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0076.jpg',                         category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-012.jpg',                          category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0127.jpg',                         category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0137.jpg',                         category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-015.jpg',                          category: 'Senior' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-019.jpg',                          category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-020.jpg',                          category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-045.jpg',                          category: 'Senior' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-093-2.jpg',                        category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-36.jpg',                           category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-65.jpg',                           category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-1-2.jpg',                          category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-1-8_pp.jpg',                       category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-1-SharpenAI-softness.jpg',         category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-21.jpg',                           category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-3.jpg',                            category: 'Senior' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-39.jpg',                           category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-42.jpg',                           category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-48.jpg',                           category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-67.jpg',                           category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-7.jpg',                            category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-73.jpg',                           category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-83-2.jpg',                         category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg',                           category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-87.jpg',                           category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-92-SharpenAI-softness.jpg',        category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography54.jpg',                            category: 'Headshot' },
-  { src: '/photos/PORTRAIT-Zarcone-PhotographyZarcone-Photography-21-smb-1.jpg',  category: 'Individual' },
-  { src: '/photos/PORTRAIT-Zarcone-PhotographyZarcone-Photography-61-Standard.jpg', category: 'Headshot' },
-  { src: '/photos/PORTRAIT-Zarcone-PhotographyZarcone-Photography-63-Motion.jpg', category: 'Individual' },
-  { src: '/photos/chloe-portrait.jpg',    category: 'Individual' },
-  { src: '/photos/danielle-portrait.jpg', category: 'Individual' },
-  { src: '/photos/courtney-portrait.jpg', category: 'Individual' },
+  { src: '/photos/PORTRAIT-Pics-11.jpg', width: 1066, height: 1600,                                          category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photograph-013.jpg', width: 1600, height: 1280,                           category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-DeBoer0006.jpg', width: 1600, height: 1279,                   category: 'Family' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0002.jpg', width: 1599, height: 1280,                         category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0007-2.jpg', width: 1283, height: 1600,                       category: 'Senior' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-00072.jpg', width: 1279, height: 1600,                        category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-00085.jpg', width: 1600, height: 1267,                        category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0013.jpg', width: 1280, height: 1600,                         category: 'Senior' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0014-2.jpg', width: 1280, height: 1600,                       category: 'Senior' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0020.jpg', width: 1280, height: 1600,                         category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-003.jpg', width: 1600, height: 1066,                          category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0035-2.jpg', width: 1600, height: 1280,                       category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0076.jpg', width: 1143, height: 1600,                         category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-012.jpg', width: 1280, height: 1600,                          category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0127.jpg', width: 1279, height: 1600,                         category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0137.jpg', width: 1066, height: 1600,                         category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-015.jpg', width: 1280, height: 1600,                          category: 'Senior' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-019.jpg', width: 1279, height: 1600,                          category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-020.jpg', width: 1066, height: 1600,                          category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-045.jpg', width: 1280, height: 1600,                          category: 'Senior' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-093-2.jpg', width: 1600, height: 1280,                        category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-36.jpg', width: 1280, height: 1600,                           category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-65.jpg', width: 1279, height: 1600,                           category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-1-2.jpg', width: 1600, height: 1066,                          category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-1-8_pp.jpg', width: 1280, height: 1600,                       category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-1-SharpenAI-softness.jpg', width: 1280, height: 1600,         category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-21.jpg', width: 1600, height: 900,                           category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-3.jpg', width: 1279, height: 1600,                            category: 'Senior' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-39.jpg', width: 1065, height: 1600,                           category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-42.jpg', width: 1600, height: 1280,                           category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-48.jpg', width: 1600, height: 1280,                           category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-67.jpg', width: 1599, height: 1280,                           category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-7.jpg', width: 1142, height: 1600,                            category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-73.jpg', width: 1600, height: 1280,                           category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-83-2.jpg', width: 1280, height: 1600,                         category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg', width: 1600, height: 1280,                           category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-87.jpg', width: 1280, height: 1600,                           category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-92-SharpenAI-softness.jpg', width: 1280, height: 1600,        category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography54.jpg', width: 1600, height: 1066,                            category: 'Headshot' },
+  { src: '/photos/PORTRAIT-Zarcone-PhotographyZarcone-Photography-21-smb-1.jpg', width: 1280, height: 1600,  category: 'Individual' },
+  { src: '/photos/PORTRAIT-Zarcone-PhotographyZarcone-Photography-61-Standard.jpg', width: 1041, height: 1301, category: 'Headshot' },
+  { src: '/photos/PORTRAIT-Zarcone-PhotographyZarcone-Photography-63-Motion.jpg', width: 1600, height: 1066, category: 'Individual' },
+  { src: '/photos/chloe-portrait.jpg', width: 1280, height: 1600,    category: 'Individual' },
+  { src: '/photos/danielle-portrait.jpg', width: 1537, height: 1023, category: 'Individual' },
+  { src: '/photos/courtney-portrait.jpg', width: 1537, height: 1023, category: 'Individual' },
 ];
 
 function shuffle(arr) {
@@ -131,7 +132,15 @@ export default function PortraitsPage() {
       <div className={styles.gallery}>
         {filtered.map((photo, i) => (
           <div key={i} className={`${styles.item} reveal`} onClick={() => setLbIndex(i)}>
-            <img src={photo.src} alt={`${photo.category} portrait photography — Zarcone Photography, New Jersey`} className={styles.img} loading="lazy" decoding="async" />
+            <Image
+              src={photo.src}
+              alt={`${photo.category} portrait photography — Zarcone Photography, New Jersey`}
+              width={photo.width}
+              height={photo.height}
+              className={styles.img}
+              sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw"
+              style={{ width: '100%', height: 'auto' }}
+            />
             <div className={styles.itemOverlay}>
               <span className={styles.itemLabel}>{photo.category}</span>
             </div>
