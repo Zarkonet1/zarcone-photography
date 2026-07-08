@@ -37,7 +37,7 @@ const CAROUSEL = [
 
 // 2026 schedule as published by MaxPreps / NJ Skyland Conference (subject to change — confirm kickoff times before heading to games).
 const SCHEDULE_2026 = [
-  { date: 'Thu, Aug 27', time: '6:00 PM', opponent: 'at Woodbridge', home: false },
+  { date: 'Thu, Aug 27', time: '7:00 PM', opponent: 'at Woodbridge', home: false },
   { date: 'Thu, Sep 10', time: '6:00 PM', opponent: 'vs Hillsborough', home: true, league: true },
   { date: 'Fri, Sep 18', time: '6:00 PM', opponent: 'vs Ridge', home: true, league: true },
   { date: 'Fri, Oct 2', time: '6:00 PM', opponent: 'vs Hunterdon Central', home: true },
@@ -97,6 +97,51 @@ const WHY_US = [
   { num: '04', title: 'Professional Editing', body: 'Every image color-corrected and finished before it reaches your gallery.' },
   { num: '05', title: 'Official Media Partner', body: 'The exclusive 2026 season media partner and a Gold Level Sponsor of Panther Football.' },
   { num: '06', title: 'Prints & Downloads', body: 'High-resolution downloads and print products, ordered directly from your private gallery.' },
+];
+
+// Real program history and 2025 season facts — sourced from CJ Sports Radio,
+// TAPinto, The Prowler (BRHS student news), and BRRSD athletics. No invented stats.
+const STAT_BAR = [
+  { num: "'25", label: 'Sectional Champions', sub: 'North 2, Group 5 — first title in program history' },
+  { num: '3-1', label: '2025 Playoff Record', sub: 'Linden · Union City · Bayonne · Passaic Co. Tech' },
+  { num: '4×', label: 'Sectional Finalists', sub: '2015 · 2016 · 2017 · 2025' },
+  { num: '3rd', label: 'Season As Head Coach', sub: 'D.J. Catalano, entering his 4th year at BRHS' },
+];
+
+const SEASON_TRACKER = [
+  { label: 'Record', value: 'Preseason · 0–0', href: '#schedule' },
+  { label: 'Next Game', value: 'Aug 27 — at Woodbridge', href: '#schedule' },
+  { label: 'Latest Result', value: '2025: Sectional Champions', href: '#results' },
+  { label: 'Current Rankings', value: 'Not Yet Released', href: '#results' },
+  { label: 'Latest Gallery', value: '2025–26 Season — Live', href: SEASON_GALLERY_URL, external: true },
+];
+
+const COACHES = [
+  {
+    name: 'D.J. Catalano',
+    title: 'Head Varsity Football Coach · 3rd Season · 4th Year at BRHS',
+    bio: 'Catalano joined the Bridgewater-Raritan program four years ago, spending his first season under then-head coach Rick Mantz before taking over as head coach. Entering his third year leading the program in 2025, he guided the Panthers to their first sectional championship in school history.',
+  },
+];
+
+const FEATURED_PLAYER = {
+  name: 'Denzel Amoafo',
+  detail: 'Senior · Running Back',
+  bio: "Amoafo returns for his senior season as the Panthers' leading returning rusher, after piling up 530 yards and 5 touchdowns as a junior in 2025 — a season that ended with Bridgewater-Raritan's first sectional championship in program history.",
+};
+
+// 2025 playoff run only — the confirmed, sourced portion of the season.
+// Full regular-season game log is not yet compiled; shown honestly rather than guessed.
+const RESULTS_2025 = [
+  { date: 'Oct 31, 2025', opponent: 'vs Linden', round: 'NJSIAA North 2, Group 5 Playoffs — First Round', result: 'W 35–6', win: true },
+  { date: 'Nov 7, 2025', opponent: 'vs Union City', round: 'NJSIAA North 2, Group 5 Playoffs — Sectional Semifinal', result: 'W 22–7', win: true },
+  { date: 'Nov 14, 2025', opponent: 'vs Bayonne', round: 'NJSIAA North 2, Group 5 Sectional Final', result: 'W 21–14', win: true },
+  { date: 'Nov 21, 2025', opponent: 'vs Passaic County Tech', round: 'NJSIAA Group 5 State Tournament', result: 'L 14–23', win: false },
+];
+
+const SEASONS = [
+  { label: '2025–26', status: 'live', href: SEASON_GALLERY_URL },
+  { label: '2026', status: 'pending' },
 ];
 
 const SERVICES = [
@@ -185,14 +230,56 @@ export default function BRHSPantherFootballPage() {
             <span className={styles.heroBadge}>2026 Season</span>
             <span className={styles.heroBadgeOutline}>Gold Level Sponsor</span>
           </div>
-          <h1 className={styles.heroTitle}>Official Media Partner of<br /><span>Bridgewater-Raritan Panther Football</span></h1>
-          <p className={styles.heroSub}>Capturing Every Season. Every Athlete. Every Story.</p>
+          <h1 className={styles.heroTitle}>Three Finals.<br /><span>Then History.</span></h1>
+          <p className={styles.heroSub}>Three straight trips to the sectional final. Three losses. Then in 2025, Bridgewater-Raritan refused to let it happen again.</p>
+          <p className={styles.heroWelcome}>Welcome to Bridgewater-Raritan Panther Football.</p>
           <div className={styles.heroCtas}>
             <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Season Galleries</a>
             <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnSilver}>Order Photos</a>
             <a href="#inquire" className={styles.btnGhost}>Book Zarcone Photography</a>
           </div>
         </div>
+      </section>
+
+      {/* ── Live Season Tracker ──────────────────────────────────── */}
+      <section className={styles.latestBar}>
+        <div className={styles.latestHead}>
+          <span className={styles.latestDot} />
+          <span className={styles.eyebrowRed}>2026 Season Tracker</span>
+        </div>
+        <div className={styles.latestGrid}>
+          {SEASON_TRACKER.map((item, i) => {
+            const Tag = item.external ? 'a' : Link;
+            const linkProps = item.external
+              ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' }
+              : { href: item.href };
+            return (
+              <Tag key={i} className={styles.latestItem} {...linkProps}>
+                <span className={styles.latestItemLabel}>{item.label}</span>
+                <span className={styles.latestItemValue}>{item.value}</span>
+              </Tag>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ── Official credibility strip ──────────────────────────── */}
+      <div className={styles.supportLine}>
+        Official 2026 Season Media Partner &amp; Gold Level Sponsor of Bridgewater-Raritan Panther Football
+      </div>
+
+      {/* ── Program stat bar ─────────────────────────────────────── */}
+      <section className={styles.statBar}>
+        <div className={styles.statBarGrid}>
+          {STAT_BAR.map((s, i) => (
+            <div key={i} className={styles.statBarItem}>
+              <div className={styles.statBarNum}>{s.num}</div>
+              <div className={styles.statBarLabel}>{s.label}</div>
+              <div className={styles.statBarSub}>{s.sub}</div>
+            </div>
+          ))}
+        </div>
+        <p className={styles.statBarNote}>Program history and 2025 results per TAPinto, CJ Sports Radio, The Prowler (BRHS student news), and BRRSD Athletics.</p>
       </section>
 
       {/* ── Partnership ─────────────────────────────────────────── */}
@@ -226,7 +313,7 @@ export default function BRHSPantherFootballPage() {
       </section>
 
       {/* ── Schedule & Results ───────────────────────────────────── */}
-      <section>
+      <section id="schedule">
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>2026 Season</span>
@@ -265,6 +352,79 @@ export default function BRHSPantherFootballPage() {
         </p>
       </section>
 
+      {/* ── 2025 Playoff Run Results ─────────────────────────────── */}
+      <section id="results" style={{ background: 'rgba(255,255,255,0.02)' }}>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>2025 Playoff Run</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>The Road <em>To The Title</em></h2>
+          </div>
+          <p className={styles.sectionSub}>Four games, three wins, and the first sectional championship in program history. The full regular-season log is still being compiled — this is the sourced playoff record.</p>
+        </div>
+        <table className={styles.scheduleTable}>
+          <thead>
+            <tr><th>Date</th><th>Opponent</th><th>Round</th><th>Result</th></tr>
+          </thead>
+          <tbody>
+            {RESULTS_2025.map((g, i) => (
+              <tr key={i}>
+                <td>{g.date}</td>
+                <td>{g.opponent}</td>
+                <td>{g.round}</td>
+                <td className={g.win ? styles.resultWin : styles.resultLoss}>{g.result}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
+      {/* ── Coaches ──────────────────────────────────────────────── */}
+      <section>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Leadership</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Coaching <em>Staff</em></h2>
+          </div>
+        </div>
+        <div className={styles.coachGrid}>
+          {COACHES.map((c, i) => (
+            <div key={i} className={styles.coachCard}>
+              <div className={styles.coachAvatar}>{c.name.split(' ').map(n => n[0]).join('')}</div>
+              <div>
+                <div className={styles.coachName}>{c.name}</div>
+                <div className={styles.coachTitle}>{c.title}</div>
+                <p className={styles.coachBio}>{c.bio}</p>
+              </div>
+            </div>
+          ))}
+          <div className={styles.coachCard}>
+            <div>
+              <div className={styles.coachName}>Assistant Coaches</div>
+              <p className={styles.coachStub} style={{ marginTop: 10 }}>Full staff bios coming as the 2026 season approaches.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Featured Player ──────────────────────────────────────── */}
+      <section>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Player Spotlight</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Featured <em>Player</em></h2>
+          </div>
+        </div>
+        <div className={styles.spotlightWrap}>
+          <div className={styles.spotlightBadge}>RB</div>
+          <div>
+            <div className={styles.spotlightName}>{FEATURED_PLAYER.name}</div>
+            <div className={styles.spotlightClass}>{FEATURED_PLAYER.detail}</div>
+            <p className={styles.spotlightBio}>{FEATURED_PLAYER.bio}</p>
+            <p className={styles.spotlightNote}>Per CJ Sports Radio, August 2025 preseason preview.</p>
+          </div>
+        </div>
+      </section>
+
       {/* ── In The News ──────────────────────────────────────────── */}
       <section style={{ background: 'rgba(255,255,255,0.02)' }}>
         <div className={styles.sectionHead}>
@@ -293,6 +453,17 @@ export default function BRHSPantherFootballPage() {
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Season <em>Gallery</em></h2>
           </div>
           <p className={styles.sectionSub}>Game action from Panther Football, shot by Zarcone Photography.</p>
+        </div>
+
+        <div className={styles.seasonPills}>
+          {SEASONS.map((s, i) => (
+            s.status === 'live' ? (
+              <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" className={`${styles.seasonPill} ${styles.seasonPillActive}`}>{s.label} — Live</a>
+            ) : (
+              <span key={i} className={`${styles.seasonPill} ${styles.seasonPillPending}`}>{s.label} — Pending</span>
+            )
+          ))}
+          <span className={`${styles.seasonPill} ${styles.seasonPillPending}`}>Future Seasons — Archive Grows Here</span>
         </div>
 
         <div className={styles.noticeBar}>
@@ -573,6 +744,11 @@ export default function BRHSPantherFootballPage() {
           <Link href="/about#contact" className={styles.btnGhost}>Contact Us</Link>
         </div>
       </section>
+
+      <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.floatCta}>
+        <span className={styles.floatCtaLong}>View Latest Photos</span>
+        <span className={styles.floatCtaShort}>Photos</span>
+      </a>
     </div>
   );
 }
