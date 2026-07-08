@@ -66,12 +66,19 @@ const STAT_BAR = [
   { num: '2', label: '2026 State Medalists', sub: 'Levash (6th) · McCann (8th)' },
 ];
 
-const LATEST = [
-  { label: 'Schedule', value: '2026-27 Dates TBA', href: '#results' },
-  { label: 'Next Match', value: 'Opens Late Nov 2026', href: '#results' },
+// Live season tracker — this is the one block that needs a manual touch each
+// week once dual meets start (update RECORD after every match, NEXT_MATCH as
+// the schedule fills in, LATEST_RESULT after each meet, RANKINGS once NJ's
+// preseason polls publish in the fall). Everything here is honestly labeled
+// "preseason" because as of this writing (July 2026) the 2026-27 season has
+// not started — MaxPreps confirms no schedule is posted yet, and NJ's
+// wrestling preseason polls don't publish until the fall.
+const SEASON_TRACKER = [
+  { label: 'Record', value: 'Preseason · 0–0', href: '#results' },
+  { label: 'Next Match', value: 'TBA — Opens Late Nov 2026', href: '#results' },
+  { label: 'Latest Result', value: '2026 States: 2 Medalists', href: '#results' },
+  { label: 'Current Rankings', value: 'Not Yet Released', href: '#results' },
   { label: 'Latest Gallery', value: '2025-26 Season — Live', href: 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Wrestling', external: true },
-  { label: 'Team News', value: 'Sectional Title Defended', href: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/sections/sports/articles/bridgewater-raritan-panther-wrestlers-capture-njsiaa-group-5-north-2-sectional-championship', external: true },
-  { label: 'Featured Wrestler', value: 'Trent Levash — HWT', href: '#featured-wrestler' },
 ];
 
 const COACHES = [
@@ -229,14 +236,14 @@ export default function BRHSPantherWrestlingPage() {
         Proudly supporting Bridgewater-Raritan Wrestling through photography, storytelling, and season-long media coverage.
       </section>
 
-      {/* ── Latest — gives parents a reason to check back weekly ─── */}
+      {/* ── Live Season Tracker — the page's weekly-update engine ─── */}
       <section className={styles.latestBar}>
         <div className={styles.latestHead}>
           <span className={styles.latestDot} />
-          <span className={styles.eyebrowLight}>Latest</span>
+          <span className={styles.eyebrowLight}>2026-27 Season Tracker</span>
         </div>
         <div className={styles.latestGrid}>
-          {LATEST.map((item, i) => {
+          {SEASON_TRACKER.map((item, i) => {
             const Tag = item.external ? 'a' : Link;
             const props = item.external
               ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' }
