@@ -160,19 +160,20 @@ a {
 [class*="hb-p-"] {
   display: block;
   width: 100%;
-  min-height: 620px;
+  min-height: 1100px;
 }
 [class*="hb-p-"] iframe {
   width: 100% !important;
   height: 100% !important;
-  min-height: 620px !important;
+  min-height: 1100px !important;
   margin: 0 !important;
+  overflow-y: auto !important;
 }
 @media (max-width: 640px) {
   [class*="hb-p-"] {
-    min-height: 720px;
+    min-height: 1300px;
   }
   [class*="hb-p-"] iframe {
-    min-height: 720px !important;
+    min-height: 1300px !important;
   }
 }
