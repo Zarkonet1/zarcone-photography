@@ -150,30 +150,40 @@ a {
 
 /* ─── HoneyBook lead-form embeds ─────────────────────────────────── */
 /* HoneyBook's placement script injects an iframe with height="90%",
-   which needs a parent with a *definite* height to resolve. The div it
-   drops that iframe into (class="hb-p-<pid>-<placementId>") ships with
-   no CSS at all, so the percentage falls back to the browser's default
-   iframe height (150px) — the form is really there, it's just rendering
-   in a box far too small to show more than a sliver of it. Force a real
-   height here so it applies to every HoneyBook placement on the site
-   (About page contact form, Portrait Parties booking form, etc.). */
+   which needs a parent with a *definite* height to resolve — with no
+   CSS on the div it drops the iframe into (class="hb-p-<pid>-<id>"),
+   that collapses to the browser's ~150px default iframe height.
+   Forcing a bigger fixed height on the iframe itself doesn't solve it
+   either: the actual form document HoneyBook serves is ~3200px tall
+   (name/email/phone/contact-method/session details/message/submit),
+   and iframes don't auto-resize to cross-origin content, nor does
+   HoneyBook's embed page scroll internally on its own — so any fixed
+   height just clips whatever doesn't fit.
+   Fix: make the div a compact, fixed-height *scrollable window* and
+   give the iframe itself a generous fixed height (taller than the
+   form will ever reasonably be) so it renders in full inside that
+   window, with the div's own scrollbar as the way to reach the rest.
+   Applies sitewide to every HoneyBook placement (About page contact
+   form, Portrait Parties booking form, etc.). */
 [class*="hb-p-"] {
   display: block;
   width: 100%;
-  min-height: 1100px;
+  height: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
 }
 [class*="hb-p-"] iframe {
   width: 100% !important;
-  height: 100% !important;
-  min-height: 1100px !important;
+  height: 3600px !important;
   margin: 0 !important;
-  overflow-y: auto !important;
+  border: none !important;
+  display: block;
 }
 @media (max-width: 640px) {
   [class*="hb-p-"] {
-    min-height: 1300px;
-  }
-  [class*="hb-p-"] iframe {
-    min-height: 1300px !important;
+    height: 560px;
   }
 }
