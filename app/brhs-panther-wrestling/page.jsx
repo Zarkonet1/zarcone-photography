@@ -55,6 +55,46 @@ const ARTICLES = [
   { title: 'Bridgewater-Raritan Ended As Group 5 State Wrestling Runner-Up To Conclude A Memorable Dual Season', source: 'BRHS Athletics', url: 'https://www.brrsd.org/o/brhs/article/2033205' },
 ];
 
+// Program numbers — only figures confirmed via primary sources (BRRSD athletics
+// site, TAPinto, Patch, MaxPreps). Individual state/district/region titles are
+// intentionally omitted: the program has not won one yet, so a "0" isn't a
+// stat worth leading with. Add those rows the moment one is earned.
+const STAT_BAR = [
+  { num: '2×', label: 'Sectional Champions', sub: '2024-25 & 2025-26 seasons' },
+  { num: '21-8', label: 'School-Record Season', sub: '2024-25 dual meet record' },
+  { num: '3', label: '2026 State Qualifiers', sub: 'Levash · McCann · Adell' },
+  { num: '2', label: '2026 State Medalists', sub: 'Levash (6th) · McCann (8th)' },
+];
+
+const LATEST = [
+  { label: 'Schedule', value: '2026-27 Dates TBA', href: '#results' },
+  { label: 'Next Match', value: 'Opens Late Nov 2026', href: '#results' },
+  { label: 'Latest Gallery', value: '2025-26 Season — Live', href: 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Wrestling', external: true },
+  { label: 'Team News', value: 'Sectional Title Defended', href: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/sections/sports/articles/bridgewater-raritan-panther-wrestlers-capture-njsiaa-group-5-north-2-sectional-championship', external: true },
+  { label: 'Featured Wrestler', value: 'Trent Levash — HWT', href: '#featured-wrestler' },
+];
+
+const COACHES = [
+  {
+    name: 'Kyle Murphy',
+    title: 'Head Varsity Wrestling Coach · Since 2021-22',
+    bio: 'A 2016 Bridgewater-Raritan graduate, Murphy wrestled Division I at Bloomsburg University before returning home to lead the program he came up in. He also teaches special education at BRHS and coaches freshman football.',
+    philosophy: 'Murphy’s program is built on one word — grit: facing adversity, not giving up, and wrestling for the guy next to you, not just yourself.',
+  },
+];
+
+// Real, sourced returning wrestler — rotates weekly once dual meets begin.
+const FEATURED_WRESTLER = {
+  name: 'Trent Levash',
+  detail: 'Junior · Heavyweight',
+  bio: 'A two-time state qualifier who placed 6th at heavyweight at the 2026 NJSIAA Individual Tournament at Boardwalk Hall. Levash is confirmed to return for 2026-27 — "we get Trent back for two more years," said Coach Murphy — with two more seasons to chase a state title.',
+};
+
+const SEASONS = [
+  { label: '2025-26', status: 'live', href: 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Wrestling' },
+  { label: '2026-27', status: 'pending' },
+];
+
 const FAQ = [
   {
     q: 'Where do I order photos?',
@@ -173,14 +213,58 @@ export default function BRHSPantherWrestlingPage() {
             <span className={styles.heroBadge}>2026-27 Season</span>
             <span className={styles.heroBadgeOutline}>Official Photography &amp; Social Media Partner</span>
           </div>
-          <h1 className={styles.heroTitle}>Official Photography Partner of<br /><span>Bridgewater-Raritan Panther Wrestling</span></h1>
-          <p className={styles.heroSub}>Built Different. Every practice, every match, every season.</p>
+          <h1 className={styles.heroTitle}>Built<br /><span>Different</span></h1>
+          <p className={styles.heroSub}>Every championship starts with discipline. Every champion is forged through relentless work.</p>
+          <p className={styles.heroWelcome}>Welcome to Bridgewater-Raritan Panther Wrestling.</p>
           <div className={styles.heroCtas}>
             <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Season Gallery</a>
             <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnSilver}>Order Photos</a>
             <a href="#inquire" className={styles.btnGhost}>Book Zarcone Photography</a>
           </div>
         </div>
+      </section>
+
+      {/* ── Official support line ────────────────────────────────── */}
+      <section className={styles.supportLine}>
+        Proudly supporting Bridgewater-Raritan Wrestling through photography, storytelling, and season-long media coverage.
+      </section>
+
+      {/* ── Latest — gives parents a reason to check back weekly ─── */}
+      <section className={styles.latestBar}>
+        <div className={styles.latestHead}>
+          <span className={styles.latestDot} />
+          <span className={styles.eyebrowLight}>Latest</span>
+        </div>
+        <div className={styles.latestGrid}>
+          {LATEST.map((item, i) => {
+            const Tag = item.external ? 'a' : Link;
+            const props = item.external
+              ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' }
+              : { href: item.href };
+            return (
+              <Tag key={i} className={styles.latestItem} {...props}>
+                <span className={styles.latestItemLabel}>{item.label}</span>
+                <span className={styles.latestItemValue}>{item.value}</span>
+              </Tag>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ── Program stat bar ─────────────────────────────────────── */}
+      <section className={styles.statBar}>
+        <div className={styles.statBarGrid}>
+          {STAT_BAR.map((s, i) => (
+            <div key={i} className={styles.statBarItem}>
+              <div className={styles.statBarNum}>{s.num}</div>
+              <div className={styles.statBarLabel}>{s.label}</div>
+              <div className={styles.statBarSub}>{s.sub}</div>
+            </div>
+          ))}
+        </div>
+        <p className={styles.statBarNote}>
+          The program is still chasing its first individual state, district, or region title — those rows go up here the moment one is won.
+        </p>
       </section>
 
       {/* ── Built Different campaign banner ─────────────────────── */}
@@ -220,7 +304,7 @@ export default function BRHSPantherWrestlingPage() {
       </section>
 
       {/* ── Results & Season Outlook ─────────────────────────────── */}
-      <section>
+      <section id="results">
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>2025-26 Season</span>
@@ -259,6 +343,57 @@ export default function BRHSPantherWrestlingPage() {
         </p>
       </section>
 
+      {/* ── Coaches ──────────────────────────────────────────────── */}
+      <section>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Leadership</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Meet The <em>Coaches</em></h2>
+          </div>
+        </div>
+        <div className={styles.coachGrid}>
+          {COACHES.map((c, i) => (
+            <div key={i} className={styles.coachCard}>
+              <div className={styles.coachAvatar}>{c.name.split(' ').map(n => n[0]).join('')}</div>
+              <div>
+                <div className={styles.coachName}>{c.name}</div>
+                <div className={styles.coachTitle}>{c.title}</div>
+                <p className={styles.coachBio}>{c.bio}</p>
+                <p className={styles.coachBio} style={{ marginBottom: 0 }}>{c.philosophy}</p>
+              </div>
+            </div>
+          ))}
+          <div className={styles.coachCard}>
+            <div className={styles.coachAvatar}>?</div>
+            <div>
+              <div className={styles.coachName}>Assistant Coaching Staff</div>
+              <div className={styles.coachTitle}>Coming Soon</div>
+              <p className={styles.coachStub}>Full assistant coach bios and headshots are being added as part of the season kickoff shoot.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Featured Wrestler ─────────────────────────────────────── */}
+      <section id="featured-wrestler" style={{ background: 'var(--bp-paper-deep)' }}>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Season Spotlight</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Featured <em>Wrestler</em></h2>
+          </div>
+          <p className={styles.sectionSub}>One athlete, one story — rotating weekly once dual meets begin. Heading into 2026-27:</p>
+        </div>
+        <div className={styles.spotlightWrap}>
+          <div className={styles.spotlightBadge}>{FEATURED_WRESTLER.name.split(' ').map(n => n[0]).join('')}</div>
+          <div>
+            <div className={styles.spotlightName}>{FEATURED_WRESTLER.name}</div>
+            <div className={styles.spotlightClass}>{FEATURED_WRESTLER.detail}</div>
+            <p className={styles.spotlightBio}>{FEATURED_WRESTLER.bio}</p>
+            <p className={styles.spotlightNote}>Spotlight rotates to a new wrestler each week once the season is underway.</p>
+          </div>
+        </div>
+      </section>
+
       {/* ── In The News ──────────────────────────────────────────── */}
       <section style={{ background: 'var(--bp-paper-deep)' }}>
         <div className={styles.sectionHead}>
@@ -287,6 +422,17 @@ export default function BRHSPantherWrestlingPage() {
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Season <em>Gallery</em></h2>
           </div>
           <p className={styles.sectionSub}>Match action from Panther Wrestling, shot by Zarcone Photography.</p>
+        </div>
+
+        <div className={styles.seasonPills}>
+          {SEASONS.map((s, i) => (
+            s.status === 'live' ? (
+              <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" className={`${styles.seasonPill} ${styles.seasonPillActive}`}>{s.label} — Live</a>
+            ) : (
+              <span key={i} className={`${styles.seasonPill} ${styles.seasonPillPending}`}>{s.label} — Pending</span>
+            )
+          ))}
+          <span className={`${styles.seasonPill} ${styles.seasonPillPending}`}>Future Seasons — Archive Grows Here</span>
         </div>
 
         <div className={styles.noticeBar}>
@@ -569,6 +715,12 @@ export default function BRHSPantherWrestlingPage() {
           <Link href="/about#contact" className={styles.btnGhost}>Contact Us</Link>
         </div>
       </section>
+
+      {/* ── Persistent CTA — photos are always one click away ────── */}
+      <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.floatCta}>
+        <span className={styles.floatCtaLong}>View Latest Photos</span>
+        <span className={styles.floatCtaShort}>Photos</span>
+      </a>
     </div>
   );
 }
