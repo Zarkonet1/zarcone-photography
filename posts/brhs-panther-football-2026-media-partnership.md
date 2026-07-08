@@ -50,6 +50,8 @@ Use the form below to reach out — we'll respond within 24 hours.
 
 ---
 
+Visit the [Panther Football season hub](/brhs-panther-football) for galleries, ordering, and everything the partnership includes.
+
 **Go Panthers.**
 
 ---

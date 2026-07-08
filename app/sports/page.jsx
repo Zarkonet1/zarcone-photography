@@ -124,6 +124,13 @@ export default function SportsPage() {
         <cite className={styles.pullQuoteCite}>— Kyle Murphy, Head Wrestling Coach, BRHS</cite>
       </div>
 
+      <p className={styles.painLine} style={{ paddingTop: 0 }}>
+        Currently covering the 2026 season as official media partner of{' '}
+        <Link href="/brhs-panther-football" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
+          BRHS Panther Football →
+        </Link>
+      </p>
+
       <div className={styles.filterBar}>
         {CATEGORIES.map(cat => (
           <button
