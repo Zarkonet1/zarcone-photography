@@ -186,7 +186,7 @@ export default function BRHSPantherWrestlingPage() {
       {/* ── Partnership ─────────────────────────────────────────── */}
       <section className={styles.partnership}>
         <div className={styles.logoBlock}>
-          <Image src="/photos/BRHSWrestling2026_2027FBProfile.png" alt="BRHS Panther Wrestling — Built Different, 2026-27" width={1254} height={1254} sizes="220px" style={{ width: '100%', height: 'auto' }} />
+          <Image src="/photos/BRHSWrestling2026-2027FBProfile_C.jpg" alt="BRHS Panther Wrestling — Built Different, 2026-27" width={1568} height={1568} sizes="220px" style={{ width: '100%', height: 'auto' }} />
           <span className={styles.sponsorTag}>Official Partner · 2026-27 Season</span>
         </div>
         <div className={styles.partnershipBody}>
@@ -345,7 +345,7 @@ export default function BRHSPantherWrestlingPage() {
       {/* ── Senior Night ─────────────────────────────────────────── */}
       <div className={`${styles.featureRow} ${styles.reverse}`}>
         <div className={styles.featurePanel}>
-          <Image src="/photos/BRHSWrestling2026_2027FBProfile.png" alt="BRHS Panther Wrestling badge" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'contain', background: 'var(--bp-navy-deep)' }} />
+          <Image src="/photos/BRHSWrestling2026-2027FBProfile_C.jpg" alt="BRHS Panther Wrestling badge" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'contain', background: 'var(--bp-navy-deep)' }} />
         </div>
         <div className={styles.featureText}>
           <span className={styles.featureDate}>Senior Night</span>
