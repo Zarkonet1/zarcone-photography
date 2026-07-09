@@ -337,9 +337,9 @@ export default function BRHSPantherWrestlingPage() {
           <tbody>
             {RESULTS_2025_26.map((g, i) => (
               <tr key={i} className={g.league ? styles.leagueRow : ''}>
-                <td>{g.date}</td>
-                <td>{g.event}</td>
-                <td className={styles.resultCell}>{g.result}</td>
+                <td data-label="Date">{g.date}</td>
+                <td data-label="Event">{g.event}</td>
+                <td className={styles.resultCell} data-label="Result">{g.result}</td>
               </tr>
             ))}
           </tbody>
