@@ -20,6 +20,9 @@
 @media (max-width: 900px) {
   .wrap section { padding: 64px 24px; }
 }
+@media (max-width: 640px) {
+  .wrap section { padding: 44px 20px; }
+}
 
 .eyebrowRed {
   display: inline-flex;
@@ -110,6 +113,12 @@
 @media (max-width: 900px) {
   .heroContent { padding: 0 24px 40px; }
   .hero { height: 62vh; min-height: 440px; }
+}
+@media (max-width: 640px) {
+  .heroContent { padding: 0 20px 28px; }
+  .hero { height: 52vh; min-height: 380px; }
+  .heroBadgeRow { margin-bottom: 16px; }
+  .heroWelcome { margin-bottom: 22px; }
 }
 .heroBadgeRow {
   display: flex;
@@ -256,7 +265,8 @@
   border-top: 1px solid rgba(255,255,255,0.1);
 }
 @media (max-width: 560px) {
-  .partnershipStats { grid-template-columns: 1fr; gap: 18px; }
+  .partnershipStats { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .statNum { font-size: 26px; }
 }
 .statNum {
   font-family: var(--sans);
@@ -351,6 +361,23 @@
   padding: 2px 6px;
 }
 .resultCell { color: var(--br-silver); font-weight: 700; }
+@media (max-width: 640px) {
+  .scheduleTable thead { display: none; }
+  .scheduleTable, .scheduleTable tbody, .scheduleTable tr, .scheduleTable td { display: block; width: 100%; }
+  .scheduleTable tr { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .leagueRow { background: rgba(200,16,46,0.04); }
+  .scheduleTable td { padding: 2px 0; border-bottom: none; font-size: 14px; }
+  .scheduleTable td:before {
+    content: attr(data-label);
+    display: inline-block;
+    width: 68px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--br-silver);
+  }
+}
 
 /* ─── News grid ─────────────────────────────────────────────────── */
 .newsGrid {
@@ -503,6 +530,9 @@
   justify-content: center;
   background: linear-gradient(135deg, var(--br-red-dark), var(--br-red));
   overflow: hidden;
+}
+@media (max-width: 640px) {
+  .featureMedia, .featurePanel { min-height: 240px; }
 }
 .featurePanel::before {
   content: '';
@@ -670,6 +700,9 @@
   padding: 0 !important;
   overflow: hidden;
   border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+@media (max-width: 640px) {
+  .carousel { height: 46vh; min-height: 320px; }
 }
 .carouselSlide {
   position: absolute;
@@ -955,7 +988,7 @@ a.latestItem:hover { background: rgba(255,255,255,0.05); }
   gap: 36px;
 }
 @media (max-width: 900px) { .statBarGrid { grid-template-columns: 1fr 1fr; gap: 28px; } }
-@media (max-width: 560px) { .statBarGrid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .statBarGrid { grid-template-columns: 1fr 1fr; gap: 20px 16px; } }
 .statBarItem { text-align: center; }
 .statBarNum {
   font-family: var(--sans);
@@ -1002,7 +1035,7 @@ a.latestItem:hover { background: rgba(255,255,255,0.05); }
   display: flex;
   gap: 24px;
 }
-@media (max-width: 560px) { .coachCard { flex-direction: column; } }
+@media (max-width: 560px) { .coachCard { flex-direction: column; padding: 24px 22px; gap: 14px; } }
 .coachAvatar {
   flex-shrink: 0;
   width: 88px;

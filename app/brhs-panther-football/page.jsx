@@ -339,10 +339,10 @@ export default function BRHSPantherFootballPage() {
           <tbody>
             {SCHEDULE_2026.map((g, i) => (
               <tr key={i} className={g.league ? styles.leagueRow : ''}>
-                <td>{g.date}</td>
-                <td>{g.time}</td>
-                <td>{g.opponent}{g.league && <span className={styles.leagueTag}>League</span>}</td>
-                <td className={styles.resultCell}>—</td>
+                <td data-label="Date">{g.date}</td>
+                <td data-label="Time">{g.time}</td>
+                <td data-label="Opponent">{g.opponent}{g.league && <span className={styles.leagueTag}>League</span>}</td>
+                <td className={styles.resultCell} data-label="Result">—</td>
               </tr>
             ))}
           </tbody>
@@ -368,10 +368,10 @@ export default function BRHSPantherFootballPage() {
           <tbody>
             {RESULTS_2025.map((g, i) => (
               <tr key={i}>
-                <td>{g.date}</td>
-                <td>{g.opponent}</td>
-                <td>{g.round}</td>
-                <td className={g.win ? styles.resultWin : styles.resultLoss}>{g.result}</td>
+                <td data-label="Date">{g.date}</td>
+                <td data-label="Opponent">{g.opponent}</td>
+                <td data-label="Round">{g.round}</td>
+                <td className={g.win ? styles.resultWin : styles.resultLoss} data-label="Result">{g.result}</td>
               </tr>
             ))}
           </tbody>
