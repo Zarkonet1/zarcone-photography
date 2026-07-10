@@ -47,6 +47,8 @@ const SCHEDULE_2026 = [
 
 // Real coverage of the program — no invented headlines.
 const ARTICLES = [
+  { title: 'Bridgewater-Raritan Football Coach Named Coach Of Year For Historic Season', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/bridgewater-raritan-football-coach-named-coach-year-historic-season' },
+  { title: 'Athletes In Focus: Denzel Amoafo', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/columns/athletes-in-focus/articles/denzel-amoafo' },
   { title: 'Football: Bridgewater-Raritan Wins First Sectional Championship, 21-14, Over Bayonne', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bayonne/sections/sports/articles/football-bridgewater-raritan-wins-first-sectional-championship-21-14-over-bayonne' },
   { title: 'North 2, Group 5 Final Preview: Bridgewater-Raritan Panthers vs. Bayonne Bees', source: 'CJ Sports Radio', url: 'https://cjsportsradio.com/2025/11/14/north-2-group-5-final-preview-bridgewater-raritan-panthers-vs-bayonne-bees/' },
   { title: "Bridgewater-Raritan Tops Union City At Home, 22-7, To Clinch First Sectional Finals Berth Since '17", source: 'CJ Sports Radio', url: 'https://cjsportsradio.com/2025/11/07/bridgewater-raritan-tops-union-city-at-home-22-7-to-clinch-first-sectional-finals-berth-since-17/' },
@@ -105,7 +107,7 @@ const STAT_BAR = [
   { num: "'25", label: 'Sectional Champions', sub: 'North 2, Group 5 — first title in program history' },
   { num: '3-1', label: '2025 Playoff Record', sub: 'Linden · Union City · Bayonne · Passaic Co. Tech' },
   { num: '4×', label: 'Sectional Finalists', sub: '2015 · 2016 · 2017 · 2025' },
-  { num: '3rd', label: 'Season As Head Coach', sub: 'D.J. Catalano, entering his 4th year at BRHS' },
+  { num: '4th', label: 'Season As Head Coach', sub: 'D.J. Catalano, entering his 5th year at BRHS' },
 ];
 
 const SEASON_TRACKER = [
