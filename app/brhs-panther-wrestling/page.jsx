@@ -5,9 +5,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Lightbox from '@/components/Lightbox';
 import styles from './page.module.css';
+import { getRecord, getNextMatch } from '@/lib/teamSchedule';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Wrestling';
+
+// TIER 1 REFACTOR (2026-07-10): dual-meet schedule for 2026-27. MaxPreps has
+// not published one yet (confirmed empty as of this writing), so this starts
+// empty and Record/Next Match below fall back to the honest "preseason" text.
+// Once dates are released, add entries here the same way as the football
+// SCHEDULE_2026 array — { date, opponent, home, result: null } — and Record /
+// Next Match in SEASON_TRACKER will start deriving automatically. Tournament
+// placements (Districts/Regions/States) still go in RESULTS_2025_26 below as
+// hand-written result strings — those aren't simple win/loss and shouldn't be
+// forced into this array. See lib/teamSchedule.js for why.
+const DUAL_SCHEDULE_2026_27 = [];
 
 // Only genuine wrestling action photos — no cross-sport placeholders.
 const PHOTOS = [
@@ -68,16 +80,16 @@ const STAT_BAR = [
   { num: '2', label: '2026 State Medalists', sub: 'Levash (6th) · McCann (8th)' },
 ];
 
-// Live season tracker — this is the one block that needs a manual touch each
-// week once dual meets start (update RECORD after every match, NEXT_MATCH as
-// the schedule fills in, LATEST_RESULT after each meet, RANKINGS once NJ's
-// preseason polls publish in the fall). Everything here is honestly labeled
-// "preseason" because as of this writing (July 2026) the 2026-27 season has
-// not started — MaxPreps confirms no schedule is posted yet, and NJ's
-// wrestling preseason polls don't publish until the fall.
+// Live season tracker. Record and Next Match now derive from
+// DUAL_SCHEDULE_2026_27 above (Tier 1 refactor, 2026-07-10) — add matches to
+// that array as they're scheduled/wrestled and these two update themselves.
+// Latest Result stays manual: RESULTS_2025_26 is a curated highlights list,
+// not a full dual-meet log, so "most recent entry" isn't reliably derivable
+// the way it is for football's game-by-game schedule. Current Rankings stays
+// manual until NJ's preseason polls publish in the fall.
 const SEASON_TRACKER = [
-  { label: 'Record', value: 'Preseason · 0–0', href: '#results' },
-  { label: 'Next Match', value: 'TBA — Opens Late Nov 2026', href: '#results' },
+  { label: 'Record', value: getRecord(DUAL_SCHEDULE_2026_27), href: '#results' },
+  { label: 'Next Match', value: getNextMatch(DUAL_SCHEDULE_2026_27, 'TBA — Opens Late Nov 2026'), href: '#results' },
   { label: 'Latest Result', value: '2026 States: 2 Medalists', href: '#results' },
   { label: 'Current Rankings', value: 'Not Yet Released', href: '#results' },
   { label: 'Latest Gallery', value: '2025-26 Season — Live', href: 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Wrestling', external: true },

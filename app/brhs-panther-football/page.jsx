@@ -6,9 +6,22 @@ import Link from 'next/link';
 import Lightbox from '@/components/Lightbox';
 import Testimonials from '@/components/Testimonials';
 import styles from './page.module.css';
+import { getRecord, getNextMatch, getLatestResult, getCoachTenure, ordinal } from '@/lib/teamSchedule';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Football';
+
+// Bump CURRENT_SEASON_YEAR once a year — coach tenure (STAT_BAR + COACHES
+// title below) derives from these instead of being hand-typed in two places,
+// which is exactly how the "3rd Season" stat went stale last time.
+const HEAD_COACH_START_YEAR = 2023; // Catalano's first season as head coach
+const JOINED_PROGRAM_YEAR = 2022;   // Catalano's first year at BRHS (as DC)
+const CURRENT_SEASON_YEAR = 2026;
+const COACH_TENURE = getCoachTenure({
+  headCoachStartYear: HEAD_COACH_START_YEAR,
+  joinedProgramYear: JOINED_PROGRAM_YEAR,
+  currentSeasonYear: CURRENT_SEASON_YEAR,
+});
 
 // Only genuine football action photos — no cross-sport placeholders.
 const PHOTOS = [
@@ -35,14 +48,19 @@ const CAROUSEL = [
   { src: '/photos/SPORTS-Zarcone-Photography-0088.jpg', width: 1600, height: 1066, caption: '2025: A Season For The Record Books' },
 ];
 
-// 2026 schedule as published by MaxPreps / NJ Skyland Conference (subject to change — confirm kickoff times before heading to games).
+// 2026 schedule as published by MaxPreps / Big Central Conference (subject to change — confirm kickoff times before heading to games).
+// TIER 1: `result` is the single source of truth for this season. Leave it
+// `null` until the game is played, then set it to { win: true/false, score:
+// '21–14' } — Record, Next Game, and Latest Result in SEASON_TRACKER below
+// all derive from this array automatically. Don't also hand-edit those three
+// lines; that duplication is what goes stale.
 const SCHEDULE_2026 = [
-  { date: 'Thu, Aug 27', time: '7:00 PM', opponent: 'at Woodbridge', home: false },
-  { date: 'Thu, Sep 10', time: '6:00 PM', opponent: 'vs Hillsborough', home: true, league: true },
-  { date: 'Fri, Sep 18', time: '6:00 PM', opponent: 'vs Ridge', home: true, league: true },
-  { date: 'Fri, Oct 2', time: '6:00 PM', opponent: 'vs Hunterdon Central', home: true },
-  { date: 'Fri, Oct 9', time: '7:00 PM', opponent: 'at Union', home: false },
-  { date: 'Fri, Oct 16', time: '7:00 PM', opponent: 'at Phillipsburg', home: false, league: true },
+  { date: 'Thu, Aug 27', time: '7:00 PM', opponent: 'at Woodbridge', home: false, result: null },
+  { date: 'Thu, Sep 10', time: '6:00 PM', opponent: 'vs Hillsborough', home: true, league: true, result: null },
+  { date: 'Fri, Sep 18', time: '6:00 PM', opponent: 'vs Ridge', home: true, league: true, result: null },
+  { date: 'Fri, Oct 2', time: '6:00 PM', opponent: 'vs Hunterdon Central', home: true, result: null },
+  { date: 'Fri, Oct 9', time: '7:00 PM', opponent: 'at Union', home: false, result: null },
+  { date: 'Fri, Oct 16', time: '7:00 PM', opponent: 'at Phillipsburg', home: false, league: true, result: null },
 ];
 
 // Real coverage of the program — no invented headlines.
@@ -107,13 +125,13 @@ const STAT_BAR = [
   { num: "'25", label: 'Sectional Champions', sub: 'North 2, Group 5 — first title in program history' },
   { num: '3-1', label: '2025 Playoff Record', sub: 'Linden · Union City · Bayonne · Passaic Co. Tech' },
   { num: '4×', label: 'Sectional Finalists', sub: '2015 · 2016 · 2017 · 2025' },
-  { num: '4th', label: 'Season As Head Coach', sub: 'D.J. Catalano, entering his 5th year at BRHS' },
+  { num: ordinal(COACH_TENURE.seasonNumber), label: 'Season As Head Coach', sub: `D.J. Catalano, entering his ${ordinal(COACH_TENURE.yearsAtSchool)} year at BRHS` },
 ];
 
 const SEASON_TRACKER = [
-  { label: 'Record', value: 'Preseason · 0–0', href: '#schedule' },
-  { label: 'Next Game', value: 'Aug 27 — at Woodbridge', href: '#schedule' },
-  { label: 'Latest Result', value: '2025: Sectional Champions', href: '#results' },
+  { label: 'Record', value: getRecord(SCHEDULE_2026), href: '#schedule' },
+  { label: 'Next Game', value: getNextMatch(SCHEDULE_2026, 'Season Complete'), href: '#schedule' },
+  { label: 'Latest Result', value: getLatestResult(SCHEDULE_2026, '2025: Sectional Champions'), href: '#results' },
   { label: 'Current Rankings', value: 'Not Yet Released', href: '#results' },
   { label: 'Latest Gallery', value: '2025–26 Season — Live', href: SEASON_GALLERY_URL, external: true },
 ];
@@ -121,7 +139,7 @@ const SEASON_TRACKER = [
 const COACHES = [
   {
     name: 'D.J. Catalano',
-    title: 'Head Varsity Football Coach · 3rd Season · 4th Year at BRHS',
+    title: `Head Varsity Football Coach · ${ordinal(COACH_TENURE.seasonNumber)} Season · ${ordinal(COACH_TENURE.yearsAtSchool)} Year at BRHS`,
     bio: 'Catalano joined the Bridgewater-Raritan program four years ago, spending his first season under then-head coach Rick Mantz before taking over as head coach. Entering his third year leading the program in 2025, he guided the Panthers to their first sectional championship in school history.',
   },
 ];
@@ -344,7 +362,7 @@ export default function BRHSPantherFootballPage() {
                 <td data-label="Date">{g.date}</td>
                 <td data-label="Time">{g.time}</td>
                 <td data-label="Opponent">{g.opponent}{g.league && <span className={styles.leagueTag}>League</span>}</td>
-                <td className={styles.resultCell} data-label="Result">—</td>
+                <td className={styles.resultCell} data-label="Result">{g.result ? `${g.result.win ? 'W' : 'L'} ${g.result.score}` : '—'}</td>
               </tr>
             ))}
           </tbody>
