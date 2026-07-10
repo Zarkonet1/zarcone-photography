@@ -40,13 +40,15 @@ const RESULTS_2025_26 = [
   { date: 'Dec 13, 2025', event: 'Mike Dessino Invitational — Middlesex', result: 'Season Opener' },
   { date: 'Feb 18, 2026', event: 'NJSIAA North 2, Group 5 Sectional Final vs. Union', result: 'W, 33–29', league: true },
   { date: 'Feb 20, 2026', event: 'NJSIAA Group 5 State Semifinal at Old Bridge', result: 'L, 37–30' },
-  { date: 'Feb 28, 2026', event: 'NJSIAA District 14 Tournament — South Plainfield', result: 'Qualifiers Advance' },
-  { date: 'Mar 6–7, 2026', event: 'NJSIAA Region 4 Tournament — Union HS', result: 'Qualifiers Advance' },
+  { date: 'Feb 28, 2026', event: 'NJSIAA District 14 Tournament — South Plainfield', result: '3 Champions: McCann, Levash, Vella' },
+  { date: 'Mar 6–7, 2026', event: 'NJSIAA Region 4 Tournament — Union HS', result: 'Levash Wins Region 4 (HWT)' },
   { date: 'Mar 12–14, 2026', event: 'NJSIAA Individual State Tournament — Boardwalk Hall, AC', result: '2 State Medalists', league: true },
 ];
 
 // Real coverage of the program — no invented headlines.
 const ARTICLES = [
+  { title: 'Bridgewater-Raritan Wrestlers Secure 3 District Titles, 7 Qualify For Regionals', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/bridgewater-raritan-wrestlers-secure-3-district-titles-7-qualify-regionals' },
+  { title: 'Three Bridgewater-Raritan High School Wrestlers Advance To State Tournament', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/sections/sports/articles/three-bridgewater-raritan-high-school-wrestlers-advance-to-state-tournament' },
   { title: 'Bridgewater-Raritan Panther Wrestlers Capture NJSIAA Group 5 North 2 Sectional Championship', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/sections/sports/articles/bridgewater-raritan-panther-wrestlers-capture-njsiaa-group-5-north-2-sectional-championship' },
   { title: 'Bridgewater-Raritan High School Is A State Sectional Wrestling Champion For The Second Straight Year', source: 'BRHS Athletics', url: 'https://www.brrsd.org/o/brrhs/article/2721263' },
   { title: 'Two Bridgewater-Raritan Wrestlers Earn State Medals At 2026 Tournament', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/two-bridgewater-raritan-wrestlers-earn-state-medals-2026-tournament' },
@@ -85,7 +87,7 @@ const COACHES = [
   {
     name: 'Kyle Murphy',
     title: 'Head Varsity Wrestling Coach · Since 2021-22',
-    bio: 'A 2016 Bridgewater-Raritan graduate, Murphy wrestled Division I at Bloomsburg University before returning home to lead the program he came up in. He also teaches special education at BRHS and coaches freshman football.',
+    bio: 'A 2016 Bridgewater-Raritan graduate, Murphy wrestled Division I at Bloomsburg University before returning home to lead the program he came up in. He also teaches special education at BRHS and coaches freshman football. Murphy was named the District 14 Coach of the Year for 2026 after guiding the Panthers to a second straight North 2, Group 5 sectional title with a rebuilt lineup of eight new starters.',
     philosophy: 'Murphy’s program is built on one word — grit: facing adversity, not giving up, and wrestling for the guy next to you, not just yourself.',
   },
 ];
@@ -94,7 +96,7 @@ const COACHES = [
 const FEATURED_WRESTLER = {
   name: 'Trent Levash',
   detail: 'Junior · Heavyweight',
-  bio: 'A two-time state qualifier who placed 6th at heavyweight at the 2026 NJSIAA Individual Tournament at Boardwalk Hall. Levash is confirmed to return for 2026-27 — "we get Trent back for two more years," said Coach Murphy — with two more seasons to chase a state title.',
+  bio: 'A two-time District 14 champion (215 lbs in 2025, heavyweight in 2026) who won the Region 4 title at heavyweight to improve to 29-1 this season, then placed 6th at the 2026 NJSIAA Individual Tournament at Boardwalk Hall. Levash is confirmed to return for 2026-27 — "we get Trent back for two more years," said Coach Murphy — with two more seasons to chase a state title.',
 };
 
 const SEASONS = [
