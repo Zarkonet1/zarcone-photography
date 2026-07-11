@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Lightbox from '@/components/Lightbox';
 import Testimonials from '@/components/Testimonials';
+import GalleryAlertSignup from '@/components/GalleryAlertSignup';
 import styles from './page.module.css';
 import { getRecord, getNextMatch, getLatestResult, getCoachTenure, ordinal } from '@/lib/teamSchedule';
 
@@ -490,6 +491,20 @@ export default function BRHSPantherFootballPage() {
           <span className={styles.noticeDot} />
           Looking for a specific game? The full <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>2025–26 season gallery</a> is live now. 2026 season galleries post here after each game.
         </div>
+
+        <GalleryAlertSignup
+          team="Football"
+          source="BRHS Panther Football — Gallery Alert"
+          colors={{
+            accent: 'var(--br-red)',
+            accentDark: 'var(--br-red-dark)',
+            text: 'var(--br-silver)',
+            textSoft: 'var(--br-silver-dim)',
+            bg: 'rgba(255,255,255,0.03)',
+            border: 'rgba(200,16,46,0.35)',
+            btnText: '#fff',
+          }}
+        />
 
         <div className={styles.galleryFooter} style={{ marginTop: 0, marginBottom: 36, justifyContent: 'flex-start', gap: 14 }}>
           <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>Browse 2025–26 Season Gallery</a>

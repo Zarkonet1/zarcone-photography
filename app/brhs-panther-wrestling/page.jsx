@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Lightbox from '@/components/Lightbox';
+import GalleryAlertSignup from '@/components/GalleryAlertSignup';
 import styles from './page.module.css';
 import { getRecord, getNextMatch } from '@/lib/teamSchedule';
 
@@ -460,6 +461,20 @@ export default function BRHSPantherWrestlingPage() {
           <span className={styles.noticeDot} />
           Looking for a specific meet? The full <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>2025–26 season gallery</a> is live now. 2026-27 season galleries post here after each meet.
         </div>
+
+        <GalleryAlertSignup
+          team="Wrestling"
+          source="BRHS Panther Wrestling — Gallery Alert"
+          colors={{
+            accent: 'var(--bp-navy)',
+            accentDark: 'var(--bp-navy-deep)',
+            text: 'var(--bp-navy-deep)',
+            textSoft: 'var(--bp-navy-soft)',
+            bg: 'var(--bp-white)',
+            border: 'var(--bp-navy)',
+            btnText: 'var(--bp-white)',
+          }}
+        />
 
         <div className={styles.galleryFooter} style={{ marginTop: 0, marginBottom: 36, justifyContent: 'flex-start', gap: 14 }}>
           <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>Browse 2025–26 Season Gallery</a>
