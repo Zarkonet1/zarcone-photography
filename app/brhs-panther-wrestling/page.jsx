@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Lightbox from '@/components/Lightbox';
 import GalleryAlertSignup from '@/components/GalleryAlertSignup';
+import GalleryAlertToast from '@/components/GalleryAlertToast';
 import styles from './page.module.css';
 import { getRecord, getNextMatch } from '@/lib/teamSchedule';
 
@@ -225,6 +226,21 @@ export default function BRHSPantherWrestlingPage() {
   return (
     <div className={styles.wrap}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
+      <GalleryAlertToast
+        team="Wrestling"
+        source="BRHS Panther Wrestling — Gallery Alert Toast"
+        dismissKey="gr-alert-dismissed-wrestling"
+        colors={{
+          accent: 'var(--bp-navy)',
+          accentDark: 'var(--bp-navy-deep)',
+          text: 'var(--bp-navy-deep)',
+          textSoft: 'var(--bp-navy-soft)',
+          bg: 'var(--bp-white)',
+          border: 'var(--bp-navy)',
+          btnText: 'var(--bp-white)',
+        }}
+      />
 
       {/* ── Hero ────────────────────────────────────────────────── */}
       <section className={styles.hero}>

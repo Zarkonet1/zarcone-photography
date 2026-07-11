@@ -18,6 +18,7 @@ export default function GalleryAlertSignup({
   team,           // "Wrestling" | "Football" — used in copy + backend routing
   source,         // e.g. "BRHS Panther Wrestling — Gallery Alert"
   colors = {},
+  compact = false, // stacked layout for narrow containers (e.g. the toast card)
 }) {
   const {
     accent = 'currentColor',
@@ -51,7 +52,7 @@ export default function GalleryAlertSignup({
 
   return (
     <div
-      className={styles.card}
+      className={`${styles.card} ${compact ? styles.compact : ''}`}
       style={{ '--gr-accent': accent, '--gr-accent-dark': accentDark, '--gr-text': text, '--gr-text-soft': textSoft, '--gr-bg': bg, '--gr-border': border, '--gr-btn-text': btnText }}
     >
       <div className={styles.copy}>

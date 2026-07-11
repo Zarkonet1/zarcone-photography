@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Lightbox from '@/components/Lightbox';
 import Testimonials from '@/components/Testimonials';
 import GalleryAlertSignup from '@/components/GalleryAlertSignup';
+import GalleryAlertToast from '@/components/GalleryAlertToast';
 import styles from './page.module.css';
 import { getRecord, getNextMatch, getLatestResult, getCoachTenure, ordinal } from '@/lib/teamSchedule';
 
@@ -241,6 +242,21 @@ export default function BRHSPantherFootballPage() {
     <div className={styles.wrap}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventLd) }} />
+
+      <GalleryAlertToast
+        team="Football"
+        source="BRHS Panther Football — Gallery Alert Toast"
+        dismissKey="gr-alert-dismissed-football"
+        colors={{
+          accent: 'var(--br-red)',
+          accentDark: 'var(--br-red-dark)',
+          text: 'var(--br-silver)',
+          textSoft: 'var(--br-silver-dim)',
+          bg: '#141414',
+          border: 'rgba(200,16,46,0.45)',
+          btnText: '#fff',
+        }}
+      />
 
       {/* ── Hero ────────────────────────────────────────────────── */}
       <section className={styles.hero}>
