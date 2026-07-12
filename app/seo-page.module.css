@@ -119,6 +119,7 @@
   margin: 48px 0 40px;
 }
 .previewImg {
+  position: relative;
   aspect-ratio: 3/4;
   overflow: hidden;
 }

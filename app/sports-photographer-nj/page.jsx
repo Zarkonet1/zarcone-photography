@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import styles from '@/app/seo-page.module.css';
 
@@ -189,7 +190,12 @@ export default function SportsPhotographerNJ() {
         <div className={styles.previewGrid}>
           {PREVIEWS.map((src, i) => (
             <div key={i} className={styles.previewImg}>
-              <img src={src} alt="Sports photography — New Jersey" loading="lazy" decoding="async" />
+              <Image
+                src={src}
+                alt="Sports photography — New Jersey"
+                fill
+                sizes="(max-width: 640px) 50vw, 25vw"
+              />
             </div>
           ))}
         </div>
