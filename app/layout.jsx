@@ -46,8 +46,10 @@ const jsonLd = {
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: '726 Route 202 South, Suite 320 #369',
     addressLocality: 'Bridgewater',
     addressRegion: 'NJ',
+    postalCode: '08807',
     addressCountry: 'US',
   },
   geo: {
