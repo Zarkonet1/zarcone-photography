@@ -2,6 +2,7 @@ import './globals.css';
 import Nav from '@/components/Nav';
 import AnnouncementBar from '@/components/AnnouncementBar';
 import Footer from '@/components/Footer';
+import ChatWidget from '@/components/ChatWidget';
 import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
@@ -94,6 +95,7 @@ export default function RootLayout({ children }) {
         <AnnouncementBar />
         <main style={{ paddingTop: 'var(--bar-h)' }}>{children}</main>
         <Footer />
+        <ChatWidget />
         <Analytics />
       </body>
     </html>
