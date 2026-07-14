@@ -27,6 +27,17 @@ const LEAD_TOOL = {
   },
 };
 
+// Defense-in-depth: the system prompt tells the model to never use markdown,
+// but strip common artifacts anyway since the widget renders plain text only.
+function stripMarkdown(text) {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '$1') // **bold**
+    .replace(/\*(.*?)\*/g, '$1')     // *italic*
+    .replace(/^#{1,6}\s+/gm, '')     // # headers
+    .replace(/^\s*[-*]\s+/gm, '')    // - bullet / * bullet
+    .replace(/^\s*\d+\.\s+/gm, '');  // 1. numbered list
+}
+
 async function sendLeadEmail(fields) {
   const hasContactMethod = (fields.email && fields.email.trim()) || (fields.phone && fields.phone.trim());
   if (!fields.name || !fields.name.trim() || !hasContactMethod) {
@@ -110,11 +121,12 @@ export async function POST(request) {
       await sendLeadEmail(toolUse.input || {});
     }
 
-    let reply = response.content
-      .filter(block => block.type === 'text')
-      .map(block => block.text)
-      .join('\n')
-      .trim();
+    let reply = stripMarkdown(
+      response.content
+        .filter(block => block.type === 'text')
+        .map(block => block.text)
+        .join('\n')
+    ).trim();
 
     if (!reply && toolUse) {
       reply = "Thanks — I've sent that to Tom and he'll follow up within 24 hours.";
