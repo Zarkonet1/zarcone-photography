@@ -105,11 +105,23 @@ export async function POST(request) {
   }
 
   try {
+    const nowET = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York',
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    }).format(new Date());
+    const systemPrompt = `${SYSTEM_PROMPT}\n\nRIGHT NOW: it is ${nowET} (Eastern Time, business's local time zone). Use this to answer hours/open-now questions against the published hours above.`;
+
     const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
     const response = await anthropic.messages.create({
       model: MODEL,
       max_tokens: 500,
-      system: SYSTEM_PROMPT,
+      system: systemPrompt,
       messages: cleaned,
       tools: [LEAD_TOOL],
     });
