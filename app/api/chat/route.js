@@ -27,6 +27,30 @@ const LEAD_TOOL = {
   },
 };
 
+const ESCALATE_TOOL = {
+  name: 'escalate_to_human',
+  description:
+    "Alert Tom immediately by email that this conversation needs his direct attention — the visitor asked for a real person, asked something outside what you're able to answer, or seems frustrated/unhappy. This fires a real-time alert, separate from and in addition to submit_lead_inquiry — call both if both apply. Call this at most once per conversation unless the situation changes materially.",
+  input_schema: {
+    type: 'object',
+    properties: {
+      reason: {
+        type: 'string',
+        description: 'Short category for why this needs Tom: e.g. "asked for a human", "question outside knowledge base", "frustrated/unhappy visitor", "complaint".',
+      },
+      summary: {
+        type: 'string',
+        description: "One or two sentences summarizing what the visitor wants or is asking, in your own words.",
+      },
+      contact_info: {
+        type: 'string',
+        description: "Any name, email, or phone the visitor has shared so far, if any. Leave empty string if none given yet.",
+      },
+    },
+    required: ['reason', 'summary'],
+  },
+};
+
 // Defense-in-depth: the system prompt tells the model to never use markdown,
 // but strip common artifacts anyway since the widget renders plain text only.
 // Known internal route paths — if the model slips and echoes one of these raw
@@ -83,6 +107,34 @@ async function sendLeadEmail(fields) {
   }
 }
 
+async function sendEscalationEmail(fields, recentMessages) {
+  if (!process.env.RESEND_API_KEY) return;
+
+  const transcript = (recentMessages || [])
+    .slice(-8)
+    .map(m => `${m.role === 'user' ? 'Visitor' : 'Bot'}: ${m.content}`)
+    .join('\n');
+
+  try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    await resend.emails.send({
+      from: 'Zarcone Photography <noreply@zarconephotography.com>',
+      to: 'tom.zarcone@mac.com',
+      subject: `Chat needs you now — ${fields.reason || 'escalation'}`,
+      html: `
+        <h2>Live Chat Escalation</h2>
+        <p><strong>Reason:</strong> ${fields.reason || 'Not specified'}</p>
+        <p><strong>Summary:</strong> ${fields.summary || 'Not specified'}</p>
+        ${fields.contact_info && fields.contact_info.trim() ? `<p><strong>Contact info given:</strong> ${fields.contact_info}</p>` : '<p><strong>Contact info given:</strong> none yet</p>'}
+        <p><strong>Recent conversation:</strong></p>
+        <pre style="white-space: pre-wrap; font-family: inherit;">${transcript}</pre>
+      `,
+    });
+  } catch (err) {
+    console.error('Escalation email error:', err);
+  }
+}
+
 export async function POST(request) {
   if (!process.env.ANTHROPIC_API_KEY) {
     return NextResponse.json(
@@ -132,7 +184,7 @@ export async function POST(request) {
       max_tokens: 500,
       system: systemPrompt,
       messages: cleaned,
-      tools: [LEAD_TOOL],
+      tools: [LEAD_TOOL, ESCALATE_TOOL],
     });
 
     const toolUse = response.content.find(block => block.type === 'tool_use' && block.name === 'submit_lead_inquiry');
@@ -142,6 +194,11 @@ export async function POST(request) {
       await sendLeadEmail(toolUse.input || {});
     }
 
+    const escalation = response.content.find(block => block.type === 'tool_use' && block.name === 'escalate_to_human');
+    if (escalation) {
+      await sendEscalationEmail(escalation.input || {}, cleaned);
+    }
+
     let reply = stripMarkdown(
       response.content
         .filter(block => block.type === 'text')
@@ -149,8 +206,12 @@ export async function POST(request) {
         .join('\n')
     ).trim();
 
-    if (!reply && toolUse) {
+    if (!reply && toolUse && escalation) {
+      reply = "Thanks — I've sent that to Tom and flagged this for him to jump in directly. He'll follow up as soon as he can.";
+    } else if (!reply && toolUse) {
       reply = "Thanks — I've sent that to Tom and he'll follow up within 24 hours.";
+    } else if (!reply && escalation) {
+      reply = "I've let Tom know he's needed here directly — he'll follow up as soon as he can.";
     }
 
     return NextResponse.json({ reply: reply || "Sorry, I didn't catch that — could you rephrase?" });
