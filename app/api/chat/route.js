@@ -29,13 +29,22 @@ const LEAD_TOOL = {
 
 // Defense-in-depth: the system prompt tells the model to never use markdown,
 // but strip common artifacts anyway since the widget renders plain text only.
+// Known internal route paths — if the model slips and echoes one of these raw
+// into a reply (e.g. "/about#contact"), strip it out rather than show a dead,
+// unclickable path to a visitor.
+const KNOWN_PATHS = /\/(about|pricing|faq|sports|portraits|events|design|portrait-parties|blog|news)(#[a-z0-9-]+)?/gi;
+
 function stripMarkdown(text) {
   return text
     .replace(/\*\*(.*?)\*\*/g, '$1') // **bold**
     .replace(/\*(.*?)\*/g, '$1')     // *italic*
     .replace(/^#{1,6}\s+/gm, '')     // # headers
     .replace(/^\s*[-*]\s+/gm, '')    // - bullet / * bullet
-    .replace(/^\s*\d+\.\s+/gm, '');  // 1. numbered list
+    .replace(/^\s*\d+\.\s+/gm, '')   // 1. numbered list
+    .replace(KNOWN_PATHS, '')        // stray raw route paths
+    .replace(/\n{2,}/g, ' ')         // collapse blank-line paragraph breaks into one paragraph
+    .replace(/\n/g, ' ')             // collapse any remaining single line breaks too
+    .replace(/[ \t]{2,}/g, ' ');     // tidy up any double spaces that leaves behind
 }
 
 async function sendLeadEmail(fields) {
