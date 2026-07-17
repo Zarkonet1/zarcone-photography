@@ -154,9 +154,9 @@ const COACHES = [
 ];
 
 const FEATURED_PLAYER = {
-  name: 'Denzel Amoafo',
+  name: 'Jahmier Black',
   detail: 'Senior · Running Back',
-  bio: "Amoafo returns for his senior season as the Panthers' leading returning rusher, after piling up 530 yards and 5 touchdowns as a junior in 2025 — a season that ended with Bridgewater-Raritan's first sectional championship in program history.",
+  bio: "Black steps in as the full-time starter at running back for his senior season, after rushing for 978 yards and 7 touchdowns as a co-starter in 2025 — a season that ended with Bridgewater-Raritan's first sectional championship in program history. He's drawing FCS interest from programs including Stony Brook and LIU, per PJR Sports Report's 2026 team preview.",
 };
 
 // 2025 playoff run only — the confirmed, sourced portion of the season.
