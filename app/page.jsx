@@ -240,7 +240,7 @@ export default function Home() {
           <p className="eyebrow">Get In Touch</p>
           <h2 className={styles.contactH2}>Let's make something<br />worth keeping.</h2>
           <p className={styles.contactP}>
-            You describe the moment you want captured. I'll handle everything else — location, timing, and a gallery delivered within days, not weeks. Response guaranteed within 24 hours.
+            You describe the moment you want captured. I'll handle everything else — location, timing, and a gallery turnaround built around the project: days for sports and portraits, a few weeks for full event coverage. Response guaranteed within 24 hours.
           </p>
           <Link href="/about#contact" className="btn btn-solid">Send a Message</Link>
           <div className={styles.contactMeta}>
