@@ -79,7 +79,7 @@ const PACKAGES = [
       'Custom composite design built around your photos',
       'Print-ready files at exact print dimensions (poster, banner, card)',
       'Web and social-ready files included',
-      'Revisions included until you love it',
+      'Two formal revision rounds included — small tweaks along the way don\'t count against that',
       'Rush turnaround available',
     ],
     note: 'Team and bulk order pricing available.',
