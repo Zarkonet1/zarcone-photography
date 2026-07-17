@@ -33,7 +33,7 @@ const PACKAGES = [
     pain: 'Most clients come to us after a session that felt rushed and delivered images that looked like everyone else\'s. Here\'s what\'s included instead:',
     includes: [
       'Unhurried on-location or studio session',
-      'Professional editing delivered within 7–10 business days',
+      'Professional editing typically delivered within 7–10 business days',
       'Private online gallery, yours to access anytime',
       'Full-resolution files — print at any size, forever',
       'Print ordering available through the gallery',
@@ -49,7 +49,7 @@ const PACKAGES = [
     includes: [
       'Coverage from every angle, with equipment built for fast action in any light',
       'Action and portrait photography in one session',
-      'Professionally edited and delivered within 5–7 business days',
+      'Professionally edited and typically delivered within 5–7 business days',
       'Full-resolution files — download, print, share',
       'Custom graphic design add-on available (senior posters, sports graphics)',
     ],
@@ -63,7 +63,7 @@ const PACKAGES = [
     pain: 'Your event happens once. Here\'s what full coverage actually looks like:',
     includes: [
       'Full event coverage from arrival to final moments',
-      'Professionally edited and delivered within 2 weeks',
+      'Professionally edited and typically delivered within 2–3 weeks — up to 6 for larger or multi-day events',
       'Private online gallery, yours to access forever',
       'Full-resolution files — download, print, share at any size',
       'Videography add-on available',

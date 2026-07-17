@@ -48,7 +48,7 @@ export default function Terms() {
 
         <h2>Image Delivery</h2>
         <p>
-          Edited images will be delivered within the timeframe specified in your booking agreement, typically 2–4 weeks for portrait sessions and 3–6 weeks for events. Delivery is via online gallery. Raw (unedited) files are not included and are not available for purchase.
+          Edited images will be delivered within the timeframe specified in your booking agreement, typically 7–10 business days for portrait sessions and 2–3 weeks for events (up to 6 weeks for larger or multi-day events). Delivery is via online gallery. Raw (unedited) files are not included and are not available for purchase.
         </p>
 
         <h2>Model Release</h2>

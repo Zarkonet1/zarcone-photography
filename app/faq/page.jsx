@@ -69,7 +69,7 @@ const FAQS = [
       },
       {
         q: 'How long until I receive my photos?',
-        a: 'Portrait sessions: 2–4 weeks. Events: 3–6 weeks. Rush delivery may be available for an additional fee — ask when booking if timing is a concern.',
+        a: 'Portrait sessions: typically 7–10 business days. Events: typically 2–3 weeks — larger or multi-day events may take up to 6. Rush delivery may be available for an additional fee — ask when booking if timing is a concern.',
       },
       {
         q: 'How are photos delivered?',
