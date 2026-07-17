@@ -8,6 +8,7 @@ import GalleryAlertSignup from '@/components/GalleryAlertSignup';
 import GalleryAlertToast from '@/components/GalleryAlertToast';
 import styles from './page.module.css';
 import { getRecord, getNextMatch } from '@/lib/teamSchedule';
+import { sortArticlesByDate, isRecentArticle } from '@/lib/articles';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Wrestling';
@@ -59,16 +60,21 @@ const RESULTS_2025_26 = [
   { date: 'Mar 12–14, 2026', event: 'NJSIAA Individual State Tournament — Boardwalk Hall, AC', result: '2 State Medalists', league: true },
 ];
 
-// Real coverage of the program — no invented headlines.
+// Real coverage of the program — no invented headlines. `date` is the
+// article's real publish date, confirmed against the source where possible;
+// a couple (marked below) are close estimates tied to the confirmed event
+// date. This field drives both the sort order and the "NEW" badge — see
+// lib/articles.js — so the array below does NOT need to be kept in manual
+// chronological order.
 const ARTICLES = [
-  { title: 'Bridgewater-Raritan Wrestlers Secure 3 District Titles, 7 Qualify For Regionals', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/bridgewater-raritan-wrestlers-secure-3-district-titles-7-qualify-regionals' },
-  { title: 'Three Bridgewater-Raritan High School Wrestlers Advance To State Tournament', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/sections/sports/articles/three-bridgewater-raritan-high-school-wrestlers-advance-to-state-tournament' },
-  { title: 'Bridgewater-Raritan Panther Wrestlers Capture NJSIAA Group 5 North 2 Sectional Championship', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/sections/sports/articles/bridgewater-raritan-panther-wrestlers-capture-njsiaa-group-5-north-2-sectional-championship' },
-  { title: 'Bridgewater-Raritan High School Is A State Sectional Wrestling Champion For The Second Straight Year', source: 'BRHS Athletics', url: 'https://www.brrsd.org/o/brrhs/article/2721263' },
-  { title: 'Two Bridgewater-Raritan Wrestlers Earn State Medals At 2026 Tournament', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/two-bridgewater-raritan-wrestlers-earn-state-medals-2026-tournament' },
-  { title: 'Bridgewater-Raritan Wrestlers Advance To Quarterfinals Of State Wrestling Tournament', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/bridgewater-raritan-wrestlers-advance-quarterfinals-state-wrestling' },
-  { title: "Bridgewater-Raritan's Wrestling Team Confident After Historical Season", source: 'The Prowler (BRHS Student News)', url: 'https://brhsprowler.org/5067/sports/bridgewater-raritans-wrestling-team-confident-for-the-season/' },
-  { title: 'Bridgewater-Raritan Ended As Group 5 State Wrestling Runner-Up To Conclude A Memorable Dual Season', source: 'BRHS Athletics', url: 'https://www.brrsd.org/o/brhs/article/2033205' },
+  { title: 'Two Bridgewater-Raritan Wrestlers Earn State Medals At 2026 Tournament', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/two-bridgewater-raritan-wrestlers-earn-state-medals-2026-tournament', date: '2026-03-17' },
+  { title: 'Bridgewater-Raritan Wrestlers Advance To Quarterfinals Of State Wrestling Tournament', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/bridgewater-raritan-wrestlers-advance-quarterfinals-state-wrestling', date: '2026-03-13' },
+  { title: 'Three Bridgewater-Raritan High School Wrestlers Advance To State Tournament', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/sections/sports/articles/three-bridgewater-raritan-high-school-wrestlers-advance-to-state-tournament', date: '2026-03-08' },
+  { title: 'Bridgewater-Raritan Wrestlers Secure 3 District Titles, 7 Qualify For Regionals', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/bridgewater-raritan-wrestlers-secure-3-district-titles-7-qualify-regionals', date: '2026-03-07' },
+  { title: 'Bridgewater-Raritan Panther Wrestlers Capture NJSIAA Group 5 North 2 Sectional Championship', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/sections/sports/articles/bridgewater-raritan-panther-wrestlers-capture-njsiaa-group-5-north-2-sectional-championship', date: '2026-02-19' /* estimate — sectional final was Feb 18; exact publish date not confirmed */ },
+  { title: 'Bridgewater-Raritan High School Is A State Sectional Wrestling Champion For The Second Straight Year', source: 'BRHS Athletics', url: 'https://www.brrsd.org/o/brrhs/article/2721263', date: '2026-02-19' /* estimate — same Feb 18 sectional final as above */ },
+  { title: "Bridgewater-Raritan's Wrestling Team Confident After Historical Season", source: 'The Prowler (BRHS Student News)', url: 'https://brhsprowler.org/5067/sports/bridgewater-raritans-wrestling-team-confident-for-the-season/', date: '2025-11-12' },
+  { title: 'Bridgewater-Raritan Ended As Group 5 State Wrestling Runner-Up To Conclude A Memorable Dual Season', source: 'BRHS Athletics', url: 'https://www.brrsd.org/o/brhs/article/2033205', date: '2025-02-16' /* prior (2024-25) season, kept for program history */ },
 ];
 
 // Program numbers — only figures confirmed via primary sources (BRRSD athletics
@@ -442,9 +448,12 @@ export default function BRHSPantherWrestlingPage() {
           <p className={styles.sectionSub}>Real coverage of the team, the sectional title defense, and the wrestlers — from local press and the school itself.</p>
         </div>
         <div className={styles.newsGrid}>
-          {ARTICLES.map((a, i) => (
+          {sortArticlesByDate(ARTICLES).map((a, i) => (
             <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" className={styles.newsCard}>
-              <span className={styles.newsSource}>{a.source}</span>
+              <span className={styles.newsBadgeRow}>
+                <span className={styles.newsSource}>{a.source}</span>
+                {isRecentArticle(a.date) && <span className={styles.newsNew}>New</span>}
+              </span>
               <span className={styles.newsTitle}>{a.title}</span>
               <span className={styles.newsLink}>Read Article →</span>
             </a>

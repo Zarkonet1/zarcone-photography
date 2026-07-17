@@ -470,6 +470,11 @@
   transition: background 0.2s;
 }
 .newsCard:hover { background: var(--bp-paper); }
+.newsBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .newsSource {
   font-size: 10px;
   font-weight: 800;
@@ -477,6 +482,16 @@
   text-transform: uppercase;
   color: var(--bp-navy);
   font-family: ui-monospace, 'SF Mono', 'Courier New', monospace;
+}
+.newsNew {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bp-white);
+  background: var(--bp-navy);
+  padding: 2px 7px;
+  border-radius: 3px;
 }
 .newsTitle {
   font-size: 16px;

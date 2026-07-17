@@ -397,12 +397,27 @@
   transition: background 0.2s;
 }
 .newsCard:hover { background: #0d0d0d; }
+.newsBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .newsSource {
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--br-red);
+}
+.newsNew {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--br-black);
+  background: var(--br-red);
+  padding: 2px 7px;
+  border-radius: 3px;
 }
 .newsTitle {
   font-size: 16px;

@@ -9,6 +9,7 @@ import GalleryAlertSignup from '@/components/GalleryAlertSignup';
 import GalleryAlertToast from '@/components/GalleryAlertToast';
 import styles from './page.module.css';
 import { getRecord, getNextMatch, getLatestResult, getCoachTenure, ordinal } from '@/lib/teamSchedule';
+import { sortArticlesByDate, isRecentArticle } from '@/lib/articles';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Football';
@@ -65,17 +66,22 @@ const SCHEDULE_2026 = [
   { date: 'Fri, Oct 16', time: '7:00 PM', opponent: 'at Phillipsburg', home: false, league: true, result: null },
 ];
 
-// Real coverage of the program — no invented headlines.
+// Real coverage of the program — no invented headlines. `date` is the
+// article's real publish date, confirmed against the source where possible;
+// a couple (marked below) are close estimates where an exact publish date
+// wasn't available but the event date was. This field drives both the sort
+// order and the "NEW" badge — see lib/articles.js — so the array below does
+// NOT need to be kept in manual chronological order.
 const ARTICLES = [
-  { title: 'Team Preview 2026: Bridgewater-Raritan Panthers', source: 'PJR Sports Report', url: 'https://www.pjrsportsreport.com/uncategorized/post-1725-team-preview-2026-bridgewater-raritan-panthers/' },
-  { title: 'Bridgewater-Raritan Football Coach Named Coach Of Year For Historic Season', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/bridgewater-raritan-football-coach-named-coach-year-historic-season' },
-  { title: 'Athletes In Focus: Denzel Amoafo', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/columns/athletes-in-focus/articles/denzel-amoafo' },
-  { title: 'Football: Bridgewater-Raritan Wins First Sectional Championship, 21-14, Over Bayonne', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bayonne/sections/sports/articles/football-bridgewater-raritan-wins-first-sectional-championship-21-14-over-bayonne' },
-  { title: 'North 2, Group 5 Final Preview: Bridgewater-Raritan Panthers vs. Bayonne Bees', source: 'CJ Sports Radio', url: 'https://cjsportsradio.com/2025/11/14/north-2-group-5-final-preview-bridgewater-raritan-panthers-vs-bayonne-bees/' },
-  { title: "Bridgewater-Raritan Tops Union City At Home, 22-7, To Clinch First Sectional Finals Berth Since '17", source: 'CJ Sports Radio', url: 'https://cjsportsradio.com/2025/11/07/bridgewater-raritan-tops-union-city-at-home-22-7-to-clinch-first-sectional-finals-berth-since-17/' },
-  { title: 'Bridgewater-Raritan Cruised Past Linden In State Football Playoff Opener', source: 'The Prowler (BRHS Student News)', url: 'https://brhsprowler.org/5012/sports/bridgewater-raritan-cruised-past-linden-in-state-football-playoff-opener/' },
-  { title: 'History On The Line: Bridgewater-Raritan HS Seeks To Win 1st Ever State Sectional Football Championship', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/history-line-bridgewater-raritan-hs-seeks-win-1st-ever-state-sectional' },
-  { title: 'Standout Tackle Justin Simpson Of The Record-Setting Bridgewater-Raritan Football Team Is Headed To Bucknell', source: 'BRRSD Athletics', url: 'https://www.brrsd.org/o/brrhs/article/2580305' },
+  { title: 'Team Preview 2026: Bridgewater-Raritan Panthers', source: 'PJR Sports Report', url: 'https://www.pjrsportsreport.com/uncategorized/post-1725-team-preview-2026-bridgewater-raritan-panthers/', date: '2026-07-10' },
+  { title: 'Bridgewater-Raritan Football Coach Named Coach Of Year For Historic Season', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/bridgewater-raritan-football-coach-named-coach-year-historic-season', date: '2026-02-02' },
+  { title: 'Standout Tackle Justin Simpson Of The Record-Setting Bridgewater-Raritan Football Team Is Headed To Bucknell', source: 'BRRSD Athletics', url: 'https://www.brrsd.org/o/brrhs/article/2580305', date: '2025-12-04' },
+  { title: 'Football: Bridgewater-Raritan Wins First Sectional Championship, 21-14, Over Bayonne', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bayonne/sections/sports/articles/football-bridgewater-raritan-wins-first-sectional-championship-21-14-over-bayonne', date: '2025-11-15' },
+  { title: 'North 2, Group 5 Final Preview: Bridgewater-Raritan Panthers vs. Bayonne Bees', source: 'CJ Sports Radio', url: 'https://cjsportsradio.com/2025/11/14/north-2-group-5-final-preview-bridgewater-raritan-panthers-vs-bayonne-bees/', date: '2025-11-14' },
+  { title: 'History On The Line: Bridgewater-Raritan HS Seeks To Win 1st Ever State Sectional Football Championship', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/history-line-bridgewater-raritan-hs-seeks-win-1st-ever-state-sectional', date: '2025-11-12' /* estimate — between the Nov 7 semifinal win and Nov 14 final; exact publish date not confirmed */ },
+  { title: "Bridgewater-Raritan Tops Union City At Home, 22-7, To Clinch First Sectional Finals Berth Since '17", source: 'CJ Sports Radio', url: 'https://cjsportsradio.com/2025/11/07/bridgewater-raritan-tops-union-city-at-home-22-7-to-clinch-first-sectional-finals-berth-since-17/', date: '2025-11-07' },
+  { title: 'Bridgewater-Raritan Cruised Past Linden In State Football Playoff Opener', source: 'The Prowler (BRHS Student News)', url: 'https://brhsprowler.org/5012/sports/bridgewater-raritan-cruised-past-linden-in-state-football-playoff-opener/', date: '2025-11-01' /* estimate — game was Oct 31; exact Prowler publish date not confirmed */ },
+  { title: 'Athletes In Focus: Denzel Amoafo', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/columns/athletes-in-focus/articles/denzel-amoafo', date: '2025-09-17' },
 ];
 
 const FAQ = [
@@ -473,9 +479,12 @@ export default function BRHSPantherFootballPage() {
           <p className={styles.sectionSub}>Real coverage of the team, the championship run, and the players — from local press and the school itself.</p>
         </div>
         <div className={styles.newsGrid}>
-          {ARTICLES.map((a, i) => (
+          {sortArticlesByDate(ARTICLES).map((a, i) => (
             <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" className={styles.newsCard}>
-              <span className={styles.newsSource}>{a.source}</span>
+              <span className={styles.newsBadgeRow}>
+                <span className={styles.newsSource}>{a.source}</span>
+                {isRecentArticle(a.date) && <span className={styles.newsNew}>New</span>}
+              </span>
               <span className={styles.newsTitle}>{a.title}</span>
               <span className={styles.newsLink}>Read Article →</span>
             </a>
