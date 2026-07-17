@@ -20,7 +20,7 @@ const PROCESS = [
   { num: '01', title: 'Reach Out', body: "Tell me about your project — the what, when, and where. I'll respond within 24 hours with questions, availability, and a custom quote." },
   { num: '02', title: 'We Plan', body: 'We lock in the details together — location, timing, wardrobe, shot list. No surprises on the day.' },
   { num: '03', title: 'We Shoot', body: 'A relaxed, unhurried session built around real moments. I bring the direction; you bring yourself.' },
-  { num: '04', title: 'You Receive', body: 'Professionally edited images delivered to your private gallery — typically within 3 days for sports, 7–10 days for portraits. Not the kind that sit in a folder. The kind that end up framed, gifted, and still on the wall twenty years from now.' },
+  { num: '04', title: 'You Receive', body: 'Professionally edited images delivered to your private gallery — typically within 5–7 business days for sports, 7–10 business days for portraits. Not the kind that sit in a folder. The kind that end up framed, gifted, and still on the wall twenty years from now.' },
 ];
 
 
@@ -33,7 +33,7 @@ const PACKAGES = [
     pain: 'Most clients come to us after a session that felt rushed and delivered images that looked like everyone else\'s. Here\'s what\'s included instead:',
     includes: [
       'Unhurried on-location or studio session',
-      'Professional editing delivered within 7–10 days',
+      'Professional editing delivered within 7–10 business days',
       'Private online gallery, yours to access anytime',
       'Full-resolution files — print at any size, forever',
       'Print ordering available through the gallery',
@@ -49,7 +49,7 @@ const PACKAGES = [
     includes: [
       'Coverage from every angle, with equipment built for fast action in any light',
       'Action and portrait photography in one session',
-      'Professionally edited and delivered within 3 days',
+      'Professionally edited and delivered within 5–7 business days',
       'Full-resolution files — download, print, share',
       'Custom graphic design add-on available (senior posters, sports graphics)',
     ],
