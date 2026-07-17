@@ -67,6 +67,7 @@ const SCHEDULE_2026 = [
 
 // Real coverage of the program — no invented headlines.
 const ARTICLES = [
+  { title: 'Team Preview 2026: Bridgewater-Raritan Panthers', source: 'PJR Sports Report', url: 'https://www.pjrsportsreport.com/uncategorized/post-1725-team-preview-2026-bridgewater-raritan-panthers/' },
   { title: 'Bridgewater-Raritan Football Coach Named Coach Of Year For Historic Season', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/bridgewater-raritan-football-coach-named-coach-year-historic-season' },
   { title: 'Athletes In Focus: Denzel Amoafo', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/columns/athletes-in-focus/articles/denzel-amoafo' },
   { title: 'Football: Bridgewater-Raritan Wins First Sectional Championship, 21-14, Over Bayonne', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bayonne/sections/sports/articles/football-bridgewater-raritan-wins-first-sectional-championship-21-14-over-bayonne' },
