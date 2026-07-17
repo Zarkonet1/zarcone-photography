@@ -116,7 +116,7 @@ const COACHES = [
 const FEATURED_WRESTLER = {
   name: 'Trent Levash',
   detail: 'Junior · Heavyweight',
-  bio: 'A two-time District 14 champion (215 lbs in 2025, heavyweight in 2026) who won the Region 4 title at heavyweight to improve to 29-1 this season, then placed 6th at the 2026 NJSIAA Individual Tournament at Boardwalk Hall. Levash is confirmed to return for 2026-27 — "we get Trent back for two more years," said Coach Murphy — with two more seasons to chase a state title.',
+  bio: 'A two-time District 14 champion (215 lbs in 2025, heavyweight in 2026) who won the Region 4 title at heavyweight to improve to 29-1 this season, then placed 6th at the 2026 NJSIAA Individual Tournament at Boardwalk Hall. "We get Trent back for two more years," Coach Murphy said in March 2025, after Levash\'s sophomore season — those two seasons were 2025-26 and the upcoming 2026-27 campaign, which will be his senior year and last shot at a state title.',
 };
 
 const SEASONS = [
