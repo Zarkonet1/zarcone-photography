@@ -53,6 +53,13 @@ const nextConfig = {
       // Legacy contact page → about
       { source: '/contact-us',             destination: '/about',       permanent: true },
 { source: '/about-us', destination: '/about', permanent: true },
+
+      // Old pricing page slug → current pricing page
+      { source: '/pricing-info',           destination: '/pricing',     permanent: true },
+
+      // Old proofing/browse links → client area
+      { source: '/browse',                 destination: '/client-area', permanent: true },
+      { source: '/browse/:slug*',          destination: '/client-area', permanent: true },
     ];
   },
 };
