@@ -52,6 +52,7 @@ const nextConfig = {
 
       // Legacy contact page → about
       { source: '/contact-us',             destination: '/about',       permanent: true },
+{ source: '/about-us', destination: '/about', permanent: true },
     ];
   },
 };
