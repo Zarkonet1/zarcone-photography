@@ -60,6 +60,14 @@ const nextConfig = {
       // Old proofing/browse links → client area
       { source: '/browse',                 destination: '/client-area', permanent: true },
       { source: '/browse/:slug*',          destination: '/client-area', permanent: true },
+
+// Dead blog posts from the pre-redesign site — content no longer
+      // exists under any slug; send to the blog index instead of 404ing
+      { source: '/blog/the-benefits-of-professional-senior-photographs', destination: '/blog', permanent: true },
+      { source: '/blog/toms-photo-safari',                               destination: '/blog', permanent: true },
+      { source: '/blog/posing-your-family-photos',                       destination: '/blog', permanent: true },
+      { source: '/blog/tips-for-your-couples-photoshoot',                destination: '/blog', permanent: true },
+      { source: '/blog/2024-seniors',                                    destination: '/blog', permanent: true },
     ];
   },
 };
