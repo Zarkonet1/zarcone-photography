@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
       <div className={styles.hero}>
         <span className={styles.eyebrow}>Legal</span>
         <h1 className={styles.title}>Privacy Policy</h1>
-        <p className={styles.updated}>Last updated: June 10, 2026</p>
+        <p className={styles.updated}>Last updated: July 20, 2026</p>
       </div>
 
       <div className={styles.body}>
@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
         <p>We collect information you provide directly, including:</p>
         <ul>
           <li><strong>Contact inquiries</strong> — name, email address, phone number, and the message you submit through our contact form.</li>
-          <li><strong>Newsletter signups</strong> — your email address when you subscribe to session announcements and updates.</li>
+          <li><strong>Newsletter signups</strong> — your email address when you subscribe to session announcements and updates, including team-specific "notify me when photos are posted" opt-ins on our BRHS Panther wrestling and football pages.</li>
           <li><strong>Booking information</strong> — names, dates, location, and other details you provide when booking a session or event.</li>
         </ul>
         <p>
@@ -49,6 +49,7 @@ export default function PrivacyPolicy() {
           <li><strong>Vercel</strong> — hosts this website. See <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noreferrer">Vercel's Privacy Policy</a>.</li>
           <li><strong>Elfsight</strong> — powers the Instagram feed widget. See <a href="https://elfsight.com/privacy-policy/" target="_blank" rel="noreferrer">Elfsight's Privacy Policy</a>.</li>
           <li><strong>HoneyBook</strong> — manages client contracts, invoices, and project communications. See <a href="https://www.honeybook.com/legal/privacy" target="_blank" rel="noreferrer">HoneyBook's Privacy Policy</a>.</li>
+          <li><strong>Resend</strong> — delivers contact form and inquiry emails, and manages the opt-in contact list for team-specific gallery-ready alerts. See <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noreferrer">Resend's Privacy Policy</a>.</li>
         </ul>
 
         <h2>Cookies</h2>
