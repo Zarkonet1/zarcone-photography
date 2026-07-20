@@ -84,6 +84,7 @@ const ARTICLES = [
 const STAT_BAR = [
   { num: '2×', label: 'Sectional Champions', sub: '2024-25 & 2025-26 seasons' },
   { num: '21-8', label: 'School-Record Season', sub: '2024-25 dual meet record' },
+  { num: '20-9', label: '2025-26 Dual Record', sub: 'Second straight sectional title season' },
   { num: '3', label: '2026 State Qualifiers', sub: 'Levash · McCann · Adell' },
   { num: '2', label: '2026 State Medalists', sub: 'Levash (6th) · McCann (8th)' },
 ];
