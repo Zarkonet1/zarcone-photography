@@ -37,16 +37,7 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* :where() keeps this at zero added specificity, so any component class
-   below (.btnPrimary, .downloadCta, .badgeVerify, .subNavLink, etc.) wins
-   on its own without needing !important. Do not change this back to a
-   plain `a` selector — that was a real bug: `.govPage a` outranks a
-   single class like `.btnPrimary` on specificity alone, which silently
-   overrode every button's intended text color with the ambient section
-   color (e.g. navy-on-navy in the hero, white-on-white in the download
-   band) — invisible/unreadable text with no visual sign of the cause.
-   Fixed 2026-07-20. */
-.govPage :global(:where(a)) {
+.govPage :global(a) {
   color: inherit;
 }
 
@@ -178,7 +169,7 @@
 
 /* ─── Hero ───────────────────────────────────────────────────────────── */
 .hero {
-  padding: 176px 0 128px;
+  padding: 140px 0 96px;
   background: linear-gradient(180deg, var(--gov-bg) 0%, var(--gov-bg-alt) 100%);
   border-bottom: 1px solid var(--gov-rule);
 }
@@ -206,10 +197,10 @@
 .heroImageWrap img { object-fit: cover; }
 
 .heroH1 {
-  font-size: clamp(36px, 5vw, 59px);
-  line-height: 1.13;
+  font-size: clamp(32px, 4.4vw, 52px);
+  line-height: 1.15;
   font-weight: 600;
-  letter-spacing: -0.018em;
+  letter-spacing: -0.015em;
   margin-bottom: 22px;
 }
 
@@ -221,7 +212,7 @@
 }
 
 @media (max-width: 900px) {
-  .hero { padding: 120px 0 80px; }
+  .hero { padding: 96px 0 64px; }
   .heroWithImage { grid-template-columns: 1fr; }
 }
 
@@ -282,13 +273,9 @@
   border: 1px solid var(--gov-rule);
   border-radius: var(--gov-radius);
   background: #fff;
-  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  transition: border-color 0.15s ease;
 }
-.resourceCard:hover {
-  border-color: #0a1830;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(19, 35, 61, 0.1);
-}
+.resourceCard:hover { border-color: var(--gov-navy); }
 
 .resourceIndex {
   font-size: 11px;
@@ -297,11 +284,6 @@
   letter-spacing: 0.08em;
   margin-bottom: 10px;
   display: block;
-  transition: color 0.18s ease, transform 0.18s ease;
-}
-.resourceCard:hover .resourceIndex {
-  color: var(--gov-navy);
-  transform: translateX(2px);
 }
 
 .resourceLabel {
@@ -373,8 +355,8 @@
 .competencyGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 52px 28px;
-  margin-top: 44px;
+  gap: 32px 28px;
+  margin-top: 40px;
 }
 @media (max-width: 900px) {
   .competencyGrid { grid-template-columns: repeat(2, 1fr); }
@@ -533,17 +515,17 @@
 
 .badgeLabel {
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--gov-muted);
+  color: var(--gov-accent);
   margin-bottom: 8px;
 }
 
 .badgeValue {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--gov-navy);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--gov-text);
 }
 
 .badgeVerify {
@@ -574,14 +556,11 @@
 
 .quickRefLabel {
   color: var(--gov-muted);
-  font-weight: 400;
-  font-size: 13.5px;
+  font-weight: 500;
 }
 
 .quickRefValue {
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--gov-text);
+  font-weight: 600;
 }
 
 .serviceAreaNote {
@@ -748,19 +727,6 @@
   color: var(--gov-muted);
   line-height: 1.6;
   max-width: 680px;
-}
-
-/* ─── Ready to Support Your Mission ──────────────────────────────────── */
-.readySection {
-  padding-top: 72px;
-  padding-bottom: 72px;
-}
-
-.readyRule {
-  width: 40px;
-  height: 2px;
-  background: var(--gov-accent);
-  margin: 0 auto 28px;
 }
 
 /* ─── Contact ─────────────────────────────────────────────────────────── */
