@@ -9,6 +9,18 @@ import { NextResponse } from 'next/server';
  */
 function lowercaseRedirect(request) {
   const { pathname } = request.nextUrl;
+
+  // Skip static assets (any path ending in a file extension — /photos/Foo.jpg,
+  // /files/*.pdf, etc). Page routes in this app are lowercase by convention,
+  // but filenames under public/ are NOT — most of public/photos/ uses mixed
+  // case. Case-folding an asset URL 404s it, since the file on disk keeps its
+  // original case. Only page routes should be normalized here.
+  // Fixed 2026-07-20: this bug (introduced with the redirect itself on
+  // 2026-07-18) broke image loading sitewide — every mixed-case filename in
+  // public/photos/ (290 of 314 files) was being redirected to a lowercase
+  // URL that doesn't exist.
+  if (/\.[a-zA-Z0-9]+$/.test(pathname)) return null;
+
   const lower = pathname.toLowerCase();
   if (pathname !== lower) {
     const url = request.nextUrl.clone();
