@@ -37,7 +37,16 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.govPage :global(a) {
+/* :where() keeps this at zero added specificity, so any component class
+   below (.btnPrimary, .downloadCta, .badgeVerify, .subNavLink, etc.) wins
+   on its own without needing !important. Do not change this back to a
+   plain `a` selector — that was a real bug: `.govPage a` outranks a
+   single class like `.btnPrimary` on specificity alone, which silently
+   overrode every button's intended text color with the ambient section
+   color (e.g. navy-on-navy in the hero, white-on-white in the download
+   band) — invisible/unreadable text with no visual sign of the cause.
+   Fixed 2026-07-20. */
+.govPage :global(:where(a)) {
   color: inherit;
 }
 
