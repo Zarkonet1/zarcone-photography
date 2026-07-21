@@ -23,6 +23,7 @@ export default function sitemap() {
     '/senior-portrait-photographer-nj',
     '/event-photographer-nj',
     '/schools-athletic-programs-nj',
+    '/government-contracting',
     '/brhs-panther-football',
     '/brhs-panther-wrestling',
   ];

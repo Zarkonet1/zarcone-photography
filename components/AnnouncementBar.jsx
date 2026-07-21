@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { EVENTS } from '@/lib/events';
 import styles from './AnnouncementBar.module.css';
 
 export default function AnnouncementBar() {
+  const pathname = usePathname();
   const upcoming = EVENTS.filter(e => e.status === 'upcoming');
   const [idx, setIdx] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -22,7 +24,11 @@ export default function AnnouncementBar() {
     return () => clearInterval(t);
   }, [upcoming.length]);
 
-  if (upcoming.length === 0) return null;
+  // The Government Practice page is deliberately kept free of consumer
+  // promotional content (mini sessions, seasonal events) — it undercuts
+  // the "quiet competence, not marketing" positioning that page is built
+  // around. Hook order is preserved: this check runs after all hooks.
+  if (upcoming.length === 0 || pathname?.startsWith('/government-contracting')) return null;
 
   const event = upcoming[idx];
 

@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import styles from './ChatWidget.module.css';
 import { GREETING } from '@/lib/chatKnowledge';
 
 export default function ChatWidget() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([{ role: 'assistant', content: GREETING }]);
   const [input, setInput] = useState('');
@@ -49,6 +51,15 @@ export default function ChatWidget() {
       setLoading(false);
     }
   }
+
+  // The chat bot is trained on lib/chatKnowledge.js — consumer pricing,
+  // portrait/sports FAQ, mini-session promos. A federal buyer opening it
+  // on the Government Practice page would get answers built for a
+  // completely different audience, which is worse for credibility than
+  // no chat bubble at all. Hidden on this route until (if ever) a
+  // government-specific knowledge base is built. Hook order preserved —
+  // this check runs after all hooks above.
+  if (pathname?.startsWith('/government-contracting')) return null;
 
   return (
     <div className={styles.wrap}>
