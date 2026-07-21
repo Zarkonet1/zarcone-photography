@@ -15,6 +15,7 @@ import GovInstitutionalPartnerships from '@/components/govcon/GovInstitutionalPa
 import GovDifference from '@/components/govcon/GovDifference';
 import GovWhyBuyersChooseUs from '@/components/govcon/GovWhyBuyersChooseUs';
 import GovFAQ from '@/components/govcon/GovFAQ';
+import GovReadyToSupport from '@/components/govcon/GovReadyToSupport';
 import GovContact from '@/components/govcon/GovContact';
 import GovFooter from '@/components/govcon/GovFooter';
 import GovScrollDepthTracker from '@/components/govcon/GovScrollDepthTracker';
@@ -121,6 +122,7 @@ export default function GovernmentContractingPage() {
       <GovDifference />
       <GovWhyBuyersChooseUs />
       <GovFAQ />
+      <GovReadyToSupport />
       <GovContact />
       <GovFooter />
     </div>

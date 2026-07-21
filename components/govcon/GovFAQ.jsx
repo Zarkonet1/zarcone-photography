@@ -13,8 +13,16 @@ function PlusIcon({ open }) {
   );
 }
 
+function slugify(str) {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+// Opens the very first question by default — reduces the "wall of
+// collapsed questions" feeling on first load.
+const FIRST_FAQ_KEY = FAQ_GROUPS[0] ? `${slugify(FAQ_GROUPS[0].group)}-0` : null;
+
 export default function GovFAQ() {
-  const [openKey, setOpenKey] = useState(null);
+  const [openKey, setOpenKey] = useState(FIRST_FAQ_KEY);
 
   function toggle(key, question) {
     const next = openKey === key ? null : key;
@@ -32,7 +40,7 @@ export default function GovFAQ() {
         </div>
 
         {FAQ_GROUPS.map((group) => {
-          const groupSlug = group.group.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+          const groupSlug = slugify(group.group);
           return (
           <div key={group.group} className={styles.faqGroup}>
             <p className={styles.faqGroupTitle}>{group.group}</p>
