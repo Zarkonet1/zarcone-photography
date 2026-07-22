@@ -39,6 +39,19 @@ body {
   body { font-size: 17px; }
 }
 
+/* ─── Image protection (deterrent only, not real DRM) ───────────────
+   Blocks casual right-click-save, drag-to-desktop, and iOS long-press
+   "Save Image." Does not stop screenshots, dev tools, or view-source —
+   nothing client-side can. Paired with contextmenu blocking in
+   components/ImageProtection.jsx, mounted globally in app/layout.jsx. */
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 /* ─── Typography ─────────────────────────────────────────────────── */
 h1, h2, h3, h4 {
   font-family: var(--serif);
