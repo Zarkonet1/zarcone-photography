@@ -7,7 +7,9 @@ coverImage: "/photos/Built_Different_McCann.jpg"
 imagePosition: "center 20%"
 ---
 
-Most people who hear "custom design" from a photographer picture the same thing: a photo, dropped onto a template, with team colors and a name added. That's a real product, and a good one — but it's not the only one, and lately it's not the one getting the most attention.
+Not every custom design starts with a photograph. Some start with an idea.
+
+Most people hear "custom design" from a photographer and picture the same thing: a photo, dropped onto a template, with team colors and a name added. That's a real product, and a good one — but it's not the only one, and lately it's not the one getting the most attention.
 
 The piece leading this post is "Built Different," built for BRHS Panther Wrestling. It's not a composite. It's original concept artwork — an athlete rendered half as himself, half as the machine the training is meant to build, laid over a technical blueprint aesthetic built specifically for the program. Nobody handed me a template for this. It started as an idea and went through real development before it became a finished piece.
 
