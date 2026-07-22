@@ -4,7 +4,7 @@ date: "2026-07-22"
 excerpt: "Fall books up faster than any other senior portrait season in New Jersey. Here's the actual timeline — and what you lose by waiting until September."
 category: "Senior Portraits"
 coverImage: "/photos/GiadaField.jpg"
-imagePosition: "center 10%"
+imagePosition: "center 2%"
 ---
 
 Late July feels early to think about senior portraits. It isn't.
