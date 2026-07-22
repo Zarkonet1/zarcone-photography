@@ -581,8 +581,7 @@ export default function BRHSPantherFootballPage() {
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>2026 <em>Roster</em></h2>
           </div>
           <p className={styles.sectionSub}>
-            {ROSTER_2026.length} players as of late June 2026, per BRHS Football Ops. Every player here gets photographed at Media Day on Jul 29 —{' '}
-            <a href="#inquire" style={{ color: 'var(--br-red)' }}>book your portrait session</a> or check back after for the gallery.
+            {ROSTER_2026.length} players as of late June 2026, per BRHS Football Ops. Every player here is photographed at Media Day on Jul 29 — the gallery posts here once portraits are ready.
           </p>
         </div>
         <div className={styles.rosterFilterRow}>
