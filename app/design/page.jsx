@@ -18,6 +18,7 @@ const PIECES = [
   { src: '/photos/i-JdzdDzw.jpg', width: 1600, height: 2400, category: 'Track',     title: 'Track — Senior Poster',        size: 'half' },
   { src: '/photos/i-2bzMvNC.jpg', width: 1600, height: 2400, category: 'Track',     title: 'Track — Senior Composite',     size: 'half' },
   // Wrestling Senior Posters
+  { src: '/photos/Built_Different_McCann.jpg', width: 1254, height: 1254, category: 'Wrestling', title: 'Wrestling — "Built Different" Concept Piece', size: 'wide' },
   { src: '/photos/i-L2f9FWq.jpg', width: 1600, height: 2400, category: 'Wrestling', title: 'Wrestling — Senior Design',    size: 'wide' },
   { src: '/photos/i-JgVQLHd.jpg', width: 1600, height: 2400, category: 'Wrestling', title: 'Wrestling — Senior Composite', size: 'half' },
   { src: '/photos/i-h4PXdgk.jpg', width: 1600, height: 2400, category: 'Wrestling', title: 'Wrestling — Senior Poster',    size: 'half' },

@@ -3,8 +3,8 @@ title: "From Game-Day Photo to Wall Art: How a Senior Poster Composite Comes Tog
 date: "2026-07-23"
 excerpt: "It starts with one portrait session and ends with something a family hangs on a wall for the next twenty years. Here's what actually goes into building a senior poster composite."
 category: "Design"
-coverImage: "/photos/i-L2f9FWq.jpg"
-imagePosition: "center 30%"
+coverImage: "/photos/Built_Different_McCann.jpg"
+imagePosition: "center 20%"
 ---
 
 Most people book a senior portrait session expecting portraits. What a lot of athlete families don't realize going in is that the same session can produce something else entirely: a custom composite, built around the sport, designed to be printed and hung on a wall rather than tucked into an album.
@@ -28,6 +28,8 @@ This is also where a program's identity shows up directly in the work. When I bu
 
 That's the standard the design work is held to: not just a nice photo, but something a program is proud to put its name on.
 
+The piece leading this post is the far end of what that design work can become. Built for BRHS Panther Wrestling's "Built Different" campaign, it takes a real portrait of the athlete and builds an entire concept around it — a technical blueprint aesthetic, program branding, and a visual idea (the athlete rendered half as himself, half as the machine the training is meant to build) that goes well past a photo with a template dropped on top. Pieces like this are scoped individually rather than priced off a standard rate card, because the design time behind a full concept piece isn't comparable to a composite built from a session's existing photos.
+
 ## Two revisions, not endless back-and-forth
 
 Every composite includes two formal rounds of revisions — enough to adjust layout, swap a photo, or refine text without turning the project into an open-ended back-and-forth. Small tweaks along the way don't count against that. The goal is a finished piece the family is genuinely happy with, delivered on a timeline that doesn't drag into a second season.
@@ -44,4 +46,4 @@ That consistency is why it scales from a single senior's poster to a full progra
 
 The easiest way to end up with a composite you actually want on a wall is to plan for it before the session, not after. If your senior plays a fall sport, [pair it with a fall portrait session](/blog/when-to-book-fall-senior-portraits-nj) and bring the uniform — the same afternoon that produces senior portraits can produce the raw material for the poster.
 
-Composite design starts at $75, with team and bulk order pricing available for programs ordering multiple. [See the full Design portfolio](/design) or [reach out](/about#contact) to talk through what you have in mind.
+Standard composite design starts at $75, with team and bulk order pricing available for programs ordering multiple. Full concept pieces — like the "Built Different" series — are scoped individually based on what the design actually calls for. [See the full Design portfolio](/design) or [reach out](/about#contact) to talk through what you have in mind.
