@@ -174,6 +174,108 @@ const SEASONS = [
   { label: '2026', status: 'pending' },
 ];
 
+// Preseason roster as of June 27, 2026, per BRHS Football Ops. Class year is
+// the player's graduation year (e.g. 27 = Class of 2027 = senior for the
+// 2026 fall season). Grade label derives from CURRENT_SEASON_YEAR so this
+// doesn't need hand-editing every year.
+function gradeFromClassYear(classYear, seasonYear = CURRENT_SEASON_YEAR) {
+  const fullYear = 2000 + classYear;
+  const diff = fullYear - (seasonYear + 1);
+  const labels = { 0: 'Senior', 1: 'Junior', 2: 'Sophomore', 3: 'Freshman' };
+  return labels[diff] || `Class of ${fullYear}`;
+}
+
+// Off Pos drives the position-group bucket shown on the roster; Def Pos is
+// shown alongside since most of the roster plays both ways at this level.
+const OFF_POS_GROUP = {
+  QB: 'Quarterbacks',
+  RB: 'Running Backs',
+  WR: 'Wide Receivers',
+  'WR/TE': 'Wide Receivers',
+  TE: 'Tight Ends',
+  OL: 'Offensive Line',
+  K: 'Specialists',
+};
+const ROSTER_GROUP_ORDER = ['Quarterbacks', 'Running Backs', 'Wide Receivers', 'Tight Ends', 'Offensive Line', 'Specialists'];
+
+const ROSTER_RAW_2026 = [
+  { number: 74, first: 'Andrew', last: 'Arndt', classYear: 27, defPos: 'DL', offPos: 'OL' },
+  { number: 1, first: 'Jeremiah', last: 'Baker', classYear: 29, defPos: 'DB', offPos: 'RB' },
+  { number: 10, first: 'JB', last: 'Baxter', classYear: 29, defPos: 'DB', offPos: 'QB' },
+  { number: 31, first: 'Tyler', last: 'Baxter', classYear: 29, defPos: 'DB', offPos: 'WR' },
+  { number: 11, first: 'Jahmier', last: 'Black', classYear: 27, defPos: 'LB', offPos: 'RB' },
+  { number: 51, first: 'Nick', last: 'Bogolashvili', classYear: 27, defPos: 'DL', offPos: 'OL' },
+  { number: 60, first: 'Alex', last: 'Budelmann', classYear: 28, defPos: 'DL', offPos: 'OL' },
+  { number: 57, first: 'Derek', last: 'Carranza', classYear: 27, defPos: 'LB', offPos: 'TE' },
+  { number: 56, first: 'Maseone', last: 'Christian', classYear: 29, defPos: 'DL', offPos: 'OL' },
+  { number: 29, first: 'Messiah', last: 'Cole', classYear: 29, defPos: 'DB', offPos: 'WR' },
+  { number: 27, first: 'Nick', last: 'Crovelli', classYear: 27, defPos: 'LB', offPos: 'WR' },
+  { number: 79, first: 'Joseph', last: 'Day', classYear: 28, defPos: 'DL', offPos: 'OL' },
+  { number: 15, first: 'Branden', last: 'De Matos', classYear: 27, defPos: 'DB', offPos: 'WR' },
+  { number: 23, first: 'Francesco', last: 'DiMaria', classYear: 27, defPos: 'DB', offPos: 'WR' },
+  { number: 44, first: 'Maximus', last: 'Dorsey', classYear: 27, defPos: 'DL', offPos: 'TE' },
+  { number: 18, first: 'Kenneth', last: 'Graham', classYear: 27, defPos: 'DB', offPos: 'WR' },
+  { number: 35, first: 'Hassan', last: 'Higgins', classYear: 27, defPos: 'DB', offPos: 'WR' },
+  { number: 68, first: 'Colton', last: 'Hisko', classYear: 29, defPos: 'DL', offPos: 'OL' },
+  { number: 21, first: 'Michael', last: 'Ianniciello', classYear: 28, defPos: 'DB', offPos: 'WR' },
+  { number: 63, first: 'Nicholas', last: 'Iovine', classYear: 29, defPos: 'DL', offPos: 'OL' },
+  { number: 64, first: 'AJ', last: 'Jimenez', classYear: 29, defPos: 'DL', offPos: 'OL' },
+  { number: 41, first: 'Jamelle', last: 'Jones', classYear: 27, defPos: 'DL', offPos: 'RB' },
+  { number: 86, first: 'Gizo', last: 'Kalandadze', classYear: 28, defPos: 'DB', offPos: 'WR' },
+  { number: 26, first: 'Chase', last: 'Kedziora', classYear: 28, defPos: 'DB', offPos: 'WR' },
+  { number: 32, first: 'Mason', last: 'Kowalik', classYear: 29, defPos: 'P', offPos: 'K' },
+  { number: 30, first: 'Myles', last: 'Krihak', classYear: 28, defPos: 'DB', offPos: 'WR' },
+  { number: 2, first: 'DJ', last: 'Krizan', classYear: 27, defPos: 'DB', offPos: 'WR' },
+  { number: 80, first: 'Andrew', last: 'Kronengold', classYear: 29, defPos: 'DL', offPos: 'TE' },
+  { number: 28, first: 'Justin', last: 'Lavender', classYear: 28, defPos: 'DL/LB', offPos: 'WR/TE' },
+  { number: 55, first: 'Trent', last: 'Levash', classYear: 27, defPos: 'DL', offPos: 'OL' },
+  { number: 4, first: 'James', last: 'Locrotondo', classYear: 27, defPos: 'DB', offPos: 'WR' },
+  { number: 17, first: 'Anthony', last: 'Lorino', classYear: 27, defPos: 'LB', offPos: 'TE' },
+  { number: 65, first: 'Neil', last: 'Luis', classYear: 27, defPos: 'DL', offPos: 'OL' },
+  { number: 20, first: 'Parker', last: 'Lyons', classYear: 28, defPos: 'DB', offPos: 'WR' },
+  { number: 8, first: 'Jack', last: 'Madsen', classYear: 27, defPos: 'LB', offPos: 'TE' },
+  { number: 40, first: 'Dante', last: 'Markovitch', classYear: 28, defPos: 'LB', offPos: 'WR' },
+  { number: 90, first: 'Jake', last: 'Markovitch', classYear: 27, defPos: 'DL', offPos: 'OL' },
+  { number: 45, first: 'Robert', last: 'Matos', classYear: 29, defPos: 'LB', offPos: 'TE' },
+  { number: 67, first: 'Martino', last: 'Nguyen', classYear: 27, defPos: 'DL', offPos: 'OL' },
+  { number: 16, first: 'Tyler', last: "O'Hare", classYear: 28, defPos: 'DB', offPos: 'WR' },
+  { number: 3, first: 'Jonathan', last: 'Okolo', classYear: 27, defPos: 'LB', offPos: 'RB' },
+  { number: 77, first: 'Hugo', last: 'Ortega', classYear: 29, defPos: 'DL', offPos: 'OL' },
+  { number: 7, first: 'Cole', last: 'Pello', classYear: 27, defPos: 'DB', offPos: 'WR' },
+  { number: 73, first: 'Bryan', last: 'Pena', classYear: 29, defPos: 'DL', offPos: 'OL' },
+  { number: 33, first: 'Jake', last: 'Petrillo', classYear: 29, defPos: 'DB', offPos: 'WR' },
+  { number: 34, first: 'Tyler', last: 'Plank', classYear: 29, defPos: 'LB', offPos: 'WR' },
+  { number: 25, first: 'Sebastian', last: 'Redyk', classYear: 27, defPos: 'DL', offPos: 'TE' },
+  { number: 19, first: 'Zach', last: 'Rinehimer', classYear: 29, defPos: 'DB', offPos: 'WR' },
+  { number: 6, first: 'Sebastian', last: 'Risco', classYear: 28, defPos: 'DB', offPos: 'WR' },
+  { number: 72, first: 'Jack', last: 'Ritch', classYear: 27, defPos: 'DL', offPos: 'OL' },
+  { number: 49, first: 'Nathan', last: 'Robles', classYear: 29, defPos: 'LB', offPos: 'RB' },
+  { number: 22, first: 'Chase', last: 'Rutherford', classYear: 29, defPos: 'DB', offPos: 'WR' },
+  { number: 53, first: 'Alex', last: 'Rutkowski', classYear: 29, defPos: 'DL', offPos: 'OL' },
+  { number: 61, first: 'Ethan', last: 'Sainte', classYear: 27, defPos: 'DL', offPos: 'OL' },
+  { number: 24, first: 'Freddie', last: 'Schenk', classYear: 28, defPos: 'LB', offPos: 'WR' },
+  { number: 13, first: 'Jasper', last: 'Schwamberger', classYear: 27, defPos: 'DB', offPos: 'WR' },
+  { number: 48, first: 'Mason', last: 'Smalls', classYear: 29, defPos: 'DB', offPos: 'WR' },
+  { number: 36, first: 'Damian', last: 'Stadnick', classYear: 29, defPos: 'DB', offPos: 'WR' },
+  { number: 52, first: 'Trent', last: 'Thiry', classYear: 27, defPos: 'DL', offPos: 'OL' },
+  { number: 47, first: 'Austin', last: 'Totten', classYear: 29, defPos: 'LB', offPos: 'TE' },
+  { number: 81, first: 'Jack', last: 'Winchock', classYear: 29, defPos: 'DL', offPos: 'WR' },
+  { number: 9, first: 'Jack', last: 'Winne', classYear: 28, defPos: 'DB', offPos: 'WR' },
+  { number: 5, first: 'Evan', last: 'Woodring', classYear: 27, defPos: 'DB', offPos: 'QB' },
+  { number: 76, first: 'Alex', last: 'Zimmerman', classYear: 27, defPos: 'DL', offPos: 'OL' },
+  { number: 54, first: 'Ben', last: 'Zimmerman', classYear: 27, defPos: 'DL', offPos: 'OL' },
+  { number: 14, first: 'Nathan', last: 'Zuckerman', classYear: 27, defPos: 'DB', offPos: 'TE' },
+];
+
+const ROSTER_2026 = ROSTER_RAW_2026
+  .map((p) => ({
+    ...p,
+    grade: gradeFromClassYear(p.classYear),
+    group: OFF_POS_GROUP[p.offPos] || 'Wide Receivers',
+    slug: `${p.first}-${p.last}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+  }))
+  .sort((a, b) => a.number - b.number);
+
 const SERVICES = [
   { title: 'Game Day Coverage', body: 'Full home-game photography — action, sidelines, celebrations, and crowd.' },
   { title: 'Media Day Portraits', body: 'Individual and team portraits, graphics-ready and recruiting-ready.' },
@@ -188,6 +290,7 @@ export default function BRHSPantherFootballPage() {
   const [slide, setSlide] = useState(0);
   const [form, setForm] = useState({ name: '', email: '', phone: '', athleteName: '', sport: 'Football', interestedIn: 'Prints', message: '' });
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const [rosterFilter, setRosterFilter] = useState('All');
 
   useEffect(() => {
     const t = setInterval(() => setSlide(s => (s + 1) % CAROUSEL.length), 5000);
@@ -468,6 +571,51 @@ export default function BRHSPantherFootballPage() {
             <p className={styles.spotlightNote}>Per CJ Sports Radio, August 2025 preseason preview.</p>
           </div>
         </div>
+      </section>
+
+      {/* ── Roster ───────────────────────────────────────────────── */}
+      <section id="roster" style={{ background: 'rgba(255,255,255,0.02)' }}>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Preseason Roster</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>2026 <em>Roster</em></h2>
+          </div>
+          <p className={styles.sectionSub}>
+            {ROSTER_2026.length} players as of late June 2026, per BRHS Football Ops. Every player here gets photographed at Media Day on Jul 29 —{' '}
+            <a href="#inquire" style={{ color: 'var(--br-red)' }}>book your portrait session</a> or check back after for the gallery.
+          </p>
+        </div>
+        <div className={styles.rosterFilterRow}>
+          {['All', ...ROSTER_GROUP_ORDER].map((g) => (
+            <button
+              key={g}
+              type="button"
+              className={rosterFilter === g ? styles.rosterFilterBtnActive : styles.rosterFilterBtn}
+              onClick={() => setRosterFilter(g)}
+            >
+              {g}
+            </button>
+          ))}
+        </div>
+        <table className={styles.scheduleTable}>
+          <thead>
+            <tr><th>#</th><th>Player</th><th>Grade</th><th>Off</th><th>Def</th></tr>
+          </thead>
+          <tbody>
+            {ROSTER_2026.filter((p) => rosterFilter === 'All' || p.group === rosterFilter).map((p) => (
+              <tr key={p.slug} id={`roster-${p.slug}`}>
+                <td data-label="#">{p.number}</td>
+                <td data-label="Player">{p.first} {p.last}</td>
+                <td data-label="Grade">{p.grade}</td>
+                <td data-label="Off">{p.offPos}</td>
+                <td data-label="Def">{p.defPos}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className={styles.sampleCaption}>
+          Most players at this level go both ways — Off/Def columns show each player's primary alignment on both sides of the ball. Roster subject to change before the season opener.
+        </p>
       </section>
 
       {/* ── In The News ──────────────────────────────────────────── */}

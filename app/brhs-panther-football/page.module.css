@@ -379,6 +379,33 @@
   }
 }
 
+/* ─── Roster filter ─────────────────────────────────────────────── */
+.rosterFilterRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.rosterFilterBtn, .rosterFilterBtnActive {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--br-silver);
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: all 0.15s;
+}
+.rosterFilterBtn:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+.rosterFilterBtnActive {
+  background: var(--br-red);
+  color: #fff;
+  border-color: var(--br-red);
+}
+
 /* ─── News grid ─────────────────────────────────────────────────── */
 .newsGrid {
   display: grid;
