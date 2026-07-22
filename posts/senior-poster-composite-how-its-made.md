@@ -1,49 +1,49 @@
 ---
-title: "From Game-Day Photo to Wall Art: How a Senior Poster Composite Comes Together"
+title: "Beyond the Composite: How 'Built Different' Went From Concept to Campaign Art"
 date: "2026-07-23"
-excerpt: "It starts with one portrait session and ends with something a family hangs on a wall for the next twenty years. Here's what actually goes into building a senior poster composite."
+excerpt: "A senior poster and a full concept campaign are not the same product. Here's what actually goes into building original artwork like 'Built Different' — and where a standard composite still fits."
 category: "Design"
 coverImage: "/photos/Built_Different_McCann.jpg"
 imagePosition: "center 20%"
 ---
 
-Most people book a senior portrait session expecting portraits. What a lot of athlete families don't realize going in is that the same session can produce something else entirely: a custom composite, built around the sport, designed to be printed and hung on a wall rather than tucked into an album.
+Most people who hear "custom design" from a photographer picture the same thing: a photo, dropped onto a template, with team colors and a name added. That's a real product, and a good one — but it's not the only one, and lately it's not the one getting the most attention.
 
-It's become one of the most requested add-ons I offer, and it's a completely different process from a standard portrait delivery. Here's how it actually comes together.
+The piece leading this post is "Built Different," built for BRHS Panther Wrestling. It's not a composite. It's original concept artwork — an athlete rendered half as himself, half as the machine the training is meant to build, laid over a technical blueprint aesthetic built specifically for the program. Nobody handed me a template for this. It started as an idea and went through real development before it became a finished piece.
 
-## It starts with the raw material, not the design
+Here's what that process actually looks like — and how it's different from the standard composite work most people are picturing.
 
-A poster is only as good as what it's built from, which means the design work doesn't start at a computer — it starts at the shoot. If a senior plays a sport, I want the uniform, the gear, and the equipment at the session. Wrestling singlet and headgear. Lacrosse stick and gloves. Baseball glove and bat. Track spikes.
+## It starts with a concept, not a photo
 
-Along with the traditional portrait poses, I'll shoot action-style frames and detail shots specifically with the composite in mind — a hand gripping a stick, a close crop on a jersey number, a pose that reads as strength or motion rather than a standard smile-at-camera portrait. None of this is guesswork. After doing enough of these across wrestling, lacrosse, track, baseball, and softball, I have a good sense of which shots are going to matter once the design phase starts, and I direct the session accordingly.
+A composite starts at the camera. A piece like "Built Different" starts somewhere else entirely: with a question. What's the story this program or athlete is actually trying to tell? "Built Different" came out of a simple idea — that the difference between a good wrestler and a great one isn't visible, it's built through repetition most people never see. Once that idea existed, the visual language followed: a blueprint, because the piece is literally about what someone is built from; a half-human, half-mechanical figure, because it makes the idea of "training builds you into something else" literal instead of abstract.
 
-## The design phase is where it becomes something new
+That's concept development, and it happens before any design software opens. It's the part of the process that has no equivalent in a standard composite, because a composite doesn't need an original idea — it needs a good photo and a clean layout.
 
-Once the images are in hand, the composite gets built — not just a photo dropped onto a template, but a layout designed around the specific athlete, sport, and, often, the program's colors and identity. Team name, jersey number, graduation year, sometimes a stat line or a personal phrase the athlete wants included. The background, typography, and layout all get built to match the sport and the person, not pulled from a generic stock template.
+## Trial and error is the actual job
 
-This is also where a program's identity shows up directly in the work. When I built senior composites for BRHS Wrestling, the head coach put it better than I could:
+The version that ships is never the first version. A concept piece like this goes through real iteration — different visual metaphors tested and discarded, different compositions tried before one earns its place, details refined based on what actually reads at full size versus what only worked as a small mockup. Some directions get built out significantly before getting scrapped entirely, because they looked right in an idea and wrong on the page.
+
+This is the part of design work that's invisible in the final product and is also most of where the time actually goes. A finished concept piece represents the one direction that survived that process, not the first thing that got tried.
+
+## Then it becomes real feedback, not a guess
+
+Before a piece like this is called finished, it gets tested against the audience it's actually for — does the concept land with the athlete and the program, or does it need another pass? That feedback loop is what separates a piece that looks good to a designer from one that actually resonates with the team, the coach, and the recruiting audience it's ultimately built for. Kyle Murphy, head wrestling coach at BRHS, said it plainly after seeing the finished work:
 
 > "The quality of his photography and graphic design work has taken BRHS Wrestling's social media presence to another level — his graphics consistently look sharp, professional, and engaging."
 > — Kyle Murphy, Head Wrestling Coach, BRHS
 
-That's the standard the design work is held to: not just a nice photo, but something a program is proud to put its name on.
+That reaction is the actual goal. Not "that's a nice photo" — "that's something we're proud to put our name on."
 
-The piece leading this post is the far end of what that design work can become. Built for BRHS Panther Wrestling's "Built Different" campaign, it takes a real portrait of the athlete and builds an entire concept around it — a technical blueprint aesthetic, program branding, and a visual idea (the athlete rendered half as himself, half as the machine the training is meant to build) that goes well past a photo with a template dropped on top. Pieces like this are scoped individually rather than priced off a standard rate card, because the design time behind a full concept piece isn't comparable to a composite built from a session's existing photos.
+## What this costs, and why it's not the same number as a composite
 
-## Two revisions, not endless back-and-forth
+Concept and campaign artwork like "Built Different" starts at **$450**, with multi-athlete campaigns and full program series scoped and quoted individually based on what the concept actually calls for. That's a different number than a standard composite for a real reason: a composite is built from a session's existing photos and a proven layout process. A concept piece is original development, iteration, and testing, built from nothing but an idea. The design time isn't comparable, so the price shouldn't be either.
 
-Every composite includes two formal rounds of revisions — enough to adjust layout, swap a photo, or refine text without turning the project into an open-ended back-and-forth. Small tweaks along the way don't count against that. The goal is a finished piece the family is genuinely happy with, delivered on a timeline that doesn't drag into a second season.
+## Where the standard composite still fits
 
-Files come back print-ready at the exact dimensions needed — poster, banner, or card — plus web and social versions, so the same design works on a bedroom wall and on the program's Instagram.
+Not every senior needs a fully original concept — and most don't need one. A standard composite is still the right product for a family that wants a strong, clean poster built from their portrait session: real gear and action shots from the shoot, laid into a design built around the athlete's sport, team colors, and graduation year, with two rounds of revisions included. It starts at **$75**, with team and bulk pricing available for programs ordering multiple, and it's still one of the most requested add-ons to a senior portrait session. If your senior plays a fall sport, [pair it with a fall portrait session](/blog/when-to-book-fall-senior-portraits-nj) and bring the uniform — the same afternoon produces both.
 
-## Why it works across every sport
+## The distinction that actually matters
 
-The specifics change — a track poster leans on motion and speed, a wrestling composite leans into intensity and individual competition, a team-based sport like lacrosse or softball often includes teammates or the full squad in the background — but the underlying process is the same regardless of sport: real gear, real action, and a design built around the athlete rather than a template with a name swapped in.
+"Custom design" covers two genuinely different products: a composite built from your photos, and original concept artwork built from an idea. Knowing which one you're asking for — and which one a project actually needs — is the difference between a fair price and a confusing quote.
 
-That consistency is why it scales from a single senior's poster to a full program's team order — the 20-Wins celebration piece for a baseball team and an individual wrestler's senior composite start from the same process, just different scope.
-
-## Where it starts
-
-The easiest way to end up with a composite you actually want on a wall is to plan for it before the session, not after. If your senior plays a fall sport, [pair it with a fall portrait session](/blog/when-to-book-fall-senior-portraits-nj) and bring the uniform — the same afternoon that produces senior portraits can produce the raw material for the poster.
-
-Standard composite design starts at $75, with team and bulk order pricing available for programs ordering multiple. Full concept pieces — like the "Built Different" series — are scoped individually based on what the design actually calls for. [See the full Design portfolio](/design) or [reach out](/about#contact) to talk through what you have in mind.
+[See the full Design portfolio](/design) or [reach out](/about#contact) to talk through which one fits what you have in mind.

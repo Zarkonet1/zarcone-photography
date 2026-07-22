@@ -84,6 +84,21 @@ const PACKAGES = [
     ],
     note: 'Team and bulk order pricing available.',
   },
+  {
+    num: '05',
+    category: 'Concept Artwork',
+    eyebrow: 'Custom Illustration · Campaign Concepts · Brand Series',
+    starting: '450',
+    pain: 'Different from a composite — this is original concept work, not a photo with a template dropped on top:',
+    includes: [
+      'Original concept development, not a template — built from scratch around the athlete or program',
+      'Custom illustration and design work, blending photography with hand-built artwork',
+      'Multiple concept directions explored and tested before a final direction is chosen',
+      'Full revision process through to final delivery',
+      'Print-ready files plus web and social-ready versions included',
+    ],
+    note: 'Multi-athlete campaigns and full program series scoped and quoted individually.',
+  },
 ];
 
 export default function PricingPage() {
