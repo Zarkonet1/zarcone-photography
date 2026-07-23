@@ -1,4 +1,5 @@
 import './globals.css';
+import Script from 'next/script';
 import Nav from '@/components/Nav';
 import AnnouncementBar from '@/components/AnnouncementBar';
 import Footer from '@/components/Footer';
@@ -101,6 +102,18 @@ export default function RootLayout({ children }) {
         <ImageProtection />
         <InlineImageLightbox />
         <Analytics />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QN40GY3478"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QN40GY3478');
+          `}
+        </Script>
       </body>
     </html>
   );
