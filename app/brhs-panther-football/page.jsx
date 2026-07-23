@@ -73,7 +73,7 @@ const SCHEDULE_2026 = [
 // order and the "NEW" badge — see lib/articles.js — so the array below does
 // NOT need to be kept in manual chronological order.
 const ARTICLES = [
-  { title: 'Team Preview 2026: Bridgewater-Raritan Panthers', source: 'PJR Sports Report', url: 'https://www.pjrsportsreport.com/uncategorized/post-1725-team-preview-2026-bridgewater-raritan-panthers/', date: '2026-07-10' },
+  { title: 'Team Preview 2026: Bridgewater-Raritan Panthers', source: 'PJR Sports Report', url: 'https://www.pjrsportsreport.com/uncategorized/post-1725-team-preview-2026-bridgewater-raritan-panthers/', date: '2026-07-11' /* corrected 2026-07-23: article:published_time metadata is 2026-07-11T18:47:44Z; the in-article byline reads "July 10" but per the array's stated convention (real publish date over event/write date), 07-11 is correct */ },
   { title: 'Bridgewater-Raritan Football State Champions Honored By Board Of Education', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/bridgewater-raritan-football-state-champions-honored-board-education', date: '2026-02-19' },
   { title: 'Bridgewater-Raritan Football Coach Named Coach Of Year For Historic Season', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/bridgewater-raritan-football-coach-named-coach-year-historic-season', date: '2026-02-04' },
   { title: 'Standout Tackle Justin Simpson Of The Record-Setting Bridgewater-Raritan Football Team Is Headed To Bucknell', source: 'BRRSD Athletics', url: 'https://www.brrsd.org/o/brrhs/article/2580305', date: '2025-12-04' },
