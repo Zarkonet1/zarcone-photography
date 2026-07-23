@@ -4,6 +4,7 @@ import AnnouncementBar from '@/components/AnnouncementBar';
 import Footer from '@/components/Footer';
 import ChatWidget from '@/components/ChatWidget';
 import ImageProtection from '@/components/ImageProtection';
+import InlineImageLightbox from '@/components/InlineImageLightbox';
 import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
@@ -98,6 +99,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <ChatWidget />
         <ImageProtection />
+        <InlineImageLightbox />
         <Analytics />
       </body>
     </html>
