@@ -23,6 +23,10 @@ A composite starts at the camera. A piece like "Built Different" starts somewher
 
 That's concept development, and it happens before any design software opens. It's the part of the process that has no equivalent in a standard composite, because a composite doesn't need an original idea — it needs a good photo and a clean layout.
 
+![Built Different — custom concept artwork for Matthew McCann, BRHS Panther Wrestling, by Zarcone Photography](/photos/Built_Different_McCann.jpg)
+
+*"Built Different" — the finished concept piece, in full. Blueprint framing, program branding, and the half-human, half-mechanical figure built around Matthew McCann, BRHS Panther Wrestling.*
+
 ## Iteration is the actual job
 
 The version that ships is never the first version. A concept piece like this goes through real iteration — different visual metaphors tested and discarded, different compositions tried before one earns its place, details refined based on what actually reads at full size versus what only worked as a small mockup. Some directions get built out significantly before getting scrapped entirely, because they looked right in an idea and wrong on the page.
