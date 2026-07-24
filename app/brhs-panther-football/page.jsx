@@ -203,6 +203,27 @@ const ROSTER_GROUP_ORDER = ['Quarterbacks', 'Running Backs', 'Wide Receivers', '
 // groups are already short. Collapsed to this many rows until expanded.
 const ROSTER_PREVIEW_COUNT = 15;
 
+// Shared by the player table and the managers table — falls back to a stable
+// no-op (returns 0) for keys a row doesn't have, e.g. sorting managers by
+// "number" or "offPos", which they don't carry.
+function compareRosterRows(a, b, key, dir) {
+  const mul = dir === 'desc' ? -1 : 1;
+  let av, bv;
+  if (key === 'number' || key === 'classYear') {
+    av = a[key] ?? 0;
+    bv = b[key] ?? 0;
+  } else if (key === 'last') {
+    av = `${a.last} ${a.first}`.toLowerCase();
+    bv = `${b.last} ${b.first}`.toLowerCase();
+  } else {
+    av = (a[key] || '').toString().toLowerCase();
+    bv = (b[key] || '').toString().toLowerCase();
+  }
+  if (av < bv) return -1 * mul;
+  if (av > bv) return 1 * mul;
+  return 0;
+}
+
 const ROSTER_RAW_2026 = [
   { number: 74, first: 'Andrew', last: 'Arndt', classYear: 27, defPos: 'DL', offPos: 'OL' },
   { number: 1, first: 'Jeremiah', last: 'Baker', classYear: 29, defPos: 'DB', offPos: 'RB' },
@@ -321,6 +342,17 @@ export default function BRHSPantherFootballPage() {
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const [rosterFilter, setRosterFilter] = useState('All');
   const [rosterExpanded, setRosterExpanded] = useState(false);
+  const [rosterSortKey, setRosterSortKey] = useState('number');
+  const [rosterSortDir, setRosterSortDir] = useState('asc');
+  const handleRosterSort = (key) => {
+    if (rosterSortKey === key) {
+      setRosterSortDir((d) => (d === 'asc' ? 'desc' : 'asc'));
+    } else {
+      setRosterSortKey(key);
+      setRosterSortDir('asc');
+    }
+  };
+  const rosterSortArrow = (key) => (rosterSortKey === key ? (rosterSortDir === 'asc' ? ' ▲' : ' ▼') : '');
 
   useEffect(() => {
     const t = setInterval(() => setSlide(s => (s + 1) % CAROUSEL.length), 5000);
@@ -620,19 +652,56 @@ export default function BRHSPantherFootballPage() {
               key={g}
               type="button"
               className={rosterFilter === g ? styles.rosterFilterBtnActive : styles.rosterFilterBtn}
-              onClick={() => setRosterFilter(g)}
+              onClick={() => {
+                setRosterFilter(g);
+                // Number/Off/Def don't exist on managers — fall back to a sort that does.
+                if (g === 'Managers' && ['number', 'offPos', 'defPos'].includes(rosterSortKey)) {
+                  setRosterSortKey('last');
+                  setRosterSortDir('asc');
+                }
+              }}
             >
               {g}
             </button>
           ))}
         </div>
+        {/* Mobile fallback — the table's <thead> (where the sort buttons live) is hidden below 640px, same as the schedule/results tables, so sorting needs its own control there. */}
+        <select
+          className={styles.rosterMobileSort}
+          value={`${rosterSortKey}:${rosterSortDir}`}
+          onChange={(e) => {
+            const [k, d] = e.target.value.split(':');
+            setRosterSortKey(k);
+            setRosterSortDir(d);
+          }}
+          aria-label="Sort roster"
+        >
+          {rosterFilter === 'Managers' ? (
+            <>
+              <option value="last:asc">Sort: Name (A–Z)</option>
+              <option value="last:desc">Sort: Name (Z–A)</option>
+              <option value="classYear:asc">Sort: Grade (Senior–Freshman)</option>
+            </>
+          ) : (
+            <>
+              <option value="number:asc">Sort: Number (Low–High)</option>
+              <option value="last:asc">Sort: Name (A–Z)</option>
+              <option value="last:desc">Sort: Name (Z–A)</option>
+              <option value="classYear:asc">Sort: Grade (Senior–Freshman)</option>
+              <option value="offPos:asc">Sort: Position (A–Z)</option>
+            </>
+          )}
+        </select>
         {rosterFilter === 'Managers' ? (
           <table className={`${styles.scheduleTable} ${styles.rosterTable}`}>
             <thead>
-              <tr><th>Name</th><th>Grade</th></tr>
+              <tr>
+                <th><button type="button" className={styles.sortBtn} onClick={() => handleRosterSort('last')}>Name{rosterSortArrow('last')}</button></th>
+                <th><button type="button" className={styles.sortBtn} onClick={() => handleRosterSort('classYear')}>Grade{rosterSortArrow('classYear')}</button></th>
+              </tr>
             </thead>
             <tbody>
-              {MANAGERS_2026.map((p) => (
+              {[...MANAGERS_2026].sort((a, b) => compareRosterRows(a, b, rosterSortKey, rosterSortDir)).map((p) => (
                 <tr key={p.slug} id={`roster-${p.slug}`}>
                   <td data-label="Name">{p.first} {p.last}</td>
                   <td data-label="Grade">{p.grade}</td>
@@ -642,13 +711,20 @@ export default function BRHSPantherFootballPage() {
           </table>
         ) : (() => {
           const filtered = ROSTER_2026.filter((p) => rosterFilter === 'All' || p.group === rosterFilter);
-          const isTruncated = rosterFilter === 'All' && !rosterExpanded && filtered.length > ROSTER_PREVIEW_COUNT;
-          const visible = isTruncated ? filtered.slice(0, ROSTER_PREVIEW_COUNT) : filtered;
+          const sorted = [...filtered].sort((a, b) => compareRosterRows(a, b, rosterSortKey, rosterSortDir));
+          const isTruncated = rosterFilter === 'All' && !rosterExpanded && sorted.length > ROSTER_PREVIEW_COUNT;
+          const visible = isTruncated ? sorted.slice(0, ROSTER_PREVIEW_COUNT) : sorted;
           return (
             <>
               <table className={`${styles.scheduleTable} ${styles.rosterTable}`}>
                 <thead>
-                  <tr><th>#</th><th>Player</th><th>Grade</th><th>Off</th><th>Def</th></tr>
+                  <tr>
+                    <th><button type="button" className={styles.sortBtn} onClick={() => handleRosterSort('number')}>#{rosterSortArrow('number')}</button></th>
+                    <th><button type="button" className={styles.sortBtn} onClick={() => handleRosterSort('last')}>Player{rosterSortArrow('last')}</button></th>
+                    <th><button type="button" className={styles.sortBtn} onClick={() => handleRosterSort('classYear')}>Grade{rosterSortArrow('classYear')}</button></th>
+                    <th><button type="button" className={styles.sortBtn} onClick={() => handleRosterSort('offPos')}>Off{rosterSortArrow('offPos')}</button></th>
+                    <th><button type="button" className={styles.sortBtn} onClick={() => handleRosterSort('defPos')}>Def{rosterSortArrow('defPos')}</button></th>
+                  </tr>
                 </thead>
                 <tbody>
                   {visible.map((p) => (
@@ -662,13 +738,13 @@ export default function BRHSPantherFootballPage() {
                   ))}
                 </tbody>
               </table>
-              {rosterFilter === 'All' && filtered.length > ROSTER_PREVIEW_COUNT && (
+              {rosterFilter === 'All' && sorted.length > ROSTER_PREVIEW_COUNT && (
                 <button
                   type="button"
                   className={styles.rosterExpandBtn}
                   onClick={() => setRosterExpanded((v) => !v)}
                 >
-                  {rosterExpanded ? 'Show Fewer ↑' : `Show All ${filtered.length} Players ↓`}
+                  {rosterExpanded ? 'Show Fewer ↑' : `Show All ${sorted.length} Players ↓`}
                 </button>
               )}
             </>
