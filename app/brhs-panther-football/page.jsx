@@ -199,6 +199,9 @@ const OFF_POS_GROUP = {
   K: 'Specialists',
 };
 const ROSTER_GROUP_ORDER = ['Quarterbacks', 'Running Backs', 'Wide Receivers', 'Tight Ends', 'Offensive Line', 'Specialists'];
+// "All" is the only view long enough to need collapsing — individual position
+// groups are already short. Collapsed to this many rows until expanded.
+const ROSTER_PREVIEW_COUNT = 15;
 
 const ROSTER_RAW_2026 = [
   { number: 74, first: 'Andrew', last: 'Arndt', classYear: 27, defPos: 'DL', offPos: 'OL' },
@@ -317,6 +320,7 @@ export default function BRHSPantherFootballPage() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', athleteName: '', sport: 'Football', interestedIn: 'Prints', message: '' });
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const [rosterFilter, setRosterFilter] = useState('All');
+  const [rosterExpanded, setRosterExpanded] = useState(false);
 
   useEffect(() => {
     const t = setInterval(() => setSlide(s => (s + 1) % CAROUSEL.length), 5000);
@@ -623,7 +627,7 @@ export default function BRHSPantherFootballPage() {
           ))}
         </div>
         {rosterFilter === 'Managers' ? (
-          <table className={styles.scheduleTable}>
+          <table className={`${styles.scheduleTable} ${styles.rosterTable}`}>
             <thead>
               <tr><th>Name</th><th>Grade</th></tr>
             </thead>
@@ -636,24 +640,40 @@ export default function BRHSPantherFootballPage() {
               ))}
             </tbody>
           </table>
-        ) : (
-          <table className={styles.scheduleTable}>
-            <thead>
-              <tr><th>#</th><th>Player</th><th>Grade</th><th>Off</th><th>Def</th></tr>
-            </thead>
-            <tbody>
-              {ROSTER_2026.filter((p) => rosterFilter === 'All' || p.group === rosterFilter).map((p) => (
-                <tr key={p.slug} id={`roster-${p.slug}`}>
-                  <td data-label="#">{p.number}</td>
-                  <td data-label="Player">{p.first} {p.last}</td>
-                  <td data-label="Grade">{p.grade}</td>
-                  <td data-label="Off">{p.offPos}</td>
-                  <td data-label="Def">{p.defPos}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+        ) : (() => {
+          const filtered = ROSTER_2026.filter((p) => rosterFilter === 'All' || p.group === rosterFilter);
+          const isTruncated = rosterFilter === 'All' && !rosterExpanded && filtered.length > ROSTER_PREVIEW_COUNT;
+          const visible = isTruncated ? filtered.slice(0, ROSTER_PREVIEW_COUNT) : filtered;
+          return (
+            <>
+              <table className={`${styles.scheduleTable} ${styles.rosterTable}`}>
+                <thead>
+                  <tr><th>#</th><th>Player</th><th>Grade</th><th>Off</th><th>Def</th></tr>
+                </thead>
+                <tbody>
+                  {visible.map((p) => (
+                    <tr key={p.slug} id={`roster-${p.slug}`}>
+                      <td data-label="#">{p.number}</td>
+                      <td data-label="Player">{p.first} {p.last}</td>
+                      <td data-label="Grade">{p.grade}</td>
+                      <td data-label="Off">{p.offPos}</td>
+                      <td data-label="Def">{p.defPos}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {rosterFilter === 'All' && filtered.length > ROSTER_PREVIEW_COUNT && (
+                <button
+                  type="button"
+                  className={styles.rosterExpandBtn}
+                  onClick={() => setRosterExpanded((v) => !v)}
+                >
+                  {rosterExpanded ? 'Show Fewer ↑' : `Show All ${filtered.length} Players ↓`}
+                </button>
+              )}
+            </>
+          );
+        })()}
         <p className={styles.sampleCaption}>
           {rosterFilter === 'Managers'
             ? 'Team managers support the program on game days and at practice. Roster subject to change before the season opener.'
