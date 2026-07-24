@@ -244,7 +244,6 @@ const ROSTER_RAW_2026 = [
   { number: 3, first: 'Jonathan', last: 'Okolo', classYear: 27, defPos: 'LB', offPos: 'RB' },
   { number: 77, first: 'Hugo', last: 'Ortega', classYear: 29, defPos: 'DL', offPos: 'OL' },
   { number: 7, first: 'Cole', last: 'Pello', classYear: 27, defPos: 'DB', offPos: 'WR' },
-  { number: 73, first: 'Bryan', last: 'Pena', classYear: 29, defPos: 'DL', offPos: 'OL' },
   { number: 33, first: 'Jake', last: 'Petrillo', classYear: 29, defPos: 'DB', offPos: 'WR' },
   { number: 34, first: 'Tyler', last: 'Plank', classYear: 29, defPos: 'LB', offPos: 'WR' },
   { number: 25, first: 'Sebastian', last: 'Redyk', classYear: 27, defPos: 'DL', offPos: 'TE' },
@@ -277,6 +276,31 @@ const ROSTER_2026 = ROSTER_RAW_2026
     slug: `${p.first}-${p.last}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
   }))
   .sort((a, b) => a.number - b.number);
+
+// Team managers, per BRHS Football Ops (received 2026-07-22). Source sheet
+// columns read "First Name / Last Name" but the raw order looked backwards
+// against known family names (e.g. "Locrotondo, Bellina" — James Locrotondo
+// is on the player roster above, same surname) — flipped to read naturally.
+// Confirm with Ops if any of these look wrong.
+const MANAGERS_RAW_2026 = [
+  { first: 'Nolan', last: 'Brown', classYear: 27 },
+  { first: 'Ryan', last: 'Dobkin', classYear: 30 },
+  { first: 'Ethan', last: 'Dobkin', classYear: 30 },
+  { first: 'Patrick', last: 'Gonzalez', classYear: 29 },
+  { first: 'Serena', last: 'Grasso', classYear: 27 },
+  { first: 'Bellina', last: 'Locrotondo', classYear: 27 },
+  { first: 'Jamie', last: 'McGeechan', classYear: 29 },
+  { first: 'Amelia', last: 'Pan', classYear: 27 },
+  { first: 'Rohan', last: 'Venugopal', classYear: 27 },
+];
+
+const MANAGERS_2026 = MANAGERS_RAW_2026
+  .map((p) => ({
+    ...p,
+    grade: gradeFromClassYear(p.classYear),
+    slug: `${p.first}-${p.last}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+  }))
+  .sort((a, b) => a.last.localeCompare(b.last));
 
 const SERVICES = [
   { title: 'Game Day Coverage', body: 'Full home-game photography — action, sidelines, celebrations, and crowd.' },
@@ -583,11 +607,11 @@ export default function BRHSPantherFootballPage() {
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>2026 <em>Roster</em></h2>
           </div>
           <p className={styles.sectionSub}>
-            {ROSTER_2026.length} players as of late June 2026, per BRHS Football Ops. Every player here is photographed at Media Day on Jul 29 — the gallery posts here once portraits are ready.
+            {ROSTER_2026.length} players and {MANAGERS_2026.length} team managers as of July 2026, per BRHS Football Ops. Everyone here is photographed at Media Day on Jul 29 — the gallery posts here once portraits are ready.
           </p>
         </div>
         <div className={styles.rosterFilterRow}>
-          {['All', ...ROSTER_GROUP_ORDER].map((g) => (
+          {['All', ...ROSTER_GROUP_ORDER, 'Managers'].map((g) => (
             <button
               key={g}
               type="button"
@@ -598,24 +622,42 @@ export default function BRHSPantherFootballPage() {
             </button>
           ))}
         </div>
-        <table className={styles.scheduleTable}>
-          <thead>
-            <tr><th>#</th><th>Player</th><th>Grade</th><th>Off</th><th>Def</th></tr>
-          </thead>
-          <tbody>
-            {ROSTER_2026.filter((p) => rosterFilter === 'All' || p.group === rosterFilter).map((p) => (
-              <tr key={p.slug} id={`roster-${p.slug}`}>
-                <td data-label="#">{p.number}</td>
-                <td data-label="Player">{p.first} {p.last}</td>
-                <td data-label="Grade">{p.grade}</td>
-                <td data-label="Off">{p.offPos}</td>
-                <td data-label="Def">{p.defPos}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        {rosterFilter === 'Managers' ? (
+          <table className={styles.scheduleTable}>
+            <thead>
+              <tr><th>Name</th><th>Grade</th></tr>
+            </thead>
+            <tbody>
+              {MANAGERS_2026.map((p) => (
+                <tr key={p.slug} id={`roster-${p.slug}`}>
+                  <td data-label="Name">{p.first} {p.last}</td>
+                  <td data-label="Grade">{p.grade}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <table className={styles.scheduleTable}>
+            <thead>
+              <tr><th>#</th><th>Player</th><th>Grade</th><th>Off</th><th>Def</th></tr>
+            </thead>
+            <tbody>
+              {ROSTER_2026.filter((p) => rosterFilter === 'All' || p.group === rosterFilter).map((p) => (
+                <tr key={p.slug} id={`roster-${p.slug}`}>
+                  <td data-label="#">{p.number}</td>
+                  <td data-label="Player">{p.first} {p.last}</td>
+                  <td data-label="Grade">{p.grade}</td>
+                  <td data-label="Off">{p.offPos}</td>
+                  <td data-label="Def">{p.defPos}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
         <p className={styles.sampleCaption}>
-          Most players at this level go both ways — Off/Def columns show each player's primary alignment on both sides of the ball. Roster subject to change before the season opener.
+          {rosterFilter === 'Managers'
+            ? 'Team managers support the program on game days and at practice. Roster subject to change before the season opener.'
+            : "Most players at this level go both ways — Off/Def columns show each player's primary alignment on both sides of the ball. Roster subject to change before the season opener."}
         </p>
       </section>
 
