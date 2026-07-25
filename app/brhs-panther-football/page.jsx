@@ -10,6 +10,7 @@ import GalleryAlertToast from '@/components/GalleryAlertToast';
 import styles from './page.module.css';
 import { getRecord, getNextMatch, getLatestResult, getCoachTenure, ordinal } from '@/lib/teamSchedule';
 import { sortArticlesByDate, isRecentArticle } from '@/lib/articles';
+import { SCHEDULE_2026 } from '@/lib/footballSchedule';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Football';
@@ -51,20 +52,9 @@ const CAROUSEL = [
   { src: '/photos/SPORTS-Zarcone-Photography-0088.jpg', width: 1600, height: 1066, caption: '2025: A Season For The Record Books' },
 ];
 
-// 2026 schedule as published by MaxPreps / Big Central Conference (subject to change — confirm kickoff times before heading to games).
-// TIER 1: `result` is the single source of truth for this season. Leave it
-// `null` until the game is played, then set it to { win: true/false, score:
-// '21–14' } — Record, Next Game, and Latest Result in SEASON_TRACKER below
-// all derive from this array automatically. Don't also hand-edit those three
-// lines; that duplication is what goes stale.
-const SCHEDULE_2026 = [
-  { date: 'Thu, Aug 27', time: '7:00 PM', opponent: 'at Woodbridge', home: false, result: null },
-  { date: 'Thu, Sep 10', time: '6:00 PM', opponent: 'vs Hillsborough', home: true, league: true, result: null },
-  { date: 'Fri, Sep 18', time: '6:00 PM', opponent: 'vs Ridge', home: true, league: true, result: null },
-  { date: 'Fri, Oct 2', time: '6:00 PM', opponent: 'vs Hunterdon Central', home: true, result: null },
-  { date: 'Fri, Oct 9', time: '7:00 PM', opponent: 'at Union', home: false, result: null },
-  { date: 'Fri, Oct 16', time: '7:00 PM', opponent: 'at Phillipsburg', home: false, league: true, result: null },
-];
+// SCHEDULE_2026 now lives in lib/footballSchedule.js (imported above) so
+// components/AnnouncementBar.jsx can share it — see that file's header
+// comment for why. Don't redeclare it here.
 
 // Real coverage of the program — no invented headlines. `date` is the
 // article's real publish date, confirmed against the source where possible;
