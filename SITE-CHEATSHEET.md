@@ -151,18 +151,18 @@ Replace any `src` path. Slots 1 and 3 are taller — portrait-oriented photos wo
 {
   title:       'Event Name',
   badge:       'Mini Sessions',        // small tag on the image
-  date:        'July 3, 2026',
+  date:        'July 3, 2026',         // human-readable, shown on the page
+  dateISO:     '2026-07-03',           // YYYY-MM-DD, drives upcoming/past — keep in sync with `date`
   location:    'Venue · City, NJ',
   description: 'Short paragraph...',
   image:       '/photos/filename.jpg',
   link:        'https://booking-url.com',
   linkLabel:   'Book Your Spot',
-  status:      'upcoming',             // 'upcoming' or 'past'
 },
 ```
 
 - **Add event:** copy the block above, fill in details, add to the array
-- **Move to past:** change `status: 'upcoming'` to `status: 'past'` — it disappears from the announcement bar and moves to Past Events on the News page
+- **Move to past:** nothing to do — as of 2026-07-25, `status` is computed automatically from `dateISO`. An event shows as upcoming through the end of its own day and flips to past the next day, on its own, on every page load. Don't add a `status` field by hand.
 - **Remove:** delete the block entirely
 
 ---
