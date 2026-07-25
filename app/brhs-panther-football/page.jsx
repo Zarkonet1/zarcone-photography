@@ -140,6 +140,27 @@ const STAT_BAR = [
   { num: ordinal(COACH_TENURE.seasonNumber), label: 'Season As Head Coach', sub: `D.J. Catalano, entering his ${ordinal(COACH_TENURE.yearsAtSchool)} year at BRHS` },
 ];
 
+// Big Central Conference — American Silver Division for 2026 (per Union News
+// Daily / Yahoo Sports division-alignment coverage, July 2026): Bridgewater-
+// Raritan, Hillsborough, Phillipsburg, Ridge. This matches the three games
+// already flagged `league: true` in SCHEDULE_2026 above — don't add a 4th
+// conference opponent here without also flagging it there, or the two will
+// disagree.
+//
+// Bridgewater-Raritan's own row is NOT hand-typed — it derives from
+// SCHEDULE_2026 below, the same single-source-of-truth pattern as Record /
+// Next Game / Latest Result in SEASON_TRACKER. The other three teams have no
+// schedule data in this codebase, so THEIR wins/losses are manual and need a
+// weekly touch-up once the season starts (Aug 27 opener) — update from
+// MaxPreps' Big Central standings page or NJ.com's weekly Big Central
+// roundup. All four start 0-0-0 in the preseason, which is accurate, not a
+// bug — the table will fill in as games are played.
+const OTHER_STANDINGS_2026 = [
+  { team: 'Hillsborough', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Phillipsburg', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Ridge', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
+];
+
 // BRHS's own standings row derives from SCHEDULE_2026 — see the comment on
 // OTHER_STANDINGS_2026 above for why the other three teams are hand-entered.
 const BRHS_PLAYED = SCHEDULE_2026.filter((g) => g.result);
@@ -203,27 +224,6 @@ const RESULTS_2025 = [
   { date: 'Nov 7, 2025', opponent: 'vs Union City', round: 'NJSIAA North 2, Group 5 Playoffs — Sectional Semifinal', result: 'W 22–7', win: true },
   { date: 'Nov 14, 2025', opponent: 'vs Bayonne', round: 'NJSIAA North 2, Group 5 Sectional Final', result: 'W 21–14', win: true },
   { date: 'Nov 21, 2025', opponent: 'vs Passaic County Tech', round: 'NJSIAA Group 5 State Tournament', result: 'L 14–23', win: false },
-];
-
-// Big Central Conference — American Silver Division for 2026 (per Union News
-// Daily / Yahoo Sports division-alignment coverage, July 2026): Bridgewater-
-// Raritan, Hillsborough, Phillipsburg, Ridge. This matches the three games
-// already flagged `league: true` in SCHEDULE_2026 above — don't add a 4th
-// conference opponent here without also flagging it there, or the two will
-// disagree.
-//
-// Bridgewater-Raritan's own row is NOT hand-typed — it derives from
-// SCHEDULE_2026 below, the same single-source-of-truth pattern as Record /
-// Next Game / Latest Result in SEASON_TRACKER. The other three teams have no
-// schedule data in this codebase, so THEIR wins/losses are manual and need a
-// weekly touch-up once the season starts (Aug 27 opener) — update from
-// MaxPreps' Big Central standings page or NJ.com's weekly Big Central
-// roundup. All four start 0-0-0 in the preseason, which is accurate, not a
-// bug — the table will fill in as games are played.
-const OTHER_STANDINGS_2026 = [
-  { team: 'Hillsborough', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Phillipsburg', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Ridge', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
 ];
 
 const SEASONS = [
