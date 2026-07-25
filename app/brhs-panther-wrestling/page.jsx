@@ -9,20 +9,14 @@ import GalleryAlertToast from '@/components/GalleryAlertToast';
 import styles from './page.module.css';
 import { getRecord, getNextMatch } from '@/lib/teamSchedule';
 import { sortArticlesByDate, isRecentArticle } from '@/lib/articles';
+import { DUAL_SCHEDULE_2026_27 } from '@/lib/wrestlingSchedule';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Wrestling';
 
-// TIER 1 REFACTOR (2026-07-10): dual-meet schedule for 2026-27. MaxPreps has
-// not published one yet (confirmed empty as of this writing), so this starts
-// empty and Record/Next Match below fall back to the honest "preseason" text.
-// Once dates are released, add entries here the same way as the football
-// SCHEDULE_2026 array — { date, opponent, home, result: null } — and Record /
-// Next Match in SEASON_TRACKER will start deriving automatically. Tournament
-// placements (Districts/Regions/States) still go in RESULTS_2025_26 below as
-// hand-written result strings — those aren't simple win/loss and shouldn't be
-// forced into this array. See lib/teamSchedule.js for why.
-const DUAL_SCHEDULE_2026_27 = [];
+// DUAL_SCHEDULE_2026_27 now lives in lib/wrestlingSchedule.js (imported
+// above) so components/AnnouncementBar.jsx can share it — see that file's
+// header comment for why. Don't redeclare it here.
 
 // Only genuine wrestling action photos — no cross-sport placeholders.
 const PHOTOS = [

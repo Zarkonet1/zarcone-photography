@@ -4,29 +4,60 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { EVENTS } from '@/lib/events';
-import { SCHEDULE_2026 as FOOTBALL_SCHEDULE_2026 } from '@/lib/footballSchedule';
+import { SCHEDULE_2026 as FOOTBALL_SCHEDULE } from '@/lib/footballSchedule';
+import { DUAL_SCHEDULE_2026_27 as WRESTLING_SCHEDULE } from '@/lib/wrestlingSchedule';
 import { getNextMatch } from '@/lib/teamSchedule';
 import styles from './AnnouncementBar.module.css';
 
-// On the football hub page, the bar narrows to football-only content —
-// Media Day, then the Season Opener, then Next Game once the season's
-// underway — instead of cycling in sitewide mini-session/charity promos
-// that don't belong on a team page. Everywhere else, behavior is unchanged.
-function getFootballItems() {
+// Zarcone Photography Main banner — the sitewide default (mini sessions,
+// charity events, etc.) — is just EVENTS.filter(upcoming) at the bottom of
+// this component, unchanged from before. Don't touch that path.
+//
+// On a team hub page, the bar instead narrows to that team's own content —
+// its Media/Kickoff Day event (if tagged in lib/events.js) plus a derived
+// Season Opener/Next Game-or-Match — instead of cycling in sitewide promos
+// that don't belong on a team page. To give another team page the same
+// treatment, add one entry below; nothing else needs to change.
+const TEAM_BANNERS = [
+  {
+    pathPrefix: '/brhs-panther-football',
+    team: 'football',
+    schedule: FOOTBALL_SCHEDULE,
+    scheduleHref: '/brhs-panther-football#schedule',
+    nextLabel: 'Next Game',
+  },
+  {
+    pathPrefix: '/brhs-panther-wrestling',
+    team: 'wrestling',
+    schedule: WRESTLING_SCHEDULE,
+    scheduleHref: '/brhs-panther-wrestling#results',
+    nextLabel: 'Next Match',
+    // WRESTLING_SCHEDULE (lib/wrestlingSchedule.js) is empty as of this
+    // writing — MaxPreps hasn't published 2026-27 dual dates yet — so until
+    // it fills in, this banner shows only wrestling-tagged EVENTS entries
+    // (currently none) and may render nothing at all on that page. Expected,
+    // not a bug; same honesty-over-fake-content call as the football
+    // standings table. Add wrestling dates to that file, or a
+    // `team: 'wrestling'` event to lib/events.js, and it activates on its own.
+  },
+];
+
+function getTeamBannerItems(config) {
   const items = EVENTS
-    .filter((e) => e.status === 'upcoming' && e.team === 'football')
+    .filter((e) => e.status === 'upcoming' && e.team === config.team)
     .map((e) => ({ title: e.title, date: e.date, href: e.link?.startsWith('/') ? e.link : '/news' }));
 
-  // Derived from the same SCHEDULE_2026 the football page itself reads —
-  // don't hand-type a duplicate "Next Game" entry in lib/events.js, that's
-  // exactly the kind of duplication that goes stale (see lib/footballSchedule.js).
-  const nextGameDate = getNextMatch(FOOTBALL_SCHEDULE_2026, null);
-  if (nextGameDate) {
-    const seasonUnderway = FOOTBALL_SCHEDULE_2026.some((g) => g.result);
+  // Derived from the same schedule the team page itself reads — don't
+  // hand-type a duplicate "Next Game/Match" entry in lib/events.js, that's
+  // exactly the kind of duplication that goes stale (see
+  // lib/footballSchedule.js / lib/wrestlingSchedule.js).
+  const nextDate = getNextMatch(config.schedule, null);
+  if (nextDate) {
+    const seasonUnderway = config.schedule.some((g) => g.result);
     items.push({
-      title: seasonUnderway ? 'Next Game' : 'Season Opener',
-      date: nextGameDate,
-      href: '/brhs-panther-football#schedule',
+      title: seasonUnderway ? config.nextLabel : 'Season Opener',
+      date: nextDate,
+      href: config.scheduleHref,
     });
   }
   return items;
@@ -34,16 +65,17 @@ function getFootballItems() {
 
 export default function AnnouncementBar() {
   const pathname = usePathname();
-  const onFootballPage = pathname?.startsWith('/brhs-panther-football');
-  const upcoming = onFootballPage ? getFootballItems() : EVENTS.filter(e => e.status === 'upcoming');
+  const activeBanner = TEAM_BANNERS.find((b) => pathname?.startsWith(b.pathPrefix));
+  const upcoming = activeBanner ? getTeamBannerItems(activeBanner) : EVENTS.filter(e => e.status === 'upcoming');
   const [idx, setIdx] = useState(0);
   const [visible, setVisible] = useState(true);
 
-  // Reset the cycle position whenever the active list swaps (e.g. navigating
-  // onto/off the football page) so idx never points past the new list's end.
+  // Reset the cycle position whenever the active banner swaps (e.g.
+  // navigating between the football page, the wrestling page, and
+  // everywhere else) so idx never points past the new list's end.
   useEffect(() => {
     setIdx(0);
-  }, [onFootballPage]);
+  }, [activeBanner?.team]);
 
   useEffect(() => {
     if (upcoming.length <= 1) return;
