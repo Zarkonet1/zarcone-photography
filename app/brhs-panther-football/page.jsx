@@ -140,11 +140,45 @@ const STAT_BAR = [
   { num: ordinal(COACH_TENURE.seasonNumber), label: 'Season As Head Coach', sub: `D.J. Catalano, entering his ${ordinal(COACH_TENURE.yearsAtSchool)} year at BRHS` },
 ];
 
+// BRHS's own standings row derives from SCHEDULE_2026 — see the comment on
+// OTHER_STANDINGS_2026 above for why the other three teams are hand-entered.
+const BRHS_PLAYED = SCHEDULE_2026.filter((g) => g.result);
+const BRHS_CONF_PLAYED = SCHEDULE_2026.filter((g) => g.league && g.result);
+const BRHS_STANDINGS_ROW = {
+  team: 'Bridgewater-Raritan',
+  current: true,
+  wins: BRHS_PLAYED.filter((g) => g.result.win).length,
+  losses: BRHS_PLAYED.length - BRHS_PLAYED.filter((g) => g.result.win).length,
+  confWins: BRHS_CONF_PLAYED.filter((g) => g.result.win).length,
+  confLosses: BRHS_CONF_PLAYED.length - BRHS_CONF_PLAYED.filter((g) => g.result.win).length,
+};
+
+// Sorted by conference record, then overall record, then alphabetically —
+// all ties (e.g. the 0-0-0 preseason state) fall back to alphabetical, so
+// the order is stable and never implies a rank that hasn't been earned yet.
+const DIVISION_STANDINGS_2026 = [BRHS_STANDINGS_ROW, ...OTHER_STANDINGS_2026]
+  .slice()
+  .sort((a, b) => {
+    const confDiff = (b.confWins - b.confLosses) - (a.confWins - a.confLosses);
+    if (confDiff !== 0) return confDiff;
+    const overallDiff = (b.wins - b.losses) - (a.wins - a.losses);
+    if (overallDiff !== 0) return overallDiff;
+    return a.team.localeCompare(b.team);
+  });
+
+const DIVISION_GAMES_PLAYED = DIVISION_STANDINGS_2026.some((t) => t.confWins + t.confLosses > 0);
+
 const SEASON_TRACKER = [
   { label: 'Record', value: getRecord(SCHEDULE_2026), href: '#schedule' },
   { label: 'Next Game', value: getNextMatch(SCHEDULE_2026, 'Season Complete'), href: '#schedule' },
   { label: 'Latest Result', value: getLatestResult(SCHEDULE_2026, '2025: Sectional Champions'), href: '#results' },
-  { label: 'Current Rankings', value: 'Not Yet Released', href: '#results' },
+  {
+    label: 'Division Standing',
+    value: DIVISION_GAMES_PLAYED
+      ? `${BRHS_STANDINGS_ROW.confWins}-${BRHS_STANDINGS_ROW.confLosses} — Am. Silver`
+      : 'Am. Silver — Preseason',
+    href: '#standings',
+  },
   { label: 'Latest Gallery', value: '2025–26 Season — Live', href: SEASON_GALLERY_URL, external: true },
 ];
 
@@ -169,6 +203,27 @@ const RESULTS_2025 = [
   { date: 'Nov 7, 2025', opponent: 'vs Union City', round: 'NJSIAA North 2, Group 5 Playoffs — Sectional Semifinal', result: 'W 22–7', win: true },
   { date: 'Nov 14, 2025', opponent: 'vs Bayonne', round: 'NJSIAA North 2, Group 5 Sectional Final', result: 'W 21–14', win: true },
   { date: 'Nov 21, 2025', opponent: 'vs Passaic County Tech', round: 'NJSIAA Group 5 State Tournament', result: 'L 14–23', win: false },
+];
+
+// Big Central Conference — American Silver Division for 2026 (per Union News
+// Daily / Yahoo Sports division-alignment coverage, July 2026): Bridgewater-
+// Raritan, Hillsborough, Phillipsburg, Ridge. This matches the three games
+// already flagged `league: true` in SCHEDULE_2026 above — don't add a 4th
+// conference opponent here without also flagging it there, or the two will
+// disagree.
+//
+// Bridgewater-Raritan's own row is NOT hand-typed — it derives from
+// SCHEDULE_2026 below, the same single-source-of-truth pattern as Record /
+// Next Game / Latest Result in SEASON_TRACKER. The other three teams have no
+// schedule data in this codebase, so THEIR wins/losses are manual and need a
+// weekly touch-up once the season starts (Aug 27 opener) — update from
+// MaxPreps' Big Central standings page or NJ.com's weekly Big Central
+// roundup. All four start 0-0-0 in the preseason, which is accurate, not a
+// bug — the table will fill in as games are played.
+const OTHER_STANDINGS_2026 = [
+  { team: 'Hillsborough', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Phillipsburg', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Ridge', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
 ];
 
 const SEASONS = [
@@ -559,6 +614,40 @@ export default function BRHSPantherFootballPage() {
         </table>
         <p className={styles.sampleCaption}>
           Schedule per <a href="https://www.maxpreps.com/nj/bridgewater/bridgewater-raritan-panthers/football/schedule/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--br-red)' }}>MaxPreps</a> as of late June 2026 — additional games and playoff dates are added as the season is finalized. Kickoff times are subject to change; confirm before heading to a game via <a href="https://brhspantherfb.org/schedules/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--br-red)' }}>the official team site</a>. Results post here after each game.
+        </p>
+      </section>
+
+      {/* ── Division Standings ───────────────────────────────────── */}
+      <section id="standings" style={{ background: 'rgba(255,255,255,0.02)' }}>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Big Central Conference</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>American Silver <em>Standings</em></h2>
+          </div>
+          <p className={styles.sectionSub}>
+            Bridgewater-Raritan plays in the American Silver Division of the Big Central Conference, alongside Hillsborough, Phillipsburg, and Ridge.
+          </p>
+        </div>
+        <table className={styles.scheduleTable}>
+          <thead>
+            <tr><th>Team</th><th>Conference</th><th>Overall</th></tr>
+          </thead>
+          <tbody>
+            {DIVISION_STANDINGS_2026.map((t, i) => (
+              <tr key={i} className={t.current ? styles.standingsActive : ''}>
+                <td data-label="Team" className={t.current ? styles.standingsTeamActive : styles.standingsTeam}>{t.team}</td>
+                <td data-label="Conference" className={styles.standingsRecord}>{t.confWins}-{t.confLosses}</td>
+                <td data-label="Overall" className={styles.standingsRecord}>{t.wins}-{t.losses}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className={styles.sampleCaption}>
+          {DIVISION_GAMES_PLAYED
+            ? 'Standings update as Big Central Conference games are reported.'
+            : 'All four teams open the season 0-0 — the 2026 opener is Thu, Aug 27. Standings fill in as conference games are played.'}
+          {' '}Bridgewater-Raritan's record is drawn automatically from the schedule above; other teams' records are tracked from{' '}
+          <a href="https://www.maxpreps.com/nj/bridgewater/bridgewater-raritan-panthers/football/standings/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--br-red)' }}>MaxPreps</a> and NJ.com's weekly Big Central Conference roundup.
         </p>
       </section>
 

@@ -349,6 +349,10 @@
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .leagueRow td { background: rgba(200,16,46,0.04); }
+.standingsActive td { background: rgba(200,16,46,0.09); }
+.standingsTeam { font-weight: 800; }
+.standingsTeamActive { color: var(--br-red); font-weight: 800; }
+.standingsRecord { color: var(--br-silver); font-weight: 700; }
 .leagueTag {
   display: inline-block;
   margin-left: 10px;
@@ -366,6 +370,7 @@
   .scheduleTable, .scheduleTable tbody, .scheduleTable tr, .scheduleTable td { display: block; width: 100%; }
   .scheduleTable tr { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
   .leagueRow { background: rgba(200,16,46,0.04); }
+  .standingsActive { background: rgba(200,16,46,0.09); }
   .scheduleTable td { padding: 2px 0; border-bottom: none; font-size: 14px; }
   .scheduleTable td:before {
     content: attr(data-label);
