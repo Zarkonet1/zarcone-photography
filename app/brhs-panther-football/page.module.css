@@ -1131,11 +1131,11 @@ a.latestItem:hover { background: rgba(255,255,255,0.05); }
 /* ─── Coaches ──────────────────────────────────────────────────────── */
 .coachGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 1px;
   background: rgba(255,255,255,0.08);
+  margin-bottom: 44px;
 }
-@media (max-width: 700px) { .coachGrid { grid-template-columns: 1fr; } }
 .coachCard {
   background: var(--br-black);
   padding: 36px 32px;
@@ -1180,6 +1180,46 @@ a.latestItem:hover { background: rgba(255,255,255,0.05); }
 .coachStub {
   font-size: 13px;
   font-style: italic;
+  color: var(--br-silver);
+}
+
+.staffLabel {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--br-red);
+  margin-bottom: 16px;
+}
+.staffGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+}
+@media (max-width: 900px) { .staffGrid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .staffGrid { grid-template-columns: 1fr; } }
+.staffCard {
+  background: var(--br-black);
+  padding: 26px 24px;
+}
+.staffName {
+  font-size: 15px;
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+}
+.staffTitle {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--br-red);
+  margin: 4px 0 10px;
+}
+.staffNote {
+  font-size: 13px;
+  line-height: 1.65;
   color: var(--br-silver);
 }
 
