@@ -61,6 +61,14 @@ const nextConfig = {
       { source: '/browse',                 destination: '/client-area', permanent: true },
       { source: '/browse/:slug*',          destination: '/client-area', permanent: true },
 
+      // Legacy SmugMug gallery links (found 404ing in GA4, 2026-07-27) → client area
+      { source: '/2025-2026-brhs-wrestling/:slug*',      destination: '/client-area', permanent: true },
+      { source: '/20251031-brhs-fb-v-linden/:slug*',     destination: '/client-area', permanent: true },
+      { source: '/21may22-rinas-40th-birthday-party/:slug*', destination: '/client-area', permanent: true },
+
+      // Typo'd football link (underscore instead of hyphen) — found 404ing in GA4, 2026-07-27
+      { source: '/brhs_football',          destination: '/brhs-panther-football', permanent: true },
+
 // Dead blog posts from the pre-redesign site — content no longer
       // exists under any slug; send to the blog index instead of 404ing
       { source: '/blog/the-benefits-of-professional-senior-photographs', destination: '/blog', permanent: true },
