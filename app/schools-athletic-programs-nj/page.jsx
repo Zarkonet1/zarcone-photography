@@ -8,11 +8,11 @@ export const metadata = {
   openGraph: {
     title: 'Schools & Athletic Programs — Zarcone Photography',
     description: 'Season-long media partnerships for NJ athletic programs. Game coverage, team portraits, Senior Night, and recruiting-ready imagery.',
-    url: 'https://zarconephotography.com/schools-athletic-programs-nj',
+    url: 'https://www.zarconephotography.com/schools-athletic-programs-nj',
     type: 'website',
     images: [
       {
-        url: 'https://zarconephotography.com/photos/i-s7zBdzk.jpg',
+        url: 'https://www.zarconephotography.com/photos/i-s7zBdzk.jpg',
         width: 1200,
         height: 800,
         alt: 'Athletic program photography — Zarcone Photography, New Jersey',
@@ -21,10 +21,10 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://zarconephotography.com/photos/i-s7zBdzk.jpg'],
+    images: ['https://www.zarconephotography.com/photos/i-s7zBdzk.jpg'],
   },
   alternates: {
-    canonical: 'https://zarconephotography.com/schools-athletic-programs-nj',
+    canonical: 'https://www.zarconephotography.com/schools-athletic-programs-nj',
   },
 };
 
@@ -35,7 +35,7 @@ const jsonLd = {
   provider: {
     '@type': 'LocalBusiness',
     name: 'Zarcone Photography',
-    url: 'https://zarconephotography.com',
+    url: 'https://www.zarconephotography.com',
     telephone: '(908) 777-0631',
     email: 'info@zarconephotography.com',
     address: {

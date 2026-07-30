@@ -8,11 +8,11 @@ export const metadata = {
   openGraph: {
     title: 'Event Photographer — New Jersey | Zarcone Photography',
     description: 'Event photographer based in Bridgewater, NJ. Proms, corporate events, live music, and milestone celebrations across New Jersey.',
-    url: 'https://zarconephotography.com/event-photographer-nj',
+    url: 'https://www.zarconephotography.com/event-photographer-nj',
     type: 'website',
     images: [
       {
-        url: 'https://zarconephotography.com/photos/EVENT-Zarcone-Photography-28.jpg',
+        url: 'https://www.zarconephotography.com/photos/EVENT-Zarcone-Photography-28.jpg',
         width: 1200,
         height: 800,
         alt: 'Event photography NJ — Zarcone Photography',
@@ -21,10 +21,10 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://zarconephotography.com/photos/EVENT-Zarcone-Photography-28.jpg'],
+    images: ['https://www.zarconephotography.com/photos/EVENT-Zarcone-Photography-28.jpg'],
   },
   alternates: {
-    canonical: 'https://zarconephotography.com/event-photographer-nj',
+    canonical: 'https://www.zarconephotography.com/event-photographer-nj',
   },
 };
 
@@ -35,7 +35,7 @@ const jsonLd = {
   provider: {
     '@type': 'LocalBusiness',
     name: 'Zarcone Photography',
-    url: 'https://zarconephotography.com',
+    url: 'https://www.zarconephotography.com',
     telephone: '(908) 777-0631',
     email: 'info@zarconephotography.com',
     address: {

@@ -7,10 +7,10 @@ export const metadata = {
   openGraph: {
     title: 'Portrait Photography NJ | Zarcone Photography',
     description: 'Professional portrait photography in New Jersey — senior portraits, family portraits, headshots, and lifestyle sessions.',
-    url: 'https://zarconephotography.com/portraits',
+    url: 'https://www.zarconephotography.com/portraits',
     images: [
       {
-        url: 'https://zarconephotography.com/photos/PORTRAIT-Zarcone-Photography-0002.jpg',
+        url: 'https://www.zarconephotography.com/photos/PORTRAIT-Zarcone-Photography-0002.jpg',
         width: 1200,
         height: 800,
         alt: 'Portrait photography NJ — Zarcone Photography',
@@ -19,7 +19,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://zarconephotography.com/photos/PORTRAIT-Zarcone-Photography-0002.jpg'],
+    images: ['https://www.zarconephotography.com/photos/PORTRAIT-Zarcone-Photography-0002.jpg'],
   },
 };
 

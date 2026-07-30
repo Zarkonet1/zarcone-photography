@@ -8,11 +8,11 @@ export const metadata = {
   openGraph: {
     title: 'Senior Portrait Photographer — New Jersey | Zarcone Photography',
     description: 'Professional senior portrait photographer serving New Jersey. Based in Bridgewater, NJ — Somerset County and beyond.',
-    url: 'https://zarconephotography.com/senior-portrait-photographer-nj',
+    url: 'https://www.zarconephotography.com/senior-portrait-photographer-nj',
     type: 'website',
     images: [
       {
-        url: 'https://zarconephotography.com/photos/i-rvRX82g.jpg',
+        url: 'https://www.zarconephotography.com/photos/i-rvRX82g.jpg',
         width: 1200,
         height: 800,
         alt: 'Senior portrait photography NJ — Zarcone Photography',
@@ -21,10 +21,10 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://zarconephotography.com/photos/i-rvRX82g.jpg'],
+    images: ['https://www.zarconephotography.com/photos/i-rvRX82g.jpg'],
   },
   alternates: {
-    canonical: 'https://zarconephotography.com/senior-portrait-photographer-nj',
+    canonical: 'https://www.zarconephotography.com/senior-portrait-photographer-nj',
   },
 };
 
@@ -35,7 +35,7 @@ const jsonLd = {
   provider: {
     '@type': 'LocalBusiness',
     name: 'Zarcone Photography',
-    url: 'https://zarconephotography.com',
+    url: 'https://www.zarconephotography.com',
     telephone: '(908) 777-0631',
     email: 'info@zarconephotography.com',
     address: {

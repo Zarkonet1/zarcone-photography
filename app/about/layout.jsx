@@ -7,10 +7,10 @@ export const metadata = {
   openGraph: {
     title: 'About Tom Zarcone | NJ Portrait & Sports Photographer',
     description: 'Meet Tom Zarcone — a professional photographer based in Bridgewater, NJ with a passion for portraits, high school sports, and events.',
-    url: 'https://zarconephotography.com/about',
+    url: 'https://www.zarconephotography.com/about',
     images: [
       {
-        url: 'https://zarconephotography.com/photos/tz-headshot.jpg',
+        url: 'https://www.zarconephotography.com/photos/tz-headshot.jpg',
         width: 1200,
         height: 800,
         alt: 'Tom Zarcone — NJ Photographer',
@@ -19,7 +19,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://zarconephotography.com/photos/tz-headshot.jpg'],
+    images: ['https://www.zarconephotography.com/photos/tz-headshot.jpg'],
   },
 };
 

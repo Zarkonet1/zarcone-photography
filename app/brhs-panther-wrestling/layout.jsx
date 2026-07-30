@@ -5,7 +5,7 @@ export const metadata = {
   openGraph: {
     title: 'Official Photography Partner of BRHS Panther Wrestling',
     description: 'Dual meet coverage, tournament photography, and social media graphics for Bridgewater-Raritan Panther Wrestling — 2026-27 season.',
-    url: 'https://zarconephotography.com/brhs-panther-wrestling',
+    url: 'https://www.zarconephotography.com/brhs-panther-wrestling',
     images: ['/photos/BRHSWrestling2026-2027FBCOVER_C.png'],
   },
   twitter: {

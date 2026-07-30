@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     title: 'Client Gallery | Zarcone Photography',
     description: 'Access your private photo gallery from Zarcone Photography.',
-    url: 'https://zarconephotography.com/client-area',
+    url: 'https://www.zarconephotography.com/client-area',
   },
 };
 

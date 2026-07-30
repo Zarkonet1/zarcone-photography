@@ -230,7 +230,7 @@ export default function BRHSPantherWrestlingPage() {
     provider: {
       '@type': 'LocalBusiness',
       name: 'Zarcone Photography',
-      url: 'https://zarconephotography.com',
+      url: 'https://www.zarconephotography.com',
       telephone: '(908) 777-0631',
       address: { '@type': 'PostalAddress', addressLocality: 'Bridgewater', addressRegion: 'NJ', addressCountry: 'US' },
     },

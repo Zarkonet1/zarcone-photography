@@ -7,10 +7,10 @@ export const metadata = {
   openGraph: {
     title: 'News & Updates | Zarcone Photography',
     description: 'Latest news and announcements from Zarcone Photography — NJ portrait, sports, and event photographer.',
-    url: 'https://zarconephotography.com/news',
+    url: 'https://www.zarconephotography.com/news',
     images: [
       {
-        url: 'https://zarconephotography.com/photos/tz-headshot.jpg',
+        url: 'https://www.zarconephotography.com/photos/tz-headshot.jpg',
         width: 1200,
         height: 800,
         alt: 'Zarcone Photography — NJ Photographer',
@@ -19,7 +19,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://zarconephotography.com/photos/tz-headshot.jpg'],
+    images: ['https://www.zarconephotography.com/photos/tz-headshot.jpg'],
   },
 };
 

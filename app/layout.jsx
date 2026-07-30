@@ -9,7 +9,7 @@ import InlineImageLightbox from '@/components/InlineImageLightbox';
 import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
-  metadataBase: new URL('https://zarconephotography.com'),
+  metadataBase: new URL('https://www.zarconephotography.com'),
   title: 'Zarcone Photography — NJ Portrait & Sports Photographer',
   description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events across NJ, NYC & Philly.',
   alternates: {
@@ -19,10 +19,10 @@ export const metadata = {
     title: 'Zarcone Photography — NJ Portrait & Sports Photographer',
     description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events across NJ, NYC & Philly.',
     type: 'website',
-    url: 'https://zarconephotography.com',
+    url: 'https://www.zarconephotography.com',
     images: [
       {
-        url: 'https://zarconephotography.com/photos/tz-headshot.jpg',
+        url: 'https://www.zarconephotography.com/photos/tz-headshot.jpg',
         width: 1200,
         height: 800,
         alt: 'Zarcone Photography — NJ Photographer',
@@ -33,20 +33,20 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Zarcone Photography — NJ Portrait & Sports Photographer',
     description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events across NJ, NYC & Philly.',
-    images: ['https://zarconephotography.com/photos/tz-headshot.jpg'],
+    images: ['https://www.zarconephotography.com/photos/tz-headshot.jpg'],
   },
 };
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': 'https://zarconephotography.com',
+  '@id': 'https://www.zarconephotography.com',
   name: 'Zarcone Photography',
   description: 'Professional photographer and videographer specializing in portraits, sports, and events. Based in Bridgewater, NJ — serving New Jersey, New York City, and Philadelphia.',
-  url: 'https://zarconephotography.com',
+  url: 'https://www.zarconephotography.com',
   telephone: '(908) 777-0631',
   email: 'info@zarconephotography.com',
-  image: 'https://zarconephotography.com/photos/tz-headshot.jpg',
+  image: 'https://www.zarconephotography.com/photos/tz-headshot.jpg',
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',

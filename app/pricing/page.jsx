@@ -11,7 +11,7 @@ export const metadata = {
   openGraph: {
     title: 'Photography Pricing | Zarcone Photography',
     description: 'Transparent photography pricing for portraits, sports, events, and graphic design.',
-    url: 'https://zarconephotography.com/pricing',
+    url: 'https://www.zarconephotography.com/pricing',
   },
 };
 

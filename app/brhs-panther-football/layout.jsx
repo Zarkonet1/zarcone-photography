@@ -19,11 +19,11 @@ export const metadata = {
   openGraph: {
     title: 'Bridgewater-Raritan Panther Football | Official Media Partner — Zarcone Photography',
     description: 'Game day galleries, Media Day portraits, and Senior Night coverage for BRHS Panther Football — 2026 season media partnership with Zarcone Photography.',
-    url: 'https://zarconephotography.com/brhs-panther-football',
+    url: 'https://www.zarconephotography.com/brhs-panther-football',
     type: 'website',
     images: [
       {
-        url: 'https://zarconephotography.com/photos/i-s7zBdzk.jpg',
+        url: 'https://www.zarconephotography.com/photos/i-s7zBdzk.jpg',
         width: 1200,
         height: 800,
         alt: 'Bridgewater-Raritan Panther Football photography — Zarcone Photography',
@@ -32,7 +32,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://zarconephotography.com/photos/i-s7zBdzk.jpg'],
+    images: ['https://www.zarconephotography.com/photos/i-s7zBdzk.jpg'],
   },
 };
 

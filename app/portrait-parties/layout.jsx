@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Portrait Parties NJ | Zarcone Photography',
     description: 'Host a portrait party in NJ — a premium social experience where your guests leave with professional photos.',
-    url: 'https://zarconephotography.com/portrait-parties',
+    url: 'https://www.zarconephotography.com/portrait-parties',
   },
 };
 

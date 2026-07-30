@@ -14,7 +14,7 @@ export const metadata = {
   openGraph: {
     title: 'Photography Blog | Zarcone Photography',
     description: 'Tips, behind-the-scenes stories, and photography insights from Tom Zarcone.',
-    url: 'https://zarconephotography.com/blog',
+    url: 'https://www.zarconephotography.com/blog',
   },
 };
 

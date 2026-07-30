@@ -455,7 +455,7 @@ export default function BRHSPantherFootballPage() {
     provider: {
       '@type': 'LocalBusiness',
       name: 'Zarcone Photography',
-      url: 'https://zarconephotography.com',
+      url: 'https://www.zarconephotography.com',
       telephone: '(908) 777-0631',
       address: { '@type': 'PostalAddress', addressLocality: 'Bridgewater', addressRegion: 'NJ', addressCountry: 'US' },
     },
@@ -471,7 +471,7 @@ export default function BRHSPantherFootballPage() {
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     eventStatus: 'https://schema.org/EventScheduled',
     location: { '@type': 'Place', name: 'Bridgewater-Raritan High School', address: { '@type': 'PostalAddress', addressLocality: 'Bridgewater', addressRegion: 'NJ', addressCountry: 'US' } },
-    organizer: { '@type': 'Organization', name: 'Zarcone Photography', url: 'https://zarconephotography.com' },
+    organizer: { '@type': 'Organization', name: 'Zarcone Photography', url: 'https://www.zarconephotography.com' },
   };
 
   return (

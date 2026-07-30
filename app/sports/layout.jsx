@@ -7,10 +7,10 @@ export const metadata = {
   openGraph: {
     title: 'NJ High School Sports Photographer | Zarcone Photography',
     description: 'Action sports photography for NJ high school athletes — football, wrestling, lacrosse, basketball, gymnastics, baseball, and more.',
-    url: 'https://zarconephotography.com/sports',
+    url: 'https://www.zarconephotography.com/sports',
     images: [
       {
-        url: 'https://zarconephotography.com/photos/i-s7zBdzk.jpg',
+        url: 'https://www.zarconephotography.com/photos/i-s7zBdzk.jpg',
         width: 1200,
         height: 800,
         alt: 'NJ high school sports photography — Zarcone Photography',
@@ -19,7 +19,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://zarconephotography.com/photos/i-s7zBdzk.jpg'],
+    images: ['https://www.zarconephotography.com/photos/i-s7zBdzk.jpg'],
   },
 };
 

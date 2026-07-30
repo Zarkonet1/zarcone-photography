@@ -28,11 +28,11 @@ export const metadata = {
     title: 'SDVOSB Government Photography & Visual Documentation | Zarcone Photography',
     description:
       'Service-Disabled Veteran-Owned Small Business providing institutional visual documentation for federal agencies. SAM.gov registered, SDVOSB certified.',
-    url: 'https://zarconephotography.com/government-contracting',
+    url: 'https://www.zarconephotography.com/government-contracting',
     type: 'website',
     images: [
       {
-        url: 'https://zarconephotography.com/photos/tz-headshot.jpg',
+        url: 'https://www.zarconephotography.com/photos/tz-headshot.jpg',
         width: 1200,
         height: 800,
         alt: 'Zarcone Photography — Government Practice',
@@ -41,25 +41,25 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://zarconephotography.com/photos/tz-headshot.jpg'],
+    images: ['https://www.zarconephotography.com/photos/tz-headshot.jpg'],
   },
   alternates: {
-    canonical: 'https://zarconephotography.com/government-contracting',
+    canonical: 'https://www.zarconephotography.com/government-contracting',
   },
 };
 
 const professionalServiceJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
-  '@id': 'https://zarconephotography.com/government-contracting#service',
+  '@id': 'https://www.zarconephotography.com/government-contracting#service',
   name: 'Zarcone Photography — Government Practice',
   description:
     'Institutional visual documentation for federal agencies: official event and ceremony documentation, executive portraiture, public affairs photography, and multimedia services.',
-  url: 'https://zarconephotography.com/government-contracting',
+  url: 'https://www.zarconephotography.com/government-contracting',
   provider: {
     '@type': 'LocalBusiness',
     name: 'Zarcone Photography',
-    url: 'https://zarconephotography.com',
+    url: 'https://www.zarconephotography.com',
     telephone: COMPANY_DATA.phone,
     email: COMPANY_DATA.email,
     address: {

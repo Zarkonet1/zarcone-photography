@@ -7,10 +7,10 @@ export const metadata = {
   openGraph: {
     title: 'Event Photographer NJ | Corporate & Charity | Zarcone',
     description: 'Professional event photographer in New Jersey — corporate events, charity fundraisers, galas, and celebrations.',
-    url: 'https://zarconephotography.com/events',
+    url: 'https://www.zarconephotography.com/events',
     images: [
       {
-        url: 'https://zarconephotography.com/photos/EVENT-Zarcone-Photography-28.jpg',
+        url: 'https://www.zarconephotography.com/photos/EVENT-Zarcone-Photography-28.jpg',
         width: 1200,
         height: 800,
         alt: 'Event photography New Jersey — Zarcone Photography',
@@ -19,7 +19,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://zarconephotography.com/photos/EVENT-Zarcone-Photography-28.jpg'],
+    images: ['https://www.zarconephotography.com/photos/EVENT-Zarcone-Photography-28.jpg'],
   },
 };
 
