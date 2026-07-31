@@ -114,6 +114,33 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-QN40GY3478');
           `}
         </Script>
+        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID && (
+          <Script id="clarity-init" strategy="afterInteractive">
+            {`
+              (function(c,l,a,r,i,t,y){
+                  c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}");
+
+              (function() {
+                try {
+                  var ref = document.referrer || '';
+                  var entryReferrer = 'other';
+                  if (!ref) {
+                    entryReferrer = 'direct';
+                  } else if (ref.indexOf('instagram') !== -1) {
+                    entryReferrer = 'instagram';
+                  } else if (ref.indexOf('facebook') !== -1) {
+                    entryReferrer = 'facebook';
+                  }
+                  window.clarity('set', 'entry_referrer', entryReferrer);
+                  window.clarity('set', 'entry_page', window.location.pathname);
+                } catch (e) {}
+              })();
+            `}
+          </Script>
+        )}
       </body>
     </html>
   );

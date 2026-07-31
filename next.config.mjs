@@ -22,11 +22,11 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.honeybook.com https://*.elfsight.com https://vercel.live https://www.googletagmanager.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.honeybook.com https://*.elfsight.com https://vercel.live https://www.googletagmanager.com https://www.clarity.ms https://scripts.clarity.ms https://c.clarity.ms",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https:",
               "font-src 'self' data:",
-              "connect-src 'self' https://*.honeybook.com https://*.hbportal.co https://*.elfsight.com https://formspree.io https://vercel.live https://vitals.vercel-insights.com https://www.google-analytics.com https://region1.google-analytics.com",
+              "connect-src 'self' https://*.honeybook.com https://*.hbportal.co https://*.elfsight.com https://formspree.io https://vercel.live https://vitals.vercel-insights.com https://www.google-analytics.com https://region1.google-analytics.com https://www.clarity.ms https://scripts.clarity.ms https://c.clarity.ms",
               "frame-src 'self' https://*.honeybook.com https://*.hbportal.co https://*.elfsight.com https://player.vimeo.com",
               "object-src 'none'",
               "base-uri 'self'",
