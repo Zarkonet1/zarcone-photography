@@ -17,8 +17,9 @@ const HERO_PHOTOS = [
   '/photos/softball-action-hero.jpg',   // softball
   '/photos/i-q7LzKSb-hero.jpg',        // Barn Swallows band — events/music
   '/photos/gymnastics-bars-hero.jpg',   // gymnastics
-  '/photos/wrestling-throw-hero.jpg',   // wrestling
+  '/photos/wrestling-reaction-hero.jpg', // wrestling — post-pin reaction, swapped in 2026-08-04 (stronger than prior throw shot)
   '/photos/i-hdjLNfF-hero.jpg',        // design — senior track graphic, first design rep in hero
+  '/photos/grad-carry-hero.jpg',        // graduation celebration — Union Catholic, added 2026-08-04
   '/photos/Ironman_Bike_Dylan.jpg',     // triathlon
 ];
 
