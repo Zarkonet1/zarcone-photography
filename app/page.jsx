@@ -77,17 +77,34 @@ const WORK_GRID = [
   { src: '/photos/danielle-portrait.jpg', alt: 'Senior portrait session — Zarcone Photography, Bridgewater NJ' },
 ];
 
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default function Home() {
   const heroRef = useRef(null);
   const [heroIdx, setHeroIdx] = useState(0);
+  // Starts as the fixed order (matches server-rendered HTML, avoids hydration
+  // mismatch on the LCP element), then shuffles client-side right after mount
+  // so repeat visitors don't see the same fixed sequence.
+  const [heroOrder, setHeroOrder] = useState(HERO_PHOTOS);
+
+  useEffect(() => {
+    setHeroOrder(shuffle(HERO_PHOTOS));
+  }, []);
 
   // Hero rotation — 6s per slide
   useEffect(() => {
     const t = setInterval(() => {
-      setHeroIdx(i => (i + 1) % HERO_PHOTOS.length);
+      setHeroIdx(i => (i + 1) % heroOrder.length);
     }, 6000);
     return () => clearInterval(t);
-  }, []);
+  }, [heroOrder]);
 
   // Scroll reveal
   useEffect(() => {
@@ -108,8 +125,8 @@ export default function Home() {
     <>
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className={styles.hero}>
-        {HERO_PHOTOS.map((src, i) => {
-          const nextIdx = (heroIdx + 1) % HERO_PHOTOS.length;
+        {heroOrder.map((src, i) => {
+          const nextIdx = (heroIdx + 1) % heroOrder.length;
           const shouldLoad = i === heroIdx || i === nextIdx || i === 0;
           return (
             <div
