@@ -13,11 +13,12 @@ import TrustStrip from '@/components/TrustStrip';
 // Hero rotation — one per discipline, warm-graded 1920×1080 crops
 const HERO_PHOTOS = [
   '/photos/i-s7zBdzk-hero.jpg',        // football
-  '/photos/chloe-portrait-hero.jpg',    // portrait
+  '/photos/i-rvRX82g-hero.jpg',        // senior portrait
   '/photos/softball-action-hero.jpg',   // softball
-  '/photos/i-q7LzKSb-hero.jpg',        // barn swallows
+  '/photos/i-q7LzKSb-hero.jpg',        // Barn Swallows band — events/music
   '/photos/gymnastics-bars-hero.jpg',   // gymnastics
   '/photos/wrestling-throw-hero.jpg',   // wrestling
+  '/photos/i-hdjLNfF-hero.jpg',        // design — senior track graphic, first design rep in hero
   '/photos/Ironman_Bike_Dylan.jpg',     // triathlon
 ];
 

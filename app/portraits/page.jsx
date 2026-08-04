@@ -73,6 +73,18 @@ const PHOTOS = [
   { src: '/photos/chloe-portrait.jpg', width: 1280, height: 1600,    category: 'Individual' },
   { src: '/photos/danielle-portrait.jpg', width: 1537, height: 1023, category: 'Individual' },
   { src: '/photos/courtney-portrait.jpg', width: 1537, height: 1023, category: 'Individual' },
+  // New intake, 2026-08-03 — cleared for gallery use
+  { src: '/photos/ZP Web - 121.jpg', width: 5404, height: 3601, category: 'Family' },
+  { src: '/photos/ZP Web - 128.jpg', width: 4371, height: 3497, category: 'Family' },
+  { src: '/photos/ZP Web - 35.jpg', width: 4503, height: 3602, category: 'Family' },
+  { src: '/photos/ZP Web - 47.jpg', width: 4298, height: 5373, category: 'Family' },
+  { src: '/photos/ZP Web - 141.jpg', width: 4429, height: 3543, category: 'Family' },
+  { src: '/photos/ZP Web - 129.jpg', width: 4078, height: 5097, category: 'Family' },
+  { src: '/photos/ZP Web - 133.jpg', width: 4002, height: 3202, category: 'Family' },
+  { src: '/photos/ZP Web - 126.jpg', width: 4802, height: 3841, category: 'Senior' },
+  { src: '/photos/ZP Web - 132.jpg', width: 3449, height: 4828, category: 'Senior' },
+  { src: '/photos/ZP Web - 137.jpg', width: 2146, height: 2682, category: 'Senior' },
+  { src: '/photos/ZP Web - 119.jpg', width: 3833, height: 5366, category: 'Headshot' },
 ];
 
 function shuffle(arr) {

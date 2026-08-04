@@ -883,7 +883,7 @@ export default function BRHSPantherFootballPage() {
       </section>
 
       {/* ── Gallery Preview ─────────────────────────────────────── */}
-      <section className={styles.gallery}>
+      <section className={styles.gallery} id="gallery-alert">
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>From The Sidelines</span>

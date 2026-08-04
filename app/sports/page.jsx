@@ -7,7 +7,7 @@ import Lightbox from '@/components/Lightbox';
 import Link from 'next/link';
 import styles from './page.module.css';
 
-const CATEGORIES = ['All', 'Football', 'Wrestling', 'Lacrosse', 'Softball', 'Basketball', 'Gymnastics', 'Baseball', 'Soccer', 'Track', 'Other'];
+const CATEGORIES = ['All', 'Football', 'Wrestling', 'Lacrosse', 'Softball', 'Basketball', 'Gymnastics', 'Baseball', 'Soccer', 'Track', 'Field Hockey', 'Other'];
 
 // Local sports photos
 const PHOTOS = [
@@ -86,6 +86,22 @@ const PHOTOS = [
   { src: '/photos/SPORTS-Zarcone-Photography-50.jpg', width: 1280, height: 1600, category: 'Other', size: 'half' },
   { src: '/photos/SPORTS-Zarcone-Photography0056.jpg', width: 1600, height: 1066, category: 'Softball', size: 'half' },
   { src: '/photos/SPORTS-Zarcone-Photography0057.jpg', width: 1600, height: 1066, category: 'Softball', size: 'half' },
+  // New intake, 2026-08-03 — verified action shots, cleared (no client-consent question, BRHS team photography)
+  { src: '/photos/ZP Web - 1.jpg', width: 1988, height: 2982, category: 'Field Hockey', size: 'half' },
+  { src: '/photos/ZP Web - 2.jpg', width: 3087, height: 3859, category: 'Track', size: 'half' },
+  { src: '/photos/ZP Web - 4.jpg', width: 2305, height: 2881, category: 'Track', size: 'half' },
+  { src: '/photos/ZP Web - 9.jpg', width: 3879, height: 3104, category: 'Softball', size: 'wide' },
+  { src: '/photos/ZP Web - 38.jpg', width: 4899, height: 3919, category: 'Wrestling', size: 'wide' },
+  { src: '/photos/ZP Web - 90.jpg', width: 3706, height: 2471, category: 'Gymnastics', size: 'wide' },
+  { src: '/photos/ZP Web - 101.jpg', width: 2938, height: 2350, category: 'Lacrosse', size: 'wide' },
+  { src: '/photos/ZP Web - 99.jpg', width: 3062, height: 2450, category: 'Lacrosse', size: 'wide' },
+  { src: '/photos/ZP Web - 104.jpg', width: 3237, height: 2590, category: 'Wrestling', size: 'wide' },
+  { src: '/photos/ZP Web - 110.jpg', width: 2817, height: 3521, category: 'Softball', size: 'half' },
+  { src: '/photos/ZP Web - 100.jpg', width: 2525, height: 2020, category: 'Lacrosse', size: 'wide' },
+  { src: '/photos/ZP Web - 102.jpg', width: 3140, height: 2512, category: 'Wrestling', size: 'wide' },
+  { src: '/photos/ZP Web - 109.jpg', width: 1978, height: 2472, category: 'Softball', size: 'half' },
+  { src: '/photos/ZP Web - 122.jpg', width: 1318, height: 1648, category: 'Baseball', size: 'half' },
+  { src: '/photos/ZP Web - 123.jpg', width: 2742, height: 2194, category: 'Baseball', size: 'wide' },
 ];
 
 function shuffle(arr) {
