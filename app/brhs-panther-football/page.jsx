@@ -11,9 +11,15 @@ import styles from './page.module.css';
 import { getRecord, getNextMatch, getLatestResult, getCoachTenure, ordinal } from '@/lib/teamSchedule';
 import { sortArticlesByDate, isRecentArticle } from '@/lib/articles';
 import { SCHEDULE_2026 } from '@/lib/footballSchedule';
+import { GALLERIES_2026, getLatestGallery } from '@/lib/footballGalleries';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Football';
+
+// Derived from lib/footballGalleries.js — don't hand-edit galleries here.
+// Add new weeks to GALLERIES_2026 in that file; this page just reads it.
+const LATEST_GALLERY = getLatestGallery(GALLERIES_2026);
+const MEDIA_DAY_GALLERY = GALLERIES_2026.find((g) => g.id === 'media-day');
 
 // Bump CURRENT_SEASON_YEAR once a year — coach tenure (STAT_BAR + COACHES
 // title below) derives from these instead of being hand-typed in two places,
@@ -191,7 +197,12 @@ const SEASON_TRACKER = [
       : 'Am. Silver — Preseason',
     href: '#standings',
   },
-  { label: 'Latest Gallery', value: '2025–26 Season — Live', href: SEASON_GALLERY_URL, external: true },
+  {
+    label: 'Latest Gallery',
+    value: LATEST_GALLERY ? `${LATEST_GALLERY.label} — Live` : '2025–26 Season — Live',
+    href: LATEST_GALLERY ? LATEST_GALLERY.href : SEASON_GALLERY_URL,
+    external: true,
+  },
 ];
 
 const COACHES = [
@@ -235,9 +246,11 @@ const RESULTS_2025 = [
   { date: 'Nov 21, 2025', opponent: 'vs Passaic County Tech', round: 'NJSIAA Group 5 State Tournament', result: 'L 14–23', win: false },
 ];
 
+// 2026 is no longer a single pending placeholder — each week's Pic-Time
+// gallery (GALLERIES_2026, imported above) gets its own pill, rendered
+// alongside this archive entry. See the seasonPills render below.
 const SEASONS = [
   { label: '2025–26', status: 'live', href: SEASON_GALLERY_URL },
-  { label: '2026', status: 'pending' },
 ];
 
 // Preseason roster as of June 27, 2026, per BRHS Football Ops. Class year is
@@ -745,7 +758,12 @@ export default function BRHSPantherFootballPage() {
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>2026 <em>Roster</em></h2>
           </div>
           <p className={styles.sectionSub}>
-            {ROSTER_2026.length} players and {MANAGERS_2026.length} team managers as of July 2026, per BRHS Football Ops. Everyone here is photographed at Media Day on Jul 29 — the gallery posts here once portraits are ready.
+            {ROSTER_2026.length} players and {MANAGERS_2026.length} team managers as of July 2026, per BRHS Football Ops.{' '}
+            {MEDIA_DAY_GALLERY ? (
+              <>Everyone here is photographed at Media Day — <a href={MEDIA_DAY_GALLERY.href} target="_blank" rel="noopener noreferrer">browse the gallery</a>, updated with individual portraits this weekend.</>
+            ) : (
+              'Everyone here is photographed at Media Day on Jul 29 — the gallery posts here once portraits are ready.'
+            )}
           </p>
         </div>
         <div className={styles.rosterFilterRow}>
@@ -894,13 +912,12 @@ export default function BRHSPantherFootballPage() {
 
         <div className={styles.seasonPills}>
           {SEASONS.map((s, i) => (
-            s.status === 'live' ? (
-              <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" className={`${styles.seasonPill} ${styles.seasonPillActive}`}>{s.label} — Live</a>
-            ) : (
-              <span key={i} className={`${styles.seasonPill} ${styles.seasonPillPending}`}>{s.label} — Pending</span>
-            )
+            <a key={`season-${i}`} href={s.href} target="_blank" rel="noopener noreferrer" className={`${styles.seasonPill} ${styles.seasonPillActive}`}>{s.label} — Live</a>
           ))}
-          <span className={`${styles.seasonPill} ${styles.seasonPillPending}`}>Future Seasons — Archive Grows Here</span>
+          {GALLERIES_2026.map((g, i) => (
+            <a key={`gallery-${i}`} href={g.href} target="_blank" rel="noopener noreferrer" className={`${styles.seasonPill} ${styles.seasonPillActive}`}>{g.label} — Live</a>
+          ))}
+          <span className={`${styles.seasonPill} ${styles.seasonPillPending}`}>Future Weeks — Added As Posted</span>
         </div>
 
         <div className={styles.noticeBar}>
