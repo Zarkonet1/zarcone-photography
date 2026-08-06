@@ -86,6 +86,27 @@ Open the gallery file (see table above), find the line with that filename, and d
 
 ---
 
+## Add a Weekly Pic-Time Gallery (BRHS Football)
+
+Tom posts one Pic-Time gallery per week (Media Day, then one per game) — see `lib/footballGalleries.js`.
+
+**Open `lib/footballGalleries.js`** and add one entry to the `GALLERIES_2026` array:
+
+```js
+{
+  id: 'week-2-hillsborough',    // short, unique, kebab-case — only matters if page copy needs to link this specific gallery by name (like the Media Day roster note)
+  label: 'vs. Hillsborough',    // shown on the site: season-gallery pills + the "Latest Gallery" stat
+  date: '2026-09-11',           // game date — controls which gallery counts as "latest" (most recent wins)
+  href: 'https://galleries.zarconephotography.com/client/your-gallery-slug',
+},
+```
+
+That's the whole change. `app/brhs-panther-football/page.jsx` reads this array automatically — don't hand-edit the football page for a new gallery, and don't touch `GALLERY_URL` or `SEASON_GALLERY_URL` at the top of that file (those are the generic Pic-Time studio link and the archived 2025–26 SmugMug season gallery, unrelated to weekly galleries).
+
+Deploy with the three commands at the top.
+
+---
+
 ## Change the Homepage Hero Rotation
 
 Open `app/page.jsx`. Find `HERO_PHOTOS` near the top:
