@@ -38,11 +38,11 @@ const COACH_TENURE = getCoachTenure({
 // mixing them into the action masonry would dilute both. Hero renders in
 // the Media Day feature row; the rest render in the grid beneath it.
 const MEDIA_DAY_HERO = {
-  src: '/photos/media-day-varsity-coaches.jpg', width: 2400, height: 1369,
-  caption: 'Varsity Team & Coaching Staff',
+  src: '/photos/media-day-varsity-team.jpg', width: 1600, height: 913,
+  caption: 'Varsity Team',
 };
 const MEDIA_DAY_PHOTOS = [
-  { src: '/photos/media-day-varsity-team.jpg', width: 1600, height: 913, caption: 'Varsity Team' },
+  { src: '/photos/media-day-varsity-coaches.jpg', width: 2400, height: 1369, caption: 'Varsity Team & Coaching Staff' },
   { src: '/photos/media-day-seniors.jpg', width: 1600, height: 1280, caption: 'Varsity Seniors' },
   { src: '/photos/media-day-seniors-coach.jpg', width: 1600, height: 1280, caption: 'Varsity Seniors & Coach' },
   { src: '/photos/media-day-coaches.jpg', width: 1600, height: 1280, caption: 'Coaching Staff' },
