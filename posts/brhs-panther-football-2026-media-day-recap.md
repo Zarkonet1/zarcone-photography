@@ -7,15 +7,11 @@ coverImage: "/photos/BLOG_BRHSFootBallMediaPartner.png"
 imagePosition: "center 50%"
 ---
 
-Media Day is the moment a season stops being a schedule on paper and starts being real. On July 29, Zarcone Photography was on-site at Bridgewater-Raritan as the official media partner of Panther Football, photographing the full roster ahead of a season that opens against [OPPONENT] on August 27.
-
-[ONE OR TWO SENTENCES ON HOW THE DAY WENT — turnout, weather, energy, anything that stood out on-site. This is the part only you have; drop it in and I'll fold it into the flow.]
+Media Day is the moment a season stops being a schedule on paper and starts being real. On July 29, Zarcone Photography was on-site at Bridgewater-Raritan as the official media partner of Panther Football, photographing the full roster ahead of a season that opens against Woodbridge on August 27.
 
 ## What Was Captured
 
 Every player on the 2026 roster came through for individual and team portraits — the images that end up on banners, in the program, in the weight room, and increasingly, in recruiting profiles. Coming off a program-defining 2025 season — Bridgewater-Raritan's first sectional championship in school history — this year's portraits carry a little extra weight.
-
-[OPTIONAL: a specific portrait or moment worth calling out — a senior, a milestone, anything.]
 
 ## Where to Find the Photos
 
@@ -28,7 +24,7 @@ Media Day portraits are being edited now and will post to the team's private gal
 
 Media Day is just the opening move. Regular season home games, Senior Night, and — if the Panthers make another run — the postseason are all covered under the season-long partnership. Game galleries go up within days of the final whistle, edited and ready for download, sharing, and print ordering.
 
-First kickoff: **August 27 vs. [OPPONENT]**. See you there.
+First kickoff: **August 27 vs. Woodbridge**. See you there.
 
 ---
 

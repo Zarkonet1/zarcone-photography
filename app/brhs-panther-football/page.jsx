@@ -33,6 +33,22 @@ const COACH_TENURE = getCoachTenure({
   currentSeasonYear: CURRENT_SEASON_YEAR,
 });
 
+// Media Day team/group photos — Jul 29, 2026. Kept separate from PHOTOS
+// below (game action only) since these are posed group shots, not action —
+// mixing them into the action masonry would dilute both. Hero renders in
+// the Media Day feature row; the rest render in the grid beneath it.
+const MEDIA_DAY_HERO = {
+  src: '/photos/media-day-varsity-coaches.jpg', width: 2400, height: 1369,
+  caption: 'Varsity Team & Coaching Staff',
+};
+const MEDIA_DAY_PHOTOS = [
+  { src: '/photos/media-day-varsity-team.jpg', width: 1600, height: 913, caption: 'Varsity Team' },
+  { src: '/photos/media-day-seniors.jpg', width: 1600, height: 1280, caption: 'Varsity Seniors' },
+  { src: '/photos/media-day-seniors-coach.jpg', width: 1600, height: 1280, caption: 'Varsity Seniors & Coach' },
+  { src: '/photos/media-day-coaches.jpg', width: 1600, height: 1280, caption: 'Coaching Staff' },
+  { src: '/photos/media-day-freshman-team.jpg', width: 1600, height: 1280, caption: 'Freshman Team' },
+];
+
 // Only genuine football action photos — no cross-sport placeholders.
 const PHOTOS = [
   { src: '/photos/i-s7zBdzk.jpg', width: 2400, height: 1600, size: 'wide' },
@@ -973,9 +989,8 @@ export default function BRHSPantherFootballPage() {
 
       {/* ── Media Day ────────────────────────────────────────────── */}
       <div className={styles.featureRow}>
-        <div className={styles.featurePanel}>
-          <span className={styles.featurePanelDate}>Jul 29</span>
-          <span className={styles.featurePanelLabel}>Media Day</span>
+        <div className={styles.featureMedia}>
+          <Image src={MEDIA_DAY_HERO.src} alt={MEDIA_DAY_HERO.caption} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'cover', filter: 'brightness(0.8)' }} />
         </div>
         <div className={styles.featureText}>
           <span className={styles.featureDate}>July 29, 2026</span>
@@ -991,11 +1006,21 @@ export default function BRHSPantherFootballPage() {
             <li>Coach portraits</li>
             <li>Recruiting content</li>
           </ul>
-          <p className={styles.sampleCaption}>Photos and graphics from Media Day are added here starting July 29.</p>
           <div style={{ marginTop: 28 }}>
             <a href="#inquire" className={styles.btnRed}>Book Media Day</a>
           </div>
         </div>
+      </div>
+
+      <div className={styles.mediaDayGrid}>
+        {MEDIA_DAY_PHOTOS.map((photo, i) => (
+          <div key={i} className={styles.mediaDayGridItem}>
+            <div className={styles.mediaDayGridPhoto}>
+              <Image src={photo.src} alt={`${photo.caption} — Bridgewater-Raritan Panther Football Media Day, Zarcone Photography`} fill sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
+            </div>
+            <p className={styles.mediaDayGridCaption}>{photo.caption}</p>
+          </div>
+        ))}
       </div>
 
       {/* ── Senior Experience ────────────────────────────────────── */}
