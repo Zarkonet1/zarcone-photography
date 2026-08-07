@@ -887,7 +887,8 @@
   background: rgba(200,16,46,0.05);
   text-align: center;
 }
-.programQuoteText {
+.programQuote .programQuoteText {
+  max-width: none;
   font-family: var(--serif);
   font-size: clamp(18px, 2vw, 24px);
   font-weight: 400;
