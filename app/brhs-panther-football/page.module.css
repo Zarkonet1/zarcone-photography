@@ -879,6 +879,34 @@
   font-size: 15px;
   color: var(--br-silver);
 }
+.programQuote {
+  max-width: 640px;
+  margin: 28px auto 40px;
+  padding: 28px 32px;
+  border: 1px solid rgba(200,16,46,0.3);
+  background: rgba(200,16,46,0.05);
+  text-align: left;
+}
+.programQuoteText {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(244,244,242,0.9);
+  font-style: italic;
+  margin: 0 0 14px;
+}
+.programQuoteCite {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--br-silver);
+  font-style: normal;
+}
+.programQuoteCite a {
+  color: var(--br-red);
+  text-decoration: underline;
+}
 
 /* ─── FAQ ───────────────────────────────────────────────────────── */
 .faqGrid {

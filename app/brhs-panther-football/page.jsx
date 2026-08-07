@@ -1133,7 +1133,18 @@ export default function BRHSPantherFootballPage() {
       {/* ── Trust note (real testimonials, not fabricated) ───────── */}
       <section className={styles.trustNote} style={{ '--accent': 'var(--br-red)' }}>
         <span className={styles.eyebrowRed}>What Clients Say</span>
-        <p style={{ marginTop: 16 }}>Season testimonials from Panther Football families, players, and coaches will be added here as the 2026 season unfolds. In the meantime, here's what clients across our programs have to say:</p>
+        <p style={{ marginTop: 16 }}>Straight from the program itself, plus what clients across our other programs have to say:</p>
+
+        <blockquote className={styles.programQuote}>
+          <p className={styles.programQuoteText}>
+            &ldquo;A huge thank you to Zarcone Photography for being a Gold Sponsor of the Bridgewater Raritan Football Program! Your generosity and commitment to supporting our student-athletes helps provide the equipment, resources, and opportunities our players need to compete at the highest level. We are incredibly grateful to have you as part of the Panther family. Thank you for investing in our program and our community. We appreciate your support!&rdquo;
+          </p>
+          <cite className={styles.programQuoteCite}>
+            — Bridgewater-Raritan Panther Football,{' '}
+            <a href="https://www.instagram.com/brhspanthersfb/p/DbTAxf5OQYf/" target="_blank" rel="noopener noreferrer">@brhspanthersfb</a>, July 27, 2026
+          </cite>
+        </blockquote>
+
         <Testimonials />
       </section>
 
