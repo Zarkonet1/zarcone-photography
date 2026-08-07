@@ -38,11 +38,11 @@ const COACH_TENURE = getCoachTenure({
 // mixing them into the action masonry would dilute both. Hero renders in
 // the Media Day feature row; the rest render in the grid beneath it.
 const MEDIA_DAY_HERO = {
-  src: '/photos/media-day-varsity-team.jpg', width: 1600, height: 913,
-  caption: 'Varsity Team',
+  src: '/photos/media-day-varsity-coaches.jpg', width: 2400, height: 1369,
+  caption: 'Varsity Team & Coaching Staff',
 };
 const MEDIA_DAY_PHOTOS = [
-  { src: '/photos/media-day-varsity-coaches.jpg', width: 2400, height: 1369, caption: 'Varsity Team & Coaching Staff' },
+  { src: '/photos/media-day-varsity-team.jpg', width: 1600, height: 913, caption: 'Varsity Team' },
   { src: '/photos/media-day-seniors.jpg', width: 1600, height: 1280, caption: 'Varsity Seniors' },
   { src: '/photos/media-day-seniors-coach.jpg', width: 1600, height: 1280, caption: 'Varsity Seniors & Coach' },
   { src: '/photos/media-day-coaches.jpg', width: 1600, height: 1280, caption: 'Coaching Staff' },
@@ -990,7 +990,11 @@ export default function BRHSPantherFootballPage() {
       {/* ── Media Day ────────────────────────────────────────────── */}
       <div className={styles.featureRow}>
         <div className={styles.featureMedia}>
-          <Image src={MEDIA_DAY_HERO.src} alt={MEDIA_DAY_HERO.caption} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'cover', filter: 'brightness(0.8)' }} />
+          {/* No brightness(0.8) dim here (unlike the other featureMedia
+              shots below) — this is a posed team/coaches portrait, not an
+              action shot, so full clarity on faces/numbers matters more
+              than the moody-cinematic treatment. Per Tom, 2026-08-07. */}
+          <Image src={MEDIA_DAY_HERO.src} alt={MEDIA_DAY_HERO.caption} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'cover', filter: 'none' }} />
         </div>
         <div className={styles.featureText}>
           <span className={styles.featureDate}>July 29, 2026</span>
