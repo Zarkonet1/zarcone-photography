@@ -1000,6 +1000,9 @@ export default function BRHSPantherFootballPage() {
           <span className={styles.featureDate}>July 29, 2026</span>
           <h2 className={styles.featureTitle}>Media Day</h2>
           <p className={styles.featureLead}>Before a single snap is played, every athlete gets the professional treatment — clean portraits built for banners, programs, and recruiting profiles.</p>
+          <p style={{ color: 'var(--br-silver)', fontSize: 15, lineHeight: 1.8, marginTop: -8, marginBottom: 4 }}>
+            A make-up day for anyone who missed the shoot is set for <strong>Tuesday, August 11</strong> (individual portraits, ~1:30 PM). The Panthers will also appear at the <strong>Big State Sports Media Day</strong> on <strong>Thursday, August 20</strong> (1–2 PM, County College of Morris) as Big State Sports gears up to broadcast every BR home game this season.
+          </p>
           <ul className={styles.checklist}>
             <li>Individual portraits</li>
             <li>Team photos</li>
