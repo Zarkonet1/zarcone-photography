@@ -18,6 +18,11 @@ const PHOTOS = [
   { src: '/photos/i-rvRX82g.jpg', width: 1920, height: 2400, category: 'Senior' },
 
   { src: '/photos/GiadaField.jpg', width: 1920, height: 2400, category: 'Senior' },
+{ src: '/photos/SENIOR-POSTER-Stark-Football.jpg', width: 1600, height: 2400, category: 'Senior' },
+{ src: '/photos/SENIOR-POSTER-Diaz-Volleyball.jpg', width: 1600, height: 2400, category: 'Senior' },
+{ src: '/photos/SENIOR-POSTER-Buniowski-Track.jpg', width: 1600, height: 2400, category: 'Senior' },
+{ src: '/photos/SENIOR-POSTER-Cespedes-Wrestling.jpg', width: 1600, height: 2400, category: 'Senior' },
+{ src: '/photos/SENIOR-POSTER-Giada-Lacrosse.jpg', width: 1920, height: 2400, category: 'Senior' },
   // Individuals / headshots
   { src: '/photos/i-LdgcRk9.jpg', width: 2400, height: 1920, category: 'Individual' },
   { src: '/photos/i-rkggQ5F.jpg', width: 2400, height: 1920, category: 'Headshot' },
