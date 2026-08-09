@@ -49,6 +49,16 @@ const MEDIA_DAY_PHOTOS = [
   { src: '/photos/media-day-freshman-team.jpg', width: 1600, height: 1280, caption: 'Freshman Team' },
 ];
 
+// Individual Media Day player portraits — /photos/media-day-portraits/{number}.jpg,
+// named by jersey number (Tom exports from Lightroom, drops directly into that
+// folder). This Set is the single source of truth for which roster rows get a
+// clickable portrait: a plain manually-maintained list rather than checking the
+// filesystem, since this is a 'use client' page (can't read the filesystem at
+// runtime) and it avoids ~60 wasted 404 requests for players who don't have a
+// portrait uploaded yet. Add a number here the same session you drop its file in
+// — see SITE-CHEATSHEET.md.
+const PORTRAIT_NUMBERS = new Set([2, 4, 27, 55, 79, 90]);
+
 // Only genuine football action photos — no cross-sport placeholders.
 const PHOTOS = [
   { src: '/photos/i-s7zBdzk.jpg', width: 2400, height: 1600, size: 'wide' },
@@ -438,6 +448,7 @@ export default function BRHSPantherFootballPage() {
   const [rosterExpanded, setRosterExpanded] = useState(false);
   const [rosterSortKey, setRosterSortKey] = useState('number');
   const [rosterSortDir, setRosterSortDir] = useState('asc');
+  const [portraitLightbox, setPortraitLightbox] = useState(null); // player object, or null
   const handleRosterSort = (key) => {
     if (rosterSortKey === key) {
       setRosterSortDir((d) => (d === 'asc' ? 'desc' : 'asc'));
@@ -887,7 +898,13 @@ export default function BRHSPantherFootballPage() {
                 <tbody>
                   {visible.map((p) => (
                     <tr key={p.slug} id={`roster-${p.slug}`}>
-                      <td data-label="#">{p.number}</td>
+                      <td data-label="#">
+                        {PORTRAIT_NUMBERS.has(p.number) ? (
+                          <button type="button" className={styles.rosterPortraitBtn} onClick={() => setPortraitLightbox(p)}>
+                            {p.number}
+                          </button>
+                        ) : p.number}
+                      </td>
                       <td data-label="Player">{p.first} {p.last}</td>
                       <td data-label="Grade">{p.grade}</td>
                       <td data-label="Off">{p.offPos}</td>
@@ -913,6 +930,19 @@ export default function BRHSPantherFootballPage() {
             ? 'Team managers support the program on game days and at practice. Roster subject to change before the season opener.'
             : "Most players at this level go both ways — Off/Def columns show each player's primary alignment on both sides of the ball. Roster subject to change before the season opener."}
         </p>
+
+        {portraitLightbox && (
+          <Lightbox
+            images={[{
+              src: `/photos/media-day-portraits/${portraitLightbox.number}.jpg`,
+              alt: `${portraitLightbox.first} ${portraitLightbox.last} (#${portraitLightbox.number}) — Media Day portrait, Bridgewater-Raritan Panther Football, Zarcone Photography`,
+            }]}
+            currentIndex={0}
+            onClose={() => setPortraitLightbox(null)}
+            onPrev={() => {}}
+            onNext={() => {}}
+          />
+        )}
       </section>
 
       {/* ── In The News ──────────────────────────────────────────── */}

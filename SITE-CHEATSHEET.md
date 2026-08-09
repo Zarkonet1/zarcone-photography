@@ -107,6 +107,24 @@ Deploy with the three commands at the top.
 
 ---
 
+## Add a Media Day Player Portrait (BRHS Football Roster)
+
+Clicking a jersey number in the roster table opens that player's Media Day portrait in a lightbox — but only for players with a portrait on file. See `PORTRAIT_NUMBERS` near the top of `app/brhs-panther-football/page.jsx`.
+
+**File location:** `public/photos/media-day-portraits/{number}.jpg` — named by jersey number exactly as it appears in `ROSTER_RAW_2026` (no leading zeros, e.g. `74.jpg` not `074.jpg`). Tom exports from Lightroom and drops files directly into that folder.
+
+**To make a new portrait clickable:** add its jersey number to the `PORTRAIT_NUMBERS` set in `page.jsx`:
+```js
+const PORTRAIT_NUMBERS = new Set([2, 4, 27, 55, 79, 90]);
+```
+That's the only code change needed — the roster table reads this set automatically. A number NOT in this set just renders as plain text (no click), even if a file happens to exist for it — the file must exist AND the number must be added here.
+
+**Why a manual list instead of just checking the folder:** this page is a client component, so it can't read the filesystem to auto-detect which files exist. Checking on every page load would also mean ~60 failed image requests for players who don't have a portrait yet, which is wasted bandwidth on a page real people visit.
+
+Deploy with the three commands at the top.
+
+---
+
 ## Change the Homepage Hero Rotation
 
 Open `app/page.jsx`. Find `HERO_PHOTOS` near the top:
