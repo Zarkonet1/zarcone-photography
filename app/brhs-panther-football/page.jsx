@@ -57,7 +57,7 @@ const MEDIA_DAY_PHOTOS = [
 // runtime) and it avoids ~60 wasted 404 requests for players who don't have a
 // portrait uploaded yet. Add a number here the same session you drop its file in
 // — see SITE-CHEATSHEET.md.
-const PORTRAIT_NUMBERS = new Set([2, 4, 27, 55, 79, 90]);
+const PORTRAIT_NUMBERS = new Set([2, 4, 11, 27, 55, 79, 90]);
 
 // Only genuine football action photos — no cross-sport placeholders.
 const PHOTOS = [
@@ -789,7 +789,9 @@ export default function BRHSPantherFootballPage() {
           </div>
         </div>
         <div className={styles.spotlightWrap}>
-          <div className={styles.spotlightBadge}>RB</div>
+          <div className={styles.spotlightBadge}>
+            <Image src="/photos/media-day-portraits/11-featured.jpg" alt={`${FEATURED_PLAYER.name} — Bridgewater-Raritan Panther Football, Zarcone Photography`} fill sizes="220px" style={{ objectFit: 'cover' }} />
+          </div>
           <div>
             <div className={styles.spotlightName}>{FEATURED_PLAYER.name}</div>
             <div className={styles.spotlightClass}>{FEATURED_PLAYER.detail}</div>
