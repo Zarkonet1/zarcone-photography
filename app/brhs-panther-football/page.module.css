@@ -1103,9 +1103,10 @@
 @media (max-width: 900px) { .supportLine { padding: 16px 24px !important; } }
 
 /* ─── Quick Navigation ────────────────────────────────────────────── */
-/* Anchor targets sit under a fixed Nav (72px) + AnnouncementBar (36px) — */
-/* offset the scroll landing so jumped-to sections aren't hidden under them. */
-:global([id]) { scroll-margin-top: 120px; }
+/* Anchor targets sit under a fixed Nav (72px) + AnnouncementBar (36px) —
+   scroll-margin-top is applied inline per element (see page.jsx) since a
+   bare :global([id]) rule isn't allowed here — CSS Modules requires every
+   rule to contain at least one locally-scoped class. */
 .quickNav {
   display: flex;
   gap: 10px;

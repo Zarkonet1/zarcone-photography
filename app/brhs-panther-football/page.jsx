@@ -669,7 +669,7 @@ export default function BRHSPantherFootballPage() {
       </div>
 
       {/* ── Schedule & Results ───────────────────────────────────── */}
-      <section id="schedule">
+      <section id="schedule" style={{ scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>2026 Season</span>
@@ -709,7 +709,7 @@ export default function BRHSPantherFootballPage() {
       </section>
 
       {/* ── Division Standings ───────────────────────────────────── */}
-      <section id="standings" style={{ background: 'rgba(255,255,255,0.02)' }}>
+      <section id="standings" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>Big Central Conference</span>
@@ -743,7 +743,7 @@ export default function BRHSPantherFootballPage() {
       </section>
 
       {/* ── 2025 Playoff Run Results ─────────────────────────────── */}
-      <section id="results" style={{ background: 'rgba(255,255,255,0.02)' }}>
+      <section id="results" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>2025 Playoff Run</span>
@@ -822,7 +822,7 @@ export default function BRHSPantherFootballPage() {
       </section>
 
       {/* ── Roster ───────────────────────────────────────────────── */}
-      <section id="roster" style={{ background: 'rgba(255,255,255,0.02)' }}>
+      <section id="roster" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>Preseason Roster</span>
@@ -984,7 +984,7 @@ export default function BRHSPantherFootballPage() {
       </section>
 
       {/* ── In The News ──────────────────────────────────────────── */}
-      <section id="news" style={{ background: 'rgba(255,255,255,0.02)' }}>
+      <section id="news" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>Coverage</span>
@@ -1007,7 +1007,7 @@ export default function BRHSPantherFootballPage() {
       </section>
 
       {/* ── Gallery Preview ─────────────────────────────────────── */}
-      <section className={styles.gallery} id="gallery-alert">
+      <section className={styles.gallery} id="gallery-alert" style={{ scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>From The Sidelines</span>
@@ -1077,7 +1077,7 @@ export default function BRHSPantherFootballPage() {
       </section>
 
       {/* ── Media Day ────────────────────────────────────────────── */}
-      <div id="media-day" className={styles.featureRow}>
+      <div id="media-day" className={styles.featureRow} style={{ scrollMarginTop: 120 }}>
         <div className={styles.featureMedia}>
           {/* No brightness(0.8) dim here (unlike the other featureMedia
               shots below) — this is a posed team/coaches portrait, not an
@@ -1259,7 +1259,7 @@ export default function BRHSPantherFootballPage() {
       </section>
 
       {/* ── Contact ──────────────────────────────────────────────── */}
-      <section id="inquire">
+      <section id="inquire" style={{ scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>Get In Touch</span>
