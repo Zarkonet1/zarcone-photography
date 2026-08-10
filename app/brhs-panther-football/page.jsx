@@ -555,10 +555,11 @@ export default function BRHSPantherFootballPage() {
         <div className={styles.heroContent}>
           <div className={styles.heroBadgeRow}>
             <span className={styles.heroBadge}>2026 Season</span>
+            <span className={styles.heroBadgeOutline}>Defending Sectional Champions</span>
             <span className={styles.heroBadgeOutline}>Gold Level Sponsor</span>
           </div>
-          <h1 className={styles.heroTitle}>Three Finals.<br /><span>Then History.</span></h1>
-          <p className={styles.heroSub}>Three straight trips to the sectional final. Three losses. Then in 2025, Bridgewater-Raritan refused to let it happen again.</p>
+          <h1 className={styles.heroTitle}>The Target's<br /><span>On Us Now.</span></h1>
+          <p className={styles.heroSub}>Bridgewater-Raritan opens the 2026 season August 27 against Woodbridge — defending the first sectional championship in program history.</p>
           <p className={styles.heroWelcome}>Welcome to Bridgewater-Raritan Panther Football.</p>
           <div className={styles.heroCtas}>
             <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Season Galleries</a>
