@@ -57,7 +57,14 @@ const MEDIA_DAY_PHOTOS = [
 // runtime) and it avoids ~60 wasted 404 requests for players who don't have a
 // portrait uploaded yet. Add a number here the same session you drop its file in
 // — see SITE-CHEATSHEET.md.
-const PORTRAIT_NUMBERS = new Set([2, 4, 11, 27, 55, 79, 90]);
+const PORTRAIT_NUMBERS = new Set([
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23,
+  24, 25, 26, 27, 29, 31, 32, 33, 34, 36, 40, 41, 44, 45, 47, 48, 49, 51, 52,
+  54, 55, 56, 57, 60, 61, 63, 64, 65, 67, 68, 72, 74, 76, 79, 80, 81, 90,
+  // #16 intentionally excluded — a portrait file exists (16.jpg) but no
+  // player wears #16 in ROSTER_RAW_2026. Flagged to Tom 2026-08-10: either
+  // a filename typo or a roster gap, unresolved as of this commit.
+]);
 
 // Only genuine football action photos — no cross-sport placeholders.
 const PHOTOS = [
