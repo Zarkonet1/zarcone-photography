@@ -566,6 +566,16 @@ export default function BRHSPantherFootballPage() {
         </div>
       </section>
 
+      {/* ── Quick Navigation ─────────────────────────────────────── */}
+      <nav className={styles.quickNav} aria-label="Jump to section">
+        <a href="#schedule" className={styles.quickNavLink}>Schedule</a>
+        <a href="#roster" className={styles.quickNavLink}>Roster</a>
+        <a href="#media-day" className={styles.quickNavLink}>Media Day</a>
+        <a href="#gallery-alert" className={styles.quickNavLink}>Gallery</a>
+        <a href="#news" className={styles.quickNavLink}>News</a>
+        <a href="#inquire" className={styles.quickNavLink}>Contact</a>
+      </nav>
+
       {/* ── Live Season Tracker ──────────────────────────────────── */}
       <section className={styles.latestBar}>
         <div className={styles.latestHead}>
@@ -974,7 +984,7 @@ export default function BRHSPantherFootballPage() {
       </section>
 
       {/* ── In The News ──────────────────────────────────────────── */}
-      <section style={{ background: 'rgba(255,255,255,0.02)' }}>
+      <section id="news" style={{ background: 'rgba(255,255,255,0.02)' }}>
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>Coverage</span>
@@ -1067,7 +1077,7 @@ export default function BRHSPantherFootballPage() {
       </section>
 
       {/* ── Media Day ────────────────────────────────────────────── */}
-      <div className={styles.featureRow}>
+      <div id="media-day" className={styles.featureRow}>
         <div className={styles.featureMedia}>
           {/* No brightness(0.8) dim here (unlike the other featureMedia
               shots below) — this is a posed team/coaches portrait, not an

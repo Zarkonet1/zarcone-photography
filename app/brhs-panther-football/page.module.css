@@ -1102,6 +1102,41 @@
 }
 @media (max-width: 900px) { .supportLine { padding: 16px 24px !important; } }
 
+/* ─── Quick Navigation ────────────────────────────────────────────── */
+/* Anchor targets sit under a fixed Nav (72px) + AnnouncementBar (36px) — */
+/* offset the scroll landing so jumped-to sections aren't hidden under them. */
+:global([id]) { scroll-margin-top: 120px; }
+.quickNav {
+  display: flex;
+  gap: 10px;
+  padding: 18px 60px;
+  background: #0a0a0a;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.quickNav::-webkit-scrollbar { display: none; }
+.quickNavLink {
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--br-silver);
+  border: 1px solid rgba(185,190,199,0.3);
+  padding: 9px 16px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.quickNavLink:hover,
+.quickNavLink:focus-visible {
+  border-color: var(--br-red);
+  color: #fff;
+  background: rgba(200,16,46,0.08);
+}
+@media (max-width: 900px) { .quickNav { padding: 14px 24px; gap: 8px; } }
+
 /* ─── Live Season Tracker ─────────────────────────────────────────── */
 .latestBar {
   padding: 32px 60px !important;
