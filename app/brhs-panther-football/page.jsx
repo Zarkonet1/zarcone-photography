@@ -310,6 +310,10 @@ const OFF_POS_GROUP = {
   K: 'Specialists',
 };
 const ROSTER_GROUP_ORDER = ['Quarterbacks', 'Running Backs', 'Wide Receivers', 'Tight Ends', 'Offensive Line', 'Specialists'];
+// Varsity players currently span Senior/Junior/Sophomore only (classYear
+// 27-29 relative to CURRENT_SEASON_YEAR) — no Freshman on this roster today.
+// If that changes, add 'Freshman' here; gradeFromClassYear already supports it.
+const CLASS_ORDER = ['Senior', 'Junior', 'Sophomore'];
 // "All" is the only view long enough to need collapsing — individual position
 // groups are already short. Collapsed to this many rows until expanded.
 const ROSTER_PREVIEW_COUNT = 15;
@@ -451,7 +455,8 @@ export default function BRHSPantherFootballPage() {
   const [slide, setSlide] = useState(0);
   const [form, setForm] = useState({ name: '', email: '', phone: '', athleteName: '', sport: 'Football', interestedIn: 'Prints', message: '' });
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
-  const [rosterFilter, setRosterFilter] = useState('All');
+  const [rosterPositionFilter, setRosterPositionFilter] = useState('All');
+  const [rosterClassFilter, setRosterClassFilter] = useState('All');
   const [rosterExpanded, setRosterExpanded] = useState(false);
   const [rosterSortKey, setRosterSortKey] = useState('number');
   const [rosterSortDir, setRosterSortDir] = useState('asc');
@@ -825,23 +830,33 @@ export default function BRHSPantherFootballPage() {
           </p>
         </div>
         <div className={styles.rosterFilterRow}>
-          {['All', ...ROSTER_GROUP_ORDER, 'Managers'].map((g) => (
-            <button
-              key={g}
-              type="button"
-              className={rosterFilter === g ? styles.rosterFilterBtnActive : styles.rosterFilterBtn}
-              onClick={() => {
-                setRosterFilter(g);
-                // Number/Off/Def don't exist on managers — fall back to a sort that does.
-                if (g === 'Managers' && ['number', 'offPos', 'defPos'].includes(rosterSortKey)) {
-                  setRosterSortKey('last');
-                  setRosterSortDir('asc');
-                }
-              }}
-            >
-              {g}
-            </button>
-          ))}
+          <select
+            className={styles.rosterFilterSelect}
+            value={rosterClassFilter}
+            onChange={(e) => setRosterClassFilter(e.target.value)}
+            aria-label="Filter roster by class"
+          >
+            <option value="All">All Classes</option>
+            {CLASS_ORDER.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+          <select
+            className={styles.rosterFilterSelect}
+            value={rosterPositionFilter}
+            onChange={(e) => {
+              const g = e.target.value;
+              setRosterPositionFilter(g);
+              // Number/Off/Def don't exist on managers — fall back to a sort that does.
+              if (g === 'Managers' && ['number', 'offPos', 'defPos'].includes(rosterSortKey)) {
+                setRosterSortKey('last');
+                setRosterSortDir('asc');
+              }
+            }}
+            aria-label="Filter roster by position"
+          >
+            <option value="All">All Positions</option>
+            {ROSTER_GROUP_ORDER.map((g) => <option key={g} value={g}>{g}</option>)}
+            <option value="Managers">Managers</option>
+          </select>
         </div>
         {/* Mobile fallback — the table's <thead> (where the sort buttons live) is hidden below 640px, same as the schedule/results tables, so sorting needs its own control there. */}
         <select
@@ -854,7 +869,7 @@ export default function BRHSPantherFootballPage() {
           }}
           aria-label="Sort roster"
         >
-          {rosterFilter === 'Managers' ? (
+          {rosterPositionFilter === 'Managers' ? (
             <>
               <option value="last:asc">Sort: Name (A–Z)</option>
               <option value="last:desc">Sort: Name (Z–A)</option>
@@ -870,7 +885,7 @@ export default function BRHSPantherFootballPage() {
             </>
           )}
         </select>
-        {rosterFilter === 'Managers' ? (
+        {rosterPositionFilter === 'Managers' ? (
           <table className={`${styles.scheduleTable} ${styles.rosterTable}`}>
             <thead>
               <tr>
@@ -879,7 +894,10 @@ export default function BRHSPantherFootballPage() {
               </tr>
             </thead>
             <tbody>
-              {[...MANAGERS_2026].sort((a, b) => compareRosterRows(a, b, rosterSortKey, rosterSortDir)).map((p) => (
+              {[...MANAGERS_2026]
+                .filter((p) => rosterClassFilter === 'All' || p.grade === rosterClassFilter)
+                .sort((a, b) => compareRosterRows(a, b, rosterSortKey, rosterSortDir))
+                .map((p) => (
                 <tr key={p.slug} id={`roster-${p.slug}`}>
                   <td data-label="Name">{p.first} {p.last}</td>
                   <td data-label="Grade">{p.grade}</td>
@@ -888,9 +906,12 @@ export default function BRHSPantherFootballPage() {
             </tbody>
           </table>
         ) : (() => {
-          const filtered = ROSTER_2026.filter((p) => rosterFilter === 'All' || p.group === rosterFilter);
+          const filtered = ROSTER_2026.filter((p) =>
+            (rosterPositionFilter === 'All' || p.group === rosterPositionFilter) &&
+            (rosterClassFilter === 'All' || p.grade === rosterClassFilter)
+          );
           const sorted = [...filtered].sort((a, b) => compareRosterRows(a, b, rosterSortKey, rosterSortDir));
-          const isTruncated = rosterFilter === 'All' && !rosterExpanded && sorted.length > ROSTER_PREVIEW_COUNT;
+          const isTruncated = rosterPositionFilter === 'All' && rosterClassFilter === 'All' && !rosterExpanded && sorted.length > ROSTER_PREVIEW_COUNT;
           const visible = isTruncated ? sorted.slice(0, ROSTER_PREVIEW_COUNT) : sorted;
           return (
             <>
@@ -922,7 +943,7 @@ export default function BRHSPantherFootballPage() {
                   ))}
                 </tbody>
               </table>
-              {rosterFilter === 'All' && sorted.length > ROSTER_PREVIEW_COUNT && (
+              {rosterPositionFilter === 'All' && rosterClassFilter === 'All' && sorted.length > ROSTER_PREVIEW_COUNT && (
                 <button
                   type="button"
                   className={styles.rosterExpandBtn}
@@ -935,7 +956,7 @@ export default function BRHSPantherFootballPage() {
           );
         })()}
         <p className={styles.sampleCaption}>
-          {rosterFilter === 'Managers'
+          {rosterPositionFilter === 'Managers'
             ? 'Team managers support the program on game days and at practice. Roster subject to change before the season opener.'
             : "Most players at this level go both ways — Off/Def columns show each player's primary alignment on both sides of the ball. Roster subject to change before the season opener."}
         </p>

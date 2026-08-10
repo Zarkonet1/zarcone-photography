@@ -388,27 +388,30 @@
 .rosterFilterRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 24px;
 }
-.rosterFilterBtn, .rosterFilterBtnActive {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 8px 16px;
-  border-radius: 999px;
-  cursor: pointer;
-  background: transparent;
-  color: var(--br-silver);
-  border: 1px solid rgba(255,255,255,0.18);
-  transition: all 0.15s;
-}
-.rosterFilterBtn:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
-.rosterFilterBtnActive {
-  background: var(--br-red);
+/* Two compact dropdowns (Class, Position) instead of a pill-button row —
+   a button per position group ran too wide across the page once Class was
+   added as a second dimension. min-width keeps them legible; they don't
+   grow to fill the row. */
+.rosterFilterSelect {
+  min-width: 160px;
+  width: auto;
+  padding: 10px 14px;
+  background: #0d0d0d;
   color: #fff;
-  border-color: var(--br-red);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.rosterFilterSelect:hover { border-color: rgba(255,255,255,0.4); }
+@media (max-width: 480px) {
+  .rosterFilterSelect { flex: 1 1 auto; min-width: 0; }
 }
 
 .rosterPortraitBtn {
