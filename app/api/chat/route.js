@@ -7,6 +7,62 @@ const MODEL = 'claude-haiku-4-5-20251001';
 const MAX_TURNS = 12; // trailing messages kept, to bound cost/context
 const MAX_MESSAGE_LEN = 2000;
 
+// --- Rate limiting (in-memory, per-serverless-instance) ---
+// Not distributed: resets on cold start and isn't shared across concurrent
+// Vercel instances, so it's a soft ceiling, not a hard guarantee. Good enough
+// to stop a single script/bad actor hammering the endpoint in one session,
+// which is the realistic risk at this site's traffic level. If real abuse
+// shows up (cost spikes, coordinated hits from many IPs), upgrade to
+// Upstash Redis + @upstash/ratelimit for a durable, shared limit instead of
+// tightening these numbers.
+const BURST_WINDOW_MS = 5 * 60 * 1000; // 5 minutes
+const BURST_MAX = 10;                  // messages per IP per window
+const DAY_WINDOW_MS = 24 * 60 * 60 * 1000;
+const DAY_MAX = 40;                    // messages per IP per day
+
+const rateBuckets = new Map(); // ip -> { windowStart, windowCount, dayStart, dayCount }
+
+function getClientIp(request) {
+  const fwd = request.headers.get('x-forwarded-for');
+  if (fwd) return fwd.split(',')[0].trim();
+  return request.ip || 'unknown';
+}
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  let bucket = rateBuckets.get(ip);
+  if (!bucket) {
+    bucket = { windowStart: now, windowCount: 0, dayStart: now, dayCount: 0 };
+    rateBuckets.set(ip, bucket);
+  }
+  if (now - bucket.windowStart > BURST_WINDOW_MS) {
+    bucket.windowStart = now;
+    bucket.windowCount = 0;
+  }
+  if (now - bucket.dayStart > DAY_WINDOW_MS) {
+    bucket.dayStart = now;
+    bucket.dayCount = 0;
+  }
+  bucket.windowCount += 1;
+  bucket.dayCount += 1;
+
+  // Bound the map's size on a long-lived warm instance — sweep stale entries
+  // occasionally rather than on every request.
+  if (rateBuckets.size > 500) {
+    for (const [key, b] of rateBuckets) {
+      if (now - b.dayStart > DAY_WINDOW_MS) rateBuckets.delete(key);
+    }
+  }
+
+  if (bucket.windowCount > BURST_MAX) {
+    return { limited: true, message: "You're sending messages a bit fast — give it a minute and try again, or call (908) 777-0631." };
+  }
+  if (bucket.dayCount > DAY_MAX) {
+    return { limited: true, message: "You've hit today's message limit for this chat — please call (908) 777-0631 or use the contact form. It resets tomorrow." };
+  }
+  return { limited: false };
+}
+
 const LEAD_TOOL = {
   name: 'submit_lead_inquiry',
   description:
@@ -141,6 +197,12 @@ export async function POST(request) {
       { error: 'Chat is temporarily unavailable. Please call (908) 777-0631 or use the contact form.' },
       { status: 503 }
     );
+  }
+
+  const clientIp = getClientIp(request);
+  const rate = checkRateLimit(clientIp);
+  if (rate.limited) {
+    return NextResponse.json({ error: rate.message }, { status: 429 });
   }
 
   let body;
