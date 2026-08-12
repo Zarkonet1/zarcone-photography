@@ -1,7 +1,7 @@
 ---
 title: "Media Day Recap: Inside the 2026 Panther Football Season Kickoff"
 date: "2026-08-03"
-excerpt: "Media Day is done, portraits are in the works, and the 2026 Panther Football season is officially underway. Here's what the day looked like — and where to find your athlete's photos."
+excerpt: "Media Day is done and portraits are live. Here's what the day looked like — and where to find your athlete's photos."
 category: "Sports"
 coverImage: "/photos/BLOG_BRHSFootBallMediaPartner.png"
 imagePosition: "center 50%"
@@ -15,10 +15,12 @@ Every player on the 2026 roster came through for individual and team portraits �
 
 ## Where to Find the Photos
 
-Media Day portraits are being edited now and will post to the team's private gallery within days — not weeks. The fastest way to know the moment they're live:
+Media Day portraits are live now — the full roster, individual and team shots. Two ways to see them:
 
-- **[Sign up for a gallery-ready alert](/brhs-panther-football#gallery-alert)** on the Panther Football hub — a two-second form, no account needed.
-- Check the hub page directly: **[zarconephotography.com/brhs-panther-football](/brhs-panther-football)**, which stays current all season with the schedule, standings, and every gallery as it posts.
+- Check the [Panther Football hub page](/brhs-panther-football) directly — click any jersey number on the roster to see that player's portrait, no account needed.
+- For full-resolution downloads and print ordering, head to the **[2026 Media Day Gallery](https://galleries.zarconephotography.com/client/2026-brhs-football-media-day)**. Not sure what to actually do with the file once you have it? Here's a [quick guide](/blog/brhs-football-2026-media-day-photo-guide) — recruiting profiles, Senior Night boards, social, and prints.
+
+Want to know the moment future game galleries post? **[Sign up for a gallery-ready alert](/brhs-panther-football#gallery-alert)** on the hub page.
 
 ## The Season Ahead
 
