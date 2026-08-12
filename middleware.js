@@ -31,6 +31,38 @@ function lowercaseRedirect(request) {
 }
 
 /**
+ * Catch-all for the old SmugMug-hosted site's gallery/image URLs.
+ *
+ * Before the Next.js redesign, zarconephotography.com ran on SmugMug's custom-
+ * domain hosting, which generates URLs like /some-gallery-title/n-XXXXXXX
+ * (gallery node) and /some-gallery-title/i-XXXXXXX (individual image), often
+ * nested (/category/event-slug/n-XXXXXXX). Google indexed a large, unknown
+ * number of these over the years SmugMug was live. That index is the actual
+ * "root distribution channel" behind the recurring 404-sweep pattern in GA4
+ * (see project_ga4_404_redirects memory) — searchers click a stale Google
+ * result, land on an old gallery path, and it 404s. Individually enumerating
+ * each specific gallery slug in next.config.mjs redirects() as GA4 surfaces
+ * it one at a time doesn't scale against an index we don't control.
+ *
+ * Instead of enumerating slugs, catch the URL *pattern* SmugMug always uses:
+ * a path segment that is exactly "n-" or "i-" followed by 5-12 alphanumeric
+ * characters. No real route on this site uses that shape, so this is safe to
+ * catch broadly and send to /client-area (the same destination every
+ * already-enumerated legacy gallery redirect uses).
+ */
+const SMUGMUG_ID_SEGMENT = /(^|\/)(n|i)-[a-z0-9]{5,12}(\/|$)/i;
+
+function legacySmugmugRedirect(request) {
+  const { pathname } = request.nextUrl;
+  if (!SMUGMUG_ID_SEGMENT.test(pathname)) return null;
+
+  const url = request.nextUrl.clone();
+  url.pathname = '/client-area';
+  url.search = '';
+  return NextResponse.redirect(url, 308);
+}
+
+/**
  * Strip malformed Range headers (missing unit) before they reach static serving.
  * A valid Range header looks like: bytes=0-1023
  * Without a unit (e.g. "=0-1023"), Vercel returns HTTP 416 RANGE_MISSING_UNIT.
@@ -38,6 +70,9 @@ function lowercaseRedirect(request) {
 export function middleware(request) {
   const caseRedirect = lowercaseRedirect(request);
   if (caseRedirect) return caseRedirect;
+
+  const smugmugRedirect = legacySmugmugRedirect(request);
+  if (smugmugRedirect) return smugmugRedirect;
 
   const range = request.headers.get('range');
 
