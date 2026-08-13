@@ -1008,6 +1008,8 @@ export default function BRHSPantherFootballPage() {
       </section>
 
       {/* ── Gallery Preview ─────────────────────────────────────── */}
+      {/* #gallery is a plain alias for Linktree/social use; #gallery-alert stays live for existing blog post links */}
+      <span id="gallery" style={{ position: 'relative', top: -120, display: 'block' }} aria-hidden="true" />
       <section className={styles.gallery} id="gallery-alert" style={{ scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
