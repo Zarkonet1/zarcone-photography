@@ -53,13 +53,18 @@ export default function ChatWidget() {
   }
 
   // The chat bot is trained on lib/chatKnowledge.js — consumer pricing,
-  // portrait/sports FAQ, mini-session promos. A federal buyer opening it
-  // on the Government Practice page would get answers built for a
-  // completely different audience, which is worse for credibility than
-  // no chat bubble at all. Hidden on this route until (if ever) a
-  // government-specific knowledge base is built. Hook order preserved —
-  // this check runs after all hooks above.
-  if (pathname?.startsWith('/government-contracting')) return null;
+  // portrait/sports FAQ, mini-session promos. A federal buyer on the
+  // Government Practice page, or an AD/coach on a Prospect Trigger page
+  // (/high_school/...), would get answers built for a completely different
+  // audience — worse for credibility than no chat bubble at all, and a
+  // chat bubble is exactly the kind of "conventional website" chrome a
+  // Prospect Trigger page is designed not to have. Hidden on both routes
+  // until (if ever) a purpose-built knowledge base exists. Hook order
+  // preserved — this check runs after all hooks above.
+  if (
+    pathname?.startsWith('/government-contracting') ||
+    pathname?.startsWith('/high_school')
+  ) return null;
 
   return (
     <div className={styles.wrap}>

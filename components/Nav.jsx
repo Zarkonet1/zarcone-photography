@@ -32,6 +32,13 @@ export default function Nav() {
     { href: '/client-area',   label: 'View Your Gallery'  },
   ];
 
+  // Prospect Trigger pages (/high_school/...) render as a standalone,
+  // single-purpose experience — no site nav. Mirrors the existing
+  // government-contracting exclusion pattern already used on
+  // AnnouncementBar/ChatWidget below. Hook order preserved: this check
+  // runs after all hooks above.
+  if (pathname?.startsWith('/high_school')) return null;
+
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <Link href="/" className={styles.logo} aria-label="Zarcone Photography — home">

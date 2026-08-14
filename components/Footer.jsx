@@ -1,8 +1,20 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import styles from './Footer.module.css';
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  // Prospect Trigger pages (/high_school/...) render as a standalone,
+  // single-purpose experience — no site footer. Mirrors the existing
+  // government-contracting exclusion pattern used on AnnouncementBar/
+  // ChatWidget. Converted this component to a client component solely to
+  // read the pathname here — no other behavior changed.
+  if (pathname?.startsWith('/high_school')) return null;
+
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>

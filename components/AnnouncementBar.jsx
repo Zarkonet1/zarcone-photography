@@ -89,11 +89,16 @@ export default function AnnouncementBar() {
     return () => clearInterval(t);
   }, [upcoming.length]);
 
-  // The Government Practice page is deliberately kept free of consumer
-  // promotional content (mini sessions, seasonal events) — it undercuts
-  // the "quiet competence, not marketing" positioning that page is built
-  // around. Hook order is preserved: this check runs after all hooks.
-  if (upcoming.length === 0 || pathname?.startsWith('/government-contracting')) return null;
+  // The Government Practice page and Prospect Trigger pages (/high_school/
+  // ...) are both deliberately kept free of consumer promotional content
+  // (mini sessions, seasonal events) — it undercuts the "quiet competence"
+  // / "standalone concept page" positioning each is built around. Hook
+  // order is preserved: this check runs after all hooks.
+  if (
+    upcoming.length === 0 ||
+    pathname?.startsWith('/government-contracting') ||
+    pathname?.startsWith('/high_school')
+  ) return null;
 
   const event = upcoming[idx] || upcoming[0];
 
