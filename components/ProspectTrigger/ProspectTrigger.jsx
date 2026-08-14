@@ -38,8 +38,9 @@ export default function ProspectTrigger({ data }) {
 
       <p className={styles.disclosure}>{disclosure}</p>
 
-      {/* VISUAL PAYOFF + CREDIBILITY */}
+      {/* FLAGSHIP PROOF — "we're already doing this, for real" */}
       <section className={styles.proof}>
+        {proof.heading && <h2 className={styles.proofHeading}>{proof.heading}</h2>}
         {heroImage && (
           <div className={styles.proofHero}>
             <img src={heroImage.src} alt={heroImage.alt} className={styles.proofImg} />
@@ -54,8 +55,12 @@ export default function ProspectTrigger({ data }) {
             ))}
           </div>
         )}
-        <p className={styles.credibility}>{proof.credibilityLine}</p>
+        <p className={styles.credibility}>{proof.identityLine}</p>
+        <p className={styles.credibilitySub}>{proof.credibilityLine}</p>
         <p className={styles.credibilityNote}>{proof.disclaimerNote}</p>
+        {proof.hub && (
+          <a href={proof.hub.href} className={styles.hubLink}>{proof.hub.label}</a>
+        )}
       </section>
 
       {/* POSSIBILITY */}
