@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Lightbox from '@/components/Lightbox';
@@ -117,7 +117,16 @@ export default function SportsPage() {
   const [active, setActive] = useState('All');
   const [lbIndex, setLbIndex] = useState(null);
 
-  const shuffled = useMemo(() => shuffle(PHOTOS), []);
+  // Server render and the client's first render must produce identical output,
+  // or React throws a hydration mismatch. Math.random() inside useMemo() broke
+  // that — the server-rendered HTML had one shuffle order, the client's first
+  // pass computed a different one. Fix: render PHOTOS in its stable, unshuffled
+  // order on first paint (matches SSR exactly), then shuffle client-only after
+  // mount via useEffect, which never runs during server rendering.
+  const [shuffled, setShuffled] = useState(PHOTOS);
+  useEffect(() => {
+    setShuffled(shuffle(PHOTOS));
+  }, []);
   const filtered = active === 'All' ? shuffled : shuffled.filter(p => p.category === active);
 
   return (
