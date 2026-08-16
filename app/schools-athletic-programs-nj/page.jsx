@@ -150,6 +150,14 @@ export default function SchoolsAthleticProgramsNJ() {
         imageSrc="/photos/i-s7zBdzk.jpg"
       />
 
+      {/* Case Study */}
+      <div className={styles.caseStudy}>
+        <span className={styles.caseStudyLabel}>Case Study</span>
+        <p className={styles.caseStudyText}>
+          See how this works: Zarcone Photography is the official media partner and a Gold Level Sponsor of <Link href="/brhs-panther-football">BRHS Panther Football</Link> for the 2026 season — full season coverage, Media Day portraits, and Senior Night posters. <Link href="/brhs-panther-football">View the partnership hub →</Link>
+        </p>
+      </div>
+
       {/* Intro */}
       <section className={styles.intro}>
         <div className={styles.introLabel}>

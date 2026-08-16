@@ -6,14 +6,27 @@
   overflow: hidden;
 }
 
+.labelWrap {
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 0 60px;
+}
+
+.eyebrow {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
 .label {
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
-  text-align: center;
-  margin-bottom: 32px;
-  padding: 0 60px;
 }
 
 /* Marquee */
@@ -61,6 +74,31 @@
 
 .logo img:hover {
   opacity: 1;
+}
+
+/* Clickable partnership logos — same hover as static logos, plus a small
+   underline cue on the wrapping link so they read as tappable. */
+.logoLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoLink::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.25s ease, left 0.25s ease;
+}
+
+.logoLink:hover::after {
+  width: 60%;
+  left: 20%;
 }
 
 @media (max-width: 700px) {

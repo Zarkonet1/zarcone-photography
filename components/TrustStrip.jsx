@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import styles from './TrustStrip.module.css';
 
+// Partnership logos carry an `href` to their dedicated partnership page —
+// that's what makes them clickable in the strip below. Vendor/certification
+// logos (PPA, Bay Photo, SBA/SDVOSB, etc.) have no href and stay static.
+// To add the next partnership (Parsippany-Troy Hills is next in line), just
+// add its href here — no markup or CSS changes needed.
 const LOGOS = [
-  { src: '/photos/TRUST - large_Panther_athletics.PNG',             alt: 'BR Panthers Athletics' },
+  { src: '/photos/TRUST - large_Panther_athletics.PNG',             alt: 'BR Panthers Athletics', href: '/brhs-panther-football' },
   { src: '/photos/TRUST - njsiaa-logo2-reformatted_0.jpg',          alt: 'NJSIAA' },
-  { src: '/photos/TRUST - employerLogo.png',                        alt: 'Bridgewater-Raritan Regional School District' },
+  { src: '/photos/TRUST - employerLogo.png',                        alt: 'Bridgewater-Raritan Regional School District', href: '/brhs-panther-football' },
   { src: '/photos/TRUST - employerLogo-2.png',                      alt: 'Parsippany-Troy Hills Township Schools' },
   { src: '/photos/TRUST - i-3kndGtr-S.png',                         alt: 'SBA Service-Disabled Veteran-Owned Small Business Certified' },
   { src: '/photos/TRUST - i-45WhwbV-S.png',                         alt: 'SDVOSB Veteran Owned Business Verified Member' },
@@ -22,12 +27,21 @@ const TRACK = [...LOGOS, ...LOGOS];
 export default function TrustStrip() {
   return (
     <section className={styles.wrap}>
-      <p className={styles.label}>Trusted by schools, programs &amp; organizations across New Jersey</p>
+      <div className={styles.labelWrap}>
+        <span className={styles.eyebrow}>Featured Partnerships</span>
+        <p className={styles.label}>Trusted by schools, programs &amp; organizations across New Jersey</p>
+      </div>
       <div className={styles.marqueeOuter}>
         <div className={styles.track}>
           {TRACK.map((logo, i) => (
             <div key={i} className={styles.logo}>
-              <img src={logo.src} alt={logo.alt} />
+              {logo.href ? (
+                <Link href={logo.href} className={styles.logoLink} aria-label={`${logo.alt} — see the partnership`}>
+                  <img src={logo.src} alt={logo.alt} />
+                </Link>
+              ) : (
+                <img src={logo.src} alt={logo.alt} />
+              )}
             </div>
           ))}
         </div>
