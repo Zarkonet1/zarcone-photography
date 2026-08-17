@@ -160,6 +160,19 @@ export default function SportsPage() {
         </Link>
       </p>
 
+      <p className={styles.painLine} style={{ paddingTop: 0 }}>
+        Full-season galleries, team stores, and athlete highlight reels for these programs live on{' '}
+        <a
+          href="https://www.yourbestshot.photos"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: 'var(--accent)', textDecoration: 'underline' }}
+        >
+          Your Best Shot
+        </a>
+        , my dedicated sports media platform.
+      </p>
+
       <div className={styles.filterBar}>
         {CATEGORIES.map(cat => (
           <button
