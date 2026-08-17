@@ -650,6 +650,25 @@ export default function BRHSPantherFootballPage() {
         </div>
       </section>
 
+      {/* ── Official Program Resource ───────────────────────────── */}
+      <div className={styles.officialResource}>
+        <div className={styles.officialResourceInner}>
+          <span className={styles.eyebrowRed}>Official Program Resource</span>
+          <h3 className={styles.officialResourceTitle}>Official BRHS Panther Football Website</h3>
+          <p className={styles.officialResourceBody}>
+            Visit the official BRHS Panther Football website for program announcements, schedules, forms, registration, livestream information, and team updates.
+          </p>
+          <a
+            href="https://brhspantherfb.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.partnershipLink}
+          >
+            Visit BRHS Panther Football →
+          </a>
+        </div>
+      </div>
+
       {/* ── Family Day ───────────────────────────────────────────── */}
       <div className={styles.featureRow}>
         <div className={styles.featureMedia}>

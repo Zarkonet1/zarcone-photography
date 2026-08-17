@@ -294,6 +294,36 @@
   padding-bottom: 4px;
 }
 
+/* ─── Official Program Resource ─────────────────────────────────── */
+.officialResource {
+  padding: 48px 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.015);
+}
+@media (max-width: 900px) {
+  .officialResource { padding: 36px 24px; }
+}
+@media (max-width: 640px) {
+  .officialResource { padding: 28px 20px; }
+}
+.officialResourceInner {
+  max-width: 640px;
+}
+.officialResourceTitle {
+  font-family: var(--sans);
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #fff;
+  margin-top: 14px;
+}
+.officialResourceBody {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--br-silver);
+  margin-top: 12px;
+}
+
 /* ─── Champion banner ───────────────────────────────────────────── */
 .championBanner {
   display: flex;
