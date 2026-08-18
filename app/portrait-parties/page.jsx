@@ -44,6 +44,7 @@ const HOST_REWARDS = [
 const VENUE_PARTNERS = [
   { name: 'TKC Farms', location: 'Three Bridges, NJ', logo: '/photos/TRUST - TKCFarms.png', href: 'https://www.tkcfarms.com' },
   { name: 'Black Dog Books', location: 'Lafayette, NJ', logo: '/photos/TRUST - BlackDogBooks.jpeg', href: 'https://blackdogbooksnj.com' },
+  { name: "Barkley's Marketplace", location: 'Flemington & Branchburg, NJ', logo: '/photos/TRUST - images.png', href: 'https://barkleysmarketplace.com' },
 ];
 
 const THEMES = [

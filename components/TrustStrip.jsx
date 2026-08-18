@@ -16,7 +16,7 @@ const LOGOS = [
   { src: '/photos/TRUST - i-3kndGtr-S.png',                         alt: 'SBA Service-Disabled Veteran-Owned Small Business Certified' },
   { src: '/photos/TRUST - i-45WhwbV-S.png',                         alt: 'SDVOSB Veteran Owned Business Verified Member' },
   { src: '/photos/TRUST - images.jpeg',                             alt: 'BR Panther Athletic Club' },
-  { src: '/photos/TRUST - images.png',                              alt: "Barkley's Marketplace" },
+  { src: '/photos/TRUST - images.png',                              alt: "Barkley's Marketplace", href: 'https://barkleysmarketplace.com', external: true },
   { src: '/photos/TRUST - TKCFarms.png',                            alt: 'TKC Farms', href: 'https://www.tkcfarms.com', external: true },
   { src: '/photos/TRUST - PPA_logo1_COLOR_RGB_Meta.png',            alt: 'Professional Photographers of America' },
   { src: '/photos/TRUST - WPAOGlogoTransBG200.png',                 alt: 'WPAO' },
