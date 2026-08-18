@@ -21,9 +21,10 @@ export default function Nav() {
   useEffect(() => setMenuOpen(false), [pathname]);
 
   const links = [
-    { href: '/sports',        label: 'Sports'    },
-    { href: '/portraits',     label: 'Portraits' },
-    { href: '/events',        label: 'Events'    },
+    { href: '/sports',           label: 'Sports'          },
+    { href: '/portraits',        label: 'Portraits'       },
+    { href: '/portrait-parties', label: 'Portrait Parties' },
+    { href: '/events',           label: 'Events'          },
     { href: '/design',        label: 'Design'    },
     { href: '/blog',          label: 'Blog'      },
     { href: '/news',          label: 'News'      },
