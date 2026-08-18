@@ -41,6 +41,11 @@ const HOST_REWARDS = [
   { guests: '10+ Guests',reward: 'Complete Zarcone Photography portrait session — a $350+ value' },
 ];
 
+const VENUE_PARTNERS = [
+  { name: 'TKC Farms', location: 'Three Bridges, NJ', logo: '/photos/TRUST - TKCFarms.png', href: 'https://www.tkcfarms.com' },
+  { name: 'Black Dog Books', location: 'Lafayette, NJ', logo: '/photos/TRUST - BlackDogBooks.jpeg', href: 'https://blackdogbooksnj.com' },
+];
+
 const THEMES = [
   { title: 'Girls Night Out',           desc: 'Wine, portraits, and an evening worth remembering.' },
   { title: 'Book Club Portrait Night',  desc: 'Perfect for literary communities and reading groups.' },
@@ -258,6 +263,26 @@ export default function PortraitPartiesPage() {
               Portrait Parties work beautifully in partnership with local businesses — bookstores,
               wine bars, salons, boutiques, and community spaces. If you have a venue in mind, let's talk.
             </p>
+            <div className={styles.venuePartners}>
+              {VENUE_PARTNERS.map(v => (
+                <a
+                  key={v.name}
+                  href={v.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.venuePartnerCard}
+                  aria-label={`${v.name} — visit site`}
+                >
+                  <span className={styles.venuePartnerBadge}>
+                    <img src={v.logo} alt={v.name} />
+                  </span>
+                  <span className={styles.venuePartnerText}>
+                    <span className={styles.venuePartnerName}>{v.name}</span>
+                    <span className={styles.venuePartnerLoc}>{v.location}</span>
+                  </span>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
