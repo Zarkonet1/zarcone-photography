@@ -61,7 +61,7 @@ const RESULTS_2025_26 = [
 // lib/articles.js — so the array below does NOT need to be kept in manual
 // chronological order.
 const ARTICLES = [
-  { title: 'Two Bridgewater-Raritan Wrestlers Earn State Medals At 2026 Tournament', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/two-bridgewater-raritan-wrestlers-earn-state-medals-2026-tournament', date: '2026-03-17' },
+  { title: 'Two Bridgewater-Raritan Wrestlers Earn State Medals At 2026 Tournament', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/two-bridgewater-raritan-wrestlers-earn-state-medals-2026-tournament', date: '2026-03-16' /* corrected 2026-08-18: article:published_time metadata + byline both read Mon, Mar 16 2026 4:37pm ET; page previously had 03-17 */ },
   { title: 'Bridgewater-Raritan Wrestlers Advance To Quarterfinals Of State Wrestling Tournament', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/bridgewater-raritan-wrestlers-advance-quarterfinals-state-wrestling', date: '2026-03-13' },
   { title: 'Three Bridgewater-Raritan High School Wrestlers Advance To State Tournament', source: 'TAPinto', url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/sections/sports/articles/three-bridgewater-raritan-high-school-wrestlers-advance-to-state-tournament', date: '2026-03-08' },
   { title: 'Bridgewater-Raritan Wrestlers Secure 3 District Titles, 7 Qualify For Regionals', source: 'Patch', url: 'https://patch.com/new-jersey/bridgewater/bridgewater-raritan-wrestlers-secure-3-district-titles-7-qualify-regionals', date: '2026-03-07' },
