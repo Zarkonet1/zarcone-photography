@@ -278,6 +278,15 @@ export default function BRHSPantherWrestlingPage() {
         </div>
       </section>
 
+      {/* ── Quick Navigation ─────────────────────────────────────── */}
+      <nav className={styles.quickNav} aria-label="Jump to section">
+        <a href="#results" className={styles.quickNavLink}>Results</a>
+        <a href="#season-kickoff" className={styles.quickNavLink}>Kickoff</a>
+        <a href="#gallery" className={styles.quickNavLink}>Gallery</a>
+        <a href="#news" className={styles.quickNavLink}>News</a>
+        <a href="#inquire" className={styles.quickNavLink}>Contact</a>
+      </nav>
+
       {/* ── Live Season Tracker — the page's weekly-update engine ─── */}
       <section className={styles.latestBar}>
         <div className={styles.latestHead}>
@@ -358,7 +367,7 @@ export default function BRHSPantherWrestlingPage() {
       </section>
 
       {/* ── Results & Season Outlook ─────────────────────────────── */}
-      <section id="results">
+      <section id="results" style={{ scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>2025-26 Season</span>
@@ -451,7 +460,7 @@ export default function BRHSPantherWrestlingPage() {
       </section>
 
       {/* ── In The News ──────────────────────────────────────────── */}
-      <section style={{ background: 'var(--bp-paper-deep)' }}>
+      <section id="news" style={{ background: 'var(--bp-paper-deep)', scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>Coverage</span>
@@ -474,7 +483,7 @@ export default function BRHSPantherWrestlingPage() {
       </section>
 
       {/* ── Gallery Preview ─────────────────────────────────────── */}
-      <section className={styles.gallery}>
+      <section className={styles.gallery} id="gallery" style={{ scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>On The Mat</span>
@@ -545,7 +554,7 @@ export default function BRHSPantherWrestlingPage() {
       </section>
 
       {/* ── Season Kickoff ───────────────────────────────────────── */}
-      <div className={styles.featureRow}>
+      <div id="season-kickoff" className={styles.featureRow} style={{ scrollMarginTop: 120 }}>
         <div className={styles.featurePanel}>
           <Image src="/photos/BRHSWrestling2026-2027FBCOVER_C.png" alt="BRHS Panther Wrestling — Built Different, 2026-27" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'contain', background: 'var(--bp-navy-deep)' }} />
         </div>
@@ -702,7 +711,7 @@ export default function BRHSPantherWrestlingPage() {
       </section>
 
       {/* ── Contact ──────────────────────────────────────────────── */}
-      <section id="inquire">
+      <section id="inquire" style={{ scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>Get In Touch</span>
