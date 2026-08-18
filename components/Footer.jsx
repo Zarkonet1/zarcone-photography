@@ -34,6 +34,7 @@ export default function Footer() {
             <Link href="/sports-photographer-nj">Sports Coverage</Link>
             <Link href="/event-photographer-nj">Event Coverage</Link>
             <Link href="/schools-athletic-programs-nj">Schools &amp; Programs</Link>
+            <Link href="/portrait-parties">Portrait Parties</Link>
             <Link href="/government-contracting">Government Contracting</Link>
           </div>
           <nav className={styles.navColumn}>
