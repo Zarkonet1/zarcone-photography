@@ -16,6 +16,22 @@ export async function generateMetadata({ params }) {
   return {
     title: `${post.title} — Zarcone Photography`,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${params.slug}`,
+    },
+    openGraph: {
+      title: `${post.title} — Zarcone Photography`,
+      description: post.excerpt,
+      url: `https://www.zarconephotography.com/blog/${params.slug}`,
+      type: 'article',
+      images: post.coverImage ? [{ url: post.coverImage, width: 1200, height: 800, alt: post.title }] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${post.title} — Zarcone Photography`,
+      description: post.excerpt,
+      images: post.coverImage ? [post.coverImage] : undefined,
+    },
   };
 }
 

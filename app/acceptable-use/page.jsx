@@ -3,6 +3,9 @@ import styles from '../legal.module.css';
 export const metadata = {
   title: 'Acceptable Use Policy — Zarcone Photography',
   description: 'Guidelines for how clients and the public may use images and content created by Zarcone Photography.',
+  alternates: {
+    canonical: '/acceptable-use',
+  },
 };
 
 export default function AcceptableUse() {

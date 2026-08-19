@@ -3,6 +3,9 @@ import styles from '../legal.module.css';
 export const metadata = {
   title: 'Privacy Policy — Zarcone Photography',
   description: 'How Zarcone Photography collects, uses, and protects your personal information.',
+  alternates: {
+    canonical: '/privacy',
+  },
 };
 
 export default function PrivacyPolicy() {

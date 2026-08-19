@@ -3,6 +3,9 @@ import styles from '../legal.module.css';
 export const metadata = {
   title: 'Terms & Conditions — Zarcone Photography',
   description: 'Terms and conditions for photography services provided by Zarcone Photography, LLC.',
+  alternates: {
+    canonical: '/terms',
+  },
 };
 
 export default function Terms() {
