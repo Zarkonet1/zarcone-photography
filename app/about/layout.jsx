@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'About Tom Zarcone | NJ Portrait & Sports Photographer',
-  description: 'Meet Tom Zarcone — a professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events.',
+  title: 'About Tom Zarcone — Veteran-Owned NJ Photographer',
+  description: 'SDVOSB-certified photographer with 30 years behind the camera. Portraits, high school sports & events across NJ, NYC & Philadelphia — meet Tom.',
   alternates: {
     canonical: '/about',
   },

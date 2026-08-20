@@ -3,8 +3,8 @@ import PageHero from '@/components/PageHero';
 import styles from './page.module.css';
 
 export const metadata = {
-  title: 'Photography Pricing NJ | Zarcone Photography',
-  description: 'Transparent photography pricing for portraits, sports, events, and graphic design. Based in Bridgewater, NJ — serving New Jersey, NYC, and Philadelphia.',
+  title: 'NJ Photography Pricing — See Rates | Zarcone Photography',
+  description: 'Straightforward photography packages for portraits, sports & events — no hidden fees. SDVOSB-certified, serving NJ, NYC & Philadelphia. View rates.',
   alternates: {
     canonical: '/pricing',
   },
