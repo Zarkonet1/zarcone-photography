@@ -634,7 +634,7 @@ export default function BRHSPantherFootballPage() {
           </p>
           <p>
             This builds on a longer history with Bridgewater athletics, including an ongoing role as the official photography &amp; social media partner of{' '}
-            <Link href="/brhs-panther-wrestling">BRHS Panther Wrestling</Link>. The goal is the same across every program: professional photography, real storytelling, and a visual record
+            <Link href="/brhs-panther-wrestling">BRHS Panther Wrestling</Link> and <Link href="/brhs-panther-volleyball">BRHS Panther Girls Volleyball</Link>. The goal is the same across every program: professional photography, real storytelling, and a visual record
             worth keeping — not just a highlight reel.
           </p>
           <p>

@@ -353,7 +353,7 @@ export default function BRHSPantherWrestlingPage() {
           </p>
           <p>
             This builds on a growing partnership across Bridgewater-Raritan athletics, including an ongoing role as the official media partner of{' '}
-            <Link href="/brhs-panther-football">BRHS Panther Football</Link>. The goal is the same across every program: professional photography, real storytelling, and a visual record worth keeping.
+            <Link href="/brhs-panther-football">BRHS Panther Football</Link> and <Link href="/brhs-panther-volleyball">BRHS Panther Girls Volleyball</Link>. The goal is the same across every program: professional photography, real storytelling, and a visual record worth keeping.
           </p>
           <p>
             Coming off a season that saw the program defend its North 2, Group 5 sectional title for the first time in school history and send two wrestlers to the state medal stand, there&rsquo;s real momentum heading into 2026-27.

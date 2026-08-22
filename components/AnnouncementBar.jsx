@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { EVENTS } from '@/lib/events';
 import { SCHEDULE_2026 as FOOTBALL_SCHEDULE } from '@/lib/footballSchedule';
 import { DUAL_SCHEDULE_2026_27 as WRESTLING_SCHEDULE } from '@/lib/wrestlingSchedule';
+import { SCHEDULE_2026 as VOLLEYBALL_SCHEDULE } from '@/lib/volleyballSchedule';
 import { getNextMatch } from '@/lib/teamSchedule';
 import styles from './AnnouncementBar.module.css';
 
@@ -39,6 +40,13 @@ const TEAM_BANNERS = [
     // not a bug; same honesty-over-fake-content call as the football
     // standings table. Add wrestling dates to that file, or a
     // `team: 'wrestling'` event to lib/events.js, and it activates on its own.
+  },
+  {
+    pathPrefix: '/brhs-panther-volleyball',
+    team: 'volleyball',
+    schedule: VOLLEYBALL_SCHEDULE,
+    scheduleHref: '/brhs-panther-volleyball#schedule',
+    nextLabel: 'Next Match',
   },
 ];
 

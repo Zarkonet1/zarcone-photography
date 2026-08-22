@@ -26,9 +26,10 @@ export default function sitemap() {
     '/government-contracting',
     '/brhs-panther-football',
     '/brhs-panther-wrestling',
+    '/brhs-panther-volleyball',
   ];
 
-  const weeklyPages = ['/brhs-panther-football', '/brhs-panther-wrestling'];
+  const weeklyPages = ['/brhs-panther-football', '/brhs-panther-wrestling', '/brhs-panther-volleyball'];
 
   const staticEntries = staticRoutes.map((route) => ({
     url: `${base}${route}`,
