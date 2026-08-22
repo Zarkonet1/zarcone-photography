@@ -29,18 +29,34 @@ const LATEST_GALLERY = getLatestGallery(GALLERIES_2026);
 // yet — no invented date, unlike football/wrestling which had a real one.
 const PORTRAIT_NUMBERS = new Set([]);
 
-// TEMPORARY PLACEHOLDER — the only volleyball-specific photo in the asset
-// library today is this senior-poster graphic (not game action). Tom is
-// curating a full action-photo batch the night this page ships; swap this
-// array out then. Deliberately NOT borrowing football/other-sport action
-// shots to fill space — same "no cross-sport placeholders" rule the football
-// page's PHOTOS array follows.
+// Sourced 2026-08-22 from the 20251029 BRHS Volleyball Sr Night v DelVal
+// SmugMug gallery (323 shots) — the most recent match on file, so this is
+// close to the current roster. Real match action + one team Senior Night
+// shot; no cross-sport placeholders. Full-res originals live in that
+// gallery if a wider or different crop is ever needed.
 const PHOTOS = [
-  { src: '/photos/SENIOR-POSTER-Diaz-Volleyball.jpg', width: 1600, height: 2000, size: 'wide' },
+  { src: '/photos/BRHS-Volleyball-0213.jpg', width: 2400, height: 1600, size: 'wide' },
+  { src: '/photos/BRHS-Volleyball-0064.jpg', width: 1600, height: 1280, size: 'wide' },
+  { src: '/photos/BRHS-Volleyball-0193.jpg', width: 1067, height: 1600 },
+  { src: '/photos/BRHS-Volleyball-0089.jpg', width: 1067, height: 1600 },
+  { src: '/photos/BRHS-Volleyball-0096.jpg', width: 1067, height: 1600 },
+  { src: '/photos/BRHS-Volleyball-0188.jpg', width: 1067, height: 1600 },
+  { src: '/photos/BRHS-Volleyball-0104.jpg', width: 1067, height: 1600 },
+  { src: '/photos/BRHS-Volleyball-0196.jpg', width: 1067, height: 1600 },
+  { src: '/photos/BRHS-Volleyball-0088.jpg', width: 1067, height: 1600 },
+  { src: '/photos/BRHS-Volleyball-0094.jpg', width: 1067, height: 1600 },
+  { src: '/photos/BRHS-Volleyball-0102.jpg', width: 1067, height: 1600 },
+  { src: '/photos/BRHS-Volleyball-0109.jpg', width: 1067, height: 1600 },
+  { src: '/photos/BRHS-Volleyball-0110.jpg', width: 1067, height: 1600 },
+  { src: '/photos/BRHS-Volleyball-0113.jpg', width: 1067, height: 1600 },
 ];
 
 const CAROUSEL = [
-  { src: '/photos/SENIOR-POSTER-Diaz-Volleyball.jpg', width: 1600, height: 2000, caption: 'Panther Volleyball — Photos Coming Soon' },
+  { src: '/photos/BRHS-Volleyball-0213.jpg', width: 2400, height: 1600, caption: 'Panther Volleyball — Every Point Earned' },
+  { src: '/photos/BRHS-Volleyball-0193.jpg', width: 1067, height: 1600, caption: 'A Wall At The Net' },
+  { src: '/photos/BRHS-Volleyball-0064.jpg', width: 1600, height: 1280, caption: 'Senior Night 2025' },
+  { src: '/photos/BRHS-Volleyball-0188.jpg', width: 1067, height: 1600, caption: 'Serving Notice' },
+  { src: '/photos/BRHS-Volleyball-0104.jpg', width: 1067, height: 1600, caption: 'This Is Panther Volleyball' },
 ];
 
 // Real coverage of the program — no invented headlines. `date` is the
@@ -378,10 +394,9 @@ export default function BRHSPantherVolleyballPage() {
 
       {/* ── Hero ────────────────────────────────────────────────── */}
       <section className={styles.hero}>
-        {/* TEMPORARY hero image — the senior-poster graphic is the only
-            volleyball-specific asset on file today. Swap for real match
-            action once Tom's photo batch lands. */}
-        <Image src="/photos/SENIOR-POSTER-Diaz-Volleyball.jpg" alt="Bridgewater-Raritan Panther Girls Volleyball" fill priority sizes="100vw" className={styles.heroImg} style={{ objectPosition: 'center 20%' }} />
+        {/* Hero — real match action, sourced 2026-08-22 from the 20251029
+            Sr Night v DelVal gallery (see PHOTOS comment above). */}
+        <Image src="/photos/BRHS-Volleyball-0213.jpg" alt="Bridgewater-Raritan Panther Girls Volleyball" fill priority sizes="100vw" className={styles.heroImg} style={{ objectPosition: 'center 35%' }} />
         <div className={styles.heroScrim} />
         <div className={styles.heroContent}>
           <div className={styles.heroBadgeRow}>

@@ -23,7 +23,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://www.zarconephotography.com/photos/SENIOR-POSTER-Diaz-Volleyball.jpg',
+        url: 'https://www.zarconephotography.com/photos/BRHS-Volleyball-0213.jpg',
         width: 1200,
         height: 800,
         alt: 'Bridgewater-Raritan Panther Girls Volleyball photography — Zarcone Photography',
@@ -32,7 +32,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://www.zarconephotography.com/photos/SENIOR-POSTER-Diaz-Volleyball.jpg'],
+    images: ['https://www.zarconephotography.com/photos/BRHS-Volleyball-0213.jpg'],
   },
 };
 
