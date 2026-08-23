@@ -70,13 +70,13 @@ const ARTICLES = [
     title: 'Girls Volleyball: Bridgewater-Raritan Wins Somerset County Tournament, 3-0, Over Mount Saint Mary',
     source: 'TAPinto',
     url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/sections/sports/articles/girls-volleyball-bridgewater-raritan-wins-somerset-county-tournament-3-0-over-mount-saint-mary',
-    date: '2025-10-15' /* ESTIMATE — added 2026-08-22 via initial source sweep. TAPinto's own metadata didn't expose a publish date; the article's meta description notes the team's "newcomers" had a strong debut varsity season and that the title came "about two weeks" before publication, which fits an SCT final in early-to-mid October. Placed mid-October as a documented estimate, not a guess presented as fact — correct the exact date if a firmer source turns up in a future sweep. */
+    date: '2025-10-23' /* corrected 2026-08-23 via routine source sweep — MaxPreps' own match log confirms the Somerset County Tournament final (3-0 over Mount St. Mary) was played Oct 23, 2025, the only 3-0 result among three Mount St. Mary matches that fall (also lost 0-2 Sep 16, won 2-1 Oct 9). Previously an estimate of 2025-10-15 based on TAPinto's "about two weeks" phrasing, which was in the right neighborhood but not exact. */
   },
   {
     title: 'Girls Volleyball: Bridgewater-Raritan Defeats Montgomery, 3-0 (25-17, 25-17, 25-18) — NJSIAA Central Jersey, Group 4 First Round',
     source: 'TAPinto',
     url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/sections/sports/articles/girls-volleyball-bridgewater-raritan-defeats-montgomery-3-0',
-    date: '2025-10-30' /* ESTIMATE — added 2026-08-22. Confirmed as a first-round NJSIAA Central Jersey Group 4 tournament win via the article's own metadata; exact publish date not exposed, placed at the typical late-October start of the NJ volleyball state tournament. */
+    date: '2025-11-03' /* corrected 2026-08-23 via routine source sweep — MaxPreps' own match log confirms this NJSIAA Central Jersey Group 4 first-round win over Montgomery (3-0) was played Nov 3, 2025. Previously an estimate of 2025-10-30. Note: BR's Group 4 run continued one more round after this win — a 2-3 loss at Hillsborough on Nov 5, 2025 (per MaxPreps; not previously reflected on this page) — now added to RESULTS_2025 below. */
   },
   {
     title: 'Girls Volleyball: Bridgewater-Raritan Surges Past Hillsborough, 2-0 (25-23, 25-18)',
@@ -226,8 +226,9 @@ const STAFF = [
 const RESULTS_2025 = [
   { date: 'Sep 9, 2025', opponent: 'vs Hillsborough', round: 'Regular Season — Home Opener', result: 'W 2-0 (25-23, 25-18)', win: true },
   { date: 'Sep ~24, 2025', opponent: 'vs Watchung Hills', round: 'Regular Season', result: 'W 2-0 (25-19, 25-14)', win: true },
-  { date: 'Oct ~2025', opponent: 'vs Mount St. Mary Academy', round: 'Somerset County Tournament — Final', result: 'W 3-0', win: true },
-  { date: 'Oct ~2025', opponent: 'vs Montgomery', round: 'NJSIAA Central Jersey, Group 4 — First Round', result: 'W 3-0 (25-17, 25-17, 25-18)', win: true },
+  { date: 'Oct 23, 2025', opponent: 'vs Mount St. Mary Academy', round: 'Somerset County Tournament — Final', result: 'W 3-0', win: true },
+  { date: 'Nov 3, 2025', opponent: 'vs Montgomery', round: 'NJSIAA Central Jersey, Group 4 — First Round', result: 'W 3-0 (25-17, 25-17, 25-18)', win: true },
+  { date: 'Nov 5, 2025', opponent: 'vs Hillsborough', round: 'NJSIAA Central Jersey, Group 4 — Second Round', result: 'L 2-3', win: false },
 ];
 
 // 2026-27 preseason roster, per MaxPreps (fetched 2026-08-22). Position
