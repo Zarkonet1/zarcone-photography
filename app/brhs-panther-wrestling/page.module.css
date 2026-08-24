@@ -1055,7 +1055,7 @@ a.latestItem:hover { background: rgba(248,246,238,0.07); }
 @media (max-width: 900px) { .statBar { padding: 44px 24px !important; } }
 .statBarGrid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 28px;
 }
 @media (max-width: 900px) { .statBarGrid { grid-template-columns: 1fr 1fr; gap: 28px; } }

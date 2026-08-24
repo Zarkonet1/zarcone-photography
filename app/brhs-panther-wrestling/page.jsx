@@ -82,6 +82,16 @@ const STAT_BAR = [
   { num: '20-9', label: '2025-26 Dual Record', sub: 'Second straight sectional title season' },
   { num: '3', label: '2026 State Qualifiers', sub: 'Levash · McCann · Adell' },
   { num: '2', label: '2026 State Medalists', sub: 'Levash (6th) · McCann (8th)' },
+  // Added 2026-08-24 per Tom — the page previously had no conference
+  // designation anywhere (unlike football's "American Silver Standings" and
+  // volleyball's "Skyland Conference Standings" sections), even though
+  // WRESTLING-SOURCES.md has documented BRHS wrestling as a Skyland Conference
+  // program since 2026-07-18. A full standings table isn't possible yet —
+  // DUAL_SCHEDULE_2026_27 is still genuinely empty (MaxPreps hasn't published
+  // a 2026-27 dual schedule) — so this is a label-only stat, same wording
+  // pattern as volleyball's STAT_BAR conference row, until real matches exist
+  // to derive a table from.
+  { num: 'Skyland', label: 'Conference', sub: 'Big Central for football, Skyland for every other BRHS program' },
 ];
 
 // Live season tracker. Record and Next Match now derive from
