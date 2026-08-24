@@ -229,7 +229,7 @@ export default function Home() {
       {/* ── Trust Strip ───────────────────────────────────────── */}
       <TrustStrip />
 
-      {/* ── Google Rating ─────────────────────────────────────── */}
+      {/* ── Google Rating + Press ─────────────────────────────── */}
       <div className={styles.googleBadge}>
         <a
           href="https://g.page/r/Ca6PJ5ScxSapEAI/review"
@@ -240,6 +240,16 @@ export default function Home() {
           <span className={styles.googleStars}>★★★★★</span>
           <span className={styles.googleRating}>4.8</span>
           <span className={styles.googleLabel}>on Google</span>
+        </a>
+        <span className={styles.badgeDivider} />
+        <a
+          href="https://patch.com/new-jersey/bridgewater/bridgewater-photographer-focuses-lens-local-student-athletes"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.googleBadgeLink}
+        >
+          <span className={styles.pressLabel}>As Featured In</span>
+          <span className={styles.pressName}>Patch</span>
         </a>
       </div>
 

@@ -226,6 +226,23 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── In The News ────────────────────────────────────── */}
+      <section className={styles.press}>
+        <div className={`${styles.pressInner} reveal`}>
+          <p className="eyebrow">In The News</p>
+          <a
+            href="https://patch.com/new-jersey/bridgewater/bridgewater-photographer-focuses-lens-local-student-athletes"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.pressCard}
+          >
+            <p className={styles.pressQuote}>&ldquo;Bridgewater Photographer Focuses Lens On Local Student Athletes&rdquo;</p>
+            <p className={styles.pressByline}>— Patch, August 2026</p>
+            <span className={styles.pressLink}>Read the Feature →</span>
+          </a>
+        </div>
+      </section>
+
       {/* ── Contact Form ───────────────────────────────────── */}
       <div className={styles.contactSection} id="contact">
         <div className={styles.contactImgSide}>

@@ -150,6 +150,18 @@ export default function SportsPage() {
       </div>
 
       <p className={styles.painLine} style={{ paddingTop: 0 }}>
+        <strong style={{ color: 'var(--text)' }}>As Featured in Patch:</strong> a recent profile on Tom Zarcone's three-decade career photographing local student-athletes — the same standard behind every gallery below.{' '}
+        <a
+          href="https://patch.com/new-jersey/bridgewater/bridgewater-photographer-focuses-lens-local-student-athletes"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: 'var(--accent)', textDecoration: 'underline' }}
+        >
+          Read the feature →
+        </a>
+      </p>
+
+      <p className={styles.painLine} style={{ paddingTop: 0 }}>
         Currently covering the 2026 season as official media partner of{' '}
         <Link href="/brhs-panther-football" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
           BRHS Panther Football →

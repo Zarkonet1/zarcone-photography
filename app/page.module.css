@@ -289,6 +289,9 @@
 .googleBadge {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
   padding: 40px 60px 0;
   border-top: 1px solid var(--rule);
 }
@@ -318,6 +321,29 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
+}
+.badgeDivider {
+  width: 1px;
+  height: 28px;
+  background: var(--rule);
+}
+.pressLabel {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.pressName {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1;
+}
+@media (max-width: 560px) {
+  .badgeDivider { display: none; }
+  .googleBadge { gap: 14px 28px; }
 }
 
 /* ── Testimonial ────────────────────────────────────────────────── */

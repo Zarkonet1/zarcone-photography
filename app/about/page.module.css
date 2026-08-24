@@ -124,6 +124,50 @@
 .tRule { width: 32px; height: 1px; background: var(--accent); margin-bottom: 14px; }
 .tName { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
 
+/* ── In The News ──────────────────────────────────────────────── */
+.press {
+  padding: 80px 60px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: center;
+}
+.pressInner { max-width: 620px; text-align: center; }
+.pressCard {
+  display: block;
+  margin-top: 22px;
+  padding: 40px 44px;
+  border: 1px solid var(--rule);
+  text-decoration: none;
+  transition: border-color 0.25s, background 0.25s;
+}
+.pressCard:hover { border-color: var(--accent); background: rgba(255,255,255,0.02); }
+.pressQuote {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text);
+}
+.pressByline {
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.pressLink {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: color 0.2s;
+}
+.pressCard:hover .pressLink { color: var(--text); }
+
 /* ── Contact ──────────────────────────────────────────────────── */
 .contactSection { display: grid; grid-template-columns: 1fr 1fr; }
 .contactImgSide { position: relative; overflow: hidden; min-height: 600px; }
@@ -217,6 +261,8 @@
   .gearSection { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (max-width: 750px) {
+  .press { padding: 56px 24px; }
+  .pressCard { padding: 32px 24px; }
   .story { grid-template-columns: 1fr; padding: 60px 24px; }
   .storyLabel { position: static; }
   .storyBody { padding-left: 0; border-left: none; padding-top: 28px; border-top: 1px solid var(--rule); }

@@ -1195,6 +1195,24 @@ export default function BRHSPantherFootballPage() {
         </div>
       </div>
 
+      {/* ── Zarcone Photography in the News ───────────────────────── */}
+      <div className={styles.officialResource}>
+        <div className={styles.officialResourceInner}>
+          <span className={styles.eyebrowRed}>Zarcone Photography in the News</span>
+          <p className={styles.officialResourceBody}>
+            Patch recently profiled Tom Zarcone and his decades-long passion for photographing local student-athletes.
+          </p>
+          <a
+            href="https://patch.com/new-jersey/bridgewater/bridgewater-photographer-focuses-lens-local-student-athletes"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.partnershipLink}
+          >
+            Read the Patch feature →
+          </a>
+        </div>
+      </div>
+
       {/* ── Why Zarcone Photography ──────────────────────────────── */}
       <section>
         <div className={styles.sectionHead}>
