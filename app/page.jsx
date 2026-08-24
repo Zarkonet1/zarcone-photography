@@ -238,8 +238,8 @@ export default function Home() {
           className={styles.googleBadgeLink}
         >
           <span className={styles.googleStars}>★★★★★</span>
-          <span className={styles.googleRating}>4.8</span>
-          <span className={styles.googleLabel}>on Google</span>
+          <span className={styles.googleRating}>4.9</span>
+          <span className={styles.googleLabel}>on Google · 28 Reviews</span>
         </a>
         <span className={styles.badgeDivider} />
         <a
