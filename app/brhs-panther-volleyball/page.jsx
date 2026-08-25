@@ -207,11 +207,22 @@ const SEASON_TRACKER = [
 // directory (brrsd.org/o/brrhs/page/contacts), the most authoritative source
 // available. Note: Josh Everett coaches Girls Volleyball as head coach AND
 // Boys Volleyball as JV coach — not a typo, confirmed on the same page.
+// Bio expanded 2026-08-25 per Tom — background sourced to a BRRSD press
+// release republished by Patch Labs/Raritan Neighbors (raritanneighbors.town.news,
+// article:published_time 2023-08-20T21:22:39Z, covering Everett's hire as head
+// coach that August). "Since 2023" in the title is confirmed by that same
+// article. IMPORTANT — that article also states predecessor Corey Romanak
+// (25 years as girls head coach, Hall of Fame) won 3 Group 4 state
+// championships and 1 Tournament of Champions title coaching the GIRLS team,
+// which appears to conflict with this bio's own claim that 2025's Round 1 win
+// over Montgomery was the program's "first NJSIAA Central Jersey Group 4
+// tournament win in recent memory" — flagged for Tom, not resolved here;
+// left as-is pending his call on how to reconcile the two.
 const COACHES = [
   {
     name: 'Josh Everett',
-    title: 'Head Coach, Girls Volleyball',
-    bio: "Everett leads the Bridgewater-Raritan girls volleyball program, coming off a 2025 season that included a Somerset County Tournament championship and the program's first NJSIAA Central Jersey Group 4 tournament win in recent memory. He also serves as JV coach for BRHS Boys Volleyball.",
+    title: 'Head Coach, Girls Volleyball · Since 2023',
+    bio: "A Bridgewater-Raritan alum who played on the Panthers' 2005 state championship boys' volleyball team, Everett spent 10 years as an assistant coach for both the girls' and boys' programs before being named girls' head coach in 2023, succeeding Hall of Fame coach Corey Romanak. He's coming off a 2025 season that included a Somerset County Tournament championship and the program's first NJSIAA Central Jersey Group 4 tournament win in recent memory. He also serves as JV coach for BRHS Boys Volleyball. \"We want to see our players grow off the court as much as on the court,\" Everett has said. \"They are student-athletes, not athlete-students.\"",
   },
 ];
 
