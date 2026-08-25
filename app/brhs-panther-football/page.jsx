@@ -238,6 +238,12 @@ const DASHBOARD_EDITORIAL_ITEMS = sortArticlesByDate(ARTICLES)
   .slice(0, 3)
   .map((a, i) => ({ ...a, img: CAROUSEL[i % CAROUSEL.length].src }));
 
+// Powers the "New" badge on the Media Center's News tile — same
+// isRecentArticle threshold the full News section below already uses, not
+// a second freshness rule. True only when the single most recent article
+// is within that window.
+const DASHBOARD_NEWS_HAS_NEW = DASHBOARD_EDITORIAL_ITEMS.length > 0 && isRecentArticle(DASHBOARD_EDITORIAL_ITEMS[0].date);
+
 const COACHES = [
   {
     name: 'D.J. Catalano',
@@ -599,7 +605,7 @@ export default function BRHSPantherFootballPage() {
         seasonSub={DASHBOARD_SEASON_SUB}
       />
 
-      <MediaCenterGrid />
+      <MediaCenterGrid newsHasNew={DASHBOARD_NEWS_HAS_NEW} />
 
       <LatestFromPanthers items={DASHBOARD_EDITORIAL_ITEMS} />
 

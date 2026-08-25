@@ -52,13 +52,26 @@
   padding: 18px 20px;
 }
 .tileLabel {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 15px;
   font-weight: 800;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   color: #fff;
   margin-bottom: 4px;
+}
+
+.newBadge {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--br-red, #c8102e);
+  padding: 2px 7px;
+  border-radius: 3px;
 }
 .tileSub {
   display: block;
