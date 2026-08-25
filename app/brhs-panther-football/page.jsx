@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Lightbox from '@/components/Lightbox';
-import Testimonials from '@/components/Testimonials';
 import GalleryAlertSignup from '@/components/GalleryAlertSignup';
 import GalleryAlertToast from '@/components/GalleryAlertToast';
 import styles from './page.module.css';
@@ -122,23 +121,11 @@ const ARTICLES = [
 const FAQ = [
   {
     q: 'Where do I order photos?',
-    a: <>The 2025–26 season gallery is live now on <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer">SmugMug</a>, where you can view, download, and order prints directly. 2026 season galleries will be delivered through <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer">Pic-Time</a>, our current client gallery platform.</>,
+    a: <>The 2025–26 season gallery is live now on <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer">SmugMug</a>, where you can view, download, and order prints directly — high-resolution digital downloads are included with every gallery, no separate request needed. 2026 season galleries will be delivered through <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer">Pic-Time</a>, our current client gallery platform.</>,
   },
   {
     q: 'How quickly are galleries posted?',
     a: 'Game galleries are professionally edited and delivered within days of each game, not weeks — so photos are ready while the moment is still fresh.',
-  },
-  {
-    q: 'Can I download images?',
-    a: 'Yes. Every family gets high-resolution digital downloads through their private gallery, in addition to print ordering.',
-  },
-  {
-    q: 'Can I order prints?',
-    a: 'Yes — prints and photo products are available to order directly from the gallery, no separate request needed.',
-  },
-  {
-    q: 'Can I hire Zarcone Photography privately?',
-    a: <>Yes. Outside of the season partnership, Zarcone Photography is available for individual senior sessions, family photos, and private bookings — <Link href="/about#contact">reach out here</Link>.</>,
   },
   {
     q: 'Do you photograph all home games?',
@@ -467,7 +454,6 @@ const SERVICES = [
 
 export default function BRHSPantherFootballPage() {
   const [lbIndex, setLbIndex] = useState(null);
-  const [slide, setSlide] = useState(0);
   const [form, setForm] = useState({ name: '', email: '', phone: '', athleteName: '', sport: 'Football', interestedIn: 'Prints', message: '' });
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const [rosterPositionFilter, setRosterPositionFilter] = useState('All');
@@ -485,11 +471,6 @@ export default function BRHSPantherFootballPage() {
     }
   };
   const rosterSortArrow = (key) => (rosterSortKey === key ? (rosterSortDir === 'asc' ? ' ▲' : ' ▼') : '');
-
-  useEffect(() => {
-    const t = setInterval(() => setSlide(s => (s + 1) % CAROUSEL.length), 5000);
-    return () => clearInterval(t);
-  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -583,15 +564,12 @@ export default function BRHSPantherFootballPage() {
           <div className={styles.heroBadgeRow}>
             <span className={styles.heroBadge}>2026 Season</span>
             <span className={styles.heroBadgeOutline}>Defending Sectional Champions</span>
-            <span className={styles.heroBadgeOutline}>Gold Level Sponsor</span>
           </div>
           <h1 className={styles.heroTitle}>The Target's<br /><span>On Us Now.</span></h1>
           <p className={styles.heroSub}>Bridgewater-Raritan opens the 2026 season August 27 against Woodbridge — defending the first sectional championship in program history.</p>
-          <p className={styles.heroWelcome}>Welcome to Bridgewater-Raritan Panther Football.</p>
+          <p className={styles.heroWelcome}>Welcome to Bridgewater-Raritan Panther Football — powered by Zarcone Photography.</p>
           <div className={styles.heroCtas}>
-            <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Season Galleries</a>
-            <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnSilver}>Order Photos</a>
-            <a href="#inquire" className={styles.btnGhost}>Book Zarcone Photography</a>
+            <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Season Gallery</a>
           </div>
         </div>
       </section>
@@ -628,11 +606,6 @@ export default function BRHSPantherFootballPage() {
         </div>
       </section>
 
-      {/* ── Official credibility strip ──────────────────────────── */}
-      <div className={styles.supportLine}>
-        Official 2026 Season Media Partner &amp; Gold Level Sponsor of Bridgewater-Raritan Panther Football
-      </div>
-
       {/* ── Program stat bar ─────────────────────────────────────── */}
       <section className={styles.statBar}>
         <div className={styles.statBarGrid}>
@@ -654,19 +627,11 @@ export default function BRHSPantherFootballPage() {
           <span className={styles.sponsorTag}>Gold Level Sponsor · 2026 Season</span>
         </div>
         <div className={styles.partnershipBody}>
-          <span className={styles.eyebrowRed}>Proud Partnership</span>
+          <span className={styles.eyebrowRed}>Powered By Zarcone Photography</span>
           <p style={{ marginTop: 18 }}>
-            Zarcone Photography is the <strong>official media partner</strong> of BRHS Panther Football for the 2026 season — full home-game coverage,
-            Media Day portraits, and a custom Senior Night poster for every graduating senior.
-          </p>
-          <p>
-            This builds on a longer history with Bridgewater athletics, including an ongoing role as the official photography &amp; social media partner of{' '}
-            <Link href="/brhs-panther-wrestling">BRHS Panther Wrestling</Link> and <Link href="/brhs-panther-volleyball">BRHS Panther Girls Volleyball</Link>. The goal is the same across every program: professional photography, real storytelling, and a visual record
-            worth keeping — not just a highlight reel.
-          </p>
-          <p>
-            Beyond the field, that commitment shows up in the community too — from sponsoring local charity events to showing up consistently,
-            season after season, for the programs that trust us with their story.
+            Zarcone Photography is the official media partner of BRHS Panther Football — full home-game coverage, Media Day portraits, and a custom
+            Senior Night poster for every graduating senior, plus the same role with <Link href="/brhs-panther-wrestling">Panther Wrestling</Link> and{' '}
+            <Link href="/brhs-panther-volleyball">Panther Girls Volleyball</Link>.
           </p>
           <div className={styles.partnershipStats}>
             <div><div className={styles.statNum}>30+</div><div className={styles.statLabel}>Years Experience</div></div>
@@ -1139,23 +1104,10 @@ export default function BRHSPantherFootballPage() {
         <div className={styles.featureText}>
           <span className={styles.featureDate}>July 29, 2026</span>
           <h2 className={styles.featureTitle}>Media Day</h2>
-          <p className={styles.featureLead}>Before a single snap is played, every athlete gets the professional treatment — clean portraits built for banners, programs, and recruiting profiles.</p>
+          <p className={styles.featureLead}>Every athlete's professional portraits — clean shots built for banners, programs, and recruiting profiles.</p>
           <p style={{ color: 'var(--br-silver)', fontSize: 15, lineHeight: 1.8, marginTop: -8, marginBottom: 4 }}>
-            A make-up day for anyone who missed the shoot is set for <strong>Tuesday, August 11</strong> (individual portraits, ~1:30 PM). The Panthers will also appear at the <strong>Big State Sports Media Day</strong> on <strong>Thursday, August 20</strong> (1–2 PM, County College of Morris) as Big State Sports gears up to broadcast every BR home game this season.
+            A make-up day ran Tuesday, August 11 for anyone who missed the shoot. The Panthers also appeared at the Big State Sports Media Day, Thursday, August 20, as Big State Sports gears up to broadcast every BR home game this season.
           </p>
-          <ul className={styles.checklist}>
-            <li>Individual portraits</li>
-            <li>Team photos</li>
-            <li>Social media graphics</li>
-            <li>Schedule graphics</li>
-            <li>Senior banners</li>
-            <li>Player graphics</li>
-            <li>Coach portraits</li>
-            <li>Recruiting content</li>
-          </ul>
-          <div style={{ marginTop: 28 }}>
-            <a href="#inquire" className={styles.btnRed}>Book Media Day</a>
-          </div>
         </div>
       </div>
 
@@ -1170,133 +1122,34 @@ export default function BRHSPantherFootballPage() {
         ))}
       </div>
 
-      {/* ── Senior Experience ────────────────────────────────────── */}
-      <div className={`${styles.featureRow} ${styles.reverse}`}>
-        <div className={styles.featurePanel}>
-          <span className={styles.featurePanelDate}>Senior</span>
-          <span className={styles.featurePanelLabel}>Night</span>
-        </div>
-        <div className={styles.featureText}>
-          <span className={styles.featureDate}>Senior Night</span>
-          <h2 className={styles.featureTitle}>The Senior Experience</h2>
-          <p className={styles.featureLead}>Four years end in one night. Every graduating senior gets a custom commemorative poster and a session built around who they are — not a rushed lineup photo.</p>
-          <ul className={styles.checklist}>
-            <li>Senior banners</li>
-            <li>Senior portraits</li>
-            <li>Family photos</li>
-            <li>Buddy photos</li>
-            <li>Locker graphics</li>
-            <li>Social graphics</li>
-            <li>Print packages</li>
-          </ul>
-          <div style={{ marginTop: 8 }}>
-            <a href="#inquire" className={styles.btnRed}>Reserve Senior Night Coverage</a>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Game Day Coverage ────────────────────────────────────── */}
-      <div className={styles.featureRow}>
-        <div className={styles.featureMedia}>
-          <Image src="/photos/SPORTS-FB100.jpg" alt="Game day football coverage" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'cover', filter: 'brightness(0.8)' }} />
-        </div>
-        <div className={styles.featureText}>
-          <span className={styles.featureDate}>Every Home Game</span>
-          <h2 className={styles.featureTitle}>Game Day Coverage</h2>
-          <p className={styles.featureLead}>Full coverage, shot the way a photojournalist works a sideline — moving continuously, staying out of the way, never missing the play that mattered.</p>
-          <ul className={styles.checklist}>
-            <li>Action photography</li>
-            <li>Sidelines</li>
-            <li>Celebrations</li>
-            <li>Coach interactions</li>
-            <li>Crowd &amp; band</li>
-            <li>Cheerleaders</li>
-            <li>Feature images</li>
-            <li>Fast gallery turnaround</li>
-          </ul>
-          <p style={{ fontSize: 14, color: 'var(--br-silver)' }}>Professionally edited · High-resolution downloads · Print ordering built in</p>
-          <div style={{ marginTop: 20 }}>
-            <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Game Galleries</a>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Zarcone Photography in the News ───────────────────────── */}
-      <div className={styles.officialResource}>
-        <div className={styles.officialResourceInner}>
-          <span className={styles.eyebrowRed}>Zarcone Photography in the News</span>
-          <p className={styles.officialResourceBody}>
-            Patch recently profiled Tom Zarcone and his decades-long passion for photographing local student-athletes.
-          </p>
-          <a
-            href="https://patch.com/new-jersey/bridgewater/bridgewater-photographer-focuses-lens-local-student-athletes"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.partnershipLink}
-          >
-            Read the Patch feature →
-          </a>
-        </div>
-      </div>
-
-      {/* ── Why Zarcone Photography ──────────────────────────────── */}
-      <section>
-        <div className={styles.sectionHead}>
-          <div>
-            <span className={styles.eyebrowRed}>Why Zarcone Photography</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Trusted <em>Behind the Lens</em></h2>
-          </div>
-        </div>
-        <div className={styles.grid3col}>
-          {WHY_US.map(w => (
-            <div key={w.num} className={styles.iconCard}>
-              <div className={styles.num}>{w.num}</div>
-              <h3>{w.title}</h3>
-              <p>{w.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Services ─────────────────────────────────────────────── */}
-      <section>
-        <div className={styles.sectionHead}>
-          <div>
-            <span className={styles.eyebrowRed}>Services</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Built For <em>This Program</em></h2>
-          </div>
-        </div>
-        <div className={styles.grid3col}>
-          {SERVICES.map(s => (
-            <div key={s.title} className={styles.iconCard}>
-              <h3>{s.title}</h3>
-              <p>{s.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Featured Carousel ────────────────────────────────────── */}
-      <section className={styles.carousel}>
-        {CAROUSEL.map((c, i) => (
-          <div key={i} className={`${styles.carouselSlide} ${i === slide ? styles.active : ''}`}>
-            <Image src={c.src} alt={c.caption} fill sizes="100vw" priority={i === 0} />
-          </div>
-        ))}
-        <div className={styles.carouselCaption}>{CAROUSEL[slide].caption}</div>
-        <div className={styles.carouselDots}>
-          {CAROUSEL.map((_, i) => (
-            <button key={i} className={`${styles.carouselDot} ${i === slide ? styles.carouselDotActive : ''}`} onClick={() => setSlide(i)} aria-label={`Slide ${i + 1}`} />
-          ))}
-        </div>
-      </section>
-
-      {/* ── Trust note (real testimonials, not fabricated) ───────── */}
+      {/* ── About Your Media Partner ─────────────────────────────────
+          Consolidated 2026-08-25 from 9 previously-separate marketing
+          sections (Senior Experience, Game Day Coverage, "ZP in the News"
+          Patch profile, Why Us, Services, Carousel, Trust Note/Testimonials)
+          per PAC president feedback that the page was "great but confusing
+          to navigate" — too much Zarcone Photography marketing woven
+          through the team dashboard content. See BRHS-SWEEP-LOG.md,
+          2026-08-25 entry, for the full before/after plan. One compact
+          block instead of a full-page sandwich of sales sections. ── */}
       <section className={styles.trustNote} style={{ '--accent': 'var(--br-red)' }}>
-        <span className={styles.eyebrowRed}>What Clients Say</span>
-        <p style={{ marginTop: 16 }}>Straight from the program itself, plus what clients across our other programs have to say:</p>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Powered By</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Your Media <em>Partner</em></h2>
+          </div>
+        </div>
+        <p style={{ color: 'var(--br-silver)', fontSize: 16, lineHeight: 1.8, maxWidth: 720 }}>
+          Zarcone Photography is the official media partner of BRHS Panther Football — full home-game coverage, Media Day portraits, a custom Senior
+          Night poster for every graduating senior, and recruiting content, from a photographer with 30+ years shooting NJ high school sports. Outside
+          the season partnership, private senior sessions, family photos, and other bookings are available too — <a href="#inquire">reach out here</a>.
+        </p>
+        <div className={styles.grid3col} style={{ marginTop: 32 }}>
+          <div className={styles.iconCard}><h3>Every Home Game</h3><p>Full sideline coverage, professionally edited and posted within days.</p></div>
+          <div className={styles.iconCard}><h3>Senior Night</h3><p>A custom commemorative poster and portrait session for every graduating senior.</p></div>
+          <div className={styles.iconCard}><h3>Prints &amp; Downloads</h3><p>High-resolution downloads and print products, ordered directly from your gallery.</p></div>
+        </div>
 
-        <blockquote className={styles.programQuote}>
+        <blockquote className={styles.programQuote} style={{ marginTop: 40 }}>
           <p className={styles.programQuoteText}>
             &ldquo;A huge thank you to Zarcone Photography for being a Gold Sponsor of the Bridgewater Raritan Football Program! Your generosity and commitment to supporting our student-athletes helps provide the equipment, resources, and opportunities our players need to compete at the highest level. We are incredibly grateful to have you as part of the Panther family. Thank you for investing in our program and our community. We appreciate your support!&rdquo;
           </p>
@@ -1306,7 +1159,11 @@ export default function BRHSPantherFootballPage() {
           </cite>
         </blockquote>
 
-        <Testimonials />
+        <div className={styles.socialLinks} style={{ marginTop: 24 }}>
+          <a href="https://instagram.com/zarconephotography" target="_blank" rel="noopener noreferrer">Instagram →</a>
+          <a href="https://facebook.com/zarconephotography" target="_blank" rel="noopener noreferrer">Facebook →</a>
+          <Link href="/">zarconephotography.com →</Link>
+        </div>
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────────────── */}
@@ -1388,32 +1245,11 @@ export default function BRHSPantherFootballPage() {
         </div>
       </section>
 
-      {/* ── Social ───────────────────────────────────────────────── */}
-      <section className={styles.socialWrap}>
-        <div>
-          <span className={styles.eyebrowRed}>Follow Along All Season</span>
-          <div className={styles.socialLinks} style={{ marginTop: 20 }}>
-            <a href="https://instagram.com/zarconephotography" target="_blank" rel="noopener noreferrer">Instagram →</a>
-            <a href="https://facebook.com/zarconephotography" target="_blank" rel="noopener noreferrer">Facebook →</a>
-            <Link href="/">zarconephotography.com →</Link>
-          </div>
-        </div>
-        <div className={styles.qrBlock}>
-          <Image src="/assets/qr-brhs-panther-football.png" alt="QR code to this page" width={240} height={240} style={{ width: 120, height: 120 }} />
-          <span>Scan to Return Here</span>
-        </div>
-      </section>
-
-      {/* ── Final CTA ────────────────────────────────────────────── */}
-      <section className={styles.finalCta}>
-        <h2 className={styles.finalCtaTitle}>Every Season Has A Story.<br /><span>We're Honored To Preserve Yours.</span></h2>
-        <p className={styles.finalCtaSub}>Official media partner of Bridgewater-Raritan Panther Football — 2026 season.</p>
-        <div className={styles.finalCtaBtns}>
-          <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Galleries</a>
-          <a href="#inquire" className={styles.btnSilver}>Book Photography</a>
-          <Link href="/about#contact" className={styles.btnGhost}>Contact Us</Link>
-        </div>
-      </section>
+      {/* ── QR (physical signage at games links back here) ───────── */}
+      <div className={styles.qrBlock} style={{ margin: '0 auto 60px', textAlign: 'center' }}>
+        <Image src="/assets/qr-brhs-panther-football.png" alt="QR code to this page" width={240} height={240} style={{ width: 120, height: 120 }} />
+        <span>Scan to Return Here</span>
+      </div>
 
       <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.floatCta}>
         <span className={styles.floatCtaLong}>View Latest Photos</span>
