@@ -43,6 +43,14 @@
   gap: 28px;
 }
 .navLink {
+  /* display:inline-block + padding, not just font styling, so the tap
+     target is actually bigger than the visible text on mobile — plain
+     inline <a> text with only a gap between links is an easy mis-tap
+     risk on a phone. Negative margin cancels the added padding's visual
+     footprint so spacing/alignment looks identical to before. */
+  display: inline-block;
+  padding: 10px 2px;
+  margin: -10px -2px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
