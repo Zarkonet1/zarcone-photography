@@ -8,10 +8,16 @@ import Testimonials from '@/components/Testimonials';
 import GalleryAlertSignup from '@/components/GalleryAlertSignup';
 import GalleryAlertToast from '@/components/GalleryAlertToast';
 import styles from './page.module.css';
-import { getRecord, getNextMatch, getLatestResult } from '@/lib/teamSchedule';
+import { getRecord, getNextGame, getLastPlayedGame } from '@/lib/teamSchedule';
 import { sortArticlesByDate, isRecentArticle } from '@/lib/articles';
 import { SCHEDULE_2026 } from '@/lib/volleyballSchedule';
 import { GALLERIES_2026, getLatestGallery } from '@/lib/volleyballGalleries';
+import DashboardHeader from '@/components/team-dashboard/DashboardHeader';
+import NextGameHero from '@/components/team-dashboard/NextGameHero';
+import StatCards from '@/components/team-dashboard/StatCards';
+import MediaCenterGrid from '@/components/team-dashboard/MediaCenterGrid';
+import LatestFromPanthers from '@/components/team-dashboard/LatestFromPanthers';
+import CompactSchedule from '@/components/team-dashboard/CompactSchedule';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 
@@ -196,22 +202,70 @@ const DIVISION_STANDINGS_2026 = [BRHS_STANDINGS_ROW, ...OTHER_STANDINGS_2026]
 
 const DIVISION_GAMES_PLAYED = DIVISION_STANDINGS_2026.some((t) => t.confWins + t.confLosses > 0);
 
-const SEASON_TRACKER = [
-  { label: 'Record', value: getRecord(SCHEDULE_2026), href: '#schedule' },
-  { label: 'Next Match', value: getNextMatch(SCHEDULE_2026, 'Season Complete'), href: '#schedule' },
-  { label: 'Latest Result', value: getLatestResult(SCHEDULE_2026, '2025: Somerset County Champions'), href: '#results' },
+// Dashboard rebuild (2026-08-25) — replicates football's dashboard pattern
+// exactly (see app/brhs-panther-football/page.jsx for the reference
+// implementation; components live in components/team-dashboard/, shared
+// across team pages after that folder was generalized the same day).
+// Raw next/last-game objects for NextGameHero (needs structured fields, not
+// a joined string) plus the plain summary values StatCards displays.
+const DASHBOARD_NEXT_GAME = getNextGame(SCHEDULE_2026);
+const DASHBOARD_LAST_PLAYED = getLastPlayedGame(SCHEDULE_2026);
+const DASHBOARD_RECORD = getRecord(SCHEDULE_2026);
+const DASHBOARD_LATEST_RESULT_LABEL = DASHBOARD_LAST_PLAYED
+  ? `${DASHBOARD_LAST_PLAYED.opponent}: ${DASHBOARD_LAST_PLAYED.result.win ? 'W' : 'L'} ${DASHBOARD_LAST_PLAYED.result.score}`
+  : null;
+// Season card reuses STAT_BAR[0] (2025 county-championship status) rather
+// than hand-typing a second copy of the same fact — same don't-duplicate
+// rule as football.
+const DASHBOARD_SEASON_SUB = `${STAT_BAR[0].num} ${STAT_BAR[0].label}`;
+
+// Latest From The Panthers editorial cards — top 3 ARTICLES by date, paired
+// with real ZP photos from CAROUSEL purely for visual presentation (these
+// press links have no photos of their own).
+const DASHBOARD_EDITORIAL_ITEMS = sortArticlesByDate(ARTICLES)
+  .slice(0, 3)
+  .map((a, i) => ({ ...a, img: CAROUSEL[i % CAROUSEL.length].src }));
+
+// Powers the "New" badge on the Media Center's News tile — same
+// isRecentArticle threshold the full News section below already uses.
+const DASHBOARD_NEWS_HAS_NEW = DASHBOARD_EDITORIAL_ITEMS.length > 0 && isRecentArticle(DASHBOARD_EDITORIAL_ITEMS[0].date);
+
+// Media Center tiles — same pattern as football, adapted to volleyball's
+// actual content. No "Media Day" tile — unlike football, which had a real
+// scheduled shoot to hide behind a flag, volleyball has no Media Day date
+// at all yet (PORTRAIT_NUMBERS above is still empty). Add a Media Day tile
+// once a shoot is actually scheduled, same as football's convention.
+const MEDIA_TILES_VOLLEYBALL = [
+  { label: 'Game Galleries', sub: 'View Photos', href: '#gallery-alert', img: '/photos/BRHS-Volleyball-0089.jpg' },
+  { label: 'Meet the Team', sub: 'Roster & Coaches', href: '#roster', img: '/photos/BRHS-Volleyball-0064.jpg' },
+  { label: 'Schedule', sub: 'Full Season', href: '#schedule', img: '/photos/BRHS-Volleyball-0096.jpg' },
+  { label: 'News', sub: 'Latest Coverage', href: '#news', img: '/photos/BRHS-Volleyball-0188.jpg' },
+];
+
+// "Players to Watch" — 2026 season outlook. Background/stats provided by
+// Tom (2026-08-25), not sourced to a published article, so no external
+// citation is attached to these cards (unlike football's FEATURED_PLAYER,
+// which cites a real preseason preview) — presented as season stats rather
+// than press coverage. BR graduated 10 seniors from the 2025 county-
+// championship team, including its two primary kill producers (30 combined
+// in the county semifinal alone) — so 2026 is about who takes over those
+// touches, not just who returns. Stats below are each player's 2025
+// varsity season.
+const PLAYMAKERS_2026 = [
   {
-    label: 'Conference Standing',
-    value: DIVISION_GAMES_PLAYED
-      ? `${BRHS_STANDINGS_ROW.confWins}-${BRHS_STANDINGS_ROW.confLosses} — Skyland`
-      : 'Skyland Conference — Preseason',
-    href: '#standings',
+    name: 'Camille Hilton',
+    detail: 'Jr. · Libero/DS',
+    bio: 'The most proven returning player on the roster. As a sophomore, Hilton was First Team All-Skyland Delaware — 490 digs, 58 aces, 63 assists, and a 5.83 digs/set average. With two of last year’s top back-row players graduated, she’s the obvious foundation to rebuild BR’s serve-receive and defense around.',
   },
   {
-    label: 'Latest Gallery',
-    value: LATEST_GALLERY ? `${LATEST_GALLERY.label} — Live` : 'Posts After Season Opener',
-    href: LATEST_GALLERY ? LATEST_GALLERY.href : GALLERY_URL,
-    external: true,
+    name: 'Margarita Silvar',
+    detail: 'Sr.',
+    bio: 'Already a contributor as a junior — four kills, a block, and eight digs in an early win over Hillsborough, six kills against Phillipsburg, at least 81 digs on the season — and described by Coach Josh Everett as the team’s "most underrated player." On a roster replacing ten seniors, her role and leadership responsibility jump considerably in 2026.',
+  },
+  {
+    name: 'Brooke Krizan',
+    detail: 'Jr. · Setter',
+    bio: 'Krizan already showed she can run the varsity offense: 46 assists, 15 digs, and 3 aces in a 3-1 win over Bloomfield last October — among New Jersey’s notable single-match assist totals — on the way to 97 varsity assists as a sophomore behind senior starter Ella Sorenson. With BR’s starting setter graduated, Krizan taking over the offense full-time would make her the player determining who gets the ball and where.',
   },
 ];
 
@@ -333,7 +387,6 @@ const SERVICES = [
 
 export default function BRHSPantherVolleyballPage() {
   const [lbIndex, setLbIndex] = useState(null);
-  const [slide, setSlide] = useState(0);
   const [form, setForm] = useState({ name: '', email: '', phone: '', athleteName: '', sport: 'Volleyball', interestedIn: 'Prints', message: '' });
   const [status, setStatus] = useState('idle');
   const [rosterPositionFilter, setRosterPositionFilter] = useState('All');
@@ -350,11 +403,6 @@ export default function BRHSPantherVolleyballPage() {
     }
   };
   const rosterSortArrow = (key) => (rosterSortKey === key ? (rosterSortDir === 'asc' ? ' ▲' : ' ▼') : '');
-
-  useEffect(() => {
-    const t = setInterval(() => setSlide(s => (s + 1) % CAROUSEL.length), 5000);
-    return () => clearInterval(t);
-  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -416,64 +464,53 @@ export default function BRHSPantherVolleyballPage() {
         }}
       />
 
-      {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className={styles.hero}>
-        {/* Hero — real match action, sourced 2026-08-22 from the 20251029
-            Sr Night v DelVal gallery (see PHOTOS comment above). */}
-        <Image src="/photos/BRHS-Volleyball-0213.jpg" alt="Bridgewater-Raritan Panther Girls Volleyball" fill priority sizes="100vw" className={styles.heroImg} style={{ objectPosition: 'center 35%' }} />
-        <div className={styles.heroScrim} />
-        <div className={styles.heroContent}>
-          <div className={styles.heroBadgeRow}>
-            <span className={styles.heroBadge}>2026 Season</span>
-            <span className={styles.heroBadgeOutline}>2025 Somerset County Champions</span>
-          </div>
-          <h1 className={styles.heroTitle}>Every Point<br /><span>Earns The Next One.</span></h1>
-          <p className={styles.heroSub}>Bridgewater-Raritan opens the 2026 season August 25 at Piscataway — coming off a Somerset County Tournament title and the program's first NJSIAA Central Jersey Group 4 tournament win.</p>
-          <p className={styles.heroWelcome}>Welcome to Bridgewater-Raritan Panther Volleyball.</p>
-          <div className={styles.heroCtas}>
-            <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Galleries</a>
-            <a href="#inquire" className={styles.btnGhost}>Book Zarcone Photography</a>
-          </div>
-        </div>
-      </section>
+      {/* ── Dashboard rebuild (2026-08-25) ───────────────────────────
+          Replicates the football dashboard exactly, per Tom's request:
+          restrained header + dynamic Next Match hero + 4 stat cards +
+          Media Center grid + editorial section + compact schedule preview.
+          Replaces the old marketing hero, quick-nav, and 5-tile Season
+          Tracker — see app/brhs-panther-football/page.jsx for the reference
+          implementation these mirror. Nothing below this block was removed
+          — Schedule & Results, Standings, 2025 Results, News, Roster,
+          Coaches, Players to Watch, Gallery, Official Resource, and the
+          Powered-By-ZP block all still render in full further down, same
+          structure as football. Program Stat Bar (full program-history
+          stats) moved down to sit with that retained content — see below. ── */}
+      <DashboardHeader
+        teamName="Bridgewater-Raritan Panthers Girls Volleyball"
+        links={[
+          { href: '#gallery-alert', label: 'Galleries' },
+          { href: '#roster', label: 'Team' },
+          { href: '#schedule', label: 'Schedule' },
+        ]}
+      />
 
-      {/* ── Quick Navigation ─────────────────────────────────────── */}
-      <nav className={styles.quickNav} aria-label="Jump to section">
-        <a href="#schedule" className={styles.quickNavLink}>Schedule</a>
-        <a href="#roster" className={styles.quickNavLink}>Roster</a>
-        <a href="#gallery-alert" className={styles.quickNavLink}>Gallery</a>
-        <a href="#news" className={styles.quickNavLink}>News</a>
-        <a href="#inquire" className={styles.quickNavLink}>Contact</a>
-      </nav>
+      <NextGameHero
+        nextGame={DASHBOARD_NEXT_GAME}
+        lastPlayedGame={DASHBOARD_LAST_PLAYED}
+        latestGallery={LATEST_GALLERY}
+        bgPhotoSrc="/photos/BRHS-Volleyball-0213.jpg"
+      />
 
-      {/* ── Live Season Tracker ──────────────────────────────────── */}
-      <section className={styles.latestBar}>
-        <div className={styles.latestHead}>
-          <span className={styles.latestDot} />
-          <span className={styles.eyebrowRed}>2026 Season Tracker</span>
-        </div>
-        <div className={styles.latestGrid}>
-          {SEASON_TRACKER.map((item, i) => {
-            const Tag = item.external ? 'a' : Link;
-            const linkProps = item.external
-              ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' }
-              : { href: item.href };
-            return (
-              <Tag key={i} className={styles.latestItem} {...linkProps}>
-                <span className={styles.latestItemLabel}>{item.label}</span>
-                <span className={styles.latestItemValue}>{item.value}</span>
-              </Tag>
-            );
-          })}
-        </div>
-      </section>
+      <StatCards
+        record={DASHBOARD_RECORD}
+        nextGameDate={DASHBOARD_NEXT_GAME ? DASHBOARD_NEXT_GAME.date : 'Season Complete'}
+        nextGameOpponent={DASHBOARD_NEXT_GAME ? DASHBOARD_NEXT_GAME.opponent : null}
+        latestResult={DASHBOARD_LATEST_RESULT_LABEL}
+        seasonYear="2026"
+        seasonSub={DASHBOARD_SEASON_SUB}
+      />
 
-      {/* ── Official credibility strip ──────────────────────────── */}
-      <div className={styles.supportLine}>
-        Photography Partner of Bridgewater-Raritan Panther Girls Volleyball
-      </div>
+      <MediaCenterGrid tiles={MEDIA_TILES_VOLLEYBALL} newsHasNew={DASHBOARD_NEWS_HAS_NEW} />
 
-      {/* ── Program stat bar ─────────────────────────────────────── */}
+      <LatestFromPanthers items={DASHBOARD_EDITORIAL_ITEMS} />
+
+      <CompactSchedule games={SCHEDULE_2026} />
+
+      {/* ── Program Stat Bar ──────────────────────────────────────
+          Relocated from above the fold (2026-08-25), same as football —
+          full program-history stats that don't fit the 4-card dashboard
+          summary but shouldn't be lost either. ── */}
       <section className={styles.statBar}>
         <div className={styles.statBarGrid}>
           {STAT_BAR.map((s, i) => (
@@ -486,53 +523,6 @@ export default function BRHSPantherVolleyballPage() {
         </div>
         <p className={styles.statBarNote}>Program history and 2025 results per TAPinto and BRRSD Athletics.</p>
       </section>
-
-      {/* ── Partnership ─────────────────────────────────────────── */}
-      <section className={styles.partnership}>
-        <div className={styles.logoBlock}>
-          <Image src="/photos/brhs-panther-athletics-logo.png" alt="Bridgewater-Raritan Panther Athletics" width={1024} height={1024} sizes="220px" style={{ width: '100%', height: 'auto' }} />
-        </div>
-        <div className={styles.partnershipBody}>
-          <span className={styles.eyebrowRed}>Proud Partnership</span>
-          <p style={{ marginTop: 18 }}>
-            Zarcone Photography is proud to partner with BRHS Panther Girls Volleyball for the 2026 season — match day coverage,
-            Media Day portraits (once scheduled), and a custom Senior Night poster for every graduating senior.
-          </p>
-          <p>
-            This builds on an existing role with Bridgewater athletics as the official photography &amp; media partner of{' '}
-            <Link href="/brhs-panther-football">BRHS Panther Football</Link> and <Link href="/brhs-panther-wrestling">BRHS Panther Wrestling</Link>. The goal is the same across every program: professional photography, real storytelling, and a visual record
-            worth keeping — not just a highlight reel.
-          </p>
-          <p>
-            Beyond the court, that commitment shows up in the community too — from sponsoring local charity events to showing up consistently,
-            season after season, for the programs that trust us with their story.
-          </p>
-          <div className={styles.partnershipStats}>
-            <div><div className={styles.statNum}>30+</div><div className={styles.statLabel}>Years Experience</div></div>
-            <div><div className={styles.statNum}>'25 SCT</div><div className={styles.statLabel}>County Champions</div></div>
-            <div><div className={styles.statNum}>Aug 25</div><div className={styles.statLabel}>Season Opener</div></div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Official Program Resource ───────────────────────────── */}
-      <div className={styles.officialResource}>
-        <div className={styles.officialResourceInner}>
-          <span className={styles.eyebrowRed}>Official Program Resource</span>
-          <h3 className={styles.officialResourceTitle}>Bridgewater-Raritan Athletics</h3>
-          <p className={styles.officialResourceBody}>
-            Visit Bridgewater-Raritan Athletics for official program announcements, schedules, forms, and team updates.
-          </p>
-          <a
-            href="https://www.brrsd.org/o/brrhs/page/team-sports"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.partnershipLink}
-          >
-            Visit Bridgewater-Raritan Athletics →
-          </a>
-        </div>
-      </div>
 
       {/* ── Schedule & Results ───────────────────────────────────── */}
       <section id="schedule" style={{ scrollMarginTop: 120 }}>
@@ -574,6 +564,32 @@ export default function BRHSPantherVolleyballPage() {
         </p>
       </section>
 
+      {/* ── 2025 Season Results ──────────────────────────────────── */}
+      <section id="results" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>2025 Season</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>The Road <em>To The County Title</em></h2>
+          </div>
+          <p className={styles.sectionSub}>A county championship and the program's first Central Jersey Group 4 tournament win. The full match-by-match log is still being compiled — this is the sourced portion.</p>
+        </div>
+        <table className={styles.scheduleTable}>
+          <thead>
+            <tr><th>Date</th><th>Opponent</th><th>Round</th><th>Result</th></tr>
+          </thead>
+          <tbody>
+            {RESULTS_2025.map((g, i) => (
+              <tr key={i}>
+                <td data-label="Date">{g.date}</td>
+                <td data-label="Opponent">{g.opponent}</td>
+                <td data-label="Round">{g.round}</td>
+                <td className={g.win ? styles.resultWin : styles.resultLoss} data-label="Result">{g.result}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
       {/* ── Conference Standings ─────────────────────────────────── */}
       <section id="standings" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
@@ -608,60 +624,25 @@ export default function BRHSPantherVolleyballPage() {
         </p>
       </section>
 
-      {/* ── 2025 Season Results ──────────────────────────────────── */}
-      <section id="results" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
+      {/* ── In The News ──────────────────────────────────────────── */}
+      <section id="news" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
-            <span className={styles.eyebrowRed}>2025 Season</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>The Road <em>To The County Title</em></h2>
+            <span className={styles.eyebrowRed}>Coverage</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>In The <em>News</em></h2>
           </div>
-          <p className={styles.sectionSub}>A county championship and the program's first Central Jersey Group 4 tournament win. The full match-by-match log is still being compiled — this is the sourced portion.</p>
+          <p className={styles.sectionSub}>Real coverage of the team, the county title run, and the players — from local press and the school itself.</p>
         </div>
-        <table className={styles.scheduleTable}>
-          <thead>
-            <tr><th>Date</th><th>Opponent</th><th>Round</th><th>Result</th></tr>
-          </thead>
-          <tbody>
-            {RESULTS_2025.map((g, i) => (
-              <tr key={i}>
-                <td data-label="Date">{g.date}</td>
-                <td data-label="Opponent">{g.opponent}</td>
-                <td data-label="Round">{g.round}</td>
-                <td className={g.win ? styles.resultWin : styles.resultLoss} data-label="Result">{g.result}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
-
-      {/* ── Coaches ──────────────────────────────────────────────── */}
-      <section>
-        <div className={styles.sectionHead}>
-          <div>
-            <span className={styles.eyebrowRed}>Leadership</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Coaching <em>Staff</em></h2>
-          </div>
-        </div>
-        <div className={styles.coachGrid}>
-          {COACHES.map((c, i) => (
-            <div key={i} className={styles.coachCard}>
-              <div className={styles.coachAvatar}>{c.name.split(' ').map(n => n[0]).join('')}</div>
-              <div>
-                <div className={styles.coachName}>{c.name}</div>
-                <div className={styles.coachTitle}>{c.title}</div>
-                <p className={styles.coachBio}>{c.bio}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className={styles.staffLabel}>Assistant Coaching Staff</p>
-        <div className={styles.staffGrid}>
-          {STAFF.map((s, i) => (
-            <div key={i} className={styles.staffCard}>
-              <div className={styles.staffName}>{s.name}</div>
-              <div className={styles.staffTitle}>{s.title}</div>
-              <p className={styles.staffNote}>{s.note}</p>
-            </div>
+        <div className={styles.newsGrid}>
+          {sortArticlesByDate(ARTICLES).map((a, i) => (
+            <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" className={styles.newsCard}>
+              <span className={styles.newsBadgeRow}>
+                <span className={styles.newsSource}>{a.source}</span>
+                {isRecentArticle(a.date) && <span className={styles.newsNew}>New</span>}
+              </span>
+              <span className={styles.newsTitle}>{a.title}</span>
+              <span className={styles.newsLink}>Read Article →</span>
+            </a>
           ))}
         </div>
       </section>
@@ -765,27 +746,64 @@ export default function BRHSPantherVolleyballPage() {
         )}
       </section>
 
-      {/* ── In The News ──────────────────────────────────────────── */}
-      <section id="news" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
+      {/* ── Coaches ──────────────────────────────────────────────── */}
+      <section>
         <div className={styles.sectionHead}>
           <div>
-            <span className={styles.eyebrowRed}>Coverage</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>In The <em>News</em></h2>
+            <span className={styles.eyebrowRed}>Leadership</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Coaching <em>Staff</em></h2>
           </div>
-          <p className={styles.sectionSub}>Real coverage of the team, the county title run, and the players — from local press and the school itself.</p>
         </div>
-        <div className={styles.newsGrid}>
-          {sortArticlesByDate(ARTICLES).map((a, i) => (
-            <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" className={styles.newsCard}>
-              <span className={styles.newsBadgeRow}>
-                <span className={styles.newsSource}>{a.source}</span>
-                {isRecentArticle(a.date) && <span className={styles.newsNew}>New</span>}
-              </span>
-              <span className={styles.newsTitle}>{a.title}</span>
-              <span className={styles.newsLink}>Read Article →</span>
-            </a>
+        <div className={styles.coachGrid}>
+          {COACHES.map((c, i) => (
+            <div key={i} className={styles.coachCard}>
+              <div className={styles.coachAvatar}>{c.name.split(' ').map(n => n[0]).join('')}</div>
+              <div>
+                <div className={styles.coachName}>{c.name}</div>
+                <div className={styles.coachTitle}>{c.title}</div>
+                <p className={styles.coachBio}>{c.bio}</p>
+              </div>
+            </div>
           ))}
         </div>
+        <p className={styles.staffLabel}>Assistant Coaching Staff</p>
+        <div className={styles.staffGrid}>
+          {STAFF.map((s, i) => (
+            <div key={i} className={styles.staffCard}>
+              <div className={styles.staffName}>{s.name}</div>
+              <div className={styles.staffTitle}>{s.title}</div>
+              <p className={styles.staffNote}>{s.note}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Players to Watch ─────────────────────────────────────── */}
+      <section style={{ background: 'rgba(255,255,255,0.02)' }}>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>2026 Outlook</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Players To <em>Watch</em></h2>
+          </div>
+          <p className={styles.sectionSub}>
+            BR graduated 10 seniors off last year's county-championship roster — including its two primary kill producers. 2026 is less about who returns and more about which returning players take over those touches.
+          </p>
+        </div>
+        <div className={styles.coachGrid}>
+          {PLAYMAKERS_2026.map((p, i) => (
+            <div key={i} className={styles.coachCard}>
+              <div className={styles.coachAvatar}>{p.name.split(' ').map(n => n[0]).join('')}</div>
+              <div>
+                <div className={styles.coachName}>{p.name}</div>
+                <div className={styles.coachTitle}>{p.detail}</div>
+                <p className={styles.coachBio}>{p.bio}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className={styles.sampleCaption}>
+          BR's two leading kill producers from 2025 — Grace Marvuglio and Sydney Bishop, who combined for 30 kills in the county semifinal alone — both graduated. Reese Albano (72 digs in 2025) and the rest of the returning group inherit that gap; who steps into the kill role is the open question of the preseason.
+        </p>
       </section>
 
       {/* ── Gallery Preview ─────────────────────────────────────── */}
@@ -855,114 +873,63 @@ export default function BRHSPantherVolleyballPage() {
         )}
       </section>
 
-      {/* ── Senior Experience ────────────────────────────────────── */}
-      <div className={`${styles.featureRow} ${styles.reverse}`}>
-        <div className={styles.featurePanel}>
-          <span className={styles.featurePanelDate}>Senior</span>
-          <span className={styles.featurePanelLabel}>Night</span>
-        </div>
-        <div className={styles.featureText}>
-          <span className={styles.featureDate}>Senior Night</span>
-          <h2 className={styles.featureTitle}>The Senior Experience</h2>
-          <p className={styles.featureLead}>Four years end in one night. Every graduating senior gets a custom commemorative poster and a session built around who they are — not a rushed lineup photo.</p>
-          <ul className={styles.checklist}>
-            <li>Senior banners</li>
-            <li>Senior portraits</li>
-            <li>Family photos</li>
-            <li>Buddy photos</li>
-            <li>Locker graphics</li>
-            <li>Social graphics</li>
-            <li>Print packages</li>
-          </ul>
-          <div style={{ marginTop: 8 }}>
-            <a href="#inquire" className={styles.btnRed}>Reserve Senior Night Coverage</a>
-          </div>
+      {/* ── Official Program Resource ───────────────────────────── */}
+      <div className={styles.officialResource}>
+        <div className={styles.officialResourceInner}>
+          <span className={styles.eyebrowRed}>Official Program Resource</span>
+          <h3 className={styles.officialResourceTitle}>Bridgewater-Raritan Athletics</h3>
+          <p className={styles.officialResourceBody}>
+            Visit Bridgewater-Raritan Athletics for official program announcements, schedules, forms, and team updates.
+          </p>
+          <a
+            href="https://www.brrsd.org/o/brrhs/page/team-sports"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.partnershipLink}
+          >
+            Visit Bridgewater-Raritan Athletics →
+          </a>
         </div>
       </div>
 
-      {/* ── Match Day Coverage ───────────────────────────────────── */}
-      <div className={styles.featureRow}>
-        <div className={styles.featurePanel}>
-          <span className={styles.featurePanelDate}>Match</span>
-          <span className={styles.featurePanelLabel}>Day</span>
-        </div>
-        <div className={styles.featureText}>
-          <span className={styles.featureDate}>Every Home Match</span>
-          <h2 className={styles.featureTitle}>Match Day Coverage</h2>
-          <p className={styles.featureLead}>Full coverage from the baseline — kills, digs, blocks, and the bench reactions that tell the rest of the story.</p>
-          <ul className={styles.checklist}>
-            <li>Action photography</li>
-            <li>Sideline &amp; bench</li>
-            <li>Celebrations</li>
-            <li>Coach interactions</li>
-            <li>Crowd &amp; student section</li>
-            <li>Feature images</li>
-            <li>Fast gallery turnaround</li>
-          </ul>
-          <p style={{ fontSize: 14, color: 'var(--br-silver)' }}>Professionally edited · High-resolution downloads · Print ordering built in</p>
-          <div style={{ marginTop: 20 }}>
-            <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Galleries</a>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Why Zarcone Photography ──────────────────────────────── */}
-      <section>
-        <div className={styles.sectionHead}>
-          <div>
-            <span className={styles.eyebrowRed}>Why Zarcone Photography</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Trusted <em>Behind the Lens</em></h2>
-          </div>
-        </div>
-        <div className={styles.grid3col}>
-          {WHY_US.map(w => (
-            <div key={w.num} className={styles.iconCard}>
-              <div className={styles.num}>{w.num}</div>
-              <h3>{w.title}</h3>
-              <p>{w.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Services ─────────────────────────────────────────────── */}
-      <section>
-        <div className={styles.sectionHead}>
-          <div>
-            <span className={styles.eyebrowRed}>Services</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Built For <em>This Program</em></h2>
-          </div>
-        </div>
-        <div className={styles.grid3col}>
-          {SERVICES.map(s => (
-            <div key={s.title} className={styles.iconCard}>
-              <h3>{s.title}</h3>
-              <p>{s.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Featured Carousel ────────────────────────────────────── */}
-      <section className={styles.carousel}>
-        {CAROUSEL.map((c, i) => (
-          <div key={i} className={`${styles.carouselSlide} ${i === slide ? styles.active : ''}`}>
-            <Image src={c.src} alt={c.caption} fill sizes="100vw" priority={i === 0} style={{ objectPosition: 'center 20%' }} />
-          </div>
-        ))}
-        <div className={styles.carouselCaption}>{CAROUSEL[slide].caption}</div>
-        <div className={styles.carouselDots}>
-          {CAROUSEL.map((_, i) => (
-            <button key={i} className={`${styles.carouselDot} ${i === slide ? styles.carouselDotActive : ''}`} onClick={() => setSlide(i)} aria-label={`Slide ${i + 1}`} />
-          ))}
-        </div>
-      </section>
-
-      {/* ── Trust note (real testimonials, not fabricated) ───────── */}
+      {/* ── About Your Media Partner ─────────────────────────────────
+          Consolidated 2026-08-25, same pattern as the football dashboard
+          rebuild — 8 previously-separate marketing sections (Senior
+          Experience, Match Day Coverage, Why Us, Services, Carousel, Trust
+          Note/Testimonials) folded into one compact block below the real
+          program data. No dated, sourced Instagram quote exists yet for
+          volleyball the way football has one — rather than invent one, this
+          keeps the general <Testimonials /> component (real, cross-program
+          reviews) instead of a single attributed quote. ── */}
       <section className={styles.trustNote} style={{ '--accent': 'var(--br-red)' }}>
-        <span className={styles.eyebrowRed}>What Clients Say</span>
-        <p style={{ marginTop: 16 }}>What clients across our programs have to say:</p>
-        <Testimonials />
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Powered By</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Your Media <em>Partner</em></h2>
+          </div>
+        </div>
+        <p style={{ color: 'var(--br-silver)', fontSize: 16, lineHeight: 1.8, maxWidth: 720 }}>
+          Zarcone Photography is the official media partner of BRHS Panther Girls Volleyball — full match-day coverage, a custom Senior
+          Night poster for every graduating senior, and recruiting content, from a photographer with 30+ years shooting NJ high school sports — plus the
+          same role with <Link href="/brhs-panther-football">Panther Football</Link> and <Link href="/brhs-panther-wrestling">Panther Wrestling</Link>.
+          Outside the season partnership, private senior sessions, family photos, and other bookings are available too — <a href="#inquire">reach out here</a>.
+        </p>
+        <div className={styles.grid3col} style={{ marginTop: 32 }}>
+          <div className={styles.iconCard}><h3>Every Home Match</h3><p>Full baseline coverage — kills, digs, blocks, and the bench reactions — professionally edited and posted within days.</p></div>
+          <div className={styles.iconCard}><h3>Senior Night</h3><p>A custom commemorative poster and portrait session for every graduating senior.</p></div>
+          <div className={styles.iconCard}><h3>Prints &amp; Downloads</h3><p>High-resolution downloads and print products, ordered directly from your gallery.</p></div>
+        </div>
+
+        <div style={{ marginTop: 40 }}>
+          <span className={styles.eyebrowRed}>What Clients Say</span>
+          <Testimonials />
+        </div>
+
+        <div className={styles.socialLinks} style={{ marginTop: 24 }}>
+          <a href="https://instagram.com/zarconephotography" target="_blank" rel="noopener noreferrer">Instagram →</a>
+          <a href="https://facebook.com/zarconephotography" target="_blank" rel="noopener noreferrer">Facebook →</a>
+          <Link href="/">zarconephotography.com →</Link>
+        </div>
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────────────── */}
@@ -1044,32 +1011,11 @@ export default function BRHSPantherVolleyballPage() {
         </div>
       </section>
 
-      {/* ── Social ───────────────────────────────────────────────── */}
-      <section className={styles.socialWrap}>
-        <div>
-          <span className={styles.eyebrowRed}>Follow Along All Season</span>
-          <div className={styles.socialLinks} style={{ marginTop: 20 }}>
-            <a href="https://instagram.com/zarconephotography" target="_blank" rel="noopener noreferrer">Instagram →</a>
-            <a href="https://facebook.com/zarconephotography" target="_blank" rel="noopener noreferrer">Facebook →</a>
-            <Link href="/">zarconephotography.com →</Link>
-          </div>
-        </div>
-        <div className={styles.qrBlock}>
-          <Image src="/assets/qr-brhs-panther-volleyball.png" alt="QR code to this page" width={240} height={240} style={{ width: 120, height: 120 }} />
-          <span>Scan to Return Here</span>
-        </div>
-      </section>
-
-      {/* ── Final CTA ────────────────────────────────────────────── */}
-      <section className={styles.finalCta}>
-        <h2 className={styles.finalCtaTitle}>Every Season Has A Story.<br /><span>We're Honored To Preserve Yours.</span></h2>
-        <p className={styles.finalCtaSub}>Photography partner of Bridgewater-Raritan Panther Girls Volleyball — 2026 season.</p>
-        <div className={styles.finalCtaBtns}>
-          <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Galleries</a>
-          <a href="#inquire" className={styles.btnSilver}>Book Photography</a>
-          <Link href="/about#contact" className={styles.btnGhost}>Contact Us</Link>
-        </div>
-      </section>
+      {/* ── QR (physical signage at games links back here) ───────── */}
+      <div className={styles.qrBlock} style={{ margin: '0 auto 60px', textAlign: 'center' }}>
+        <Image src="/assets/qr-brhs-panther-volleyball.png" alt="QR code to this page" width={240} height={240} style={{ width: 120, height: 120 }} />
+        <span>Scan to Return Here</span>
+      </div>
 
       <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.floatCta}>
         <span className={styles.floatCtaLong}>View Latest Photos</span>

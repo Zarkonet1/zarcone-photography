@@ -1,22 +1,19 @@
 'use client';
 
-// Media Center — the primary in-page navigation grid (2026-08-25 rebuild).
+// Media Center — the primary in-page navigation grid (introduced for
+// football, 2026-08-25; generalized same day for reuse across team pages).
 // This replaces the old sticky pill-nav bar entirely; having both would be
-// exactly the "competing CTAs" the brief says to avoid. Each tile does one
-// thing: jump to that section further down the page.
+// exactly the "competing CTAs" the original brief said to avoid. Each tile
+// does one thing: jump to that section further down the page.
 //
-// Brief specifies a 3x2 grid (Game Galleries, Meet the Team, Media Day,
-// Schedule, Senior Night, Highlights). Senior Night and Highlights are
-// commented out below, not deleted — Tom's explicit call (2026-08-25): no
-// real content exists for either yet, so don't link out to nothing. News
-// added same day as a 5th tile (Tom's follow-up, after seeing the live
-// preview) — grid CSS uses auto-fit so it reflows cleanly at any tile
-// count and goes back to a true 3x2 the moment Senior Night/Highlights are
-// uncommented.
+// `tiles` is optional — defaults to football's original 5-tile array, so
+// football's existing `<MediaCenterGrid newsHasNew={...} />` call keeps
+// rendering exactly as before. Other team pages pass their own `tiles`
+// array; grid CSS uses auto-fit so it reflows cleanly at any tile count.
 import Image from 'next/image';
 import styles from './MediaCenterGrid.module.css';
 
-const TILES = [
+const DEFAULT_TILES = [
   { label: 'Game Galleries', sub: 'View Photos', href: '#gallery-alert', img: '/photos/SPORTS-FB100.jpg' },
   { label: 'Meet the Team', sub: 'Roster & Coaches', href: '#roster', img: '/photos/media-day-varsity-team.jpg' },
   { label: 'Media Day', sub: 'View Portraits', href: '#media-day', img: '/photos/media-day-varsity-coaches.jpg' },
@@ -28,14 +25,14 @@ const TILES = [
 
 // newsHasNew: true if the most recent article is within the "New" window
 // (same isRecentArticle threshold the full News section already uses down
-// the page — no separate rule invented here). Only the News tile reads
-// this prop; every other tile ignores it.
-export default function MediaCenterGrid({ newsHasNew }) {
+// the page — no separate rule invented here). Only a tile labeled "News"
+// reads this prop; every other tile ignores it.
+export default function MediaCenterGrid({ tiles = DEFAULT_TILES, newsHasNew }) {
   return (
     <div className={styles.wrap}>
       <span className={styles.heading}>Media Center</span>
       <div className={styles.grid}>
-        {TILES.map((t) => (
+        {tiles.map((t) => (
           <a key={t.href} href={t.href} className={styles.tile}>
             <div className={styles.imgWrap}>
               <Image src={t.img} alt="" fill sizes="(max-width: 700px) 50vw, 33vw" style={{ objectFit: 'cover' }} />

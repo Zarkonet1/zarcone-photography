@@ -11,12 +11,12 @@ import { getRecord, getNextGame, getLastPlayedGame, getCoachTenure, ordinal } fr
 import { sortArticlesByDate, isRecentArticle } from '@/lib/articles';
 import { SCHEDULE_2026 } from '@/lib/footballSchedule';
 import { GALLERIES_2026, getLatestGallery } from '@/lib/footballGalleries';
-import DashboardHeader from '@/components/football-dashboard/DashboardHeader';
-import NextGameHero from '@/components/football-dashboard/NextGameHero';
-import StatCards from '@/components/football-dashboard/StatCards';
-import MediaCenterGrid from '@/components/football-dashboard/MediaCenterGrid';
-import LatestFromPanthers from '@/components/football-dashboard/LatestFromPanthers';
-import CompactSchedule from '@/components/football-dashboard/CompactSchedule';
+import DashboardHeader from '@/components/team-dashboard/DashboardHeader';
+import NextGameHero from '@/components/team-dashboard/NextGameHero';
+import StatCards from '@/components/team-dashboard/StatCards';
+import MediaCenterGrid from '@/components/team-dashboard/MediaCenterGrid';
+import LatestFromPanthers from '@/components/team-dashboard/LatestFromPanthers';
+import CompactSchedule from '@/components/team-dashboard/CompactSchedule';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Football';
