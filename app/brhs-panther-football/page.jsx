@@ -522,11 +522,23 @@ export default function BRHSPantherFootballPage() {
     '@context': 'https://schema.org',
     '@type': 'Event',
     name: 'BRHS Panther Football Media Day 2026',
+    description: 'Official 2026 season Media Day for Bridgewater-Raritan Panther Football, featuring player and team portraits by Zarcone Photography, the program’s Gold Level Sponsor and official media partner.',
     startDate: '2026-07-29',
+    endDate: '2026-07-29',
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     eventStatus: 'https://schema.org/EventScheduled',
     location: { '@type': 'Place', name: 'Bridgewater-Raritan High School', address: { '@type': 'PostalAddress', addressLocality: 'Bridgewater', addressRegion: 'NJ', addressCountry: 'US' } },
+    image: ['https://www.zarconephotography.com/photos/i-s7zBdzk.jpg'],
     organizer: { '@type': 'Organization', name: 'Zarcone Photography', url: 'https://www.zarconephotography.com' },
+    performer: { '@type': 'SportsTeam', name: 'Bridgewater-Raritan Panther Football' },
+    offers: {
+      '@type': 'Offer',
+      url: 'https://www.zarconephotography.com/brhs-panther-football',
+      price: '0',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      validFrom: '2026-07-01',
+    },
   };
 
   return (

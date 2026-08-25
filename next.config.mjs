@@ -76,6 +76,28 @@ const nextConfig = {
       { source: '/blog/posing-your-family-photos',                       destination: '/blog', permanent: true },
       { source: '/blog/tips-for-your-couples-photoshoot',                destination: '/blog', permanent: true },
       { source: '/blog/2024-seniors',                                    destination: '/blog', permanent: true },
+      { source: '/blog/how-to-pick-the-perfect-professional-photographer-', destination: '/blog', permanent: true },
+
+      // Legacy event gallery page — no current equivalent; send to /events
+      // (found still 404ing after middleware lowercasing, 2026-08-25)
+      { source: '/bpoe-1388-holiday-family-photos', destination: '/events', permanent: true },
+
+      // Legacy combined legal page (pre-redesign site had one page for all
+      // three); split into /terms, /privacy, /acceptable-use since. No
+      // redirect existed for the old combined URL — found 404ing, 2026-08-25.
+      { source: '/terms-conditions-privacy', destination: '/terms', permanent: true },
+
+      // Orphaned SmugMug API image-transform URLs (not real pages — old
+      // gallery widget's internal API surface, e.g. /api/v2/image/X-0!regions).
+      // Some already 404, some still serve with noindex; catch the whole
+      // prefix so all variants land somewhere real instead of splitting
+      // between 404 and stale-noindex in GSC. Found 2026-08-25.
+      { source: '/api/v2/:path*', destination: '/client-area', permanent: true },
+
+      // Isolated malformed/truncated inbound link (likely a cut-off share
+      // link) — not part of the /2025-2026-brhs-wrestling gallery rule
+      // above since it has no slug at all. Found 404ing, 2026-08-25.
+      { source: '/2025-2026-', destination: '/client-area', permanent: true },
     ];
   },
 };
