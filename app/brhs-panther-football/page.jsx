@@ -340,6 +340,22 @@ function compareRosterRows(a, b, key, dir) {
   return 0;
 }
 
+// Reconciled 2026-08-25 against a full roster table Evan Fromberg (Asst.
+// Coach/Director of Ops — the program's own Tier 1a source, see
+// FOOTBALL-SOURCES.md) sent Tom directly. This resolved the roster
+// discrepancy flagged 2026-08-24 from the BRRSD Aug 19 preview article:
+// Higgins (#35), Krihak (#30), Ortega (#77), and Rutkowski (#53) are NOT on
+// Fromberg's list and have been removed; Sahadeo (#70) IS on it (explicitly
+// marked "added" in Fromberg's table) and has been added, along with a
+// previously-untracked kicker, Paul Heinrich-Ruiz (#43). Fromberg's table
+// also corrected 7 def/off-position values that had drifted from an earlier
+// source: Zuckerman #14 (TE->WR), Crovelli #27 (WR->TE), Cole #29 (WR->RB),
+// Carranza #57 (LB/TE->DL/OL), Totten #47 (TE->RB), Kronengold #80
+// (DL->LB def), Kalandadze #86 (DB->DL def). All other 56 players matched
+// exactly on name, class year, and position — a strong cross-check that the
+// rest of the array was already accurate. Fromberg's table also carries
+// height/weight, which this array doesn't track (no wt/ht fields exist in
+// this schema), so that detail isn't reflected here.
 const ROSTER_RAW_2026 = [
   { number: 74, first: 'Andrew', last: 'Arndt', classYear: 27, defPos: 'DL', offPos: 'OL' },
   { number: 1, first: 'Jeremiah', last: 'Baker', classYear: 29, defPos: 'DB', offPos: 'RB' },
@@ -348,27 +364,26 @@ const ROSTER_RAW_2026 = [
   { number: 11, first: 'Jahmier', last: 'Black', classYear: 27, defPos: 'LB', offPos: 'RB' },
   { number: 51, first: 'Nick', last: 'Bogolashvili', classYear: 27, defPos: 'DL', offPos: 'OL' },
   { number: 60, first: 'Alex', last: 'Budelmann', classYear: 28, defPos: 'DL', offPos: 'OL' },
-  { number: 57, first: 'Derek', last: 'Carranza', classYear: 27, defPos: 'LB', offPos: 'TE' },
+  { number: 57, first: 'Derek', last: 'Carranza', classYear: 27, defPos: 'DL', offPos: 'OL' },
   { number: 56, first: 'Maseone', last: 'Christian', classYear: 29, defPos: 'DL', offPos: 'OL' },
-  { number: 29, first: 'Messiah', last: 'Cole', classYear: 29, defPos: 'DB', offPos: 'WR' },
-  { number: 27, first: 'Nick', last: 'Crovelli', classYear: 27, defPos: 'LB', offPos: 'WR' },
+  { number: 29, first: 'Messiah', last: 'Cole', classYear: 29, defPos: 'DB', offPos: 'RB' },
+  { number: 27, first: 'Nick', last: 'Crovelli', classYear: 27, defPos: 'LB', offPos: 'TE' },
   { number: 79, first: 'Joseph', last: 'Day', classYear: 28, defPos: 'DL', offPos: 'OL' },
   { number: 15, first: 'Branden', last: 'De Matos', classYear: 27, defPos: 'DB', offPos: 'WR' },
   { number: 23, first: 'Francesco', last: 'DiMaria', classYear: 27, defPos: 'DB', offPos: 'WR' },
   { number: 44, first: 'Maximus', last: 'Dorsey', classYear: 27, defPos: 'DL', offPos: 'TE' },
   { number: 18, first: 'Kenneth', last: 'Graham', classYear: 27, defPos: 'DB', offPos: 'WR' },
-  { number: 35, first: 'Hassan', last: 'Higgins', classYear: 27, defPos: 'DB', offPos: 'WR' },
+  { number: 43, first: 'Paul', last: 'Heinrich-Ruiz', classYear: 29, defPos: 'P', offPos: 'K' },
   { number: 68, first: 'Colton', last: 'Hisko', classYear: 29, defPos: 'DL', offPos: 'OL' },
   { number: 21, first: 'Michael', last: 'Ianniciello', classYear: 28, defPos: 'DB', offPos: 'WR' },
   { number: 63, first: 'Nicholas', last: 'Iovine', classYear: 29, defPos: 'DL', offPos: 'OL' },
   { number: 64, first: 'AJ', last: 'Jimenez', classYear: 29, defPos: 'DL', offPos: 'OL' },
   { number: 41, first: 'Jamelle', last: 'Jones', classYear: 27, defPos: 'DL', offPos: 'RB' },
-  { number: 86, first: 'Gizo', last: 'Kalandadze', classYear: 28, defPos: 'DB', offPos: 'WR' },
+  { number: 86, first: 'Gizo', last: 'Kalandadze', classYear: 28, defPos: 'DL', offPos: 'WR' },
   { number: 26, first: 'Chase', last: 'Kedziora', classYear: 28, defPos: 'DB', offPos: 'WR' },
   { number: 32, first: 'Mason', last: 'Kowalik', classYear: 29, defPos: 'P', offPos: 'K' },
-  { number: 30, first: 'Myles', last: 'Krihak', classYear: 28, defPos: 'DB', offPos: 'WR' },
   { number: 2, first: 'DJ', last: 'Krizan', classYear: 27, defPos: 'DB', offPos: 'WR' },
-  { number: 80, first: 'Andrew', last: 'Kronengold', classYear: 29, defPos: 'DL', offPos: 'TE' },
+  { number: 80, first: 'Andrew', last: 'Kronengold', classYear: 29, defPos: 'LB', offPos: 'TE' },
   { number: 28, first: 'Justin', last: 'Lavender', classYear: 28, defPos: 'DL/LB', offPos: 'WR/TE' },
   { number: 55, first: 'Trent', last: 'Levash', classYear: 27, defPos: 'DL', offPos: 'OL' },
   { number: 4, first: 'James', last: 'Locrotondo', classYear: 27, defPos: 'DB', offPos: 'WR' },
@@ -382,7 +397,6 @@ const ROSTER_RAW_2026 = [
   { number: 67, first: 'Martino', last: 'Nguyen', classYear: 27, defPos: 'DL', offPos: 'OL' },
   { number: 16, first: 'Tyler', last: "O'Hare", classYear: 28, defPos: 'DB', offPos: 'WR' },
   { number: 3, first: 'Jonathan', last: 'Okolo', classYear: 27, defPos: 'LB', offPos: 'RB' },
-  { number: 77, first: 'Hugo', last: 'Ortega', classYear: 29, defPos: 'DL', offPos: 'OL' },
   { number: 7, first: 'Cole', last: 'Pello', classYear: 27, defPos: 'DB', offPos: 'WR' },
   { number: 33, first: 'Jake', last: 'Petrillo', classYear: 29, defPos: 'DB', offPos: 'WR' },
   { number: 34, first: 'Tyler', last: 'Plank', classYear: 29, defPos: 'LB', offPos: 'WR' },
@@ -392,20 +406,20 @@ const ROSTER_RAW_2026 = [
   { number: 72, first: 'Jack', last: 'Ritch', classYear: 27, defPos: 'DL', offPos: 'OL' },
   { number: 49, first: 'Nathan', last: 'Robles', classYear: 29, defPos: 'LB', offPos: 'RB' },
   { number: 22, first: 'Chase', last: 'Rutherford', classYear: 29, defPos: 'DB', offPos: 'WR' },
-  { number: 53, first: 'Alex', last: 'Rutkowski', classYear: 29, defPos: 'DL', offPos: 'OL' },
+  { number: 70, first: 'Nathaniel', last: 'Sahadeo', classYear: 28, defPos: 'DL', offPos: 'OL' },
   { number: 61, first: 'Ethan', last: 'Sainte', classYear: 27, defPos: 'DL', offPos: 'OL' },
   { number: 24, first: 'Freddie', last: 'Schenk', classYear: 28, defPos: 'LB', offPos: 'WR' },
   { number: 13, first: 'Jasper', last: 'Schwamberger', classYear: 27, defPos: 'DB', offPos: 'WR' },
   { number: 48, first: 'Mason', last: 'Smalls', classYear: 29, defPos: 'DB', offPos: 'WR' },
   { number: 36, first: 'Damian', last: 'Stadnick', classYear: 29, defPos: 'DB', offPos: 'WR' },
   { number: 52, first: 'Trent', last: 'Thiry', classYear: 27, defPos: 'DL', offPos: 'OL' },
-  { number: 47, first: 'Austin', last: 'Totten', classYear: 29, defPos: 'LB', offPos: 'TE' },
+  { number: 47, first: 'Austin', last: 'Totten', classYear: 29, defPos: 'LB', offPos: 'RB' },
   { number: 81, first: 'Jack', last: 'Winchock', classYear: 29, defPos: 'DL', offPos: 'WR' },
   { number: 9, first: 'Jack', last: 'Winne', classYear: 28, defPos: 'DB', offPos: 'WR' },
   { number: 5, first: 'Evan', last: 'Woodring', classYear: 27, defPos: 'DB', offPos: 'QB' },
   { number: 76, first: 'Alex', last: 'Zimmerman', classYear: 27, defPos: 'DL', offPos: 'OL' },
   { number: 54, first: 'Ben', last: 'Zimmerman', classYear: 27, defPos: 'DL', offPos: 'OL' },
-  { number: 14, first: 'Nathan', last: 'Zuckerman', classYear: 27, defPos: 'DB', offPos: 'TE' },
+  { number: 14, first: 'Nathan', last: 'Zuckerman', classYear: 27, defPos: 'DB', offPos: 'WR' },
 ];
 
 const ROSTER_2026 = ROSTER_RAW_2026
