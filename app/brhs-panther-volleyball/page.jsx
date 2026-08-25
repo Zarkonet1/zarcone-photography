@@ -138,13 +138,25 @@ const WHY_US = [
 
 // Real program history and 2025 season facts — sourced from TAPinto and
 // BRRSD Athletics (see ARTICLES above for citations). No invented stats.
-// Coach Josh Everett's exact hire year wasn't confirmed in this sweep, so
-// (unlike football's COACH_TENURE) no "Nth season" figure is computed here
-// — add it once a source confirms his start year.
+// Coach Josh Everett's hire year (2023) is now confirmed — see the sourcing
+// comment above COACHES — and reflected in his title there; no separate
+// "Nth season" figure is computed here, same manual-tenure pattern as
+// wrestling's Murphy ("Since 2021-22") rather than football's derived
+// COACH_TENURE.
+//
+// Corrected 2026-08-25 per Tom: the 3rd row previously read num: '2-0' /
+// label: '2025 States, Round 1' / sub: 'Def. Montgomery, 3-0 — NJSIAA
+// Central Jersey, Group 4' — the '2-0' was already inconsistent with its own
+// sub-copy (the actual score was 3-0), and more importantly the team's 2025
+// state-tournament run didn't stop at Round 1: BR won Round 1 over
+// Montgomery (3-0, Nov 3, 2025) then lost Round 2 at Hillsborough (2-3, Nov
+// 5, 2025) — see RESULTS_2025 below, added 2026-08-23. Reframed to state the
+// actual arc honestly while still reading as forward progress ("advanced to
+// Round 2" beats either an inflated clean sweep or dwelling on the loss).
 const STAT_BAR = [
   { num: "'25", label: 'Somerset County Champions', sub: 'Defeated Mount St. Mary Academy, 3-0 — per TAPinto' },
   { num: '10-4', label: '2024 Season Record', sub: 'Included a state sectional playoff win over Hillsborough' },
-  { num: '2-0', label: '2025 States, Round 1', sub: 'Def. Montgomery, 3-0 — NJSIAA Central Jersey, Group 4' },
+  { num: 'Rd. 2', label: '2025 NJSIAA States', sub: 'Won Round 1 at Montgomery, fell in Round 2 at Hillsborough — Central Jersey, Group 4' },
   { num: 'Skyland', label: 'Conference', sub: 'Big Central for football, Skyland for every other BRHS program' },
 ];
 
