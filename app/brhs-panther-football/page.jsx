@@ -211,7 +211,7 @@ const DIVISION_GAMES_PLAYED = DIVISION_STANDINGS_2026.some((t) => t.confWins + t
 const SEASON_TRACKER = [
   { label: 'Record', value: getRecord(SCHEDULE_2026), href: '#schedule' },
   { label: 'Next Game', value: getNextMatch(SCHEDULE_2026, 'Season Complete'), href: '#schedule' },
-  { label: 'Latest Result', value: getLatestResult(SCHEDULE_2026, '2025: Sectional Champions'), href: '#results' },
+  { label: 'Latest Result', value: getLatestResult(SCHEDULE_2026, 'Opener Aug 27 vs Woodbridge'), href: '#schedule' },
   {
     label: 'Division Standing',
     value: DIVISION_GAMES_PLAYED
@@ -622,68 +622,6 @@ export default function BRHSPantherFootballPage() {
         <p className={styles.statBarNote}>Program history and 2025 results per TAPinto, CJ Sports Radio, The Prowler (BRHS student news), and BRRSD Athletics.</p>
       </section>
 
-      {/* ── Partnership ─────────────────────────────────────────── */}
-      <section className={styles.partnership}>
-        <div className={styles.logoBlock}>
-          <Image src="/photos/brhs-panther-athletics-logo.png" alt="Bridgewater-Raritan Panther Athletics" width={1024} height={1024} sizes="220px" style={{ width: '100%', height: 'auto' }} />
-          <span className={styles.sponsorTag}>Gold Level Sponsor · 2026 Season</span>
-        </div>
-        <div className={styles.partnershipBody}>
-          <span className={styles.eyebrowRed}>Powered By Zarcone Photography</span>
-          <p style={{ marginTop: 18 }}>
-            Zarcone Photography is the official media partner of BRHS Panther Football — full home-game coverage, Media Day portraits, and a custom
-            Senior Night poster for every graduating senior, plus the same role with <Link href="/brhs-panther-wrestling">Panther Wrestling</Link> and{' '}
-            <Link href="/brhs-panther-volleyball">Panther Girls Volleyball</Link>.
-          </p>
-          <div className={styles.partnershipStats}>
-            <div><div className={styles.statNum}>30+</div><div className={styles.statLabel}>Years Experience</div></div>
-            <div><div className={styles.statNum}>'25 Champs</div><div className={styles.statLabel}>1st Sectional Title Ever</div></div>
-            <div><div className={styles.statNum}>Jul 29</div><div className={styles.statLabel}>Media Day</div></div>
-          </div>
-          <Link href="/blog/brhs-panther-football-2026-media-partnership" className={styles.partnershipLink}>Read the Full Partnership Announcement →</Link>
-        </div>
-      </section>
-
-      {/* ── Official Program Resource ───────────────────────────── */}
-      <div className={styles.officialResource}>
-        <div className={styles.officialResourceInner}>
-          <span className={styles.eyebrowRed}>Official Program Resource</span>
-          <h3 className={styles.officialResourceTitle}>Official BRHS Panther Football Website</h3>
-          <p className={styles.officialResourceBody}>
-            Visit the official BRHS Panther Football website for program announcements, schedules, forms, registration, livestream information, and team updates.
-          </p>
-          <a
-            href="https://brhspantherfb.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.partnershipLink}
-          >
-            Visit BRHS Panther Football →
-          </a>
-        </div>
-      </div>
-
-      {/* ── Family Day ───────────────────────────────────────────── */}
-      <div className={styles.featureRow}>
-        <div className={styles.featureMedia}>
-          <Image src="/photos/brhs-football-kickoff-2026-flyer.jpg" alt="BRHS Panther Football Family Day / Kickoff 2026 flyer — Sunday, August 30 at Green Knoll Grill" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'contain', filter: 'none' }} />
-        </div>
-        <div className={styles.featureText}>
-          <span className={styles.featureDate}>Sunday, August 30, 2026</span>
-          <h2 className={styles.featureTitle}>Family Day</h2>
-          <p className={styles.featureLead}>Come celebrate with past, present, and future football families at Green Knoll Grill — late lunch or early dinner starting 1:30 PM, live music from Black Dog 3–6 PM.</p>
-          <ul className={styles.checklist}>
-            <li>Green Knoll Grill</li>
-            <li>Starts 1:30 PM · Band 3–6 PM</li>
-            <li>$10 door fee waived for BR football families</li>
-            <li>RSVP required to waive door fee</li>
-          </ul>
-          <div style={{ marginTop: 28 }}>
-            <a href="mailto:BRfootball26@gmail.com?subject=Family%20Day%20RSVP" className={styles.btnRed}>RSVP to Attend</a>
-          </div>
-        </div>
-      </div>
-
       {/* ── Schedule & Results ───────────────────────────────────── */}
       <section id="schedule" style={{ scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
@@ -724,6 +662,32 @@ export default function BRHSPantherFootballPage() {
         </p>
       </section>
 
+      {/* ── 2025 Playoff Run Results ─────────────────────────────── */}
+      <section id="results" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>2025 Playoff Run</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>The Road <em>To The Title</em></h2>
+          </div>
+          <p className={styles.sectionSub}>Four games, three wins, and the first sectional championship in program history. The full regular-season log is still being compiled — this is the sourced playoff record.</p>
+        </div>
+        <table className={styles.scheduleTable}>
+          <thead>
+            <tr><th>Date</th><th>Opponent</th><th>Round</th><th>Result</th></tr>
+          </thead>
+          <tbody>
+            {RESULTS_2025.map((g, i) => (
+              <tr key={i}>
+                <td data-label="Date">{g.date}</td>
+                <td data-label="Opponent">{g.opponent}</td>
+                <td data-label="Round">{g.round}</td>
+                <td className={g.win ? styles.resultWin : styles.resultLoss} data-label="Result">{g.result}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
       {/* ── Division Standings ───────────────────────────────────── */}
       <section id="standings" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
@@ -758,82 +722,26 @@ export default function BRHSPantherFootballPage() {
         </p>
       </section>
 
-      {/* ── 2025 Playoff Run Results ─────────────────────────────── */}
-      <section id="results" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
+      {/* ── In The News ──────────────────────────────────────────── */}
+      <section id="news" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
-            <span className={styles.eyebrowRed}>2025 Playoff Run</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>The Road <em>To The Title</em></h2>
+            <span className={styles.eyebrowRed}>Coverage</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>In The <em>News</em></h2>
           </div>
-          <p className={styles.sectionSub}>Four games, three wins, and the first sectional championship in program history. The full regular-season log is still being compiled — this is the sourced playoff record.</p>
+          <p className={styles.sectionSub}>Real coverage of the team, the championship run, and the players — from local press and the school itself.</p>
         </div>
-        <table className={styles.scheduleTable}>
-          <thead>
-            <tr><th>Date</th><th>Opponent</th><th>Round</th><th>Result</th></tr>
-          </thead>
-          <tbody>
-            {RESULTS_2025.map((g, i) => (
-              <tr key={i}>
-                <td data-label="Date">{g.date}</td>
-                <td data-label="Opponent">{g.opponent}</td>
-                <td data-label="Round">{g.round}</td>
-                <td className={g.win ? styles.resultWin : styles.resultLoss} data-label="Result">{g.result}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
-
-      {/* ── Coaches ──────────────────────────────────────────────── */}
-      <section>
-        <div className={styles.sectionHead}>
-          <div>
-            <span className={styles.eyebrowRed}>Leadership</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Coaching <em>Staff</em></h2>
-          </div>
-        </div>
-        <div className={styles.coachGrid}>
-          {COACHES.map((c, i) => (
-            <div key={i} className={styles.coachCard}>
-              <div className={styles.coachAvatar}>{c.name.split(' ').map(n => n[0]).join('')}</div>
-              <div>
-                <div className={styles.coachName}>{c.name}</div>
-                <div className={styles.coachTitle}>{c.title}</div>
-                <p className={styles.coachBio}>{c.bio}</p>
-              </div>
-            </div>
+        <div className={styles.newsGrid}>
+          {sortArticlesByDate(ARTICLES).map((a, i) => (
+            <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" className={styles.newsCard}>
+              <span className={styles.newsBadgeRow}>
+                <span className={styles.newsSource}>{a.source}</span>
+                {isRecentArticle(a.date) && <span className={styles.newsNew}>New</span>}
+              </span>
+              <span className={styles.newsTitle}>{a.title}</span>
+              <span className={styles.newsLink}>Read Article →</span>
+            </a>
           ))}
-        </div>
-        <p className={styles.staffLabel}>Assistant Coaching Staff</p>
-        <div className={styles.staffGrid}>
-          {STAFF.map((s, i) => (
-            <div key={i} className={styles.staffCard}>
-              <div className={styles.staffName}>{s.name}</div>
-              <div className={styles.staffTitle}>{s.title}</div>
-              <p className={styles.staffNote}>{s.note}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Featured Player ──────────────────────────────────────── */}
-      <section>
-        <div className={styles.sectionHead}>
-          <div>
-            <span className={styles.eyebrowRed}>Player Spotlight</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Featured <em>Player</em></h2>
-          </div>
-        </div>
-        <div className={styles.spotlightWrap}>
-          <div className={styles.spotlightBadge}>
-            <Image src="/photos/media-day-portraits/11-featured.jpg" alt={`${FEATURED_PLAYER.name} — Bridgewater-Raritan Panther Football, Zarcone Photography`} fill sizes="220px" style={{ objectFit: 'cover' }} />
-          </div>
-          <div>
-            <div className={styles.spotlightName}>{FEATURED_PLAYER.name}</div>
-            <div className={styles.spotlightClass}>{FEATURED_PLAYER.detail}</div>
-            <p className={styles.spotlightBio}>{FEATURED_PLAYER.bio}</p>
-            <p className={styles.spotlightNote}>Per CJ Sports Radio, August 2025 preseason preview.</p>
-          </div>
         </div>
       </section>
 
@@ -999,26 +907,77 @@ export default function BRHSPantherFootballPage() {
         )}
       </section>
 
-      {/* ── In The News ──────────────────────────────────────────── */}
-      <section id="news" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
+      {/* ── Family Day ───────────────────────────────────────────── */}
+      <div className={styles.featureRow}>
+        <div className={styles.featureMedia}>
+          <Image src="/photos/brhs-football-kickoff-2026-flyer.jpg" alt="BRHS Panther Football Family Day / Kickoff 2026 flyer — Sunday, August 30 at Green Knoll Grill" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'contain', filter: 'none' }} />
+        </div>
+        <div className={styles.featureText}>
+          <span className={styles.featureDate}>Sunday, August 30, 2026</span>
+          <h2 className={styles.featureTitle}>Family Day</h2>
+          <p className={styles.featureLead}>Come celebrate with past, present, and future football families at Green Knoll Grill — late lunch or early dinner starting 1:30 PM, live music from Black Dog 3–6 PM.</p>
+          <ul className={styles.checklist}>
+            <li>Green Knoll Grill</li>
+            <li>Starts 1:30 PM · Band 3–6 PM</li>
+            <li>$10 door fee waived for BR football families</li>
+            <li>RSVP required to waive door fee</li>
+          </ul>
+          <div style={{ marginTop: 28 }}>
+            <a href="mailto:BRfootball26@gmail.com?subject=Family%20Day%20RSVP" className={styles.btnRed}>RSVP to Attend</a>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Coaches ──────────────────────────────────────────────── */}
+      <section>
         <div className={styles.sectionHead}>
           <div>
-            <span className={styles.eyebrowRed}>Coverage</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>In The <em>News</em></h2>
+            <span className={styles.eyebrowRed}>Leadership</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Coaching <em>Staff</em></h2>
           </div>
-          <p className={styles.sectionSub}>Real coverage of the team, the championship run, and the players — from local press and the school itself.</p>
         </div>
-        <div className={styles.newsGrid}>
-          {sortArticlesByDate(ARTICLES).map((a, i) => (
-            <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" className={styles.newsCard}>
-              <span className={styles.newsBadgeRow}>
-                <span className={styles.newsSource}>{a.source}</span>
-                {isRecentArticle(a.date) && <span className={styles.newsNew}>New</span>}
-              </span>
-              <span className={styles.newsTitle}>{a.title}</span>
-              <span className={styles.newsLink}>Read Article →</span>
-            </a>
+        <div className={styles.coachGrid}>
+          {COACHES.map((c, i) => (
+            <div key={i} className={styles.coachCard}>
+              <div className={styles.coachAvatar}>{c.name.split(' ').map(n => n[0]).join('')}</div>
+              <div>
+                <div className={styles.coachName}>{c.name}</div>
+                <div className={styles.coachTitle}>{c.title}</div>
+                <p className={styles.coachBio}>{c.bio}</p>
+              </div>
+            </div>
           ))}
+        </div>
+        <p className={styles.staffLabel}>Assistant Coaching Staff</p>
+        <div className={styles.staffGrid}>
+          {STAFF.map((s, i) => (
+            <div key={i} className={styles.staffCard}>
+              <div className={styles.staffName}>{s.name}</div>
+              <div className={styles.staffTitle}>{s.title}</div>
+              <p className={styles.staffNote}>{s.note}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Featured Player ──────────────────────────────────────── */}
+      <section>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Player Spotlight</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Featured <em>Player</em></h2>
+          </div>
+        </div>
+        <div className={styles.spotlightWrap}>
+          <div className={styles.spotlightBadge}>
+            <Image src="/photos/media-day-portraits/11-featured.jpg" alt={`${FEATURED_PLAYER.name} — Bridgewater-Raritan Panther Football, Zarcone Photography`} fill sizes="220px" style={{ objectFit: 'cover' }} />
+          </div>
+          <div>
+            <div className={styles.spotlightName}>{FEATURED_PLAYER.name}</div>
+            <div className={styles.spotlightClass}>{FEATURED_PLAYER.detail}</div>
+            <p className={styles.spotlightBio}>{FEATURED_PLAYER.bio}</p>
+            <p className={styles.spotlightNote}>Per CJ Sports Radio, August 2025 preseason preview.</p>
+          </div>
         </div>
       </section>
 
@@ -1124,15 +1083,40 @@ export default function BRHSPantherFootballPage() {
         ))}
       </div>
 
+      {/* ── Official Program Resource ───────────────────────────── */}
+      <div className={styles.officialResource}>
+        <div className={styles.officialResourceInner}>
+          <span className={styles.eyebrowRed}>Official Program Resource</span>
+          <h3 className={styles.officialResourceTitle}>Official BRHS Panther Football Website</h3>
+          <p className={styles.officialResourceBody}>
+            Visit the official BRHS Panther Football website for program announcements, schedules, forms, registration, livestream information, and team updates.
+          </p>
+          <a
+            href="https://brhspantherfb.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.partnershipLink}
+          >
+            Visit BRHS Panther Football →
+          </a>
+        </div>
+      </div>
+
       {/* ── About Your Media Partner ─────────────────────────────────
           Consolidated 2026-08-25 from 9 previously-separate marketing
           sections (Senior Experience, Game Day Coverage, "ZP in the News"
           Patch profile, Why Us, Services, Carousel, Trust Note/Testimonials)
           per PAC president feedback that the page was "great but confusing
           to navigate" — too much Zarcone Photography marketing woven
-          through the team dashboard content. See BRHS-SWEEP-LOG.md,
-          2026-08-25 entry, for the full before/after plan. One compact
-          block instead of a full-page sandwich of sales sections. ── */}
+          through the team dashboard content. Moved below all real program
+          data (tracker/schedule/results/standings/news/roster/family day/
+          coaches/gallery/media day) and consolidated further same day —
+          the old top-of-page "Partnership" block (Gold Sponsor badge, 30+
+          years/'25 Champs/Jul 29 stats, announcement link) was cut entirely
+          as redundant with this block, not just relocated. See
+          BRHS-SWEEP-LOG.md, 2026-08-25 entry, for the full before/after
+          plan. One compact block instead of a full-page sandwich of sales
+          sections. ── */}
       <section className={styles.trustNote} style={{ '--accent': 'var(--br-red)' }}>
         <div className={styles.sectionHead}>
           <div>
@@ -1142,8 +1126,9 @@ export default function BRHSPantherFootballPage() {
         </div>
         <p style={{ color: 'var(--br-silver)', fontSize: 16, lineHeight: 1.8, maxWidth: 720 }}>
           Zarcone Photography is the official media partner of BRHS Panther Football — full home-game coverage, Media Day portraits, a custom Senior
-          Night poster for every graduating senior, and recruiting content, from a photographer with 30+ years shooting NJ high school sports. Outside
-          the season partnership, private senior sessions, family photos, and other bookings are available too — <a href="#inquire">reach out here</a>.
+          Night poster for every graduating senior, and recruiting content, from a photographer with 30+ years shooting NJ high school sports — plus the
+          same role with <Link href="/brhs-panther-wrestling">Panther Wrestling</Link> and <Link href="/brhs-panther-volleyball">Panther Girls Volleyball</Link>.
+          Outside the season partnership, private senior sessions, family photos, and other bookings are available too — <a href="#inquire">reach out here</a>.
         </p>
         <div className={styles.grid3col} style={{ marginTop: 32 }}>
           <div className={styles.iconCard}><h3>Every Home Game</h3><p>Full sideline coverage, professionally edited and posted within days.</p></div>
