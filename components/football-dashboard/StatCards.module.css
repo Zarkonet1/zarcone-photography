@@ -2,8 +2,9 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--br-hairline, rgba(255,255,255,0.14));
+  border-top: 1px solid var(--br-hairline, rgba(255,255,255,0.14));
+  border-bottom: 1px solid var(--br-hairline, rgba(255,255,255,0.14));
 }
 @media (max-width: 700px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
@@ -13,7 +14,10 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  background: #0c0c0c;
+  /* Lighter than the hero above and the Media Center below, on purpose —
+     this row needs to read as its own distinct band, not a continuation
+     of the near-black hero. See page.module.css --br-panel comment. */
+  background: var(--br-panel, #141417);
   padding: 22px 24px;
 }
 

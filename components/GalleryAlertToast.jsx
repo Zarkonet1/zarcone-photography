@@ -28,14 +28,21 @@ export default function GalleryAlertToast({ team, source, colors, dismissKey }) 
       setVisible(true);
     };
 
-    const timer = setTimeout(show, 4000);
+    // Scroll-triggered only — no blind timer. A flat setTimeout used to fire
+    // this at 4s regardless of scroll position, which meant on a fresh page
+    // load it could pop up and sit directly on top of a hero's primary CTA
+    // before the visitor had scrolled at all (real bug reported by BRHS
+    // Booster Club president, 2026-08-25: toast covered the football
+    // dashboard's "Game Day Info" button). Scroll > 500px means the visitor
+    // has moved past the top of the page/hero on every team page this
+    // renders on, so the toast only ever appears over content they've
+    // already scrolled by, never over the hero itself.
     const onScroll = () => {
       if (window.scrollY > 500) show();
     };
     window.addEventListener('scroll', onScroll, { passive: true });
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener('scroll', onScroll);
     };
   }, [dismissKey]);

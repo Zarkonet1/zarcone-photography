@@ -1,5 +1,10 @@
 .wrap {
   padding: 48px 60px;
+  /* Lighter than Media Center above and Compact Schedule below — keeps
+     consecutive sections from reading as one continuous black block.
+     See page.module.css --br-panel comment. */
+  background: var(--br-panel, #141417);
+  border-top: 1px solid var(--br-hairline, rgba(255,255,255,0.14));
 }
 @media (max-width: 900px) {
   .wrap { padding: 36px 24px; }

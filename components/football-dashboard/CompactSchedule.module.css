@@ -1,5 +1,6 @@
 .wrap {
   padding: 48px 60px 60px;
+  border-top: 1px solid var(--br-hairline, rgba(255,255,255,0.14));
 }
 @media (max-width: 900px) {
   .wrap { padding: 36px 24px 40px; }
@@ -25,7 +26,7 @@
 }
 
 .list {
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--br-hairline, rgba(255,255,255,0.14));
 }
 .row {
   display: grid;
@@ -33,7 +34,7 @@
   align-items: center;
   gap: 10px;
   padding: 14px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
   font-size: 14px;
 }
 .row:last-child { border-bottom: none; }
