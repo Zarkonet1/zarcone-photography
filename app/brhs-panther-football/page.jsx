@@ -574,13 +574,15 @@ export default function BRHSPantherFootballPage() {
         </div>
       </section>
 
-      {/* ── Quick Navigation ─────────────────────────────────────── */}
+      {/* ── Quick Navigation (dashboard tabs) ────────────────────── */}
       <nav className={styles.quickNav} aria-label="Jump to section">
         <a href="#schedule" className={styles.quickNavLink}>Schedule</a>
+        <a href="#standings" className={styles.quickNavLink}>Standings</a>
+        <a href="#stats" className={styles.quickNavLink}>Stats</a>
         <a href="#roster" className={styles.quickNavLink}>Roster</a>
+        <a href="#news" className={styles.quickNavLink}>News</a>
         <a href="#media-day" className={styles.quickNavLink}>Media Day</a>
         <a href="#gallery-alert" className={styles.quickNavLink}>Gallery</a>
-        <a href="#news" className={styles.quickNavLink}>News</a>
         <a href="#inquire" className={styles.quickNavLink}>Contact</a>
       </nav>
 
@@ -607,7 +609,7 @@ export default function BRHSPantherFootballPage() {
       </section>
 
       {/* ── Program stat bar ─────────────────────────────────────── */}
-      <section className={styles.statBar}>
+      <section id="stats" className={styles.statBar} style={{ scrollMarginTop: 120 }}>
         <div className={styles.statBarGrid}>
           {STAT_BAR.map((s, i) => (
             <div key={i} className={styles.statBarItem}>
