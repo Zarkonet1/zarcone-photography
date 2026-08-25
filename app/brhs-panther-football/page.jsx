@@ -7,10 +7,16 @@ import Lightbox from '@/components/Lightbox';
 import GalleryAlertSignup from '@/components/GalleryAlertSignup';
 import GalleryAlertToast from '@/components/GalleryAlertToast';
 import styles from './page.module.css';
-import { getRecord, getNextMatch, getLatestResult, getCoachTenure, ordinal } from '@/lib/teamSchedule';
+import { getRecord, getNextGame, getLastPlayedGame, getCoachTenure, ordinal } from '@/lib/teamSchedule';
 import { sortArticlesByDate, isRecentArticle } from '@/lib/articles';
 import { SCHEDULE_2026 } from '@/lib/footballSchedule';
 import { GALLERIES_2026, getLatestGallery } from '@/lib/footballGalleries';
+import DashboardHeader from '@/components/football-dashboard/DashboardHeader';
+import NextGameHero from '@/components/football-dashboard/NextGameHero';
+import StatCards from '@/components/football-dashboard/StatCards';
+import MediaCenterGrid from '@/components/football-dashboard/MediaCenterGrid';
+import LatestFromPanthers from '@/components/football-dashboard/LatestFromPanthers';
+import CompactSchedule from '@/components/football-dashboard/CompactSchedule';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Football';
@@ -208,24 +214,29 @@ const DIVISION_STANDINGS_2026 = [BRHS_STANDINGS_ROW, ...OTHER_STANDINGS_2026]
 
 const DIVISION_GAMES_PLAYED = DIVISION_STANDINGS_2026.some((t) => t.confWins + t.confLosses > 0);
 
-const SEASON_TRACKER = [
-  { label: 'Record', value: getRecord(SCHEDULE_2026), href: '#schedule' },
-  { label: 'Next Game', value: getNextMatch(SCHEDULE_2026, 'Season Complete'), href: '#schedule' },
-  { label: 'Latest Result', value: getLatestResult(SCHEDULE_2026, 'Opener Aug 27 vs Woodbridge'), href: '#schedule' },
-  {
-    label: 'Division Standing',
-    value: DIVISION_GAMES_PLAYED
-      ? `${BRHS_STANDINGS_ROW.confWins}-${BRHS_STANDINGS_ROW.confLosses} — Am. Silver`
-      : 'Am. Silver — Preseason',
-    href: '#standings',
-  },
-  {
-    label: 'Latest Gallery',
-    value: LATEST_GALLERY ? `${LATEST_GALLERY.label} — Live` : '2025–26 Season — Live',
-    href: LATEST_GALLERY ? LATEST_GALLERY.href : SEASON_GALLERY_URL,
-    external: true,
-  },
-];
+// Dashboard rebuild (2026-08-25) — replaces the old SEASON_TRACKER array.
+// Raw next/last-game objects for NextGameHero (needs structured fields, not
+// a joined string) plus the plain summary values StatCards displays. Same
+// underlying data as before (SCHEDULE_2026/GALLERIES_2026), just consumed
+// two ways now instead of one.
+const DASHBOARD_NEXT_GAME = getNextGame(SCHEDULE_2026);
+const DASHBOARD_LAST_PLAYED = getLastPlayedGame(SCHEDULE_2026);
+const DASHBOARD_RECORD = getRecord(SCHEDULE_2026);
+const DASHBOARD_LATEST_RESULT_LABEL = DASHBOARD_LAST_PLAYED
+  ? `${DASHBOARD_LAST_PLAYED.opponent}: ${DASHBOARD_LAST_PLAYED.result.win ? 'W' : 'L'} ${DASHBOARD_LAST_PLAYED.result.score}`
+  : null;
+// Season card reuses STAT_BAR[0] (sectional-champion status) rather than
+// hand-typing a second copy of the same fact — STAT_BAR stays the single
+// source for it, same don't-duplicate rule this file uses everywhere else.
+const DASHBOARD_SEASON_SUB = `${STAT_BAR[0].num} ${STAT_BAR[0].label}`;
+
+// Latest From The Panthers editorial cards — top 3 ARTICLES by date, paired
+// with real ZP photos from CAROUSEL purely for visual presentation (these
+// press links have no photos of their own; nothing here claims a photo
+// depicts that specific headline's content).
+const DASHBOARD_EDITORIAL_ITEMS = sortArticlesByDate(ARTICLES)
+  .slice(0, 3)
+  .map((a, i) => ({ ...a, img: CAROUSEL[i % CAROUSEL.length].src }));
 
 const COACHES = [
   {
@@ -556,59 +567,49 @@ export default function BRHSPantherFootballPage() {
         }}
       />
 
-      {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className={styles.hero}>
-        <Image src="/photos/i-s7zBdzk.jpg" alt="Bridgewater-Raritan Panther Football" fill priority sizes="100vw" className={styles.heroImg} />
-        <div className={styles.heroScrim} />
-        <div className={styles.heroContent}>
-          <div className={styles.heroBadgeRow}>
-            <span className={styles.heroBadge}>2026 Season</span>
-            <span className={styles.heroBadgeOutline}>Defending Sectional Champions</span>
-          </div>
-          <h1 className={styles.heroTitle}>The Target's<br /><span>On Us Now.</span></h1>
-          <p className={styles.heroSub}>Bridgewater-Raritan opens the 2026 season August 27 against Woodbridge — defending the first sectional championship in program history.</p>
-          <p className={styles.heroWelcome}>Welcome to Bridgewater-Raritan Panther Football — powered by Zarcone Photography.</p>
-          <div className={styles.heroCtas}>
-            <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Season Gallery</a>
-          </div>
-        </div>
-      </section>
+      {/* ── Dashboard rebuild (2026-08-25) ───────────────────────────
+          Restrained header + dynamic Next Game hero + 4 stat cards +
+          Media Center grid + editorial section + compact schedule preview.
+          Replaces the old marketing hero, sticky pill quick-nav, and
+          5-tile Season Tracker — those competed with each other for
+          attention (multiple navs, multiple "next game" mentions) which
+          is exactly what the BRHS PAC feedback and Tom's own follow-up
+          flagged. Nothing below this block was removed — Schedule &
+          Results, Standings, News, Roster, Family Day, Coaches, Gallery,
+          Media Day, Official Resource, and the Powered-By-ZP block all
+          still render in full further down, same order as the prior
+          reorder. Program Stat Bar (full playoff-history stats) moved down
+          to sit with that retained content — see below. Pilot scope:
+          football only, per Tom. ── */}
+      <DashboardHeader />
 
-      {/* ── Quick Navigation (dashboard tabs) ────────────────────── */}
-      <nav className={styles.quickNav} aria-label="Jump to section">
-        <a href="#schedule" className={styles.quickNavLink}>Schedule</a>
-        <a href="#standings" className={styles.quickNavLink}>Standings</a>
-        <a href="#stats" className={styles.quickNavLink}>Stats</a>
-        <a href="#roster" className={styles.quickNavLink}>Roster</a>
-        <a href="#news" className={styles.quickNavLink}>News</a>
-        <a href="#media-day" className={styles.quickNavLink}>Media Day</a>
-        <a href="#gallery-alert" className={styles.quickNavLink}>Gallery</a>
-        <a href="#inquire" className={styles.quickNavLink}>Contact</a>
-      </nav>
+      <NextGameHero
+        nextGame={DASHBOARD_NEXT_GAME}
+        lastPlayedGame={DASHBOARD_LAST_PLAYED}
+        latestGallery={LATEST_GALLERY}
+        bgPhotoSrc="/photos/i-s7zBdzk.jpg"
+      />
 
-      {/* ── Live Season Tracker ──────────────────────────────────── */}
-      <section className={styles.latestBar}>
-        <div className={styles.latestHead}>
-          <span className={styles.latestDot} />
-          <span className={styles.eyebrowRed}>2026 Season Tracker</span>
-        </div>
-        <div className={styles.latestGrid}>
-          {SEASON_TRACKER.map((item, i) => {
-            const Tag = item.external ? 'a' : Link;
-            const linkProps = item.external
-              ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' }
-              : { href: item.href };
-            return (
-              <Tag key={i} className={styles.latestItem} {...linkProps}>
-                <span className={styles.latestItemLabel}>{item.label}</span>
-                <span className={styles.latestItemValue}>{item.value}</span>
-              </Tag>
-            );
-          })}
-        </div>
-      </section>
+      <StatCards
+        record={DASHBOARD_RECORD}
+        nextGameDate={DASHBOARD_NEXT_GAME ? DASHBOARD_NEXT_GAME.date : 'Season Complete'}
+        nextGameOpponent={DASHBOARD_NEXT_GAME ? DASHBOARD_NEXT_GAME.opponent : null}
+        latestResult={DASHBOARD_LATEST_RESULT_LABEL}
+        seasonYear="2026"
+        seasonSub={DASHBOARD_SEASON_SUB}
+      />
 
-      {/* ── Program stat bar ─────────────────────────────────────── */}
+      <MediaCenterGrid />
+
+      <LatestFromPanthers items={DASHBOARD_EDITORIAL_ITEMS} />
+
+      <CompactSchedule games={SCHEDULE_2026} />
+
+      {/* ── Program Stat Bar ──────────────────────────────────────
+          Relocated from above the fold (2026-08-25) — full program-history
+          stats (playoff record, sectional-finalist years, coach tenure)
+          that don't fit the 4-card dashboard summary but shouldn't be lost
+          either. Sits with the rest of the retained detail content now. ── */}
       <section id="stats" className={styles.statBar} style={{ scrollMarginTop: 120 }}>
         <div className={styles.statBarGrid}>
           {STAT_BAR.map((s, i) => (

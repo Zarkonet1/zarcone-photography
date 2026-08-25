@@ -1,0 +1,46 @@
+'use client';
+
+// Media Center — the primary in-page navigation grid (2026-08-25 rebuild).
+// This replaces the old sticky pill-nav bar entirely; having both would be
+// exactly the "competing CTAs" the brief says to avoid. Each tile does one
+// thing: jump to that section further down the page.
+//
+// Brief specifies a 3x2 grid (Game Galleries, Meet the Team, Media Day,
+// Schedule, Senior Night, Highlights). Senior Night and Highlights are
+// commented out below, not deleted — Tom's explicit call (2026-08-25): no
+// real content exists for either yet, so don't link out to nothing. Grid
+// CSS uses auto-fit so it reflows cleanly at 4 tiles now and goes back to
+// a true 3x2 the moment those two are uncommented.
+import Image from 'next/image';
+import styles from './MediaCenterGrid.module.css';
+
+const TILES = [
+  { label: 'Game Galleries', sub: 'View Photos', href: '#gallery-alert', img: '/photos/SPORTS-FB100.jpg' },
+  { label: 'Meet the Team', sub: 'Roster & Coaches', href: '#roster', img: '/photos/media-day-varsity-team.jpg' },
+  { label: 'Media Day', sub: 'View Portraits', href: '#media-day', img: '/photos/media-day-varsity-coaches.jpg' },
+  { label: 'Schedule', sub: 'Full Season', href: '#schedule', img: '/photos/SPORTS-Zarcone-Photography-45.jpg' },
+  // { label: 'Senior Night', sub: 'View Gallery', href: '#senior-night', img: '' },
+  // { label: 'Highlights', sub: 'Watch Videos', href: '#highlights', img: '' },
+];
+
+export default function MediaCenterGrid() {
+  return (
+    <div className={styles.wrap}>
+      <span className={styles.heading}>Media Center</span>
+      <div className={styles.grid}>
+        {TILES.map((t) => (
+          <a key={t.href} href={t.href} className={styles.tile}>
+            <div className={styles.imgWrap}>
+              <Image src={t.img} alt="" fill sizes="(max-width: 700px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
+              <div className={styles.tileScrim} />
+            </div>
+            <div className={styles.tileText}>
+              <span className={styles.tileLabel}>{t.label}</span>
+              <span className={styles.tileSub}>{t.sub} →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}

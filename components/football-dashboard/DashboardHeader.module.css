@@ -1,0 +1,70 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: #0a0a0a;
+}
+@media (max-width: 900px) {
+  .header { padding: 16px 24px; }
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.identityText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.teamName {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1.2;
+}
+.season {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--br-red, #c8102e);
+}
+
+.nav {
+  display: flex;
+  gap: 28px;
+}
+.navLink {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--br-silver, #b9bec7);
+  transition: color 0.2s;
+}
+.navLink:hover { color: #fff; }
+@media (max-width: 640px) {
+  .nav { gap: 18px; order: 3; width: 100%; }
+}
+
+.credit {
+  font-size: 11px;
+  color: var(--br-silver-dim, #6b6f76);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.credit em {
+  font-style: normal;
+  color: var(--br-silver, #b9bec7);
+}
+@media (max-width: 640px) {
+  .credit { display: none; }
+}
