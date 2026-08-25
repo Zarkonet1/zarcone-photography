@@ -1,6 +1,6 @@
 .wrap {
   padding: 48px 60px 60px;
-  border-top: 1px solid var(--br-hairline, rgba(255,255,255,0.14));
+  border-top: 3px solid var(--br-red, #c8102e);
 }
 @media (max-width: 900px) {
   .wrap { padding: 36px 24px 40px; }

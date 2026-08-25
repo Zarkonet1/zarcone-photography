@@ -1,6 +1,9 @@
 .wrap {
   padding: 48px 60px;
-  border-top: 1px solid var(--br-hairline, rgba(255,255,255,0.14));
+  /* Red divider, not a gray hairline — see page.module.css --br-panel
+     comment (2026-08-25 follow-up: the hairline version was confirmed
+     invisible on a real phone). */
+  border-top: 3px solid var(--br-red, #c8102e);
 }
 @media (max-width: 900px) {
   .wrap { padding: 36px 24px; }

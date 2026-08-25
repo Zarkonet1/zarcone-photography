@@ -19,6 +19,9 @@ export default function GalleryAlertSignup({
   source,         // e.g. "BRHS Panther Wrestling — Gallery Alert"
   colors = {},
   compact = false, // stacked layout for narrow containers (e.g. the toast card)
+  onSuccess,       // optional — called after a successful submit; the toast
+                    // wrapper uses this to persist its own dismiss flag so a
+                    // submitted signup doesn't pop back up on a later visit
 }) {
   const {
     accent = 'currentColor',
@@ -45,6 +48,7 @@ export default function GalleryAlertSignup({
       if (!res.ok) throw new Error('Request failed');
       setStatus('success');
       setEmail('');
+      if (onSuccess) onSuccess();
     } catch {
       setStatus('error');
     }

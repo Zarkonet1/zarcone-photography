@@ -19,6 +19,16 @@ export default function GalleryAlertToast({ team, source, colors, dismissKey }) 
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    // localStorage, not sessionStorage — sessionStorage is scoped to one
+    // browser tab/session, so a dismissal never survives closing the tab
+    // or (critically, per real user report 2026-08-25) opening the link
+    // again from an in-app browser like Messages, which frequently gets a
+    // fresh session per tap even for the "same" site. localStorage is
+    // scoped to the origin/device instead, so a real dismissal actually
+    // sticks. Falls back to sessionStorage read (best-effort) so anyone
+    // who dismissed under the old code doesn't immediately see it pop
+    // back up the moment this ships.
+    if (localStorage.getItem(dismissKey) === '1') return;
     if (sessionStorage.getItem(dismissKey) === '1') return;
 
     let shown = false;
@@ -47,9 +57,27 @@ export default function GalleryAlertToast({ team, source, colors, dismissKey }) 
     };
   }, [dismissKey]);
 
+  // Writes the flag without hiding the card — used on successful submit,
+  // where the visitor should still see the "you're in" confirmation for a
+  // moment rather than have the card vanish out from under them.
+  function persistDismiss() {
+    if (typeof window !== 'undefined') localStorage.setItem(dismissKey, '1');
+  }
+
   function handleClose() {
+    persistDismiss();
     setVisible(false);
-    if (typeof window !== 'undefined') sessionStorage.setItem(dismissKey, '1');
+  }
+
+  // onSuccess also writes the dismiss flag, not just the X button —
+  // previously a submitted signup showed a "you're in" message that never
+  // persisted anywhere, so the card could pop back up on the next visit
+  // as if nothing had happened. Submitting now counts as permanently
+  // dismissed, same as closing it, but the card stays up briefly so the
+  // confirmation is actually readable before it goes away.
+  function handleSuccess() {
+    persistDismiss();
+    setTimeout(() => setVisible(false), 3000);
   }
 
   if (!visible) return null;
@@ -57,7 +85,7 @@ export default function GalleryAlertToast({ team, source, colors, dismissKey }) 
   return (
     <div className={styles.toastWrap}>
       <button className={styles.close} onClick={handleClose} aria-label="Dismiss">×</button>
-      <GalleryAlertSignup team={team} source={source} colors={colors} compact />
+      <GalleryAlertSignup team={team} source={source} colors={colors} compact onSuccess={handleSuccess} />
     </div>
   );
 }

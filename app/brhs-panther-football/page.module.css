@@ -14,10 +14,15 @@
      borders at 6-8% white opacity had almost nothing to contrast
      against — read as invisible, not just subtle. Booster Club feedback
      (Stacey K., 2026-08-25): "sections bleed too much into each other."
-     Fix: a visibly lighter panel tone for alternating sections, plus a
-     stronger hairline for the literal border ask. Both used together
-     below, not either/or. */
-  --br-panel: #141417;
+     First fix attempt (--br-panel: #141417, a 14/255 luminance bump) was
+     confirmed live on a real phone same day and was still not visibly
+     different — near-black needs a much bigger jump than that to read on
+     an OLED screen, which crushes low-luminance detail further. Replaced
+     with: a real panel jump (not a token one) AND actual red divider
+     lines (var(--br-red), already used everywhere on this page for CTAs/
+     eyebrows/badges) between every major dashboard section — unambiguous
+     regardless of screen or lighting, unlike a gray-on-gray hairline. */
+  --br-panel: #1c1c20;
   --br-hairline: rgba(255,255,255,0.14);
   background: var(--br-black);
   color: #f4f4f2;
