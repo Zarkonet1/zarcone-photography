@@ -618,7 +618,7 @@ export default function BRHSPantherVolleyballPage() {
         <p className={styles.sampleCaption}>
           {DIVISION_GAMES_PLAYED
             ? 'Standings update as Skyland Conference matches are reported.'
-            : 'All four teams open the season 0-0 — the 2026 opener is Tue, Aug 25 (non-league). Standings fill in as conference matches are played.'}
+            : 'All four teams open the season 0-0 — the 2026 opener is Tue, Sep 1 at Hillsborough. Standings fill in as conference matches are played.'}
           {' '}Bridgewater-Raritan's record is drawn automatically from the schedule above; other teams' records are tracked from{' '}
           <a href="https://www.maxpreps.com/nj/bridgewater/bridgewater-raritan-panthers/volleyball/schedule/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--br-red)' }}>MaxPreps</a>.
         </p>
@@ -814,19 +814,19 @@ export default function BRHSPantherVolleyballPage() {
             <span className={styles.eyebrowRed}>From The Court</span>
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Season <em>Gallery</em></h2>
           </div>
-          <p className={styles.sectionSub}>Match action from Panther Volleyball, shot by Zarcone Photography — posting here after the Aug 25 opener.</p>
+          <p className={styles.sectionSub}>Match action from Panther Volleyball, shot by Zarcone Photography.</p>
         </div>
 
         <div className={styles.seasonPills}>
           {GALLERIES_2026.map((g, i) => (
             <a key={`gallery-${i}`} href={g.href} target="_blank" rel="noopener noreferrer" className={`${styles.seasonPill} ${styles.seasonPillActive}`}>{g.label} — Live</a>
           ))}
-          <span className={`${styles.seasonPill} ${styles.seasonPillPending}`}>2026 Season — Posts After Opener</span>
+          <span className={`${styles.seasonPill} ${styles.seasonPillPending}`}>2026 Season — Opens Sep 1</span>
         </div>
 
         <div className={styles.noticeBar}>
           <span className={styles.noticeDot} />
-          Galleries post here after each match, once the 2026 season begins on Aug 25.
+          Galleries post here after each match — the 2026 regular-season opener is Sep 1 at Hillsborough.
         </div>
 
         <GalleryAlertSignup
