@@ -40,15 +40,17 @@ export default function Nav() {
   // runs after all hooks above.
   if (pathname?.startsWith('/high_school')) return null;
 
-  // BRHS team hub pages (football pilot, 2026-08-25): logo-only header —
-  // no marketing links/Inquire button. These pages are dashboards for a
-  // specific team's parents/fans, not top-of-funnel marketing pages, and
-  // the full ZP nav read as clutter (direct feedback from BRHS PAC
-  // president). The team page's own in-page quick-nav pills (Schedule,
+  // BRHS team hub pages: logo-only header — no marketing links/Inquire
+  // button. These pages are dashboards for a specific team's parents/fans,
+  // not top-of-funnel marketing pages, and the full ZP nav read as clutter
+  // (direct feedback from BRHS PAC president on the football pilot,
+  // 2026-08-25). The team page's own in-page quick-nav pills (Schedule,
   // Standings, Stats, Roster, etc.) are the primary navigation instead.
-  // Scoped to football only for now — expand to wrestling/volleyball once
-  // the pilot is validated. Hook order preserved: runs after all hooks above.
-  if (pathname === '/brhs-panther-football') {
+  // Extended from football-only to all three BRHS hubs 2026-08-26, per Tom:
+  // "all should mirror the BRHS Football framework." Hook order preserved:
+  // runs after all hooks above.
+  const BRHS_HUB_PATHS = ['/brhs-panther-football', '/brhs-panther-wrestling', '/brhs-panther-volleyball'];
+  if (BRHS_HUB_PATHS.includes(pathname)) {
     return (
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
         <Link href="/" className={styles.logo} aria-label="Zarcone Photography — home">
