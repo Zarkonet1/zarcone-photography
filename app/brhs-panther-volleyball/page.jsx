@@ -843,10 +843,6 @@ export default function BRHSPantherVolleyballPage() {
           }}
         />
 
-        <div className={styles.galleryFooter} style={{ marginTop: 0, marginBottom: 36, justifyContent: 'flex-start', gap: 14 }}>
-          <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnGhost}>Order Prints &amp; Downloads</a>
-        </div>
-
         <div className={styles.masonry}>
           {PHOTOS.map((photo, i) => (
             <div key={i} className={styles.tile} onClick={() => setLbIndex(i)}>
