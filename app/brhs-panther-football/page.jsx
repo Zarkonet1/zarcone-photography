@@ -178,7 +178,8 @@ const STAT_BAR = [
 // SCHEDULE_2026 below, the same single-source-of-truth pattern as Record /
 // Next Game / Latest Result in SEASON_TRACKER. The other three teams have no
 // schedule data in this codebase, so THEIR wins/losses are manual and need a
-// weekly touch-up once the season starts (Aug 27 opener) — update from
+// weekly touch-up once the season starts (opener moved to Aug 28 due to
+// weather, see footballSchedule.js) — update from
 // MaxPreps' Big Central standings page or NJ.com's weekly Big Central
 // roundup. All four start 0-0-0 in the preseason, which is accurate, not a
 // bug — the table will fill in as games are played.
@@ -725,7 +726,7 @@ export default function BRHSPantherFootballPage() {
         <p className={styles.sampleCaption}>
           {DIVISION_GAMES_PLAYED
             ? 'Standings update as Big Central Conference games are reported.'
-            : 'All four teams open the season 0-0 — the 2026 opener is Thu, Aug 27. Standings fill in as conference games are played.'}
+            : 'All four teams open the season 0-0 — the 2026 opener is Fri, Aug 28 (moved from Thu, Aug 27 due to weather). Standings fill in as conference games are played.'}
           {' '}Bridgewater-Raritan's record is drawn automatically from the schedule above; other teams' records are tracked from{' '}
           <a href="https://www.maxpreps.com/nj/bridgewater/bridgewater-raritan-panthers/football/standings/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--br-red)' }}>MaxPreps</a> and NJ.com's weekly Big Central Conference roundup.
         </p>
