@@ -1,22 +1,31 @@
 'use client';
 
 // The dynamic dashboard hero — replaces the old marketing hero entirely
-// (2026-08-25 rebuild, per Tom's brief). Three states, computed fresh on
+// (2026-08-25 rebuild, per Tom's brief). Four states, computed fresh on
 // every render from real schedule/gallery data — no timers, no manual
 // toggle:
 //
-//   1. NEXT   — default. Shown whenever there's an upcoming game AND the
-//               most recent played game (if any) happened more than
-//               RECENT_GAME_WINDOW_DAYS ago. This is what makes it
-//               "transition back to promoting the next scheduled game"
-//               per the brief, instead of getting stuck showing last
-//               week's final forever.
-//   2. FINAL  — shown for a short window right after a game (see the
-//               constant below) if no gallery has posted for it yet.
-//   3. GALLERY— shown in that same short window if a gallery HAS posted
-//               on/after the game date (compared via GALLERIES_2026's
-//               ISO date vs. the schedule's 'Mon, Aug 27' style date,
-//               both assumed 2026 — see toSeasonDate below).
+//   1. NEXT      — default. Shown whenever there's an upcoming game AND the
+//                  most recent played game (if any) happened more than
+//                  RECENT_GAME_WINDOW_DAYS ago. This is what makes it
+//                  "transition back to promoting the next scheduled game"
+//                  per the brief, instead of getting stuck showing last
+//                  week's final forever.
+//   2. FINAL     — shown for a short window right after a game (see the
+//                  constant below) if no gallery has posted for it yet.
+//   3. GALLERY   — shown in that same short window if a gallery HAS posted
+//                  on/after the game date (compared via GALLERIES_2026's
+//                  ISO date vs. the schedule's 'Mon, Aug 27' style date,
+//                  both assumed 2026 — see toSeasonDate below).
+//   4. POSTPONED — added 2026-08-27. Shown only on the game's *original*
+//                  date, when a schedule entry carries a `postponedFrom`
+//                  field (see lib/footballSchedule.js). Self-expires the
+//                  instant the calendar rolls past that date — this
+//                  component computes `now` fresh on every client render,
+//                  so no redeploy is needed for it to revert to the normal
+//                  NEXT state on the new date. Takes priority over NEXT/
+//                  FINAL/GALLERY since it's the most time-sensitive message
+//                  a visitor could see.
 //
 // Props are raw data, not pre-formatted strings — this component owns its
 // own layout/copy per state. Pass getNextGame/getLastPlayedGame results
@@ -50,8 +59,17 @@ export default function NextGameHero({ nextGame, lastPlayedGame, latestGallery, 
     lastPlayedGame &&
     (now - toSeasonDate(lastPlayedGame.date)) / 86400000 <= RECENT_GAME_WINDOW_DAYS;
 
+  // Postponed-today check first — this outranks everything else. Compares
+  // calendar day only (toDateString ignores time-of-day), so it's true for
+  // the entire original game date and false the moment it's tomorrow.
+  const isPostponedToday =
+    nextGame?.postponedFrom &&
+    now.toDateString() === toSeasonDate(nextGame.postponedFrom).toDateString();
+
   let state = 'next';
-  if (gameRecent) {
+  if (isPostponedToday) {
+    state = 'postponed';
+  } else if (gameRecent) {
     const galleryCoversGame =
       latestGallery && new Date(latestGallery.date) >= toSeasonDate(lastPlayedGame.date);
     state = galleryCoversGame ? 'gallery' : 'final';
@@ -85,6 +103,23 @@ export default function NextGameHero({ nextGame, lastPlayedGame, latestGallery, 
               {lastPlayedGame.result.win ? 'W' : 'L'} {lastPlayedGame.result.score} — {opponentName(lastPlayedGame.opponent)}
             </h1>
           )}
+          <a href="#schedule" className={styles.cta}>Full Schedule →</a>
+        </div>
+      )}
+
+      {state === 'postponed' && (
+        <div className={styles.content}>
+          <span className={styles.eyebrow}>Schedule Change — Weather</span>
+          <h1 className={styles.matchup}>
+            Bridgewater-Raritan Panthers
+            <span className={styles.vs}>{nextGame.home ? 'vs' : '@'}</span>
+            {opponentName(nextGame.opponent)}
+          </h1>
+          <div className={styles.metaRow}>
+            <span>Postponed from tonight — now {nextGame.date} · {nextGame.time}</span>
+            <span className={styles.badge}>{nextGame.home ? 'Home' : 'Away'}</span>
+            {nextGame.location && <span>{nextGame.location}</span>}
+          </div>
           <a href="#schedule" className={styles.cta}>Full Schedule →</a>
         </div>
       )}
