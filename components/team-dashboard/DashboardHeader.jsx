@@ -27,6 +27,13 @@ export default function DashboardHeader({
   season = '2026 Season',
   logoSrc = '/photos/brhs-panther-athletics-logo.png',
   logoAlt = 'Bridgewater-Raritan Panther Athletics',
+  // logoText: generalized 2026-08-27 for teams with no real crest asset on
+  // file (no logo should ever be redrawn/approximated/fabricated). When set,
+  // renders a plain typographic monogram badge instead of <Image logoSrc>.
+  // logoBadgeColor lets the badge pick up that team's own accent color via a
+  // CSS var string, e.g. 'var(--mw-blue)' — default matches football's red.
+  logoText = null,
+  logoBadgeColor = 'var(--br-red, #c8102e)',
   links = DEFAULT_LINKS,
   creditLine = 'Zarcone Photography',
   creditSuffix = 'Official Media Partner',
@@ -34,13 +41,27 @@ export default function DashboardHeader({
   return (
     <div className={styles.header}>
       <div className={styles.identity}>
-        <Image
-          src={logoSrc}
-          alt={logoAlt}
-          width={56}
-          height={56}
-          style={{ width: 44, height: 44, objectFit: 'contain' }}
-        />
+        {logoText ? (
+          <div
+            aria-hidden="true"
+            style={{
+              width: 44, height: 44, borderRadius: '50%',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontWeight: 800, fontSize: 15, letterSpacing: '0.02em',
+              color: '#0a0a0a', background: logoBadgeColor, flexShrink: 0,
+            }}
+          >
+            {logoText}
+          </div>
+        ) : (
+          <Image
+            src={logoSrc}
+            alt={logoAlt}
+            width={56}
+            height={56}
+            style={{ width: 44, height: 44, objectFit: 'contain' }}
+          />
+        )}
         <div className={styles.identityText}>
           <span className={styles.teamName}>{teamName}</span>
           <span className={styles.season}>{season}</span>

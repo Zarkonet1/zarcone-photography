@@ -49,7 +49,12 @@ export default function Nav() {
   // Extended from football-only to all three BRHS hubs 2026-08-26, per Tom:
   // "all should mirror the BRHS Football framework." Hook order preserved:
   // runs after all hooks above.
-  const BRHS_HUB_PATHS = ['/brhs-panther-football', '/brhs-panther-wrestling', '/brhs-panther-volleyball'];
+  // Mahwah Thunderbirds Football Hub added 2026-08-27 — same team-hub
+  // dashboard pattern as the three BRHS hubs below (not an official
+  // Mahwah page; see app/mahwah-thunderbirds-football/layout.jsx for the
+  // noindex/nofollow posture, same as Prospect Trigger pages). Reuses
+  // this array/variable name rather than introducing a second one.
+  const BRHS_HUB_PATHS = ['/brhs-panther-football', '/brhs-panther-wrestling', '/brhs-panther-volleyball', '/mahwah-thunderbirds-football'];
   if (BRHS_HUB_PATHS.includes(pathname)) {
     return (
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>

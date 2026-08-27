@@ -105,7 +105,12 @@ export default function AnnouncementBar() {
   if (
     upcoming.length === 0 ||
     pathname?.startsWith('/government-contracting') ||
-    pathname?.startsWith('/high_school')
+    pathname?.startsWith('/high_school') ||
+    // Mahwah Thunderbirds Football Hub (2026-08-27) — same "no consumer
+    // promo content" posture as the Prospect Trigger pages above; it isn't
+    // in TEAM_BANNERS since Zarcone doesn't have a real Mahwah season to
+    // narrow content to yet.
+    pathname?.startsWith('/mahwah-thunderbirds-football')
   ) return null;
 
   const event = upcoming[idx] || upcoming[0];

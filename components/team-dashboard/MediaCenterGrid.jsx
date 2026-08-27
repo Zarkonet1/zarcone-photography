@@ -35,7 +35,14 @@ export default function MediaCenterGrid({ tiles = DEFAULT_TILES, newsHasNew }) {
         {tiles.map((t) => (
           <a key={t.href} href={t.href} className={styles.tile}>
             <div className={styles.imgWrap}>
-              <Image src={t.img} alt="" fill sizes="(max-width: 700px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
+              {t.img ? (
+                <Image src={t.img} alt="" fill sizes="(max-width: 700px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
+              ) : (
+                // No real photo on file yet for this tile (generalized
+                // 2026-08-27) — plain gradient block instead of a stock or
+                // fabricated image.
+                <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: t.fallbackGradient || 'linear-gradient(160deg, #202024 0%, #0a0a0a 100%)' }} />
+              )}
               <div className={styles.tileScrim} />
             </div>
             <div className={styles.tileText}>

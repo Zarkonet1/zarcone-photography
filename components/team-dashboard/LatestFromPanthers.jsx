@@ -9,18 +9,22 @@
 import Image from 'next/image';
 import styles from './LatestFromPanthers.module.css';
 
-export default function LatestFromPanthers({ items }) {
+export default function LatestFromPanthers({ items, heading = 'Latest From The Panthers' }) {
   if (!items || items.length === 0) return null;
   const [featured, ...rest] = items;
   const small = rest.slice(0, 2);
 
   return (
     <div className={styles.wrap}>
-      <span className={styles.heading}>Latest From The Panthers</span>
+      <span className={styles.heading}>{heading}</span>
       <div className={styles.grid}>
         <a href={featured.url} target="_blank" rel="noopener noreferrer" className={styles.featured}>
           <div className={styles.imgWrap}>
-            <Image src={featured.img} alt="" fill sizes="(max-width: 900px) 100vw, 60vw" style={{ objectFit: 'cover' }} />
+            {featured.img ? (
+              <Image src={featured.img} alt="" fill sizes="(max-width: 900px) 100vw, 60vw" style={{ objectFit: 'cover' }} />
+            ) : (
+              <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, #202024 0%, #0a0a0a 100%)' }} />
+            )}
             <div className={styles.scrim} />
           </div>
           <div className={styles.text}>
@@ -32,7 +36,11 @@ export default function LatestFromPanthers({ items }) {
           {small.map((a, i) => (
             <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" className={styles.small}>
               <div className={styles.imgWrap}>
-                <Image src={a.img} alt="" fill sizes="(max-width: 900px) 100vw, 30vw" style={{ objectFit: 'cover' }} />
+                {a.img ? (
+                  <Image src={a.img} alt="" fill sizes="(max-width: 900px) 100vw, 30vw" style={{ objectFit: 'cover' }} />
+                ) : (
+                  <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, #202024 0%, #0a0a0a 100%)' }} />
+                )}
                 <div className={styles.scrim} />
               </div>
               <div className={styles.text}>

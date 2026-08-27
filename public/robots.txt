@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /high_school/
+Disallow: /mahwah-thunderbirds-football
 
 Sitemap: https://www.zarconephotography.com/sitemap.xml

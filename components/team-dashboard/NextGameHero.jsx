@@ -53,7 +53,23 @@ function opponentName(opponentStr) {
   return opponentStr.replace(/^(at|vs)\s+/i, '').toUpperCase();
 }
 
-export default function NextGameHero({ nextGame, lastPlayedGame, latestGallery, bgPhotoSrc }) {
+export default function NextGameHero({
+  nextGame,
+  lastPlayedGame,
+  latestGallery,
+  bgPhotoSrc = null,
+  // fallbackGradient: generalized 2026-08-27 — when a team has no real
+  // action photo on file yet, render a plain color-gradient field instead
+  // of a stock/fabricated image. Pass a CSS gradient string.
+  fallbackGradient = 'linear-gradient(160deg, #1a1a1a 0%, #0a0a0a 70%)',
+  // Generalized 2026-08-27 for reuse by the Mahwah Football Hub build —
+  // optional, defaulting to football's original hardcoded BRHS strings, so
+  // football's existing <NextGameHero /> call (no new props) keeps
+  // rendering exactly as before. Other team pages pass their own values.
+  teamName = 'Bridgewater-Raritan Panther Football',
+  teamMatchupName = 'Bridgewater-Raritan Panthers',
+  teamShortLabel = 'BRHS',
+}) {
   const now = new Date();
   const gameRecent =
     lastPlayedGame &&
@@ -77,7 +93,11 @@ export default function NextGameHero({ nextGame, lastPlayedGame, latestGallery, 
 
   return (
     <section className={styles.hero}>
-      <Image src={bgPhotoSrc} alt="Bridgewater-Raritan Panther Football" fill priority sizes="100vw" className={styles.heroImg} />
+      {bgPhotoSrc ? (
+        <Image src={bgPhotoSrc} alt={teamName} fill priority sizes="100vw" className={styles.heroImg} />
+      ) : (
+        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: fallbackGradient }} />
+      )}
       <div className={styles.scrim} />
 
       {state === 'gallery' && (
@@ -95,7 +115,7 @@ export default function NextGameHero({ nextGame, lastPlayedGame, latestGallery, 
           <span className={styles.eyebrow}>Final</span>
           {lastPlayedGame.result.usScore != null && lastPlayedGame.result.themScore != null ? (
             <div className={styles.scoreLine}>
-              <span>BRHS <strong>{lastPlayedGame.result.usScore}</strong></span>
+              <span>{teamShortLabel} <strong>{lastPlayedGame.result.usScore}</strong></span>
               <span>{opponentName(lastPlayedGame.opponent)} <strong>{lastPlayedGame.result.themScore}</strong></span>
             </div>
           ) : (
@@ -128,7 +148,7 @@ export default function NextGameHero({ nextGame, lastPlayedGame, latestGallery, 
           {nextGame ? (
             <>
               <h1 className={styles.matchup}>
-                Bridgewater-Raritan Panthers
+                {teamMatchupName}
                 <span className={styles.vs}>{nextGame.home ? 'vs' : '@'}</span>
                 {opponentName(nextGame.opponent)}
               </h1>
