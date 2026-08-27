@@ -1513,3 +1513,40 @@ a.latestItem:hover { background: rgba(255,255,255,0.05); }
 /* ─── Result win/loss coloring for playoff run table ─────────────────── */
 .resultWin { color: #7fd99a !important; font-weight: 800; }
 .resultLoss { color: #e08a8a !important; font-weight: 800; }
+
+/* ─── Concept designation banner + footer (2026-08-27) ───────────────
+   Tom's explicit request: a discreet-but-visible label so this never
+   reads as a live official Mahwah page. Banner sits above the dashboard
+   header at the very top of the page; footer carries the fuller
+   disclaimer sentence at the very bottom. Both Mahwah-only — not part of
+   the shared team-dashboard component library. */
+.conceptBanner {
+  /* margin-top clears the sitewide fixed Nav (--nav-h, 72px) — this page's
+     <main> only reserves --bar-h (36px) since AnnouncementBar is excluded
+     here (returns null for hub paths), so without this the banner would
+     render partly behind the fixed nav. Found via mobile QA screenshot
+     2026-08-27: banner text was rendering underneath/behind the Zarcone
+     logo in Nav. DashboardHeader (originally the first element, before
+     this banner was added) happens to clear it via its own padding; this
+     new element needs its own explicit clearance since it's shorter. */
+  margin-top: var(--nav-h);
+  background: var(--mw-blue);
+  color: var(--mw-black);
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+}
+@media (max-width: 640px) {
+  .conceptBanner { font-size: 10px; padding: 6px 12px; }
+}
+
+.conceptFooter {
+  text-align: center;
+  font-size: 12px;
+  color: var(--mw-silver-dim);
+  padding: 22px 24px 32px;
+  border-top: 1px solid var(--mw-hairline);
+}

@@ -34,6 +34,12 @@ export default function DashboardHeader({
   // CSS var string, e.g. 'var(--mw-blue)' — default matches football's red.
   logoText = null,
   logoBadgeColor = 'var(--br-red, #c8102e)',
+  // logoRound: generalized 2026-08-27 — set true for a logo asset that's a
+  // circular badge sitting on a square white canvas (common for crest-style
+  // marks sourced as-is from a school/vendor), so the white corners crop
+  // away via CSS rather than editing the source image file. Default false
+  // keeps football's rectangular-crop logo rendering exactly as before.
+  logoRound = false,
   links = DEFAULT_LINKS,
   creditLine = 'Zarcone Photography',
   creditSuffix = 'Official Media Partner',
@@ -59,7 +65,7 @@ export default function DashboardHeader({
             alt={logoAlt}
             width={56}
             height={56}
-            style={{ width: 44, height: 44, objectFit: 'contain' }}
+            style={{ width: 44, height: 44, objectFit: 'contain', borderRadius: logoRound ? '50%' : undefined }}
           />
         )}
         <div className={styles.identityText}>

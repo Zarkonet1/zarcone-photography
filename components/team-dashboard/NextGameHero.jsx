@@ -69,6 +69,13 @@ export default function NextGameHero({
   teamName = 'Bridgewater-Raritan Panther Football',
   teamMatchupName = 'Bridgewater-Raritan Panthers',
   teamShortLabel = 'BRHS',
+  // watermarkSrc/watermarkAlt: generalized 2026-08-27 for a team with no
+  // real action photo on file — lets an official team mark sit as a
+  // subtle, low-opacity watermark over the gradient fallback instead of
+  // the hero reading as an empty color field. Default null keeps football
+  // (which always has a real bgPhotoSrc) rendering exactly as before.
+  watermarkSrc = null,
+  watermarkAlt = '',
 }) {
   const now = new Date();
   const gameRecent =
@@ -99,6 +106,16 @@ export default function NextGameHero({
         <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: fallbackGradient }} />
       )}
       <div className={styles.scrim} />
+      {watermarkSrc && (
+        <Image
+          src={watermarkSrc}
+          alt={watermarkAlt}
+          width={520}
+          height={280}
+          aria-hidden="true"
+          className={styles.watermark}
+        />
+      )}
 
       {state === 'gallery' && (
         <div className={styles.content}>

@@ -146,3 +146,27 @@
   transition: background 0.2s;
 }
 .cta:hover { background: var(--br-red-dark, #8c0b1f); }
+
+/* watermarkSrc treatment (generalized 2026-08-27) — sits above the scrim
+   (z-index 1) so it stays visible over the dark gradient, below the text
+   content (z-index 2), bled off the right edge so it never collides with
+   the matchup headline on the left. Deliberately faint — this is a brand
+   cue, not a hero image substitute. */
+.watermark {
+  position: absolute;
+  z-index: 1;
+  right: -60px;
+  bottom: -30px;
+  width: 460px;
+  height: auto;
+  opacity: 0.16;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+@media (max-width: 900px) {
+  .watermark { width: 300px; right: -50px; bottom: -20px; }
+}
+@media (max-width: 640px) {
+  .watermark { width: 220px; right: -40px; bottom: -10px; opacity: 0.14; }
+}

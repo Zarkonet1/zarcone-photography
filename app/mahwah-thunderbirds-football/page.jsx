@@ -176,11 +176,21 @@ export const dynamic = 'force-static';
 export default function MahwahThunderbirdsFootballPage() {
   return (
     <div className={styles.wrap}>
+      {/* Discreet-but-visible concept designation — Tom's explicit request
+          2026-08-27, so nobody watching the walkthrough mistakes this for
+          a live official page. Kept out of DashboardHeader itself (shared
+          with BRHS/volleyball) so it's Mahwah-only and easy to strip the
+          moment this becomes a real partnership. */}
+      <div className={styles.conceptBanner}>
+        Media Hub Concept — Prepared For MHS Athletic Director
+      </div>
+
       <DashboardHeader
         teamName="Mahwah Thunderbirds Football"
         season="2026 Season · Concept Preview"
-        logoText="MT"
-        logoBadgeColor="var(--mw-blue)"
+        logoSrc="/photos/mahwah-thunderbirds-logo.png"
+        logoAlt="Mahwah Thunderbirds"
+        logoRound
         links={DASHBOARD_HEADER_LINKS}
         creditLine="Zarcone Photography"
         creditSuffix="Concept — Not An Official Partnership"
@@ -195,6 +205,8 @@ export default function MahwahThunderbirdsFootballPage() {
         teamName="Mahwah Thunderbirds Football"
         teamMatchupName="Mahwah Thunderbirds"
         teamShortLabel="MAHWAH"
+        watermarkSrc="/photos/mahwah-thunderbird-mark.png"
+        watermarkAlt=""
       />
 
       <StatCards
@@ -231,13 +243,13 @@ export default function MahwahThunderbirdsFootballPage() {
             <div className={styles.statBarSub}>Dumont · Pascack Hills · Ramsey · Ridgefield Park · Westwood Regional</div>
           </div>
           <div className={styles.statBarItem}>
-            <div className={styles.statBarNum}>—</div>
+            <div className={styles.statBarNum}>AS</div>
             <div className={styles.statBarLabel}>Head Coach</div>
-            <div className={styles.statBarSub}>Not yet publicly confirmed for 2026</div>
+            <div className={styles.statBarSub}>Adam Szuch</div>
           </div>
         </div>
         <p className={styles.statBarNote}>
-          Program history per Wikipedia ("Mahwah High School") and Patch.com; 2026 schedule and conference per MaxPreps, last updated Aug. 26, 2026. Head coach status checked directly (MaxPreps roster page, Mahwah’s own athletics site, Hudl) and could not be confirmed — shown honestly rather than guessed.
+          Program history per Wikipedia ("Mahwah High School") and Patch.com; 2026 schedule and conference per MaxPreps, last updated Aug. 26, 2026. Head coach confirmed directly by Tom Zarcone (Mahwah alum), corroborated by the Mahwah HS Sports Booster Club's own listing of Adam Szuch as Football Head Coach.
         </p>
       </section>
 
@@ -379,12 +391,12 @@ export default function MahwahThunderbirdsFootballPage() {
         </div>
         <div className={styles.coachGrid}>
           <div className={styles.coachCard}>
-            <div className={styles.coachAvatar}>MT</div>
+            <div className={styles.coachAvatar}>AS</div>
             <div>
-              <div className={styles.coachName}>2026 Head Coach — Not Yet Confirmed</div>
-              <div className={styles.coachTitle}>Checked Aug. 27, 2026</div>
+              <div className={styles.coachName}>Adam Szuch</div>
+              <div className={styles.coachTitle}>Head Coach, 2026</div>
               <p className={styles.coachBio}>
-                Mahwah’s current head coach was not listed on MaxPreps, the district’s own coaching directory, or Hudl as of this date. The program’s most recent long-tenured head coach, Jeff Remo, retired in early 2017 after 20 years, including back-to-back sectional championships in 2015 and 2016 (per Patch.com). This card is ready to be filled in with the current staff—no structural change needed.
+                Confirmed directly by Tom Zarcone (Mahwah alum), corroborated by the Mahwah HS Sports Booster Club's own listing of Adam Szuch as Football Head Coach — not independently listed on MaxPreps, the district's coaching directory, or Hudl as of this date, so treat those specific platforms' silence as unrelated rather than contradicting. The program's most recent long-tenured head coach, Jeff Remo, retired in early 2017 after 20 years, including back-to-back sectional championships in 2015 and 2016 (per Patch.com).
               </p>
             </div>
           </div>
@@ -523,6 +535,11 @@ export default function MahwahThunderbirdsFootballPage() {
         <span className={styles.floatCtaLong}>Let&apos;s Talk</span>
         <span className={styles.floatCtaShort}>Talk</span>
       </a>
+
+      {/* Concept disclaimer footer — Tom's exact wording, 2026-08-27. */}
+      <div className={styles.conceptFooter}>
+        Concept demonstration prepared by Zarcone Photography. Not an official Mahwah Township Public Schools website.
+      </div>
     </div>
   );
 }
