@@ -39,18 +39,17 @@ import CompactSchedule from '@/components/team-dashboard/CompactSchedule';
 // re-verified directly against Wikipedia again today.
 const TITLE_YEARS = ['1978', '1979', '1981', '2015', '2016'];
 
-// American Red division of the Super Football Conference (Wikipedia, "North
-// Jersey Super Football Conference," cross-checked 2026-08-27): Dumont,
-// Mahwah, Pascack Hills, Ramsey, Ridgefield Park, Westwood Regional. Mahwah
-// competes in the Big North Conference for most sports, but football plays
-// in this separate Super Football Conference structure — confirmed via
-// Mahwah's own MaxPreps schedule page ("League: Super - American Red").
+// American Red division of the Super Football Conference for 2026 (per
+// each member's own MaxPreps schedule page, all listing "League: Super -
+// American Red", cross-checked 2026-08-27): Dumont, Lakeland, Mahwah,
+// Ramsey, Westwood. Mahwah competes in the Big North Conference for most
+// sports, but football plays in this separate Super Football Conference
+// structure.
 const OTHER_DIVISION_TEAMS_2026 = [
   { team: 'Dumont', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Pascack Hills', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Lakeland', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
   { team: 'Ramsey', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Ridgefield Park', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Westwood Regional', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Westwood', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
 ];
 
 // Mahwah's own standings row derives from MAHWAH_SCHEDULE_2026 — identical
@@ -240,7 +239,7 @@ export default function MahwahThunderbirdsFootballPage() {
           <div className={styles.statBarItem}>
             <div className={styles.statBarNum}>SFC</div>
             <div className={styles.statBarLabel}>American Red Division</div>
-            <div className={styles.statBarSub}>Dumont · Pascack Hills · Ramsey · Ridgefield Park · Westwood Regional</div>
+            <div className={styles.statBarSub}>Dumont · Lakeland · Ramsey · Westwood</div>
           </div>
           <div className={styles.statBarItem}>
             <div className={styles.statBarNum}>AS</div>
@@ -249,7 +248,7 @@ export default function MahwahThunderbirdsFootballPage() {
           </div>
         </div>
         <p className={styles.statBarNote}>
-          Program history per Wikipedia ("Mahwah High School") and Patch.com; 2026 schedule and conference per MaxPreps, last updated Aug. 26, 2026. Head coach confirmed directly by Tom Zarcone (Mahwah alum), corroborated by the Mahwah HS Sports Booster Club's own listing of Adam Szuch as Football Head Coach.
+          Program history per Wikipedia ("Mahwah High School") and Patch.com; 2026 schedule and conference per MaxPreps, last updated Aug. 26, 2026.
         </p>
       </section>
 
@@ -301,7 +300,7 @@ export default function MahwahThunderbirdsFootballPage() {
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>American Red <em>Standings</em></h2>
           </div>
           <p className={styles.sectionSub}>
-            Mahwah plays in the American Red Division alongside Dumont, Pascack Hills, Ramsey, Ridgefield Park, and Westwood Regional.
+            Mahwah plays in the American Red Division alongside Dumont, Lakeland, Ramsey, and Westwood.
           </p>
         </div>
         <table className={styles.scheduleTable}>
@@ -321,7 +320,7 @@ export default function MahwahThunderbirdsFootballPage() {
         <p className={styles.sampleCaption}>
           {DIVISION_GAMES_PLAYED
             ? 'Standings update as American Red Division games are reported.'
-            : 'All six teams open the season 0-0 — nothing has been played yet as of Aug. 27, 2026. Standings fill in the same way Mahwah’s own row does: automatically, from the schedule above, once results post.'}
+            : 'All five teams open the season 0-0 — nothing has been played yet as of Aug. 27, 2026. Standings fill in the same way Mahwah’s own row does: automatically, from the schedule above, once results post.'}
         </p>
       </section>
 
@@ -358,7 +357,7 @@ export default function MahwahThunderbirdsFootballPage() {
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>2026 <em>Roster</em></h2>
           </div>
           <p className={styles.sectionSub}>
-            Not yet publicly posted as of Aug. 27, 2026 — checked MaxPreps (0 players listed), Mahwah’s own athletics site, and Hudl. The table below is the exact same structure BRHS’s live roster uses (sortable by number, name, grade, position; filterable by class and position group) — it's ready to populate the moment the program shares a roster, with no rebuild needed.
+            Mahwah’s official 2026 varsity roster has not yet been publicly posted. The Media Hub is ready to populate the moment verified roster information becomes available — the table below is the exact same structure BRHS’s live roster uses (sortable by number, name, grade, position; filterable by class and position group), with no rebuild needed.
           </p>
         </div>
         <table className={`${styles.scheduleTable} ${styles.rosterTable}`}>
@@ -396,7 +395,7 @@ export default function MahwahThunderbirdsFootballPage() {
               <div className={styles.coachName}>Adam Szuch</div>
               <div className={styles.coachTitle}>Head Coach, 2026</div>
               <p className={styles.coachBio}>
-                Confirmed directly by Tom Zarcone (Mahwah alum), corroborated by the Mahwah HS Sports Booster Club's own listing of Adam Szuch as Football Head Coach — not independently listed on MaxPreps, the district's coaching directory, or Hudl as of this date, so treat those specific platforms' silence as unrelated rather than contradicting. The program's most recent long-tenured head coach, Jeff Remo, retired in early 2017 after 20 years, including back-to-back sectional championships in 2015 and 2016 (per Patch.com).
+                Leads the Thunderbirds football program for the 2026 season, succeeding longtime head coach Jeff Remo, who retired in early 2017 after 20 years at the helm, including back-to-back sectional championships in 2015 and 2016.
               </p>
             </div>
           </div>
