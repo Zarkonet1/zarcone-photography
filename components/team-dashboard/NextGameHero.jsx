@@ -109,14 +109,12 @@ export default function NextGameHero({ nextGame, lastPlayedGame, latestGallery, 
 
       {state === 'postponed' && (
         <div className={styles.content}>
-          <span className={styles.eyebrow}>Schedule Change — Weather</span>
-          <h1 className={styles.matchup}>
-            Bridgewater-Raritan Panthers
-            <span className={styles.vs}>{nextGame.home ? 'vs' : '@'}</span>
-            {opponentName(nextGame.opponent)}
+          <span className={styles.alertBadge}>⚠ Weather Postponement</span>
+          <h1 className={styles.bigLine}>
+            Moved to {nextGame.date}, {nextGame.time}
           </h1>
           <div className={styles.metaRow}>
-            <span>Postponed from tonight — now {nextGame.date} · {nextGame.time}</span>
+            <span>{nextGame.home ? 'vs' : '@'} {opponentName(nextGame.opponent)} — originally tonight</span>
             <span className={styles.badge}>{nextGame.home ? 'Home' : 'Away'}</span>
             {nextGame.location && <span>{nextGame.location}</span>}
           </div>

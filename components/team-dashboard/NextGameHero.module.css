@@ -48,6 +48,27 @@
   margin-bottom: 14px;
 }
 
+/* Solid alert pill for the postponed-today hero state — needs to read as
+   an urgent notice at a glance, not blend in the way the plain text
+   .eyebrow does. Tom's feedback 2026-08-27: the first postponed banner
+   used .eyebrow + a small .metaRow line for the actual news (new date/
+   time), so the postponement itself was barely visible under the same
+   giant matchup headline shown on a normal day. Fixed by flipping the
+   hierarchy: this badge announces the change, .bigLine below now carries
+   the "moved to" message itself instead of the team names. */
+.alertBadge {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--br-red, #c8102e);
+  padding: 8px 16px;
+  border-radius: 3px;
+  margin-bottom: 18px;
+}
+
 .matchup {
   font-family: var(--sans);
   font-size: clamp(24px, 3.6vw, 40px);
