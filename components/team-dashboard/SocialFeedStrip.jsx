@@ -50,13 +50,23 @@ function InstagramIcon({ size = 14 }) {
   );
 }
 
-// '2026-08-27' -> 'Aug 27'. Falls back to the raw string for anything that
-// isn't a plain YYYY-MM-DD date, rather than showing 'Invalid Date'.
+const MONTH_ABBR = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+// '2026-08-27' -> 'Aug 27'. Deliberately hand-formatted (no Date object,
+// no Intl/toLocaleDateString) rather than the more obvious approach —
+// Node's ICU data and the browser's can format the same instant with
+// different whitespace (a narrow no-break space instead of a regular one
+// is a known Node/ICU quirk), which produces a server/client text mismatch
+// and a React hydration error even though both look identical on screen.
+// A plain lookup table can't drift between server and client.
 function formatPostDate(iso) {
   if (!iso) return '';
-  const d = new Date(`${iso}T12:00:00`);
-  if (Number.isNaN(d.getTime())) return iso;
-  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+  if (!m) return iso;
+  const monthIdx = parseInt(m[2], 10) - 1;
+  const day = parseInt(m[3], 10);
+  if (monthIdx < 0 || monthIdx > 11 || Number.isNaN(day)) return iso;
+  return `${MONTH_ABBR[monthIdx]} ${day}`;
 }
 
 function truncate(text, max = 140) {
