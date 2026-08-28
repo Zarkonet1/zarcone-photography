@@ -11,14 +11,12 @@ import { getRecord, getNextGame, getLastPlayedGame, getCoachTenure, ordinal } fr
 import { sortArticlesByDate, isRecentArticle } from '@/lib/articles';
 import { SCHEDULE_2026 } from '@/lib/footballSchedule';
 import { GALLERIES_2026, getLatestGallery } from '@/lib/footballGalleries';
-import { getSocialFeedPosts } from '@/lib/socialFeed';
 import DashboardHeader from '@/components/team-dashboard/DashboardHeader';
 import NextGameHero from '@/components/team-dashboard/NextGameHero';
 import StatCards from '@/components/team-dashboard/StatCards';
 import MediaCenterGrid from '@/components/team-dashboard/MediaCenterGrid';
 import LatestFromPanthers from '@/components/team-dashboard/LatestFromPanthers';
 import CompactSchedule from '@/components/team-dashboard/CompactSchedule';
-import SocialFeedStrip from '@/components/team-dashboard/SocialFeedStrip';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Football';
@@ -27,11 +25,6 @@ const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRH
 // Add new weeks to GALLERIES_2026 in that file; this page just reads it.
 const LATEST_GALLERY = getLatestGallery(GALLERIES_2026);
 const MEDIA_DAY_GALLERY = GALLERIES_2026.find((g) => g.id === 'media-day');
-
-// Panthers Social — see lib/socialFeed.js for sourcing + the path to
-// live Instagram automation. 'brhs-football' is this page's feed key;
-// a future team page passes its own key/feed from the same registry.
-const SOCIAL_FEED = getSocialFeedPosts('brhs-football');
 
 // Bump CURRENT_SEASON_YEAR once a year — coach tenure (STAT_BAR + COACHES
 // title below) derives from these instead of being hand-typed in two places,
@@ -997,14 +990,6 @@ export default function BRHSPantherFootballPage() {
           </div>
         </div>
       </section>
-
-      {/* ── Panthers Social ──────────────────────────────────────── */}
-      {/* Demonstrates the platform's social-aggregation principle: real,
-          verified @brhspanthersfb posts, natively styled, linking out to
-          the actual Instagram post. Placed directly before Season Gallery
-          per brief — "what the team is sharing now" leads into "the
-          permanent visual record of the season." See lib/socialFeed.js. */}
-      <SocialFeedStrip {...SOCIAL_FEED} />
 
       {/* ── Gallery Preview ─────────────────────────────────────── */}
       {/* #gallery is a plain alias for Linktree/social use; #gallery-alert stays live for existing blog post links */}
