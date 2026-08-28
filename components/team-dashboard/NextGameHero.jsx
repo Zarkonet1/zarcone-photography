@@ -31,6 +31,7 @@
 // own layout/copy per state. Pass getNextGame/getLastPlayedGame results
 // from lib/teamSchedule.js and getLatestGallery's result from
 // lib/footballGalleries.js directly.
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './NextGameHero.module.css';
 
@@ -77,26 +78,47 @@ export default function NextGameHero({
   watermarkSrc = null,
   watermarkAlt = '',
 }) {
-  const now = new Date();
-  const gameRecent =
-    lastPlayedGame &&
-    (now - toSeasonDate(lastPlayedGame.date)) / 86400000 <= RECENT_GAME_WINDOW_DAYS;
+  // HYDRATION FIX (2026-08-28): this state used to be computed directly
+  // from `new Date()` during render. That runs once on Vercel's server
+  // (UTC) and again in the browser during hydration (the visitor's local
+  // timezone) — around the UTC day rollover (~8pm ET) the two clocks land
+  // on different calendar dates, so server and client picked different
+  // `state` values and rendered different markup. That's a textbook React
+  // hydration mismatch (errors #425/#418/#423), confirmed reproducing on
+  // this exact page. Fix: render the deterministic 'next' default on both
+  // the server and the client's first pass (guaranteed to match, since
+  // neither reads the clock), then compute the real, time-dependent state
+  // client-side only, after mount, via useEffect — a normal post-hydration
+  // state update, which React never diffs against the server HTML.
+  const [state, setState] = useState('next');
 
-  // Postponed-today check first — this outranks everything else. Compares
-  // calendar day only (toDateString ignores time-of-day), so it's true for
-  // the entire original game date and false the moment it's tomorrow.
-  const isPostponedToday =
-    nextGame?.postponedFrom &&
-    now.toDateString() === toSeasonDate(nextGame.postponedFrom).toDateString();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    const now = new Date();
+    const gameRecent =
+      lastPlayedGame &&
+      (now - toSeasonDate(lastPlayedGame.date)) / 86400000 <= RECENT_GAME_WINDOW_DAYS;
 
-  let state = 'next';
-  if (isPostponedToday) {
-    state = 'postponed';
-  } else if (gameRecent) {
-    const galleryCoversGame =
-      latestGallery && new Date(latestGallery.date) >= toSeasonDate(lastPlayedGame.date);
-    state = galleryCoversGame ? 'gallery' : 'final';
-  }
+    // Postponed-today check first — this outranks everything else. Compares
+    // calendar day only (toDateString ignores time-of-day), so it's true for
+    // the entire original game date and false the moment it's tomorrow.
+    const isPostponedToday =
+      nextGame?.postponedFrom &&
+      now.toDateString() === toSeasonDate(nextGame.postponedFrom).toDateString();
+
+    if (isPostponedToday) {
+      setState('postponed');
+    } else if (gameRecent) {
+      const galleryCoversGame =
+        latestGallery && new Date(latestGallery.date) >= toSeasonDate(lastPlayedGame.date);
+      setState(galleryCoversGame ? 'gallery' : 'final');
+    } else {
+      setState('next');
+    }
+    // Runs once on mount, same as a page load re-evaluating "today" fresh —
+    // matches the component's original self-expiring behavior with no
+    // timers, just moved off the render path.
+  }, []);
 
   return (
     <section className={styles.hero}>
