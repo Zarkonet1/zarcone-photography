@@ -88,7 +88,7 @@ const ARTICLES = [
     title: 'Girls Volleyball: Bridgewater-Raritan Surges Past Hillsborough, 2-0 (25-23, 25-18)',
     source: 'TAPinto',
     url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/sections/sports/articles/girls-volleyball-bridgewater-raritan-surges-past-hillsborough-2-0-25-23-25-18',
-    date: '2025-09-10' /* CONFIRMED — added 2026-08-22. Matches BRRSD's own recap of the same Sept 9, 2025 home-opener sweep (brrsd.org/o/brrhs/article/2409792, published Sept 10, 2025), which independently corroborates the date and box score: Ella Sorenson 21 assists, Jahniah Bishop 7 kills/3 blocks, Grace Fitzpatrick 9 kills, Katelyn Phan 6 kills/2 aces, Ava Marvuglio 9 digs. Season context: 5 new varsity starters after a 10-4 finish in 2024, including a 2024 state-sectional playoff win over this same Hillsborough team. */
+    date: '2025-09-10' /* CONFIRMED — added 2026-08-22. Matches BRRSD's own recap of the same Sept 9, 2025 home-opener sweep (brrsd.org/o/brrhs/article/2409792, published Sept 10, 2025), which independently corroborates the date and box score: Ella Sorenson 21 assists, Jahniah Bishop 7 kills/3 blocks, Grace Fitzpatrick 9 kills, Katelyn Phan 6 kills/2 aces, Ava Marvuglio 9 digs. Season context: 5 new varsity starters after a 10-4 finish in 2024, including a 2024 state-sectional playoff win over this same Hillsborough team. NOTE, 2026-08-28: "10-4" is this TAPinto article's own phrasing and is left as-is (a direct quote/paraphrase of the source), but per MaxPreps' own 2024-25 team page the actual full-season record was 11-12 — "10-4" looks like a late-season stretch, not the whole season. STAT_BAR below was corrected off MaxPreps' number; this citation comment is not a live stat, just documenting what the article said. */
   },
   {
     title: 'Girls Volleyball: Bridgewater-Raritan Beats Watchung Hills, 2-0 (25-19, 25-14)',
@@ -161,7 +161,15 @@ const WHY_US = [
 // Round 2" beats either an inflated clean sweep or dwelling on the loss).
 const STAT_BAR = [
   { num: "'25", label: 'Somerset County Champions', sub: 'Defeated Mount St. Mary Academy, 3-0 — per TAPinto' },
-  { num: '10-4', label: '2024 Season Record', sub: 'Included a state sectional playoff win over Hillsborough' },
+  // Corrected 2026-08-28 sweep — verification spot-check found this row read
+  // '10-4', which doesn't match MaxPreps' own 2024-25 team page (the
+  // authoritative record source): Overall 11-12, League 2-5 (5th), confirmed
+  // by tallying all 23 matches in that season's own match log (11 W / 12 L).
+  // '10-4' appears to have conflated a late-season hot stretch with the full
+  // season record — the state-sectional-playoff-win-over-Hillsborough claim
+  // in the sub-copy is still accurate (2-1 second-round win, per the same
+  // match log) and is unchanged.
+  { num: '11-12', label: '2024 Season Record', sub: 'Included a state sectional playoff win over Hillsborough' },
   { num: 'Rd. 2', label: '2025 NJSIAA States', sub: 'Won Round 1 at Montgomery, fell in Round 2 at Hillsborough — Central Jersey, Group 4' },
   { num: 'Skyland', label: 'Conference', sub: 'Big Central for football, Skyland for every other BRHS program' },
 ];
