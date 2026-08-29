@@ -191,9 +191,14 @@ const STAT_BAR = [
 // MaxPreps' Big Central standings page or NJ.com's weekly Big Central
 // roundup. All four start 0-0-0 in the preseason, which is accurate, not a
 // bug — the table will fill in as games are played.
+// Updated 2026-08-29 sweep (now part of the daily sweep's standard checks,
+// not just weekly — per Tom, 2026-08-29): Phillipsburg opened 1-0 (beat
+// Parkland, PA, 28-21, non-league — confWins/confLosses stay 0-0). Hillsborough
+// and Ridge haven't played yet. Source: MaxPreps' Big Central - American
+// Silver standings page, last updated Aug 29, 2026 @ 1:18am GMT.
 const OTHER_STANDINGS_2026 = [
   { team: 'Hillsborough', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Phillipsburg', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Phillipsburg', wins: 1, losses: 0, confWins: 0, confLosses: 0 },
   { team: 'Ridge', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
 ];
 

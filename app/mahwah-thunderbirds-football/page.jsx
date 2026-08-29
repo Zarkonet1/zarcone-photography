@@ -45,11 +45,18 @@ const TITLE_YEARS = ['1978', '1979', '1981', '2015', '2016'];
 // Ramsey, Westwood. Mahwah competes in the Big North Conference for most
 // sports, but football plays in this separate Super Football Conference
 // structure.
+// Updated 2026-08-29 sweep (now part of the daily sweep's standard checks,
+// not just weekly — per Tom, 2026-08-29): Lakeland Regional and Ramsey each
+// opened 1-0 (Lakeland over an unnamed opponent 50-20; Ramsey beat Verona
+// 27-21), Westwood opened 0-1 (lost to Manasquan 19-20) — all non-league
+// results, so confWins/confLosses stay 0-0 for all. Dumont and Mahwah
+// haven't played yet. Source: MaxPreps' Super - American Red standings page,
+// last updated Aug 28, 2026 @ 11:40pm GMT.
 const OTHER_DIVISION_TEAMS_2026 = [
   { team: 'Dumont', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Lakeland', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Ramsey', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Westwood', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Lakeland', wins: 1, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Ramsey', wins: 1, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Westwood', wins: 0, losses: 1, confWins: 0, confLosses: 0 },
 ];
 
 // Mahwah's own standings row derives from MAHWAH_SCHEDULE_2026 — identical
