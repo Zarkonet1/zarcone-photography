@@ -19,6 +19,8 @@ import MediaCenterGrid from '@/components/team-dashboard/MediaCenterGrid';
 import LatestFromPanthers from '@/components/team-dashboard/LatestFromPanthers';
 import CompactSchedule from '@/components/team-dashboard/CompactSchedule';
 import SocialFeedStrip from '@/components/team-dashboard/SocialFeedStrip';
+import StatsSection from '@/components/team-dashboard/StatsSection';
+import { TEAM_LEADERS_2026, WEEKLY_BOX_SCORES_2026 } from '@/lib/footballStats';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Football';
@@ -261,6 +263,19 @@ const DASHBOARD_EDITORIAL_ITEMS = sortArticlesByDate(ARTICLES)
 // a second freshness rule. True only when the single most recent article
 // is within that window.
 const DASHBOARD_NEWS_HAS_NEW = DASHBOARD_EDITORIAL_ITEMS.length > 0 && isRecentArticle(DASHBOARD_EDITORIAL_ITEMS[0].date);
+
+// Football's own copy of MediaCenterGrid's tile list, plus a Stats tile —
+// added 2026-08-29 alongside the new StatsSection. Passed explicitly
+// (rather than editing MediaCenterGrid's shared DEFAULT_TILES) so other
+// team pages that don't have a stats section yet aren't affected.
+const MEDIA_CENTER_TILES = [
+  { label: 'Game Galleries', sub: 'View Photos', href: '#gallery-alert', img: '/photos/SPORTS-FB100.jpg' },
+  { label: 'Meet the Team', sub: 'Roster & Coaches', href: '#roster', img: '/photos/media-day-varsity-team.jpg' },
+  { label: 'Media Day', sub: 'View Portraits', href: '#media-day', img: '/photos/media-day-varsity-coaches.jpg' },
+  { label: 'Schedule', sub: 'Full Season', href: '#schedule', img: '/photos/SPORTS-Zarcone-Photography-45.jpg' },
+  { label: 'Stats', sub: 'Leaders & Box Scores', href: '#player-stats', img: '/photos/SPORTS-Zarcone-Photography-0030.jpg' },
+  { label: 'News', sub: 'Latest Coverage', href: '#news', img: '/photos/SPORTS-Zarcone-Photography-0088.jpg' },
+];
 
 const COACHES = [
   {
@@ -623,7 +638,7 @@ export default function BRHSPantherFootballPage() {
         seasonSub={DASHBOARD_SEASON_SUB}
       />
 
-      <MediaCenterGrid newsHasNew={DASHBOARD_NEWS_HAS_NEW} />
+      <MediaCenterGrid newsHasNew={DASHBOARD_NEWS_HAS_NEW} tiles={MEDIA_CENTER_TILES} />
 
       <LatestFromPanthers items={DASHBOARD_EDITORIAL_ITEMS} />
 
@@ -712,6 +727,22 @@ export default function BRHSPantherFootballPage() {
           </tbody>
         </table>
       </section>
+
+      {/* ── Stats ─────────────────────────────────────────────────
+          Added 2026-08-29, Tom-requested — built as a generic, reusable
+          component (StatsSection) rather than BRHS/football-specific
+          markup, so the same framework can support other team pages and
+          eventually other sports. Data lives in lib/footballStats.js;
+          see that file's header for the sourcing rules. ── */}
+      <StatsSection
+        id="player-stats"
+        eyebrow="2026 Season"
+        title="Player"
+        titleAccent="Stats"
+        subtitle="Team leaders and box scores, updated as games are played and recaps are published. One game in, so this is a Week 1 snapshot — not a full season."
+        leaders={TEAM_LEADERS_2026}
+        boxScores={WEEKLY_BOX_SCORES_2026}
+      />
 
       {/* ── Division Standings ───────────────────────────────────── */}
       <section id="standings" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>

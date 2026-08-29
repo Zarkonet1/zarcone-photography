@@ -1,0 +1,197 @@
+/* Reusable Stats section — see StatsSection.jsx for why this is fully
+   generic (no football/BRHS-specific selectors). Uses the same --br-*
+   CSS variables as the other team-dashboard components, with the same
+   fallback hex values, so it renders sensibly on any team page even
+   before that page defines its own color variables. */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--br-red, #c8102e);
+}
+.eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--br-red, #c8102e);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.sectionH2 {
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: #fff;
+}
+.sectionH2 em {
+  font-style: normal;
+  color: var(--br-red, #c8102e);
+}
+.sectionSub {
+  font-size: 16px;
+  color: var(--br-silver, #9a9ea5);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+/* ─── Team leader cards ─────────────────────────────────────────── */
+.leadersGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+@media (max-width: 900px) { .leadersGrid { grid-template-columns: 1fr 1fr; gap: 18px; } }
+@media (max-width: 480px) { .leadersGrid { grid-template-columns: 1fr; } }
+
+.leaderCard {
+  text-align: center;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 24px 16px;
+}
+.leaderPhotoWrap {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--br-red, #c8102e);
+  background: rgba(255,255,255,0.05);
+}
+.leaderPhotoFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--br-red, #c8102e);
+}
+.leaderValue {
+  font-size: clamp(26px, 3.4vw, 36px);
+  font-weight: 900;
+  color: var(--br-red, #c8102e);
+  line-height: 1;
+}
+.leaderLabel {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-top: 8px;
+}
+.leaderName {
+  font-size: 13px;
+  color: var(--br-silver, #9a9ea5);
+  margin-top: 4px;
+}
+.leaderDetail {
+  font-size: 11px;
+  color: var(--br-silver, #9a9ea5);
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+/* ─── Per-week box score ────────────────────────────────────────── */
+.weekBlock {
+  margin-bottom: 40px;
+}
+.weekBlock:last-child { margin-bottom: 0; }
+.weekHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.weekLabel {
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+.weekResult {
+  font-size: 13px;
+  color: var(--br-silver, #9a9ea5);
+  font-weight: 700;
+}
+
+.catBlock { margin-bottom: 24px; }
+.catBlock:last-child { margin-bottom: 0; }
+.catHead {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--br-red, #c8102e);
+  margin-bottom: 8px;
+}
+
+.statsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+.statsTable th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--br-silver, #9a9ea5);
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.statsTable td {
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+@media (max-width: 640px) {
+  .statsTable thead { display: none; }
+  .statsTable, .statsTable tbody, .statsTable tr, .statsTable td { display: block; width: 100%; }
+  .statsTable tr { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .statsTable td { padding: 2px 0; border-bottom: none; font-size: 13px; }
+  .statsTable td:before {
+    content: attr(data-label);
+    display: inline-block;
+    min-width: 90px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--br-silver, #9a9ea5);
+  }
+}
+
+.sourceNote {
+  font-size: 12px;
+  color: var(--br-silver, #9a9ea5);
+  margin-top: 10px;
+  font-style: italic;
+}
+.sourceNote a {
+  color: var(--br-red, #c8102e);
+}
