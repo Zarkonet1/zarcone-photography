@@ -59,10 +59,29 @@
 @media (max-width: 480px) { .leadersGrid { grid-template-columns: 1fr; } }
 
 .leaderCard {
+  display: block;
   text-align: center;
   background: rgba(255,255,255,0.02);
   border: 1px solid rgba(255,255,255,0.1);
   padding: 24px 16px;
+}
+
+/* Only applied when a leader card resolves to a real roster anchor —
+   see StatsSection.jsx. Plain cards (no roster match) get no hover/focus
+   affordance, since they aren't interactive. */
+.leaderCardLink {
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+.leaderCardLink:hover {
+  border-color: var(--br-red, #c8102e);
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-2px);
+}
+.leaderCardLink:focus-visible {
+  outline: 2px solid var(--br-red, #c8102e);
+  outline-offset: 2px;
+  border-color: var(--br-red, #c8102e);
 }
 .leaderPhotoWrap {
   position: relative;

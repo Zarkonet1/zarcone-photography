@@ -21,6 +21,7 @@ import CompactSchedule from '@/components/team-dashboard/CompactSchedule';
 import SocialFeedStrip from '@/components/team-dashboard/SocialFeedStrip';
 import StatsSection from '@/components/team-dashboard/StatsSection';
 import { TEAM_LEADERS_2026, WEEKLY_BOX_SCORES_2026 } from '@/lib/footballStats';
+import { slugifyPlayerName, jumpToPlayerAnchor } from '@/lib/players';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Football';
@@ -464,7 +465,10 @@ const ROSTER_2026 = ROSTER_RAW_2026
     ...p,
     grade: gradeFromClassYear(p.classYear),
     group: OFF_POS_GROUP[p.offPos] || 'Wide Receivers',
-    slug: `${p.first}-${p.last}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+    // Centralized in lib/players.js (2026-08-29) so Stats-leader-card
+    // linking resolves the exact same slug — don't hand-roll this regex
+    // a third time anywhere else.
+    slug: slugifyPlayerName(`${p.first} ${p.last}`),
   }))
   .sort((a, b) => a.number - b.number);
 
@@ -489,7 +493,7 @@ const MANAGERS_2026 = MANAGERS_RAW_2026
   .map((p) => ({
     ...p,
     grade: gradeFromClassYear(p.classYear),
-    slug: `${p.first}-${p.last}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+    slug: slugifyPlayerName(`${p.first} ${p.last}`),
   }))
   .sort((a, b) => a.last.localeCompare(b.last));
 
@@ -521,6 +525,36 @@ export default function BRHSPantherFootballPage() {
     }
   };
   const rosterSortArrow = (key) => (rosterSortKey === key ? (rosterSortDir === 'asc' ? ' ▲' : ' ▼') : '');
+
+  // Stats-leader-card → Roster-row linking (2026-08-29). The generic jump
+  // + highlight lives in lib/players.js; this page-specific wrapper exists
+  // only because the Roster section can hide a real player from the DOM
+  // via its own filter/pagination state (position/class filters, and a
+  // 15-row preview until "Show All" is clicked) — those are UI
+  // conveniences, not meant to block a direct link to a player who *is*
+  // on the roster. If the target row isn't already in the DOM, reset those
+  // filters and expand the list first, then wait a tick for React to
+  // re-render before scrolling. Passed to StatsSection as
+  // `onPlayerLinkClick` — StatsSection itself has no idea the Roster
+  // section works this way, keeping that component fully generic.
+  function handlePlayerLinkClick(rosterEntry, anchorId, event) {
+    if (event) event.preventDefault();
+    if (!rosterEntry) return;
+    const alreadyInDom = typeof document !== 'undefined' && document.getElementById(anchorId);
+    if (!alreadyInDom) {
+      setRosterPositionFilter('All');
+      setRosterClassFilter('All');
+      setRosterExpanded(true);
+    }
+    // Two rAFs reliably lands after React's commit + layout for a setState
+    // triggered just above — simpler than threading a ref/effect through
+    // for what's ultimately a navigation nicety, not app-critical timing.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        jumpToPlayerAnchor(anchorId);
+      });
+    });
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -742,6 +776,8 @@ export default function BRHSPantherFootballPage() {
         subtitle="Team leaders and box scores, updated as games are played and recaps are published. One game in, so this is a Week 1 snapshot — not a full season."
         leaders={TEAM_LEADERS_2026}
         boxScores={WEEKLY_BOX_SCORES_2026}
+        roster={ROSTER_2026}
+        onPlayerLinkClick={handlePlayerLinkClick}
       />
 
       {/* ── Division Standings ───────────────────────────────────── */}

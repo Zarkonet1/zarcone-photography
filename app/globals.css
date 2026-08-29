@@ -200,3 +200,27 @@ a {
     height: 560px;
   }
 }
+
+/* ─── Player-anchor highlight (shared, generic) ──────────────────────
+   Added 2026-08-29 for Stats-leader-card → Roster-row deep linking on
+   the BRHS Football Media Hub, but deliberately sport/team/section
+   agnostic: lib/players.js's jumpToPlayerAnchor() toggles this class on
+   whatever element id it's given, so any future component (a game recap,
+   a player spotlight, a gallery caption) can trigger the same "you just
+   landed here" flash on its own markup without needing that markup's
+   CSS Module. A plain global class (not a CSS Module class) is
+   deliberate here — it needs to be addressable by id from components
+   that don't share a CSS Module with the target element. */
+@keyframes player-anchor-pulse {
+  0%   { background-color: rgba(200, 184, 154, 0.35); }
+  100% { background-color: transparent; }
+}
+.player-anchor-highlight {
+  animation: player-anchor-pulse 1.8s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .player-anchor-highlight {
+    animation: none;
+    background-color: rgba(200, 184, 154, 0.35);
+  }
+}

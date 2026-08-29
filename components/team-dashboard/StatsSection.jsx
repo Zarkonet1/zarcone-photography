@@ -14,8 +14,25 @@
 // `photo` is an explicit path (or omitted) — this component doesn't derive
 // a jersey-number-to-photo path itself, since not every sport/team has a
 // portraits-by-number convention; pass whatever path the page already uses.
+//
+// Player linking (added 2026-08-29): pass `roster` (the page's own
+// ROSTER_2026-shaped array — anything with `.first`/`.last`/`.slug`) and a
+// leader card whose `name` matches a roster entry becomes a real link to
+// that player's existing Roster-section anchor (id={`roster-${slug}`}) via
+// lib/players.js's shared helpers — no second player-identity system, no
+// hardcoded per-leader hrefs. A leader with no matching roster entry stays
+// a plain, non-interactive card rather than linking to nothing. The
+// scroll-and-highlight behavior itself is generic (see jumpToPlayerAnchor)
+// and reusable by any future component, not just this one. Pass
+// `onPlayerLinkClick(rosterEntry, anchorId, event)` when the host page
+// needs to do something first (e.g. this page's Roster section can filter/
+// paginate players out of the DOM — the football page resets those
+// filters and waits a tick before jumping, see its own handler); omit it
+// and this component just jumps directly, which is enough for a page
+// whose roster always fully renders.
 import Image from 'next/image';
 import styles from './StatsSection.module.css';
+import { findRosterEntryByName, rosterAnchorId, jumpToPlayerAnchor } from '@/lib/players';
 
 export default function StatsSection({
   id = 'stats',
@@ -25,6 +42,8 @@ export default function StatsSection({
   subtitle,
   leaders = [],
   boxScores = [],
+  roster = [],
+  onPlayerLinkClick,
 }) {
   const hasContent = leaders.length > 0 || boxScores.length > 0;
 
@@ -42,24 +61,59 @@ export default function StatsSection({
 
       {leaders.length > 0 && (
         <div className={styles.leadersGrid}>
-          {leaders.map((l, i) => (
-            <div key={i} className={styles.leaderCard}>
-              <div className={styles.leaderPhotoWrap}>
-                {l.photo ? (
-                  <Image src={l.photo} alt={l.name} fill sizes="80px" style={{ objectFit: 'cover' }} />
-                ) : (
-                  <div aria-hidden="true" className={styles.leaderPhotoFallback}>{l.number ?? '—'}</div>
-                )}
-              </div>
-              <div className={styles.leaderValue}>{l.value}</div>
-              <div className={styles.leaderLabel}>{l.category}</div>
-              <div className={styles.leaderName}>
-                {l.name}
-                {l.number != null ? ` · #${l.number}` : ''}
-              </div>
-              {l.detail && <div className={styles.leaderDetail}>{l.detail}</div>}
-            </div>
-          ))}
+          {leaders.map((l, i) => {
+            const rosterEntry = findRosterEntryByName(roster, l.name);
+            const anchorId = rosterEntry ? rosterAnchorId(rosterEntry.slug) : null;
+
+            const cardBody = (
+              <>
+                <div className={styles.leaderPhotoWrap}>
+                  {l.photo ? (
+                    <Image src={l.photo} alt={l.name} fill sizes="80px" style={{ objectFit: 'cover' }} />
+                  ) : (
+                    <div aria-hidden="true" className={styles.leaderPhotoFallback}>{l.number ?? '—'}</div>
+                  )}
+                </div>
+                <div className={styles.leaderValue}>{l.value}</div>
+                <div className={styles.leaderLabel}>{l.category}</div>
+                <div className={styles.leaderName}>
+                  {l.name}
+                  {l.number != null ? ` · #${l.number}` : ''}
+                </div>
+                {l.detail && <div className={styles.leaderDetail}>{l.detail}</div>}
+              </>
+            );
+
+            // No roster match (e.g. name mismatch, or player not on this
+            // page's roster) — stay a plain, non-clickable card rather
+            // than link to an anchor that doesn't exist.
+            if (!anchorId) {
+              return (
+                <div key={i} className={styles.leaderCard}>
+                  {cardBody}
+                </div>
+              );
+            }
+
+            return (
+              <a
+                key={i}
+                href={`#${anchorId}`}
+                className={`${styles.leaderCard} ${styles.leaderCardLink}`}
+                aria-label={`Jump to ${l.name}'s entry in the roster`}
+                onClick={(e) => {
+                  if (onPlayerLinkClick) {
+                    onPlayerLinkClick(rosterEntry, anchorId, e);
+                  } else {
+                    e.preventDefault();
+                    jumpToPlayerAnchor(anchorId);
+                  }
+                }}
+              >
+                {cardBody}
+              </a>
+            );
+          })}
         </div>
       )}
 
