@@ -388,6 +388,13 @@ export default function MahwahThunderbirdsFootballPage() {
       </section>
 
       {/* ── Coaching Staff & Program ────────────────────────────── */}
+      {/* Corrected 2026-08-28 sweep: bio previously said Szuch "succeeded"
+          Jeff Remo directly — false. Remo retired 2017; Chris Diaz was head
+          coach 2017-2022 (3 playoff appearances, 2019 NJSFC title per
+          bergenpassaicfootball.com); Szuch took over in 2022 per Mahwah
+          Post's "State of the Program" piece (published 2022-07-25, i.e.
+          when he was introduced as the new coach). Fixed to name Diaz as
+          the actual predecessor rather than skip straight to Remo. */}
       <section id="program">
         <div className={styles.sectionHead}>
           <div>
@@ -400,9 +407,9 @@ export default function MahwahThunderbirdsFootballPage() {
             <div className={styles.coachAvatar}>AS</div>
             <div>
               <div className={styles.coachName}>Adam Szuch</div>
-              <div className={styles.coachTitle}>Head Coach, 2026</div>
+              <div className={styles.coachTitle}>Head Coach, Since 2022</div>
               <p className={styles.coachBio}>
-                Leads the Thunderbirds football program for the 2026 season, succeeding longtime head coach Jeff Remo, who retired in early 2017 after 20 years at the helm, including back-to-back sectional championships in 2015 and 2016.
+                Leads the Thunderbirds football program into the 2026 season, a role he&apos;s held since 2022 after succeeding Chris Diaz. The program&apos;s last sustained sectional run came under longtime coach Jeff Remo, who won back-to-back sectional championships in 2015 and 2016 before retiring in 2017 after 20 years at the helm.
               </p>
             </div>
           </div>
