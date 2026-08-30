@@ -17,7 +17,7 @@ If your program has a page on our site, individual portraits are often built rig
 
 For the real files — full resolution, ready for print or a recruiting profile — the private team gallery is the one that matters. Downloads and professional print ordering happen there, not from any preview embedded on a webpage.
 
-**Right now:** BRHS Panther Football's 2026 Media Day portraits are live both ways — the [Panther Football hub page](/brhs-panther-football) has every player's portrait built into the roster (click a jersey number), and the full-resolution files are in the **[2026 Media Day Gallery](https://galleries.zarconephotography.com/client/2026-brhs-football-media-day)**.
+**Right now:** BRHS Panther Football's 2026 Media Day portraits are live both ways — the [Bridgewater Raritan football hub page](/brhs-panther-football) has every player's portrait built into the roster (click a jersey number), and the full-resolution files are in the **[2026 Media Day Gallery](https://galleries.zarconephotography.com/client/2026-brhs-football-media-day)**.
 
 ## What These Photos Are Actually For
 

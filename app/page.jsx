@@ -161,7 +161,7 @@ export default function Home() {
 
       {/* ── Pain Intro ───────────────────────────────────────── */}
       <section className={styles.painIntro}>
-        <p>Most families end up with the same story: a milestone passes, the phone photos don't do it justice, and the moment is gone. That's what this is for — photography built for the seasons, people, and events that are actually worth documenting properly. It's also why schools and athletic programs across New Jersey partner with Zarcone Photography as their official media partner, not just their photographer.</p>
+        <p>Most families end up with the same story: a milestone passes, the phone photos don't do it justice, and the moment is gone. That's what this is for — photography built for the seasons, people, and events that are actually worth documenting properly. It's also why schools and athletic programs across New Jersey partner with Zarcone Photography as their official media partner, not just their photographer — including full-season coverage as the official media partner of <Link href="/brhs-panther-football" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>Bridgewater Raritan football</Link>, and why families across the state turn to Zarcone as the <Link href="/sports-photographer-nj" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>sports photographer NJ</Link> teams trust for game-day coverage.</p>
       </section>
 
       {/* ── Disciplines ──────────────────────────────────────── */}

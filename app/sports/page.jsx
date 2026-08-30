@@ -164,12 +164,20 @@ export default function SportsPage() {
       <p className={styles.painLine} style={{ paddingTop: 0 }}>
         Currently covering the 2026 season as official media partner of{' '}
         <Link href="/brhs-panther-football" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
-          BRHS Panther Football →
+          Bridgewater Raritan Panthers football →
         </Link>
         {' '}and the 2026-27 season as official photography &amp; social media partner of{' '}
         <Link href="/brhs-panther-wrestling" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
           BRHS Panther Wrestling →
         </Link>
+      </p>
+
+      <p className={styles.painLine} style={{ paddingTop: 0 }}>
+        Looking for a{' '}
+        <Link href="/sports-photographer-nj" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
+          sports photographer NJ
+        </Link>
+        {' '}teams and families actually trust for game-day coverage? Every gallery below is a real example of that work.
       </p>
 
       <p className={styles.painLine} style={{ paddingTop: 0 }}>
