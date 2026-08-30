@@ -4,11 +4,11 @@ import PageHero from '@/components/PageHero';
 import styles from '@/app/seo-page.module.css';
 
 export const metadata = {
-  title: 'Sports Photographer — New Jersey | Zarcone Photography',
-  description: 'Professional sports photographer serving high schools, leagues, and athletes across New Jersey. Based in Bridgewater, NJ.',
+  title: 'Sports Photographer — Central NJ | Zarcone Photography',
+  description: 'Professional sports photographer serving high schools, leagues, and athletes across Central NJ and the rest of New Jersey. Based in Bridgewater, NJ.',
   openGraph: {
-    title: 'Sports Photographer — New Jersey | Zarcone Photography',
-    description: 'Sports photographer based in Bridgewater, NJ. High school sports, youth leagues, and athlete portraits throughout New Jersey.',
+    title: 'Sports Photographer — Central NJ | Zarcone Photography',
+    description: 'Sports photographer based in Bridgewater, NJ — serving Central NJ and teams statewide. High school sports, youth leagues, and athlete portraits.',
     url: 'https://www.zarconephotography.com/sports-photographer-nj',
     type: 'website',
     images: [
@@ -138,7 +138,7 @@ export default function SportsPhotographerNJ() {
 
       <PageHero
         eyebrow="Sports Photography · New Jersey"
-        title="Sports Photographer — New Jersey"
+        title="Sports Photographer — Central New Jersey"
         description="High school athletics, youth leagues, and individual athlete coverage. Based in Bridgewater, NJ — serving teams and programs across the state."
         imageSrc="/photos/i-s7zBdzk.jpg"
       />
@@ -152,7 +152,7 @@ export default function SportsPhotographerNJ() {
           <p>High school athletes put in years of work before they ever step onto a varsity field. A single season contains hundreds of moments that disappear the second they happen — a first-period takedown, a game-winning goal, a senior's last home game.</p>
           <p>I've been covering New Jersey athletics for over two decades. The gear is fast — the Nikon Z9 shoots 20 frames per second — but the more important skill is knowing which moment is worth the burst before it happens.</p>
           <p><strong>Athletes deserve photographs that match the intensity they bring to their sport.</strong> That's what I show up to make.</p>
-          <p>Serving high schools, travel teams, youth leagues, and booster clubs throughout Somerset County and across New Jersey — including programs in Warren, Morris, Union, Middlesex, and Hunterdon counties.</p>
+          <p>Serving high schools, travel teams, youth leagues, and booster clubs throughout Somerset County and across Central New Jersey — including programs in Warren, Morris, Union, Middlesex, and Hunterdon counties.</p>
         </div>
       </section>
 
