@@ -29,11 +29,13 @@ const LATEST_GALLERY = getLatestGallery(GALLERIES_2026);
 
 // Individual Media Day player portraits — same convention as football's
 // PORTRAIT_NUMBERS (see app/brhs-panther-football/page.jsx + SITE-CHEATSHEET.md).
-// Empty until a Media Day shoot happens and Tom drops files into
-// public/photos/volleyball-media-day-portraits/{number}.jpg — add jersey
-// numbers here the same session those files land. Deliberately not scheduled
-// yet — no invented date, unlike football/wrestling which had a real one.
-const PORTRAIT_NUMBERS = new Set([]);
+// #5 (Camille Hilton) added 2026-08-31 — a practice/warm-up photo Tom
+// provided directly, not from a formal team Media Day shoot (none scheduled
+// yet), used to seed the new Featured Player spotlight below. Also makes
+// her roster row clickable per the same convention. Add more jersey numbers
+// here the same session real Media Day files land in
+// public/photos/volleyball-media-day-portraits/{number}.jpg.
+const PORTRAIT_NUMBERS = new Set([5]);
 
 // Sourced 2026-08-22 from the 20251029 BRHS Volleyball Sr Night v DelVal
 // SmugMug gallery (323 shots) — the most recent match on file, so this is
@@ -277,6 +279,25 @@ const PLAYMAKERS_2026 = [
   },
 ];
 
+// Featured Player spotlight — mirrors football's FEATURED_PLAYER pattern
+// (see app/brhs-panther-football/page.jsx). Seeded 2026-08-31 per Tom with
+// Camille Hilton; reuses her sourced bio from PLAYMAKERS_2026 above rather
+// than duplicating new copy. NOTE: Tom named her as #6 — the official BRHS
+// Athletics roster (nj.com High School Sports roster sheet, fetched
+// 2026-08-31) has Hilton at #5 and #6 as Clare Amalfitano. Used the sourced
+// number here rather than the conflicting one; flag to Tom to confirm.
+// Badge photo is a practice/warm-up shot Tom provided directly (not a
+// formal Media Day headshot), saved at
+// public/photos/volleyball-media-day-portraits/5.jpg — see PORTRAIT_NUMBERS
+// above. Full-body source frame, so objectPosition is biased toward the
+// top of the crop to keep her face in the square badge.
+const FEATURED_PLAYER = {
+  number: 5,
+  name: 'Camille Hilton',
+  detail: 'Junior · Libero',
+  bio: 'The most proven returning player on the roster. As a sophomore, Hilton was First Team All-Skyland Delaware — 490 digs, 58 aces, 63 assists, and a 5.83 digs/set average. With two of last year’s top back-row players graduated, she’s the obvious foundation to rebuild BR’s serve-receive and defense around.',
+};
+
 // Coaching staff — per Bridgewater-Raritan Athletics' own staff contact
 // directory (brrsd.org/o/brrhs/page/contacts), the most authoritative source
 // available. Note: Josh Everett coaches Girls Volleyball as head coach AND
@@ -316,32 +337,30 @@ const RESULTS_2025 = [
   { date: 'Nov 5, 2025', opponent: 'vs Hillsborough', round: 'NJSIAA Central Jersey, Group 4 — Second Round', result: 'L 2-3', win: false },
 ];
 
-// 2026-27 preseason roster, per MaxPreps (fetched 2026-08-22). Position
-// abbreviations: OH = Outside Hitter, S = Setter, L = Libero, DS = Defensive
-// Specialist, RS = Right Side, MH = Middle Hitter, OPP = Opposite. A player
-// with two positions listed keeps both in the table; the first is used for
-// grouping below. Two players share jersey #7 on MaxPreps' listing
-// (Sophia Di Costanzo, So., and Brooke Krizan, Jr.) — kept as-is rather than
-// silently "fixed," since it wasn't possible to confirm which is a data
-// artifact vs. a genuine number conflict between levels; flag to Tom if this
-// looks wrong once he has the real roster sheet.
+// 2026-27 preseason varsity roster, per BRHS Athletics' official roster
+// sheet published on nj.com High School Sports (Tom-provided PDF, fetched
+// 2026-08-31) — supersedes the earlier MaxPreps-sourced list, which had
+// wrong names/numbers and a jersey-number conflict at #7. Position
+// abbreviations, as given on the sheet: OH = Outside Hitter, O = Opposite,
+// S = Setter, L = Libero, DS = Defensive Specialist, MB = Middle Blocker.
+// A player with two positions listed keeps both in the table; the first is
+// used for grouping below.
 const ROSTER_RAW_2026 = [
-  { number: 1, first: 'Niah', last: 'Arun', grade: 'Sophomore', position: 'L' },
-  { number: 2, first: 'Olivia', last: 'Lin', grade: 'Sophomore', position: '—' },
-  { number: 4, first: 'Emily', last: 'Vetro', grade: 'Sophomore', position: 'OH' },
-  { number: 5, first: 'Sara', last: 'Elfadil', grade: 'Sophomore', position: 'OH, DS' },
-  { number: 7, first: 'Sophia', last: 'Di Costanzo', grade: 'Sophomore', position: 'OH' },
-  { number: 7, first: 'Brooke', last: 'Krizan', grade: 'Junior', position: 'S' },
-  { number: 8, first: 'Reese', last: 'Paxson', grade: 'Sophomore', position: 'L' },
-  { number: 9, first: 'Roma', last: 'Gupta', grade: 'Junior', position: 'DS, L' },
-  { number: 10, first: 'Joselle', last: 'Factor', grade: 'Sophomore', position: 'OH' },
-  { number: 13, first: 'Jamie', last: 'McGeechan', grade: 'Sophomore', position: 'DS' },
-  { number: 16, first: 'Brooke', last: 'Potts', grade: 'Junior', position: 'DS' },
-  { number: 18, first: 'Samantha', last: 'Lopez', grade: 'Sophomore', position: 'RS, MH' },
-  { number: 20, first: 'Sara', last: 'Abbaszadeh', grade: 'Junior', position: 'DS' },
-  { number: 22, first: 'Aryn', last: 'Snitzer', grade: 'Junior', position: 'RS' },
-  { number: 25, first: 'Jackie', last: 'Oram', grade: 'Sophomore', position: 'OH, L' },
-  { number: 27, first: 'Klaudia', last: 'Swider', grade: 'Sophomore', position: 'OPP, S' },
+  { number: 2, first: 'Reese', last: 'Albano', grade: 'Senior', position: 'OH, O' },
+  { number: 3, first: 'Bellina', last: 'Locrotondo', grade: 'Senior', position: 'O, DS' },
+  { number: 5, first: 'Camille', last: 'Hilton', grade: 'Junior', position: 'L' },
+  { number: 6, first: 'Clare', last: 'Amalfitano', grade: 'Sophomore', position: 'L, DS' },
+  { number: 7, first: 'Margarita', last: 'Silvar', grade: 'Senior', position: 'OH' },
+  { number: 8, first: 'Riley', last: 'Romanak', grade: 'Sophomore', position: 'OH, O' },
+  { number: 11, first: 'Eleana', last: 'Dai', grade: 'Junior', position: 'MB' },
+  { number: 12, first: 'Sara', last: 'Abbaszadeh', grade: 'Junior', position: 'DS' },
+  { number: 14, first: 'Brooke', last: 'Krizan', grade: 'Junior', position: 'S' },
+  { number: 16, first: 'Autumn', last: 'Sachs', grade: 'Junior', position: 'O' },
+  { number: 19, first: 'Viktoria', last: 'Borodkin', grade: 'Senior', position: 'MB, O' },
+  { number: 20, first: 'Quinn', last: 'Levash', grade: 'Sophomore', position: 'MB' },
+  { number: 21, first: 'Klaudia', last: 'Swider', grade: 'Sophomore', position: 'O, S' },
+  { number: 25, first: 'Jackie', last: 'Oram', grade: 'Sophomore', position: 'L, OH' },
+  { number: 28, first: 'Arielle', last: 'Wang', grade: 'Freshman', position: 'OH, O' },
 ];
 
 // Groups by primary (first-listed) position — mirrors football's OFF_POS_GROUP
@@ -351,11 +370,10 @@ const POS_GROUP = {
   S: 'Setters',
   L: 'Liberos',
   DS: 'Defensive Specialists',
-  RS: 'Right Side',
-  MH: 'Middle Hitters',
-  OPP: 'Opposites',
+  MB: 'Middle Blockers',
+  O: 'Opposites',
 };
-const ROSTER_GROUP_ORDER = ['Outside Hitters', 'Setters', 'Liberos', 'Defensive Specialists', 'Right Side', 'Middle Hitters', 'Opposites'];
+const ROSTER_GROUP_ORDER = ['Outside Hitters', 'Setters', 'Liberos', 'Defensive Specialists', 'Middle Blockers', 'Opposites'];
 const CLASS_ORDER = ['Senior', 'Junior', 'Sophomore', 'Freshman'];
 
 function compareRosterRows(a, b, key, dir) {
@@ -663,7 +681,7 @@ export default function BRHSPantherVolleyballPage() {
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>2026 <em>Roster</em></h2>
           </div>
           <p className={styles.sectionSub}>
-            {ROSTER_2026.length} players as of the 2026-27 preseason, per MaxPreps. Media Day portraits post here once a shoot is scheduled.
+            {ROSTER_2026.length} players as of the 2026-27 preseason, per BRHS Athletics' official roster. Media Day portraits post here once a shoot is scheduled.
           </p>
         </div>
         <div className={styles.rosterFilterRow}>
@@ -737,7 +755,7 @@ export default function BRHSPantherVolleyballPage() {
           );
         })()}
         <p className={styles.sampleCaption}>
-          Roster subject to change before the season opener. Position abbreviations: OH = Outside Hitter, S = Setter, L = Libero, DS = Defensive Specialist, RS = Right Side, MH = Middle Hitter, OPP = Opposite.
+          Roster subject to change before the season opener. Position abbreviations: OH = Outside Hitter, O = Opposite, S = Setter, L = Libero, DS = Defensive Specialist, MB = Middle Blocker.
         </p>
 
         {portraitLightbox && (
@@ -783,6 +801,31 @@ export default function BRHSPantherVolleyballPage() {
               <p className={styles.staffNote}>{s.note}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── Featured Player ──────────────────────────────────────── */}
+      <section>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Player Spotlight</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Featured <em>Player</em></h2>
+          </div>
+        </div>
+        <div className={styles.spotlightWrap}>
+          <div className={styles.spotlightBadge}>
+            {PORTRAIT_NUMBERS.has(FEATURED_PLAYER.number) ? (
+              <Image src={`/photos/volleyball-media-day-portraits/${FEATURED_PLAYER.number}.jpg`} alt={`${FEATURED_PLAYER.name} — Bridgewater-Raritan Panther Volleyball, Zarcone Photography`} fill sizes="220px" style={{ objectFit: 'cover', objectPosition: 'center 12%' }} />
+            ) : (
+              `#${FEATURED_PLAYER.number}`
+            )}
+          </div>
+          <div>
+            <div className={styles.spotlightName}>{FEATURED_PLAYER.name}</div>
+            <div className={styles.spotlightClass}>{FEATURED_PLAYER.detail}</div>
+            <p className={styles.spotlightBio}>{FEATURED_PLAYER.bio}</p>
+            <p className={styles.spotlightNote}>Season stats provided directly by Zarcone Photography's program contact; not sourced to a published preseason article.</p>
+          </div>
         </div>
       </section>
 
