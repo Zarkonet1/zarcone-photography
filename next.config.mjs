@@ -98,6 +98,10 @@ const nextConfig = {
       // link) — not part of the /2025-2026-brhs-wrestling gallery rule
       // above since it has no slug at all. Found 404ing, 2026-08-25.
       { source: '/2025-2026-', destination: '/client-area', permanent: true },
+
+      // Legacy SmugMug gallery permalinks → 404s found in Vercel runtime logs, 2026-08-04
+      { source: '/28feb20-tapinto-lion-king-jp-case-middle-school/:slug*',   destination: '/client-area',          permanent: true },
+      { source: '/20251017-brhs-football-lsr-night-v-westfield/:slug*',     destination: '/brhs-panther-football', permanent: true },
     ];
   },
 };
