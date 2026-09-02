@@ -957,7 +957,7 @@ export default function BRHSPantherVolleyballPage() {
         </div>
         <p style={{ color: 'var(--br-silver)', fontSize: 16, lineHeight: 1.8, maxWidth: 720 }}>
           Zarcone Photography is the official media partner of BRHS Panther Girls Volleyball — full match-day coverage, a custom Senior
-          Night poster for every graduating senior, and recruiting content, from a photographer with 30+ years shooting NJ high school sports — plus the
+          Night poster for every graduating senior, and recruiting content, from the same <Link href="/sports-photographer-nj">sports photographer NJ</Link> programs have trusted for 30+ years — plus the
           same role with <Link href="/brhs-panther-football">Panther Football</Link> and <Link href="/brhs-panther-wrestling">Panther Wrestling</Link>.
           Outside the season partnership, private senior sessions, family photos, and other bookings are available too — <a href="#inquire">reach out here</a>.
         </p>

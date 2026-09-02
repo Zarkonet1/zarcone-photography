@@ -8,8 +8,17 @@ import styles from './TrustStrip.module.css';
 // add its href here — no markup or CSS changes needed. Set `external: true`
 // for hrefs that point off-site (e.g. a sister brand) so it renders as a
 // plain new-tab link instead of an internal next/link route.
+//
+// 2026-09-02: Wrestling and Volleyball got clickable entries too, but no
+// distinct program logo art exists for either yet — both reuse the same
+// "BR Panthers Athletics" image as separate marquee tiles with sport-specific
+// alt text. Visually identical to the football tile; swap in real wrestling/
+// volleyball logo files the moment Tom provides them (image swap only, no
+// other changes needed).
 const LOGOS = [
   { src: '/photos/TRUST - large_Panther_athletics.PNG',             alt: 'BR Panthers Athletics', href: '/brhs-panther-football' },
+  { src: '/photos/TRUST - large_Panther_athletics.PNG',             alt: 'BR Panthers Athletics — Wrestling', href: '/brhs-panther-wrestling' },
+  { src: '/photos/TRUST - large_Panther_athletics.PNG',             alt: 'BR Panthers Athletics — Volleyball', href: '/brhs-panther-volleyball' },
   { src: '/photos/TRUST - njsiaa-logo2-reformatted_0.jpg',          alt: 'NJSIAA' },
   { src: '/photos/TRUST - employerLogo.png',                        alt: 'Bridgewater-Raritan Regional School District', href: '/brhs-panther-football' },
   { src: '/photos/TRUST - employerLogo-2.png',                      alt: 'Parsippany-Troy Hills Township Schools' },

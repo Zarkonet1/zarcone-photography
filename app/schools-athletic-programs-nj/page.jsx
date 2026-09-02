@@ -158,6 +158,20 @@ export default function SchoolsAthleticProgramsNJ() {
         </p>
       </div>
 
+      <div className={styles.caseStudy}>
+        <span className={styles.caseStudyLabel}>Case Study</span>
+        <p className={styles.caseStudyText}>
+          Zarcone Photography is also the official photography and social media graphics partner of <Link href="/brhs-panther-wrestling">BRHS Panther Wrestling</Link>, coming off the program's first-ever back-to-back sectional championship. <Link href="/brhs-panther-wrestling">View the partnership hub →</Link>
+        </p>
+      </div>
+
+      <div className={styles.caseStudy}>
+        <span className={styles.caseStudyLabel}>Case Study</span>
+        <p className={styles.caseStudyText}>
+          The same partnership model covers <Link href="/brhs-panther-volleyball">BRHS Panther Girls Volleyball</Link> — full match-day coverage, Senior Night posters, and season-long galleries. <Link href="/brhs-panther-volleyball">View the partnership hub →</Link>
+        </p>
+      </div>
+
       {/* Intro */}
       <section className={styles.intro}>
         <div className={styles.introLabel}>
@@ -167,7 +181,7 @@ export default function SchoolsAthleticProgramsNJ() {
           <p>Most athletic programs handle photography the same way: a parent volunteer with a phone, or a photographer booked one game at a time. Neither produces the consistent, professional imagery a program needs for recruiting, promotion, and the record of the season itself.</p>
           <p><strong>Recruiting starts earlier than it ever has.</strong> The images a player sends a college program — or that your program uses to represent itself to the community — carry real weight. Game day photography done right isn't a nice-to-have. It's part of how a program communicates its identity.</p>
           <p>Zarcone Photography works directly with athletic directors, coaches, and booster clubs to build season-long partnerships: one point of contact, consistent coverage, and a licensing structure built for how schools actually use images.</p>
-          <p>Two examples of what this looks like in practice: Zarcone Photography is currently the official media partner and a Gold Level Sponsor of BRHS Panther Football for the 2026 season — full season coverage, Media Day portraits, and Senior Night posters. Details in the <Link href="/blog/brhs-panther-football-2026-media-partnership">partnership announcement</Link>, or visit the <Link href="/brhs-panther-football">Panther Football season hub</Link> for galleries and ordering. Zarcone Photography is also the official photography and social media graphics partner of <Link href="/brhs-panther-wrestling">BRHS Panther Wrestling</Link> for 2026-27, coming off the program's first-ever back-to-back sectional championship. Every program's needs are different, and a partnership with your team would be scoped around your season, not a copy of someone else's.</p>
+          <p>Three examples of what this looks like in practice: Zarcone Photography is currently the official media partner and a Gold Level Sponsor of BRHS Panther Football for the 2026 season — full season coverage, Media Day portraits, and Senior Night posters. Details in the <Link href="/blog/brhs-panther-football-2026-media-partnership">partnership announcement</Link>, or visit the <Link href="/brhs-panther-football">Panther Football season hub</Link> for galleries and ordering. Zarcone Photography is also the official photography and social media graphics partner of <Link href="/brhs-panther-wrestling">BRHS Panther Wrestling</Link> for 2026-27, coming off the program's first-ever back-to-back sectional championship. Zarcone Photography holds the same role with <Link href="/brhs-panther-volleyball">BRHS Panther Girls Volleyball</Link>, covering every home match, Senior Night, and season-long galleries. Every program's needs are different, and a partnership with your team would be scoped around your season, not a copy of someone else's.</p>
         </div>
       </section>
 

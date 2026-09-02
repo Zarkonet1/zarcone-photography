@@ -166,9 +166,13 @@ export default function SportsPage() {
         <Link href="/brhs-panther-football" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
           Bridgewater Raritan Panthers football →
         </Link>
-        {' '}and the 2026-27 season as official photography &amp; social media partner of{' '}
+        {', '}the 2026-27 season as official photography &amp; social media partner of{' '}
         <Link href="/brhs-panther-wrestling" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
           BRHS Panther Wrestling →
+        </Link>
+        {', and the 2026 season as official media partner of '}
+        <Link href="/brhs-panther-volleyball" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
+          BRHS Panther volleyball photography →
         </Link>
       </p>
 
