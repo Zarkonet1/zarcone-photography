@@ -203,9 +203,23 @@ const STAT_BAR = [
 // and Ridge haven't played yet. Source: MaxPreps' Big Central - American
 // Silver standings page, last updated Aug 29, 2026 @ 1:18am GMT.
 const OTHER_STANDINGS_2026 = [
-  { team: 'Hillsborough', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Phillipsburg', wins: 1, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Ridge', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
+  // Updated 2026-09-04 sweep: Hillsborough lost its opener (L 25-41 @
+  // Manalapan, 8/28) then beat Hunterdon Central (W 21-14, 9/3) — 1-1
+  // overall, confirmed via Hillsborough's own MaxPreps schedule page and
+  // the Big Central - American Silver league standings page, both fresh
+  // as of this sweep. No league games played yet for anyone (confWins/
+  // confLosses all still 0).
+  { team: 'Hillsborough', wins: 1, losses: 1, confWins: 0, confLosses: 0 },
+  // Updated 2026-09-05 sweep: Phillipsburg beat Emmaus (PA), 24-10, 9/4 —
+  // now 2-0. Ridge beat Sayreville 21-7, 9/4 (or 9/5 per Ridge's own stale
+  // schedule cache — box score not directly viewable, but the Big Central -
+  // American Silver league standings page, updated fresher than Ridge's own
+  // team page, confirms 1-0, PF 21 PA 7). Both confirmed via the league
+  // standings page (support.maxpreps.com), which was more current than
+  // either team's own stale schedule cache — same pattern already
+  // documented for Phillipsburg/Dumont on 2026-08-29/08-30/09-04.
+  { team: 'Phillipsburg', wins: 2, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Ridge', wins: 1, losses: 0, confWins: 0, confLosses: 0 },
 ];
 
 // BRHS's own standings row derives from SCHEDULE_2026 — see the comment on

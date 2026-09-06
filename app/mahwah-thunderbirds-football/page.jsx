@@ -53,10 +53,22 @@ const TITLE_YEARS = ['1978', '1979', '1981', '2015', '2016'];
 // haven't played yet. Source: MaxPreps' Super - American Red standings page,
 // last updated Aug 28, 2026 @ 11:40pm GMT.
 const OTHER_DIVISION_TEAMS_2026 = [
-  { team: 'Dumont', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Lakeland', wins: 1, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Ramsey', wins: 1, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Westwood', wins: 0, losses: 1, confWins: 0, confLosses: 0 },
+  // Updated 2026-09-04 sweep: Dumont lost 22-30 to Boonton on 9/3 (first
+  // game of its season) — confirmed via the Super - American Red league
+  // standings page and independently via Boonton's own MaxPreps schedule
+  // (mutual cross-listing, W 30-22 for Boonton). Dumont's own team-schedule
+  // page was still showing a stale 0-0 as of this sweep (last updated
+  // 8/23, predates the game) — same stale-team-page-vs-fresh-league-page
+  // pattern already documented for Phillipsburg on 2026-08-29/08-30.
+  { team: 'Dumont', wins: 0, losses: 1, confWins: 0, confLosses: 0 },
+  // Updated 2026-09-05 sweep, all via the Super - American Red league
+  // standings page (fresher than each team's own stale schedule cache,
+  // same pattern documented for Phillipsburg/Dumont in FOOTBALL-SOURCES.md):
+  // Lakeland beat West Milford 25-14 (9/4) — now 2-0. Ramsey beat Suffern
+  // 34-17 (9/4) — now 2-0. Westwood beat River Dell 28-18 (9/4) — now 1-1.
+  { team: 'Lakeland', wins: 2, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Ramsey', wins: 2, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Westwood', wins: 1, losses: 1, confWins: 0, confLosses: 0 },
 ];
 
 // Mahwah's own standings row derives from MAHWAH_SCHEDULE_2026 — identical
