@@ -150,7 +150,7 @@ async function sendLeadEmail(fields) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
-      to: 'tom.zarcone@mac.com',
+      to: 'tom@zarconephotography.com',
       replyTo: fields.email && fields.email.trim() ? fields.email : undefined,
       subject: `AI Chat Lead — ${fields.name}`,
       html: `
@@ -175,7 +175,7 @@ async function sendEscalationEmail(fields, recentMessages) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
-      to: 'tom.zarcone@mac.com',
+      to: 'tom@zarconephotography.com',
       subject: `Chat needs you now — ${fields.reason || 'escalation'}`,
       html: `
         <h2>Live Chat Escalation</h2>
