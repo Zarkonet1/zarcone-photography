@@ -75,6 +75,12 @@ const CAROUSEL = [
 // football and wrestling.
 const ARTICLES = [
   {
+    title: "Bridgewater-Raritan High School Girls' Volleyball Team Swept Past North Hunterdon Regional High School",
+    source: 'BRRSD Athletics',
+    url: 'https://cr.brrsd.org/o/brrhs/article/3115928',
+    date: '2026-09-07' /* added 2026-09-08 sweep — BRRSD's own recap of the already-reflected Sept 3, 2026 North Hunterdon win (2-0, 25-19/25-16 — matches SCHEDULE_2026 exactly). Independently corroborates Camille Hilton's "490 digs last season as a sophomore" figure, which the 2026-09-06 sweep's spot-check found real but couldn't fully verify (JS-rendered TAPinto body text wasn't retrievable that session) — now confirmed via this separate BRRSD source. Also names assistant coaches Maria Cruz and Kristin Bonczek (not currently on the page's coaching staff listing) and gives Josh Everett's full coaching lineage (2005 BRHS boys' state title as a player, 2015 as a boys' assistant under Corey Romanak) — additive detail, not added elsewhere on the page this run since it reads as content expansion rather than a correction. */
+  },
+  {
     title: 'Girls Volleyball: Bridgewater-Raritan Wins Somerset County Tournament, 3-0, Over Mount Saint Mary',
     source: 'TAPinto',
     url: 'https://www.tapinto.net/towns/bridgewater-slash-raritan/sections/sports/articles/girls-volleyball-bridgewater-raritan-wins-somerset-county-tournament-3-0-over-mount-saint-mary',
