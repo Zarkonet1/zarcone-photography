@@ -18,6 +18,9 @@ import StatCards from '@/components/team-dashboard/StatCards';
 import MediaCenterGrid from '@/components/team-dashboard/MediaCenterGrid';
 import LatestFromPanthers from '@/components/team-dashboard/LatestFromPanthers';
 import CompactSchedule from '@/components/team-dashboard/CompactSchedule';
+import StatsSection from '@/components/team-dashboard/StatsSection';
+import { TEAM_LEADERS_2026, WEEKLY_BOX_SCORES_2026 } from '@/lib/volleyballStats';
+import { jumpToPlayerAnchor } from '@/lib/players';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 
@@ -255,6 +258,7 @@ const MEDIA_TILES_VOLLEYBALL = [
   { label: 'Game Galleries', sub: 'View Photos', href: '#gallery-alert', img: '/photos/BRHS-Volleyball-0089.jpg' },
   { label: 'Meet the Team', sub: 'Roster & Coaches', href: '#roster', img: '/photos/BRHS-Volleyball-0064.jpg' },
   { label: 'Schedule', sub: 'Full Season', href: '#schedule', img: '/photos/BRHS-Volleyball-0096.jpg' },
+  { label: 'Stats', sub: 'Leaders & Box Scores', href: '#player-stats', img: '/photos/BRHS-Volleyball-0213.jpg' },
   { label: 'News', sub: 'Latest Coverage', href: '#news', img: '/photos/BRHS-Volleyball-0188.jpg' },
 ];
 
@@ -435,6 +439,27 @@ export default function BRHSPantherVolleyballPage() {
     }
   };
   const rosterSortArrow = (key) => (rosterSortKey === key ? (rosterSortDir === 'asc' ? ' ▲' : ' ▼') : '');
+
+  // Stats-leader-card → Roster-row linking (2026-09-08), same pattern as
+  // football's handlePlayerLinkClick — see that page for the full
+  // rationale. Volleyball's Roster section has no "Show All"/pagination
+  // toggle (only 14 players, always fully rendered), so the only thing
+  // that can hide a real player's row from the DOM is the position/class
+  // filter — reset both to 'All' before jumping if needed.
+  function handlePlayerLinkClick(rosterEntry, anchorId, event) {
+    if (event) event.preventDefault();
+    if (!rosterEntry) return;
+    const alreadyInDom = typeof document !== 'undefined' && document.getElementById(anchorId);
+    if (!alreadyInDom) {
+      setRosterPositionFilter('All');
+      setRosterClassFilter('All');
+    }
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        jumpToPlayerAnchor(anchorId);
+      });
+    });
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -655,6 +680,23 @@ export default function BRHSPantherVolleyballPage() {
           <a href="https://www.maxpreps.com/nj/bridgewater/bridgewater-raritan-panthers/volleyball/schedule/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--br-red)' }}>MaxPreps</a>.
         </p>
       </section>
+
+      {/* ── Stats ─────────────────────────────────────────────────
+          Added 2026-09-08 — same generic StatsSection component football
+          uses (built 2026-08-29, Tom-requested, designed from day one to
+          support other team pages). Data lives in lib/volleyballStats.js;
+          see that file's header for sourcing (NJRecordBook.com). ── */}
+      <StatsSection
+        id="player-stats"
+        eyebrow="2026 Season"
+        title="Player"
+        titleAccent="Stats"
+        subtitle="Team leaders and box scores, updated as matches are played. Five matches in — not a full season."
+        leaders={TEAM_LEADERS_2026}
+        boxScores={WEEKLY_BOX_SCORES_2026}
+        roster={ROSTER_2026}
+        onPlayerLinkClick={handlePlayerLinkClick}
+      />
 
       {/* ── In The News ──────────────────────────────────────────── */}
       <section id="news" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
