@@ -20,7 +20,7 @@ import LatestFromPanthers from '@/components/team-dashboard/LatestFromPanthers';
 import CompactSchedule from '@/components/team-dashboard/CompactSchedule';
 import SocialFeedStrip from '@/components/team-dashboard/SocialFeedStrip';
 import StatsSection from '@/components/team-dashboard/StatsSection';
-import { TEAM_LEADERS_2026, WEEKLY_BOX_SCORES_2026 } from '@/lib/footballStats';
+import { TEAM_LEADERS_2026, WEEKLY_BOX_SCORES_2026, buildSeasonTotalsEntry } from '@/lib/footballStats';
 import { slugifyPlayerName, jumpToPlayerAnchor } from '@/lib/players';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
@@ -790,9 +790,9 @@ export default function BRHSPantherFootballPage() {
         eyebrow="2026 Season"
         title="Player"
         titleAccent="Stats"
-        subtitle="Team leaders and box scores, updated as games are played and recaps are published. One game in, so this is a Week 1 snapshot — not a full season."
+        subtitle="Season totals (via NJ Record Book) plus per-game box scores, updated weekly as games are played."
         leaders={TEAM_LEADERS_2026}
-        boxScores={WEEKLY_BOX_SCORES_2026}
+        boxScores={[buildSeasonTotalsEntry(), ...WEEKLY_BOX_SCORES_2026]}
         roster={ROSTER_2026}
         onPlayerLinkClick={handlePlayerLinkClick}
       />
