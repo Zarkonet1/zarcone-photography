@@ -66,9 +66,21 @@ const OTHER_DIVISION_TEAMS_2026 = [
   // same pattern documented for Phillipsburg/Dumont in FOOTBALL-SOURCES.md):
   // Lakeland beat West Milford 25-14 (9/4) — now 2-0. Ramsey beat Suffern
   // 34-17 (9/4) — now 2-0. Westwood beat River Dell 28-18 (9/4) — now 1-1.
-  { team: 'Lakeland', wins: 2, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Ramsey', wins: 2, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Westwood', wins: 1, losses: 1, confWins: 0, confLosses: 0 },
+  // Updated 2026-09-11 sweep: Lakeland beat Jefferson Township 49-7 on
+  // 9/10 — now 3-0. Not yet posted on MaxPreps (still shows "Report
+  // Score" as of this sweep) but confirmed via NJRecordBook.com's fresh
+  // Lakeland team page — a real result, not a miss (same
+  // NJRB-can-lead-MaxPreps pattern already documented for football/
+  // volleyball box scores in FOOTBALL-SOURCES.md/VOLLEYBALL-SOURCES.md).
+  { team: 'Lakeland', wins: 3, losses: 0, confWins: 0, confLosses: 0 },
+  // Westwood beat Ramsey 22-20 on 9/10 (a division game between two of
+  // the other three tracked teams) — Ramsey now 2-1, Westwood now 2-1.
+  // Confirmed via the Super - American Red league standings/scores page.
+  // Dumont's game (vs. Mahwah, 9/10) remains unreported on both MaxPreps
+  // AND NJRecordBook.com as of this sweep — genuinely unplayed-result,
+  // not a miss.
+  { team: 'Ramsey', wins: 2, losses: 1, confWins: 0, confLosses: 0 },
+  { team: 'Westwood', wins: 2, losses: 1, confWins: 0, confLosses: 0 },
 ];
 
 // Mahwah's own standings row derives from MAHWAH_SCHEDULE_2026 — identical

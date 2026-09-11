@@ -222,7 +222,12 @@ const OTHER_STANDINGS_2026 = [
   // either team's own stale schedule cache — same pattern already
   // documented for Phillipsburg/Dumont on 2026-08-29/08-30/09-04.
   { team: 'Phillipsburg', wins: 2, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Ridge', wins: 1, losses: 0, confWins: 0, confLosses: 0 },
+  // Updated 2026-09-11 sweep: Ridge beat Hunterdon Central 23-17 on 9/10 —
+  // now 2-0. Confirmed via the Big Central - American Silver league
+  // standings page and independently via Hunterdon Central's own fresh
+  // MaxPreps schedule page (mutual cross-listing) — Ridge's own team page
+  // is stale (last updated 8/27, doesn't show either 2026 result yet).
+  { team: 'Ridge', wins: 2, losses: 0, confWins: 0, confLosses: 0 },
 ];
 
 // BRHS's own standings row derives from SCHEDULE_2026 — see the comment on
