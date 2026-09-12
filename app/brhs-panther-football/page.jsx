@@ -206,22 +206,18 @@ const STAT_BAR = [
 // and Ridge haven't played yet. Source: MaxPreps' Big Central - American
 // Silver standings page, last updated Aug 29, 2026 @ 1:18am GMT.
 const OTHER_STANDINGS_2026 = [
-  // Updated 2026-09-04 sweep: Hillsborough lost its opener (L 25-41 @
-  // Manalapan, 8/28) then beat Hunterdon Central (W 21-14, 9/3) — 1-1
-  // overall, confirmed via Hillsborough's own MaxPreps schedule page and
-  // the Big Central - American Silver league standings page, both fresh
-  // as of this sweep. No league games played yet for anyone (confWins/
-  // confLosses all still 0).
-  { team: 'Hillsborough', wins: 1, losses: 1, confWins: 0, confLosses: 0 },
-  // Updated 2026-09-05 sweep: Phillipsburg beat Emmaus (PA), 24-10, 9/4 —
-  // now 2-0. Ridge beat Sayreville 21-7, 9/4 (or 9/5 per Ridge's own stale
-  // schedule cache — box score not directly viewable, but the Big Central -
-  // American Silver league standings page, updated fresher than Ridge's own
-  // team page, confirms 1-0, PF 21 PA 7). Both confirmed via the league
-  // standings page (support.maxpreps.com), which was more current than
-  // either team's own stale schedule cache — same pattern already
-  // documented for Phillipsburg/Dumont on 2026-08-29/08-30/09-04.
-  { team: 'Phillipsburg', wins: 2, losses: 0, confWins: 0, confLosses: 0 },
+  // Updated 2026-09-12 sweep: Hillsborough lost at Bridgewater-Raritan,
+  // 14-40, on 9/11 — their first Big Central - American Silver league game
+  // of the season, confirmed via BR's own MaxPreps box score/recap ("The
+  // Raiders now own a 1-2 record"). First league result for either team —
+  // confLosses now 1.
+  { team: 'Hillsborough', wins: 1, losses: 2, confWins: 0, confLosses: 1 },
+  // Updated 2026-09-12 sweep: Phillipsburg lost 31-32 to Freedom (Bethlehem,
+  // PA) on 9/11 — a non-league crossover game, confirmed via SI's Sep 11 NJ
+  // final-scores roundup ("Freedom 32, (#19) Phillipsburg 31") and BR's own
+  // MaxPreps recap, which independently cites the same result. Now 2-1
+  // overall; confWins/confLosses unchanged (still no league games played).
+  { team: 'Phillipsburg', wins: 2, losses: 1, confWins: 0, confLosses: 0 },
   // Updated 2026-09-11 sweep: Ridge beat Hunterdon Central 23-17 on 9/10 —
   // now 2-0. Confirmed via the Big Central - American Silver league
   // standings page and independently via Hunterdon Central's own fresh

@@ -60,7 +60,11 @@ const OTHER_DIVISION_TEAMS_2026 = [
   // page was still showing a stale 0-0 as of this sweep (last updated
   // 8/23, predates the game) — same stale-team-page-vs-fresh-league-page
   // pattern already documented for Phillipsburg on 2026-08-29/08-30.
-  { team: 'Dumont', wins: 0, losses: 1, confWins: 0, confLosses: 0 },
+  // Updated 2026-09-12 sweep: Dumont beat Mahwah 22-21 at home on 9/10 —
+  // their first Super - American Red league game of the season, confirmed
+  // via MaxPreps' box score/recap ("The Huskies now sport a 1-1 record").
+  // Now 1-1 overall, confWins 1/confLosses 0.
+  { team: 'Dumont', wins: 1, losses: 1, confWins: 1, confLosses: 0 },
   // Updated 2026-09-05 sweep, all via the Super - American Red league
   // standings page (fresher than each team's own stale schedule cache,
   // same pattern documented for Phillipsburg/Dumont in FOOTBALL-SOURCES.md):
