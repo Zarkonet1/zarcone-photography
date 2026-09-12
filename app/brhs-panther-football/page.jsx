@@ -328,9 +328,9 @@ const STAFF = [
 ];
 
 const FEATURED_PLAYER = {
-  name: 'Jahmier Black',
-  detail: 'Senior · Running Back',
-  bio: "Black steps in as the full-time starter at running back for his senior season, after rushing for 978 yards and 7 touchdowns as a co-starter in 2025 — a season that ended with Bridgewater-Raritan's first sectional championship in program history. He's drawing FCS interest from programs including Stony Brook and LIU, per PJR Sports Report's 2026 team preview.",
+  name: 'Evan Woodring',
+  detail: 'Senior · Wide Receiver / Defensive Back',
+  bio: "Woodring entered the fall as the presumptive starting quarterback before sophomore J.B. Baxter won the job outright — and turned the demotion into a two-way breakout instead. Through two games he leads Bridgewater-Raritan in receiving (126 yards, 1 TD) and has an interception on defense, while also drawing recruiting interest from Army and Brown. \"Yes, we have a lot of pressure to repeat,\" he said of following last year's program-first sectional title. \"But what happened last year is last year. We have to restart this year.\"",
 };
 
 // 2025 playoff run only — the confirmed, sourced portion of the season.
@@ -477,7 +477,7 @@ const ROSTER_RAW_2026 = [
   { number: 47, first: 'Austin', last: 'Totten', classYear: 29, defPos: 'LB', offPos: 'RB' },
   { number: 81, first: 'Jack', last: 'Winchock', classYear: 29, defPos: 'DL', offPos: 'WR' },
   { number: 9, first: 'Jack', last: 'Winne', classYear: 28, defPos: 'DB', offPos: 'WR' },
-  { number: 5, first: 'Evan', last: 'Woodring', classYear: 27, defPos: 'DB', offPos: 'QB' },
+  { number: 5, first: 'Evan', last: 'Woodring', classYear: 27, defPos: 'DB', offPos: 'WR' },
   { number: 76, first: 'Alex', last: 'Zimmerman', classYear: 27, defPos: 'DL', offPos: 'OL' },
   { number: 54, first: 'Ben', last: 'Zimmerman', classYear: 27, defPos: 'DL', offPos: 'OL' },
   { number: 14, first: 'Nathan', last: 'Zuckerman', classYear: 27, defPos: 'DB', offPos: 'WR' },
@@ -1085,13 +1085,13 @@ export default function BRHSPantherFootballPage() {
         </div>
         <div className={styles.spotlightWrap}>
           <div className={styles.spotlightBadge}>
-            <Image src="/photos/media-day-portraits/11-featured.jpg" alt={`${FEATURED_PLAYER.name} — Bridgewater-Raritan Panther Football, Zarcone Photography`} fill sizes="220px" style={{ objectFit: 'cover' }} />
+            <Image src="/photos/media-day-portraits/5-featured.jpg" alt={`${FEATURED_PLAYER.name} — Bridgewater-Raritan Panther Football, Zarcone Photography`} fill sizes="220px" style={{ objectFit: 'cover' }} />
           </div>
           <div>
             <div className={styles.spotlightName}>{FEATURED_PLAYER.name}</div>
             <div className={styles.spotlightClass}>{FEATURED_PLAYER.detail}</div>
             <p className={styles.spotlightBio}>{FEATURED_PLAYER.bio}</p>
-            <p className={styles.spotlightNote}>Per CJ Sports Radio, August 2025 preseason preview.</p>
+            <p className={styles.spotlightNote}>Per BRRSD Athletics (Aug 2026 season preview) and PJR Sports Report (Jul 2026 team preview).</p>
           </div>
         </div>
       </section>
