@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Bridgewater-Raritan Panther Football Photos | Official Media Partner | Zarcone Photography',
-  description: 'Zarcone Photography is the official 2026 season media partner of Bridgewater-Raritan Panther Football — game day galleries, Media Day portraits, Senior Night, and photo ordering.',
+  title: 'BRHS Panther Football Photos | Zarcone Photography',
+  description: 'Official media partner for Bridgewater-Raritan (BRHS) High School football. Browse game-day galleries & order prints — new photos posted after every game.',
   alternates: {
     canonical: '/brhs-panther-football',
   },
