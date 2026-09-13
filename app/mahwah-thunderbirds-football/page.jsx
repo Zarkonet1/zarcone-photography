@@ -83,8 +83,13 @@ const OTHER_DIVISION_TEAMS_2026 = [
   // Dumont's game (vs. Mahwah, 9/10) remains unreported on both MaxPreps
   // AND NJRecordBook.com as of this sweep — genuinely unplayed-result,
   // not a miss.
-  { team: 'Ramsey', wins: 2, losses: 1, confWins: 0, confLosses: 0 },
-  { team: 'Westwood', wins: 2, losses: 1, confWins: 0, confLosses: 0 },
+  // Corrected 2026-09-13 sweep: the 9/10 Westwood-Ramsey game IS a Super -
+  // American Red league game (both are division members), so it should have
+  // moved confWins/confLosses too, not just overall wins/losses — missed by
+  // the 09-11/09-12 entries above. Confirmed via the league standings page's
+  // own League column (Ramsey 0-1, Westwood 1-0) — corrected here.
+  { team: 'Ramsey', wins: 2, losses: 1, confWins: 0, confLosses: 1 },
+  { team: 'Westwood', wins: 2, losses: 1, confWins: 1, confLosses: 0 },
 ];
 
 // Mahwah's own standings row derives from MAHWAH_SCHEDULE_2026 — identical
