@@ -239,7 +239,7 @@ export default function Home() {
         >
           <span className={styles.googleStars}>★★★★★</span>
           <span className={styles.googleRating}>4.9</span>
-          <span className={styles.googleLabel}>on Google · 28 Reviews</span>
+          <span className={styles.googleLabel}>on Google · 29 Reviews</span>
         </a>
         <span className={styles.badgeDivider} />
         <a
