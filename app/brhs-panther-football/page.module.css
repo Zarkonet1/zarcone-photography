@@ -1317,6 +1317,15 @@ a.latestItem:hover { background: rgba(255,255,255,0.05); }
   color: var(--br-red);
   background: rgba(255,255,255,0.03);
 }
+.coachPhoto {
+  position: relative;
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  border: 1px solid var(--br-red);
+  background: rgba(255,255,255,0.03);
+  overflow: hidden;
+}
 .coachName {
   font-size: 19px;
   font-weight: 900;
@@ -1396,6 +1405,38 @@ a.latestItem:hover { background: rgba(255,255,255,0.05); }
   font-size: 13px;
   line-height: 1.65;
   color: var(--br-silver);
+}
+
+/* ─── Alumni (college football) ──────────────────────────────────────── */
+.alumniGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+}
+@media (max-width: 900px) { .alumniGrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .alumniGrid { grid-template-columns: 1fr; } }
+.alumniCard {
+  background: var(--br-black);
+  padding: 22px 20px;
+}
+.alumniSchool {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--br-red);
+  margin-bottom: 6px;
+}
+.alumniName {
+  font-size: 16px;
+  font-weight: 900;
+  color: #fff;
+}
+.alumniMeta {
+  font-size: 13px;
+  color: var(--br-silver);
+  margin-top: 4px;
 }
 
 /* ─── Featured Player spotlight ──────────────────────────────────────── */

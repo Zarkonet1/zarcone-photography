@@ -302,6 +302,13 @@ const COACHES = [
     name: 'D.J. Catalano',
     title: `Head Varsity Football Coach · ${ordinal(COACH_TENURE.seasonNumber)} Season · ${ordinal(COACH_TENURE.yearsAtSchool)} Year at BRHS`,
     bio: 'Catalano joined the Bridgewater-Raritan program four years ago, spending his first season under then-head coach Rick Mantz before taking over as head coach. Entering his third year leading the program in 2025, he guided the Panthers to their first sectional championship in school history.',
+    // No individual headshot exists for Catalano in the 2026 Media Guide (the
+    // assistant coaches each got a studio-style portrait; he didn't). This is
+    // cropped from the guide's own "Coach DJ Catalano" page — him hoisting the
+    // 2025 Group 5 North sectional trophy with the team — color/exposure
+    // corrected only, same as the assistant staff photos. Candid, not a
+    // studio headshot, so it reads a little differently in the grid by design.
+    photo: '/photos/coaches/catalano.jpg',
   },
 ];
 
@@ -318,13 +325,38 @@ const STAFF = [
   { name: 'Joe Cahill', title: 'Offensive Coordinator', photo: '/photos/coaches/cahill.jpg', note: "Entering his ninth season with the program and fourth as offensive coordinator; a Bridgewater-Raritan alum (2002-2005) who played college football at Wilkes University." },
   { name: 'Joe Puleio', title: 'Assistant Coach: WRs/DBs', photo: '/photos/coaches/puleio.jpg', note: 'Joined Bridgewater-Raritan in 2024 after coaching stops at Towson and Randolph, plus internships with Rutgers and TEST Football Academy.' },
   { name: 'Kyle Paustian', title: 'Defensive Coordinator', photo: '/photos/coaches/paustian.jpg', note: "A Bridgewater-Raritan alum (2007-2010) returning for his second stint as the Panthers' defensive coordinator, after two years in the role at Franklin." },
-  { name: 'Brett Stibitz', title: 'Assistant Coach: CBs/DBs', photo: '/photos/coaches/stibitz.jpg', note: 'Former head coach and defensive coordinator at Manville and Middlesex High Schools, and a 5-year NFL High School Player Development Coach.' },
+  { name: 'Brett Stibitz', title: 'Assistant Coach: CBs/DBs', photo: '/photos/coaches/stibitz.jpg', note: 'Former head coach and defensive coordinator at Middlesex High School, plus defensive coordinator at Manville and a 5-year NFL High School Player Development Coach.' },
   { name: 'Vinny DiStefano', title: 'Defensive Coordinator', photo: '/photos/coaches/distefano.jpg', note: 'Played football at Bergen Catholic and William Paterson University; previously the Panthers\' head freshman coach and a defensive coordinator at Bound Brook and Pascack Valley.' },
   { name: 'Nick Costanzo', title: 'Head Freshman Coach', photo: '/photos/coaches/costanzo.jpg', note: "Bridgewater-Raritan's freshman coach since 2021, named freshman head coach in 2026 — and a Panther alum himself (2013-2017)." },
-  { name: 'Chris Anderson', title: 'Assistant Freshman Coach', photo: '/photos/coaches/anderson.jpg', note: 'Played offensive line at Lock Haven University; coached at Franklin and North Brunswick before joining the staff.' },
-  { name: 'Evan Fromberg', title: 'Assistant Coach · Director of Operations', photo: '/photos/coaches/fromberg.jpg', note: 'On staff since 2022, following eight years coaching in the Bridgewater Football League (2011-2018).' },
+  { name: 'Chris Anderson', title: 'Freshman Offensive Coordinator', photo: '/photos/coaches/anderson.jpg', note: 'Played offensive line at Lock Haven University; coached at Franklin and North Brunswick before joining the staff.' },
+  { name: 'Evan Fromberg', title: 'Assistant Coach · Director of Operations', photo: '/photos/coaches/fromberg.jpg', note: 'On staff since 2022, following eight years coaching in the Bridgewater Football Youth League (2011-2018).' },
   { name: 'Brandon T. Myers', title: 'Assistant Coach: TEs', photo: '/photos/coaches/myers.jpg', note: 'A Rutgers tight end and 2021 Big Ten Distinguished Scholar; a 3x state finalist (31-5) and 2x conference champion at Bridgewater-Raritan.' },
   { name: 'Mark Szczecina', title: 'Assistant Coach', photo: '/photos/coaches/szczecina.jpg', note: 'Joined the staff in 2022 after coaching in the Hillsborough Junior Raiders program (2014-2016).' },
+];
+
+// Former Panthers currently on college football rosters — pulled from
+// PANTHER-ALUMNI.md, the program's own bi-weekly-checked alumni tracker
+// (cross-referenced against each college program's own athletics site, not
+// just the 2026 Media Guide's alumni page, which this list also covers and
+// extends — it's missing the two Susquehanna 2023 grads below). Limited to
+// football players with a confirmed active roster spot; sport-crossed alumni
+// (lacrosse, baseball) and one unconfirmed Class of 2023 name are tracked
+// separately in that file but left off this public list. Added Sept 2026.
+const COLLEGE_ALUMNI = [
+  { name: 'Justin Simpson', position: 'OL', school: 'Bucknell University', classYear: '2026' },
+  { name: 'Gavin Zeiman', position: 'LS', school: 'Lafayette College', classYear: '2026' },
+  { name: 'Denzel Amoafo', position: 'DB', school: 'Saint Anselm College', classYear: '2026' },
+  { name: 'Christian Antunes', position: 'DL', school: 'Ithaca College', classYear: '2026' },
+  { name: 'Matthew Pizzelanti', position: null, school: 'Hamilton College', classYear: '2026' },
+  { name: 'Jordan Johnson', position: 'WR', school: 'Hobart College', classYear: '2025' },
+  { name: 'Dylan Tierney', position: 'LB', school: 'Springfield College', classYear: '2025' },
+  { name: 'Joe Spirra', position: 'DB', school: 'Ithaca College', classYear: '2024' },
+  { name: 'Dane Sorensen', position: 'RB', school: 'Dickinson College', classYear: '2024' },
+  { name: 'James McDermott', position: 'DL', school: 'Norwich University', classYear: '2024' },
+  { name: 'Nick Markovitch', position: 'OLB', school: 'Norwich University', classYear: '2024' },
+  { name: 'Chris Lopez', position: 'DL', school: 'Kean University', classYear: '2024' },
+  { name: 'Donovan Little', position: 'DE', school: 'Susquehanna University', classYear: '2023' },
+  { name: 'Sam Valeira', position: 'K/P', school: 'Susquehanna University', classYear: '2023' },
 ];
 
 const FEATURED_PLAYER = {
@@ -766,7 +798,7 @@ export default function BRHSPantherFootballPage() {
             <span className={styles.eyebrowRed}>2025 Playoff Run</span>
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>The Road <em>To The Title</em></h2>
           </div>
-          <p className={styles.sectionSub}>Four games, three wins, and the first sectional championship in program history. The full regular-season log is still being compiled — this is the sourced playoff record.</p>
+          <p className={styles.sectionSub}>A 9-4 season that opened with a 35-20 win over Notre Dame (Aug. 29, 2025) and closed with the program's first sectional championship — the four-game playoff run below, capped by a 21-14 win over Bayonne (Nov. 14, 2025) for the North 2, Group 5 title. Full regular-season game log still being compiled; this is the sourced playoff record.</p>
         </div>
         <table className={styles.scheduleTable}>
           <thead>
@@ -1054,7 +1086,13 @@ export default function BRHSPantherFootballPage() {
         <div className={styles.coachGrid}>
           {COACHES.map((c, i) => (
             <div key={i} className={styles.coachCard}>
-              <div className={styles.coachAvatar}>{c.name.split(' ').map(n => n[0]).join('')}</div>
+              {c.photo ? (
+                <div className={styles.coachPhoto}>
+                  <Image src={c.photo} alt={`${c.name} — Bridgewater-Raritan Panther Football, ${c.title}`} fill sizes="88px" style={{ objectFit: 'cover' }} />
+                </div>
+              ) : (
+                <div className={styles.coachAvatar}>{c.name.split(' ').map(n => n[0]).join('')}</div>
+              )}
               <div>
                 <div className={styles.coachName}>{c.name}</div>
                 <div className={styles.coachTitle}>{c.title}</div>
@@ -1079,6 +1117,26 @@ export default function BRHSPantherFootballPage() {
                 </div>
               </div>
               <p className={styles.staffNote}>{s.note}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Alumni ───────────────────────────────────────────────── */}
+      <section id="alumni" style={{ scrollMarginTop: 120 }}>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Program Legacy</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Panthers Now Playing <em>College Football</em></h2>
+          </div>
+          <p className={styles.sectionSub}>Former Panthers on college rosters right now, Classes of 2023&ndash;2026 &mdash; tracked and cross-checked against each program&rsquo;s own athletics site.</p>
+        </div>
+        <div className={styles.alumniGrid}>
+          {COLLEGE_ALUMNI.map((al, i) => (
+            <div key={i} className={styles.alumniCard}>
+              <div className={styles.alumniSchool}>{al.school}</div>
+              <div className={styles.alumniName}>{al.name}</div>
+              <p className={styles.alumniMeta}>{al.position ? `${al.position} · ` : ''}Class of {al.classYear}</p>
             </div>
           ))}
         </div>
@@ -1198,7 +1256,7 @@ export default function BRHSPantherFootballPage() {
           <h2 className={styles.featureTitle}>Media Day</h2>
           <p className={styles.featureLead}>Every athlete's professional portraits — clean shots built for banners, programs, and recruiting profiles.</p>
           <p style={{ color: 'var(--br-silver)', fontSize: 15, lineHeight: 1.8, marginTop: -8, marginBottom: 4 }}>
-            A make-up day ran Tuesday, August 11 for anyone who missed the shoot. The Panthers also appeared at the Big State Sports Media Day, Thursday, August 20, as Big State Sports gears up to broadcast every BR home game this season.
+            Summer prep included a 7v7 tournament at Rutgers University (June 20) against a 16-team field, and the offensive/defensive line group taking home the Gridiron Challenge in Sayreville (June 12). A make-up day ran Tuesday, August 11 for anyone who missed the shoot. The Panthers also appeared at the Big State Sports Media Day, Thursday, August 20, as Big State Sports gears up to broadcast every BR home game this season.
           </p>
         </div>
       </div>
@@ -1229,6 +1287,25 @@ export default function BRHSPantherFootballPage() {
             className={styles.partnershipLink}
           >
             Visit BRHS Panther Football →
+          </a>
+        </div>
+      </div>
+
+      {/* ── B-R Athletic Hall of Fame cross-link ─────────────────── */}
+      <div className={styles.officialResource}>
+        <div className={styles.officialResourceInner}>
+          <span className={styles.eyebrowRed}>Program History</span>
+          <h3 className={styles.officialResourceTitle}>Bridgewater-Raritan Athletic Hall of Fame</h3>
+          <p className={styles.officialResourceBody}>
+            Honoring the players, coaches, and teams — from the former Golden Falcons of West and Minutemen of East to today&rsquo;s Panthers — who built B-R Athletics. The next induction class is enshrined Saturday, March 20, 2027 at the Bridgewater Marriott.
+          </p>
+          <a
+            href="https://www.brathletichof.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.partnershipLink}
+          >
+            Visit the B-R Athletic Hall of Fame →
           </a>
         </div>
       </div>
