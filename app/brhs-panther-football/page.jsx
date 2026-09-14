@@ -306,21 +306,25 @@ const COACHES = [
 ];
 
 // Full assistant coaching staff — sourced directly from BRHS Football's own
-// coach bio deck (provided by Tom, July 2026). Condensed to one line each;
-// "TEST Football Academy" (Puleio) is a real NJ combine-training facility
-// headquartered in Bridgewater, not a placeholder — verified, not a typo.
+// coach bio deck (provided by Tom, July 2026; photos and titles cross-checked
+// against the 2026 BR Football Media Guide, added Sept 2026). Condensed to
+// one line each; "TEST Football Academy" (Puleio) is a real NJ combine-training
+// facility headquartered in Bridgewater, not a placeholder — verified, not a typo.
+// Photos: cropped from the Media Guide's own coach headshots, corrected for
+// exposure/white balance/color only — no added elements or stylistic filters.
 const STAFF = [
-  { name: 'Paul Day', title: 'Assistant Coach: OL/DL', note: 'Entering his 27th year coaching high school football; won 58 games in 8 years at North Brunswick (2017-2024) before joining Bridgewater-Raritan.' },
-  { name: 'Dominic Mulieri', title: 'Special Teams Coordinator', note: 'Former head football coach at Indian Hills High School (2019-2023), after four years as an assistant there.' },
-  { name: 'Joe Cahill', title: 'Offensive Coordinator', note: 'With the program since 2020 in various roles; a Bridgewater-Raritan alum (2002-2005) who played college football at Wilkes University.' },
-  { name: 'Joe Puleio', title: 'Assistant Coach: WRs/DBs', note: 'Joined Bridgewater-Raritan in 2024 after coaching stops at Towson and Randolph, plus internships with Rutgers and TEST Football Academy.' },
-  { name: 'Kyle Paustian', title: 'Defensive Coordinator', note: "A Bridgewater-Raritan alum (2007-2010) returning for his second stint as the Panthers' defensive coordinator, after two years in the role at Franklin." },
-  { name: 'Brett Stibitz', title: 'Assistant Coach: CBs/RBs', note: 'Former head coach and defensive coordinator at Manville and Middlesex High Schools, and a 5-year NFL High School Player Development Coach.' },
-  { name: 'Nick Costanzo', title: 'Head Freshman Coach', note: "Bridgewater-Raritan's freshman coach since 2021 — and a Panther alum himself (2013-2017)." },
-  { name: 'Chris Anderson', title: 'Assistant Freshman Coach', note: 'Played offensive line at Lock Haven University; coached at Franklin and North Brunswick before joining the staff.' },
-  { name: 'Evan Fromberg', title: 'Assistant Coach · Director of Operations', note: 'On staff since 2022, following eight years coaching in the Bridgewater Football League (2011-2018).' },
-  { name: 'Brandon T. Myers', title: 'Assistant Coach: TEs', note: 'A Rutgers tight end and 2021 Big Ten Distinguished Scholar; a 3x state finalist (31-5) and 2x conference champion at Bridgewater-Raritan.' },
-  { name: 'Mark Szczecina', title: 'Assistant Coach', note: 'Joined the staff in 2022 after coaching in the Hillsborough Junior Raiders program (2014-2016).' },
+  { name: 'Paul Day', title: 'Assistant Coach: OL/DL', photo: '/photos/coaches/day.jpg', note: 'Entering his 27th year coaching high school football; won 58 games in 8 years at North Brunswick (2017-2024) before joining Bridgewater-Raritan.' },
+  { name: 'Dominic Mulieri', title: 'Special Teams Coordinator', photo: '/photos/coaches/mulieri.jpg', note: 'Former head football coach at Indian Hills High School (2019-2023), after four years as an assistant there.' },
+  { name: 'Joe Cahill', title: 'Offensive Coordinator', photo: '/photos/coaches/cahill.jpg', note: "Entering his ninth season with the program and fourth as offensive coordinator; a Bridgewater-Raritan alum (2002-2005) who played college football at Wilkes University." },
+  { name: 'Joe Puleio', title: 'Assistant Coach: WRs/DBs', photo: '/photos/coaches/puleio.jpg', note: 'Joined Bridgewater-Raritan in 2024 after coaching stops at Towson and Randolph, plus internships with Rutgers and TEST Football Academy.' },
+  { name: 'Kyle Paustian', title: 'Defensive Coordinator', photo: '/photos/coaches/paustian.jpg', note: "A Bridgewater-Raritan alum (2007-2010) returning for his second stint as the Panthers' defensive coordinator, after two years in the role at Franklin." },
+  { name: 'Brett Stibitz', title: 'Assistant Coach: CBs/DBs', photo: '/photos/coaches/stibitz.jpg', note: 'Former head coach and defensive coordinator at Manville and Middlesex High Schools, and a 5-year NFL High School Player Development Coach.' },
+  { name: 'Vinny DiStefano', title: 'Defensive Coordinator', photo: '/photos/coaches/distefano.jpg', note: 'Played football at Bergen Catholic and William Paterson University; previously the Panthers\' head freshman coach and a defensive coordinator at Bound Brook and Pascack Valley.' },
+  { name: 'Nick Costanzo', title: 'Head Freshman Coach', photo: '/photos/coaches/costanzo.jpg', note: "Bridgewater-Raritan's freshman coach since 2021, named freshman head coach in 2026 — and a Panther alum himself (2013-2017)." },
+  { name: 'Chris Anderson', title: 'Assistant Freshman Coach', photo: '/photos/coaches/anderson.jpg', note: 'Played offensive line at Lock Haven University; coached at Franklin and North Brunswick before joining the staff.' },
+  { name: 'Evan Fromberg', title: 'Assistant Coach · Director of Operations', photo: '/photos/coaches/fromberg.jpg', note: 'On staff since 2022, following eight years coaching in the Bridgewater Football League (2011-2018).' },
+  { name: 'Brandon T. Myers', title: 'Assistant Coach: TEs', photo: '/photos/coaches/myers.jpg', note: 'A Rutgers tight end and 2021 Big Ten Distinguished Scholar; a 3x state finalist (31-5) and 2x conference champion at Bridgewater-Raritan.' },
+  { name: 'Mark Szczecina', title: 'Assistant Coach', photo: '/photos/coaches/szczecina.jpg', note: 'Joined the staff in 2022 after coaching in the Hillsborough Junior Raiders program (2014-2016).' },
 ];
 
 const FEATURED_PLAYER = {
@@ -1063,8 +1067,17 @@ export default function BRHSPantherFootballPage() {
         <div className={styles.staffGrid}>
           {STAFF.map((s, i) => (
             <div key={i} className={styles.staffCard}>
-              <div className={styles.staffName}>{s.name}</div>
-              <div className={styles.staffTitle}>{s.title}</div>
+              <div className={styles.staffTop}>
+                {s.photo && (
+                  <div className={styles.staffPhoto}>
+                    <Image src={s.photo} alt={`${s.name} — Bridgewater-Raritan Panther Football, ${s.title}`} fill sizes="72px" style={{ objectFit: 'cover' }} />
+                  </div>
+                )}
+                <div>
+                  <div className={styles.staffName}>{s.name}</div>
+                  <div className={styles.staffTitle}>{s.title}</div>
+                </div>
+              </div>
               <p className={styles.staffNote}>{s.note}</p>
             </div>
           ))}
