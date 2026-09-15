@@ -703,8 +703,8 @@ export default function BRHSPantherFootballPage() {
           attention (multiple navs, multiple "next game" mentions) which
           is exactly what the BRHS PAC feedback and Tom's own follow-up
           flagged. Nothing below this block was removed — Schedule &
-          Results, Standings, News, Roster, Family Day, Coaches, Gallery,
-          Media Day, Official Resource, and the Powered-By-ZP block all
+          Results, Standings, News, Roster, Featured Player, Coaches, Alumni,
+          Gallery, Media Day, Official Resource, and the Powered-By-ZP block all
           still render in full further down, same order as the prior
           reorder. Program Stat Bar (full playoff-history stats) moved down
           to sit with that retained content — see below. Pilot scope:
@@ -1074,27 +1074,6 @@ export default function BRHSPantherFootballPage() {
           </div>
         </div>
       </section>
-
-      {/* ── Family Day ───────────────────────────────────────────── */}
-      <div className={styles.featureRow}>
-        <div className={styles.featureMedia}>
-          <Image src="/photos/brhs-football-kickoff-2026-flyer.jpg" alt="BRHS Panther Football Family Day / Kickoff 2026 flyer — Sunday, August 30 at Green Knoll Grill" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'contain', filter: 'none' }} />
-        </div>
-        <div className={styles.featureText}>
-          <span className={styles.featureDate}>Sunday, August 30, 2026</span>
-          <h2 className={styles.featureTitle}>Family Day</h2>
-          <p className={styles.featureLead}>Come celebrate with past, present, and future football families at Green Knoll Grill — late lunch or early dinner starting 1:30 PM, live music from Black Dog 3–6 PM.</p>
-          <ul className={styles.checklist}>
-            <li>Green Knoll Grill</li>
-            <li>Starts 1:30 PM · Band 3–6 PM</li>
-            <li>$10 door fee waived for BR football families</li>
-            <li>RSVP required to waive door fee</li>
-          </ul>
-          <div style={{ marginTop: 28 }}>
-            <a href="mailto:BRfootball26@gmail.com?subject=Family%20Day%20RSVP" className={styles.btnRed}>RSVP to Attend</a>
-          </div>
-        </div>
-      </div>
 
       {/* ── Coaches ──────────────────────────────────────────────── */}
       <section>
