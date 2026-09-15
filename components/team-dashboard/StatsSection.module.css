@@ -129,6 +129,76 @@
   opacity: 0.8;
 }
 
+/* ─── Per-game tabs (added 2026-09-15) ──────────────────────────── */
+/* Replaces the old "stack every week's box score in one long list"
+   layout with a tab bar + single active panel — see StatsSection.jsx
+   for the showTabs / activeWeek logic. Colors reuse the same win/green
+   (#3ec25f) and loss/red (--br-red) convention CompactSchedule.module.css
+   already uses for W/L, so a tab's result badge matches the schedule's. */
+.tabBar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  scrollbar-width: thin;
+}
+.tab {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 2px solid transparent;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+}
+.tab:hover {
+  background: rgba(255,255,255,0.05);
+}
+.tab:focus-visible {
+  outline: 2px solid var(--br-red, #c8102e);
+  outline-offset: -2px;
+}
+.tabActive {
+  background: rgba(200,16,46,0.1);
+  border-color: var(--br-red, #c8102e);
+}
+.tabWeek {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+.tabOpponent {
+  font-size: 11px;
+  color: var(--br-silver, #9a9ea5);
+  white-space: nowrap;
+}
+.tabResult {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tabResult[data-outcome="win"] { color: #3ec25f; }
+.tabResult[data-outcome="loss"] { color: var(--br-red, #c8102e); }
+
+@media (max-width: 640px) {
+  .tab { padding: 8px 12px; }
+  .tabWeek { font-size: 11px; }
+}
+
 /* ─── Per-week box score ────────────────────────────────────────── */
 .weekBlock {
   margin-bottom: 40px;
