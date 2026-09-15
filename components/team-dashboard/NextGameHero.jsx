@@ -59,6 +59,14 @@ export default function NextGameHero({
   lastPlayedGame,
   latestGallery,
   bgPhotoSrc = null,
+  // bgObjectPosition: generalized 2026-09-15 for the volleyball hero swap —
+  // this component renders bgPhotoSrc ultra-wide (full page width, ~300-340px
+  // tall) with a dead-center object-fit:cover crop by default. A tall/vertical
+  // action photo (a jump-spike, ball near the top of frame) can lose its subject
+  // off the top edge at that aspect ratio. Optional CSS object-position value,
+  // defaulting to 'center' so football/every existing caller keeps its exact
+  // current center crop with no code change.
+  bgObjectPosition = 'center',
   // fallbackGradient: generalized 2026-08-27 — when a team has no real
   // action photo on file yet, render a plain color-gradient field instead
   // of a stock/fabricated image. Pass a CSS gradient string.
@@ -123,7 +131,15 @@ export default function NextGameHero({
   return (
     <section className={styles.hero}>
       {bgPhotoSrc ? (
-        <Image src={bgPhotoSrc} alt={teamName} fill priority sizes="100vw" className={styles.heroImg} />
+        <Image
+          src={bgPhotoSrc}
+          alt={teamName}
+          fill
+          priority
+          sizes="100vw"
+          className={styles.heroImg}
+          style={{ objectPosition: bgObjectPosition }}
+        />
       ) : (
         <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: fallbackGradient }} />
       )}

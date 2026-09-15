@@ -40,34 +40,40 @@ const LATEST_GALLERY = getLatestGallery(GALLERIES_2026);
 // public/photos/volleyball-media-day-portraits/{number}.jpg.
 const PORTRAIT_NUMBERS = new Set([5]);
 
-// Sourced 2026-08-22 from the 20251029 BRHS Volleyball Sr Night v DelVal
-// SmugMug gallery (323 shots) — the most recent match on file, so this is
-// close to the current roster. Real match action + one team Senior Night
-// shot; no cross-sport placeholders. Full-res originals live in that
-// gallery if a wider or different crop is ever needed.
+// Refreshed 2026-09-15 — swapped the 2025 Sr Night v Del Val set (graduated
+// roster, away gym, no BR signage) for the real 2026-09-08 vs. Mt. Saint
+// Mary Academy match, the same shoot the hero photo comes from (see the
+// dated comment on <NextGameHero> below). Current roster, shot at the BR
+// home gym, ties into the county-final rematch storyline already on this
+// page. 13 of these 14 are new; BRHS-Volleyball-2026-MSM-Kill.jpg is the
+// same file used as the hero background, reused here — same convention the
+// old set used (0213.jpg was both hero and first gallery tile). Picked from
+// an 82-photo take; Tom reviewed a contact sheet in chat and approved this
+// set 2026-09-15. Old 0064-0213 files left on disk, untouched, in case a
+// past-seasons section is ever wanted — just no longer referenced here.
 const PHOTOS = [
-  { src: '/photos/BRHS-Volleyball-0213.jpg', width: 2400, height: 1600, size: 'wide' },
-  { src: '/photos/BRHS-Volleyball-0064.jpg', width: 1600, height: 1280, size: 'wide' },
-  { src: '/photos/BRHS-Volleyball-0193.jpg', width: 1067, height: 1600 },
-  { src: '/photos/BRHS-Volleyball-0089.jpg', width: 1067, height: 1600 },
-  { src: '/photos/BRHS-Volleyball-0096.jpg', width: 1067, height: 1600 },
-  { src: '/photos/BRHS-Volleyball-0188.jpg', width: 1067, height: 1600 },
-  { src: '/photos/BRHS-Volleyball-0104.jpg', width: 1067, height: 1600 },
-  { src: '/photos/BRHS-Volleyball-0196.jpg', width: 1067, height: 1600 },
-  { src: '/photos/BRHS-Volleyball-0088.jpg', width: 1067, height: 1600 },
-  { src: '/photos/BRHS-Volleyball-0094.jpg', width: 1067, height: 1600 },
-  { src: '/photos/BRHS-Volleyball-0102.jpg', width: 1067, height: 1600 },
-  { src: '/photos/BRHS-Volleyball-0109.jpg', width: 1067, height: 1600 },
-  { src: '/photos/BRHS-Volleyball-0110.jpg', width: 1067, height: 1600 },
-  { src: '/photos/BRHS-Volleyball-0113.jpg', width: 1067, height: 1600 },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-Kill.jpg', width: 2200, height: 1760, size: 'wide' },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-72.jpg', width: 2400, height: 1920, size: 'wide' },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-39.jpg', width: 1100, height: 1375 },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-06.jpg', width: 1100, height: 1375 },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-43.jpg', width: 1100, height: 1375 },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-62.jpg', width: 1100, height: 1375 },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-82.jpg', width: 1100, height: 1375 },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-71.jpg', width: 1100, height: 1375 },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-34.jpg', width: 1100, height: 1375 },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-28.jpg', width: 1100, height: 1375 },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-25.jpg', width: 1100, height: 1375 },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-36.jpg', width: 1100, height: 1375 },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-46.jpg', width: 1100, height: 1375 },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-60.jpg', width: 1100, height: 1375 },
 ];
 
 const CAROUSEL = [
-  { src: '/photos/BRHS-Volleyball-0213.jpg', width: 2400, height: 1600, caption: 'Panther Volleyball — Every Point Earned' },
-  { src: '/photos/BRHS-Volleyball-0193.jpg', width: 1067, height: 1600, caption: 'A Wall At The Net' },
-  { src: '/photos/BRHS-Volleyball-0064.jpg', width: 1600, height: 1280, caption: 'Senior Night 2025' },
-  { src: '/photos/BRHS-Volleyball-0188.jpg', width: 1067, height: 1600, caption: 'Serving Notice' },
-  { src: '/photos/BRHS-Volleyball-0104.jpg', width: 1067, height: 1600, caption: 'This Is Panther Volleyball' },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-Kill.jpg', width: 2200, height: 1760, caption: 'Panther Volleyball — Every Point Earned' },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-39.jpg', width: 1100, height: 1375, caption: 'This Is Panther Volleyball' },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-82.jpg', width: 1100, height: 1375, caption: 'A Wall At The Net' },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-71.jpg', width: 1100, height: 1375, caption: 'Serving Notice' },
+  { src: '/photos/BRHS-Volleyball-2026-MSM-06.jpg', width: 1100, height: 1375, caption: 'Attack Mode' },
 ];
 
 // Real coverage of the program — no invented headlines. `date` is the
@@ -254,12 +260,15 @@ const DASHBOARD_NEWS_HAS_NEW = DASHBOARD_EDITORIAL_ITEMS.length > 0 && isRecentA
 // scheduled shoot to hide behind a flag, volleyball has no Media Day date
 // at all yet (PORTRAIT_NUMBERS above is still empty). Add a Media Day tile
 // once a shoot is actually scheduled, same as football's convention.
+// Nav tile photos refreshed 2026-09-15 alongside PHOTOS/CAROUSEL above —
+// reuses four of those same processed files (no new crops needed) so the
+// grid doesn't reference the retired 2025 Sr Night set anymore.
 const MEDIA_TILES_VOLLEYBALL = [
-  { label: 'Game Galleries', sub: 'View Photos', href: '#gallery-alert', img: '/photos/BRHS-Volleyball-0089.jpg' },
-  { label: 'Meet the Team', sub: 'Roster & Coaches', href: '#roster', img: '/photos/BRHS-Volleyball-0064.jpg' },
-  { label: 'Schedule', sub: 'Full Season', href: '#schedule', img: '/photos/BRHS-Volleyball-0096.jpg' },
-  { label: 'Stats', sub: 'Leaders & Box Scores', href: '#player-stats', img: '/photos/BRHS-Volleyball-0213.jpg' },
-  { label: 'News', sub: 'Latest Coverage', href: '#news', img: '/photos/BRHS-Volleyball-0188.jpg' },
+  { label: 'Game Galleries', sub: 'View Photos', href: '#gallery-alert', img: '/photos/BRHS-Volleyball-2026-MSM-06.jpg' },
+  { label: 'Meet the Team', sub: 'Roster & Coaches', href: '#roster', img: '/photos/BRHS-Volleyball-2026-MSM-43.jpg' },
+  { label: 'Schedule', sub: 'Full Season', href: '#schedule', img: '/photos/BRHS-Volleyball-2026-MSM-34.jpg' },
+  { label: 'Stats', sub: 'Leaders & Box Scores', href: '#player-stats', img: '/photos/BRHS-Volleyball-2026-MSM-82.jpg' },
+  { label: 'News', sub: 'Latest Coverage', href: '#news', img: '/photos/BRHS-Volleyball-2026-MSM-71.jpg' },
 ];
 
 // "Players to Watch" — 2026 season outlook. Background/stats provided by
@@ -542,11 +551,28 @@ export default function BRHSPantherVolleyballPage() {
         ]}
       />
 
+      {/* Hero photo — updated 2026-09-15. Full-extension kill over a double
+          block, sourced from the real 2026-09-08 vs. Mt. Saint Mary Academy
+          match (lib/volleyballGalleries.js's 'mount-st-mary' entry) — current
+          roster, shot at the BR home gym, direct tie-in to the county-final
+          rematch storyline already in the championBanner copy below. Replaces
+          BRHS-Volleyball-0213.jpg (2025 Senior Night vs. Del Val, graduated
+          roster — demoted back into the PHOTOS gallery grid, not removed).
+          bgObjectPosition keeps the ball and her raised arm in frame at this
+          component's ultra-wide crop — verified against the actual crop math,
+          not just eyeballed; source photo is ~5:4, a dead-center crop at hero
+          aspect would've cut the ball off above the visible window. Trade-off:
+          the 'Bridgewater-Raritan High School' banner visible lower in the full
+          frame falls outside this crop on desktop widths — ball/reach/block won
+          out over legible signage, deliberately. Picked from an 82-photo take via
+          a 9-shot finalist review; Tom approved this exact frame in chat
+          2026-09-15. */}
       <NextGameHero
         nextGame={DASHBOARD_NEXT_GAME}
         lastPlayedGame={DASHBOARD_LAST_PLAYED}
         latestGallery={LATEST_GALLERY}
-        bgPhotoSrc="/photos/BRHS-Volleyball-0213.jpg"
+        bgPhotoSrc="/photos/BRHS-Volleyball-2026-MSM-Kill.jpg"
+        bgObjectPosition="center 12%"
       />
 
       <StatCards

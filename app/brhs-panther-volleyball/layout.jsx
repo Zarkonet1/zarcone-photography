@@ -23,16 +23,20 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://www.zarconephotography.com/photos/BRHS-Volleyball-0213.jpg',
+        // Updated 2026-09-15 — same hero photo now used on the page itself
+        // (2026-09-08 vs. Mt. Saint Mary Academy). Dimensions match the
+        // actual file's ~5:4 aspect (2200x1760) rather than the old fixed
+        // 1200x800, so social crawlers don't letterbox/crop it oddly.
+        url: 'https://www.zarconephotography.com/photos/BRHS-Volleyball-2026-MSM-Kill.jpg',
         width: 1200,
-        height: 800,
+        height: 960,
         alt: 'Bridgewater-Raritan Panther Girls Volleyball photography — Zarcone Photography',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://www.zarconephotography.com/photos/BRHS-Volleyball-0213.jpg'],
+    images: ['https://www.zarconephotography.com/photos/BRHS-Volleyball-2026-MSM-Kill.jpg'],
   },
 };
 
