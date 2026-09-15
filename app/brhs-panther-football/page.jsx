@@ -1054,6 +1054,27 @@ export default function BRHSPantherFootballPage() {
         )}
       </section>
 
+      {/* ── Featured Player ──────────────────────────────────────── */}
+      <section>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Player Spotlight</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Featured <em>Player</em></h2>
+          </div>
+        </div>
+        <div className={styles.spotlightWrap}>
+          <div className={styles.spotlightBadge}>
+            <Image src="/photos/media-day-portraits/5-featured.jpg" alt={`${FEATURED_PLAYER.name} — Bridgewater-Raritan Panther Football, Zarcone Photography`} fill sizes="220px" style={{ objectFit: 'cover' }} />
+          </div>
+          <div>
+            <div className={styles.spotlightName}>{FEATURED_PLAYER.name}</div>
+            <div className={styles.spotlightClass}>{FEATURED_PLAYER.detail}</div>
+            <p className={styles.spotlightBio}>{FEATURED_PLAYER.bio}</p>
+            <p className={styles.spotlightNote}>Per BRRSD Athletics (Aug 2026 season preview) and PJR Sports Report (Jul 2026 team preview).</p>
+          </div>
+        </div>
+      </section>
+
       {/* ── Family Day ───────────────────────────────────────────── */}
       <div className={styles.featureRow}>
         <div className={styles.featureMedia}>
@@ -1139,27 +1160,6 @@ export default function BRHSPantherFootballPage() {
               <p className={styles.alumniMeta}>{al.position ? `${al.position} · ` : ''}Class of {al.classYear}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ── Featured Player ──────────────────────────────────────── */}
-      <section>
-        <div className={styles.sectionHead}>
-          <div>
-            <span className={styles.eyebrowRed}>Player Spotlight</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Featured <em>Player</em></h2>
-          </div>
-        </div>
-        <div className={styles.spotlightWrap}>
-          <div className={styles.spotlightBadge}>
-            <Image src="/photos/media-day-portraits/5-featured.jpg" alt={`${FEATURED_PLAYER.name} — Bridgewater-Raritan Panther Football, Zarcone Photography`} fill sizes="220px" style={{ objectFit: 'cover' }} />
-          </div>
-          <div>
-            <div className={styles.spotlightName}>{FEATURED_PLAYER.name}</div>
-            <div className={styles.spotlightClass}>{FEATURED_PLAYER.detail}</div>
-            <p className={styles.spotlightBio}>{FEATURED_PLAYER.bio}</p>
-            <p className={styles.spotlightNote}>Per BRRSD Athletics (Aug 2026 season preview) and PJR Sports Report (Jul 2026 team preview).</p>
-          </div>
         </div>
       </section>
 
