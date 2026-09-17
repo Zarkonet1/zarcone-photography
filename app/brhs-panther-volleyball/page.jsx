@@ -197,11 +197,24 @@ const STAT_BAR = [
 // source was found for volleyball specifically during this sweep (the
 // Big Central "American Silver" naming convention is football-only) — this
 // table is labeled generically as "Skyland Conference" rather than guessing
-// a subdivision name. All start 0-0 preseason, same honest pattern as football.
+// a subdivision name.
+//
+// Updated 2026-09-16 sweep — replaced the preseason 0-0 placeholders with
+// real records, per each team's own MaxPreps standings page (all three
+// "Standings last updated on Sep 16, 2026 @ 7:25am"). Also confirmed via
+// Hillsborough's own standings page that the actual "Skyland - Delaware
+// East" league table has (at least) 5 members — Bridgewater-Raritan,
+// Hunterdon Central, North Hunterdon, Hillsborough, and Watchung Hills
+// Regional — not just the 3 shown here; BR's own standings page only
+// rendered a 3-team window around its own rank (didn't show Hillsborough/
+// Watchung Hills), which is what led the original 2026-08-25 build to
+// undercount the division. Watchung Hills isn't on BR's 2026 schedule this
+// season, so it's left out of this table same as before — only opponents
+// BR actually plays are listed.
 const OTHER_STANDINGS_2026 = [
-  { team: 'Hillsborough', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'North Hunterdon', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
-  { team: 'Hunterdon Central', wins: 0, losses: 0, confWins: 0, confLosses: 0 },
+  { team: 'Hillsborough', wins: 1, losses: 5, confWins: 0, confLosses: 3 },
+  { team: 'North Hunterdon', wins: 2, losses: 3, confWins: 1, confLosses: 2 },
+  { team: 'Hunterdon Central', wins: 3, losses: 1, confWins: 2, confLosses: 0 },
 ];
 
 const BRHS_PLAYED = SCHEDULE_2026.filter((g) => g.result);

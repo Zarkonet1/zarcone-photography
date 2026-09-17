@@ -185,6 +185,12 @@ const PROGRAM_FACTS = [
   { label: 'Athletic Director', value: 'Roger Pelletier' },
   { label: 'Location', value: '50 Ridge Road, Mahwah, NJ 07430' },
   { label: 'Enrollment', value: '~880 students (2023–24, per Wikipedia)' },
+  // Added 2026-09-17 per Tom's direct request — flagged as an open item
+  // since the 2026-08-27 BRHS sweep found it (On3's Mahwah root hub,
+  // on3.com/high-school/mahwah-mahwah-nj-6286/, Notable Alumni tab) and
+  // repeatedly carried forward as "Tom's call, not added" through the
+  // 2026-08-31 and 2026-09-16 sweeps (see MAHWAH-FOOTBALL-SOURCES.md item 3).
+  { label: 'Notable Alumni', value: 'Kevin Haslam (Class of 2005) — OT, committed to Rutgers, per On3' },
 ];
 
 const FAQ = [
