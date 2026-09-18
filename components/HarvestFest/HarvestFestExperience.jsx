@@ -84,7 +84,7 @@ export default function HarvestFestExperience() {
               key={category.id}
               type="button"
               className={`${styles.tile} ${i === 0 ? styles.tileWide : ''} ${activeCategoryId === category.id ? styles.tileActive : ''}`}
-              style={{ backgroundImage: `url(${category.tileImage})` }}
+              style={{ backgroundImage: `url("${encodeURI(category.tileImage)}")` }}
               onClick={() => handleCategoryTap(category)}
               aria-pressed={activeCategoryId === category.id}
             >
