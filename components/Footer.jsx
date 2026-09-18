@@ -13,7 +13,7 @@ export default function Footer() {
   // government-contracting exclusion pattern used on AnnouncementBar/
   // ChatWidget. Converted this component to a client component solely to
   // read the pathname here — no other behavior changed.
-  if (pathname?.startsWith('/high_school')) return null;
+  if (pathname?.startsWith('/high_school') || pathname?.startsWith('/harvestfest')) return null;
 
   return (
     <footer className={styles.footer}>

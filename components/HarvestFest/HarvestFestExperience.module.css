@@ -1,0 +1,304 @@
+/* ─── Category selector ──────────────────────────────────────────── */
+.categorySection {
+  padding: 40px 20px 8px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.sectionEyebrow {
+  text-align: center;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.tile {
+  position: relative;
+  grid-column: span 1;
+  min-height: 108px;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: border-color 0.2s;
+}
+
+.tileWide {
+  grid-column: span 2;
+  min-height: 148px;
+}
+
+.tileActive {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.tileOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(12,12,12,0.05) 40%, rgba(12,12,12,0.82) 100%);
+}
+
+.tileLabel {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 10px;
+  z-index: 1;
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.tileWide .tileLabel {
+  font-size: 20px;
+}
+
+/* ─── Reveal panel ────────────────────────────────────────────────── */
+.reveal {
+  margin-top: 16px;
+  padding: 18px 16px 20px;
+  background: var(--bg-mid);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  animation: hf-fade-in 0.35s ease;
+}
+
+@keyframes hf-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.revealBlurb {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.revealStrip {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+  margin: 0 -2px 16px;
+}
+
+.revealStrip::-webkit-scrollbar {
+  display: none;
+}
+
+.revealImg {
+  height: 180px;
+  width: auto;
+  flex-shrink: 0;
+  border-radius: 3px;
+  object-fit: cover;
+  scroll-snap-align: start;
+}
+
+.revealLink {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+}
+
+.revealLink:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* ─── Or divider ──────────────────────────────────────────────────── */
+.orDivider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 640px;
+  margin: 32px auto;
+  padding: 0 20px;
+}
+
+.orLine {
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.orText {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─── Giveaway / lead capture ─────────────────────────────────────── */
+.giveaway {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 32px 24px 28px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(200,184,154,0.08), rgba(200,184,154,0.02));
+  border: 1px solid rgba(200,184,154,0.35);
+  border-radius: 6px;
+}
+
+.giveawayEyebrow {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.giveawayHeadline {
+  font-size: clamp(22px, 5vw, 30px);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.giveawayDesc {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.enterBtn {
+  width: 100%;
+  min-height: 52px;
+  font-size: 12px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.inputRow {
+  display: flex;
+  gap: 10px;
+}
+
+.inputRow .input {
+  flex: 1;
+  min-width: 0;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  color: var(--text);
+  padding: 14px;
+  border-radius: 4px;
+  font-size: 16px; /* 16px minimum prevents iOS Safari auto-zoom on focus */
+  font-family: var(--sans);
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 56px;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--muted);
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.formError {
+  color: #e0a35a;
+  font-size: 13px;
+  text-align: center;
+}
+
+.terms {
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.75;
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+.successBox {
+  padding: 8px 0 4px;
+}
+
+.successHeadline {
+  font-family: var(--serif);
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.successBody {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ─── Micro footer ────────────────────────────────────────────────── */
+.hfFooter {
+  text-align: center;
+  padding: 36px 20px calc(28px + env(safe-area-inset-bottom));
+  margin-top: 40px;
+  border-top: 1px solid var(--rule);
+}
+
+.hfFooterLink {
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--text);
+}
+
+.hfFooterDivider {
+  color: var(--muted);
+  margin: 0 10px;
+}
+
+.hfFooterBrand {
+  margin-top: 12px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+/* ─── Desktop ─────────────────────────────────────────────────────── */
+@media (min-width: 900px) {
+  .categorySection { padding-top: 56px; }
+  .grid { grid-template-columns: repeat(4, 1fr); }
+  .tileWide { grid-column: span 4; min-height: 220px; }
+  .tile { min-height: 160px; }
+  .revealImg { height: 240px; }
+}

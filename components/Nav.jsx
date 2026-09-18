@@ -38,7 +38,7 @@ export default function Nav() {
   // government-contracting exclusion pattern already used on
   // AnnouncementBar/ChatWidget below. Hook order preserved: this check
   // runs after all hooks above.
-  if (pathname?.startsWith('/high_school')) return null;
+  if (pathname?.startsWith('/high_school') || pathname?.startsWith('/harvestfest')) return null;
 
   // BRHS team hub pages: logo-only header — no marketing links/Inquire
   // button. These pages are dashboards for a specific team's parents/fans,

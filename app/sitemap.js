@@ -27,6 +27,7 @@ export default function sitemap() {
     '/brhs-panther-football',
     '/brhs-panther-wrestling',
     '/brhs-panther-volleyball',
+    '/harvestfest',
   ];
 
   const weeklyPages = ['/brhs-panther-football', '/brhs-panther-wrestling', '/brhs-panther-volleyball'];

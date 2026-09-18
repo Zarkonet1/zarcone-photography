@@ -110,7 +110,10 @@ export default function AnnouncementBar() {
     // promo content" posture as the Prospect Trigger pages above; it isn't
     // in TEAM_BANNERS since Zarcone doesn't have a real Mahwah season to
     // narrow content to yet.
-    pathname?.startsWith('/mahwah-thunderbirds-football')
+    pathname?.startsWith('/mahwah-thunderbirds-football') ||
+    // HarvestFest QR landing page (2026-09-18) — full chrome suppression,
+    // same posture as the Prospect Trigger / Mahwah pages above.
+    pathname?.startsWith('/harvestfest')
   ) return null;
 
   const event = upcoming[idx] || upcoming[0];

@@ -63,7 +63,8 @@ export default function ChatWidget() {
   // preserved — this check runs after all hooks above.
   if (
     pathname?.startsWith('/government-contracting') ||
-    pathname?.startsWith('/high_school')
+    pathname?.startsWith('/high_school') ||
+    pathname?.startsWith('/harvestfest')
   ) return null;
 
   return (
