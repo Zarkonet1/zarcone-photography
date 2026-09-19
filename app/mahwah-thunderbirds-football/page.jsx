@@ -64,32 +64,25 @@ const OTHER_DIVISION_TEAMS_2026 = [
   // their first Super - American Red league game of the season, confirmed
   // via MaxPreps' box score/recap ("The Huskies now sport a 1-1 record").
   // Now 1-1 overall, confWins 1/confLosses 0.
-  { team: 'Dumont', wins: 1, losses: 1, confWins: 1, confLosses: 0 },
-  // Updated 2026-09-05 sweep, all via the Super - American Red league
-  // standings page (fresher than each team's own stale schedule cache,
-  // same pattern documented for Phillipsburg/Dumont in FOOTBALL-SOURCES.md):
-  // Lakeland beat West Milford 25-14 (9/4) — now 2-0. Ramsey beat Suffern
-  // 34-17 (9/4) — now 2-0. Westwood beat River Dell 28-18 (9/4) — now 1-1.
-  // Updated 2026-09-11 sweep: Lakeland beat Jefferson Township 49-7 on
-  // 9/10 — now 3-0. Not yet posted on MaxPreps (still shows "Report
-  // Score" as of this sweep) but confirmed via NJRecordBook.com's fresh
-  // Lakeland team page — a real result, not a miss (same
-  // NJRB-can-lead-MaxPreps pattern already documented for football/
-  // volleyball box scores in FOOTBALL-SOURCES.md/VOLLEYBALL-SOURCES.md).
-  { team: 'Lakeland', wins: 3, losses: 0, confWins: 0, confLosses: 0 },
-  // Westwood beat Ramsey 22-20 on 9/10 (a division game between two of
-  // the other three tracked teams) — Ramsey now 2-1, Westwood now 2-1.
-  // Confirmed via the Super - American Red league standings/scores page.
-  // Dumont's game (vs. Mahwah, 9/10) remains unreported on both MaxPreps
-  // AND NJRecordBook.com as of this sweep — genuinely unplayed-result,
-  // not a miss.
-  // Corrected 2026-09-13 sweep: the 9/10 Westwood-Ramsey game IS a Super -
-  // American Red league game (both are division members), so it should have
-  // moved confWins/confLosses too, not just overall wins/losses — missed by
-  // the 09-11/09-12 entries above. Confirmed via the league standings page's
-  // own League column (Ramsey 0-1, Westwood 1-0) — corrected here.
-  { team: 'Ramsey', wins: 2, losses: 1, confWins: 0, confLosses: 1 },
-  { team: 'Westwood', wins: 2, losses: 1, confWins: 1, confLosses: 0 },
+  // Updated 2026-09-18 sweep (2nd run): Dumont lost 8-35 at home to Westwood
+  // on 9/18 — a Super - American Red league game — dropping to 1-2 overall
+  // / 1-1 league. Confirmed via the fresh Super - American Red league
+  // standings page.
+  { team: 'Dumont', wins: 1, losses: 2, confWins: 1, confLosses: 1 },
+  // Updated 2026-09-18 sweep (2nd run): Lakeland Regional beat Mahwah 20-14
+  // on the road on 9/18 — their 1st Super - American Red league game of the
+  // season — improving to 4-0 overall / 1-0 league, still unbeaten.
+  // Confirmed via both Mahwah's own and Lakeland's own MaxPreps game pages,
+  // plus the fresh league standings page.
+  { team: 'Lakeland', wins: 4, losses: 0, confWins: 1, confLosses: 0 },
+  // Updated 2026-09-18 sweep (2nd run): Ramsey beat Mountain Lakes 24-14 on
+  // 9/18 — a non-league game (Mountain Lakes isn't a Super - American Red
+  // member) — improving to 3-1 overall; league record unchanged at 0-1.
+  { team: 'Ramsey', wins: 3, losses: 1, confWins: 0, confLosses: 1 },
+  // Updated 2026-09-18 sweep (2nd run): Westwood beat Dumont 35-8 on the
+  // road on 9/18 — a Super - American Red league game — improving to 3-1
+  // overall / 2-0 league. Confirmed via the fresh league standings page.
+  { team: 'Westwood', wins: 3, losses: 1, confWins: 2, confLosses: 0 },
 ];
 
 // Mahwah's own standings row derives from MAHWAH_SCHEDULE_2026 — identical

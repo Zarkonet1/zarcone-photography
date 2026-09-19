@@ -208,24 +208,24 @@ const STAT_BAR = [
 // and Ridge haven't played yet. Source: MaxPreps' Big Central - American
 // Silver standings page, last updated Aug 29, 2026 @ 1:18am GMT.
 const OTHER_STANDINGS_2026 = [
-  // Updated 2026-09-12 sweep: Hillsborough lost at Bridgewater-Raritan,
-  // 14-40, on 9/11 — their first Big Central - American Silver league game
-  // of the season, confirmed via BR's own MaxPreps box score/recap ("The
-  // Raiders now own a 1-2 record"). First league result for either team —
-  // confLosses now 1.
-  { team: 'Hillsborough', wins: 1, losses: 2, confWins: 0, confLosses: 1 },
-  // Updated 2026-09-12 sweep: Phillipsburg lost 31-32 to Freedom (Bethlehem,
-  // PA) on 9/11 — a non-league crossover game, confirmed via SI's Sep 11 NJ
-  // final-scores roundup ("Freedom 32, (#19) Phillipsburg 31") and BR's own
-  // MaxPreps recap, which independently cites the same result. Now 2-1
-  // overall; confWins/confLosses unchanged (still no league games played).
-  { team: 'Phillipsburg', wins: 2, losses: 1, confWins: 0, confLosses: 0 },
-  // Updated 2026-09-11 sweep: Ridge beat Hunterdon Central 23-17 on 9/10 —
-  // now 2-0. Confirmed via the Big Central - American Silver league
-  // standings page and independently via Hunterdon Central's own fresh
-  // MaxPreps schedule page (mutual cross-listing) — Ridge's own team page
-  // is stale (last updated 8/27, doesn't show either 2026 result yet).
-  { team: 'Ridge', wins: 2, losses: 0, confWins: 0, confLosses: 0 },
+  // Updated 2026-09-18 sweep (2nd run): Hillsborough lost 7-35 at home to
+  // Phillipsburg on 9/18 — their 2nd Big Central - American Silver league
+  // loss of the season. Confirmed via Ridge's own MaxPreps standings widget
+  // (pulls the league table directly: Hillsborough 0-2 league/1-3 overall)
+  // and independently corroborated by CJ Sports Radio's Friday roundup
+  // ("#1 Phillipsburg 35, Hillsborough 7").
+  { team: 'Hillsborough', wins: 1, losses: 3, confWins: 0, confLosses: 2 },
+  // Updated 2026-09-18 sweep (2nd run): Phillipsburg beat Hillsborough 35-7
+  // on the road on 9/18 — their 1st Big Central - American Silver league
+  // game of the season. Same sourcing as Hillsborough above (Ridge's
+  // MaxPreps standings widget shows Phillipsburg 1-0 league/3-1 overall;
+  // CJSR's roundup independently confirms the 35-7 final).
+  { team: 'Phillipsburg', wins: 3, losses: 1, confWins: 1, confLosses: 0 },
+  // Updated 2026-09-18 sweep (2nd run): Ridge lost 3-7 at Bridgewater-Raritan
+  // on 9/18 — Ridge's own MaxPreps game page and CJSR's full recap both
+  // confirm the final; Ridge's own standings widget shows 0-1 league/2-1
+  // overall following the loss.
+  { team: 'Ridge', wins: 2, losses: 1, confWins: 0, confLosses: 1 },
 ];
 
 // BRHS's own standings row derives from SCHEDULE_2026 — see the comment on
