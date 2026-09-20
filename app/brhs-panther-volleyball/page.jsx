@@ -211,10 +211,16 @@ const STAT_BAR = [
 // undercount the division. Watchung Hills isn't on BR's 2026 schedule this
 // season, so it's left out of this table same as before — only opponents
 // BR actually plays are listed.
+// Updated 2026-09-19 sweep: refreshed all three rows via the Skyland -
+// Delaware East league standings page (fetched fresh, "Standings last
+// updated on Sep 19, 2026 @ 9:58am GMT"). Hillsborough's overall/league both
+// moved after losing to BR on 9/18 (see SCHEDULE_2026); North Hunterdon and
+// Hunterdon Central's overall records also advanced from non-league play
+// since the last pull, league records unchanged for both.
 const OTHER_STANDINGS_2026 = [
-  { team: 'Hillsborough', wins: 1, losses: 5, confWins: 0, confLosses: 3 },
-  { team: 'North Hunterdon', wins: 2, losses: 3, confWins: 1, confLosses: 2 },
-  { team: 'Hunterdon Central', wins: 3, losses: 1, confWins: 2, confLosses: 0 },
+  { team: 'Hillsborough', wins: 1, losses: 6, confWins: 0, confLosses: 4 },
+  { team: 'North Hunterdon', wins: 3, losses: 3, confWins: 1, confLosses: 2 },
+  { team: 'Hunterdon Central', wins: 6, losses: 1, confWins: 3, confLosses: 0 },
 ];
 
 const BRHS_PLAYED = SCHEDULE_2026.filter((g) => g.result);
