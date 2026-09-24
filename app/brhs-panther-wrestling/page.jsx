@@ -163,7 +163,7 @@ const FAQ = [
   },
   {
     q: 'Can I hire Zarcone Photography privately?',
-    a: <>Yes. Outside of the season partnership, Zarcone Photography is available for individual senior sessions, family photos, and private bookings — <Link href="/about#contact">reach out here</Link>.</>,
+    a: <>Yes. Outside of the season partnership, Zarcone Photography is available for individual <Link href="/senior-portrait-photographer-nj">senior portrait sessions</Link>, family photos, and private <Link href="/event-photographer-nj">event bookings</Link> — <Link href="/about#contact">reach out here</Link>.</>,
   },
   {
     q: 'Do you cover all dual meets and tournaments?',

@@ -104,7 +104,7 @@ const FAQ = [
   },
   {
     q: 'What areas of New Jersey do you cover?',
-    a: 'Based in Bridgewater and covering events throughout New Jersey — including Somerset, Morris, Union, Warren, Middlesex, Hunterdon, and Essex counties. Also available for events in New York City and the Philadelphia area.',
+    a: 'Based in Bridgewater and covering events throughout Central New Jersey and beyond — including Somerville, Basking Ridge, Raritan, Hillsborough, Branchburg, and the rest of Somerset County, plus Morristown, Madison, and Summit in Morris County, and Westfield, Cranford, and Scotch Plains in Union County. Also regularly booked in Warren, Middlesex, Hunterdon, and Essex counties, New York City, and the Philadelphia area.',
   },
   {
     q: 'Do you work with venues we\'ve already booked?',
@@ -151,7 +151,7 @@ export default function EventPhotographerNJ() {
           <p>The best event photography is invisible during the event and essential afterward. People should be able to look back at images from their night and feel it again — not see a photographer's hand in every frame.</p>
           <p>That means moving quietly through a room, working fast in low light, and knowing when to step back and let the moment breathe. It also means knowing when to direct — a quick group pull-together, a posed shot between key people — without stopping the event to do it.</p>
           <p><strong>Three decades of event coverage across New Jersey has taught me the shape of most events before I arrive.</strong> That preparation shows in the work.</p>
-          <p>Available for events throughout New Jersey — from intimate private celebrations in Somerset County to large-scale corporate galas in the New York Metro area.</p>
+          <p>Available for events throughout New Jersey — from intimate private celebrations in Bridgewater, Somerville, and the rest of Somerset County to large-scale corporate galas in the New York Metro area.</p>
         </div>
       </section>
 

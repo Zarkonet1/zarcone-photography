@@ -1319,7 +1319,7 @@ export default function BRHSPantherFootballPage() {
           Zarcone Photography is the official media partner of BRHS Panther Football — full home-game coverage, Media Day portraits, a custom Senior
           Night poster for every graduating senior, and recruiting content, from the same <Link href="/sports-photographer-nj">sports photographer NJ</Link> programs
           have trusted for 30+ years — plus the same role with <Link href="/brhs-panther-wrestling">Panther Wrestling</Link> and <Link href="/brhs-panther-volleyball">Panther Girls Volleyball</Link>.
-          Outside the season partnership, private senior sessions, family photos, and other bookings are available too — <a href="#inquire">reach out here</a>.
+          Outside the season partnership, private <Link href="/senior-portrait-photographer-nj">senior portrait sessions</Link>, family photos, and <Link href="/event-photographer-nj">event bookings</Link> — team banquets, Senior Night celebrations, and more — are available too — <a href="#inquire">reach out here</a>.
         </p>
         <div className={styles.grid3col} style={{ marginTop: 32 }}>
           <div className={styles.iconCard}><h3>Every Home Game</h3><p>Full sideline coverage, professionally edited and posted within days.</p></div>
