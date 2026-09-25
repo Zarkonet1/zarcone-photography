@@ -211,18 +211,17 @@ const STAT_BAR = [
 // undercount the division. Watchung Hills isn't on BR's 2026 schedule this
 // season, so it's left out of this table same as before — only opponents
 // BR actually plays are listed.
-// Updated 2026-09-22 sweep: refreshed via each team's own MaxPreps
-// standings page (Hillsborough's and Hunterdon Central's own team-page
-// standings widgets, both fetched fresh, "Standings last updated on Sep 22,
-// 2026" — Hunterdon Central's page doubles as the source for North
-// Hunterdon's row too, same Skyland - Delaware East table). Hillsborough and
-// North Hunterdon both picked up one more non-league win apiece since the
-// 09-19 pull; league records unchanged for all three. Hunterdon Central
-// itself unchanged (6-1/3-0).
+// Updated 2026-09-25 sweep: refreshed via the Skyland - Delaware East
+// league standings page (fetched fresh, "Standings last updated on Sep 25,
+// 2026 @ 9:59am GMT") plus Hunterdon Central's own MaxPreps standings page.
+// North Hunterdon's jump reflects its Sep 22 home win over BR (see
+// lib/volleyballSchedule.js); Hillsborough picked up one more non-league
+// loss; Hunterdon Central won 3 more non-league games (league record
+// unchanged at 4-0, having already been undefeated in league).
 const OTHER_STANDINGS_2026 = [
-  { team: 'Hillsborough', wins: 2, losses: 6, confWins: 0, confLosses: 4 },
-  { team: 'North Hunterdon', wins: 4, losses: 3, confWins: 1, confLosses: 2 },
-  { team: 'Hunterdon Central', wins: 6, losses: 1, confWins: 3, confLosses: 0 },
+  { team: 'Hillsborough', wins: 3, losses: 7, confWins: 0, confLosses: 4 },
+  { team: 'North Hunterdon', wins: 5, losses: 5, confWins: 2, confLosses: 3 },
+  { team: 'Hunterdon Central', wins: 9, losses: 1, confWins: 4, confLosses: 0 },
 ];
 
 const BRHS_PLAYED = SCHEDULE_2026.filter((g) => g.result);
