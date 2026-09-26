@@ -64,25 +64,23 @@ const OTHER_DIVISION_TEAMS_2026 = [
   // their first Super - American Red league game of the season, confirmed
   // via MaxPreps' box score/recap ("The Huskies now sport a 1-1 record").
   // Now 1-1 overall, confWins 1/confLosses 0.
-  // Updated 2026-09-18 sweep (2nd run): Dumont lost 8-35 at home to Westwood
-  // on 9/18 — a Super - American Red league game — dropping to 1-2 overall
-  // / 1-1 league. Confirmed via the fresh Super - American Red league
-  // standings page.
-  { team: 'Dumont', wins: 1, losses: 2, confWins: 1, confLosses: 1 },
-  // Updated 2026-09-18 sweep (2nd run): Lakeland Regional beat Mahwah 20-14
-  // on the road on 9/18 — their 1st Super - American Red league game of the
-  // season — improving to 4-0 overall / 1-0 league, still unbeaten.
-  // Confirmed via both Mahwah's own and Lakeland's own MaxPreps game pages,
-  // plus the fresh league standings page.
-  { team: 'Lakeland', wins: 4, losses: 0, confWins: 1, confLosses: 0 },
-  // Updated 2026-09-18 sweep (2nd run): Ramsey beat Mountain Lakes 24-14 on
-  // 9/18 — a non-league game (Mountain Lakes isn't a Super - American Red
-  // member) — improving to 3-1 overall; league record unchanged at 0-1.
-  { team: 'Ramsey', wins: 3, losses: 1, confWins: 0, confLosses: 1 },
-  // Updated 2026-09-18 sweep (2nd run): Westwood beat Dumont 35-8 on the
-  // road on 9/18 — a Super - American Red league game — improving to 3-1
-  // overall / 2-0 league. Confirmed via the fresh league standings page.
-  { team: 'Westwood', wins: 3, losses: 1, confWins: 2, confLosses: 0 },
+  // Updated 2026-09-26 sweep (2nd run): Dumont lost again on 9/25 (per the
+  // fresh Super - American Red league standings page, page timestamp Sep
+  // 26 2:42am GMT), dropping to 1-3 overall / 1-2 league — still winless
+  // since its Week 1 league loss.
+  { team: 'Dumont', wins: 1, losses: 3, confWins: 1, confLosses: 2 },
+  // Updated 2026-09-26 sweep (2nd run): Lakeland Regional won again on
+  // 9/25, improving to 5-0 overall / 1-0 league — still unbeaten. Per the
+  // fresh Super - American Red league standings page (Sep 26 2:42am GMT).
+  { team: 'Lakeland', wins: 5, losses: 0, confWins: 1, confLosses: 0 },
+  // Updated 2026-09-26 sweep (2nd run): Ramsey won a league game on 9/25,
+  // improving to 4-1 overall AND 1-1 league (was 0-1 league). Per the
+  // fresh Super - American Red league standings page (Sep 26 2:42am GMT).
+  { team: 'Ramsey', wins: 4, losses: 1, confWins: 1, confLosses: 1 },
+  // Updated 2026-09-26 sweep (2nd run): Westwood won again on 9/25,
+  // improving to 4-1 overall; league record unchanged at 2-0. Per the
+  // fresh Super - American Red league standings page (Sep 26 2:42am GMT).
+  { team: 'Westwood', wins: 4, losses: 1, confWins: 2, confLosses: 0 },
 ];
 
 // Mahwah's own standings row derives from MAHWAH_SCHEDULE_2026 — identical
@@ -94,10 +92,15 @@ const MAHWAH_CONF_PLAYED = MAHWAH_SCHEDULE_2026.filter((g) => g.league && g.resu
 const MAHWAH_STANDINGS_ROW = {
   team: 'Mahwah',
   current: true,
-  wins: MAHWAH_PLAYED.filter((g) => g.result.win).length,
-  losses: MAHWAH_PLAYED.length - MAHWAH_PLAYED.filter((g) => g.result.win).length,
-  confWins: MAHWAH_CONF_PLAYED.filter((g) => g.result.win).length,
-  confLosses: MAHWAH_CONF_PLAYED.length - MAHWAH_CONF_PLAYED.filter((g) => g.result.win).length,
+  // `result.win === null` marks a tie (added 2026-09-26, Sep 25 vs. New
+  // Milford) — counted in neither wins nor losses; `ties`/`confTies` render
+  // as an optional 3rd number in the standings table below, only when > 0.
+  wins: MAHWAH_PLAYED.filter((g) => g.result.win === true).length,
+  losses: MAHWAH_PLAYED.filter((g) => g.result.win === false).length,
+  ties: MAHWAH_PLAYED.filter((g) => g.result.win == null).length,
+  confWins: MAHWAH_CONF_PLAYED.filter((g) => g.result.win === true).length,
+  confLosses: MAHWAH_CONF_PLAYED.filter((g) => g.result.win === false).length,
+  confTies: MAHWAH_CONF_PLAYED.filter((g) => g.result.win == null).length,
 };
 const DIVISION_STANDINGS_2026 = [MAHWAH_STANDINGS_ROW, ...OTHER_DIVISION_TEAMS_2026]
   .slice()
@@ -140,7 +143,7 @@ const DASHBOARD_NEXT_GAME = getNextGame(MAHWAH_SCHEDULE_2026);
 const DASHBOARD_LAST_PLAYED = getLastPlayedGame(MAHWAH_SCHEDULE_2026);
 const DASHBOARD_RECORD = getRecord(MAHWAH_SCHEDULE_2026);
 const DASHBOARD_LATEST_RESULT_LABEL = DASHBOARD_LAST_PLAYED
-  ? `${DASHBOARD_LAST_PLAYED.opponent}: ${DASHBOARD_LAST_PLAYED.result.win ? 'W' : 'L'} ${DASHBOARD_LAST_PLAYED.result.score}`
+  ? `${DASHBOARD_LAST_PLAYED.opponent}: ${DASHBOARD_LAST_PLAYED.result.win == null ? 'T' : (DASHBOARD_LAST_PLAYED.result.win ? 'W' : 'L')} ${DASHBOARD_LAST_PLAYED.result.score}`
   : null;
 const LATEST_GALLERY = getLatestGallery(MAHWAH_GALLERIES_2026); // null — no galleries yet, see lib/mahwahFootballGalleries.js
 
@@ -321,7 +324,7 @@ export default function MahwahThunderbirdsFootballPage() {
                 <td data-label="Date">{g.date}</td>
                 <td data-label="Time">{g.time}</td>
                 <td data-label="Opponent">{g.opponent}{g.league && <span className={styles.leagueTag}>League</span>}</td>
-                <td className={styles.resultCell} data-label="Result">{g.result ? `${g.result.win ? 'W' : 'L'} ${g.result.score}` : '—'}</td>
+                <td className={styles.resultCell} data-label="Result">{g.result ? `${g.result.win == null ? 'T' : (g.result.win ? 'W' : 'L')} ${g.result.score}` : '—'}</td>
               </tr>
             ))}
           </tbody>
@@ -350,8 +353,8 @@ export default function MahwahThunderbirdsFootballPage() {
             {DIVISION_STANDINGS_2026.map((t, i) => (
               <tr key={i} className={t.current ? styles.standingsActive : ''}>
                 <td data-label="Team" className={t.current ? styles.standingsTeamActive : styles.standingsTeam}>{t.team}</td>
-                <td data-label="Conference" className={styles.standingsRecord}>{t.confWins}-{t.confLosses}</td>
-                <td data-label="Overall" className={styles.standingsRecord}>{t.wins}-{t.losses}</td>
+                <td data-label="Conference" className={styles.standingsRecord}>{t.confWins}-{t.confLosses}{t.confTies ? `-${t.confTies}` : ''}</td>
+                <td data-label="Overall" className={styles.standingsRecord}>{t.wins}-{t.losses}{t.ties ? `-${t.ties}` : ''}</td>
               </tr>
             ))}
           </tbody>

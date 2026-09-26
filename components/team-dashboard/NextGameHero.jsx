@@ -175,7 +175,7 @@ export default function NextGameHero({
             </div>
           ) : (
             <h1 className={styles.bigLine}>
-              {lastPlayedGame.result.win ? 'W' : 'L'} {lastPlayedGame.result.score} — {opponentName(lastPlayedGame.opponent)}
+              {lastPlayedGame.result.win == null ? 'T' : (lastPlayedGame.result.win ? 'W' : 'L')} {lastPlayedGame.result.score} — {opponentName(lastPlayedGame.opponent)}
             </h1>
           )}
           <a href="#schedule" className={styles.cta}>Full Schedule →</a>

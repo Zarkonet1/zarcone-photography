@@ -31,8 +31,8 @@ export default function CompactSchedule({ games }) {
             <span className={styles.opponent}>{g.opponent}</span>
             <span className={styles.badge}>{g.home ? 'Home' : 'Away'}</span>
             <span className={styles.time}>{g.time}</span>
-            <span className={g.result ? (g.result.win ? styles.win : styles.loss) : styles.pending}>
-              {g.result ? `${g.result.win ? 'W' : 'L'} ${g.result.score}` : '—'}
+            <span className={g.result ? (g.result.win == null ? styles.pending : (g.result.win ? styles.win : styles.loss)) : styles.pending}>
+              {g.result ? `${g.result.win == null ? 'T' : (g.result.win ? 'W' : 'L')} ${g.result.score}` : '—'}
             </span>
           </div>
         ))}

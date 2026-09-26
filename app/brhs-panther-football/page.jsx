@@ -114,6 +114,7 @@ const CAROUSEL = [
 // order and the "NEW" badge — see lib/articles.js — so the array below does
 // NOT need to be kept in manual chronological order.
 const ARTICLES = [
+  { title: "Bridgewater-Raritan High School Football Team Ended An 11-Year Losing Streak To Ridge High School", source: 'BRRSD Athletics', url: 'https://www.brrsd.org/o/brrhs/article/3153278', date: '2026-09-25' /* added 2026-09-26 sweep, found via BRRSD's news feed (Tier 1 #2). Byline: Damin Melendez and Logan Santiago, The Prowler staff writers (cross-posted on BRRSD's own article platform, same pattern as the Sep 14 9/11-tribute piece above). Recap of the already-on-the-page Sep 18 Ridge win (7-3) — frames it as ending an "11-year losing streak" to Ridge, consistent with (not contradicting) CJSR's "first win since 2015" framing already cited below (2015 to 2026 is 11 years). Color detail not elsewhere on the page: Black's TD run described as featuring "two stiff arms and a spin move"; Jack Winne's defense summarized as "multiple interceptions, including a clutch fourth-quarter pick." No new numeric stat lines to reconcile — the article gives no box-score figures. */ },
   { title: 'CJSR Week 4 Top Ten: Bridgewater-Raritan (3-1) At No. 5 After 7-3 Win Over Then-No. 9 Ridge', source: 'CJ Sports Radio', url: 'https://cjsportsradio.com/2026/09/21/three-top-ten-matchups-force-big-shuffle-in-bellamy-son-paving-week-4-top-ten-but-phillipsburg-still-leads-the-pack/', date: '2026-09-21' /* added 2026-09-23 sweep. By Mike Pavlichko. Bellamy & Son Paving Big Central Week 4 Top Ten — BR edges down one spot (to make room for Elizabeth) to No. 5, credited with the 7-3 win over then-No. 9 Ridge; also states BR "visit[s] Westfield for a 1:00 kick Saturday afternoon" — one of the four sources behind the 2026-09-23 Westfield home->away correction in lib/footballSchedule.js. */ },
   { title: 'Panthers Pick Up Long-Awaited Win Over Red Devils: No. 5 Bridgewater-Raritan Tops No. 9 Ridge, 7-3', source: 'CJ Sports Radio', url: 'https://cjsportsradio.com/2026/09/18/friday-night-big-central-roundup-elizabeth-old-bridge-bridgewater-raritan-win-top-ten-clashes/', date: '2026-09-18' /* added 2026-09-23 sweep. By Mike Pavlichko, inside CJSR's Friday Night Big Central Roundup (published 2026-09-19T02:26 GMT) — the recap already cited in lib/footballSchedule.js's Ridge result comment but never added here. BR's first win over Ridge since 2015, snapping Ridge's 8-game streak dating to 2018. Black's 7-yd TD (1:19, 2nd Q), Villalba-Ozuna 29-yd FG (8:55, 4th), Jack Winne's 2nd INT to nearly seal it; includes Catalano postgame audio. Headline paraphrased from the section header, since the roundup's own title covers the whole conference. */ },
   { title: "25 Years Later: Bridgewater-Raritan Honors 9/11 Victims Before Reclaiming The Throne Over Hillsborough, 40-14", source: 'BRRSD Athletics', url: 'https://www.brrsd.org/o/brrhs/article/3128839', date: '2026-09-14' /* added 2026-09-17 sweep, found via BRRSD's news feed (Tier 1 #2). By James Olivola. Rich recap of the Sep 11 home opener/25th-9/11-anniversary tribute at Basilone Memorial Field — Bridgewater Township ceremony (2,977 flags, six large flags + a wreath for Bridgewater's six 9/11 victims: Evan Jay Baron, Noel J. Foster, Thomas H. Polhemus, Ronald G. Tartaro, Lance R. Tumulty, Alison M. Wildman), PA reading of their names before kickoff, an early 4pm kickoff (Rosh Hashanah), and a State Police helicopter flyover — with Catalano and player quotes tying the tribute to the win. Resolves the open "not yet detailed in any press recap" flag on Jasper Schwamberger's Week 3 INT-return-TD in lib/footballStats.js: this article specifies it was a 40-yard return with 9:14 left in the 4th. Also confirms first win over Hillsborough since 2017 (independently corroborates the Fromberg-email/NJRB findings already flagged 09-12 through 09-16 — still Tom's call on page placement, not added as a standalone stat here). NOTE: this article's own stat lines differ slightly from NJRB's box score already in footballStats.js (Baxter 165 pass yds vs. NJRB's 173; Woodring 58 receiving yds vs. NJRB's 63; Black 146 rush yds vs. NJRB's 152; Lorino 53 receiving yds vs. NJRB's 56) — same keep-both-flag-the-gap treatment as the Week 1/2 discrepancies already documented, not reconciled here. */ },
@@ -210,24 +211,28 @@ const STAT_BAR = [
 // and Ridge haven't played yet. Source: MaxPreps' Big Central - American
 // Silver standings page, last updated Aug 29, 2026 @ 1:18am GMT.
 const OTHER_STANDINGS_2026 = [
-  // Updated 2026-09-18 sweep (2nd run): Hillsborough lost 7-35 at home to
-  // Phillipsburg on 9/18 — their 2nd Big Central - American Silver league
-  // loss of the season. Confirmed via Ridge's own MaxPreps standings widget
-  // (pulls the league table directly: Hillsborough 0-2 league/1-3 overall)
-  // and independently corroborated by CJ Sports Radio's Friday roundup
-  // ("#1 Phillipsburg 35, Hillsborough 7").
-  { team: 'Hillsborough', wins: 1, losses: 3, confWins: 0, confLosses: 2 },
+  // Updated 2026-09-26 sweep (2nd run): Hillsborough lost 13-42 at home to
+  // Union (non-league) on 9/25, dropping to 1-4 overall (league record
+  // unchanged at 0-2, since Union isn't a Big Central - American Silver
+  // member). Confirmed via CJ Sports Radio's Friday roundup ("Union 42,
+  // Hillsborough 13") and independently via MaxPreps' own recap article
+  // ("Football Recap: Union Piles Up the Points Against Hillsborough").
+  { team: 'Hillsborough', wins: 1, losses: 4, confWins: 0, confLosses: 2 },
   // Updated 2026-09-18 sweep (2nd run): Phillipsburg beat Hillsborough 35-7
   // on the road on 9/18 — their 1st Big Central - American Silver league
   // game of the season. Same sourcing as Hillsborough above (Ridge's
   // MaxPreps standings widget shows Phillipsburg 1-0 league/3-1 overall;
-  // CJSR's roundup independently confirms the 35-7 final).
+  // CJSR's roundup independently confirms the 35-7 final). Their 9/26
+  // game at St. Joseph (Metuchen) was postponed to Monday 3 PM by the
+  // Nor'easter (per CJSR's 9/26 Friday-night roundup) — recheck next sweep.
   { team: 'Phillipsburg', wins: 3, losses: 1, confWins: 1, confLosses: 0 },
-  // Updated 2026-09-18 sweep (2nd run): Ridge lost 3-7 at Bridgewater-Raritan
-  // on 9/18 — Ridge's own MaxPreps game page and CJSR's full recap both
-  // confirm the final; Ridge's own standings widget shows 0-1 league/2-1
-  // overall following the loss.
-  { team: 'Ridge', wins: 2, losses: 1, confWins: 0, confLosses: 1 },
+  // Updated 2026-09-26 sweep (2nd run): Ridge lost 23-28 at home to
+  // Elizabeth (non-league) on 9/25, dropping to 2-2 overall (league record
+  // unchanged at 0-1, since Elizabeth isn't a Big Central - American Silver
+  // member). Confirmed via CJ Sports Radio's Friday roundup ("No. 3
+  // Elizabeth 28, No. 10 Ridge 23") and independently via Ridge's own
+  // MaxPreps schedule page.
+  { team: 'Ridge', wins: 2, losses: 2, confWins: 0, confLosses: 1 },
 ];
 
 // BRHS's own standings row derives from SCHEDULE_2026 — see the comment on
