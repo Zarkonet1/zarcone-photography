@@ -371,10 +371,21 @@ const COLLEGE_ALUMNI = [
   { name: 'Sam Valeira', position: 'K/P', school: 'Susquehanna University', classYear: '2023' },
 ];
 
+// Updated 2026-09-27 per Tom, based on the Westfield game and its
+// coverage: Okolo's been a steady 2nd back all season (144 yds, 2 TD on
+// 40 carries through Week 4, per NJRB's season stats — see
+// lib/footballStats.js) and then had his biggest game of the year,
+// scoring both of BR's non-Black touchdowns in the 20-0 shutout of
+// Westfield on Sept. 26 (BRRSD Athletics, independently confirmed by
+// NJ.com's "Okolo Two TDs" headline). Season-total TD figure below (4) is
+// the 2 already in SEASON_STATS_2026 plus the 2 from Westfield — real
+// arithmetic on two independently sourced facts, not a formal NJRB pull
+// (NJRB hasn't posted its Week 5 season update yet; SEASON_STATS_2026
+// itself stays at its last NJRB pull until it does).
 const FEATURED_PLAYER = {
-  name: 'Evan Woodring',
-  detail: 'Senior · Wide Receiver / Defensive Back',
-  bio: "Woodring entered the fall as the presumptive starting quarterback before sophomore J.B. Baxter won the job outright — and turned the demotion into a two-way breakout instead. Through two games he leads Bridgewater-Raritan in receiving (126 yards, 1 TD) and has an interception on defense, while also drawing recruiting interest from Army and Brown. \"Yes, we have a lot of pressure to repeat,\" he said of following last year's program-first sectional title. \"But what happened last year is last year. We have to restart this year.\"",
+  name: 'Jonathan Okolo',
+  detail: 'Senior · Running Back / Linebacker',
+  bio: "Okolo has been the steady complement to Jahmier Black in Bridgewater-Raritan's backfield all season — 144 yards and 2 touchdowns on 40 carries through the first four games — and then delivered his biggest performance yet in the September 26 shutout of Westfield, scoring both of the Panthers' non-Black touchdowns in the 20-0 win to push his season total to 4. He also starts at linebacker, with 11 tackles on the year.",
 };
 
 // 2025 playoff run only — the confirmed, sourced portion of the season.
@@ -1076,13 +1087,13 @@ export default function BRHSPantherFootballPage() {
         </div>
         <div className={styles.spotlightWrap}>
           <div className={styles.spotlightBadge}>
-            <Image src="/photos/media-day-portraits/5-featured.jpg" alt={`${FEATURED_PLAYER.name} — Bridgewater-Raritan Panther Football, Zarcone Photography`} fill sizes="220px" style={{ objectFit: 'cover' }} />
+            <Image src="/photos/media-day-portraits/3-featured.jpg" alt={`${FEATURED_PLAYER.name} — Bridgewater-Raritan Panther Football, Zarcone Photography`} fill sizes="220px" style={{ objectFit: 'cover' }} />
           </div>
           <div>
             <div className={styles.spotlightName}>{FEATURED_PLAYER.name}</div>
             <div className={styles.spotlightClass}>{FEATURED_PLAYER.detail}</div>
             <p className={styles.spotlightBio}>{FEATURED_PLAYER.bio}</p>
-            <p className={styles.spotlightNote}>Per BRRSD Athletics (Aug 2026 season preview) and PJR Sports Report (Jul 2026 team preview).</p>
+            <p className={styles.spotlightNote}>Per NJ Record Book (season stats through Week 4), BRRSD Athletics, and NJ.com (Sept. 26 Westfield recap).</p>
           </div>
         </div>
       </section>
