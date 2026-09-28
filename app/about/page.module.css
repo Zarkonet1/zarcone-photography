@@ -167,6 +167,16 @@
   transition: color 0.2s;
 }
 .pressCard:hover .pressLink { color: var(--text); }
+.pressCardStatic { margin-top: 16px; cursor: default; }
+.pressCardStatic:hover { border-color: var(--rule); background: none; }
+.pressNote {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 
 /* ── Contact ──────────────────────────────────────────────────── */
 .contactSection { display: grid; grid-template-columns: 1fr 1fr; }

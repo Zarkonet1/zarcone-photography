@@ -227,10 +227,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── In The News ────────────────────────────────────── */}
+      {/* ── Press & Recognition ────────────────────────────── */}
       <section className={styles.press}>
         <div className={`${styles.pressInner} reveal`}>
-          <p className="eyebrow">In The News</p>
+          <p className="eyebrow">Press &amp; Recognition</p>
           <a
             href="https://patch.com/new-jersey/bridgewater/bridgewater-photographer-focuses-lens-local-student-athletes"
             target="_blank"
@@ -241,6 +241,14 @@ export default function AboutPage() {
             <p className={styles.pressByline}>— Patch, August 2026</p>
             <span className={styles.pressLink}>Read the Feature →</span>
           </a>
+          {/* Exposure One 2026 — jury nomination (Sept 28, 2026). Update to the
+              final placement after winners are announced Oct 15, 2026; if no
+              placement, keep "Nominee" wording — never "award-winning". */}
+          <div className={`${styles.pressCard} ${styles.pressCardStatic}`}>
+            <p className={styles.pressQuote}>Jury-Selected Nominee &mdash; Wildlife</p>
+            <p className={styles.pressByline}>— Exposure One Awards, 2026 Discovery of the Year</p>
+            <span className={styles.pressNote}>International Black &amp; White Photography Competition</span>
+          </div>
         </div>
       </section>
 
