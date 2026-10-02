@@ -1,12 +1,12 @@
 export const metadata = {
-  title: 'Portrait Photography NJ | Zarcone Photography',
-  description: 'Professional portrait photography in New Jersey — senior portraits, family portraits, headshots, and lifestyle sessions. Bridgewater, NJ.',
+  title: 'Portrait Photography — Family, Individual & Headshots | Bridgewater NJ',
+  description: 'Unhurried family, individual and headshot portrait sessions in Bridgewater, NJ, on location or in the studio. Seniors and lifestyle sessions too.',
   alternates: {
     canonical: '/portraits',
   },
   openGraph: {
-    title: 'Portrait Photography NJ | Zarcone Photography',
-    description: 'Professional portrait photography in New Jersey — senior portraits, family portraits, headshots, and lifestyle sessions.',
+    title: 'Portrait Photography — Family, Individual & Headshots | Bridgewater NJ',
+    description: 'Unhurried family, individual and headshot portrait sessions in Bridgewater, NJ, on location or in the studio.',
     url: 'https://www.zarconephotography.com/portraits',
     images: [
       {

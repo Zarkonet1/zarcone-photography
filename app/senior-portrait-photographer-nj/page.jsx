@@ -3,10 +3,10 @@ import PageHero from '@/components/PageHero';
 import styles from '@/app/seo-page.module.css';
 
 export const metadata = {
-  title: 'Senior Portrait Photographer NJ | Zarcone Photography',
+  title: 'Senior Portraits in Bridgewater & Somerset County, NJ | Zarcone Photography',
   description: 'Professional senior portrait photographer serving Bridgewater, Somerset County, and NJ. Relaxed sessions, fast delivery.',
   openGraph: {
-    title: 'Senior Portrait Photographer — New Jersey | Zarcone Photography',
+    title: 'Senior Portraits in Bridgewater & Somerset County, NJ | Zarcone Photography',
     description: 'Professional senior portrait photographer serving New Jersey. Based in Bridgewater, NJ — Somerset County and beyond.',
     url: 'https://www.zarconephotography.com/senior-portrait-photographer-nj',
     type: 'website',
@@ -213,7 +213,7 @@ export default function SeniorPortraitPhotographerNJ() {
         <div>
           <h2>Ready to book your <em>senior session?</em></h2>
           <p style={{ fontSize: '14px', color: 'var(--muted)', marginTop: '12px', maxWidth: '480px', lineHeight: '1.7' }}>
-            Reach out with your preferred dates and I'll get back to you within 24 hours with availability and a custom quote.
+            Senior sessions start at $600. Reach out with your preferred dates and I'll get back to you within 24 hours with availability and a custom quote. <Link href="/pricing" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>See full pricing</Link>.
           </p>
         </div>
         <Link href="/about#contact" className="btn btn-solid">Book a Session →</Link>

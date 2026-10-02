@@ -1,12 +1,12 @@
 export const metadata = {
-  title: 'NJ High School Sports Photographer | Zarcone Photography',
-  description: 'Action sports photography for NJ high school athletes — football, wrestling, lacrosse, basketball, and more. Bridgewater, NJ.',
+  title: 'Sports Photography Portfolio | Zarcone Photography, Bridgewater NJ',
+  description: 'Portfolio of game-day and athlete sports photography by Zarcone Photography in Bridgewater, NJ: football, wrestling, volleyball, lacrosse, basketball and more.',
   alternates: {
     canonical: '/sports',
   },
   openGraph: {
-    title: 'NJ High School Sports Photographer | Zarcone Photography',
-    description: 'Action sports photography for NJ high school athletes — football, wrestling, lacrosse, basketball, gymnastics, baseball, and more.',
+    title: 'Sports Photography Portfolio | Zarcone Photography, Bridgewater NJ',
+    description: 'Portfolio of game-day and athlete sports photography from Bridgewater, NJ: football, wrestling, volleyball, lacrosse, basketball and more.',
     url: 'https://www.zarconephotography.com/sports',
     images: [
       {

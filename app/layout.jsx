@@ -11,13 +11,13 @@ import { Analytics } from '@vercel/analytics/next';
 export const metadata = {
   metadataBase: new URL('https://www.zarconephotography.com'),
   title: 'Zarcone Photography — NJ Portrait & Sports Photographer',
-  description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events across NJ, NYC & Philly.',
+  description: 'Sports, senior portrait and event photographer in Bridgewater, NJ. Media partner to Bridgewater-Raritan athletics. Serving Somerset County and Central New Jersey.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Zarcone Photography — NJ Portrait & Sports Photographer',
-    description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events across NJ, NYC & Philly.',
+    description: 'Sports, senior portrait and event photographer in Bridgewater, NJ. Media partner to Bridgewater-Raritan athletics. Serving Somerset County and Central New Jersey.',
     type: 'website',
     url: 'https://www.zarconephotography.com',
     images: [
@@ -32,7 +32,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Zarcone Photography — NJ Portrait & Sports Photographer',
-    description: 'Professional photographer based in Bridgewater, NJ specializing in portraits, high school sports, and events across NJ, NYC & Philly.',
+    description: 'Sports, senior portrait and event photographer in Bridgewater, NJ. Media partner to Bridgewater-Raritan athletics. Serving Somerset County and Central New Jersey.',
     images: ['https://www.zarconephotography.com/photos/tz-headshot.jpg'],
   },
 };

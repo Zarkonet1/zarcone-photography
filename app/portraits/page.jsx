@@ -133,12 +133,17 @@ export default function PortraitsPage() {
       <PageHero
         eyebrow="02 / Portraits"
         title="Portraits"
-        description="Senior year. Your daughter at 17, exactly as she is right now. You won't get this version of her back — but you can have a photograph that does it justice."
+        description="Families, individuals, headshots and seniors. Unhurried sessions, on location or in the studio, built around the people in front of the camera."
         imageSrc="/photos/PORTRAIT-Zarcone-Photography-0002.jpg"
       />
 
       <p className={styles.painLine}>
-        Most portrait sessions feel rushed, generic, and forgettable. These don't. Every session is unhurried and built around the person in front of the camera — not a pose checklist.
+        Most portrait sessions feel rushed, generic, and forgettable. These don't. Every session is unhurried and built around the person in front of the camera — not a pose checklist.{' '}
+        High school senior? See{' '}
+        <Link href="/senior-portrait-photographer-nj" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
+          senior portraits in Bridgewater &amp; Somerset County
+        </Link>
+        .
       </p>
 
       {/* Filter Bar */}

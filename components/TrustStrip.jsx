@@ -32,7 +32,6 @@ const LOGOS = [
   { src: '/photos/TRUST - WPAOGlogoTransBG200.png',                 alt: 'WPAO' },
   { src: '/photos/TRUST - BayLogo_square_LightBkgrnd_400x400.jpg',  alt: 'Bay Photo Lab' },
   { src: '/photos/TRUST - breeze-logo.png',                         alt: 'The BReeze' },
-  { src: '/photos/TRUST - YourBestShot.png',                        alt: 'Your Best Shot — Sports Media', href: 'https://www.yourbestshot.photos', external: true },
 ];
 
 // Duplicate for seamless loop

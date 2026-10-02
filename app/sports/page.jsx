@@ -133,7 +133,7 @@ export default function SportsPage() {
     <>
       <PageHero
         eyebrow="01 / Sports"
-        title="Sports"
+        title="Sports Photography Portfolio"
         description="Four years of early mornings, weight rooms, and Friday nights — and it ends in a single season. Your athlete gave everything. The photos should prove it."
         imageSrc="/photos/i-s7zBdzk.jpg"
       />
@@ -185,16 +185,15 @@ export default function SportsPage() {
       </p>
 
       <p className={styles.painLine} style={{ paddingTop: 0 }}>
-        Full-season galleries, team stores, and athlete highlight reels for these programs live on{' '}
-        <a
-          href="https://www.yourbestshot.photos"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: 'var(--accent)', textDecoration: 'underline' }}
-        >
-          Your Best Shot
-        </a>
-        , my dedicated sports media platform.
+        Booking a season, a team or a program? See how{' '}
+        <Link href="/schools-athletic-programs-nj" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
+          season media partnerships for NJ schools
+        </Link>
+        {' '}work, or check{' '}
+        <Link href="/pricing" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
+          pricing
+        </Link>
+        .
       </p>
 
       <div className={styles.filterBar}>
