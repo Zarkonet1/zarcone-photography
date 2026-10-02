@@ -57,7 +57,7 @@ const jsonLd = {
 };
 
 const SPORTS = [
-  'Football', 'Wrestling', 'Lacrosse', 'Softball', 'Baseball',
+  'Football', 'Wrestling', 'Volleyball', 'Field Hockey', 'Lacrosse', 'Softball', 'Baseball',
   'Basketball', 'Soccer', 'Track & Field', 'Gymnastics', 'Swimming',
 ];
 
@@ -97,7 +97,7 @@ const FEATURES = [
 const FAQ = [
   {
     q: 'What sports do you photograph?',
-    a: 'Football, wrestling, lacrosse, softball, baseball, basketball, soccer, track and field, gymnastics, and swimming are the most common. If your sport isn\'t on that list, reach out — covering new sports is always welcome.',
+    a: 'Football, wrestling, volleyball, field hockey, lacrosse, softball, baseball, basketball, soccer, track and field, gymnastics, and swimming are the most common. If your sport isn\'t on that list, reach out — covering new sports is always welcome.',
   },
   {
     q: 'Do you work with individual athletes or only teams?',
@@ -113,13 +113,24 @@ const FAQ = [
   },
   {
     q: 'Do you photograph youth sports, or only high school?',
-    a: 'Both. High school athletics is a core specialty, but travel teams, club sports, and recreational leagues are all covered. Somerset County and surrounding areas have excellent youth athletic programs — many of which already trust Zarcone Photography for their photography needs.',
+    a: 'Both. High school athletics is a core specialty, but travel teams, club sports, and recreational leagues are all covered. Somerset County and the surrounding area have strong youth athletic programs, and I cover them with the same approach I use for varsity.',
   },
   {
     q: 'What areas of New Jersey do you serve?',
     a: 'Based in Bridgewater, regularly covering Somerset, Morris, Union, Warren, Middlesex, and Hunterdon counties. Willing to travel statewide for the right event or program.',
   },
 ];
+
+FAQ.push(
+  {
+    q: 'Do you photograph sports Media Days?',
+    a: 'Yes. Media Day portraits and team photos are part of my season partnerships with schools, and can also be booked on their own. Contact me with your roster size and preferred dates.',
+  },
+  {
+    q: 'How much does sports photography cost?',
+    a: 'Sports coverage starts at $850, and season packages and recurring event rates are available. See the pricing page for details, or tell me about your team and schedule for a quote.',
+  },
+);
 
 const PREVIEWS = [
   '/photos/i-s7zBdzk.jpg',
@@ -150,8 +161,9 @@ export default function SportsPhotographerNJ() {
         </div>
         <div className={styles.introBody}>
           <p>High school athletes put in years of work before they ever step onto a varsity field. A single season contains hundreds of moments that disappear the second they happen — a first-period takedown, a game-winning goal, a senior's last home game.</p>
-          <p>I've been covering New Jersey athletics for over two decades. The gear is fast — the Nikon Z9 shoots 20 frames per second — but the more important skill is knowing which moment is worth the burst before it happens.</p>
+          <p>I've been photographing New Jersey athletes for 30 years. The gear is fast — the Nikon Z9 shoots 20 frames per second — but the more important skill is knowing which moment is worth the burst before it happens.</p>
           <p><strong>Athletes deserve photographs that match the intensity they bring to their sport.</strong> That's what I show up to make.</p>
+          <p>Right now I'm the official media partner for <Link href="/brhs-panther-football">Bridgewater-Raritan Panther football</Link> (2026), <Link href="/brhs-panther-wrestling">Panther wrestling</Link> (2026-27) and <Link href="/brhs-panther-volleyball">Panther volleyball</Link>. That means game-day photography, team and individual portraits, and a program media hub, all in one place. My work with local student-athletes was also the subject of a <a href="https://patch.com/new-jersey/bridgewater/bridgewater-photographer-focuses-lens-local-student-athletes" target="_blank" rel="noopener noreferrer">Patch Bridgewater feature</a>.</p>
           <p>Serving high schools, travel teams, youth leagues, and booster clubs throughout Somerset County and across Central New Jersey — including programs in Warren, Morris, Union, Middlesex, and Hunterdon counties.</p>
         </div>
       </section>
@@ -163,6 +175,18 @@ export default function SportsPhotographerNJ() {
           {SPORTS.join('  ·  ')} &nbsp;·&nbsp; and more
         </p>
       </div>
+
+      {/* Media Day */}
+      <section className={styles.intro}>
+        <div className={styles.introLabel}>
+          <h2 className={styles.introH2}>Sports <em>Media Day.</em></h2>
+        </div>
+        <div className={styles.introBody}>
+          <p>Media Day is the one session where every athlete on a roster gets a proper portrait and the team gets a proper team photo, before the season starts and the schedule takes over. Done well, it gives your program a full set of images for rosters, posters, social media and Senior Night.</p>
+          <p>I run Media Days for the programs I partner with, with individual portraits and team photos built around your schedule. Families get a private gallery to order from, and the program gets images it can actually use. Here is how it works for one program: <Link href="/blog/brhs-football-2026-media-day-photo-guide">the BRHS football 2026 Media Day guide</Link>.</p>
+          <p>Athletic directors and coaches planning a season can see how <Link href="/schools-athletic-programs-nj">season media partnerships</Link> are structured, or request Media Day dates through the <Link href="/about#contact">contact form</Link>.</p>
+        </div>
+      </section>
 
       {/* Why section */}
       <section className={styles.why}>
