@@ -184,7 +184,7 @@ export default function SportsPhotographerNJ() {
         <div className={styles.introBody}>
           <p>Media Day is the one session where every athlete on a roster gets a proper portrait and the team gets a proper team photo, before the season starts and the schedule takes over. Done well, it gives your program a full set of images for rosters, posters, social media and Senior Night.</p>
           <p>I run Media Days for the programs I partner with, with individual portraits and team photos built around your schedule. Families get a private gallery to order from, and the program gets images it can actually use. Here is how it works for one program: <Link href="/blog/brhs-football-2026-media-day-photo-guide">the BRHS football 2026 Media Day guide</Link>.</p>
-          <p>Athletic directors and coaches planning a season can see how <Link href="/schools-athletic-programs-nj">season media partnerships</Link> are structured, or request Media Day dates through the <Link href="/about#contact">contact form</Link>.</p>
+          <p>Athletic directors and coaches planning a season can see how <Link href="/schools-athletic-programs-nj">season media partnerships</Link> are structured, or see the full <Link href="/sports-media-day-nj">sports Media Day photography</Link> page for how it works, timing and quotes.</p>
         </div>
       </section>
 

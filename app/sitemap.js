@@ -20,6 +20,7 @@ export default function sitemap() {
     '/blog',
     '/news',
     '/sports-photographer-nj',
+    '/sports-media-day-nj',
     '/senior-portrait-photographer-nj',
     '/event-photographer-nj',
     '/schools-athletic-programs-nj',
