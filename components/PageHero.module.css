@@ -46,6 +46,11 @@
   line-height: 1.7;
 }
 
+.descStrong {
+  color: rgba(236,232,225,0.9);
+  text-shadow: 0 1px 10px rgba(0,0,0,0.75);
+}
+
 @media (max-width: 750px) {
   .content { padding: 0 24px 44px; }
 }

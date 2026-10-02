@@ -1,6 +1,6 @@
 import styles from './PageHero.module.css';
 
-export default function PageHero({ eyebrow, title, description, imageSrc, imagePosition = 'center' }) {
+export default function PageHero({ eyebrow, title, description, imageSrc, imagePosition = 'center', strongDesc = false, children }) {
   return (
     <div className={styles.hero}>
       <img
@@ -16,7 +16,8 @@ export default function PageHero({ eyebrow, title, description, imageSrc, imageP
       <div className={styles.content}>
         <p className={`eyebrow ${styles.eyebrow}`}>{eyebrow}</p>
         <h1 className={styles.title}>{title}</h1>
-        {description && <p className={styles.desc}>{description}</p>}
+        {description && <p className={`${styles.desc} ${strongDesc ? styles.descStrong : ''}`}>{description}</p>}
+        {children}
       </div>
     </div>
   );
