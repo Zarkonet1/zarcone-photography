@@ -22,7 +22,7 @@ export default function Nav() {
 
   const links = [
     { href: '/sports',           label: 'Sports'          },
-    { href: '/schools-athletic-programs-nj', label: 'Schools & Programs' },
+    { href: '/schools-athletic-programs-nj', label: 'Schools' },
     { href: '/portraits',        label: 'Portraits'       },
     { href: '/portrait-parties', label: 'Portrait Parties' },
     { href: '/events',           label: 'Events'          },

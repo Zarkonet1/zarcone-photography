@@ -37,6 +37,13 @@
   transition: color 0.2s;
 }
 .link:hover { color: var(--text); }
+
+/* Keep desktop nav links on one line (11 links + Inquire); tighten spacing on laptop-width screens */
+.link { white-space: nowrap; }
+@media (min-width: 821px) and (max-width: 1750px) {
+  .links { gap: 22px; }
+  .link { letter-spacing: 0.14em; font-size: 11.5px; }
+}
 .link.active  { color: var(--accent); }
 
 /* Inquire CTA button */
