@@ -219,9 +219,9 @@ const STAT_BAR = [
 // loss; Hunterdon Central won 3 more non-league games (league record
 // unchanged at 4-0, having already been undefeated in league).
 const OTHER_STANDINGS_2026 = [
-  { team: 'Hillsborough', wins: 3, losses: 7, confWins: 0, confLosses: 4 },
+  { team: 'Hillsborough', wins: 6, losses: 8, confWins: 1, confLosses: 4 }, // 2026-10-02 sweep, MaxPreps own schedule page
   { team: 'North Hunterdon', wins: 5, losses: 5, confWins: 2, confLosses: 3 },
-  { team: 'Hunterdon Central', wins: 9, losses: 1, confWins: 4, confLosses: 0 },
+  { team: 'Hunterdon Central', wins: 9, losses: 4, confWins: 4, confLosses: 1 }, // 2026-10-02 sweep, MaxPreps own schedule page
 ];
 
 const BRHS_PLAYED = SCHEDULE_2026.filter((g) => g.result);
