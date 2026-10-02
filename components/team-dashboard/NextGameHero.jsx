@@ -85,7 +85,15 @@ export default function NextGameHero({
   // (which always has a real bgPhotoSrc) rendering exactly as before.
   watermarkSrc = null,
   watermarkAlt = '',
+  // pageTitle: added 2026-10-01 (SEO). When set, the hero renders this as the
+  // page's single, stable <h1> and demotes the rotating game-state headline
+  // (matchup / final / gallery / postponed) to <h2>. Without it, the page's
+  // H1 changed every week with the next opponent. Default null keeps every
+  // other caller rendering exactly as before.
+  pageTitle = null,
 }) {
+  const HeadTag = pageTitle ? 'h2' : 'h1';
+  const pageTitleEl = pageTitle ? <h1 className={styles.pageTitle}>{pageTitle}</h1> : null;
   // HYDRATION FIX (2026-08-28): this state used to be computed directly
   // from `new Date()` during render. That runs once on Vercel's server
   // (UTC) and again in the browser during hydration (the visitor's local
@@ -157,16 +165,18 @@ export default function NextGameHero({
 
       {state === 'gallery' && (
         <div className={styles.content}>
+          {pageTitleEl}
           <span className={styles.eyebrow}>{opponentName(lastPlayedGame.opponent)} Game Gallery</span>
-          <h1 className={styles.bigLine}>
+          <HeadTag className={styles.bigLine}>
             {latestGallery.photoCount ? `${latestGallery.photoCount} Photos` : 'Photos Are Live'}
-          </h1>
+          </HeadTag>
           <a href={latestGallery.href} target="_blank" rel="noopener noreferrer" className={styles.cta}>View Gallery →</a>
         </div>
       )}
 
       {state === 'final' && (
         <div className={styles.content}>
+          {pageTitleEl}
           <span className={styles.eyebrow}>Final</span>
           {lastPlayedGame.result.usScore != null && lastPlayedGame.result.themScore != null ? (
             <div className={styles.scoreLine}>
@@ -174,9 +184,9 @@ export default function NextGameHero({
               <span>{opponentName(lastPlayedGame.opponent)} <strong>{lastPlayedGame.result.themScore}</strong></span>
             </div>
           ) : (
-            <h1 className={styles.bigLine}>
+            <HeadTag className={styles.bigLine}>
               {lastPlayedGame.result.win == null ? 'T' : (lastPlayedGame.result.win ? 'W' : 'L')} {lastPlayedGame.result.score} — {opponentName(lastPlayedGame.opponent)}
-            </h1>
+            </HeadTag>
           )}
           <a href="#schedule" className={styles.cta}>Full Schedule →</a>
         </div>
@@ -184,10 +194,11 @@ export default function NextGameHero({
 
       {state === 'postponed' && (
         <div className={styles.content}>
+          {pageTitleEl}
           <span className={styles.alertBadge}>⚠ Weather Postponement</span>
-          <h1 className={styles.bigLine}>
+          <HeadTag className={styles.bigLine}>
             Moved to {nextGame.date}, {nextGame.time}
-          </h1>
+          </HeadTag>
           <div className={styles.metaRow}>
             <span>{nextGame.home ? 'vs' : '@'} {opponentName(nextGame.opponent)} — originally tonight</span>
             <span className={styles.badge}>{nextGame.home ? 'Home' : 'Away'}</span>
@@ -199,14 +210,15 @@ export default function NextGameHero({
 
       {state === 'next' && (
         <div className={styles.content}>
+          {pageTitleEl}
           <span className={styles.eyebrow}>{nextGame ? 'Next Game' : '2026 Season Complete'}</span>
           {nextGame ? (
             <>
-              <h1 className={styles.matchup}>
+              <HeadTag className={styles.matchup}>
                 {teamMatchupName}
                 <span className={styles.vs}>{nextGame.home ? 'vs' : '@'}</span>
                 {opponentName(nextGame.opponent)}
-              </h1>
+              </HeadTag>
               <div className={styles.metaRow}>
                 <span>{nextGame.date} · {nextGame.time}</span>
                 <span className={styles.badge}>{nextGame.home ? 'Home' : 'Away'}</span>

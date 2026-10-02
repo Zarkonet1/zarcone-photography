@@ -75,6 +75,7 @@ const LEAD_TOOL = {
       phone: { type: 'string', description: "Visitor's phone number, if given" },
       event_date: { type: 'string', description: 'Desired session/event date, if mentioned' },
       location: { type: 'string', description: 'Location or general area, if mentioned' },
+      organization: { type: 'string', description: 'School, team, booster club, league, company or other organization the request is for, if any. For any team, school or group request, ask for this before submitting.' },
       session_type: { type: 'string', description: 'Type of photography requested (e.g. senior portrait, football season, wedding-adjacent event, design/poster)' },
       headcount: { type: 'string', description: 'Number of people involved, if mentioned' },
       special_requests: { type: 'string', description: 'Any other relevant details the visitor shared' },
@@ -127,7 +128,48 @@ function stripMarkdown(text) {
     .replace(/[ \t]{2,}/g, ' ');     // tidy up any double spaces that leaves behind
 }
 
-async function sendLeadEmail(fields) {
+// Escape visitor-supplied text before it goes into an HTML email.
+function esc(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// Attribution context from the widget (2026-10-01). Only known keys, short strings.
+function cleanContext(raw) {
+  if (!raw || typeof raw !== 'object') return {};
+  const keys = ['referrer', 'landingPage', 'chatPage', 'utmSource', 'utmMedium', 'utmCampaign'];
+  const out = {};
+  for (const k of keys) {
+    if (typeof raw[k] === 'string' && raw[k].trim()) out[k] = raw[k].trim().slice(0, 300);
+  }
+  return out;
+}
+
+function describeSource(ctx) {
+  if (ctx.utmSource) return `Campaign: ${ctx.utmSource}${ctx.utmMedium ? ' / ' + ctx.utmMedium : ''}`;
+  if (!ctx.referrer) return 'Direct (typed URL, bookmark, or app that hides the referrer)';
+  try {
+    const host = new URL(ctx.referrer).hostname.replace(/^www\./, '');
+    if (host.includes('zarconephotography.com')) return 'Internal (came from another page on this site)';
+    if (/chatgpt\.com|openai\.com|perplexity\.ai|claude\.ai|gemini\.google|copilot\.microsoft/.test(host)) return `AI assistant (${host})`;
+    if (/google\.|bing\.com|duckduckgo\.com|yahoo\./.test(host)) return `Search engine (${host})`;
+    if (/facebook\.com|instagram\.com|t\.co|x\.com|linkedin\.com|tiktok\.com/.test(host)) return `Social (${host})`;
+    return `Referral (${host})`;
+  } catch {
+    return 'Unknown';
+  }
+}
+
+function transcriptHtml(messages) {
+  return (messages || [])
+    .map(m => `<p style="margin:0 0 8px"><strong>${m.role === 'user' ? 'Visitor' : 'Bot'}:</strong> ${esc(m.content)}</p>`)
+    .join('\n');
+}
+
+async function sendLeadEmail(fields, ctx = {}, transcript = []) {
   const hasContactMethod = (fields.email && fields.email.trim()) || (fields.phone && fields.phone.trim());
   if (!fields.name || !fields.name.trim() || !hasContactMethod) {
     // Not enough to act on — skip silently rather than emailing a dead lead.
@@ -140,6 +182,7 @@ async function sendLeadEmail(fields) {
     ['Email', fields.email],
     ['Phone', fields.phone],
     ['Event Date', fields.event_date],
+    ['Organization', fields.organization],
     ['Location', fields.location],
     ['Session Type', fields.session_type],
     ['Headcount', fields.headcount],
@@ -155,7 +198,14 @@ async function sendLeadEmail(fields) {
       subject: `AI Chat Lead — ${fields.name}`,
       html: `
         <h2>New Lead from AI Chat Widget</h2>
-        ${rows.map(([label, value]) => `<p><strong>${label}:</strong> ${value}</p>`).join('\n')}
+        ${rows.map(([label, value]) => `<p><strong>${label}:</strong> ${esc(value)}</p>`).join('\n')}
+        <h3>How they found the site</h3>
+        <p><strong>Source:</strong> ${esc(describeSource(ctx))}</p>
+        <p><strong>Referring URL:</strong> ${esc(ctx.referrer || 'none')}</p>
+        <p><strong>First page viewed:</strong> ${esc(ctx.landingPage || 'unknown')}</p>
+        <p><strong>Page where they chatted:</strong> ${esc(ctx.chatPage || 'unknown')}</p>
+        <h3>Conversation</h3>
+        ${transcriptHtml(transcript)}
       `,
     });
   } catch (err) {
@@ -163,12 +213,12 @@ async function sendLeadEmail(fields) {
   }
 }
 
-async function sendEscalationEmail(fields, recentMessages) {
+async function sendEscalationEmail(fields, recentMessages, ctx = {}) {
   if (!process.env.RESEND_API_KEY) return;
 
   const transcript = (recentMessages || [])
     .slice(-8)
-    .map(m => `${m.role === 'user' ? 'Visitor' : 'Bot'}: ${m.content}`)
+    .map(m => `${m.role === 'user' ? 'Visitor' : 'Bot'}: ${esc(m.content)}`)
     .join('\n');
 
   try {
@@ -179,9 +229,10 @@ async function sendEscalationEmail(fields, recentMessages) {
       subject: `Chat needs you now — ${fields.reason || 'escalation'}`,
       html: `
         <h2>Live Chat Escalation</h2>
-        <p><strong>Reason:</strong> ${fields.reason || 'Not specified'}</p>
-        <p><strong>Summary:</strong> ${fields.summary || 'Not specified'}</p>
-        ${fields.contact_info && fields.contact_info.trim() ? `<p><strong>Contact info given:</strong> ${fields.contact_info}</p>` : '<p><strong>Contact info given:</strong> none yet</p>'}
+        <p><strong>Reason:</strong> ${esc(fields.reason || 'Not specified')}</p>
+        <p><strong>Summary:</strong> ${esc(fields.summary || 'Not specified')}</p>
+        ${fields.contact_info && fields.contact_info.trim() ? `<p><strong>Contact info given:</strong> ${esc(fields.contact_info)}</p>` : '<p><strong>Contact info given:</strong> none yet</p>'}
+        <p><strong>Source:</strong> ${esc(describeSource(ctx))} · first page ${esc(ctx.landingPage || 'unknown')} · chatting on ${esc(ctx.chatPage || 'unknown')}</p>
         <p><strong>Recent conversation:</strong></p>
         <pre style="white-space: pre-wrap; font-family: inherit;">${transcript}</pre>
       `,
@@ -213,6 +264,7 @@ export async function POST(request) {
   }
 
   const { messages } = body;
+  const ctx = cleanContext(body.context);
   if (!Array.isArray(messages) || messages.length === 0) {
     return NextResponse.json({ error: 'Missing messages.' }, { status: 400 });
   }
@@ -249,16 +301,23 @@ export async function POST(request) {
       tools: [LEAD_TOOL, ESCALATE_TOOL],
     });
 
+    const botText = response.content
+      .filter(block => block.type === 'text')
+      .map(block => block.text)
+      .join(' ')
+      .trim();
+    const fullTranscript = botText ? [...cleaned, { role: 'assistant', content: botText }] : cleaned;
+
     const toolUse = response.content.find(block => block.type === 'tool_use' && block.name === 'submit_lead_inquiry');
     if (toolUse) {
       // Fire-and-forget side effect — don't make the visitor wait on email delivery,
       // but do await it so serverless doesn't kill the function mid-send.
-      await sendLeadEmail(toolUse.input || {});
+      await sendLeadEmail(toolUse.input || {}, ctx, fullTranscript);
     }
 
     const escalation = response.content.find(block => block.type === 'tool_use' && block.name === 'escalate_to_human');
     if (escalation) {
-      await sendEscalationEmail(escalation.input || {}, cleaned);
+      await sendEscalationEmail(escalation.input || {}, fullTranscript, ctx);
     }
 
     let reply = stripMarkdown(

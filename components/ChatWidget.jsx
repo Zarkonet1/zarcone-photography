@@ -14,6 +14,33 @@ export default function ChatWidget() {
   const [error, setError] = useState(false);
   const listRef = useRef(null);
 
+  // Lead attribution (2026-10-01): remember how this visitor first arrived
+  // (referring site, landing page, UTM tags) for the browser session, so a
+  // chat lead can say where it came from. sessionStorage only, no cookies;
+  // wrapped in try/catch because storage can be blocked.
+  const sourceRef = useRef(null);
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem('zp_chat_source');
+      if (saved) {
+        sourceRef.current = JSON.parse(saved);
+        return;
+      }
+      const params = new URLSearchParams(window.location.search);
+      const src = {
+        referrer: document.referrer || '',
+        landingPage: window.location.pathname + window.location.search,
+        utmSource: params.get('utm_source') || '',
+        utmMedium: params.get('utm_medium') || '',
+        utmCampaign: params.get('utm_campaign') || '',
+      };
+      sessionStorage.setItem('zp_chat_source', JSON.stringify(src));
+      sourceRef.current = src;
+    } catch {
+      sourceRef.current = null;
+    }
+  }, []);
+
   useEffect(() => {
     if (listRef.current) {
       listRef.current.scrollTop = listRef.current.scrollHeight;
@@ -35,7 +62,7 @@ export default function ChatWidget() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: nextMessages }),
+        body: JSON.stringify({ messages: nextMessages, context: { ...(sourceRef.current || {}), chatPage: pathname || '' } }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -117,6 +144,9 @@ export default function ChatWidget() {
               Send
             </button>
           </form>
+          <p className={styles.fallback}>
+            AI assistant. If you share contact details, this conversation is emailed to Tom so he can follow up.
+          </p>
           {error && (
             <p className={styles.fallback}>
               Prefer to talk directly? <a href="tel:9087770631">(908) 777-0631</a>

@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'BRHS Panther Football Photos | Zarcone Photography',
-  description: 'Official media partner for Bridgewater-Raritan (BRHS) High School football. Browse game-day galleries & order prints — new photos posted after every game.',
+  title: 'Bridgewater-Raritan Football 2026: Schedule, Scores & Photos',
+  description: 'Bridgewater-Raritan Panthers 2026 football schedule, results, roster, stats and game-day photos, updated after every game by the team\'s official media partner.',
   alternates: {
     canonical: '/brhs-panther-football',
   },
@@ -17,8 +17,8 @@ export const metadata = {
     'Senior Sports Portraits NJ',
   ],
   openGraph: {
-    title: 'Bridgewater-Raritan Panther Football | Official Media Partner — Zarcone Photography',
-    description: 'Game day galleries, Media Day portraits, and Senior Night coverage for BRHS Panther Football — 2026 season media partnership with Zarcone Photography.',
+    title: 'Bridgewater-Raritan Football 2026: Schedule, Scores & Photos',
+    description: 'Bridgewater-Raritan Panthers 2026 football schedule, results, roster, stats and game-day photos, updated after every game by the team\'s official media partner.',
     url: 'https://www.zarconephotography.com/brhs-panther-football',
     type: 'website',
     images: [

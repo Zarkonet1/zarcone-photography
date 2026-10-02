@@ -740,6 +740,7 @@ export default function BRHSPantherFootballPage() {
         lastPlayedGame={DASHBOARD_LAST_PLAYED}
         latestGallery={LATEST_GALLERY}
         bgPhotoSrc="/photos/i-s7zBdzk.jpg"
+        pageTitle="Bridgewater-Raritan Panthers Football 2026"
       />
 
       <StatCards
