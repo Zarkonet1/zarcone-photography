@@ -27,7 +27,7 @@ const nextConfig = {
               "img-src 'self' data: blob: https:",
               "font-src 'self' data:",
               "connect-src 'self' https://*.honeybook.com https://*.hbportal.co https://*.elfsight.com https://*.elfsightcdn.com https://formspree.io https://vercel.live https://vitals.vercel-insights.com https://www.google-analytics.com https://region1.google-analytics.com https://www.clarity.ms https://scripts.clarity.ms https://c.clarity.ms",
-              "frame-src 'self' https://*.honeybook.com https://*.hbportal.co https://*.elfsight.com https://player.vimeo.com",
+              "frame-src 'self' https://book.zarconephotography.com https://*.honeybook.com https://*.hbportal.co https://*.elfsight.com https://player.vimeo.com",
               "object-src 'none'",
               "base-uri 'self'",
             ].join('; '),
