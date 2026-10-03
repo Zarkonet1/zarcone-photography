@@ -221,7 +221,8 @@ const OTHER_STANDINGS_2026 = [
   // member). Confirmed via CJ Sports Radio's Friday roundup ("Union 42,
   // Hillsborough 13") and independently via MaxPreps' own recap article
   // ("Football Recap: Union Piles Up the Points Against Hillsborough").
-  { team: 'Hillsborough', wins: 1, losses: 4, confWins: 0, confLosses: 2 },
+  // Updated 2026-10-03 sweep: Hillsborough lost 13-31 at home to Colonia (non-league) on 10/2 — 1-5 overall, league unchanged 0-2. MaxPreps recap ("Colonia Pulls Away from Hillsborough") + CJSR's Friday roundup ("Colonia 31, Hillsborough 13").
+  { team: 'Hillsborough', wins: 1, losses: 5, confWins: 0, confLosses: 2 },
   // Updated 2026-09-18 sweep (2nd run): Phillipsburg beat Hillsborough 35-7
   // on the road on 9/18 — their 1st Big Central - American Silver league
   // game of the season. Same sourcing as Hillsborough above (Ridge's
@@ -229,14 +230,16 @@ const OTHER_STANDINGS_2026 = [
   // CJSR's roundup independently confirms the 35-7 final). Their 9/26
   // game at St. Joseph (Metuchen) was postponed to Monday 3 PM by the
   // Nor'easter (per CJSR's 9/26 Friday-night roundup) — recheck next sweep.
-  { team: 'Phillipsburg', wins: 3, losses: 1, confWins: 1, confLosses: 0 },
+  // Updated 2026-10-03 sweep: Phillipsburg lost 13-14 at Ridge on 10/2 (TD as time expired) — now 4-2 overall, 1-1 league. Resolves the Sep 27-Oct 2 conflict (official site 3-1 vs MaxPreps 4-1): MaxPreps' 4-1 was right; the postponed St. Joseph game was played and won. Source: MaxPreps recaps (Ridge/Phillipsburg: both list 4-2) + CJSR game article ("Frank-Pickell connection").
+  { team: 'Phillipsburg', wins: 4, losses: 2, confWins: 1, confLosses: 1 },
   // Updated 2026-09-26 sweep (2nd run): Ridge lost 23-28 at home to
   // Elizabeth (non-league) on 9/25, dropping to 2-2 overall (league record
   // unchanged at 0-1, since Elizabeth isn't a Big Central - American Silver
   // member). Confirmed via CJ Sports Radio's Friday roundup ("No. 3
   // Elizabeth 28, No. 10 Ridge 23") and independently via Ridge's own
   // MaxPreps schedule page.
-  { team: 'Ridge', wins: 2, losses: 2, confWins: 0, confLosses: 1 },
+  // Updated 2026-10-03 sweep: Ridge beat No. 1 Phillipsburg 14-13 at home on 10/2 (Frank-to-Pickell 4-yd TD as time expired) — 3-2 overall, 1-1 league. MaxPreps recap + CJSR game article agree.
+  { team: 'Ridge', wins: 3, losses: 2, confWins: 1, confLosses: 1 },
 ];
 
 // BRHS's own standings row derives from SCHEDULE_2026 — see the comment on
