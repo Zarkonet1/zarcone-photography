@@ -15,6 +15,13 @@ export default function TrackedCta({ href, location, label, className, style, ch
   const report = () => {
     try {
       if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        try {
+          // Remember the last CTA so the thank-you page can credit the lead to it.
+          window.sessionStorage.setItem(
+            'zp_last_cta',
+            JSON.stringify({ location, label, page: window.location.pathname, ts: Date.now() })
+          );
+        } catch (e) { /* storage blocked: attribution simply falls back to 'unknown' */ }
         window.gtag('event', 'cta_click', {
           cta_location: location,
           cta_label: label,
