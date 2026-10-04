@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /high_school/
 
 Sitemap: https://www.zarconephotography.com/sitemap.xml
