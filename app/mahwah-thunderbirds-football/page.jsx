@@ -73,7 +73,8 @@ const OTHER_DIVISION_TEAMS_2026 = [
   // Updated 2026-09-26 sweep (2nd run): Lakeland Regional won again on
   // 9/25, improving to 5-0 overall / 1-0 league — still unbeaten. Per the
   // fresh Super - American Red league standings page (Sep 26 2:42am GMT).
-  { team: 'Lakeland', wins: 5, losses: 0, confWins: 1, confLosses: 0 },
+  // Updated 2026-10-04 sweep: Lakeland Regional lost 7-34 at Wayne Hills (non-league) on 10/2 — 5-1 overall, league unchanged 1-0. MaxPreps Wayne Hills schedule + NJRB Lakeland page agree.
+  { team: 'Lakeland', wins: 5, losses: 1, confWins: 1, confLosses: 0 },
   // Updated 2026-09-26 sweep (2nd run): Ramsey won a league game on 9/25,
   // improving to 4-1 overall AND 1-1 league (was 0-1 league). Per the
   // fresh Super - American Red league standings page (Sep 26 2:42am GMT).
