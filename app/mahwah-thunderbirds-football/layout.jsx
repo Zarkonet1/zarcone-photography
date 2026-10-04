@@ -2,8 +2,9 @@
 // (see app/high_school/layout.jsx) — this is a concept build for one
 // specific audience (Roger Pelletier, Mahwah's AD, and the football
 // coaching staff), not a public marketing page, and makes no partnership
-// claim that structured indexing should surface. See public/robots.txt for
-// the matching Disallow entry.
+// claim that structured indexing should surface. Deliberately NOT disallowed
+// in public/robots.txt: a Disallow stops Google from crawling the page, so it
+// never sees this noindex tag, and robots.txt is public. Keep noindex only.
 export const metadata = {
   title: 'Mahwah Thunderbirds Football — Media Hub Concept | Zarcone Photography',
   description: 'A concept prepared for Mahwah Thunderbirds Football by Zarcone Photography — not an official Mahwah Athletics page.',
