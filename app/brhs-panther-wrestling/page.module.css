@@ -798,6 +798,71 @@
   font-style: normal;
 }
 
+/* ─── Wrestling family testimonials (inside .trustNote) ─────────── */
+.familyQuotes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  max-width: 1100px;
+  margin: 40px auto 0;
+  background: var(--bp-line);
+  border: 1px solid var(--bp-line);
+  text-align: left;
+}
+.familyQuote {
+  margin: 0;
+  padding: 28px 28px 24px;
+  background: var(--bp-white);
+  display: flex;
+  flex-direction: column;
+}
+.familyStars {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--bp-navy);
+  margin-bottom: 14px;
+}
+.familyQuoteText {
+  margin: 0 0 18px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--bp-navy-deep);
+  flex: 1;
+}
+.familyQuoteCite {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bp-navy-soft);
+}
+.familyQuoteCite span {
+  display: block;
+  font-weight: 800;
+  color: var(--bp-navy);
+  margin-bottom: 3px;
+}
+.familyQuotesLink {
+  display: inline-block;
+  margin-top: 22px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bp-navy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--bp-line);
+  padding-bottom: 2px;
+}
+.familyQuotesLink:hover { border-bottom-color: var(--bp-navy); }
+@media (max-width: 900px) {
+  .familyQuotes { grid-template-columns: 1fr; }
+  .familyQuote { padding: 22px 20px 18px; }
+  .familyQuoteText { font-size: 14px; margin-bottom: 12px; }
+}
+
 /* ─── FAQ ───────────────────────────────────────────────────────── */
 .faqGrid {
   display: grid;

@@ -197,6 +197,27 @@ const SERVICES = [
   { title: 'Private Sessions', body: 'Individual senior portraits, family sessions, and headshots by request.' },
 ];
 
+// Real Google reviews from wrestling families (verified on the Google Business
+// Profile 2026-10-06). Trimmed for length only — no words changed. Full text
+// also runs in components/Testimonials.jsx.
+const FAMILY_QUOTES = [
+  {
+    text: "I had the pleasure of using Tom\u2019s services many times over the course of 4 years during my son\u2019s wrestling career. Tom has a knack for capturing just the right moment in whatever type of lighting, no matter the subject speed.",
+    name: 'Anthony D.',
+    role: 'Wrestling Parent · 4 Seasons',
+  },
+  {
+    text: "Amazing action photography and highlight videos. He\u2019s been doing both my son\u2019s wrestling seasons for the last 5 years. Highly recommended!",
+    name: 'Gabe P.',
+    role: 'Wrestling Parent · 5 Seasons',
+  },
+  {
+    text: "Some of my absolute favorite pictures of my daughter are the wrestling match photos he took. If you need someone who genuinely cares about their craft and delivers unforgettable images, Zarcone Photography is your guy!",
+    name: 'Katie K.',
+    role: 'Wrestling Parent',
+  },
+];
+
 export default function BRHSPantherWrestlingPage() {
   const [lbIndex, setLbIndex] = useState(null);
   const [slide, setSlide] = useState(0);
@@ -692,13 +713,28 @@ export default function BRHSPantherWrestlingPage() {
 
       {/* ── Trust note (real Coach Murphy quote) ─────────────────── */}
       <section className={styles.trustNote}>
-        <span className={styles.eyebrowRed}>What The Program Says</span>
+        <span className={styles.eyebrowRed}>What The Program &amp; Families Say</span>
         <div className={styles.pullQuote}>
           <p className={styles.pullQuoteText}>
             &ldquo;The quality of his photography and graphic design work has taken BRHS Wrestling&rsquo;s social media presence to another level — his graphics consistently look sharp, professional, and engaging.&rdquo;
           </p>
           <cite className={styles.pullQuoteCite}>— Kyle Murphy, Head Wrestling Coach, BRHS</cite>
         </div>
+        <div className={styles.familyQuotes}>
+          {FAMILY_QUOTES.map(q => (
+            <figure key={q.name} className={styles.familyQuote}>
+              <div className={styles.familyStars} aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote className={styles.familyQuoteText}>&ldquo;{q.text}&rdquo;</blockquote>
+              <figcaption className={styles.familyQuoteCite}>
+                <span>{q.name}</span>
+                {q.role}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <a href="https://g.page/r/Ca6PJ5ScxSapEAI/review" target="_blank" rel="noopener noreferrer" className={styles.familyQuotesLink}>
+          4.9 ★ on Google · Read all reviews &rarr;
+        </a>
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────────────── */}
