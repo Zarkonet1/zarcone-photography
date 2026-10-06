@@ -201,7 +201,7 @@ export default function SchoolsAthleticProgramsNJ() {
         strongDesc
       >
         <div className={styles.heroActions}>
-          <TrackedCta href="/about#contact" location="hero" label="Let's Talk About Your Program" className="btn btn-solid">
+          <TrackedCta href="https://book.zarconephotography.com/public/6650ae9836edc4002564cbc4" location="hero" label="Let's Talk About Your Program" className="btn btn-solid">
             Let&rsquo;s Talk About Your Program →
           </TrackedCta>
           <TrackedCta href="tel:+19087770631" location="hero_phone" label="Call (908) 777-0631" className={styles.heroPhone}>
@@ -295,7 +295,7 @@ export default function SchoolsAthleticProgramsNJ() {
           <p className={styles.procFooterText}>
             Need something specific for your business office? Tell us what your school or district requires.
           </p>
-          <TrackedCta href="/about#contact" location="procurement" label="Start the Conversation" className="btn btn-solid">
+          <TrackedCta href="https://book.zarconephotography.com/public/6650ae9836edc4002564cbc4" location="procurement" label="Start the Conversation" className="btn btn-solid">
             Start the Conversation →
           </TrackedCta>
         </div>
@@ -361,7 +361,7 @@ export default function SchoolsAthleticProgramsNJ() {
             Tell us about your program, sport and season schedule, and we&rsquo;ll follow up with a custom partnership proposal.
           </p>
         </div>
-        <TrackedCta href="/about#contact" location="final" label="Start the Conversation" className="btn btn-solid">
+        <TrackedCta href="https://book.zarconephotography.com/public/6650ae9836edc4002564cbc4" location="final" label="Start the Conversation" className="btn btn-solid">
           Start the Conversation →
         </TrackedCta>
       </div>
