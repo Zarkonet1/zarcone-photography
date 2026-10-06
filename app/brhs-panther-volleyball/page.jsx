@@ -84,6 +84,48 @@ const CAROUSEL = [
 // football and wrestling.
 const ARTICLES = [
   {
+    title: 'From Volleyball Hero To Royalty Was Experienced By Margarita Silvar At Bridgewater-Raritan High School',
+    source: 'BRRSD Athletics',
+    url: 'https://www.brrsd.org/o/brrhs/article/3170822',
+    date: '2026-10-05' /* added 2026-10-06 coverage-gap audit. BRRSD recap of the Oct 2 2-0 win over Hopewell Valley Central (25-21, 25-21; match shortened to best-of-three for Homecoming Court); senior captain Margarita Silvar 6 kills, 1 block, 7 digs; BR 7-8. Matches SCHEDULE/stat pages. BRRSD spells the surname Silvar. */,
+  },
+  {
+    title: 'Volleyball Recap: Bridgewater-Raritan Rolls To Its Third Straight Win',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/Xu7Zgr1peEyj390_D4n4_g/volleyball-recap-bridgewater-raritan-rolls-to-its-third-straight-win.htm',
+    date: '2026-10-02' /* added 2026-10-06 coverage-gap audit (Tom: hubs must show every article). MaxPreps auto-generated recap (infoSentience, based on MaxPreps data). Oct 2, 2-0 over Hopewell Valley Central, BR 7-8. */,
+  },
+  {
+    title: 'Volleyball Recap: Sparta Falls To Bridgewater-Raritan',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/CyxSN89PJ0-Aloq4eYXK1A/volleyball-recap-sparta-falls-to-bridgewater-raritan.htm',
+    date: '2026-10-01' /* added 2026-10-06 coverage-gap audit (Tom: hubs must show every article). MaxPreps auto-generated recap (infoSentience, based on MaxPreps data). Oct 1, 2-0 over Sparta. (A second MaxPreps recap of the same match: Bridgewater-Raritan Now 3-2 Since Losing 4 Straight, https://www.maxpreps.com/news/bDw9S7c0GUWwk00eLBEG9g/.) */,
+  },
+  {
+    title: 'Volleyball Recap: Bridgewater-Raritan Gets Past Governor Livingston',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/QIMd9bkW-kmKJLIxdnNJsg/volleyball-recap-bridgewater-raritan-gets-past-governor-livingston.htm',
+    date: '2026-09-30' /* added 2026-10-06 coverage-gap audit (Tom: hubs must show every article). MaxPreps auto-generated recap (infoSentience, based on MaxPreps data). Sep 30, 3-1 over Governor Livingston, BR 5-8. */,
+  },
+  {
+    title: 'Volleyball Recap: Rutgers Prep Edges Past Bridgewater-Raritan',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/HEqNrE1lq0qJIvwqZiTNJA/volleyball-recap-rutgers-prep-edges-past-bridgewater-raritan.htm',
+    date: '2026-09-29' /* added 2026-10-06 coverage-gap audit (Tom: hubs must show every article). MaxPreps auto-generated recap (infoSentience, based on MaxPreps data). Sep 29, 1-2 loss to Rutgers Prep. */,
+  },
+  {
+    title: 'Volleyball Recap: Bridgewater-Raritan Falls To North Hunterdon',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/YsoQvMMy7EWmF5D-ZVO-Vw/volleyball-recap-bridgewater-raritan-falls-to-north-hunterdon.htm',
+    date: '2026-09-22' /* added 2026-10-06 coverage-gap audit (Tom: hubs must show every article). MaxPreps auto-generated recap (infoSentience, based on MaxPreps data). Sep 22, 0-2 loss to North Hunterdon. */,
+  },
+  {
+    title: 'Volleyball Recap: Bridgewater-Raritan Picks Up Their First Blemish In League Play',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/sjj2lHEdLkC9H_SFoiokng/volleyball-recap-bridgewater-raritan-picks-up-their-first-blemish-in-league-play.htm',
+    date: '2026-09-15' /* added 2026-10-06 coverage-gap audit (Tom: hubs must show every article). MaxPreps auto-generated recap (infoSentience, based on MaxPreps data). Sep 15, 0-2 loss to Hunterdon Central. */,
+  },
+  {
     title: "Bridgewater-Raritan High School Girls' Volleyball Team Swept Past North Hunterdon Regional High School",
     source: 'BRRSD Athletics',
     url: 'https://cr.brrsd.org/o/brrhs/article/3115928',

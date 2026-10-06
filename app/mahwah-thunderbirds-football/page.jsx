@@ -125,6 +125,18 @@ const DIVISION_GAMES_PLAYED = DIVISION_STANDINGS_2026.some((t) => t.confWins + t
 // automatically the moment real 2026 coverage is added — see lib/articles.js.
 const ARTICLES = [
   {
+    title: 'Football Recap: Mahwah Sets Scoring Season-High Against Ramsey',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/76yTpIn4NE6244ok0A4Tfg/football-recap-mahwah-sets-scoring-season-high-against-ramsey--how-to-watch.htm',
+    date: '2026-10-02' /* added 2026-10-06 coverage-gap audit (Tom: hubs must show every article). MaxPreps auto-generated recap (infoSentience, based on MaxPreps data). Oct 2, Mahwah 31, Ramsey 28 — Mahwah first league win (originally titled "Mahwah Claims First League Win"). Source of the 10-06 score correction. */,
+  },
+  {
+    title: 'Football Recap: Ramsey Falls To Mahwah',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/lQt-MjZz30mL5JYhGYPu7w/football-recap-ramsey-falls-to-mahwah--how-to-watch.htm',
+    date: '2026-10-02' /* added 2026-10-06 coverage-gap audit (Tom: hubs must show every article). MaxPreps auto-generated recap (infoSentience, based on MaxPreps data). Ramsey-side MaxPreps recap of the Oct 2 game (headline only verified; body not fetched — check whether its score matches the corrected 31-28, see lib/mahwahFootballSchedule.js). */,
+  },
+  {
     title: 'Mahwah Beats Westwood To Win Its Second Consecutive North 1, Group 2 Football Championship',
     source: 'Patch',
     url: 'https://patch.com/new-jersey/mahwah/mahwah-beats-westwood-win-its-second-consecutive-north-1-group-2-football',
