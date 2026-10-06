@@ -239,6 +239,14 @@ export default function SportsPage() {
           <blockquote className={styles.testimonialText}>"Tom was an absolute pleasure to work with. He was patient, clear and detailed. My team had a wonderful experience taking photos for their senior night. We had a large group and it was no challenge for him to manage. I highly recommend Tom and his team for any projects that you may have."</blockquote>
           <cite className={styles.testimonialCite}>— Coach Adam</cite>
         </div>
+        <div className={styles.testimonialCard}>
+          <blockquote className={styles.testimonialText}>"I had the pleasure of using Tom's services many times over the course of 4 years during my son's wrestling career. Tom has a knack for capturing just the right moment in whatever type of lighting, no matter the subject speed, and always getting an excellent shot."</blockquote>
+          <cite className={styles.testimonialCite}>— Anthony D., Wrestling Parent</cite>
+        </div>
+        <div className={styles.testimonialCard}>
+          <blockquote className={styles.testimonialText}>"He covered an array of action shots from every angle around the field of our daughter catching and hitting with her club team and also her D1 college softball team. He also covered a couple of our son's AAU basketball games. A true master of his craft!"</blockquote>
+          <cite className={styles.testimonialCite}>— Brian M., Sports Parent</cite>
+        </div>
       </div>
 
       <div className="cta-strip">
