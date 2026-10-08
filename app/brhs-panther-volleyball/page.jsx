@@ -25,10 +25,11 @@ import { jumpToPlayerAnchor } from '@/lib/players';
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 
 // Derived from lib/volleyballGalleries.js — don't hand-edit galleries here.
-// Add new galleries to GALLERIES_2026 in that file once Tom starts posting
-// them; this page just reads it. Empty today, same honest-empty-state
-// pattern as the wrestling page's dual schedule before dates were published.
+// Add new galleries to GALLERIES_2026 in that file; this page just reads it.
+// GALLERIES_BY_DATE (newest first) drives the Season Gallery pills.
 const LATEST_GALLERY = getLatestGallery(GALLERIES_2026);
+const GALLERIES_BY_DATE = [...GALLERIES_2026].sort((a, b) => new Date(b.date) - new Date(a.date));
+const shortGalleryDate = (iso) => new Date(`${iso}T12:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
 // Individual Media Day player portraits — same convention as football's
 // PORTRAIT_NUMBERS (see app/brhs-panther-football/page.jsx + SITE-CHEATSHEET.md).
@@ -160,11 +161,11 @@ const ARTICLES = [
 const FAQ = [
   {
     q: 'Where do I order photos?',
-    a: <>Match galleries will be delivered through <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer">Pic-Time</a>, our client gallery platform — the same system used for BRHS Panther Football and Wrestling.</>,
+    a: <>Match galleries are delivered through <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer">Pic-Time</a>, our client gallery platform — the same system used for BRHS Panther Football and Wrestling.</>,
   },
   {
     q: 'How quickly are galleries posted?',
-    a: 'Match galleries are professionally edited and delivered within days of each match — so photos are ready while the moment is still fresh.',
+    a: 'Match galleries are edited and delivered within days of each match, while the moment is still fresh.',
   },
   {
     q: 'Can I download images?',
@@ -261,9 +262,10 @@ const STAT_BAR = [
 // loss; Hunterdon Central won 3 more non-league games (league record
 // unchanged at 4-0, having already been undefeated in league).
 const OTHER_STANDINGS_2026 = [
-  { team: 'Hillsborough', wins: 6, losses: 8, confWins: 1, confLosses: 4 }, // 2026-10-02 sweep, MaxPreps own schedule page
-  { team: 'North Hunterdon', wins: 5, losses: 5, confWins: 2, confLosses: 3 },
-  { team: 'Hunterdon Central', wins: 9, losses: 4, confWins: 4, confLosses: 1 }, // 2026-10-02 sweep, MaxPreps own schedule page
+  // Refreshed 2026-10-08 audit: Skyland - Delaware East standings on BR's MaxPreps page ("last updated Oct 8, 2026 @ 7:04pm GMT") + Hunterdon Central's own MaxPreps schedule page (10-5, league 5-1, 1st).
+  { team: 'Hillsborough', wins: 6, losses: 9, confWins: 1, confLosses: 5 },
+  { team: 'North Hunterdon', wins: 9, losses: 7, confWins: 3, confLosses: 3 },
+  { team: 'Hunterdon Central', wins: 10, losses: 5, confWins: 5, confLosses: 1 },
 ];
 
 const BRHS_PLAYED = SCHEDULE_2026.filter((g) => g.result);
@@ -286,6 +288,8 @@ const DIVISION_STANDINGS_2026 = [BRHS_STANDINGS_ROW, ...OTHER_STANDINGS_2026]
     if (overallDiff !== 0) return overallDiff;
     return a.team.localeCompare(b.team);
   });
+
+const REMAINING_MATCHES = SCHEDULE_2026.filter((g) => !g.result && !g.scrimmage).length;
 
 const DIVISION_GAMES_PLAYED = DIVISION_STANDINGS_2026.some((t) => t.confWins + t.confLosses > 0);
 
@@ -346,17 +350,17 @@ const PLAYMAKERS_2026 = [
   {
     name: 'Camille Hilton',
     detail: 'Jr. · Libero/DS',
-    bio: 'The most proven returning player on the roster. As a sophomore, Hilton was First Team All-Skyland Delaware — 490 digs, 58 aces, 63 assists, and a 5.83 digs/set average. With two of last year’s top back-row players graduated, she’s the obvious foundation to rebuild BR’s serve-receive and defense around.',
+    bio: 'The most proven returning player on the roster. As a sophomore, Hilton was First Team All-Skyland Delaware — 490 digs, 58 aces, 63 assists, and a 5.83 digs/set average. She’s been exactly that anchor in 2026: a team-high 272 digs through 17 matches, plus 47 assists and 22 aces.',
   },
   {
     name: 'Margarita Silvar',
     detail: 'Sr.',
-    bio: 'Already a contributor as a junior — four kills, a block, and eight digs in an early win over Hillsborough, six kills against Phillipsburg, at least 81 digs on the season — and described by Coach Josh Everett as the team’s "most underrated player." On a roster replacing ten seniors, her role and leadership responsibility jump considerably in 2026.',
+    bio: 'Already a contributor as a junior — four kills, a block, and eight digs in an early win over Hillsborough, six kills against Phillipsburg, at least 81 digs on the season — and described by Coach Josh Everett as the team’s "most underrated player." As a senior captain in 2026 she’s become the primary attacker: a team-high 115 kills and 27 aces through 17 matches.',
   },
   {
     name: 'Brooke Krizan',
     detail: 'Jr. · Setter',
-    bio: 'Krizan already showed she can run the varsity offense: 46 assists, 15 digs, and 3 aces in a 3-1 win over Bloomfield last October — among New Jersey’s notable single-match assist totals — on the way to 97 varsity assists as a sophomore behind senior starter Ella Sorenson. With BR’s starting setter graduated, Krizan taking over the offense full-time would make her the player determining who gets the ball and where.',
+    bio: 'Krizan already showed she can run the varsity offense: 46 assists, 15 digs, and 3 aces in a 3-1 win over Bloomfield last October — among New Jersey’s notable single-match assist totals — on the way to 97 varsity assists as a sophomore behind senior starter Ella Sorenson. With BR’s starting setter graduated, she took over the offense full-time in 2026: 318 assists and 110 digs through 17 matches.',
   },
 ];
 
@@ -376,7 +380,7 @@ const FEATURED_PLAYER = {
   number: 5,
   name: 'Camille Hilton',
   detail: 'Junior · Libero',
-  bio: 'The most proven returning player on the roster. As a sophomore, Hilton was First Team All-Skyland Delaware — 490 digs, 58 aces, 63 assists, and a 5.83 digs/set average. With two of last year’s top back-row players graduated, she’s the obvious foundation to rebuild BR’s serve-receive and defense around.',
+  bio: 'The most proven returning player on the roster. As a sophomore, Hilton was First Team All-Skyland Delaware — 490 digs, 58 aces, 63 assists, and a 5.83 digs/set average. In 2026 she’s anchored BR’s serve-receive again: a team-high 272 digs through 17 matches (37 in the Sep 30 win over Governor Livingston), plus 47 assists and 22 aces.',
 };
 
 // Coaching staff — per Bridgewater-Raritan Athletics' own staff contact
@@ -394,11 +398,14 @@ const FEATURED_PLAYER = {
 // over Montgomery was the program's "first NJSIAA Central Jersey Group 4
 // tournament win in recent memory" — flagged for Tom, not resolved here;
 // left as-is pending his call on how to reconcile the two.
+// RESOLVED 2026-10-08 ("fix everything on that page"): bio and section copy
+// now say "a first-round ... win over Montgomery" — no "first in program"
+// claim anywhere on the page.
 const COACHES = [
   {
     name: 'Josh Everett',
     title: 'Head Coach, Girls Volleyball · Since 2023',
-    bio: "A Bridgewater-Raritan alum who played on the Panthers' 2005 state championship boys' volleyball team, Everett spent 10 years as an assistant coach for both the girls' and boys' programs before being named girls' head coach in 2023, succeeding Hall of Fame coach Corey Romanak. He's coming off a 2025 season that included a Somerset County Tournament championship and the program's first NJSIAA Central Jersey Group 4 tournament win in recent memory. He also serves as JV coach for BRHS Boys Volleyball. \"We want to see our players grow off the court as much as on the court,\" Everett has said. \"They are student-athletes, not athlete-students.\"",
+    bio: "A Bridgewater-Raritan alum who played on the Panthers' 2005 state championship boys' volleyball team, Everett spent 10 years as an assistant coach for both the girls' and boys' programs before being named girls' head coach in 2023, succeeding Hall of Fame coach Corey Romanak. He's coming off a 2025 season that included a Somerset County Tournament championship and a first-round NJSIAA Central Jersey Group 4 tournament win over Montgomery. He also serves as JV coach for BRHS Boys Volleyball. \"We want to see our players grow off the court as much as on the court,\" Everett has said. \"They are student-athletes, not athlete-students.\"",
   },
 ];
 
@@ -676,7 +683,7 @@ export default function BRHSPantherVolleyballPage() {
             <span className={styles.eyebrowRed}>2026 Season</span>
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Schedule <em>&amp; Results</em></h2>
           </div>
-          <p className={styles.sectionSub}>Coming off a Somerset County Tournament championship and the program's first NJSIAA Central Jersey Group 4 tournament win. Here's what's next.</p>
+          <p className={styles.sectionSub}>{BRHS_STANDINGS_ROW.wins}-{BRHS_STANDINGS_ROW.losses} overall and {BRHS_STANDINGS_ROW.confWins}-{BRHS_STANDINGS_ROW.confLosses} in the Skyland Delaware East{REMAINING_MATCHES > 0 ? `, with ${REMAINING_MATCHES} regular-season match${REMAINING_MATCHES === 1 ? '' : 'es'} left` : ''}. Defending Somerset County Tournament champions.</p>
         </div>
 
         <div className={styles.championBanner}>
@@ -705,7 +712,7 @@ export default function BRHSPantherVolleyballPage() {
           </tbody>
         </table>
         <p className={styles.sampleCaption}>
-          Schedule per <a href="https://www.maxpreps.com/nj/bridgewater/bridgewater-raritan-panthers/volleyball/schedule/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--br-red)' }}>MaxPreps</a> as of late August 2026 — dates and times are subject to change; confirm before heading to a match. Results post here after each match.
+          Schedule per <a href="https://www.maxpreps.com/nj/bridgewater/bridgewater-raritan-panthers/volleyball/schedule/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--br-red)' }}>MaxPreps</a> and NJ Record Book, updated Oct 8, 2026. Dates and times can change, so confirm before heading to a match. Results post here after each match.
         </p>
       </section>
 
@@ -716,7 +723,7 @@ export default function BRHSPantherVolleyballPage() {
             <span className={styles.eyebrowRed}>2025 Season</span>
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>The Road <em>To The County Title</em></h2>
           </div>
-          <p className={styles.sectionSub}>A county championship and the program's first Central Jersey Group 4 tournament win. The full match-by-match log is still being compiled — this is the sourced portion.</p>
+          <p className={styles.sectionSub}>A Somerset County championship and a Central Jersey Group 4 first-round win. Shown here: the 2025 matches covered in published reports.</p>
         </div>
         <table className={styles.scheduleTable}>
           <thead>
@@ -739,11 +746,11 @@ export default function BRHSPantherVolleyballPage() {
       <section id="standings" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
-            <span className={styles.eyebrowRed}>Skyland Conference</span>
+            <span className={styles.eyebrowRed}>Skyland · Delaware East</span>
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Conference <em>Standings</em></h2>
           </div>
           <p className={styles.sectionSub}>
-            Bridgewater-Raritan Girls Volleyball plays in the Skyland Conference, alongside Hillsborough, North Hunterdon, and Hunterdon Central among this year's scheduled league opponents.
+            Bridgewater-Raritan plays in the Skyland Conference's Delaware East division. League opponents on the 2026 schedule: Hillsborough, North Hunterdon, and Hunterdon Central.
           </p>
         </div>
         <table className={styles.scheduleTable}>
@@ -762,7 +769,7 @@ export default function BRHSPantherVolleyballPage() {
         </table>
         <p className={styles.sampleCaption}>
           {DIVISION_GAMES_PLAYED
-            ? 'Standings update as Skyland Conference matches are reported.'
+            ? 'Standings as of Oct 8, 2026; they update as league matches are reported.'
             : 'All four teams open the season 0-0 — the 2026 opener is Tue, Sep 1 at Hillsborough. Standings fill in as conference matches are played.'}
           {' '}Bridgewater-Raritan's record is drawn automatically from the schedule above; other teams' records are tracked from{' '}
           <a href="https://www.maxpreps.com/nj/bridgewater/bridgewater-raritan-panthers/volleyball/schedule/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--br-red)' }}>MaxPreps</a>.
@@ -779,7 +786,7 @@ export default function BRHSPantherVolleyballPage() {
         eyebrow="2026 Season"
         title="Player"
         titleAccent="Stats"
-        subtitle="Team leaders and box scores, updated as matches are played. Five matches in — not a full season."
+        subtitle={`Team leaders and box scores from NJ Record Book, through ${BRHS_PLAYED.length} matches. Updated after each match.`}
         leaders={TEAM_LEADERS_2026}
         boxScores={WEEKLY_BOX_SCORES_2026}
         roster={ROSTER_2026}
@@ -813,11 +820,11 @@ export default function BRHSPantherVolleyballPage() {
       <section id="roster" style={{ background: 'rgba(255,255,255,0.02)', scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
-            <span className={styles.eyebrowRed}>Preseason Roster</span>
+            <span className={styles.eyebrowRed}>Varsity Roster</span>
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>2026 <em>Roster</em></h2>
           </div>
           <p className={styles.sectionSub}>
-            {ROSTER_2026.length} players as of the 2026-27 preseason, per BRHS Athletics' official roster. Media Day portraits post here once a shoot is scheduled.
+            {ROSTER_2026.length} players, per BRHS Athletics' official roster. Tap a highlighted number to see that player's portrait.
           </p>
         </div>
         <div className={styles.rosterFilterRow}>
@@ -891,7 +898,7 @@ export default function BRHSPantherVolleyballPage() {
           );
         })()}
         <p className={styles.sampleCaption}>
-          Roster subject to change before the season opener. Position abbreviations: OH = Outside Hitter, O = Opposite, S = Setter, L = Libero, DS = Defensive Specialist, MB = Middle Blocker.
+          Position abbreviations: OH = Outside Hitter, O = Opposite, S = Setter, L = Libero, DS = Defensive Specialist, MB = Middle Blocker.
         </p>
 
         {portraitLightbox && (
@@ -960,7 +967,7 @@ export default function BRHSPantherVolleyballPage() {
             <div className={styles.spotlightName}>{FEATURED_PLAYER.name}</div>
             <div className={styles.spotlightClass}>{FEATURED_PLAYER.detail}</div>
             <p className={styles.spotlightBio}>{FEATURED_PLAYER.bio}</p>
-            <p className={styles.spotlightNote}>Season stats provided directly by Zarcone Photography's program contact; not sourced to a published preseason article.</p>
+            <p className={styles.spotlightNote}>2025 stats provided by the program; 2026 stats per NJ Record Book, through Oct 7.</p>
           </div>
         </div>
       </section>
@@ -969,11 +976,11 @@ export default function BRHSPantherVolleyballPage() {
       <section style={{ background: 'rgba(255,255,255,0.02)' }}>
         <div className={styles.sectionHead}>
           <div>
-            <span className={styles.eyebrowRed}>2026 Outlook</span>
+            <span className={styles.eyebrowRed}>2026 Season</span>
             <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Players To <em>Watch</em></h2>
           </div>
           <p className={styles.sectionSub}>
-            BR graduated 10 seniors off last year's county-championship roster — including its two primary kill producers. 2026 is less about who returns and more about which returning players take over those touches.
+            BR graduated 10 seniors off last year's county-championship roster, including its two primary kill producers. These are the returning players who've taken over that production.
           </p>
         </div>
         <div className={styles.coachGrid}>
@@ -989,7 +996,7 @@ export default function BRHSPantherVolleyballPage() {
           ))}
         </div>
         <p className={styles.sampleCaption}>
-          BR's two leading kill producers from 2025 — Grace Marvuglio and Sydney Bishop, who combined for 30 kills in the county semifinal alone — both graduated. Reese Albano (72 digs in 2025) and the rest of the returning group inherit that gap; who steps into the kill role is the open question of the preseason.
+          BR's two leading kill producers from 2025 — Grace Marvuglio and Sydney Bishop, who combined for 30 kills in the county semifinal alone — both graduated. Reese Albano (72 digs in 2025) and the rest of the returning group inherit that gap; through 17 matches, Margarita Silvar (115 kills) and Viktoria Borodkin (93 kills, team-high 44.5 blocks) have filled most of that gap, per NJ Record Book.
         </p>
       </section>
 
@@ -1005,15 +1012,14 @@ export default function BRHSPantherVolleyballPage() {
         </div>
 
         <div className={styles.seasonPills}>
-          {GALLERIES_2026.map((g, i) => (
-            <a key={`gallery-${i}`} href={g.href} target="_blank" rel="noopener noreferrer" className={`${styles.seasonPill} ${styles.seasonPillActive}`}>{g.label} — Live</a>
+          {GALLERIES_BY_DATE.map((g) => (
+            <a key={g.id} href={g.href} target="_blank" rel="noopener noreferrer" className={`${styles.seasonPill} ${styles.seasonPillActive}`}>{shortGalleryDate(g.date)} · {g.label}</a>
           ))}
-          <span className={`${styles.seasonPill} ${styles.seasonPillPending}`}>2026 Season — Opens Sep 1</span>
         </div>
 
         <div className={styles.noticeBar}>
           <span className={styles.noticeDot} />
-          Galleries post here after each match — the 2026 regular-season opener is Sep 1 at Hillsborough.
+          {LATEST_GALLERY ? `Newest gallery: ${LATEST_GALLERY.label} (${shortGalleryDate(LATEST_GALLERY.date)}). ` : ''}New galleries post here after each home match. Sign up below to get an email when they go live.
         </div>
 
         <GalleryAlertSignup
@@ -1201,7 +1207,7 @@ export default function BRHSPantherVolleyballPage() {
         <span>Scan to Return Here</span>
       </div>
 
-      <a href={GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.floatCta}>
+      <a href={LATEST_GALLERY ? LATEST_GALLERY.href : GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.floatCta}>
         <span className={styles.floatCtaLong}>View Latest Photos</span>
         <span className={styles.floatCtaShort}>Photos</span>
       </a>
