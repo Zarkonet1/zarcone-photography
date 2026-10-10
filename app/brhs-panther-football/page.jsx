@@ -244,7 +244,8 @@ const OTHER_STANDINGS_2026 = [
   // Elizabeth 28, No. 10 Ridge 23") and independently via Ridge's own
   // MaxPreps schedule page.
   // Updated 2026-10-03 sweep: Ridge beat No. 1 Phillipsburg 14-13 at home on 10/2 (Frank-to-Pickell 4-yd TD as time expired) — 3-2 overall, 1-1 league. MaxPreps recap + CJSR game article agree.
-  { team: 'Ridge', wins: 3, losses: 2, confWins: 1, confLosses: 1 },
+  // Updated 2026-10-10 sweep: MaxPreps Big Central - American Silver standings (updated Oct 10 2:48am GMT) show Ridge 4-2 overall / 1-1 league (league unchanged -> non-league win Oct 9, presumably vs Westfield; opponent/score not independently confirmed — single source).
+  { team: 'Ridge', wins: 4, losses: 2, confWins: 1, confLosses: 1 },
 ];
 
 // BRHS's own standings row derives from SCHEDULE_2026 — see the comment on
