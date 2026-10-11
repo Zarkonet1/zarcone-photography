@@ -74,7 +74,8 @@ const OTHER_DIVISION_TEAMS_2026 = [
   // 9/25, improving to 5-0 overall / 1-0 league — still unbeaten. Per the
   // fresh Super - American Red league standings page (Sep 26 2:42am GMT).
   // Updated 2026-10-04 sweep: Lakeland Regional lost 7-34 at Wayne Hills (non-league) on 10/2 — 5-1 overall, league unchanged 1-0. MaxPreps Wayne Hills schedule + NJRB Lakeland page agree.
-  { team: 'Lakeland', wins: 5, losses: 1, confWins: 1, confLosses: 0 },
+  // Updated 2026-10-11 sweep: Lakeland now 5-2 / 1-1 per MaxPreps' Super - American Red standings page (stamp Oct 11 1:34am GMT) — two losses since last row (Oct 9 result not itemized; Lakeland's own team page unreachable this run).
+  { team: 'Lakeland', wins: 5, losses: 2, confWins: 1, confLosses: 1 },
   // Updated 2026-09-26 sweep (2nd run): Ramsey won a league game on 9/25,
   // improving to 4-1 overall AND 1-1 league (was 0-1 league). Per the
   // fresh Super - American Red league standings page (Sep 26 2:42am GMT).
@@ -124,6 +125,12 @@ const DIVISION_GAMES_PLAYED = DIVISION_STANDINGS_2026.some((t) => t.confWins + t
 // full list of what was searched). This section is wired to sort/badge
 // automatically the moment real 2026 coverage is added — see lib/articles.js.
 const ARTICLES = [
+  {
+    title: 'Football Recap: Mahwah Comes Up Short Against Hanover Park + How To Watch',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/9-SvgdJQckW8z-s40rJDNA/football-recap-mahwah-comes-up-short-against-hanover-park--how-to-watch.htm',
+    date: '2026-10-09' /* added 2026-10-11 sweep. MaxPreps auto-generated recap (infoSentience), published Oct 11 (MaxPreps listing). Oct 9, Mahwah 3, Hanover Park 7 — non-league. */,
+  },
   {
     title: 'Football Recap: Mahwah Sets Scoring Season-High Against Ramsey',
     source: 'MaxPreps',

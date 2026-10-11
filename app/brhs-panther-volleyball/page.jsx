@@ -91,6 +91,24 @@ const ARTICLES = [
     date: '2026-10-05' /* added 2026-10-06 coverage-gap audit. BRRSD recap of the Oct 2 2-0 win over Hopewell Valley Central (25-21, 25-21; match shortened to best-of-three for Homecoming Court); senior captain Margarita Silvar 6 kills, 1 block, 7 digs; BR 7-8. Matches SCHEDULE/stat pages. BRRSD spells the surname Silvar. */,
   },
   {
+    title: 'Volleyball Recap: Bridgewater-Raritan Escapes With A Win',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/EMcjrGIUM0y2FF4aQL48bQ/volleyball-recap-bridgewater-raritan-escapes-with-a-win.htm',
+    date: '2026-10-09' /* added 2026-10-11 sweep. MaxPreps auto-generated recap (infoSentience). Oct 9, 2-1 win at Montgomery, BR 9-9. */,
+  },
+  {
+    title: 'Volleyball Recap: Bridgewater-Raritan's Three-Game Winning Streak Comes To An End',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/yk1QpFXAJUCOUGQyM3F2sg/volleyball-recap-bridgewater-raritans-three-game-winning-streak-comes-to-an-end.htm',
+    date: '2026-10-06' /* added 2026-10-11 sweep. MaxPreps auto-generated recap (infoSentience), published Oct 8 (MaxPreps listing). Oct 6, 0-2 loss at Hunterdon Central. */,
+  },
+  {
+    title: 'Volleyball Recap: Bridgewater-Raritan Finds Home Court Redemption Against Colonia',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/SvCfetFwPkumzHYFicRoVA/volleyball-recap-bridgewater-raritan-finds-home-court-redemption-against-colonia.htm',
+    date: '2026-10-07' /* added 2026-10-11 sweep. MaxPreps auto-generated recap (infoSentience), published Oct 8 (MaxPreps listing). Oct 7, 2-0 win over Colonia. */,
+  },
+  {
     title: 'Volleyball Recap: Bridgewater-Raritan Rolls To Its Third Straight Win',
     source: 'MaxPreps',
     url: 'https://www.maxpreps.com/news/Xu7Zgr1peEyj390_D4n4_g/volleyball-recap-bridgewater-raritan-rolls-to-its-third-straight-win.htm',
