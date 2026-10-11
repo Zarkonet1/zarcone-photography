@@ -97,7 +97,7 @@ const ARTICLES = [
     date: '2026-10-09' /* added 2026-10-11 sweep. MaxPreps auto-generated recap (infoSentience). Oct 9, 2-1 win at Montgomery, BR 9-9. */,
   },
   {
-    title: 'Volleyball Recap: Bridgewater-Raritan's Three-Game Winning Streak Comes To An End',
+    title: "Volleyball Recap: Bridgewater-Raritan's Three-Game Winning Streak Comes To An End",
     source: 'MaxPreps',
     url: 'https://www.maxpreps.com/news/yk1QpFXAJUCOUGQyM3F2sg/volleyball-recap-bridgewater-raritans-three-game-winning-streak-comes-to-an-end.htm',
     date: '2026-10-06' /* added 2026-10-11 sweep. MaxPreps auto-generated recap (infoSentience), published Oct 8 (MaxPreps listing). Oct 6, 0-2 loss at Hunterdon Central. */,
