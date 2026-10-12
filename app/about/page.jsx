@@ -244,8 +244,8 @@ export default function AboutPage() {
           {/* Exposure One 2026 — jury nomination (Sept 28, 2026). Update to the
               final placement after winners are announced Oct 15, 2026; if no
               placement, keep "Nominee" wording — never "award-winning". */}
-          {/* People's Vote link + "Vote" CTA expire Oct 11, 2026 — after that,
-              change the CTA to "View the Image →" (or the final result on Oct 15). */}
+          {/* People's Vote closed Oct 11, 2026. Update with the final placement
+              after winners are announced Oct 15, 2026. */}
           <a
             href="https://exposureoneawards.com/people-vote-award/the-thinker-2"
             target="_blank"
@@ -254,7 +254,7 @@ export default function AboutPage() {
           >
             <p className={styles.pressQuote}>&ldquo;The Thinker&rdquo; &mdash; Jury-Selected Nominee, Wildlife</p>
             <p className={styles.pressByline}>— Exposure One Awards, 2026 Discovery of the Year</p>
-            <span className={styles.pressLink}>Vote in the People&rsquo;s Vote — Through Oct 11 →</span>
+            <span className={styles.pressLink}>View the Image →</span>
           </a>
         </div>
       </section>
