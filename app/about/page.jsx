@@ -244,13 +244,27 @@ export default function AboutPage() {
           {/* Exposure One 2026 — jury nomination (Sept 28, 2026). Update to the
               final placement after winners are announced Oct 15, 2026; if no
               placement, keep "Nominee" wording — never "award-winning". */}
-          {/* Exposure One's People's Vote page is gone and their dashboard is login-only,
-              so this card has no link. Link it to a self-hosted copy of the image
-              when Tom supplies the file. Update with the final placement after Oct 15, 2026. */}
-          <div className={`${styles.pressCard} ${styles.pressCardSecond} ${styles.pressCardStatic}`}>
+          {/* Exposure One 2026 nominee. Image is self-hosted because Exposure One's
+              own pages are temporary or login-only. Update the wording with the
+              final placement after winners are announced Oct 15, 2026. */}
+          <a
+            href="/photos/awards/the-thinker.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.pressCard} ${styles.pressCardSecond}`}
+          >
+            <img
+              src="/photos/awards/the-thinker-thumb.jpg"
+              alt="The Thinker — black and white wildlife portrait of a baboon by Tom Zarcone"
+              width={800}
+              height={1200}
+              loading="lazy"
+              className={styles.pressImage}
+            />
             <p className={styles.pressQuote}>&ldquo;The Thinker&rdquo; &mdash; Jury-Selected Nominee, Wildlife</p>
             <p className={styles.pressByline}>— Exposure One Awards, 2026 Discovery of the Year</p>
-          </div>
+            <span className={styles.pressLink}>View the Image →</span>
+          </a>
         </div>
       </section>
 
