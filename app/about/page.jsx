@@ -244,18 +244,13 @@ export default function AboutPage() {
           {/* Exposure One 2026 — jury nomination (Sept 28, 2026). Update to the
               final placement after winners are announced Oct 15, 2026; if no
               placement, keep "Nominee" wording — never "award-winning". */}
-          {/* People's Vote closed Oct 11, 2026. Update with the final placement
-              after winners are announced Oct 15, 2026. */}
-          <a
-            href="https://exposureoneawards.com/people-vote-award/the-thinker-2"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${styles.pressCard} ${styles.pressCardSecond}`}
-          >
+          {/* Exposure One's People's Vote page is gone and their dashboard is login-only,
+              so this card has no link. Link it to a self-hosted copy of the image
+              when Tom supplies the file. Update with the final placement after Oct 15, 2026. */}
+          <div className={`${styles.pressCard} ${styles.pressCardSecond} ${styles.pressCardStatic}`}>
             <p className={styles.pressQuote}>&ldquo;The Thinker&rdquo; &mdash; Jury-Selected Nominee, Wildlife</p>
             <p className={styles.pressByline}>— Exposure One Awards, 2026 Discovery of the Year</p>
-            <span className={styles.pressLink}>View the Image →</span>
-          </a>
+          </div>
         </div>
       </section>
 

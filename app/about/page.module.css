@@ -168,6 +168,8 @@
 }
 .pressCard:hover .pressLink { color: var(--text); }
 .pressCardSecond { margin-top: 16px; }
+.pressCardStatic { cursor: default; }
+.pressCardStatic:hover { border-color: var(--rule); background: none; }
 
 /* ── Contact ──────────────────────────────────────────────────── */
 .contactSection { display: grid; grid-template-columns: 1fr 1fr; }
