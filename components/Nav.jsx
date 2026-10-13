@@ -73,8 +73,11 @@ export default function Nav() {
     );
   }
 
+  // Light-background page (white hero): use a solid bar instead of the photo scrim's fade-out tail.
+  const onLight = pathname?.startsWith('/government-contracting');
+
   return (
-    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
+    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${onLight ? styles.onLight : ''}`}>
       <Link href="/" className={styles.logo} aria-label="Zarcone Photography — home">
         <Image
           src="/assets/logo-white.png"

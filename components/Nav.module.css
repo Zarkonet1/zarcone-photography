@@ -7,13 +7,34 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
-  background: linear-gradient(to bottom, rgba(12,12,12,0.9) 0%, rgba(12,12,12,0) 100%);
+  background: transparent;
   transition: background 0.3s, border-color 0.3s;
   border-bottom: 1px solid transparent;
+}
+/* Readability scrim behind the floating nav (2026-10-13, UglyBaby contrast fix).
+   Holds ~0.85 darkness behind the link text, then fades out below the bar
+   so the hero photo still reads as full-bleed. Hidden once scrolled. */
+.nav::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: calc(var(--nav-h) + 56px);
+  background: linear-gradient(to bottom,
+    rgba(12,12,12,0.9) 0%,
+    rgba(12,12,12,0.82) 56%,
+    rgba(12,12,12,0) 100%);
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 0.3s;
 }
 .nav.scrolled {
   background: rgba(12,12,12,0.97);
   border-bottom-color: var(--rule);
+}
+.nav.scrolled::before { opacity: 0; }
+.nav.onLight::before {
+  height: var(--nav-h);
+  background: rgba(12,12,12,0.95);
 }
 
 .logo {
@@ -37,6 +58,11 @@
   transition: color 0.2s;
 }
 .link:hover { color: var(--text); }
+/* Over photos (unscrolled), lift resting link color from --muted so it clears WCAG AA */
+.nav:not(.scrolled) .link:not(.active):not(:hover) {
+  color: rgba(236,232,225,0.74);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.45);
+}
 
 /* Keep desktop nav links on one line (11 links + Inquire); tighten spacing on laptop-width screens */
 .link { white-space: nowrap; }

@@ -20,20 +20,31 @@
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(12,12,12,0.92) 0%,
-    rgba(12,12,12,0.3) 45%,
-    rgba(12,12,12,0.1) 100%
-  );
+  /* Two layers: a soft left-side scrim behind the text column, plus the original
+     bottom fade (strengthened through the lower third where the copy sits). */
+  background:
+    linear-gradient(to right,
+      rgba(12,12,12,0.55) 0%,
+      rgba(12,12,12,0.32) 35%,
+      rgba(12,12,12,0) 62%),
+    linear-gradient(to top,
+      rgba(12,12,12,0.92) 0%,
+      rgba(12,12,12,0.6) 30%,
+      rgba(12,12,12,0.22) 58%,
+      rgba(12,12,12,0.1) 100%);
 }
 .heroContent {
   position: relative;
   z-index: 2;
   padding: 0 60px 72px;
   max-width: 700px;
+  text-shadow: 0 1px 14px rgba(0,0,0,0.35);
 }
-.heroEyebrow { margin-bottom: 20px; }
+.heroEyebrow {
+  margin-bottom: 20px;
+  /* small accent-colored label over busy photo areas: tight dark halo for legibility */
+  text-shadow: 0 0 3px rgba(0,0,0,0.9), 0 0 14px rgba(0,0,0,0.75);
+}
 .heroTitle {
   font-family: var(--serif);
   font-size: clamp(42px, 5.5vw, 96px);
@@ -46,7 +57,7 @@
 .heroSub {
   font-size: clamp(14px, 1.1vw, 20px);
   letter-spacing: 0.04em;
-  color: rgba(236,232,225,0.55);
+  color: rgba(236,232,225,0.85);
   margin-bottom: 40px;
   max-width: 480px;
   line-height: 1.7;
@@ -428,6 +439,14 @@
   .aboutStrip { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
   .aboutImgWrap { height: 360px; }
   .heroContent { padding: 0 24px 60px; }
+  /* Text spans the full width on small screens, so lean on the bottom fade instead of the side scrim */
+  .heroOverlay {
+    background: linear-gradient(to top,
+      rgba(12,12,12,0.94) 0%,
+      rgba(12,12,12,0.74) 38%,
+      rgba(12,12,12,0.4) 62%,
+      rgba(12,12,12,0.12) 100%);
+  }
   .sectionHeader { padding: 0 24px 40px; flex-wrap: wrap; }
   .testimonial { padding: 60px 24px; }
   .contactStrip { grid-template-columns: 1fr; }

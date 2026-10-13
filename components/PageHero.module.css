@@ -21,7 +21,8 @@
   background: linear-gradient(
     to top,
     rgba(12,12,12,0.95) 0%,
-    rgba(12,12,12,0.35) 55%,
+    rgba(12,12,12,0.68) 35%,
+    rgba(12,12,12,0.3) 62%,
     rgba(12,12,12,0.1) 100%
   );
 }
@@ -29,8 +30,12 @@
   position: relative;
   z-index: 2;
   padding: 0 60px 56px;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.4);
 }
-.eyebrow { margin-bottom: 12px; }
+.eyebrow {
+  margin-bottom: 12px;
+  text-shadow: 0 0 3px rgba(0,0,0,0.9), 0 0 14px rgba(0,0,0,0.75);
+}
 .title {
   font-family: var(--serif);
   font-size: clamp(40px, 6vw, 110px);
@@ -41,7 +46,7 @@
 .desc {
   margin-top: 16px;
   font-size: clamp(14px, 1.2vw, 20px);
-  color: rgba(236,232,225,0.5);
+  color: rgba(236,232,225,0.82);
   max-width: 580px;
   line-height: 1.7;
 }
@@ -53,4 +58,14 @@
 
 @media (max-width: 750px) {
   .content { padding: 0 24px 44px; }
+  /* Copy wraps taller on phones, so carry the darker band further up */
+  .overlay {
+    background: linear-gradient(
+      to top,
+      rgba(12,12,12,0.95) 0%,
+      rgba(12,12,12,0.78) 45%,
+      rgba(12,12,12,0.4) 75%,
+      rgba(12,12,12,0.15) 100%
+    );
+  }
 }
