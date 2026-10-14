@@ -69,7 +69,8 @@ const OTHER_DIVISION_TEAMS_2026 = [
   // 26 2:42am GMT), dropping to 1-3 overall / 1-2 league — still winless
   // since its Week 1 league loss.
   // Updated 2026-10-03 sweep: Dumont lost 0-40 at Hoboken (non-league) on 10/2 — 1-4 overall, league unchanged 1-2. MaxPreps recap ("Hoboken Piles Up the Points Against Dumont").
-  { team: 'Dumont', wins: 1, losses: 4, confWins: 1, confLosses: 2 },
+  // Updated 2026-10-14 sweep: Dumont now 2-4 / 1-2 per MaxPreps' Super - American Red standings page (stamp Oct 13 7:04pm GMT) — non-league win Oct 9 (game itself not itemized).
+  { team: 'Dumont', wins: 2, losses: 4, confWins: 1, confLosses: 2 },
   // Updated 2026-09-26 sweep (2nd run): Lakeland Regional won again on
   // 9/25, improving to 5-0 overall / 1-0 league — still unbeaten. Per the
   // fresh Super - American Red league standings page (Sep 26 2:42am GMT).
@@ -84,7 +85,8 @@ const OTHER_DIVISION_TEAMS_2026 = [
   // Updated 2026-09-26 sweep (2nd run): Westwood won again on 9/25,
   // improving to 4-1 overall; league record unchanged at 2-0. Per the
   // fresh Super - American Red league standings page (Sep 26 2:42am GMT).
-  { team: 'Westwood', wins: 4, losses: 1, confWins: 2, confLosses: 0 },
+  // Updated 2026-10-14 sweep: Westwood now 5-1 / 3-0 per MaxPreps' Super - American Red standings page (stamp Oct 13 7:04pm GMT) — league win Oct 9 (opponent not itemized; league totals across the 5 teams balance 7-7).
+  { team: 'Westwood', wins: 5, losses: 1, confWins: 3, confLosses: 0 },
 ];
 
 // Mahwah's own standings row derives from MAHWAH_SCHEDULE_2026 — identical
