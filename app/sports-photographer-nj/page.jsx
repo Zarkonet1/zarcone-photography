@@ -152,6 +152,7 @@ export default function SportsPhotographerNJ() {
         title="Sports Photographer — Central New Jersey"
         description="High school athletics, youth leagues, and individual athlete coverage. Based in Bridgewater, NJ — serving teams and programs across the state."
         imageSrc="/photos/i-s7zBdzk.jpg"
+        strongOverlay
       />
 
       {/* Intro */}
@@ -161,7 +162,7 @@ export default function SportsPhotographerNJ() {
         </div>
         <div className={styles.introBody}>
           <p>High school athletes put in years of work before they ever step onto a varsity field. A single season contains hundreds of moments that disappear the second they happen — a first-period takedown, a game-winning goal, a senior's last home game.</p>
-          <p>I've been photographing New Jersey athletes for 30 years. The gear is fast — the Nikon Z9 shoots 20 frames per second — but the more important skill is knowing which moment is worth the burst before it happens.</p>
+          <p>Backed by 30+ years of photography experience. The gear is fast — the Nikon Z9 shoots 20 frames per second — but the more important skill is knowing which moment is worth the burst before it happens.</p>
           <p><strong>Athletes deserve photographs that match the intensity they bring to their sport.</strong> That's what I show up to make.</p>
           <p>Right now I'm the official media partner for <Link href="/brhs-panther-football">Bridgewater-Raritan Panther football</Link> (2026), <Link href="/brhs-panther-wrestling">Panther wrestling</Link> (2026-27) and <Link href="/brhs-panther-volleyball">Panther volleyball</Link>. That means game-day photography, team and individual portraits, and a program media hub, all in one place. My work with local student-athletes was also the subject of a <a href="https://patch.com/new-jersey/bridgewater/bridgewater-photographer-focuses-lens-local-student-athletes" target="_blank" rel="noopener noreferrer">Patch Bridgewater feature</a>.</p>
           <p>Serving high schools, travel teams, youth leagues, and booster clubs throughout Somerset County and across Central New Jersey — including programs in Warren, Morris, Union, Middlesex, and Hunterdon counties.</p>

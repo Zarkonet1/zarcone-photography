@@ -1,6 +1,6 @@
 import styles from './PageHero.module.css';
 
-export default function PageHero({ eyebrow, title, description, imageSrc, imagePosition = 'center', strongDesc = false, children }) {
+export default function PageHero({ eyebrow, title, description, imageSrc, imagePosition = 'center', strongDesc = false, strongOverlay = false, children }) {
   return (
     <div className={styles.hero}>
       <img
@@ -12,9 +12,9 @@ export default function PageHero({ eyebrow, title, description, imageSrc, imageP
         loading="eager"
         decoding="async"
       />
-      <div className={styles.overlay} />
+      <div className={`${styles.overlay} ${strongOverlay ? styles.overlayStrong : ''}`} />
       <div className={styles.content}>
-        <p className={`eyebrow ${styles.eyebrow}`}>{eyebrow}</p>
+        <p className={`eyebrow ${styles.eyebrow} ${strongOverlay ? styles.eyebrowStrong : ''}`}>{eyebrow}</p>
         <h1 className={styles.title}>{title}</h1>
         {description && <p className={`${styles.desc} ${strongDesc ? styles.descStrong : ''}`}>{description}</p>}
         {children}

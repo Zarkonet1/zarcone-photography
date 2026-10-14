@@ -209,7 +209,7 @@ export default function Home() {
           <p className="eyebrow">About</p>
           <h2 className={styles.aboutH2}>These are the photos<br /><em>she'll still have at 40.</em></h2>
           <p className={styles.aboutP}>
-            Thirty years of experience means you don't have to worry about direction, lighting, or whether you're going to like the results. You just show up. I take care of the rest.
+            30+ years of photography experience means you don't have to worry about direction, lighting, or whether you're going to like the results. You just show up. I take care of the rest.
           </p>
           <p className={styles.aboutP}>
             One of the only NJ studios offering sports photography, portraits, and graphic design under one roof — so your athlete can walk away with the action shots and the senior poster from the same session. Based in Bridgewater, NJ. Serving NJ, NYC, and Philadelphia.

@@ -212,7 +212,7 @@ const FAQ = [
 ];
 
 const WHY_US = [
-  { num: '01', title: '30+ Years Experience', body: 'Three decades behind the camera across NJ high school and collegiate sports.' },
+  { num: '01', title: '30+ Years Experience', body: '30+ years of photography experience, applied to NJ high school and collegiate sports.' },
   { num: '02', title: 'Pro Nikon Z-System', body: 'Nikon Z9 and Z8 bodies built to deliver in any light, at match speed.' },
   { num: '03', title: 'Fast Turnaround', body: 'Edited galleries delivered within days of the final point.' },
   { num: '04', title: 'Professional Editing', body: 'Every image color-corrected and finished before it reaches your gallery.' },
@@ -1117,7 +1117,7 @@ export default function BRHSPantherVolleyballPage() {
         </div>
         <p style={{ color: 'var(--br-silver)', fontSize: 16, lineHeight: 1.8, maxWidth: 720 }}>
           Zarcone Photography is the official media partner of BRHS Panther Girls Volleyball — full match-day coverage, a custom Senior
-          Night poster for every graduating senior, and recruiting content, from the same <Link href="/sports-photographer-nj">sports photographer NJ</Link> programs have trusted for 30+ years — plus the
+          Night poster for every graduating senior, and recruiting content, from a <Link href="/sports-photographer-nj">sports photographer NJ</Link> with 30+ years of photography experience — plus the
           same role with <Link href="/brhs-panther-football">Panther Football</Link> and <Link href="/brhs-panther-wrestling">Panther Wrestling</Link>.
           Athletic directors and booster clubs can see how a <Link href="/schools-athletic-programs-nj">school sports media partnership</Link> works.
           Outside the season partnership, private <Link href="/senior-portrait-photographer-nj">senior portrait sessions</Link>, family photos, and <Link href="/event-photographer-nj">event bookings</Link> — team banquets, Senior Night celebrations, and more — are available too — <a href="#inquire">reach out here</a>.

@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'About Tom Zarcone — Veteran-Owned NJ Photographer',
-  description: 'SDVOSB-certified photographer with 30 years behind the camera. Portraits, high school sports & events across NJ, NYC & Philadelphia — meet Tom.',
+  description: 'SDVOSB-certified photographer with 30+ years of photography experience. Portraits, high school sports & events across NJ, NYC & Philadelphia — meet Tom.',
   alternates: {
     canonical: '/about',
   },

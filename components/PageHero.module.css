@@ -26,6 +26,24 @@
     rgba(12,12,12,0.1) 100%
   );
 }
+/* Opt-in for busy hero photos (e.g. the football tunnel shot): a soft left-side
+   scrim behind the text column plus a deeper bottom fade. Right side stays open. */
+.overlayStrong {
+  background:
+    linear-gradient(to right,
+      rgba(12,12,12,0.62) 0%,
+      rgba(12,12,12,0.38) 40%,
+      rgba(12,12,12,0) 72%),
+    linear-gradient(to top,
+      rgba(12,12,12,0.96) 0%,
+      rgba(12,12,12,0.78) 35%,
+      rgba(12,12,12,0.4) 65%,
+      rgba(12,12,12,0.12) 100%);
+}
+.eyebrowStrong {
+  /* lighter tint of --accent so the small label clears AA over the busy photo */
+  color: #e4d8c0;
+}
 .content {
   position: relative;
   z-index: 2;
@@ -66,6 +84,15 @@
       rgba(12,12,12,0.78) 45%,
       rgba(12,12,12,0.4) 75%,
       rgba(12,12,12,0.15) 100%
+    );
+  }
+  .overlayStrong {
+    background: linear-gradient(
+      to top,
+      rgba(12,12,12,0.96) 0%,
+      rgba(12,12,12,0.86) 45%,
+      rgba(12,12,12,0.66) 75%,
+      rgba(12,12,12,0.3) 100%
     );
   }
 }

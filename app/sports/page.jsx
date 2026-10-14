@@ -136,6 +136,7 @@ export default function SportsPage() {
         title="Sports Photography Portfolio"
         description="Four years of early mornings, weight rooms, and Friday nights — and it ends in a single season. Your athlete gave everything. The photos should prove it."
         imageSrc="/photos/i-s7zBdzk.jpg"
+        strongOverlay
       />
 
       <p className={styles.painLine}>

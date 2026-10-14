@@ -4,7 +4,7 @@ import styles from '@/app/seo-page.module.css';
 
 export const metadata = {
   title: 'Event Photographer — New Jersey | Zarcone Photography',
-  description: '30 years covering corporate events, galas & private celebrations across Central NJ. Fast, private online gallery delivery. Based in Bridgewater, NJ.',
+  description: '30+ years of photography experience. Corporate events, galas & private celebrations across Central NJ. Fast, private online gallery delivery. Based in Bridgewater, NJ.',
   openGraph: {
     title: 'Event Photographer — New Jersey | Zarcone Photography',
     description: 'Event photographer based in Bridgewater, NJ. Proms, corporate events, live music, and milestone celebrations across New Jersey.',
@@ -150,7 +150,7 @@ export default function EventPhotographerNJ() {
         <div className={styles.introBody}>
           <p>The best event photography is invisible during the event and essential afterward. People should be able to look back at images from their night and feel it again — not see a photographer's hand in every frame.</p>
           <p>That means moving quietly through a room, working fast in low light, and knowing when to step back and let the moment breathe. It also means knowing when to direct — a quick group pull-together, a posed shot between key people — without stopping the event to do it.</p>
-          <p><strong>Three decades of event coverage across New Jersey has taught me the shape of most events before I arrive.</strong> That preparation shows in the work.</p>
+          <p><strong>30+ years of photography experience has taught me the shape of most events before I arrive.</strong> That preparation shows in the work.</p>
           <p>Available for events throughout New Jersey — from intimate private celebrations in Bridgewater, Somerville, and the rest of Somerset County to large-scale corporate galas in the New York Metro area.</p>
         </div>
       </section>

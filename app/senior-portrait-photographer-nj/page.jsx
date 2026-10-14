@@ -78,8 +78,8 @@ const FEATURES = [
   },
   {
     num: '05',
-    title: '30 Years of Experience',
-    body: 'Three decades of photographing people means knowing how to make anyone feel at ease in front of a camera. The seniors who look the most natural in their photos are the ones who forgot I was there.',
+    title: '30+ Years of Photography Experience',
+    body: '30+ years of photography experience means knowing how to make anyone feel at ease in front of a camera. The seniors who look the most natural in their photos are the ones who forgot I was there.',
   },
   {
     num: '06',
@@ -145,7 +145,7 @@ export default function SeniorPortraitPhotographerNJ() {
         </div>
         <div className={styles.introBody}>
           <p>Senior year is one of the few times in a young person's life when slowing down to document who they are right now actually makes sense. Not who they'll become — who they are at this exact moment, before everything changes.</p>
-          <p>I've been photographing New Jersey seniors for over two decades. What I've learned is that the best senior portraits don't come from following a script. They come from giving seniors enough space to forget they're being photographed.</p>
+          <p>Backed by 30+ years of photography experience. What I've learned is that the best senior portraits don't come from following a script. They come from giving seniors enough space to forget they're being photographed.</p>
           <p><strong>The result is images that look like your senior — not a stock photo version of them.</strong> That's the standard I hold every session to.</p>
           <p>Sessions take place at some of New Jersey's best outdoor locations — or in the studio, or on the field, or wherever your senior actually belongs. Serving families throughout Somerset County, Morris County, Warren County, Union County, Middlesex County, and beyond.</p>
         </div>

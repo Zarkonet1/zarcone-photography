@@ -198,6 +198,7 @@ export default function SchoolsAthleticProgramsNJ() {
         title="Media Partner for NJ School Athletic Programs"
         description="Season-long photography and media for your athletic program: game coverage, Media Day, Senior Night and a program-owned Media Hub, with one accountable partner and one organizational license."
         imageSrc="/photos/i-s7zBdzk.jpg"
+        strongOverlay
         strongDesc
       >
         <div className={styles.heroActions}>
