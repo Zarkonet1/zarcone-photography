@@ -85,6 +85,12 @@ const CAROUSEL = [
 // football and wrestling.
 const ARTICLES = [
   {
+    title: "Class of 2027 Players Honored at Senior Day as Bridgewater-Raritan Posts a Girls' Volleyball Victory",
+    source: 'BRRSD Athletics',
+    url: 'https://www.brrsd.org/o/brrhs/article/3193691',
+    date: '2026-10-15' /* added 2026-10-16 coverage-gap audit. BRRSD Athletics (published Oct 15) says four Class of 2027 seniors were honored at Senior Day Wed Oct 14 during a team victory (opponent per MaxPreps schedule: home vs Piscataway, 4:00 PM). Title paraphrased from the BRRSD feed listing. Score/set scores NOT confirmed - MaxPreps/NJRB had not posted the match as of the 2026-10-16 sweep, so SCHEDULE_2026 result left null. */,
+  },
+  {
     title: 'From Volleyball Hero To Royalty Was Experienced By Margarita Silvar At Bridgewater-Raritan High School',
     source: 'BRRSD Athletics',
     url: 'https://www.brrsd.org/o/brrhs/article/3170822',
