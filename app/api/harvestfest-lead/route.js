@@ -68,6 +68,14 @@ export async function POST(request) {
       ? `${esc(contact.invalidEmailInput)} <em>(not a valid email format — as entered; use the phone number)</em>`
       : '&mdash;';
 
+  // A phone with fewer than 7 digits can't be called, but it is still shown
+  // (escaped, labelled) rather than silently dropped.
+  const phoneLine = contact.phone
+    ? esc(contact.phone)
+    : contact.invalidPhoneInput
+      ? `${esc(contact.invalidPhoneInput)} <em>(fewer than 7 digits — as entered)</em>`
+      : '&mdash;';
+
   const result = await sendEmail(
     {
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
@@ -78,7 +86,7 @@ export async function POST(request) {
         <h2>HarvestFest 2026 — Giveaway Entry</h2>
         <p><strong>Name:</strong> ${esc(name)}</p>
         <p><strong>Email:</strong> ${emailLine}</p>
-        <p><strong>Phone:</strong> ${esc(contact.phone) || '&mdash;'}</p>
+        <p><strong>Phone:</strong> ${phoneLine}</p>
         <p><strong>Interested In:</strong> ${esc(interest) || '&mdash;'}</p>
         ${context ? `<p><strong>Additional context:</strong> ${escMultiline(context)}</p>` : ''}
         ${category ? `<p><strong>Category they were viewing:</strong> ${esc(category)}</p>` : ''}

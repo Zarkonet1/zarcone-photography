@@ -310,3 +310,69 @@ test('Reply-To is omitted entirely when there is no valid email (phone-only Harv
     assert.ok(!('reply_to' in c.body) && !('replyTo' in c.body));
   }
 });
+
+// ---- Apostrophe emails (o'neil@example.com) are valid -----------------------
+import { isValidEmail } from '../lib/formHandler.js';
+
+test('isValidEmail: apostrophes allowed; injection-ish characters still rejected', () => {
+  for (const ok of ["o'neil@example.com", "d'angelo.smith@example.co.uk", 'pat+tag@example.com', 'a.b@c.co']) {
+    assert.equal(isValidEmail(ok), true, ok);
+  }
+  for (const bad of ['x@y', 'a b@c.co', 'a@@b.co', '"a"@b.co', 'a,b@c.co', 'a;b@c.co', '<a>@b.co', '', null, 42]) {
+    assert.equal(isValidEmail(bad), false, String(bad));
+  }
+});
+
+test('apostrophe email is accepted end-to-end and used as reply_to (contact, program-contact, govcon, harvest)', async () => {
+  const addr = "o'neil@example.com";
+  const cases = [
+    [contact, '/api/contact', { ...CONTACT, email: addr }],
+    [programContact, '/api/program-contact', { ...PROGRAM, email: addr }],
+    [govcon, '/api/govcon-quote', { ...GOV, email: addr }],
+    [harvest, '/api/harvestfest-lead', { ...HARVEST, email: addr }],
+  ];
+  for (const [handler, url, payload] of cases) {
+    net = stubFetch(RESEND_OK);
+    const res = await handler(jsonRequest(url, payload));
+    assert.equal(res.status, 200, url);
+    const sent = net.calls[0].body;
+    assert.equal(sent.reply_to, addr, url);
+    assert.ok(sent.html.includes('o&#39;neil@example.com'), `${url}: displayed escaped`);
+    net.restore();
+  }
+});
+
+// ---- HarvestFest: short phone is shown, not silently dropped ----------------
+test('harvestfest: short phone + valid email -> delivered, phone shown and labelled', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await harvest(jsonRequest('/api/harvestfest-lead', { name: 'Pat', email: 'pat@example.com', phone: '555-12' }));
+  assert.equal(res.status, 200);
+  const html = net.calls[0].body.html;
+  assert.ok(html.includes('555-12'));
+  assert.ok(html.includes('fewer than 7 digits'));
+});
+
+test('harvestfest: short phone alone (no email) is rejected clearly', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await harvest(jsonRequest('/api/harvestfest-lead', { name: 'Pat', phone: '555-12' }));
+  assert.equal(res.status, 400);
+  assert.match((await res.json()).error, /contact method/);
+  assert.equal(net.calls.length, 0);
+});
+
+test('harvestfest: valid phone-only behavior is unchanged (no label)', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await harvest(jsonRequest('/api/harvestfest-lead', { name: 'Pat', phone: '(908) 777-0631' }));
+  assert.equal(res.status, 200);
+  const html = net.calls[0].body.html;
+  assert.ok(html.includes('(908) 777-0631'));
+  assert.ok(!html.includes('fewer than 7 digits'));
+});
+
+test('harvestfest: short phone text is HTML-escaped', async () => {
+  net = stubFetch(RESEND_OK);
+  await harvest(jsonRequest('/api/harvestfest-lead', { name: 'Pat', email: 'pat@example.com', phone: '<b>1</b>' }));
+  const html = net.calls[0].body.html;
+  assert.ok(!html.includes('<b>1</b>'));
+  assert.ok(html.includes('&lt;b&gt;1&lt;/b&gt;'));
+});

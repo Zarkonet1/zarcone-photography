@@ -163,6 +163,20 @@ function describeSource(ctx) {
   }
 }
 
+// Tool inputs come from the model and are not guaranteed to be strings. These
+// coerce safely so .trim() can never throw on an object/number/array.
+// Identity fields (name/email/phone) accept strings only: a stray number such
+// as email: 42 must not count as a contact method.
+function strictStr(value) {
+  return typeof value === 'string' ? value.trim() : '';
+}
+
+function str(value) {
+  if (typeof value === 'string') return value.trim();
+  if (typeof value === 'number' && Number.isFinite(value)) return String(value);
+  return '';
+}
+
 function transcriptHtml(messages) {
   return (messages || [])
     .map(m => `<p style="margin:0 0 8px"><strong>${m.role === 'user' ? 'Visitor' : 'Bot'}:</strong> ${esc(m.content)}</p>`)
@@ -170,23 +184,27 @@ function transcriptHtml(messages) {
 }
 
 async function sendLeadEmail(fields, ctx = {}, transcript = []) {
-  const hasContactMethod = (fields.email && fields.email.trim()) || (fields.phone && fields.phone.trim());
-  if (!fields.name || !fields.name.trim() || !hasContactMethod) {
+  fields = fields && typeof fields === 'object' ? fields : {};
+  const name = strictStr(fields.name);
+  const email = strictStr(fields.email);
+  const phone = strictStr(fields.phone);
+  const hasContactMethod = Boolean(email || phone);
+  if (!name || !hasContactMethod) {
     // Not enough to act on — skip silently rather than emailing a dead lead.
     return 'skipped';
   }
 
   const rows = [
-    ['Name', fields.name],
-    ['Email', fields.email],
-    ['Phone', fields.phone],
-    ['Event Date', fields.event_date],
-    ['Organization', fields.organization],
-    ['Location', fields.location],
-    ['Session Type', fields.session_type],
-    ['Headcount', fields.headcount],
-    ['Special Requests', fields.special_requests],
-  ].filter(([, v]) => v && String(v).trim());
+    ['Name', name],
+    ['Email', email],
+    ['Phone', phone],
+    ['Event Date', str(fields.event_date)],
+    ['Organization', str(fields.organization)],
+    ['Location', str(fields.location)],
+    ['Session Type', str(fields.session_type)],
+    ['Headcount', str(fields.headcount)],
+    ['Special Requests', str(fields.special_requests)],
+  ].filter(([, v]) => v);
 
   // sendEmail() inspects Resend's { data, error } contract (SDK 3.5.0 does not
   // throw on API failure) and treats a missing RESEND_API_KEY as a failure.
@@ -195,8 +213,8 @@ async function sendLeadEmail(fields, ctx = {}, transcript = []) {
       to: 'tom@zarconephotography.com',
       // Resend SDK 3.5.0 forwards the payload verbatim; its field is snake_case
       // `reply_to` (camelCase `replyTo` is silently ignored).
-      reply_to: fields.email && fields.email.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim()) ? fields.email.trim() : undefined,
-      subject: `AI Chat Lead — ${fields.name}`,
+      reply_to: email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : undefined,
+      subject: `AI Chat Lead — ${name}`.replace(/[\r\n]+/g, ' '),
       html: `
         <h2>New Lead from AI Chat Widget</h2>
         ${rows.map(([label, value]) => `<p><strong>${label}:</strong> ${esc(value)}</p>`).join('\n')}
@@ -213,6 +231,10 @@ async function sendLeadEmail(fields, ctx = {}, transcript = []) {
 }
 
 async function sendEscalationEmail(fields, recentMessages, ctx = {}) {
+  fields = fields && typeof fields === 'object' ? fields : {};
+  const reason = str(fields.reason);
+  const summary = str(fields.summary);
+  const contactInfo = str(fields.contact_info);
   const transcript = (recentMessages || [])
     .slice(-8)
     .map(m => `${m.role === 'user' ? 'Visitor' : 'Bot'}: ${esc(m.content)}`)
@@ -221,12 +243,12 @@ async function sendEscalationEmail(fields, recentMessages, ctx = {}) {
   const result = await sendEmail({
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
       to: 'tom@zarconephotography.com',
-      subject: `Chat needs you now — ${fields.reason || 'escalation'}`,
+      subject: `Chat needs you now — ${reason || 'escalation'}`.replace(/[\r\n]+/g, ' '),
       html: `
         <h2>Live Chat Escalation</h2>
-        <p><strong>Reason:</strong> ${esc(fields.reason || 'Not specified')}</p>
-        <p><strong>Summary:</strong> ${esc(fields.summary || 'Not specified')}</p>
-        ${fields.contact_info && fields.contact_info.trim() ? `<p><strong>Contact info given:</strong> ${esc(fields.contact_info)}</p>` : '<p><strong>Contact info given:</strong> none yet</p>'}
+        <p><strong>Reason:</strong> ${esc(reason || 'Not specified')}</p>
+        <p><strong>Summary:</strong> ${esc(summary || 'Not specified')}</p>
+        ${contactInfo ? `<p><strong>Contact info given:</strong> ${esc(contactInfo)}</p>` : '<p><strong>Contact info given:</strong> none yet</p>'}
         <p><strong>Source:</strong> ${esc(describeSource(ctx))} · first page ${esc(ctx.landingPage || 'unknown')} · chatting on ${esc(ctx.chatPage || 'unknown')}</p>
         <p><strong>Recent conversation:</strong></p>
         <pre style="white-space: pre-wrap; font-family: inherit;">${transcript}</pre>

@@ -139,3 +139,55 @@ test('chat lead: malformed visitor email is never sent as reply_to', async () =>
   const sent = net.calls.find((c) => c.url.includes('resend.com')).body;
   assert.ok(!('reply_to' in sent));
 });
+
+// ---- Non-string tool input must never throw ---------------------------------
+const nonStringLead = (input, id) => [{ type: 'text', text: "I've sent that to Tom." }, { type: 'tool_use', id, name: 'submit_lead_inquiry', input }];
+let ipn = 0;
+const post = () => chat(jsonRequest('/api/chat', body, undefined, { 'x-forwarded-for': `10.7.0.${++ipn}` }));
+
+test('chat lead: non-string name/email/phone -> no crash, treated as missing (skipped, accurate reply)', async () => {
+  for (const input of [
+    { name: 123, email: { x: 1 }, phone: ['908'] },
+    { name: { a: 1 }, email: 'pat@example.com' },
+    { name: 'Pat', email: 42, phone: null },
+    { name: 'Pat', email: [], phone: {} },
+  ]) {
+    net = stubFetch(route(nonStringLead(input, 'n1'), RESEND_OK));
+    const res = await post();
+    assert.equal(res.status, 200, JSON.stringify(input));
+    assert.match((await res.json()).reply, /haven't sent anything/);
+    assert.ok(!net.calls.some((c) => c.url.includes('resend.com')));
+    net.restore();
+  }
+});
+
+test('chat lead: non-object tool input (string/null/array) does not crash', async () => {
+  for (const input of ['oops', null, [], 7]) {
+    net = stubFetch(route(nonStringLead(input, 'n2'), RESEND_OK));
+    const res = await post();
+    assert.equal(res.status, 200, JSON.stringify(input));
+    net.restore();
+  }
+});
+
+test('chat lead: valid name/phone with junk optional fields still sends; junk never rendered as [object Object]', async () => {
+  const input = { name: 'Pat', phone: '908-555-0100', event_date: { d: 1 }, headcount: 25, organization: ['x'] };
+  net = stubFetch(route(nonStringLead(input, 'n3'), RESEND_OK));
+  const res = await post();
+  assert.equal(res.status, 200);
+  const html = net.calls.find((c) => c.url.includes('resend.com')).body.html;
+  assert.ok(!html.includes('[object Object]'));
+  assert.ok(html.includes('25'), 'numeric headcount preserved');
+  net.restore();
+});
+
+test('chat escalation: non-string reason/summary/contact_info -> no crash, email still sent', async () => {
+  const esc2 = [{ type: 'text', text: 'ok' }, { type: 'tool_use', id: 'n4', name: 'escalate_to_human', input: { reason: { r: 1 }, summary: 5, contact_info: ['x'] } }];
+  net = stubFetch(route(esc2, RESEND_OK));
+  const res = await post();
+  assert.equal(res.status, 200);
+  const sent = net.calls.find((c) => c.url.includes('resend.com')).body;
+  assert.ok(!sent.html.includes('[object Object]'));
+  assert.match(sent.subject, /escalation/);
+  net.restore();
+});

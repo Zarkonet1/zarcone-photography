@@ -88,3 +88,10 @@ test('subscribe: non-string team/source fall back to defaults', async () => {
   assert.equal(res.status, 200);
   assert.deepEqual(net.calls[0].body.properties, { team: 'Unknown', source: 'Gallery Alert' });
 });
+
+test("subscribe: apostrophe email (o'neil@example.com) is accepted", async () => {
+  net = stubFetch(OK);
+  const res = await subscribe(jsonRequest('/api/subscribe', { email: "o'neil@example.com", team: 'Football' }));
+  assert.equal(res.status, 200);
+  assert.equal(net.calls[0].body.email, "o'neil@example.com");
+});
