@@ -261,6 +261,14 @@ export default function AboutPage() {
               loading="lazy"
               className={styles.pressImage}
             />
+            <img
+              src="/photos/awards/exposure-one-nominee-badge.png"
+              alt="Exposure One Awards 2026 Nominee — Wildlife"
+              width={687}
+              height={310}
+              loading="lazy"
+              className={styles.pressBadge}
+            />
             <p className={styles.pressQuote}>&ldquo;The Thinker&rdquo; &mdash; Jury-Selected Nominee, Wildlife</p>
             <p className={styles.pressByline}>— Exposure One Awards, 2026 Discovery of the Year</p>
             <span className={styles.pressLink}>View the Image →</span>

@@ -168,6 +168,13 @@
 }
 .pressCard:hover .pressLink { color: var(--text); }
 .pressCardSecond { margin-top: 16px; }
+.pressBadge {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  margin: 0 auto 24px;
+}
 .pressImage {
   display: block;
   width: 100%;
