@@ -273,3 +273,40 @@ test('email exactly at the 254-char limit is accepted', async () => {
   assert.equal(res.status, 200);
   assert.equal(replyToOf(net.calls[0].body), atLimit);
 });
+
+// ---- Reply-To: Resend SDK 3.5.0 only honors snake_case `reply_to` ----------
+test('Reply-To uses the SDK field name (reply_to), never camelCase replyTo (regression)', async () => {
+  const cases = [
+    [contact, '/api/contact', { ...CONTACT, email: 'visitor@example.com' }],
+    [programContact, '/api/program-contact', { ...PROGRAM, email: 'visitor@example.com' }],
+    [govcon, '/api/govcon-quote', { ...GOV, email: 'visitor@example.com' }],
+    [harvest, '/api/harvestfest-lead', { ...HARVEST, email: 'visitor@example.com' }],
+  ];
+  for (const [handler, url, payload] of cases) {
+    net = stubFetch(RESEND_OK);
+    const res = await handler(jsonRequest(url, payload));
+    assert.equal(res.status, 200, url);
+    const sent = net.calls[0].body;
+    assert.equal(sent.reply_to, 'visitor@example.com', `${url}: Reply-To must be the visitor's address`);
+    assert.equal(sent.replyTo, undefined, `${url}: camelCase replyTo is ignored by the API and must not be sent`);
+    net.restore();
+  }
+});
+
+test('Reply-To is the visitor, while routing (to/from) is unchanged', async () => {
+  net = stubFetch(RESEND_OK);
+  await contact(jsonRequest('/api/contact', { ...CONTACT, email: 'visitor@example.com' }));
+  const sent = net.calls[0].body;
+  assert.equal(sent.to, 'tom.zarcone@mac.com');
+  assert.equal(sent.from, 'Zarcone Photography <noreply@zarconephotography.com>');
+  assert.equal(sent.reply_to, 'visitor@example.com');
+});
+
+test('Reply-To is omitted entirely when there is no valid email (phone-only HarvestFest/GovCon)', async () => {
+  net = stubFetch(RESEND_OK);
+  await harvest(jsonRequest('/api/harvestfest-lead', { name: 'Pat', phone: '908-777-0631' }));
+  await govcon(jsonRequest('/api/govcon-quote', { name: 'Pat', description: 'x', phone: '908-777-0631' }));
+  for (const c of net.calls) {
+    assert.ok(!('reply_to' in c.body) && !('replyTo' in c.body));
+  }
+});

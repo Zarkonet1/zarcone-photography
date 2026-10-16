@@ -38,9 +38,7 @@ export function silenceConsoleError() {
   return { lines, restore: () => { console.error = original; } };
 }
 
-// The Reply-To value actually sent to Resend. NOTE: Resend SDK 3.5.0 forwards
-// the payload verbatim and its API field is snake_case `reply_to`, while the
-// routes pass camelCase `replyTo` (pre-existing; flagged for review, not
-// changed here). Reading either keeps these assertions meaningful rather than
-// vacuously passing on a key the code never sets.
-export const replyToOf = (sentBody) => sentBody.replyTo ?? sentBody.reply_to;
+// The Reply-To value actually sent to Resend. SDK 3.5.0 forwards the payload
+// verbatim and its API field is snake_case `reply_to`; a camelCase `replyTo`
+// key is silently ignored by Resend, so only `reply_to` counts.
+export const replyToOf = (sentBody) => sentBody.reply_to;

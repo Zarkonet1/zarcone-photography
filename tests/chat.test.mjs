@@ -122,3 +122,20 @@ test('chat: missing ANTHROPIC_API_KEY -> 503', async () => {
   delete process.env.ANTHROPIC_API_KEY;
   assert.equal((await chat(jsonRequest('/api/chat', body))).status, 503);
 });
+
+test('chat lead: Reply-To is the visitor email via reply_to; routing unchanged (regression)', async () => {
+  net = stubFetch(route(LEAD, RESEND_OK));
+  await chat(jsonRequest('/api/chat', body, undefined, { 'x-forwarded-for': '10.8.0.1' }));
+  const sent = net.calls.find((c) => c.url.includes('resend.com')).body;
+  assert.equal(sent.reply_to, 'pat@example.com');
+  assert.equal(sent.replyTo, undefined);
+  assert.equal(sent.to, 'tom@zarconephotography.com');
+});
+
+test('chat lead: malformed visitor email is never sent as reply_to', async () => {
+  const bad = [{ type: 'text', text: 'ok' }, { type: 'tool_use', id: 't9', name: 'submit_lead_inquiry', input: { name: 'Pat', email: 'nope', phone: '908-555-0100' } }];
+  net = stubFetch(route(bad, RESEND_OK));
+  await chat(jsonRequest('/api/chat', body, undefined, { 'x-forwarded-for': '10.8.0.2' }));
+  const sent = net.calls.find((c) => c.url.includes('resend.com')).body;
+  assert.ok(!('reply_to' in sent));
+});

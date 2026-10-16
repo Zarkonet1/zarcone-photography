@@ -35,7 +35,7 @@ export async function POST(request) {
     {
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
       to: 'tom.zarcone@mac.com',
-      replyTo: email,
+      reply_to: email,
       subject: cleanLine(`Contact Form — ${fname} ${lname}`),
       html: `
         <h2>Contact Form Submission</h2>

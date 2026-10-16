@@ -193,7 +193,9 @@ async function sendLeadEmail(fields, ctx = {}, transcript = []) {
   const result = await sendEmail({
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
       to: 'tom@zarconephotography.com',
-      replyTo: fields.email && fields.email.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim()) ? fields.email.trim() : undefined,
+      // Resend SDK 3.5.0 forwards the payload verbatim; its field is snake_case
+      // `reply_to` (camelCase `replyTo` is silently ignored).
+      reply_to: fields.email && fields.email.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim()) ? fields.email.trim() : undefined,
       subject: `AI Chat Lead — ${fields.name}`,
       html: `
         <h2>New Lead from AI Chat Widget</h2>

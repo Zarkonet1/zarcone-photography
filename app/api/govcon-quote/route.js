@@ -10,7 +10,7 @@ import {
 // never at module scope. Reuses the existing RESEND_API_KEY.
 //
 // Hardened 2026-10-16: input validated/escaped; success only after Resend
-// accepts the send; a malformed email never becomes replyTo, but a lead with
+// accepts the send; a malformed email never becomes reply_to, but a lead with
 // a usable phone is still delivered.
 export async function POST(request) {
   const body = await readJsonObject(request);
@@ -40,7 +40,7 @@ export async function POST(request) {
     {
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
       to: 'tom.zarcone@mac.com',
-      replyTo: contact.email || undefined,
+      reply_to: contact.email || undefined,
       subject: cleanLine(`Government Contracting Quote Request — ${name}${organization ? ` (${organization})` : ''}`),
       html: `
         <h2>Government Contracting — Quote Request</h2>

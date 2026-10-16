@@ -28,7 +28,7 @@ import {
 // manually from the email until/unless that Zap is built.
 // Hardened 2026-10-16: input validated/escaped; the visitor sees success only
 // after Resend accepts the notification email. A phone-only entry is valid. A
-// malformed email is never used as replyTo (Resend rejects it) but, when a
+// malformed email is never used as reply_to (Resend rejects it) but, when a
 // usable phone is present, the entry is still delivered with the email shown
 // as entered so no valid giveaway lead is dropped. Zapier forwarding remains
 // best-effort and never fails the visitor, but non-2xx/timeouts are logged.
@@ -72,7 +72,7 @@ export async function POST(request) {
     {
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
       to: 'tom.zarcone@mac.com',
-      replyTo: contact.email || undefined,
+      reply_to: contact.email || undefined,
       subject: cleanLine(`HarvestFest Giveaway Entry — ${name} (${interest || 'Not specified'})`),
       html: `
         <h2>HarvestFest 2026 — Giveaway Entry</h2>
