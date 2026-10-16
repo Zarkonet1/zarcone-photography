@@ -245,8 +245,8 @@ export default function AboutPage() {
               final placement after winners are announced Oct 15, 2026; if no
               placement, keep "Nominee" wording — never "award-winning". */}
           {/* Exposure One 2026 nominee. Image is self-hosted because Exposure One's
-              own pages are temporary or login-only. Update the wording with the
-              final placement after winners are announced Oct 15, 2026. */}
+              own pages are temporary or login-only. Final result (Oct 15, 2026):
+              Nominee, no placement, so keep "Nominee" wording and never "award-winning". */}
           <a
             href="/photos/awards/the-thinker.jpg"
             target="_blank"
