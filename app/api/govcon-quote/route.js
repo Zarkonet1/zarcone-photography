@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import {
   LIMITS, cleanStr, cleanLine, esc, escMultiline, resolveContactMethods,
-  readJsonObject, sendEmail, failureStatus, failureBody,
+  readJsonObject, sendEmail, failureStatus, failureBody, guardRequest, looksLikeSpam,
 } from '../../../lib/formHandler';
 
 // Quote-request handler for the Government Contracting page's "Request a
@@ -13,6 +13,9 @@ import {
 // accepts the send; a malformed email never becomes reply_to, but a lead with
 // a usable phone is still delivered.
 export async function POST(request) {
+  const blocked = guardRequest(request, 'govcon-quote', { max: 6 });
+  if (blocked) return NextResponse.json({ error: blocked.error }, { status: blocked.status });
+
   const body = await readJsonObject(request);
   if (!body) {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
@@ -41,7 +44,7 @@ export async function POST(request) {
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
       to: 'tom.zarcone@mac.com',
       reply_to: contact.email || undefined,
-      subject: cleanLine(`Government Contracting Quote Request — ${name}${organization ? ` (${organization})` : ''}`),
+      subject: cleanLine(`${looksLikeSpam(description) ? '[Possible spam] ' : ''}Government Contracting Quote Request — ${name}${organization ? ` (${organization})` : ''}`),
       html: `
         <h2>Government Contracting — Quote Request</h2>
         <p><strong>Name:</strong> ${esc(name)}</p>

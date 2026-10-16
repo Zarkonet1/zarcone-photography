@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import {
-  LIMITS, cleanStr, cleanEmailInput, isValidEmail, readJsonObject, addAudienceContact, failureStatus, failureBody,
+  LIMITS, cleanStr, cleanEmailInput, isValidEmail, readJsonObject, addAudienceContact, failureStatus, failureBody, guardRequest, looksLikeSpam,
 } from '../../../lib/formHandler';
 
 // Gallery-ready alert capture (BRHS Panther Wrestling / Football / Volleyball
@@ -18,6 +18,9 @@ import {
 // POST /contacts (current API, no audienceId) through the SDK's public post()
 // and only report success when Resend returns data. See lib/formHandler.js.
 export async function POST(request) {
+  const blocked = guardRequest(request, 'subscribe', { max: 30 });
+  if (blocked) return NextResponse.json({ error: blocked.error }, { status: blocked.status });
+
   const body = await readJsonObject(request);
   if (!body) {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });

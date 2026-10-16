@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { sendEmail, readJsonObject } from '../../../lib/formHandler';
+import { sendEmail, readJsonObject, guardRequest } from '../../../lib/formHandler';
 import { SYSTEM_PROMPT } from '@/lib/chatKnowledge';
 
 const MODEL = 'claude-haiku-4-5-20251001';
@@ -258,6 +258,9 @@ async function sendEscalationEmail(fields, recentMessages, ctx = {}) {
 }
 
 export async function POST(request) {
+  const blocked = guardRequest(request, 'chat', { originOnly: true });
+  if (blocked) return NextResponse.json({ error: blocked.error, reply: blocked.error }, { status: blocked.status });
+
   if (!process.env.ANTHROPIC_API_KEY) {
     return NextResponse.json(
       { error: 'Chat is temporarily unavailable. Please call (908) 777-0631 or use the contact form.' },

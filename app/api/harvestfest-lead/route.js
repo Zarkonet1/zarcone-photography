@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import {
   LIMITS, cleanStr, cleanLine, esc, escMultiline, resolveContactMethods,
-  readJsonObject, sendEmail, failureStatus, failureBody,
+  readJsonObject, sendEmail, failureStatus, failureBody, guardRequest, looksLikeSpam,
 } from '../../../lib/formHandler';
 
 // Lead-capture handler for the /harvestfest QR landing page's "Enter to
@@ -33,6 +33,9 @@ import {
 // as entered so no valid giveaway lead is dropped. Zapier forwarding remains
 // best-effort and never fails the visitor, but non-2xx/timeouts are logged.
 export async function POST(request) {
+  const blocked = guardRequest(request, 'harvestfest-lead', { max: 40 });
+  if (blocked) return NextResponse.json({ error: blocked.error }, { status: blocked.status });
+
   const body = await readJsonObject(request);
   if (!body) {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });

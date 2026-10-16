@@ -1,9 +1,19 @@
 // Test helpers: stub global fetch so the REAL Resend SDK 3.5.0 runs against
 // scripted API responses. No network, no real emails, no real credentials.
+// Defaults mimic a real browser form post: a first-party Origin and a distinct
+// client IP per request (so the per-IP rate limiter never trips across
+// unrelated tests). Tests override either via extraHeaders.
+let ipCounter = 0;
 export function jsonRequest(url, body, raw, extraHeaders = {}) {
+  ipCounter += 1;
   return new Request(`http://localhost${url}`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', ...extraHeaders },
+    headers: {
+      'Content-Type': 'application/json',
+      Origin: 'https://www.zarconephotography.com',
+      'x-forwarded-for': `10.0.${Math.floor(ipCounter / 250)}.${(ipCounter % 250) + 1}`,
+      ...extraHeaders,
+    },
     body: raw !== undefined ? raw : JSON.stringify(body),
   });
 }

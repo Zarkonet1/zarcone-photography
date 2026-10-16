@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
 import {
   LIMITS, cleanStr, cleanEmailInput, cleanLine, esc, escMultiline, isValidEmail,
-  readJsonObject, sendEmail, failureStatus, failureBody,
+  readJsonObject, sendEmail, failureStatus, failureBody, guardRequest, looksLikeSpam,
 } from '../../../lib/formHandler';
 
 // Blog / program inquiry handler (ProgramInquiryForm). Hardened 2026-10-16:
 // validates/escapes input and only reports success when Resend accepted it.
 export async function POST(request) {
+  const blocked = guardRequest(request, 'program-contact', { max: 6 });
+  if (blocked) return NextResponse.json({ error: blocked.error }, { status: blocked.status });
+
   const body = await readJsonObject(request);
   if (!body) {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
@@ -32,7 +35,7 @@ export async function POST(request) {
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
       to: 'tom.zarcone@mac.com',
       reply_to: email,
-      subject: cleanLine(`Program Inquiry — ${school || name}`),
+      subject: cleanLine(`${looksLikeSpam(message) ? '[Possible spam] ' : ''}Program Inquiry — ${school || name}`),
       html: `
         <h2>Program Inquiry</h2>
         <p><strong>Name:</strong> ${esc(name)}</p>
