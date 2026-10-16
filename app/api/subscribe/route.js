@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import {
-  LIMITS, cleanStr, isValidEmail, readJsonObject, addAudienceContact, failureStatus,
+  LIMITS, cleanStr, cleanEmailInput, isValidEmail, readJsonObject, addAudienceContact, failureStatus, failureBody,
 } from '../../../lib/formHandler';
 
 // Gallery-ready alert capture (BRHS Panther Wrestling / Football / Volleyball
@@ -23,7 +23,7 @@ export async function POST(request) {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
   }
 
-  const email = cleanStr(body.email, LIMITS.email);
+  const email = cleanEmailInput(body.email);
   if (!isValidEmail(email)) {
     return NextResponse.json({ error: 'Valid email required.' }, { status: 400 });
   }
@@ -38,7 +38,7 @@ export async function POST(request) {
   );
 
   if (!result.ok) {
-    return NextResponse.json({ error: 'Failed to subscribe.' }, { status: failureStatus(result) });
+    return NextResponse.json(failureBody(result, 'Failed to subscribe.'), { status: failureStatus(result) });
   }
   return NextResponse.json({ success: true });
 }

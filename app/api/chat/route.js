@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { sendEmail } from '../../../lib/formHandler';
+import { sendEmail, readJsonObject } from '../../../lib/formHandler';
 import { SYSTEM_PROMPT } from '@/lib/chatKnowledge';
 
 const MODEL = 'claude-haiku-4-5-20251001';
@@ -247,10 +247,10 @@ export async function POST(request) {
     return NextResponse.json({ error: rate.message }, { status: 429 });
   }
 
-  let body;
-  try {
-    body = await request.json();
-  } catch {
+  // readJsonObject returns null for malformed JSON AND for valid-but-non-object
+  // bodies (null, [], "x", 42) — the latter used to throw a TypeError below.
+  const body = await readJsonObject(request);
+  if (!body) {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
   }
 
@@ -325,6 +325,18 @@ export async function POST(request) {
     if (leadStatus === 'failed' || escalationStatus === 'failed') {
       return NextResponse.json({
         reply: "I wasn't able to pass that along to Tom just now, so please don't count on it reaching him. Please call (908) 777-0631 or use the contact form on the site and he'll get right back to you.",
+      });
+    }
+
+    // A lead is "skipped" when it had no name or no email/phone, so nothing was
+    // emailed. The model's own wording may still say "I've sent that to Tom",
+    // so discard it and say what actually happened. If an escalation DID go
+    // out, Tom has been notified, so confirm only that.
+    if (leadStatus === 'skipped') {
+      return NextResponse.json({
+        reply: escalationStatus === 'sent'
+          ? "I've let Tom know he's needed here directly. I don't have a name and a phone number or email for you yet, so please share those, or call (908) 777-0631, so he can follow up."
+          : "I haven't sent anything to Tom yet because I don't have your name and a phone number or email. Please share those here, or call (908) 777-0631 or use the contact form on the site, and he'll follow up.",
       });
     }
 

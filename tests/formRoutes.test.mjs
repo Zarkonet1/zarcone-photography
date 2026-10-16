@@ -1,6 +1,6 @@
 import { test, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
-import { jsonRequest, stubFetch, silenceConsoleError, RESEND_OK, RESEND_422, RESEND_500 } from './helpers.mjs';
+import { jsonRequest, stubFetch, silenceConsoleError, RESEND_OK, RESEND_422, RESEND_500, RESEND_200_NO_ID, replyToOf } from './helpers.mjs';
 
 import { POST as contact } from '../app/api/contact/route.js';
 import { POST as programContact } from '../app/api/program-contact/route.js';
@@ -64,12 +64,21 @@ for (const [name, handler, url, valid] of routes) {
     assert.equal(res.status, 502);
   });
 
-  test(`${name}: missing RESEND_API_KEY -> 500, nothing sent`, async () => {
+  test(`${name}: missing RESEND_API_KEY -> 503 (configuration), nothing sent, no secrets in body`, async () => {
     delete process.env.RESEND_API_KEY;
     net = stubFetch(RESEND_OK);
     const res = await handler(jsonRequest(url, valid));
-    assert.equal(res.status, 500);
+    assert.equal(res.status, 503);
     assert.equal(net.calls.length, 0);
+    const text = JSON.stringify(await res.json());
+    assert.ok(!/RESEND|re_test|api[_ ]?key/i.test(text), 'response must not mention the key or env var');
+    assert.match(text, /temporarily unavailable/);
+  });
+
+  test(`${name}: Resend 200 without an id is NOT treated as success`, async () => {
+    net = stubFetch(RESEND_200_NO_ID);
+    const res = await handler(jsonRequest(url, valid));
+    assert.equal(res.status, 502);
   });
 
   test(`${name}: malformed JSON -> 400, nothing sent`, async () => {
@@ -147,7 +156,7 @@ test('harvestfest: phone-only entry is accepted and delivered', async () => {
   const res = await harvest(jsonRequest('/api/harvestfest-lead', { name: 'Pat', phone: '(908) 777-0631' }));
   assert.equal(res.status, 200);
   const sent = net.calls[0].body;
-  assert.equal(sent.reply_to, undefined);
+  assert.equal(replyToOf(sent), undefined);
   assert.ok(sent.html.includes('(908) 777-0631'));
 });
 
@@ -156,7 +165,7 @@ test('harvestfest: malformed email + valid phone is NOT discarded and not used a
   const res = await harvest(jsonRequest('/api/harvestfest-lead', { name: 'Pat', email: 'pat@@gmail', phone: '908-777-0631' }));
   assert.equal(res.status, 200);
   const sent = net.calls[0].body;
-  assert.equal(sent.reply_to, undefined);
+  assert.equal(replyToOf(sent), undefined);
   assert.ok(sent.html.includes('pat@@gmail'));
   assert.ok(sent.html.includes('not a valid email format'));
   assert.ok(sent.html.includes('908-777-0631'));
@@ -197,4 +206,70 @@ test('logs never contain submission contents', async () => {
   assert.ok(log.lines.length > 0);
   assert.ok(!log.lines.join('\n').includes('SECRET-MESSAGE-BODY'));
   assert.ok(!log.lines.join('\n').includes('pat@example.com'));
+});
+
+// ---- Oversized email: must be rejected BEFORE any truncation ----------------
+// 'a'*250 + '@b.co' is 255 chars. Truncating to 254 first would yield
+// 'aaa…@b.c', which looks like a valid address. It must be rejected instead.
+const OVERSIZED_EMAIL = `${'a'.repeat(250)}@b.co`;
+
+test('oversized email sanity: 255 chars, and its 254-char truncation would look valid', () => {
+  assert.equal(OVERSIZED_EMAIL.length, 255);
+  assert.match(OVERSIZED_EMAIL.slice(0, 254), /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+});
+
+test('contact: oversized email -> 400, nothing sent (not truncated into a different address)', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await contact(jsonRequest('/api/contact', { ...CONTACT, email: OVERSIZED_EMAIL }));
+  assert.equal(res.status, 400);
+  assert.equal(net.calls.length, 0);
+});
+
+test('program-contact: oversized email -> 400, nothing sent', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await programContact(jsonRequest('/api/program-contact', { ...PROGRAM, email: OVERSIZED_EMAIL }));
+  assert.equal(res.status, 400);
+  assert.equal(net.calls.length, 0);
+});
+
+test('govcon: oversized email, no phone -> 400', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await govcon(jsonRequest('/api/govcon-quote', { name: 'Pat', description: 'x', email: OVERSIZED_EMAIL }));
+  assert.equal(res.status, 400);
+  assert.equal(net.calls.length, 0);
+});
+
+test('govcon: oversized email + usable phone -> delivered, never used as replyTo', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await govcon(jsonRequest('/api/govcon-quote', { name: 'Pat', description: 'x', email: OVERSIZED_EMAIL, phone: '908-777-0631' }));
+  assert.equal(res.status, 200);
+  assert.equal(replyToOf(net.calls[0].body), undefined);
+  assert.ok(net.calls[0].body.html.includes('908-777-0631'));
+});
+
+test('harvestfest: oversized email, no phone -> 400', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await harvest(jsonRequest('/api/harvestfest-lead', { name: 'Pat', email: OVERSIZED_EMAIL }));
+  assert.equal(res.status, 400);
+  assert.equal(net.calls.length, 0);
+});
+
+test('harvestfest: oversized email + usable phone -> delivered, no replyTo, display capped', async () => {
+  net = stubFetch(RESEND_OK);
+  const huge = `${'a'.repeat(5000)}@b.co`;
+  const res = await harvest(jsonRequest('/api/harvestfest-lead', { name: 'Pat', email: huge, phone: '908-777-0631' }));
+  assert.equal(res.status, 200);
+  const sent = net.calls[0].body;
+  assert.equal(replyToOf(sent), undefined);
+  assert.ok(sent.html.length < 3000, 'notification must not echo a 5000-char value');
+  assert.ok(sent.html.includes('not a valid email format'));
+});
+
+test('email exactly at the 254-char limit is accepted', async () => {
+  net = stubFetch(RESEND_OK);
+  const atLimit = `${'a'.repeat(249)}@b.co`; // 254 chars
+  assert.equal(atLimit.length, 254);
+  const res = await contact(jsonRequest('/api/contact', { ...CONTACT, email: atLimit }));
+  assert.equal(res.status, 200);
+  assert.equal(replyToOf(net.calls[0].body), atLimit);
 });

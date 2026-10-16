@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import {
-  LIMITS, cleanStr, cleanLine, esc, escMultiline, isValidEmail,
-  readJsonObject, sendEmail, failureStatus,
+  LIMITS, cleanStr, cleanEmailInput, cleanLine, esc, escMultiline, isValidEmail,
+  readJsonObject, sendEmail, failureStatus, failureBody,
 } from '../../../lib/formHandler';
 
 // Blog / program inquiry handler (ProgramInquiryForm). Hardened 2026-10-16:
@@ -16,7 +16,7 @@ export async function POST(request) {
   const title = cleanStr(body.title, LIMITS.short);
   const school = cleanStr(body.school, LIMITS.short);
   const sport = cleanStr(body.sport, LIMITS.short);
-  const email = cleanStr(body.email, LIMITS.email);
+  const email = cleanEmailInput(body.email);
   const phone = cleanStr(body.phone, LIMITS.phone);
   const message = cleanStr(body.message, LIMITS.message);
 
@@ -50,7 +50,7 @@ export async function POST(request) {
   );
 
   if (!result.ok) {
-    return NextResponse.json({ error: 'Failed to send message.' }, { status: failureStatus(result) });
+    return NextResponse.json(failureBody(result, 'Failed to send message.'), { status: failureStatus(result) });
   }
   return NextResponse.json({ success: true });
 }

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import {
   LIMITS, cleanStr, cleanLine, esc, escMultiline, resolveContactMethods,
-  readJsonObject, sendEmail, failureStatus,
+  readJsonObject, sendEmail, failureStatus, failureBody,
 } from '../../../lib/formHandler';
 
 // Quote-request handler for the Government Contracting page's "Request a
@@ -57,7 +57,7 @@ export async function POST(request) {
   );
 
   if (!result.ok) {
-    return NextResponse.json({ error: 'Failed to send request.' }, { status: failureStatus(result) });
+    return NextResponse.json(failureBody(result, 'Failed to send request.'), { status: failureStatus(result) });
   }
   return NextResponse.json({ success: true });
 }

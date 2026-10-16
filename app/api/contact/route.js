@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import {
-  LIMITS, cleanStr, cleanLine, esc, escMultiline, isValidEmail,
-  readJsonObject, sendEmail, failureStatus,
+  LIMITS, cleanStr, cleanEmailInput, cleanLine, esc, escMultiline, isValidEmail,
+  readJsonObject, sendEmail, failureStatus, failureBody,
 } from '../../../lib/formHandler';
 
 // Hardened 2026-10-16: validates/escapes input, and only reports success when
@@ -15,7 +15,7 @@ export async function POST(request) {
 
   const fname = cleanStr(body.fname, LIMITS.name);
   const lname = cleanStr(body.lname, LIMITS.name);
-  const email = cleanStr(body.email, LIMITS.email);
+  const email = cleanEmailInput(body.email);
   const phone = cleanStr(body.phone, LIMITS.phone);
   const type = cleanStr(body.type, LIMITS.short);
   const date = cleanStr(body.date, LIMITS.short);
@@ -56,7 +56,7 @@ export async function POST(request) {
   );
 
   if (!result.ok) {
-    return NextResponse.json({ error: 'Failed to send message.' }, { status: failureStatus(result) });
+    return NextResponse.json(failureBody(result, 'Failed to send message.'), { status: failureStatus(result) });
   }
   return NextResponse.json({ success: true });
 }

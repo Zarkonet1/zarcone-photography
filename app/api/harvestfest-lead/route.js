@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import {
   LIMITS, cleanStr, cleanLine, esc, escMultiline, resolveContactMethods,
-  readJsonObject, sendEmail, failureStatus,
+  readJsonObject, sendEmail, failureStatus, failureBody,
 } from '../../../lib/formHandler';
 
 // Lead-capture handler for the /harvestfest QR landing page's "Enter to
@@ -90,7 +90,7 @@ export async function POST(request) {
   );
 
   if (!result.ok) {
-    return NextResponse.json({ error: 'Failed to send entry.' }, { status: failureStatus(result) });
+    return NextResponse.json(failureBody(result, 'Failed to send entry.'), { status: failureStatus(result) });
   }
 
   const zapierUrl = process.env.HARVESTFEST_ZAPIER_WEBHOOK_URL;

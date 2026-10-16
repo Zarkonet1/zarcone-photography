@@ -1,6 +1,6 @@
 import { test, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
-import { jsonRequest, stubFetch, silenceConsoleError } from './helpers.mjs';
+import { jsonRequest, stubFetch, silenceConsoleError, RESEND_500 } from './helpers.mjs';
 import { POST as subscribe } from '../app/api/subscribe/route.js';
 import { Resend } from 'resend';
 
@@ -45,12 +45,32 @@ test('subscribe: network failure is NOT success', async () => {
   assert.equal(res.status, 502);
 });
 
-test('subscribe: missing RESEND_API_KEY -> 500, no request made', async () => {
+test('subscribe: missing RESEND_API_KEY -> 503, no request made, no secrets in body', async () => {
   delete process.env.RESEND_API_KEY;
   net = stubFetch(OK);
   const res = await subscribe(jsonRequest('/api/subscribe', { email: 'pat@example.com' }));
-  assert.equal(res.status, 500);
+  assert.equal(res.status, 503);
   assert.equal(net.calls.length, 0);
+  assert.ok(!/RESEND|api[_ ]?key/i.test(JSON.stringify(await res.json())));
+});
+
+test('subscribe: oversized email -> 400 (not truncated into a valid-looking address)', async () => {
+  net = stubFetch(OK);
+  const res = await subscribe(jsonRequest('/api/subscribe', { email: `${'a'.repeat(250)}@b.co` }));
+  assert.equal(res.status, 400);
+  assert.equal(net.calls.length, 0);
+});
+
+test('subscribe: non-JSON gateway error (HTML 502) is NOT success', async () => {
+  net = stubFetch(RESEND_500);
+  const res = await subscribe(jsonRequest('/api/subscribe', { email: 'pat@example.com' }));
+  assert.equal(res.status, 502);
+});
+
+test('subscribe: 200 without an id is NOT success', async () => {
+  net = stubFetch(() => ({ status: 200, body: {} }));
+  const res = await subscribe(jsonRequest('/api/subscribe', { email: 'pat@example.com' }));
+  assert.equal(res.status, 502);
 });
 
 test('subscribe: malformed JSON / invalid / non-string email -> 400', async () => {
