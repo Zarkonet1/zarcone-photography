@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { Resend } from 'resend';
+import { sendEmail, readJsonObject } from '../../../lib/formHandler';
 import { SYSTEM_PROMPT } from '@/lib/chatKnowledge';
 
 const MODEL = 'claude-haiku-4-5-20251001';
@@ -163,6 +163,20 @@ function describeSource(ctx) {
   }
 }
 
+// Tool inputs come from the model and are not guaranteed to be strings. These
+// coerce safely so .trim() can never throw on an object/number/array.
+// Identity fields (name/email/phone) accept strings only: a stray number such
+// as email: 42 must not count as a contact method.
+function strictStr(value) {
+  return typeof value === 'string' ? value.trim() : '';
+}
+
+function str(value) {
+  if (typeof value === 'string') return value.trim();
+  if (typeof value === 'number' && Number.isFinite(value)) return String(value);
+  return '';
+}
+
 function transcriptHtml(messages) {
   return (messages || [])
     .map(m => `<p style="margin:0 0 8px"><strong>${m.role === 'user' ? 'Visitor' : 'Bot'}:</strong> ${esc(m.content)}</p>`)
@@ -170,32 +184,37 @@ function transcriptHtml(messages) {
 }
 
 async function sendLeadEmail(fields, ctx = {}, transcript = []) {
-  const hasContactMethod = (fields.email && fields.email.trim()) || (fields.phone && fields.phone.trim());
-  if (!fields.name || !fields.name.trim() || !hasContactMethod) {
+  fields = fields && typeof fields === 'object' ? fields : {};
+  const name = strictStr(fields.name);
+  const email = strictStr(fields.email);
+  const phone = strictStr(fields.phone);
+  const hasContactMethod = Boolean(email || phone);
+  if (!name || !hasContactMethod) {
     // Not enough to act on — skip silently rather than emailing a dead lead.
-    return;
+    return 'skipped';
   }
-  if (!process.env.RESEND_API_KEY) return;
 
   const rows = [
-    ['Name', fields.name],
-    ['Email', fields.email],
-    ['Phone', fields.phone],
-    ['Event Date', fields.event_date],
-    ['Organization', fields.organization],
-    ['Location', fields.location],
-    ['Session Type', fields.session_type],
-    ['Headcount', fields.headcount],
-    ['Special Requests', fields.special_requests],
-  ].filter(([, v]) => v && String(v).trim());
+    ['Name', name],
+    ['Email', email],
+    ['Phone', phone],
+    ['Event Date', str(fields.event_date)],
+    ['Organization', str(fields.organization)],
+    ['Location', str(fields.location)],
+    ['Session Type', str(fields.session_type)],
+    ['Headcount', str(fields.headcount)],
+    ['Special Requests', str(fields.special_requests)],
+  ].filter(([, v]) => v);
 
-  try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+  // sendEmail() inspects Resend's { data, error } contract (SDK 3.5.0 does not
+  // throw on API failure) and treats a missing RESEND_API_KEY as a failure.
+  const result = await sendEmail({
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
       to: 'tom@zarconephotography.com',
-      replyTo: fields.email && fields.email.trim() ? fields.email : undefined,
-      subject: `AI Chat Lead — ${fields.name}`,
+      // Resend SDK 3.5.0 forwards the payload verbatim; its field is snake_case
+      // `reply_to` (camelCase `replyTo` is silently ignored).
+      reply_to: email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : undefined,
+      subject: `AI Chat Lead — ${name}`.replace(/[\r\n]+/g, ' '),
       html: `
         <h2>New Lead from AI Chat Widget</h2>
         ${rows.map(([label, value]) => `<p><strong>${label}:</strong> ${esc(value)}</p>`).join('\n')}
@@ -207,39 +226,35 @@ async function sendLeadEmail(fields, ctx = {}, transcript = []) {
         <h3>Conversation</h3>
         ${transcriptHtml(transcript)}
       `,
-    });
-  } catch (err) {
-    console.error('Lead email error:', err);
-  }
+  }, 'chat-lead');
+  return result.ok ? 'sent' : 'failed';
 }
 
 async function sendEscalationEmail(fields, recentMessages, ctx = {}) {
-  if (!process.env.RESEND_API_KEY) return;
-
+  fields = fields && typeof fields === 'object' ? fields : {};
+  const reason = str(fields.reason);
+  const summary = str(fields.summary);
+  const contactInfo = str(fields.contact_info);
   const transcript = (recentMessages || [])
     .slice(-8)
     .map(m => `${m.role === 'user' ? 'Visitor' : 'Bot'}: ${esc(m.content)}`)
     .join('\n');
 
-  try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+  const result = await sendEmail({
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
       to: 'tom@zarconephotography.com',
-      subject: `Chat needs you now — ${fields.reason || 'escalation'}`,
+      subject: `Chat needs you now — ${reason || 'escalation'}`.replace(/[\r\n]+/g, ' '),
       html: `
         <h2>Live Chat Escalation</h2>
-        <p><strong>Reason:</strong> ${esc(fields.reason || 'Not specified')}</p>
-        <p><strong>Summary:</strong> ${esc(fields.summary || 'Not specified')}</p>
-        ${fields.contact_info && fields.contact_info.trim() ? `<p><strong>Contact info given:</strong> ${esc(fields.contact_info)}</p>` : '<p><strong>Contact info given:</strong> none yet</p>'}
+        <p><strong>Reason:</strong> ${esc(reason || 'Not specified')}</p>
+        <p><strong>Summary:</strong> ${esc(summary || 'Not specified')}</p>
+        ${contactInfo ? `<p><strong>Contact info given:</strong> ${esc(contactInfo)}</p>` : '<p><strong>Contact info given:</strong> none yet</p>'}
         <p><strong>Source:</strong> ${esc(describeSource(ctx))} · first page ${esc(ctx.landingPage || 'unknown')} · chatting on ${esc(ctx.chatPage || 'unknown')}</p>
         <p><strong>Recent conversation:</strong></p>
         <pre style="white-space: pre-wrap; font-family: inherit;">${transcript}</pre>
       `,
-    });
-  } catch (err) {
-    console.error('Escalation email error:', err);
-  }
+  }, 'chat-escalation');
+  return result.ok ? 'sent' : 'failed';
 }
 
 export async function POST(request) {
@@ -256,10 +271,10 @@ export async function POST(request) {
     return NextResponse.json({ error: rate.message }, { status: 429 });
   }
 
-  let body;
-  try {
-    body = await request.json();
-  } catch {
+  // readJsonObject returns null for malformed JSON AND for valid-but-non-object
+  // bodies (null, [], "x", 42) — the latter used to throw a TypeError below.
+  const body = await readJsonObject(request);
+  if (!body) {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
   }
 
@@ -308,16 +323,18 @@ export async function POST(request) {
       .trim();
     const fullTranscript = botText ? [...cleaned, { role: 'assistant', content: botText }] : cleaned;
 
+    let leadStatus = null;
+    let escalationStatus = null;
     const toolUse = response.content.find(block => block.type === 'tool_use' && block.name === 'submit_lead_inquiry');
     if (toolUse) {
       // Fire-and-forget side effect — don't make the visitor wait on email delivery,
       // but do await it so serverless doesn't kill the function mid-send.
-      await sendLeadEmail(toolUse.input || {}, ctx, fullTranscript);
+      leadStatus = await sendLeadEmail(toolUse.input || {}, ctx, fullTranscript);
     }
 
     const escalation = response.content.find(block => block.type === 'tool_use' && block.name === 'escalate_to_human');
     if (escalation) {
-      await sendEscalationEmail(escalation.input || {}, fullTranscript, ctx);
+      escalationStatus = await sendEscalationEmail(escalation.input || {}, fullTranscript, ctx);
     }
 
     let reply = stripMarkdown(
@@ -326,6 +343,26 @@ export async function POST(request) {
         .map(block => block.text)
         .join('\n')
     ).trim();
+
+    // The model's own wording may claim "I've sent that to Tom". If the email
+    // did not actually go out, say so instead of letting that claim stand.
+    if (leadStatus === 'failed' || escalationStatus === 'failed') {
+      return NextResponse.json({
+        reply: "I wasn't able to pass that along to Tom just now, so please don't count on it reaching him. Please call (908) 777-0631 or use the contact form on the site and he'll get right back to you.",
+      });
+    }
+
+    // A lead is "skipped" when it had no name or no email/phone, so nothing was
+    // emailed. The model's own wording may still say "I've sent that to Tom",
+    // so discard it and say what actually happened. If an escalation DID go
+    // out, Tom has been notified, so confirm only that.
+    if (leadStatus === 'skipped') {
+      return NextResponse.json({
+        reply: escalationStatus === 'sent'
+          ? "I've let Tom know he's needed here directly. I don't have a name and a phone number or email for you yet, so please share those, or call (908) 777-0631, so he can follow up."
+          : "I haven't sent anything to Tom yet because I don't have your name and a phone number or email. Please share those here, or call (908) 777-0631 or use the contact form on the site, and he'll follow up.",
+      });
+    }
 
     if (!reply && toolUse && escalation) {
       reply = "Thanks — I've sent that to Tom and flagged this for him to jump in directly. He'll follow up as soon as he can.";
