@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { Resend } from 'resend';
+import { sendEmail } from '../../../lib/formHandler';
 import { SYSTEM_PROMPT } from '@/lib/chatKnowledge';
 
 const MODEL = 'claude-haiku-4-5-20251001';
@@ -173,9 +173,8 @@ async function sendLeadEmail(fields, ctx = {}, transcript = []) {
   const hasContactMethod = (fields.email && fields.email.trim()) || (fields.phone && fields.phone.trim());
   if (!fields.name || !fields.name.trim() || !hasContactMethod) {
     // Not enough to act on — skip silently rather than emailing a dead lead.
-    return;
+    return 'skipped';
   }
-  if (!process.env.RESEND_API_KEY) return;
 
   const rows = [
     ['Name', fields.name],
@@ -189,12 +188,12 @@ async function sendLeadEmail(fields, ctx = {}, transcript = []) {
     ['Special Requests', fields.special_requests],
   ].filter(([, v]) => v && String(v).trim());
 
-  try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+  // sendEmail() inspects Resend's { data, error } contract (SDK 3.5.0 does not
+  // throw on API failure) and treats a missing RESEND_API_KEY as a failure.
+  const result = await sendEmail({
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
       to: 'tom@zarconephotography.com',
-      replyTo: fields.email && fields.email.trim() ? fields.email : undefined,
+      replyTo: fields.email && fields.email.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim()) ? fields.email.trim() : undefined,
       subject: `AI Chat Lead — ${fields.name}`,
       html: `
         <h2>New Lead from AI Chat Widget</h2>
@@ -207,23 +206,17 @@ async function sendLeadEmail(fields, ctx = {}, transcript = []) {
         <h3>Conversation</h3>
         ${transcriptHtml(transcript)}
       `,
-    });
-  } catch (err) {
-    console.error('Lead email error:', err);
-  }
+  }, 'chat-lead');
+  return result.ok ? 'sent' : 'failed';
 }
 
 async function sendEscalationEmail(fields, recentMessages, ctx = {}) {
-  if (!process.env.RESEND_API_KEY) return;
-
   const transcript = (recentMessages || [])
     .slice(-8)
     .map(m => `${m.role === 'user' ? 'Visitor' : 'Bot'}: ${esc(m.content)}`)
     .join('\n');
 
-  try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+  const result = await sendEmail({
       from: 'Zarcone Photography <noreply@zarconephotography.com>',
       to: 'tom@zarconephotography.com',
       subject: `Chat needs you now — ${fields.reason || 'escalation'}`,
@@ -236,10 +229,8 @@ async function sendEscalationEmail(fields, recentMessages, ctx = {}) {
         <p><strong>Recent conversation:</strong></p>
         <pre style="white-space: pre-wrap; font-family: inherit;">${transcript}</pre>
       `,
-    });
-  } catch (err) {
-    console.error('Escalation email error:', err);
-  }
+  }, 'chat-escalation');
+  return result.ok ? 'sent' : 'failed';
 }
 
 export async function POST(request) {
@@ -308,16 +299,18 @@ export async function POST(request) {
       .trim();
     const fullTranscript = botText ? [...cleaned, { role: 'assistant', content: botText }] : cleaned;
 
+    let leadStatus = null;
+    let escalationStatus = null;
     const toolUse = response.content.find(block => block.type === 'tool_use' && block.name === 'submit_lead_inquiry');
     if (toolUse) {
       // Fire-and-forget side effect — don't make the visitor wait on email delivery,
       // but do await it so serverless doesn't kill the function mid-send.
-      await sendLeadEmail(toolUse.input || {}, ctx, fullTranscript);
+      leadStatus = await sendLeadEmail(toolUse.input || {}, ctx, fullTranscript);
     }
 
     const escalation = response.content.find(block => block.type === 'tool_use' && block.name === 'escalate_to_human');
     if (escalation) {
-      await sendEscalationEmail(escalation.input || {}, fullTranscript, ctx);
+      escalationStatus = await sendEscalationEmail(escalation.input || {}, fullTranscript, ctx);
     }
 
     let reply = stripMarkdown(
@@ -326,6 +319,14 @@ export async function POST(request) {
         .map(block => block.text)
         .join('\n')
     ).trim();
+
+    // The model's own wording may claim "I've sent that to Tom". If the email
+    // did not actually go out, say so instead of letting that claim stand.
+    if (leadStatus === 'failed' || escalationStatus === 'failed') {
+      return NextResponse.json({
+        reply: "I wasn't able to pass that along to Tom just now, so please don't count on it reaching him. Please call (908) 777-0631 or use the contact form on the site and he'll get right back to you.",
+      });
+    }
 
     if (!reply && toolUse && escalation) {
       reply = "Thanks — I've sent that to Tom and flagged this for him to jump in directly. He'll follow up as soon as he can.";

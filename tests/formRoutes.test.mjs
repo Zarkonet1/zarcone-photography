@@ -1,0 +1,200 @@
+import { test, beforeEach, afterEach } from 'node:test';
+import assert from 'node:assert/strict';
+import { jsonRequest, stubFetch, silenceConsoleError, RESEND_OK, RESEND_422, RESEND_500 } from './helpers.mjs';
+
+import { POST as contact } from '../app/api/contact/route.js';
+import { POST as programContact } from '../app/api/program-contact/route.js';
+import { POST as govcon } from '../app/api/govcon-quote/route.js';
+import { POST as harvest } from '../app/api/harvestfest-lead/route.js';
+
+const ENV_KEYS = ['RESEND_API_KEY', 'HARVESTFEST_ZAPIER_WEBHOOK_URL'];
+let saved, net, log;
+beforeEach(() => {
+  saved = Object.fromEntries(ENV_KEYS.map((k) => [k, process.env[k]]));
+  process.env.RESEND_API_KEY = 're_test_fake_key';
+  delete process.env.HARVESTFEST_ZAPIER_WEBHOOK_URL;
+  log = silenceConsoleError();
+});
+afterEach(() => {
+  net?.restore();
+  log.restore();
+  for (const k of ENV_KEYS) { if (saved[k] === undefined) delete process.env[k]; else process.env[k] = saved[k]; }
+});
+
+const CONTACT = { fname: 'Pat', lname: 'Lee', email: 'pat@example.com', phone: '908-555-0100', message: 'Hello', source: 'BRHS Panther Football landing page' };
+const PROGRAM = { name: 'Pat Lee', school: 'Test HS', email: 'pat@example.com', message: 'Hello' };
+const GOV = { name: 'Pat', organization: 'Agency', email: 'pat@example.gov', phone: '', description: 'Need photos' };
+const HARVEST = { name: 'Pat', email: 'pat@example.com', phone: '', interest: 'Portraits', category: 'portraits' };
+
+const routes = [
+  ['contact', contact, '/api/contact', CONTACT],
+  ['program-contact', programContact, '/api/program-contact', PROGRAM],
+  ['govcon-quote', govcon, '/api/govcon-quote', GOV],
+  ['harvestfest-lead', harvest, '/api/harvestfest-lead', HARVEST],
+];
+
+for (const [name, handler, url, valid] of routes) {
+  test(`${name}: success only when Resend accepts`, async () => {
+    net = stubFetch(RESEND_OK);
+    const res = await handler(jsonRequest(url, valid));
+    assert.equal(res.status, 200);
+    assert.deepEqual(await res.json(), { success: true });
+    assert.equal(net.calls.length, 1);
+    assert.match(net.calls[0].url, /\/emails$/);
+  });
+
+  test(`${name}: Resend 4xx error is NOT reported as success (regression)`, async () => {
+    net = stubFetch(RESEND_422);
+    const res = await handler(jsonRequest(url, valid));
+    assert.equal(res.status, 502);
+    const body = await res.json();
+    assert.ok(body.error);
+    assert.equal(body.success, undefined);
+  });
+
+  test(`${name}: Resend 5xx with non-JSON body is NOT success`, async () => {
+    net = stubFetch(RESEND_500);
+    const res = await handler(jsonRequest(url, valid));
+    assert.equal(res.status, 502);
+  });
+
+  test(`${name}: network failure is NOT success`, async () => {
+    net = stubFetch(() => { throw new Error('network down'); });
+    const res = await handler(jsonRequest(url, valid));
+    assert.equal(res.status, 502);
+  });
+
+  test(`${name}: missing RESEND_API_KEY -> 500, nothing sent`, async () => {
+    delete process.env.RESEND_API_KEY;
+    net = stubFetch(RESEND_OK);
+    const res = await handler(jsonRequest(url, valid));
+    assert.equal(res.status, 500);
+    assert.equal(net.calls.length, 0);
+  });
+
+  test(`${name}: malformed JSON -> 400, nothing sent`, async () => {
+    net = stubFetch(RESEND_OK);
+    const res = await handler(jsonRequest(url, null, '{not json'));
+    assert.equal(res.status, 400);
+    assert.equal(net.calls.length, 0);
+  });
+
+  test(`${name}: non-object JSON body -> 400`, async () => {
+    net = stubFetch(RESEND_OK);
+    for (const raw of ['[]', '"x"', 'null', '42']) {
+      const res = await handler(jsonRequest(url, null, raw));
+      assert.equal(res.status, 400, raw);
+    }
+    assert.equal(net.calls.length, 0);
+  });
+
+  test(`${name}: non-string fields do not crash`, async () => {
+    net = stubFetch(RESEND_OK);
+    const bad = Object.fromEntries(Object.keys(valid).map((k) => [k, { x: 1 }]));
+    const res = await handler(jsonRequest(url, bad));
+    assert.equal(res.status, 400);
+    assert.equal(net.calls.length, 0);
+  });
+
+  test(`${name}: missing required fields -> 400`, async () => {
+    net = stubFetch(RESEND_OK);
+    const res = await handler(jsonRequest(url, {}));
+    assert.equal(res.status, 400);
+    assert.equal(net.calls.length, 0);
+  });
+
+  test(`${name}: user HTML is escaped in the notification`, async () => {
+    net = stubFetch(RESEND_OK);
+    const evil = '<script>alert(1)</script><img src=x onerror=alert(2)>';
+    const payload = { ...valid };
+    for (const k of ['name', 'fname', 'message', 'description', 'source', 'school', 'interest', 'organization', 'context']) {
+      if (k in payload) payload[k] = evil;
+    }
+    payload.context = evil;
+    const res = await handler(jsonRequest(url, payload));
+    assert.equal(res.status, 200);
+    const html = net.calls[0].body.html;
+    assert.ok(!html.includes('<script>'), 'raw <script> must not appear');
+    assert.ok(!html.includes('<img src=x'), 'raw <img> must not appear');
+    assert.ok(html.includes('&lt;script&gt;'));
+  });
+
+  test(`${name}: CR/LF cannot be injected into the subject`, async () => {
+    net = stubFetch(RESEND_OK);
+    const payload = { ...valid };
+    for (const k of ['name', 'fname', 'school']) if (k in payload) payload[k] = 'Evil\r\nBcc: x@evil.com';
+    const res = await handler(jsonRequest(url, payload));
+    assert.equal(res.status, 200);
+    assert.ok(!/[\r\n]/.test(net.calls[0].body.subject));
+  });
+}
+
+test('contact: invalid email -> 400 (never sent to Resend as replyTo)', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await contact(jsonRequest('/api/contact', { ...CONTACT, email: 'not-an-email' }));
+  assert.equal(res.status, 400);
+  assert.equal(net.calls.length, 0);
+});
+
+test('program-contact: invalid email -> 400', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await programContact(jsonRequest('/api/program-contact', { ...PROGRAM, email: 'nope' }));
+  assert.equal(res.status, 400);
+});
+
+test('harvestfest: phone-only entry is accepted and delivered', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await harvest(jsonRequest('/api/harvestfest-lead', { name: 'Pat', phone: '(908) 777-0631' }));
+  assert.equal(res.status, 200);
+  const sent = net.calls[0].body;
+  assert.equal(sent.reply_to, undefined);
+  assert.ok(sent.html.includes('(908) 777-0631'));
+});
+
+test('harvestfest: malformed email + valid phone is NOT discarded and not used as replyTo', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await harvest(jsonRequest('/api/harvestfest-lead', { name: 'Pat', email: 'pat@@gmail', phone: '908-777-0631' }));
+  assert.equal(res.status, 200);
+  const sent = net.calls[0].body;
+  assert.equal(sent.reply_to, undefined);
+  assert.ok(sent.html.includes('pat@@gmail'));
+  assert.ok(sent.html.includes('not a valid email format'));
+  assert.ok(sent.html.includes('908-777-0631'));
+});
+
+test('harvestfest: malformed email and no usable phone -> 400', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await harvest(jsonRequest('/api/harvestfest-lead', { name: 'Pat', email: 'pat@@gmail', phone: '12' }));
+  assert.equal(res.status, 400);
+  assert.equal(net.calls.length, 0);
+});
+
+test('harvestfest: Zapier non-2xx never fails the visitor but is logged', async () => {
+  process.env.HARVESTFEST_ZAPIER_WEBHOOK_URL = 'https://hooks.example.test/zap';
+  net = stubFetch((c) => (c.url.includes('hooks.example.test') ? { status: 500, body: {} } : RESEND_OK()));
+  const res = await harvest(jsonRequest('/api/harvestfest-lead', HARVEST));
+  assert.equal(res.status, 200);
+  assert.ok(log.lines.some((l) => l.includes('Zapier webhook returned HTTP 500')));
+});
+
+test('harvestfest: Zapier is not called when the email failed', async () => {
+  process.env.HARVESTFEST_ZAPIER_WEBHOOK_URL = 'https://hooks.example.test/zap';
+  net = stubFetch((c) => (c.url.includes('hooks.example.test') ? { status: 200, body: {} } : RESEND_422()));
+  const res = await harvest(jsonRequest('/api/harvestfest-lead', HARVEST));
+  assert.equal(res.status, 502);
+  assert.ok(!net.calls.some((c) => c.url.includes('hooks.example.test')));
+});
+
+test('govcon: phone-only quote request is accepted', async () => {
+  net = stubFetch(RESEND_OK);
+  const res = await govcon(jsonRequest('/api/govcon-quote', { name: 'Pat', description: 'x', phone: '908-777-0631' }));
+  assert.equal(res.status, 200);
+});
+
+test('logs never contain submission contents', async () => {
+  net = stubFetch(RESEND_422);
+  await contact(jsonRequest('/api/contact', { ...CONTACT, message: 'SECRET-MESSAGE-BODY' }));
+  assert.ok(log.lines.length > 0);
+  assert.ok(!log.lines.join('\n').includes('SECRET-MESSAGE-BODY'));
+  assert.ok(!log.lines.join('\n').includes('pat@example.com'));
+});
