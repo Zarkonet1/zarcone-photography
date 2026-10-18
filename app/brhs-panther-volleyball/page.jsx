@@ -85,6 +85,18 @@ const CAROUSEL = [
 // football and wrestling.
 const ARTICLES = [
   {
+    title: 'Volleyball Recap: Make It Three in a Row for Bridgewater-Raritan',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/gPt3Wc7PdkKeXlRMJQ8yEg/volleyball-recap-make-it-three-in-a-row-for-bridgewater-raritan.htm',
+    date: '2026-10-15' /* added 2026-10-18 sweep. MaxPreps auto-generated recap (published Oct 15 9:55am) of the Oct 14 3-1 win over Piscataway (25-11, 25-19, 18-25, 25-14); matches NJRB game/18008. Article's own record line (10-9) differs from the schedule page's tally; not used. */,
+  },
+  {
+    title: "Volleyball Recap: Bridgewater-Raritan's Loss Ends Four-Game Winning Streak at Home + How To Watch",
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/rYGD4oWD5UWuNs-5OiIvyw/volleyball-recap-bridgewater-raritans-loss-ends-four-game-winning-streak-at-home--how-to-watch.htm',
+    date: '2026-10-15' /* added 2026-10-18 sweep. MaxPreps auto-generated recap (published Oct 15 12:43pm) of the Oct 13 2-1 Mount St. Mary win over BR; BR 9-10 per article. Article frames it as a home match; NJRB lists it Away - open venue flag in lib/volleyballSchedule.js. */,
+  },
+  {
     title: "Class of 2027 Players Honored at Senior Day as Bridgewater-Raritan Posts a Girls' Volleyball Victory",
     source: 'BRRSD Athletics',
     url: 'https://www.brrsd.org/o/brrhs/article/3193691',
