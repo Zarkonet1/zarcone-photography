@@ -85,6 +85,12 @@ const CAROUSEL = [
 // football and wrestling.
 const ARTICLES = [
   {
+    title: 'Volleyball Recap: Bridgewater-Raritan Rolls Past Voorhees',
+    source: 'MaxPreps',
+    url: 'https://www.maxpreps.com/news/P1YDVlCqqUi3IJ-ScrklJQ/volleyball-recap-bridgewater-raritan-rolls-past-voorhees.htm',
+    date: '2026-10-20' /* added 2026-10-20 sweep. MaxPreps auto-generated recap (published Oct 20 1:01am) of the Oct 19 3-0 win at Voorhees (25-8, 25-11, 25-14). */,
+  },
+  {
     title: 'Volleyball Recap: Make It Three in a Row for Bridgewater-Raritan',
     source: 'MaxPreps',
     url: 'https://www.maxpreps.com/news/gPt3Wc7PdkKeXlRMJQ8yEg/volleyball-recap-make-it-three-in-a-row-for-bridgewater-raritan.htm',
