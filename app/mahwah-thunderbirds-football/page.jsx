@@ -70,23 +70,24 @@ const OTHER_DIVISION_TEAMS_2026 = [
   // since its Week 1 league loss.
   // Updated 2026-10-03 sweep: Dumont lost 0-40 at Hoboken (non-league) on 10/2 — 1-4 overall, league unchanged 1-2. MaxPreps recap ("Hoboken Piles Up the Points Against Dumont").
   // Updated 2026-10-14 sweep: Dumont now 2-4 / 1-2 per MaxPreps' Super - American Red standings page (stamp Oct 13 7:04pm GMT) — non-league win Oct 9 (game itself not itemized).
-  { team: 'Dumont', wins: 2, losses: 4, confWins: 1, confLosses: 2 },
+  // Updated 2026-10-21 sweep: all four rows per MaxPreps' Super - American Red standings page (stamp Oct 20 2:20pm GMT): Dumont 3-4 / 1-2, Lakeland 6-2 / 2-1, Ramsey 4-3 / 1-3, Westwood 5-2 / 3-0 (league W-L totals across all 5 teams balance 8-8). Oct 16 games not itemized.
+  { team: 'Dumont', wins: 3, losses: 4, confWins: 1, confLosses: 2 },
   // Updated 2026-09-26 sweep (2nd run): Lakeland Regional won again on
   // 9/25, improving to 5-0 overall / 1-0 league — still unbeaten. Per the
   // fresh Super - American Red league standings page (Sep 26 2:42am GMT).
   // Updated 2026-10-04 sweep: Lakeland Regional lost 7-34 at Wayne Hills (non-league) on 10/2 — 5-1 overall, league unchanged 1-0. MaxPreps Wayne Hills schedule + NJRB Lakeland page agree.
   // Updated 2026-10-11 sweep: Lakeland now 5-2 / 1-1 per MaxPreps' Super - American Red standings page (stamp Oct 11 1:34am GMT) — two losses since last row (Oct 9 result not itemized; Lakeland's own team page unreachable this run).
-  { team: 'Lakeland', wins: 5, losses: 2, confWins: 1, confLosses: 1 },
+  { team: 'Lakeland', wins: 6, losses: 2, confWins: 2, confLosses: 1 },
   // Updated 2026-09-26 sweep (2nd run): Ramsey won a league game on 9/25,
   // improving to 4-1 overall AND 1-1 league (was 0-1 league). Per the
   // fresh Super - American Red league standings page (Sep 26 2:42am GMT).
   // Updated 2026-10-03 sweep: Ramsey lost 28-31 at home to Mahwah (league) on 10/2 (score corrected 2026-10-06 from 24-14 — see lib/mahwahFootballSchedule.js; Ramsey's own MaxPreps page still showed 24-14) — 4-2 overall, 1-2 league. Ramsey's own MaxPreps schedule page confirms 4-2 / 1-2.
-  { team: 'Ramsey', wins: 4, losses: 2, confWins: 1, confLosses: 2 },
+  { team: 'Ramsey', wins: 4, losses: 3, confWins: 1, confLosses: 3 },
   // Updated 2026-09-26 sweep (2nd run): Westwood won again on 9/25,
   // improving to 4-1 overall; league record unchanged at 2-0. Per the
   // fresh Super - American Red league standings page (Sep 26 2:42am GMT).
   // Updated 2026-10-14 sweep: Westwood now 5-1 / 3-0 per MaxPreps' Super - American Red standings page (stamp Oct 13 7:04pm GMT) — league win Oct 9 (opponent not itemized; league totals across the 5 teams balance 7-7).
-  { team: 'Westwood', wins: 5, losses: 1, confWins: 3, confLosses: 0 },
+  { team: 'Westwood', wins: 5, losses: 2, confWins: 3, confLosses: 0 },
 ];
 
 // Mahwah's own standings row derives from MAHWAH_SCHEDULE_2026 — identical
