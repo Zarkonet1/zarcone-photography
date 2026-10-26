@@ -70,12 +70,12 @@ const DISCIPLINES = [
 ];
 
 const WORK_GRID = [
-  { src: '/photos/Ironman_Bike_Dylan.jpg', objPos: '35% center', alt: 'Triathlon cyclist at IRONMAN 70.3 Eagleman — Zarcone Photography NJ' },
-  { src: '/photos/PORTRAIT-Zarcone-Photography-0035-2.jpg', alt: 'Portrait photography session — Zarcone Photography, Bridgewater NJ' },
-  { src: '/photos/Ironman_Run_Dante.jpg', alt: 'Triathlon runner at IRONMAN 70.3 Eagleman — Zarcone Photography NJ' },
+  { src: '/photos/SPORTS-football-tackle-pink-cleats.jpg', alt: 'High school football tackle, game action — Zarcone Photography NJ sports photographer' },
   { src: '/photos/PORTRAIT-Zarcone-Photography-83.jpg', alt: 'Portrait photographer New Jersey — Zarcone Photography' },
-  { src: '/photos/EVENT-Zarcone-Photography-28.jpg', alt: 'Event photography New Jersey — Zarcone Photography' },
+  { src: '/photos/PORTRAIT-gymnast-beam.jpg', alt: 'Gymnast portrait on the balance beam — Zarcone Photography, Bridgewater NJ' },
+  { src: '/photos/EVENT-wedding-rings-detail.jpg', alt: 'Wedding ring detail photo — Zarcone Photography NJ event photographer' },
   { src: '/photos/danielle-portrait.jpg', alt: 'Senior portrait session — Zarcone Photography, Bridgewater NJ' },
+  { src: '/photos/PORTRAIT-Zarcone-Photography-0035-2.jpg', alt: 'Portrait photography session — Zarcone Photography, Bridgewater NJ' },
 ];
 
 function shuffle(arr) {
