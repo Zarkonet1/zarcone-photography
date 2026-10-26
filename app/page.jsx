@@ -43,7 +43,8 @@ const DISCIPLINES = [
     slug: 'sports',
     title: 'Sports',
     desc: 'Your athlete has been putting in the work for years. The photos should show it. High school sports end faster than anyone expects — these are the images that prove it happened.',
-    img: SM.footballTeam,
+    img: '/photos/SPORTS-card-catch-5.jpg',
+    pos: '55% top',
   },
   {
     num: '02',
@@ -166,9 +167,9 @@ export default function Home() {
 
       {/* ── Disciplines ──────────────────────────────────────── */}
       <div className={styles.disciplines}>
-        {DISCIPLINES.map(({ num, slug, title, desc, img }) => (
+        {DISCIPLINES.map(({ num, slug, title, desc, img, pos }) => (
           <Link key={slug} href={`/${slug}`} className={styles.card}>
-            <div className={styles.cardImg} style={{ backgroundImage: `url('${img}')` }} />
+            <div className={styles.cardImg} style={{ backgroundImage: `url('${img}')`, ...(pos && { backgroundPosition: pos }) }} />
             <div className={styles.cardOverlay} />
             <div className={styles.cardContent}>
               <p className={styles.cardNum}>{num} &nbsp;/&nbsp; {title}</p>
