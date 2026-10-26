@@ -233,7 +233,8 @@ const OTHER_STANDINGS_2026 = [
   // ("Football Recap: Union Piles Up the Points Against Hillsborough").
   // Updated 2026-10-03 sweep: Hillsborough lost 13-31 at home to Colonia (non-league) on 10/2 — 1-5 overall, league unchanged 0-2. MaxPreps recap ("Colonia Pulls Away from Hillsborough") + CJSR's Friday roundup ("Colonia 31, Hillsborough 13").
     // Updated 2026-10-17 sweep: Hillsborough 1-7 / 0-3 per its own MaxPreps page (stamp Oct 16 11:24pm GMT) — L 0-44 at Elizabeth Oct 9 (non-league), L 19-42 vs Ridge Oct 16 (league); CJSR Oct 17 roundup independently confirms Ridge 42-19.
-  { team: 'Hillsborough', wins: 1, losses: 7, confWins: 0, confLosses: 3 },
+  // Updated 2026-10-26 sweep: Hillsborough 1-8 / 0-3, Ridge 5-3 / 2-1 per MaxPreps Big Central - American Silver standings (stamp Oct 26 9:28am GMT). Phillipsburg not on that page; left unchanged (6-2 / 2-1).
+  { team: 'Hillsborough', wins: 1, losses: 8, confWins: 0, confLosses: 3 },
   // Updated 2026-09-18 sweep (2nd run): Phillipsburg beat Hillsborough 35-7
   // on the road on 9/18 — their 1st Big Central - American Silver league
   // game of the season. Same sourcing as Hillsborough above (Ridge's
@@ -253,7 +254,7 @@ const OTHER_STANDINGS_2026 = [
   // Updated 2026-10-03 sweep: Ridge beat No. 1 Phillipsburg 14-13 at home on 10/2 (Frank-to-Pickell 4-yd TD as time expired) — 3-2 overall, 1-1 league. MaxPreps recap + CJSR game article agree.
   // Updated 2026-10-10 sweep: MaxPreps Big Central - American Silver standings (updated Oct 10 2:48am GMT) show Ridge 4-2 overall / 1-1 league (league unchanged -> non-league win Oct 9, presumably vs Westfield; opponent/score not independently confirmed — single source).
     // Updated 2026-10-17 sweep: Ridge beat Hillsborough 42-19 on the road Oct 16 (league) — 5-2 overall, 2-1 league (derived: prior 4-2/1-1 + this win; Ridge's own MaxPreps page failed to fetch). Winner confirmed by CJSR Oct 17 roundup + Hillsborough's MaxPreps page; CJSR also reports a three-way American Silver title split (Ridge, BR, Phillipsburg), consistent with 2-1 for all three.
-  { team: 'Ridge', wins: 5, losses: 2, confWins: 2, confLosses: 1 },
+  { team: 'Ridge', wins: 5, losses: 3, confWins: 2, confLosses: 1 },
 ];
 
 // BRHS's own standings row derives from SCHEDULE_2026 — see the comment on
