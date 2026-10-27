@@ -23,7 +23,7 @@ const PHOTOS = [
   { src: '/photos/ZP Web - 102.jpg', width: 3140, height: 2512, sport: 'Wrestling', category: 'Wrestling' },
   { src: '/photos/SPORTS-Zarcone-Photography-123.jpg', width: 1600, height: 1279, sport: 'Gymnastics', category: 'Gymnastics' },
   { src: '/photos/i-HkmJPk8.jpg', width: 1600, height: 2400, sport: 'Football', category: 'Football' },
-  { src: '/photos/SPORTS-Zarcone-Photography-270.jpg', width: 1600, height: 1280, sport: 'Wrestling', category: 'Wrestling' },
+  { src: '/photos/ZP Web - 39.jpg', width: 5126, height: 4101, sport: 'Wrestling', category: 'Wrestling' },
   { src: '/photos/ZP Web - 110.jpg', width: 2817, height: 3521, sport: 'Softball', category: 'Softball' },
   { src: '/photos/SPORTS-Zarcone-Photography-0048-2.jpg', width: 1600, height: 1279, sport: 'Basketball', category: 'Basketball' },
   { src: '/photos/ZP Web - 9.jpg', width: 3879, height: 3104, sport: 'Softball', category: 'Softball' },
@@ -39,7 +39,7 @@ const PHOTOS = [
   { src: '/photos/SPORTS-Zarcone-Photography-0024.jpg', width: 1279, height: 1600, sport: 'Lacrosse', category: 'Lacrosse' },
   { src: '/photos/SPORTS-softball-home-plate-dust.jpg', width: 2576, height: 2061, sport: 'Softball', category: 'Softball' },
   { src: '/photos/SPORTS-Zarcone-Photography-0074.jpg', width: 1280, height: 1600, sport: 'Basketball', category: 'Basketball' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0363.jpg', width: 1066, height: 1600, sport: 'Gymnastics', category: 'Gymnastics' },
+  { src: '/photos/ZP Web - 89.jpg', width: 5209, height: 4167, sport: 'Gymnastics', category: 'Gymnastics' },
   { src: '/photos/ZP Web - 38.jpg', width: 4899, height: 3919, sport: 'Wrestling', category: 'Wrestling' },
   { src: '/photos/SPORTS-Zarcone-Photography-0016.jpg', width: 1066, height: 1600, sport: 'Football', category: 'Football' },
   { src: '/photos/SPORTS-softball-slide-second.jpg', width: 2576, height: 2061, sport: 'Softball', category: 'Softball' },
@@ -51,7 +51,7 @@ const PHOTOS = [
   { src: '/photos/SPORTS-Zarcone-Photography-0003.jpg', width: 1280, height: 1600, sport: 'Basketball', category: 'Basketball' },
   { src: '/photos/ZP Web - 1.jpg', width: 1988, height: 2982, sport: 'Field Hockey', category: 'More Sports' },
   { src: '/photos/SPORTS-Zarcone-Photography-0132.jpg', width: 1600, height: 1280, sport: 'Soccer', category: 'More Sports' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0075-2.jpg', width: 1279, height: 1600, sport: 'Cheer', category: 'More Sports' },
+  { src: '/photos/ZP Web - 88.jpg', width: 2583, height: 3874, sport: 'Cheer', category: 'More Sports' },
 ];
 
 
