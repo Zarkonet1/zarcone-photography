@@ -33,6 +33,7 @@ const PACKAGES = [
     pain: 'Most clients come to us after a session that felt rushed and delivered images that looked like everyone else\'s. Here\'s what\'s included instead:',
     includes: [
       'Unhurried on-location or studio session',
+      'Senior sessions: up to 2 hours, up to two nearby locations, and 30+ professionally edited, high-resolution digital images',
       'Professional editing typically delivered within 7–10 business days',
       'Private online gallery, yours to access anytime',
       'Full-resolution files — print at any size, forever',

@@ -503,3 +503,85 @@
   .proofGrid { grid-template-columns: 1fr; }
   .heroActions { gap: 14px 20px; }
 }
+
+/* ── Senior package: what's included ─────────────────────────────── */
+.pkg {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0;
+  padding: 100px 60px;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.pkgPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  padding-right: 60px;
+}
+.pkgEyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.pkgAmount {
+  font-family: var(--serif);
+  font-size: clamp(64px, 7vw, 96px);
+  line-height: 1;
+  color: var(--text);
+}
+.pkgCurrency {
+  font-size: 0.45em;
+  vertical-align: 0.9em;
+  margin-right: 4px;
+  color: var(--accent);
+}
+.pkgH2 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.pkgH2 em { font-style: italic; color: var(--accent); }
+.pkgList {
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+.pkgItem {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.pkgLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-top: 5px;
+}
+.pkgBody {
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(236,232,225,0.8);
+}
+.pkgNote {
+  margin-top: 28px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.pkgNote strong { color: var(--text); font-weight: 600; }
+
+@media (max-width: 900px) {
+  .pkg { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+  .pkgPrice { padding-right: 0; }
+  .pkgItem { grid-template-columns: 1fr; gap: 6px; padding: 20px 0; }
+  .pkgLabel { padding-top: 0; }
+}

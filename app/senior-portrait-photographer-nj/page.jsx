@@ -51,9 +51,32 @@ const jsonLd = {
     '@type': 'Offer',
     priceCurrency: 'USD',
     price: '600',
-    description: 'Senior portrait session starting at $600',
+    description: 'Senior portrait session: up to 2 hours, up to two nearby locations, 30+ professionally edited high-resolution digital images in a private online gallery.',
   },
 };
+
+const INCLUDED = [
+  {
+    label: 'Session',
+    body: 'Up to 2 hours of shooting time — enough for 2–3 outfit changes without rushing.',
+  },
+  {
+    label: 'Locations',
+    body: 'Up to two nearby locations, subject to scheduling and travel time within the two-hour session. Additional travel or locations may incur an additional fee.',
+  },
+  {
+    label: 'Images',
+    body: '30+ professionally edited, high-resolution digital images delivered through a private online gallery.',
+  },
+  {
+    label: 'Delivery',
+    body: 'Gallery typically delivered within 7–10 business days.',
+  },
+  {
+    label: 'Files & Prints',
+    body: 'Full-resolution downloads — print at any size. Professional print ordering available right from the gallery.',
+  },
+];
 
 const FEATURES = [
   {
@@ -74,7 +97,7 @@ const FEATURES = [
   {
     num: '04',
     title: 'Fast, Private Delivery',
-    body: 'Your edited gallery arrives in a private, password-protected online gallery within the agreed timeframe — ready to download, order prints, and share with family.',
+    body: 'Your edited gallery arrives in a private, password-protected online gallery typically within 7–10 business days — ready to download, order prints, and share with family.',
   },
   {
     num: '05',
@@ -91,7 +114,7 @@ const FEATURES = [
 const FAQ = [
   {
     q: 'When should I book my senior portrait session?',
-    a: 'Most families book in late spring or early summer to take advantage of warm weather and lush greenery at NJ\'s outdoor locations. That said, fall sessions are also incredibly popular — the colors at places like Duke Island Park and Washington Valley Park are stunning in October. The key is booking before your school\'s yearbook deadline.',
+    a: 'Most families book in late spring or early summer to take advantage of warm weather and lush greenery at NJ\'s outdoor locations. That said, fall sessions are also incredibly popular — the colors at places like Duke Island Park and Washington Valley Park are stunning in October. Senior portrait sessions are best booked 4–6 weeks in advance, particularly during peak seasons. Shorter-notice appointments may be available depending on our schedule — and either way, book before your school\'s yearbook deadline.',
   },
   {
     q: 'Where do senior portrait sessions take place?',
@@ -107,7 +130,7 @@ const FAQ = [
   },
   {
     q: 'What\'s included in a senior portrait package?',
-    a: 'All sessions include professional editing and retouching, a private online gallery for downloading high-resolution files, and print ordering capability. Packages vary by session length and number of locations — reach out for a custom quote.',
+    a: 'The $600 senior session includes up to 2 hours of shooting time at up to two nearby locations, and 30+ professionally edited, high-resolution digital images delivered through a private online gallery — typically within 7–10 business days. Print ordering is available right from the gallery. Senior posters and custom composites are available as add-ons.',
   },
   {
     q: 'Do you serve the whole state, or just Somerset County?',
@@ -148,6 +171,29 @@ export default function SeniorPortraitPhotographerNJ() {
           <p>Backed by 30+ years of photography experience. What I've learned is that the best senior portraits don't come from following a script. They come from giving seniors enough space to forget they're being photographed.</p>
           <p><strong>The result is images that look like your senior — not a stock photo version of them.</strong> That's the standard I hold every session to.</p>
           <p>Sessions take place at some of New Jersey's best outdoor locations — or in the studio, or on the field, or wherever your senior actually belongs. Serving families throughout Somerset County, Morris County, Warren County, Union County, Middlesex County, and beyond.</p>
+        </div>
+      </section>
+
+      {/* What's included */}
+      <section className={styles.pkg} id="whats-included">
+        <div className={styles.pkgPrice}>
+          <p className={styles.pkgEyebrow}>Senior Portrait Session</p>
+          <p className={styles.pkgAmount}><span className={styles.pkgCurrency}>$</span>600</p>
+          <h2 className={styles.pkgH2}>What&rsquo;s <em>included</em></h2>
+          <Link href="/about#contact" className="btn btn-solid">Check Availability →</Link>
+        </div>
+        <div>
+          <ul className={styles.pkgList}>
+            {INCLUDED.map(item => (
+              <li key={item.label} className={styles.pkgItem}>
+                <span className={styles.pkgLabel}>{item.label}</span>
+                <span className={styles.pkgBody}>{item.body}</span>
+              </li>
+            ))}
+          </ul>
+          <p className={styles.pkgNote}>
+            <strong>Booking window:</strong> senior portrait sessions are best booked 4–6 weeks in advance, particularly during peak seasons. Shorter-notice appointments may be available depending on our schedule.
+          </p>
         </div>
       </section>
 
