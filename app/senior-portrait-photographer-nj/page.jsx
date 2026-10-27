@@ -58,7 +58,7 @@ const jsonLd = {
 const INCLUDED = [
   {
     label: 'Session',
-    body: 'Up to 2 hours of shooting time — enough for 2–3 outfit changes without rushing.',
+    body: 'Up to 2 hours of photography, with time for multiple outfits and a variety of portrait styles.',
   },
   {
     label: 'Locations',
@@ -74,7 +74,7 @@ const INCLUDED = [
   },
   {
     label: 'Files & Prints',
-    body: 'Full-resolution downloads — print at any size. Professional print ordering available right from the gallery.',
+    body: 'Full-resolution digital downloads included, with personal printing rights. Professional-quality prints, wall art, and keepsakes are available for purchase directly through your private gallery.',
   },
 ];
 

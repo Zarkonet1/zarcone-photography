@@ -57,3 +57,42 @@
 
 .inner:hover .arrow { transform: translateX(4px); }
 .inner:hover .title { color: var(--accent); }
+
+.dateShort { display: none; }
+
+/* Narrow screens (2026-10-27): the bar is a fixed 36px strip, but long
+   event text ("Photos with Santa · Sunday, December 6, 2026") wrapped to
+   2–3 lines and spilled outside it — up into the nav and down over page
+   content, with no background behind it. Keep it on one line instead:
+   drop the "Upcoming" label, use the compact date, and truncate if it still
+   doesn't fit. Desktop is untouched. */
+@media (max-width: 640px) {
+  .bar { padding: 0 16px; }
+  .inner {
+    gap: 8px;
+    min-width: 0;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+  .label,
+  .label + .divider { display: none; }
+  .title {
+    flex-shrink: 0;
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.14em;
+  }
+  /* Team banners put opponent + round in the date slot ("Oct 30 — at
+     Passaic County Tech (NJSIAA Quarterfinal) — …"), so the date is the
+     part that truncates. */
+  .date {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.1em;
+  }
+  .hasShort .dateLong { display: none; }
+  .hasShort .dateShort { display: inline; }
+  .arrow { flex-shrink: 0; }
+}

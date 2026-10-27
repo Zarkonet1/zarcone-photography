@@ -512,6 +512,8 @@
   padding: 100px 60px;
   border-bottom: 1px solid var(--rule);
   align-items: start;
+  /* #whats-included anchor lands below the fixed nav + announcement bar */
+  scroll-margin-top: calc(var(--nav-h) + var(--bar-h));
 }
 .pkgPrice {
   display: flex;

@@ -117,6 +117,12 @@ export default function AnnouncementBar() {
   ) return null;
 
   const event = upcoming[idx] || upcoming[0];
+  // Compact date for narrow screens ("Sun, Dec 6"). Only sitewide EVENTS
+  // carry dateISO; team-banner dates are already short strings. Noon local
+  // keeps server (UTC) and browser (ET) on the same calendar day.
+  const shortDate = event.dateISO
+    ? new Date(`${event.dateISO}T12:00:00`).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
+    : null;
 
   return (
     <div className={styles.bar}>
@@ -125,7 +131,10 @@ export default function AnnouncementBar() {
         <span className={styles.divider}>·</span>
         <span className={styles.title}>{event.title}</span>
         <span className={styles.divider}>·</span>
-        <span className={styles.date}>{event.date}</span>
+        <span className={`${styles.date} ${shortDate ? styles.hasShort : ''}`}>
+          <span className={styles.dateLong}>{event.date}</span>
+          {shortDate && <span className={styles.dateShort}>{shortDate}</span>}
+        </span>
         <span className={styles.arrow}>→</span>
       </Link>
     </div>
