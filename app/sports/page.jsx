@@ -1,133 +1,80 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import Lightbox from '@/components/Lightbox';
 import Link from 'next/link';
 import styles from './page.module.css';
 
-const CATEGORIES = ['All', 'Football', 'Wrestling', 'Lacrosse', 'Softball', 'Basketball', 'Gymnastics', 'Baseball', 'Soccer', 'Track', 'Field Hockey', 'Other'];
+const CATEGORIES = ['All', 'Football', 'Wrestling', 'Volleyball', 'Softball', 'Lacrosse', 'Basketball', 'Gymnastics', 'Baseball', 'Track', 'More Sports'];
 
-// Local sports photos
+// Curated sports portfolio (2026-10-27): 36 picks in a fixed order, best first.
+// PHOTOS is in reading order; toColumns() deals it into 3 height-balanced
+// columns so the grid reads left-to-right, best first (phones stack the
+// columns). The lightbox keeps reading order. To add or swap
+// a photo, keep `sport` (alt text) and `category` (filter button) in sync with
+// CATEGORIES; sports with one photo use category 'More Sports'.
 const PHOTOS = [
-  { src: '/photos/i-s7zBdzk.jpg', width: 2400, height: 1600, category: 'Football',  size: 'wide' },
-  { src: '/photos/i-HkmJPk8.jpg', width: 1600, height: 2400, category: 'Football',  size: 'half' },
-  { src: '/photos/i-dkcFTnj.jpg', width: 2400, height: 1920, category: 'Wrestling', size: 'half' },
-  { src: '/photos/i-wBrCNrq.jpg', width: 2400, height: 1920, category: 'Wrestling', size: 'half' },
-  { src: '/photos/i-Lv2PXKm.jpg', width: 2400, height: 1600, category: 'Wrestling', size: 'wide' },
-  { src: '/photos/i-mhgq9Xp.jpg', width: 2400, height: 1350, category: 'Wrestling', size: 'half' },
-  { src: '/photos/i-zshvpsK.jpg', width: 2400, height: 1350, category: 'Wrestling', size: 'half' },
-  { src: '/photos/i-kRHbmsg.jpg', width: 1920, height: 2400, category: 'Wrestling', size: 'half' },
-  { src: '/photos/i-TSHFjz3.jpg', width: 2400, height: 1350, category: 'Lacrosse',  size: 'wide' },
-  { src: '/photos/i-J8KsnKp.jpg', width: 2400, height: 1350, category: 'Lacrosse',  size: 'half' },
-  { src: '/photos/i-mkM2LBS.jpg', width: 1920, height: 2400, category: 'Lacrosse',  size: 'half' },
-  { src: '/photos/i-DDRrCRz.jpg', width: 1920, height: 2400, category: 'Lacrosse',  size: 'half' },
-  // Additional sports photos — recategorize as needed
-  { src: '/photos/Ironman_Bike_Dylan.jpg', width: 2400, height: 1600, category: 'Other', size: 'wide' },
-  { src: '/photos/Ironman_Run_Dante.jpg', width: 1600, height: 2400, category: 'Other', size: 'half' },
-  { src: '/photos/SPORTS-AFC-Gold-Classic-13JUL19-51.jpg', width: 1600, height: 1142, category: 'Other', size: 'wide' },
-  { src: '/photos/SPORTS-DSC_5128-1.jpg', width: 1600, height: 1059, category: 'Football', size: 'half' },
-  { src: '/photos/SPORTS-FB100.jpg', width: 1600, height: 1066, category: 'Football', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0003.jpg', width: 1280, height: 1600, category: 'Basketball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0004.jpg', width: 1600, height: 1279, category: 'Softball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0006.jpg', width: 1066, height: 1600, category: 'Football', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0007.jpg', width: 1599, height: 1280, category: 'Wrestling', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0016.jpg', width: 1066, height: 1600, category: 'Football', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0017.jpg', width: 1279, height: 1600, category: 'Track', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0018.jpg', width: 1600, height: 1280, category: 'Other', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0024.jpg', width: 1279, height: 1600, category: 'Lacrosse', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0025-2.jpg', width: 1600, height: 1066, category: 'Football', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0025-3.jpg', width: 1600, height: 1279, category: 'Other', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0029.jpg', width: 1600, height: 1279, category: 'Lacrosse', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0030.jpg', width: 1600, height: 1280, category: 'Softball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0035.jpg', width: 1600, height: 1279, category: 'Basketball', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0048-2.jpg', width: 1600, height: 1279, category: 'Basketball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0055.jpg', width: 1279, height: 1600, category: 'Other', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0058-2.jpg', width: 1600, height: 1279, category: 'Other', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0058.jpg', width: 1280, height: 1599, category: 'Track', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0066.jpg', width: 1599, height: 1280, category: 'Wrestling', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0067.jpg', width: 1600, height: 1280, category: 'Other', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0068.jpg', width: 1066, height: 1600, category: 'Softball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0072.jpg', width: 1066, height: 1600, category: 'Football', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0073-2.jpg', width: 1066, height: 1600, category: 'Football', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0074.jpg', width: 1280, height: 1600, category: 'Basketball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0075-2.jpg', width: 1279, height: 1600, category: 'Other', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0075.jpg', width: 1280, height: 1600, category: 'Basketball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0085.jpg', width: 1600, height: 1279, category: 'Softball', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0086.jpg', width: 1600, height: 1280, category: 'Softball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0088.jpg', width: 1600, height: 1066, category: 'Football', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0103.jpg', width: 1066, height: 1600, category: 'Other', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0107.jpg', width: 1279, height: 1600, category: 'Softball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0108.jpg', width: 1280, height: 1600, category: 'Track', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0110.jpg', width: 1600, height: 1066, category: 'Other', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0125.jpg', width: 1066, height: 1600, category: 'Other', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0126.jpg', width: 1279, height: 1600, category: 'Softball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0132.jpg', width: 1600, height: 1280, category: 'Soccer', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0133.jpg', width: 1066, height: 1600, category: 'Football', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0135.jpg', width: 1600, height: 1280, category: 'Softball', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0136-2.jpg', width: 1600, height: 1066, category: 'Football', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0155.jpg', width: 1279, height: 1600, category: 'Basketball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0284.jpg', width: 1600, height: 1280, category: 'Gymnastics', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-030.jpg', width: 1279, height: 1600, category: 'Softball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0300.jpg', width: 1279, height: 1600, category: 'Softball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-032.jpg', width: 1279, height: 1600, category: 'Softball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0363.jpg', width: 1066, height: 1600, category: 'Gymnastics', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-0431.jpg', width: 1600, height: 1280, category: 'Wrestling', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-061.jpg', width: 1280, height: 1600, category: 'Wrestling', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-062.jpg', width: 1600, height: 1280, category: 'Lacrosse', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-093.jpg', width: 1600, height: 1280, category: 'Baseball', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-100.jpg', width: 1600, height: 1280, category: 'Gymnastics', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-123.jpg', width: 1600, height: 1279, category: 'Gymnastics', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-209.jpg', width: 1600, height: 1280, category: 'Basketball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-270.jpg', width: 1600, height: 1280, category: 'Wrestling', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-41.jpg', width: 1066, height: 1600, category: 'Other', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography-45.jpg', width: 1600, height: 1066, category: 'Football', size: 'wide' },
-  { src: '/photos/SPORTS-Zarcone-Photography-50.jpg', width: 1280, height: 1600, category: 'Other', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography0056.jpg', width: 1600, height: 1066, category: 'Softball', size: 'half' },
-  { src: '/photos/SPORTS-Zarcone-Photography0057.jpg', width: 1600, height: 1066, category: 'Softball', size: 'half' },
-  // New intake, 2026-08-03 — verified action shots, cleared (no client-consent question, BRHS team photography)
-  { src: '/photos/ZP Web - 1.jpg', width: 1988, height: 2982, category: 'Field Hockey', size: 'half' },
-  { src: '/photos/ZP Web - 2.jpg', width: 3087, height: 3859, category: 'Track', size: 'half' },
-  { src: '/photos/ZP Web - 4.jpg', width: 2305, height: 2881, category: 'Track', size: 'half' },
-  { src: '/photos/ZP Web - 9.jpg', width: 3879, height: 3104, category: 'Softball', size: 'wide' },
-  { src: '/photos/ZP Web - 38.jpg', width: 4899, height: 3919, category: 'Wrestling', size: 'wide' },
-  { src: '/photos/ZP Web - 90.jpg', width: 3706, height: 2471, category: 'Gymnastics', size: 'wide' },
-  { src: '/photos/ZP Web - 101.jpg', width: 2938, height: 2350, category: 'Lacrosse', size: 'wide' },
-  { src: '/photos/ZP Web - 99.jpg', width: 3062, height: 2450, category: 'Lacrosse', size: 'wide' },
-  { src: '/photos/ZP Web - 104.jpg', width: 3237, height: 2590, category: 'Wrestling', size: 'wide' },
-  { src: '/photos/ZP Web - 110.jpg', width: 2817, height: 3521, category: 'Softball', size: 'half' },
-  { src: '/photos/ZP Web - 100.jpg', width: 2525, height: 2020, category: 'Lacrosse', size: 'wide' },
-  { src: '/photos/ZP Web - 102.jpg', width: 3140, height: 2512, category: 'Wrestling', size: 'wide' },
-  { src: '/photos/ZP Web - 109.jpg', width: 1978, height: 2472, category: 'Softball', size: 'half' },
-  { src: '/photos/ZP Web - 122.jpg', width: 1318, height: 1648, category: 'Baseball', size: 'half' },
-  { src: '/photos/ZP Web - 123.jpg', width: 2742, height: 2194, category: 'Baseball', size: 'wide' },
+  { src: '/photos/SPORTS-card-catch-5.jpg', width: 1800, height: 1503, sport: 'Football', category: 'Football' },
+  { src: '/photos/ZP Web - 99.jpg', width: 3062, height: 2450, sport: 'Lacrosse', category: 'Lacrosse' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0073-2.jpg', width: 1066, height: 1600, sport: 'Football', category: 'Football' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0125.jpg', width: 1066, height: 1600, sport: 'Volleyball', category: 'Volleyball' },
+  { src: '/photos/ZP Web - 102.jpg', width: 3140, height: 2512, sport: 'Wrestling', category: 'Wrestling' },
+  { src: '/photos/SPORTS-Zarcone-Photography-123.jpg', width: 1600, height: 1279, sport: 'Gymnastics', category: 'Gymnastics' },
+  { src: '/photos/i-HkmJPk8.jpg', width: 1600, height: 2400, sport: 'Football', category: 'Football' },
+  { src: '/photos/SPORTS-Zarcone-Photography-270.jpg', width: 1600, height: 1280, sport: 'Wrestling', category: 'Wrestling' },
+  { src: '/photos/ZP Web - 110.jpg', width: 2817, height: 3521, sport: 'Softball', category: 'Softball' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0048-2.jpg', width: 1600, height: 1279, sport: 'Basketball', category: 'Basketball' },
+  { src: '/photos/ZP Web - 9.jpg', width: 3879, height: 3104, sport: 'Softball', category: 'Softball' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0136-2.jpg', width: 1600, height: 1066, sport: 'Football', category: 'Football' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0007.jpg', width: 1599, height: 1280, sport: 'Wrestling', category: 'Wrestling' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0055.jpg', width: 1279, height: 1600, sport: 'Volleyball', category: 'Volleyball' },
+  { src: '/photos/ZP Web - 123.jpg', width: 2742, height: 2194, sport: 'Baseball', category: 'Baseball' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0133.jpg', width: 1066, height: 1600, sport: 'Football', category: 'Football' },
+  { src: '/photos/ZP Web - 90.jpg', width: 3706, height: 2471, sport: 'Gymnastics', category: 'Gymnastics' },
+  { src: '/photos/ZP Web - 2.jpg', width: 3087, height: 3859, sport: 'Track', category: 'Track' },
+  { src: '/photos/ZP Web - 104.jpg', width: 3237, height: 2590, sport: 'Wrestling', category: 'Wrestling' },
+  { src: '/photos/SPORTS-Zarcone-Photography-45.jpg', width: 1600, height: 1066, sport: 'Football', category: 'Football' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0024.jpg', width: 1279, height: 1600, sport: 'Lacrosse', category: 'Lacrosse' },
+  { src: '/photos/SPORTS-softball-home-plate-dust.jpg', width: 2576, height: 2061, sport: 'Softball', category: 'Softball' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0074.jpg', width: 1280, height: 1600, sport: 'Basketball', category: 'Basketball' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0363.jpg', width: 1066, height: 1600, sport: 'Gymnastics', category: 'Gymnastics' },
+  { src: '/photos/ZP Web - 38.jpg', width: 4899, height: 3919, sport: 'Wrestling', category: 'Wrestling' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0016.jpg', width: 1066, height: 1600, sport: 'Football', category: 'Football' },
+  { src: '/photos/SPORTS-softball-slide-second.jpg', width: 2576, height: 2061, sport: 'Softball', category: 'Softball' },
+  { src: '/photos/SPORTS-Zarcone-Photography-093.jpg', width: 1600, height: 1280, sport: 'Baseball', category: 'Baseball' },
+  { src: '/photos/ZP Web - 4.jpg', width: 2305, height: 2881, sport: 'Track', category: 'Track' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0018.jpg', width: 1600, height: 1280, sport: 'Ice Hockey', category: 'More Sports' },
+  { src: '/photos/i-Lv2PXKm.jpg', width: 2400, height: 1600, sport: 'Wrestling', category: 'Wrestling' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0029.jpg', width: 1600, height: 1279, sport: 'Lacrosse', category: 'Lacrosse' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0003.jpg', width: 1280, height: 1600, sport: 'Basketball', category: 'Basketball' },
+  { src: '/photos/ZP Web - 1.jpg', width: 1988, height: 2982, sport: 'Field Hockey', category: 'More Sports' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0132.jpg', width: 1600, height: 1280, sport: 'Soccer', category: 'More Sports' },
+  { src: '/photos/SPORTS-Zarcone-Photography-0075-2.jpg', width: 1279, height: 1600, sport: 'Cheer', category: 'More Sports' },
 ];
 
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
+
+// Deal photos (in reading order) into `n` height-balanced columns so the grid
+// reads left-to-right, best first. Keeps each photo's reading index for the
+// lightbox.
+function toColumns(list, n = 3) {
+  const cols = Array.from({ length: n }, () => []);
+  const heights = new Array(n).fill(0);
+  list.forEach((photo, idx) => {
+    const c = heights.indexOf(Math.min(...heights));
+    cols[c].push({ photo, idx });
+    heights[c] += photo.height / photo.width;
+  });
+  return cols;
 }
 
 export default function SportsPage() {
   const [active, setActive] = useState('All');
   const [lbIndex, setLbIndex] = useState(null);
 
-  // Server render and the client's first render must produce identical output,
-  // or React throws a hydration mismatch. Math.random() inside useMemo() broke
-  // that — the server-rendered HTML had one shuffle order, the client's first
-  // pass computed a different one. Fix: render PHOTOS in its stable, unshuffled
-  // order on first paint (matches SSR exactly), then shuffle client-only after
-  // mount via useEffect, which never runs during server rendering.
-  const [shuffled, setShuffled] = useState(PHOTOS);
-  useEffect(() => {
-    setShuffled(shuffle(PHOTOS));
-  }, []);
-  const filtered = active === 'All' ? shuffled : shuffled.filter(p => p.category === active);
+  const filtered = active === 'All' ? PHOTOS : PHOTOS.filter(p => p.category === active);
+  const columns = toColumns(filtered);
 
   return (
     <>
@@ -210,23 +157,27 @@ export default function SportsPage() {
       </div>
 
       <div className={styles.grid}>
-        {filtered.map((photo, i) => (
-          <div
-            key={i}
-            className={styles.item}
-            onClick={() => setLbIndex(i)}
-          >
-            <Image
-              src={photo.src}
-              alt={`${photo.category} photography — Zarcone Photography, New Jersey`}
-              width={photo.width}
-              height={photo.height}
-              sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw"
-              style={{ width: '100%', height: 'auto' }}
-            />
-            <div className={styles.overlay}>
-              <span className={styles.label}>{photo.category}</span>
+        {columns.map((col, c) => (
+          <div key={c} className={styles.col}>
+            {col.map(({ photo, idx }) => (
+            <div
+              key={photo.src}
+              className={styles.item}
+              onClick={() => setLbIndex(idx)}
+            >
+              <Image
+                src={photo.src}
+                alt={`${photo.sport} photography — Zarcone Photography, New Jersey`}
+                width={photo.width}
+                height={photo.height}
+                sizes="(max-width: 560px) 100vw, 33vw"
+                style={{ width: '100%', height: 'auto' }}
+              />
+              <div className={styles.overlay}>
+                <span className={styles.label}>{photo.sport}</span>
+              </div>
             </div>
+            ))}
           </div>
         ))}
       </div>
@@ -259,7 +210,7 @@ export default function SportsPage() {
 
       {lbIndex !== null && (
         <Lightbox
-          images={filtered.map(p => ({ src: p.src, alt: `${p.category} photography — Zarcone Photography, New Jersey` }))}
+          images={filtered.map(p => ({ src: p.src, alt: `${p.sport} photography — Zarcone Photography, New Jersey` }))}
           currentIndex={lbIndex}
           onClose={() => setLbIndex(null)}
           onPrev={() => setLbIndex((lbIndex - 1 + filtered.length) % filtered.length)}

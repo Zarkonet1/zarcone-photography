@@ -23,16 +23,22 @@
 
 /* Masonry */
 .grid {
-  columns: 3;
-  column-gap: 4px;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
   padding: 4px 60px 80px;
+}
+.col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .item {
-  break-inside: avoid;
   position: relative;
   cursor: pointer;
-  margin-bottom: 4px;
   overflow: hidden;
 }
 
@@ -40,10 +46,9 @@
   display: block;
   width: 100%;
   height: auto;
-  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s;
-  filter: brightness(0.85);
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
 }
-.item:hover img { transform: scale(1.05); filter: brightness(1); }
+.item:hover img { transform: scale(1.05); }
 
 .overlay {
   position: absolute; inset: 0;
@@ -117,12 +122,12 @@
 }
 
 @media (max-width: 900px) {
-  .grid { columns: 2; padding: 4px 20px 60px; }
+  .grid { padding: 4px 20px 60px; }
   .filterBar { padding: 0 20px; }
   .testimonials { grid-template-columns: 1fr; }
   .testimonialCard { padding: 40px 24px; }
   .pullQuote { padding: 8px 20px 32px; }
 }
 @media (max-width: 560px) {
-  .grid { columns: 1; }
+  .grid { flex-direction: column; align-items: stretch; }
 }
