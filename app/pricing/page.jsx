@@ -40,6 +40,7 @@ const PACKAGES = [
       'Print ordering available through the gallery',
     ],
     note: 'Packages available for extended sessions and multi-subject shoots.',
+    link: { href: '/senior-portrait-photographer-nj#whats-included', label: 'See everything included in the senior session →' },
   },
   {
     num: '02',
@@ -134,6 +135,7 @@ export default function PricingPage() {
                   </li>
                 ))}
               </ul>
+              {p.link && <Link href={p.link.href} className={styles.cardLink}>{p.link.label}</Link>}
               {p.note && <p className={styles.note}>{p.note}</p>}
             </div>
           ))}

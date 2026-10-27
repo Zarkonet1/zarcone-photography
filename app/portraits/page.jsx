@@ -139,9 +139,9 @@ export default function PortraitsPage() {
 
       <p className={styles.painLine}>
         Most portrait sessions feel rushed, generic, and forgettable. These don't. Every session is unhurried and built around the person in front of the camera — not a pose checklist.{' '}
-        High school senior? See{' '}
-        <Link href="/senior-portrait-photographer-nj" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
-          senior portraits in Bridgewater &amp; Somerset County
+        High school senior?{' '}
+        <Link href="/senior-portrait-photographer-nj#whats-included" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
+          See everything included in the $600 senior session
         </Link>
         .
       </p>
