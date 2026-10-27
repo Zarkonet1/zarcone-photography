@@ -58,9 +58,11 @@ import {
   LAST_SEASON,
   HIGHLIGHTS_2026_27,
   DATA_STATUS,
+  HUB_STATUS,
 } from '@/lib/girlsBasketballContent';
 
 const PAGE_PATH = '/brhs-panther-girls-basketball';
+const IS_PILOT = HUB_STATUS === 'pilot';
 const TEAM = 'Bridgewater-Raritan Panthers Girls Basketball';
 const PAGE_TITLE = 'BRHS Panthers Girls Varsity Basketball — 2026–27 Season';
 
@@ -164,7 +166,9 @@ const HERO_GRADIENT =
 const FAQ = [
   {
     q: 'Is this an official Bridgewater-Raritan website?',
-    a: 'No. This is an independent media hub built and maintained by Zarcone Photography. It is not operated or endorsed by Bridgewater-Raritan High School or the Bridgewater-Raritan Regional School District. For official team information, use BRHS Athletics.',
+    a: IS_PILOT
+      ? 'No. Zarcone Photography produces this media hub as part of its 2026–27 pilot program with BRHS Girls Basketball. It is not an official Bridgewater-Raritan High School or district website. For official team information, use BRHS Athletics.'
+      : 'No. This is an independent media hub built and maintained by Zarcone Photography. It is not operated or endorsed by Bridgewater-Raritan High School or the Bridgewater-Raritan Regional School District. For official team information, use BRHS Athletics.',
   },
   {
     q: 'Where does the schedule, roster and stats information come from?',
@@ -268,7 +272,7 @@ export default function BRHSPantherGirlsBasketballPage() {
           { href: '#team-stats', label: 'Stats' },
         ]}
         creditLine="Zarcone Photography"
-        creditSuffix="Independent Media Hub"
+        creditSuffix={IS_PILOT ? 'Media Hub · 2026–27 Pilot' : 'Independent Media Hub'}
       />
 
       {/* Preseason (no schedule published): branded season lockup with the
@@ -785,7 +789,9 @@ export default function BRHSPantherGirlsBasketballPage() {
           </div>
         </div>
         <p style={{ color: 'var(--br-silver)', fontSize: 16, lineHeight: 1.8, maxWidth: 760 }}>
-          This hub is an independent media resource developed and maintained by Zarcone Photography, a{' '}
+          {IS_PILOT
+            ? 'Zarcone Photography produces this media hub as part of its 2026–27 pilot program with BRHS Girls Basketball, alongside game-day photography. We are a'
+            : 'This hub is an independent media resource developed and maintained by Zarcone Photography, a'}{' '}
           <Link href="/sports-photographer-nj">sports photographer in NJ</Link> based in Bridgewater. It collects the team’s public
           schedule, results, stats and news in one place, alongside our game photography. Zarcone Photography also covers{' '}
           <Link href="/brhs-panther-football">Panther Football</Link>, <Link href="/brhs-panther-volleyball">Panther Girls Volleyball</Link> and{' '}
@@ -874,8 +880,9 @@ export default function BRHSPantherGirlsBasketballPage() {
       </section>
 
       <p className={styles.disclaimer}>
-        Independent media hub developed and maintained by Zarcone Photography. Not an official Bridgewater-Raritan High School or
-        Bridgewater-Raritan Regional School District website, and not endorsed by either. Schedule, roster and statistics are drawn
+        {IS_PILOT
+          ? 'Media hub produced by Zarcone Photography as part of its 2026–27 pilot program with BRHS Girls Basketball. Not an official Bridgewater-Raritan High School or Bridgewater-Raritan Regional School District website.'
+          : 'Independent media hub developed and maintained by Zarcone Photography. Not an official Bridgewater-Raritan High School or Bridgewater-Raritan Regional School District website, and not endorsed by either.'} Schedule, roster and statistics are drawn
         from public sources and may change.
       </p>
 

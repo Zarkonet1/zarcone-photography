@@ -13,7 +13,7 @@ import { TEAM_LEADERS_2026_27, BOX_SCORES_2026_27 } from '../lib/girlsBasketball
 import { IMAGE_SLOTS } from '../lib/girlsBasketballImages.js';
 import {
   ROSTER_2026_27, PORTRAIT_NUMBERS, ARTICLES, LAST_SEASON, HIGHLIGHTS_2026_27,
-  OTHER_DIVISION_TEAMS_2026_27, STANDINGS_AS_OF, DATA_STATUS, CONFERENCE,
+  OTHER_DIVISION_TEAMS_2026_27, STANDINGS_AS_OF, DATA_STATUS, CONFERENCE, HUB_STATUS,
 } from '../lib/girlsBasketballContent.js';
 import { deriveTeamStats } from '../lib/teamStats.js';
 import { getNextGame, getRecord, resolveScheduleDate } from '../lib/teamSchedule.js';
@@ -107,6 +107,10 @@ test('standings only populate with an as-of date and a source', () => {
     for (const t of OTHER_DIVISION_TEAMS_2026_27) assert.ok(t.team && t.source);
   }
   assert.ok(['2025-26', '2026-27'].includes(CONFERENCE.divisionConfirmedFor));
+});
+
+test('hub status is a known value', () => {
+  assert.ok(['independent', 'pilot'].includes(HUB_STATUS));
 });
 
 test('data-status records are present and dated', () => {
