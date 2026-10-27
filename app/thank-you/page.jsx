@@ -8,7 +8,10 @@ import styles from '../not-found.module.css';
 // tied back to the button that started it. Ignored if older than 2 hours.
 function lastCta() {
   try {
-    const raw = window.sessionStorage.getItem('zp_last_cta');
+    let raw = null;
+    try { raw = window.sessionStorage.getItem('zp_last_cta'); } catch (e) { /* ignore */ }
+    // Inquiry form opened in a new tab: sessionStorage starts empty there.
+    if (!raw) raw = window.localStorage.getItem('zp_last_cta');
     if (!raw) return null;
     const c = JSON.parse(raw);
     if (!c || Date.now() - c.ts > 2 * 60 * 60 * 1000) return null;
@@ -60,6 +63,7 @@ export default function ThankYouPage() {
           try {
             window.sessionStorage.setItem('zp_lead_counted', String(Date.now()));
             window.sessionStorage.removeItem('zp_last_cta');
+            window.localStorage.removeItem('zp_last_cta');
           } catch (e) { /* ignore */ }
           return;
         }

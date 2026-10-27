@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import TrackedCta from '@/components/TrackedCta';
 import styles from './page.module.css';
 
 const APPROACH = [
@@ -75,17 +76,6 @@ const TESTIMONIALS = [
 
 export default function AboutPage() {
   const parallaxRef = useRef(null);
-
-  // Load HoneyBook widget
-  useEffect(() => {
-    window._HB_ = window._HB_ || {};
-    window._HB_.pid = '5f380abc6556542c7717ad80';
-    const s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.async = true;
-    s.src = 'https://widget.honeybook.com/assets_users_production/websiteplacements/placement-controller.min.js';
-    document.head.appendChild(s);
-  }, []);
 
   // Scroll reveal
   useEffect(() => {
@@ -292,8 +282,27 @@ export default function AboutPage() {
         <div className={styles.contactFormSide}>
           <p className="eyebrow" style={{ marginBottom: '20px' }}>Get In Touch</p>
           <h2 className={styles.contactH2}>Let's make something<br /><em>worth keeping.</em></h2>
-          {/* HoneyBook lead form */}
-          <div className="hb-p-5f380abc6556542c7717ad80-4" />
+          {/* HoneyBook "Web Contact Inquiry" lead form, opened full-page in a new
+              tab instead of embedded (2026-10-27): the embed clipped the bottom of
+              the 4,000px form and hid its next-page button in a nested scroll box.
+              The form's redirect setting sends submitters to /thank-you, which
+              counts the GA4 generate_lead. */}
+          <p className={styles.contactLead}>
+            Tell me about your project — the what, when, and where. It takes about two minutes, and I&rsquo;ll reply within 24 hours.
+          </p>
+          <TrackedCta
+            href="https://book.zarconephotography.com/public/6650ae9836edc4002564cbc4"
+            target="_blank"
+            location="about_contact"
+            label="Start Your Inquiry"
+            className={`btn btn-solid ${styles.contactBtn}`}
+          >
+            Start Your Inquiry →
+          </TrackedCta>
+          <p className={styles.contactNote}>
+            Opens our inquiry form in a new tab, where you can also book a 30-minute intro call.
+            Prefer to talk? Call <a href="tel:+19087770631">(908) 777-0631</a>.
+          </p>
           <a
             href="https://g.page/r/Ca6PJ5ScxSapEAI/review"
             target="_blank"
