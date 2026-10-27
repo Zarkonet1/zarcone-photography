@@ -55,7 +55,7 @@ export default function Nav() {
   // Mahwah page; see app/mahwah-thunderbirds-football/layout.jsx for the
   // noindex/nofollow posture, same as Prospect Trigger pages). Reuses
   // this array/variable name rather than introducing a second one.
-  const BRHS_HUB_PATHS = ['/brhs-panther-football', '/brhs-panther-wrestling', '/brhs-panther-volleyball', '/mahwah-thunderbirds-football'];
+  const BRHS_HUB_PATHS = ['/brhs-panther-football', '/brhs-panther-wrestling', '/brhs-panther-volleyball', '/brhs-panther-girls-basketball', '/mahwah-thunderbirds-football'];
   if (BRHS_HUB_PATHS.includes(pathname)) {
     return (
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>

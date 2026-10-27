@@ -28,10 +28,11 @@ export default function sitemap() {
     '/brhs-panther-football',
     '/brhs-panther-wrestling',
     '/brhs-panther-volleyball',
+    '/brhs-panther-girls-basketball',
     '/harvestfest',
   ];
 
-  const weeklyPages = ['/brhs-panther-football', '/brhs-panther-wrestling', '/brhs-panther-volleyball'];
+  const weeklyPages = ['/brhs-panther-football', '/brhs-panther-wrestling', '/brhs-panther-volleyball', '/brhs-panther-girls-basketball'];
 
   const staticEntries = staticRoutes.map((route) => ({
     url: `${base}${route}`,

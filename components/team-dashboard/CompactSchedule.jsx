@@ -7,7 +7,10 @@
 // nothing here should be treated as the source of truth.
 import styles from './CompactSchedule.module.css';
 
-export default function CompactSchedule({ games }) {
+// emptyMessage (added 2026-10-27): shown in place of the row list when
+// `games` is empty (e.g. a hub built before its schedule is published).
+// Pages with games never see it.
+export default function CompactSchedule({ games, emptyMessage = 'Schedule coming soon.' }) {
   // Show the next 4 unplayed games; if fewer than 4 remain, backfill with
   // the most recent played game(s) so the widget doesn't look sparse late
   // in the season.
@@ -24,7 +27,14 @@ export default function CompactSchedule({ games }) {
         <span className={styles.heading}>Schedule</span>
         <a href="#schedule" className={styles.link}>Full Schedule →</a>
       </div>
-      <div className={styles.list}>
+      {rows.length === 0 && (
+        <div className={styles.list}>
+          <div className={styles.row}>
+            <span className={styles.pending} style={{ gridColumn: '1 / -1' }}>{emptyMessage}</span>
+          </div>
+        </div>
+      )}
+      {rows.length > 0 && <div className={styles.list}>
         {rows.map((g, i) => (
           <div key={i} className={styles.row}>
             <span className={styles.date}>{g.date}</span>
@@ -36,7 +46,7 @@ export default function CompactSchedule({ games }) {
             </span>
           </div>
         ))}
-      </div>
+      </div>}
     </div>
   );
 }

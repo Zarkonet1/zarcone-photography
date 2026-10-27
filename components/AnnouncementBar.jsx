@@ -7,6 +7,7 @@ import { EVENTS } from '@/lib/events';
 import { SCHEDULE_2026 as FOOTBALL_SCHEDULE } from '@/lib/footballSchedule';
 import { DUAL_SCHEDULE_2026_27 as WRESTLING_SCHEDULE } from '@/lib/wrestlingSchedule';
 import { SCHEDULE_2026 as VOLLEYBALL_SCHEDULE } from '@/lib/volleyballSchedule';
+import { SCHEDULE_2026_27 as GIRLS_BASKETBALL_SCHEDULE, countedGames as girlsBasketballCounted } from '@/lib/girlsBasketballSchedule';
 import { getNextMatch } from '@/lib/teamSchedule';
 import styles from './AnnouncementBar.module.css';
 
@@ -47,6 +48,16 @@ const TEAM_BANNERS = [
     schedule: VOLLEYBALL_SCHEDULE,
     scheduleHref: '/brhs-panther-volleyball#schedule',
     nextLabel: 'Next Match',
+  },
+  {
+    // Added 2026-10-27. Schedule is empty until 2026-27 dates publish, so
+    // this banner renders nothing on that page until then (same as
+    // wrestling's note above). Canceled games are filtered out.
+    pathPrefix: '/brhs-panther-girls-basketball',
+    team: 'girls-basketball',
+    schedule: girlsBasketballCounted(GIRLS_BASKETBALL_SCHEDULE),
+    scheduleHref: '/brhs-panther-girls-basketball#schedule',
+    nextLabel: 'Next Game',
   },
 ];
 

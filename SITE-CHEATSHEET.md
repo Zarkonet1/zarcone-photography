@@ -324,3 +324,23 @@ export const metadata = {
 | Announcement bar | `components/AnnouncementBar.jsx` |
 | Global styles | `app/globals.css` |
 | Photos folder | `public/photos/` |
+
+---
+
+## BRHS Girls Basketball hub (`/brhs-panther-girls-basketball`, added 2026-10-27)
+
+Independent ZP media hub — never call it "official" or a "partnership" on the page. All data is in `lib/`; the page file never needs editing for routine updates.
+
+| To change | Edit | Notes |
+|---|---|---|
+| Schedule / results | `lib/girlsBasketballSchedule.js` → `SCHEDULE_2026_27` | Row shape is documented at the top of the file. Result needs `usScore`/`themScore`; team stats compute from them. `status: 'postponed' \| 'canceled'`. |
+| Galleries | `lib/girlsBasketballGalleries.js` → `GALLERIES_2026_27` | Real Pic-Time client URL only. `kind: 'senior-night'` fills the Senior Night card. Link a game with `galleryId` on its schedule row. |
+| Roster | `lib/girlsBasketballContent.js` → `ROSTER_2026_27` | Only published fields (number, first, last, grade, position, height, stats, source). Tests reject anything else. |
+| Player portraits | `public/photos/girls-basketball-portraits/{number}.jpg` + add the number to `PORTRAIT_NUMBERS` | Only after Tom approves the photo. |
+| Player stats | `lib/girlsBasketballStats.js` | Same shape as volleyball/football stats. |
+| News | `ARTICLES` in `lib/girlsBasketballContent.js` | Our own one-line `summary`; `season: '2026-27'`. |
+| Standings | `OTHER_DIVISION_TEAMS_2026_27` + `STANDINGS_AS_OF` | Set `CONFERENCE.divisionConfirmedFor = '2026-27'` once the alignment is confirmed. |
+| "Checked <date>" lines | `DATA_STATUS` | The sweep bumps `lastChecked` every run. |
+| Any photo on the page | `lib/girlsBasketballImages.js` → `IMAGE_SLOTS` | Put the file in `public/photos/girls-basketball/`, set `src` + `alt`. Placeholder disappears automatically. Setting `hero.src` also needs an `openGraph.images` entry in the page's `layout.jsx`. |
+
+`npm test` validates every one of these files (`tests/girlsBasketball.test.mjs`), so a bad edit stops `ship-website.command` before deploy.

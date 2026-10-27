@@ -91,6 +91,16 @@ export default function NextGameHero({
   // H1 changed every week with the next opponent. Default null keeps every
   // other caller rendering exactly as before.
   pageTitle = null,
+  // resolveGameDate / noGameLabel: added 2026-10-27 for the Girls Basketball
+  // hub, whose season runs Dec 2026 - Mar 2027 and so can't use the
+  // hardcoded-2026 toSeasonDate() below. Pass resolveScheduleDate from
+  // lib/teamSchedule.js (closest-year parsing) for any season that crosses
+  // New Year's. noGameLabel replaces the "2026 Season Complete" eyebrow when
+  // there is no next game - e.g. "Schedule Coming Soon" before a schedule
+  // is published. Defaults keep every existing caller rendering exactly as
+  // before.
+  resolveGameDate = toSeasonDate,
+  noGameLabel = '2026 Season Complete',
 }) {
   const HeadTag = pageTitle ? 'h2' : 'h1';
   const pageTitleEl = pageTitle ? <h1 className={styles.pageTitle}>{pageTitle}</h1> : null;
@@ -113,20 +123,20 @@ export default function NextGameHero({
     const now = new Date();
     const gameRecent =
       lastPlayedGame &&
-      (now - toSeasonDate(lastPlayedGame.date)) / 86400000 <= RECENT_GAME_WINDOW_DAYS;
+      (now - resolveGameDate(lastPlayedGame.date)) / 86400000 <= RECENT_GAME_WINDOW_DAYS;
 
     // Postponed-today check first — this outranks everything else. Compares
     // calendar day only (toDateString ignores time-of-day), so it's true for
     // the entire original game date and false the moment it's tomorrow.
     const isPostponedToday =
       nextGame?.postponedFrom &&
-      now.toDateString() === toSeasonDate(nextGame.postponedFrom).toDateString();
+      now.toDateString() === resolveGameDate(nextGame.postponedFrom).toDateString();
 
     if (isPostponedToday) {
       setState('postponed');
     } else if (gameRecent) {
       const galleryCoversGame =
-        latestGallery && new Date(latestGallery.date) >= toSeasonDate(lastPlayedGame.date);
+        latestGallery && new Date(latestGallery.date) >= resolveGameDate(lastPlayedGame.date);
       setState(galleryCoversGame ? 'gallery' : 'final');
     } else {
       setState('next');
@@ -211,7 +221,7 @@ export default function NextGameHero({
       {state === 'next' && (
         <div className={styles.content}>
           {pageTitleEl}
-          <span className={styles.eyebrow}>{nextGame ? 'Next Game' : '2026 Season Complete'}</span>
+          <span className={styles.eyebrow}>{nextGame ? 'Next Game' : noGameLabel}</span>
           {nextGame ? (
             <>
               <HeadTag className={styles.matchup}>
