@@ -55,7 +55,7 @@ When I shared this set on Instagram, the response made it clear I wasn't the onl
 
 ---
 
-To the 2026 Panthers, and especially the seniors: thank you for letting me be on your sideline this season. Seven wins, a title defense, and a locker room worth hurting this much over. That's a season.
+To the 2026 Panthers, and especially the seniors: thank you. Zarcone Photography is grateful to have played a small part in this season — capturing the wins and the losses, the highs and the lows, and everything in between. Seven wins, a title defense, and a locker room worth hurting this much over. That's a season.
 
 The full 2026 season — schedule, results, and every game gallery — lives on the [Panther Football hub](/brhs-panther-football).
 
