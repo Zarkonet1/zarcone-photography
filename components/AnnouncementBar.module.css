@@ -55,10 +55,38 @@
   transition: transform 0.2s;
 }
 
+.cta {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(200, 184, 154, 0.45);
+  border-radius: 2px;
+  padding: 3px 8px;
+  margin-left: 4px;
+}
+.inner:hover .cta { background: var(--accent); color: #12100c; }
+
 .inner:hover .arrow { transform: translateX(4px); }
 .inner:hover .title { color: var(--accent); }
 
 .dateShort { display: none; }
+.ctaShort { display: none; }
+.inner { white-space: nowrap; }
+
+/* Tablet / small laptop: drop the "Upcoming" label, then the location
+   segment of a long bannerDetail, so the bar never wraps. */
+@media (max-width: 1100px) {
+  .bar { overflow: hidden; padding: 0 16px; }
+  .inner { min-width: 0; max-width: 100%; }
+  .date { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .label,
+  .label + .divider { display: none; }
+}
+@media (max-width: 1000px) {
+  .segExtra { display: none; }
+}
 
 /* Narrow screens (2026-10-27): the bar is a fixed 36px strip, but long
    event text ("Photos with Santa · Sunday, December 6, 2026") wrapped to
@@ -95,4 +123,8 @@
   .hasShort .dateLong { display: none; }
   .hasShort .dateShort { display: inline; }
   .arrow { flex-shrink: 0; }
+  .cta { flex-shrink: 0; padding: 2px 6px; margin-left: 0; letter-spacing: 0.12em; font-size: 10px; }
+  .ctaLong { display: none; }
+  .ctaShort { display: inline; }
+
 }

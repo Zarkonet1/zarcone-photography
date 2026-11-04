@@ -131,23 +131,50 @@ export default function AnnouncementBar() {
   // Compact date for narrow screens ("Sun, Dec 6"). Only sitewide EVENTS
   // carry dateISO; team-banner dates are already short strings. Noon local
   // keeps server (UTC) and browser (ET) on the same calendar day.
-  const shortDate = event.dateISO
+  const shortDate = event.bannerShort || (event.dateISO
     ? new Date(`${event.dateISO}T12:00:00`).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
-    : null;
+    : null);
+
+  // Optional per-event banner overrides (lib/events.js): bannerTitle,
+  // bannerDetail (replaces the long date), bannerShort (mobile date),
+  // bannerCta, bannerHref. An external bannerHref (e.g. a sign-up page)
+  // opens in a new tab; everything else keeps the internal /news routing.
+  const href = event.bannerHref || event.href || '/news';
+  const external = /^https?:\/\//.test(href);
+  const content = (
+    <>
+      <span className={styles.label}>Upcoming</span>
+      <span className={styles.divider}>·</span>
+      <span className={styles.title}>{event.bannerTitle || event.title}</span>
+      <span className={styles.divider}>·</span>
+      <span className={`${styles.date} ${shortDate ? styles.hasShort : ''}`}>
+        <span className={styles.dateLong}>
+          {Array.isArray(event.bannerDetail)
+            ? event.bannerDetail.map((seg, i) => (
+                <span key={i} className={i >= 2 ? styles.segExtra : undefined}>{i > 0 ? ' · ' : ''}{seg}</span>
+              ))
+            : (event.bannerDetail || event.date)}
+        </span>
+        {shortDate && <span className={styles.dateShort}>{shortDate}</span>}
+      </span>
+      {event.bannerCta && (
+        <span className={styles.cta}>
+          <span className={styles.ctaLong}>{event.bannerCta}</span>
+          <span className={styles.ctaShort}>{event.bannerCtaShort || event.bannerCta}</span>
+        </span>
+      )}
+      <span className={styles.arrow}>→</span>
+    </>
+  );
+  const cls = `${styles.inner} ${visible ? styles.show : styles.hide}`;
 
   return (
     <div className={styles.bar}>
-      <Link href={event.href || '/news'} className={`${styles.inner} ${visible ? styles.show : styles.hide}`}>
-        <span className={styles.label}>Upcoming</span>
-        <span className={styles.divider}>·</span>
-        <span className={styles.title}>{event.title}</span>
-        <span className={styles.divider}>·</span>
-        <span className={`${styles.date} ${shortDate ? styles.hasShort : ''}`}>
-          <span className={styles.dateLong}>{event.date}</span>
-          {shortDate && <span className={styles.dateShort}>{shortDate}</span>}
-        </span>
-        <span className={styles.arrow}>→</span>
-      </Link>
+      {external ? (
+        <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>{content}</a>
+      ) : (
+        <Link href={href} className={cls}>{content}</Link>
+      )}
     </div>
   );
 }
