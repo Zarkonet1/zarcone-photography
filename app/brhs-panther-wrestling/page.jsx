@@ -162,9 +162,12 @@ const FEATURED_WRESTLER = {
   bio: 'A two-time District 14 champion (215 lbs in 2025, heavyweight in 2026) who won the Region 4 title at heavyweight to improve to 29-1 this season, then placed 6th at the 2026 NJSIAA Individual Tournament at Boardwalk Hall. "We get Trent back for two more years," Coach Murphy said in March 2025, after Levash\'s sophomore season — those two seasons were 2025-26 and the upcoming 2026-27 campaign, which will be his senior year and last shot at a state title.',
 };
 
+// Mirrors football's gallery pills (2026-11-12): last season's SmugMug archive
+// as a live pill, then a pending pill until 2026-27 Pic-Time galleries post.
+// When the Media Day gallery (Dec 8-9) is up, add it here as
+// { label: '2026-27 Media Day', status: 'live', href: '<Pic-Time URL>' }.
 const SEASONS = [
-  { label: '2025-26', status: 'live', href: 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Wrestling' },
-  { label: '2026-27', status: 'pending' },
+  { label: '2025–26 Matches', status: 'live', href: SEASON_GALLERY_URL },
 ];
 
 const FAQ = [
@@ -509,7 +512,7 @@ export default function BRHSPantherWrestlingPage() {
               <span key={i} className={`${styles.seasonPill} ${styles.seasonPillPending}`}>{s.label} — Pending</span>
             )
           ))}
-          <span className={`${styles.seasonPill} ${styles.seasonPillPending}`}>Future Seasons — Archive Grows Here</span>
+          <span className={`${styles.seasonPill} ${styles.seasonPillPending}`}>2026–27 Meets — Added As Posted</span>
         </div>
 
         <div className={styles.noticeBar}>
@@ -560,32 +563,6 @@ export default function BRHSPantherWrestlingPage() {
           />
         )}
       </section>
-
-      {/* ── Match Coverage ───────────────────────────────────────── */}
-      <div className={styles.featureRow}>
-        <div className={styles.featureMedia}>
-          <Image src="/photos/SPORTS-Zarcone-Photography-0007.jpg" alt="Dual meet wrestling coverage" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
-        </div>
-        <div className={styles.featureText}>
-          <span className={styles.featureDate}>Every Home Dual Meet</span>
-          <h2 className={styles.featureTitle}>Every Match, Every Mat</h2>
-          <p className={styles.featureLead}>Full coverage, shot the way a photojournalist works a mat-side — moving continuously, staying out of the way, never missing the takedown that mattered.</p>
-          <ul className={styles.checklist}>
-            <li>Action photography</li>
-            <li>Mat-side coverage</li>
-            <li>Celebrations</li>
-            <li>Coach interactions</li>
-            <li>Crowd &amp; team bench</li>
-            <li>Tournament coverage</li>
-            <li>Feature images</li>
-            <li>Fast gallery turnaround</li>
-          </ul>
-          <p style={{ fontSize: 14, color: 'var(--bp-navy-soft)' }}>Professionally edited · High-resolution downloads · Print ordering built in</p>
-          <div style={{ marginTop: 20 }}>
-            <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Match Galleries</a>
-          </div>
-        </div>
-      </div>
 
       {/* ── Built Different campaign banner ─────────────────────── */}
       <section className={styles.campaignBanner}>
