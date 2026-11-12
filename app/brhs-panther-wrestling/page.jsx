@@ -132,12 +132,35 @@ const MEDIA_CENTER_TILES = [
   { label: 'News', sub: 'Latest Coverage', href: '#news', img: '/photos/SPORTS-Zarcone-Photography-0007.jpg' },
 ];
 
+// Coach bios supplied by Tom Zarcone (2026-11-12), in staff order.
+// Sammy Alvarez kept from the earlier sourced roster pending confirmation
+// that he is still on the 2026-27 staff.
 const COACHES = [
   {
     name: 'Kyle Murphy',
-    title: 'Head Varsity Wrestling Coach · Since 2021-22',
-    bio: 'A 2016 Bridgewater-Raritan graduate, Murphy wrestled Division I at Bloomsburg University before returning home to lead the program he came up in. He also teaches special education at BRHS and coaches freshman football. Murphy was named the District 14 Coach of the Year for 2026 after guiding the Panthers to a second straight North 2, Group 5 sectional title with a rebuilt lineup of eight new starters.',
+    title: 'Head Coach',
+    bio: 'Kyle Murphy stood on the New Jersey state podium as a Panther and has since coached his alma mater to back-to-back North Jersey, Section 2, Group 5 championships. The 2016 Bridgewater-Raritan graduate earned District 14 Coach of the Year honors in 2026.',
     philosophy: 'Murphy’s program is built on one word — grit: facing adversity, not giving up, and wrestling for the guy next to you, not just yourself.',
+  },
+  {
+    name: 'Kevin McCann',
+    title: 'Varsity Assistant Coach',
+    bio: 'Kevin McCann made his mark at South Plainfield as both a wrestler and a coach, winning the 1991 New Jersey state title at 135 pounds before leading the Tigers to seven NJSIAA group championships. His coaching career earned him a place in the New Jersey Scholastic Coaches Association Hall of Fame in 2016.',
+  },
+  {
+    name: 'Ray Jazikoff',
+    title: 'Varsity Assistant Coach',
+    bio: 'Ray Jazikoff went from the mats at South Plainfield to the NCAA Division III podium, placing seventh at 157 pounds in 2018 to earn All-America honors for NYU. He capped his college career with a program-record 149 wins.',
+  },
+  {
+    name: 'Robert Saum',
+    title: 'JV Coach',
+    bio: 'Robert Saum piled up 120 wins at Watchung Hills Regional High School, capturing three Somerset County titles and qualifying for the New Jersey state championships. He went on to wrestle at Millersville University and now brings that competitive experience to the Panthers’ JV squad.',
+  },
+  {
+    name: 'Shane Raymond',
+    title: 'Assistant Coach',
+    bio: 'The newest addition to the Panthers’ coaching staff, Shane Raymond spent several seasons as the lead varsity assistant for South Plainfield’s boys’ and girls’ wrestling programs. He comes to Bridgewater-Raritan after earning District 14 Assistant Coach of the Year honors in 2026.',
   },
   {
     name: 'Sammy Alvarez',
@@ -145,14 +168,6 @@ const COACHES = [
     bio: 'A 2025 NCAA All-America wrestler at Rider University (7th at 149 lbs) and the Mid-American Conference Wrestler of the Year, Alvarez joined Coach Murphy\'s staff after his bid for a fifth year of college eligibility was denied. A 2019 NJ state champion at 126 lbs for St. Joseph Regional, he also wrestled at Rutgers and Oklahoma State, training under coaches John Smith and Scott Goodale. He now works full-time at BRHS as an Instructional Assistant.',
     philosophy: '',
   },
-];
-
-// Source: BRRSD staff directory (vh.brrsd.org/o/brhs/article/2590786).
-// Full bios/headshots pending — names and titles only for now.
-const ASSISTANT_COACHES = [
-  { name: 'Ray Jazikoff', title: 'Varsity Assistant Coach' },
-  { name: 'Kevin McCann', title: 'Varsity Assistant Coach' },
-  { name: 'Rob Saum', title: 'JV Coach' },
 ];
 
 // Real, sourced returning wrestler — rotates weekly once dual meets begin.
@@ -478,16 +493,6 @@ export default function BRHSPantherWrestlingPage() {
                 <div className={styles.coachTitle}>{c.title}</div>
                 <p className={styles.coachBio} style={{ marginBottom: c.philosophy ? undefined : 0 }}>{c.bio}</p>
                 {c.philosophy && <p className={styles.coachBio} style={{ marginBottom: 0 }}>{c.philosophy}</p>}
-              </div>
-            </div>
-          ))}
-          {ASSISTANT_COACHES.map((c, i) => (
-            <div key={i} className={styles.coachCard}>
-              <div className={styles.coachAvatar}>{c.name.split(' ').map(n => n[0]).join('')}</div>
-              <div>
-                <div className={styles.coachName}>{c.name}</div>
-                <div className={styles.coachTitle}>{c.title}</div>
-                <p className={styles.coachStub}>Full bio and headshot coming as part of the season kickoff shoot.</p>
               </div>
             </div>
           ))}
