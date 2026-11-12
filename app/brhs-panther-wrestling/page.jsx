@@ -124,7 +124,9 @@ const DASHBOARD_NEWS_HAS_NEW = DASHBOARD_EDITORIAL_ITEMS.length > 0 && isRecentA
 const MEDIA_CENTER_TILES = [
   { label: 'Season Gallery', sub: 'View Photos', href: '#gallery', img: '/photos/i-dkcFTnj.jpg' },
   { label: 'Meet the Team', sub: 'Coaches & Wrestlers', href: '#coaches', img: '/photos/i-wBrCNrq.jpg' },
-  { label: 'Media Day', sub: 'Season Kickoff', href: '#season-kickoff', img: '/photos/i-Lv2PXKm.jpg' },
+  // Season Kickoff / Senior Night marketing panels removed 2026-11-12 (Tom); Media Day
+  // tile points at the gallery section, where the Dec 8-9 Media Day gallery will land.
+  { label: 'Media Day', sub: 'Dec 8–9', href: '#gallery', img: '/photos/i-Lv2PXKm.jpg' },
   { label: 'Schedule', sub: 'Results & Outlook', href: '#schedule', img: '/photos/i-mhgq9Xp.jpg' },
   { label: 'Stats', sub: 'Program Records', href: '#stats', img: '/photos/i-zshvpsK.jpg' },
   { label: 'News', sub: 'Latest Coverage', href: '#news', img: '/photos/SPORTS-Zarcone-Photography-0007.jpg' },
@@ -558,56 +560,6 @@ export default function BRHSPantherWrestlingPage() {
           />
         )}
       </section>
-
-      {/* ── Season Kickoff ───────────────────────────────────────── */}
-      <div id="season-kickoff" className={styles.featureRow} style={{ scrollMarginTop: 120 }}>
-        <div className={styles.featurePanel}>
-          <Image src="/photos/BRHSWrestling2026-2027FBCOVER_C.png" alt="BRHS Panther Wrestling — Built Different, 2026-27" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'contain', background: 'var(--bp-navy-deep)' }} />
-        </div>
-        <div className={styles.featureText}>
-          <span className={styles.featureDate}>Media Day · December 8–9, 2026</span>
-          <h2 className={styles.featureTitle}>Season Kickoff</h2>
-          <p className={styles.featureLead}>Before the first whistle blows, every wrestler gets the professional treatment — clean portraits and the &ldquo;Built Different&rdquo; campaign graphics built for social media, programs, and recruiting profiles.</p>
-          <ul className={styles.checklist}>
-            <li>Individual portraits</li>
-            <li>Team photos</li>
-            <li>Social media graphics</li>
-            <li>Schedule graphics</li>
-            <li>Senior banners</li>
-            <li>Wrestler spotlight graphics</li>
-            <li>Coach portraits</li>
-            <li>Recruiting content</li>
-          </ul>
-          <p className={styles.sampleCaption}>Photos and graphics from season kickoff are added here once the 2026-27 season begins.</p>
-          <div style={{ marginTop: 28 }}>
-            <a href="#inquire" className={styles.btnRed}>Book Season Kickoff</a>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Senior Night ─────────────────────────────────────────── */}
-      <div className={`${styles.featureRow} ${styles.reverse}`}>
-        <div className={styles.featurePanel}>
-          <Image src="/photos/BRHSWrestling2026-2027FBProfile_C_transparent.png" alt="BRHS Panther Wrestling badge" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'contain', background: 'var(--bp-navy-deep)' }} />
-        </div>
-        <div className={styles.featureText}>
-          <span className={styles.featureDate}>Senior Night</span>
-          <h2 className={styles.featureTitle}>The Senior Experience</h2>
-          <p className={styles.featureLead}>Four years end on one mat. Every graduating senior gets a custom commemorative poster and a session built around who they are — not a rushed lineup photo.</p>
-          <ul className={styles.checklist}>
-            <li>Senior banners</li>
-            <li>Senior portraits</li>
-            <li>Family photos</li>
-            <li>Buddy photos</li>
-            <li>Locker graphics</li>
-            <li>Social graphics</li>
-            <li>Print packages</li>
-          </ul>
-          <div style={{ marginTop: 8 }}>
-            <a href="#inquire" className={styles.btnRed}>Reserve Senior Night Coverage</a>
-          </div>
-        </div>
-      </div>
 
       {/* ── Match Coverage ───────────────────────────────────────── */}
       <div className={styles.featureRow}>
