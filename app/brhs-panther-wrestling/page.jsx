@@ -589,7 +589,7 @@ export default function BRHSPantherWrestlingPage() {
           <Image src="/photos/BRHSWrestling2026-2027FBCOVER_C.png" alt="BRHS Panther Wrestling — Built Different, 2026-27" fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'contain', background: 'var(--bp-navy-deep)' }} />
         </div>
         <div className={styles.featureText}>
-          <span className={styles.featureDate}>Late November 2026</span>
+          <span className={styles.featureDate}>Media Day · December 8–9, 2026</span>
           <h2 className={styles.featureTitle}>Season Kickoff</h2>
           <p className={styles.featureLead}>Before the first whistle blows, every wrestler gets the professional treatment — clean portraits and the &ldquo;Built Different&rdquo; campaign graphics built for social media, programs, and recruiting profiles.</p>
           <ul className={styles.checklist}>
