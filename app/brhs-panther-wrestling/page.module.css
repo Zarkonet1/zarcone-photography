@@ -1312,3 +1312,25 @@ a.latestItem:hover { background: rgba(248,246,238,0.07); }
   .floatCtaLong { display: none; }
   .floatCtaShort { display: inline; }
 }
+
+/* ─── Dashboard band (2026-11-12) ───
+   Shared team-dashboard components (DashboardHeader, NextGameHero, StatCards,
+   MediaCenterGrid, LatestFromPanthers, CompactSchedule) are themed through
+   --br-* CSS vars. Mapped here to the "Built Different" palette: navy ink
+   field, cream accent — same pairing as the old hero's cream "2026-27 Season"
+   badge on navy. --br-on-accent keeps button/badge text navy on cream. */
+.dash {
+  --br-red: #efece0;
+  --br-red-dark: #d9d4c2;
+  --br-on-accent: #12233d;
+  --br-silver: #c9d0dc;
+  --br-silver-dim: #93a0b6;
+  --br-panel: #1d3a63;
+  --br-hairline: rgba(239,236,224,0.16);
+  --br-header-bg: #0e1b30;
+  --br-hero-scrim: linear-gradient(0deg, rgba(18,35,61,0.94) 10%, rgba(18,35,61,0.55) 100%);
+  background: var(--bp-navy-deep);
+  color: var(--bp-white);
+  /* clears the fixed 36px Upcoming bar so the header's Galleries/Team/Schedule links aren't hidden under it */
+  padding-top: 64px;
+}

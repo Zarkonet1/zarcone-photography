@@ -1,13 +1,20 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Lightbox from '@/components/Lightbox';
 import GalleryAlertSignup from '@/components/GalleryAlertSignup';
 import GalleryAlertToast from '@/components/GalleryAlertToast';
 import styles from './page.module.css';
-import { getRecord, getNextMatch } from '@/lib/teamSchedule';
+import { getRecord, getNextGame, getLastPlayedGame, getLatestResult, resolveScheduleDate } from '@/lib/teamSchedule';
+import { EVENTS } from '@/lib/events';
+import DashboardHeader from '@/components/team-dashboard/DashboardHeader';
+import NextGameHero from '@/components/team-dashboard/NextGameHero';
+import StatCards from '@/components/team-dashboard/StatCards';
+import MediaCenterGrid from '@/components/team-dashboard/MediaCenterGrid';
+import LatestFromPanthers from '@/components/team-dashboard/LatestFromPanthers';
+import CompactSchedule from '@/components/team-dashboard/CompactSchedule';
 import { sortArticlesByDate, isRecentArticle } from '@/lib/articles';
 import { DUAL_SCHEDULE_2026_27 } from '@/lib/wrestlingSchedule';
 
@@ -94,19 +101,33 @@ const STAT_BAR = [
   { num: 'Skyland', label: 'Conference', sub: 'Big Central for football, Skyland for every other BRHS program' },
 ];
 
-// Live season tracker. Record and Next Match now derive from
-// DUAL_SCHEDULE_2026_27 above (Tier 1 refactor, 2026-07-10) — add matches to
-// that array as they're scheduled/wrestled and these two update themselves.
-// Latest Result stays manual: RESULTS_2025_26 is a curated highlights list,
-// not a full dual-meet log, so "most recent entry" isn't reliably derivable
-// the way it is for football's game-by-game schedule. Current Rankings stays
-// manual until NJ's preseason polls publish in the fall.
-const SEASON_TRACKER = [
-  { label: 'Record', value: getRecord(DUAL_SCHEDULE_2026_27), href: '#results' },
-  { label: 'Next Match', value: getNextMatch(DUAL_SCHEDULE_2026_27, 'TBA — Opens Late Nov 2026'), href: '#results' },
-  { label: 'Latest Result', value: '2026 States: 2 Medalists', href: '#results' },
-  { label: 'Current Rankings', value: 'Not Yet Released', href: '#results' },
-  { label: 'Latest Gallery', value: '2025-26 Season — Live', href: 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Wrestling', external: true },
+// ── Dashboard data (2026-11-12 restructure to mirror football's hub) ──
+// Record / Next / Last Result derive from DUAL_SCHEDULE_2026_27 the moment
+// dates are added there. Until the first dual meet is on the schedule, the
+// "Next Up" slot falls back to the next upcoming wrestling-tagged event in
+// lib/events.js (Media Day, Dec 8-9) — status flips automatically, no edit.
+const DASHBOARD_NEXT_GAME = getNextGame(DUAL_SCHEDULE_2026_27);
+const DASHBOARD_LAST_PLAYED = getLastPlayedGame(DUAL_SCHEDULE_2026_27);
+const NEXT_WRESTLING_EVENT = EVENTS.find((e) => e.team === 'wrestling' && e.status === 'upcoming') || null;
+const DASHBOARD_RECORD = getRecord(DUAL_SCHEDULE_2026_27, '0–0');
+// Last team result of 2025-26 until the first 2026-27 dual is wrestled.
+const DASHBOARD_LATEST_RESULT = getLatestResult(DUAL_SCHEDULE_2026_27, 'L 30–37 · State Semi');
+const DASHBOARD_NO_GAME_LABEL = NEXT_WRESTLING_EVENT
+  ? `Next Up · ${NEXT_WRESTLING_EVENT.title.replace('BRHS Panther Wrestling ', '')} · ${NEXT_WRESTLING_EVENT.date}`
+  : '2026-27 Schedule Coming Soon';
+
+const DASHBOARD_EDITORIAL_ITEMS = sortArticlesByDate(ARTICLES)
+  .slice(0, 3)
+  .map((a, i) => ({ ...a, img: CAROUSEL[i % CAROUSEL.length].src }));
+const DASHBOARD_NEWS_HAS_NEW = DASHBOARD_EDITORIAL_ITEMS.length > 0 && isRecentArticle(DASHBOARD_EDITORIAL_ITEMS[0].date);
+
+const MEDIA_CENTER_TILES = [
+  { label: 'Season Gallery', sub: 'View Photos', href: '#gallery', img: '/photos/i-dkcFTnj.jpg' },
+  { label: 'Meet the Team', sub: 'Coaches & Wrestlers', href: '#coaches', img: '/photos/i-wBrCNrq.jpg' },
+  { label: 'Media Day', sub: 'Season Kickoff', href: '#season-kickoff', img: '/photos/i-Lv2PXKm.jpg' },
+  { label: 'Schedule', sub: 'Results & Outlook', href: '#schedule', img: '/photos/i-mhgq9Xp.jpg' },
+  { label: 'Stats', sub: 'Program Records', href: '#stats', img: '/photos/i-zshvpsK.jpg' },
+  { label: 'News', sub: 'Latest Coverage', href: '#news', img: '/photos/SPORTS-Zarcone-Photography-0007.jpg' },
 ];
 
 const COACHES = [
@@ -220,14 +241,9 @@ const FAMILY_QUOTES = [
 
 export default function BRHSPantherWrestlingPage() {
   const [lbIndex, setLbIndex] = useState(null);
-  const [slide, setSlide] = useState(0);
   const [form, setForm] = useState({ name: '', email: '', phone: '', athleteName: '', sport: 'Wrestling', interestedIn: 'Prints', message: '' });
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
-  useEffect(() => {
-    const t = setInterval(() => setSlide(s => (s + 1) % CAROUSEL.length), 5000);
-    return () => clearInterval(t);
-  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -289,64 +305,59 @@ export default function BRHSPantherWrestlingPage() {
         }}
       />
 
-      {/* ── Hero ────────────────────────────────────────────────── */}
-      <section className={styles.hero}>
-        <Image src="/photos/wrestling-throw-hero.jpg" alt="Bridgewater-Raritan Panther Wrestling" fill priority sizes="100vw" className={styles.heroImg} />
-        <div className={styles.heroScrim} />
-        <div className={styles.heroContent}>
-          <div className={styles.heroBadgeRow}>
-            <span className={styles.heroBadge}>2026-27 Season</span>
-            <span className={styles.heroBadgeOutline}>Official Photography &amp; Social Media Partner</span>
-          </div>
-          <h1 className={styles.heroTitle}>Built<br /><span>Different</span></h1>
-          <p className={styles.heroSub}>Every championship starts with discipline. Every champion is forged through relentless work.</p>
-          <p className={styles.heroWelcome}>Welcome to Bridgewater-Raritan Panther Wrestling.</p>
-          <div className={styles.heroCtas}>
-            <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Season Gallery</a>
-            <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnSilver}>Order Photos</a>
-            <a href="#inquire" className={styles.btnGhost}>Book Zarcone Photography</a>
-          </div>
-        </div>
-      </section>
+      {/* ── Dashboard (2026-11-12) ─────────────────────────────────
+          Mirrors the football hub's structure: restrained header, dynamic
+          Next-Up hero, 4 stat cards, Media Center grid, latest coverage,
+          compact schedule. Replaces the marketing hero (and its Order
+          Photos / Book Zarcone Photography buttons), the quick-nav pills,
+          and the 5-tile Season Tracker. Same navy/cream "Built Different"
+          palette via the .dash vars in page.module.css. ── */}
+      <div className={styles.dash}>
+        <DashboardHeader
+          teamName="Bridgewater-Raritan Panther Wrestling"
+          season="2026–27 Season"
+          links={[
+            { href: '#gallery', label: 'Galleries' },
+            { href: '#coaches', label: 'Team' },
+            { href: '#schedule', label: 'Schedule' },
+          ]}
+          creditSuffix="Official Photography & Social Media Partner"
+        />
 
-      {/* ── Quick Navigation ─────────────────────────────────────── */}
-      <nav className={styles.quickNav} aria-label="Jump to section">
-        <a href="#results" className={styles.quickNavLink}>Results</a>
-        <a href="#season-kickoff" className={styles.quickNavLink}>Kickoff</a>
-        <a href="#gallery" className={styles.quickNavLink}>Gallery</a>
-        <a href="#news" className={styles.quickNavLink}>News</a>
-        <a href="#inquire" className={styles.quickNavLink}>Contact</a>
-      </nav>
+        <NextGameHero
+          nextGame={DASHBOARD_NEXT_GAME}
+          lastPlayedGame={DASHBOARD_LAST_PLAYED}
+          latestGallery={null}
+          bgPhotoSrc="/photos/wrestling-throw-hero.jpg"
+          teamName="Bridgewater-Raritan Panther Wrestling"
+          teamMatchupName="Bridgewater-Raritan Panthers"
+          pageTitle="Bridgewater-Raritan Panther Wrestling 2026–27"
+          resolveGameDate={resolveScheduleDate}
+          noGameLabel={DASHBOARD_NO_GAME_LABEL}
+        />
 
-      {/* ── Live Season Tracker — the page's weekly-update engine ─── */}
-      <section className={styles.latestBar}>
-        <div className={styles.latestHead}>
-          <span className={styles.latestDot} />
-          <span className={styles.eyebrowLight}>2026-27 Season Tracker</span>
-        </div>
-        <div className={styles.latestGrid}>
-          {SEASON_TRACKER.map((item, i) => {
-            const Tag = item.external ? 'a' : Link;
-            const props = item.external
-              ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' }
-              : { href: item.href };
-            return (
-              <Tag key={i} className={styles.latestItem} {...props}>
-                <span className={styles.latestItemLabel}>{item.label}</span>
-                <span className={styles.latestItemValue}>{item.value}</span>
-              </Tag>
-            );
-          })}
-        </div>
-      </section>
+        <StatCards
+          record={DASHBOARD_RECORD}
+          nextLabel={DASHBOARD_NEXT_GAME ? 'Next Match' : 'Next Up'}
+          nextGameDate={DASHBOARD_NEXT_GAME ? DASHBOARD_NEXT_GAME.date : (NEXT_WRESTLING_EVENT ? (NEXT_WRESTLING_EVENT.bannerShort || NEXT_WRESTLING_EVENT.date) : 'TBA')}
+          nextGameOpponent={DASHBOARD_NEXT_GAME ? DASHBOARD_NEXT_GAME.opponent : (NEXT_WRESTLING_EVENT ? 'Media Day' : null)}
+          latestResult={DASHBOARD_LATEST_RESULT}
+          seasonYear="2026–27"
+          seasonSub="'25 & '26 Sectional Champions"
+        />
 
-      {/* ── Official support line ────────────────────────────────── */}
-      <section className={styles.supportLine}>
-        Proudly supporting Bridgewater-Raritan Wrestling through photography, storytelling, and season-long media coverage.
-      </section>
+        <MediaCenterGrid newsHasNew={DASHBOARD_NEWS_HAS_NEW} tiles={MEDIA_CENTER_TILES} />
+
+        <LatestFromPanthers items={DASHBOARD_EDITORIAL_ITEMS} />
+
+        <CompactSchedule
+          games={DUAL_SCHEDULE_2026_27}
+          emptyMessage="2026-27 dual-meet schedule not yet published. Media Day is Dec 8–9; the season traditionally opens at the Mike Dessino Invitational in mid-December."
+        />
+      </div>
 
       {/* ── Program stat bar ─────────────────────────────────────── */}
-      <section className={styles.statBar}>
+      <section id="stats" className={styles.statBar} style={{ scrollMarginTop: 120 }}>
         <div className={styles.statBarGrid}>
           {STAT_BAR.map((s, i) => (
             <div key={i} className={styles.statBarItem}>
@@ -361,43 +372,8 @@ export default function BRHSPantherWrestlingPage() {
         </p>
       </section>
 
-      {/* ── Built Different campaign banner ─────────────────────── */}
-      <section className={styles.campaignBanner}>
-        <Image src="/photos/BRHSWrestling2026-2027FBCOVER_C.png" alt="BRHS Panther Wrestling — Built Different, 2026-27 campaign graphic" width={1942} height={809} sizes="100vw" />
-        <div className={styles.campaignBar}>
-          <span className={styles.eyebrowLight}>2026-27 Campaign Graphic</span>
-          <span className={styles.eyebrowLight} style={{ opacity: 0.6 }}>Designed by Zarcone Photography</span>
-        </div>
-      </section>
-
-      {/* ── Partnership ─────────────────────────────────────────── */}
-      <section className={styles.partnership}>
-        <div className={styles.logoBlock}>
-          <Image src="/photos/BRHSWrestling2026-2027FBProfile_C_transparent.png" alt="BRHS Panther Wrestling — Built Different, 2026-27" width={1568} height={1568} sizes="220px" style={{ width: '100%', height: 'auto' }} />
-          <span className={styles.sponsorTag}>Official Partner · 2026-27 Season</span>
-        </div>
-        <div className={styles.partnershipBody}>
-          <span className={styles.eyebrowRed}>Proud Partnership</span>
-          <p style={{ marginTop: 18 }}>
-            Zarcone Photography is the <strong>official photography and social media graphics partner</strong> of BRHS Panther Wrestling for the 2026-27 season —
-            full dual meet and tournament coverage, season kickoff portraits, and the campaign graphics (including the &ldquo;Built Different&rdquo; series) that run across the program&rsquo;s social channels all year.
-          </p>
-          <p>
-            This builds on a growing partnership across Bridgewater-Raritan athletics, including an ongoing role as the official media partner of{' '}
-            <Link href="/brhs-panther-football">BRHS Panther Football</Link> and <Link href="/brhs-panther-volleyball">BRHS Panther Girls Volleyball</Link> — the same <Link href="/sports-photographer-nj">sports photographer NJ</Link>, with 30+ years of photography experience. The goal is the same across every program: professional photography, real storytelling, and a visual record worth keeping. Athletic directors and booster clubs can see how a <Link href="/schools-athletic-programs-nj">school sports media partnership</Link> works.
-          </p>
-          <p>
-            Coming off a season that saw the program defend its North 2, Group 5 sectional title for the first time in school history and send two wrestlers to the state medal stand, there&rsquo;s real momentum heading into 2026-27.
-          </p>
-          <div className={styles.partnershipStats}>
-            <div><div className={styles.statNum}>30+</div><div className={styles.statLabel}>Years Experience</div></div>
-            <div><div className={styles.statNum}>2x</div><div className={styles.statLabel}>Back-to-Back Sectional Champs</div></div>
-            <div><div className={styles.statNum}>2</div><div className={styles.statLabel}>2026 State Medalists</div></div>
-          </div>
-        </div>
-      </section>
-
       {/* ── Results & Season Outlook ─────────────────────────────── */}
+      <span id="schedule" style={{ position: 'relative', top: -120, display: 'block' }} aria-hidden="true" />
       <section id="results" style={{ scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
@@ -437,8 +413,51 @@ export default function BRHSPantherWrestlingPage() {
         </p>
       </section>
 
+      {/* ── In The News ──────────────────────────────────────────── */}
+      <section id="news" style={{ background: 'var(--bp-paper-deep)', scrollMarginTop: 120 }}>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Coverage</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>In The <em>News</em></h2>
+          </div>
+          <p className={styles.sectionSub}>Real coverage of the team, the sectional title defense, and the wrestlers — from local press and the school itself.</p>
+        </div>
+        <div className={styles.newsGrid}>
+          {sortArticlesByDate(ARTICLES).map((a, i) => (
+            <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" className={styles.newsCard}>
+              <span className={styles.newsBadgeRow}>
+                <span className={styles.newsSource}>{a.source}</span>
+                {isRecentArticle(a.date) && <span className={styles.newsNew}>New</span>}
+              </span>
+              <span className={styles.newsTitle}>{a.title}</span>
+              <span className={styles.newsLink}>Read Article →</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Featured Wrestler ─────────────────────────────────────── */}
+      <section id="featured-wrestler" style={{ background: 'var(--bp-paper-deep)' }}>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>Season Spotlight</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Featured <em>Wrestler</em></h2>
+          </div>
+          <p className={styles.sectionSub}>One athlete, one story — rotating weekly once dual meets begin. Heading into 2026-27:</p>
+        </div>
+        <div className={styles.spotlightWrap}>
+          <div className={styles.spotlightBadge}>{FEATURED_WRESTLER.name.split(' ').map(n => n[0]).join('')}</div>
+          <div>
+            <div className={styles.spotlightName}>{FEATURED_WRESTLER.name}</div>
+            <div className={styles.spotlightClass}>{FEATURED_WRESTLER.detail}</div>
+            <p className={styles.spotlightBio}>{FEATURED_WRESTLER.bio}</p>
+            <p className={styles.spotlightNote}>Spotlight rotates to a new wrestler each week once the season is underway.</p>
+          </div>
+        </div>
+      </section>
+
       {/* ── Coaches ──────────────────────────────────────────────── */}
-      <section>
+      <section id="coaches" style={{ scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
             <span className={styles.eyebrowRed}>Leadership</span>
@@ -466,49 +485,6 @@ export default function BRHSPantherWrestlingPage() {
                 <p className={styles.coachStub}>Full bio and headshot coming as part of the season kickoff shoot.</p>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Featured Wrestler ─────────────────────────────────────── */}
-      <section id="featured-wrestler" style={{ background: 'var(--bp-paper-deep)' }}>
-        <div className={styles.sectionHead}>
-          <div>
-            <span className={styles.eyebrowRed}>Season Spotlight</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Featured <em>Wrestler</em></h2>
-          </div>
-          <p className={styles.sectionSub}>One athlete, one story — rotating weekly once dual meets begin. Heading into 2026-27:</p>
-        </div>
-        <div className={styles.spotlightWrap}>
-          <div className={styles.spotlightBadge}>{FEATURED_WRESTLER.name.split(' ').map(n => n[0]).join('')}</div>
-          <div>
-            <div className={styles.spotlightName}>{FEATURED_WRESTLER.name}</div>
-            <div className={styles.spotlightClass}>{FEATURED_WRESTLER.detail}</div>
-            <p className={styles.spotlightBio}>{FEATURED_WRESTLER.bio}</p>
-            <p className={styles.spotlightNote}>Spotlight rotates to a new wrestler each week once the season is underway.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── In The News ──────────────────────────────────────────── */}
-      <section id="news" style={{ background: 'var(--bp-paper-deep)', scrollMarginTop: 120 }}>
-        <div className={styles.sectionHead}>
-          <div>
-            <span className={styles.eyebrowRed}>Coverage</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>In The <em>News</em></h2>
-          </div>
-          <p className={styles.sectionSub}>Real coverage of the team, the sectional title defense, and the wrestlers — from local press and the school itself.</p>
-        </div>
-        <div className={styles.newsGrid}>
-          {sortArticlesByDate(ARTICLES).map((a, i) => (
-            <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" className={styles.newsCard}>
-              <span className={styles.newsBadgeRow}>
-                <span className={styles.newsSource}>{a.source}</span>
-                {isRecentArticle(a.date) && <span className={styles.newsNew}>New</span>}
-              </span>
-              <span className={styles.newsTitle}>{a.title}</span>
-              <span className={styles.newsLink}>Read Article →</span>
-            </a>
           ))}
         </div>
       </section>
@@ -659,55 +635,39 @@ export default function BRHSPantherWrestlingPage() {
         </div>
       </div>
 
-      {/* ── Why Zarcone Photography ──────────────────────────────── */}
-      <section>
-        <div className={styles.sectionHead}>
-          <div>
-            <span className={styles.eyebrowRed}>Why Zarcone Photography</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Trusted <em>On The Mat</em></h2>
-          </div>
-        </div>
-        <div className={styles.grid3col}>
-          {WHY_US.map(w => (
-            <div key={w.num} className={styles.iconCard}>
-              <div className={styles.num}>{w.num}</div>
-              <h3>{w.title}</h3>
-              <p>{w.body}</p>
-            </div>
-          ))}
+      {/* ── Built Different campaign banner ─────────────────────── */}
+      <section className={styles.campaignBanner}>
+        <Image src="/photos/BRHSWrestling2026-2027FBCOVER_C.png" alt="BRHS Panther Wrestling — Built Different, 2026-27 campaign graphic" width={1942} height={809} sizes="100vw" />
+        <div className={styles.campaignBar}>
+          <span className={styles.eyebrowLight}>2026-27 Campaign Graphic</span>
+          <span className={styles.eyebrowLight} style={{ opacity: 0.6 }}>Designed by Zarcone Photography</span>
         </div>
       </section>
 
-      {/* ── Services ─────────────────────────────────────────────── */}
-      <section>
-        <div className={styles.sectionHead}>
-          <div>
-            <span className={styles.eyebrowRed}>Services</span>
-            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Built For <em>This Program</em></h2>
-          </div>
+      {/* ── Partnership ─────────────────────────────────────────── */}
+      <section className={styles.partnership}>
+        <div className={styles.logoBlock}>
+          <Image src="/photos/BRHSWrestling2026-2027FBProfile_C_transparent.png" alt="BRHS Panther Wrestling — Built Different, 2026-27" width={1568} height={1568} sizes="220px" style={{ width: '100%', height: 'auto' }} />
+          <span className={styles.sponsorTag}>Official Partner · 2026-27 Season</span>
         </div>
-        <div className={styles.grid3col}>
-          {SERVICES.map(s => (
-            <div key={s.title} className={styles.iconCard}>
-              <h3>{s.title}</h3>
-              <p>{s.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Featured Carousel ────────────────────────────────────── */}
-      <section className={styles.carousel}>
-        {CAROUSEL.map((c, i) => (
-          <div key={i} className={`${styles.carouselSlide} ${i === slide ? styles.active : ''}`}>
-            <Image src={c.src} alt={c.caption} fill sizes="100vw" priority={i === 0} />
+        <div className={styles.partnershipBody}>
+          <span className={styles.eyebrowRed}>Proud Partnership</span>
+          <p style={{ marginTop: 18 }}>
+            Zarcone Photography is the <strong>official photography and social media graphics partner</strong> of BRHS Panther Wrestling for the 2026-27 season —
+            full dual meet and tournament coverage, season kickoff portraits, and the campaign graphics (including the &ldquo;Built Different&rdquo; series) that run across the program&rsquo;s social channels all year.
+          </p>
+          <p>
+            This builds on a growing partnership across Bridgewater-Raritan athletics, including an ongoing role as the official media partner of{' '}
+            <Link href="/brhs-panther-football">BRHS Panther Football</Link> and <Link href="/brhs-panther-volleyball">BRHS Panther Girls Volleyball</Link> — the same <Link href="/sports-photographer-nj">sports photographer NJ</Link>, with 30+ years of photography experience. The goal is the same across every program: professional photography, real storytelling, and a visual record worth keeping. Athletic directors and booster clubs can see how a <Link href="/schools-athletic-programs-nj">school sports media partnership</Link> works.
+          </p>
+          <p>
+            Coming off a season that saw the program defend its North 2, Group 5 sectional title for the first time in school history and send two wrestlers to the state medal stand, there&rsquo;s real momentum heading into 2026-27.
+          </p>
+          <div className={styles.partnershipStats}>
+            <div><div className={styles.statNum}>30+</div><div className={styles.statLabel}>Years Experience</div></div>
+            <div><div className={styles.statNum}>2x</div><div className={styles.statLabel}>Back-to-Back Sectional Champs</div></div>
+            <div><div className={styles.statNum}>2</div><div className={styles.statLabel}>2026 State Medalists</div></div>
           </div>
-        ))}
-        <div className={styles.carouselCaption}>{CAROUSEL[slide].caption}</div>
-        <div className={styles.carouselDots}>
-          {CAROUSEL.map((_, i) => (
-            <button key={i} className={`${styles.carouselDot} ${i === slide ? styles.carouselDotActive : ''}`} onClick={() => setSlide(i)} aria-label={`Slide ${i + 1}`} />
-          ))}
         </div>
       </section>
 
@@ -829,17 +789,6 @@ export default function BRHSPantherWrestlingPage() {
         <div className={styles.qrBlock}>
           <Image src="/assets/qr-brhs-panther-wrestling.png" alt="QR code to this page" width={410} height={410} style={{ width: 120, height: 120 }} />
           <span>Scan to Return Here</span>
-        </div>
-      </section>
-
-      {/* ── Final CTA ────────────────────────────────────────────── */}
-      <section className={styles.finalCta}>
-        <h2 className={styles.finalCtaTitle}>Every Season Has A Story.<br /><span>We&rsquo;re Honored To Preserve Yours.</span></h2>
-        <p className={styles.finalCtaSub}>Official photography &amp; social media partner of Bridgewater-Raritan Panther Wrestling — 2026-27 season.</p>
-        <div className={styles.finalCtaBtns}>
-          <a href={SEASON_GALLERY_URL} target="_blank" rel="noopener noreferrer" className={styles.btnRed}>View Galleries</a>
-          <a href="#inquire" className={styles.btnSilver}>Book Photography</a>
-          <Link href="/about#contact" className={styles.btnGhost}>Contact Us</Link>
         </div>
       </section>
 

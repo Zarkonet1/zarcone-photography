@@ -72,7 +72,7 @@
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--br-on-accent, #fff);
   background: var(--br-red, #c8102e);
   padding: 2px 7px;
   border-radius: 3px;

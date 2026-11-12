@@ -9,10 +9,11 @@
 // summary, not a replacement.
 import styles from './StatCards.module.css';
 
-export default function StatCards({ record, nextGameDate, nextGameOpponent, latestResult, seasonYear, seasonSub }) {
+// nextLabel: added 2026-11-12 for wrestling ('Next Up' — first item is Media Day, not a match). Default keeps every existing caller unchanged.
+export default function StatCards({ record, nextGameDate, nextGameOpponent, latestResult, seasonYear, seasonSub, nextLabel = 'Next Game' }) {
   const cards = [
     { label: 'Record', value: record },
-    { label: 'Next Game', value: nextGameDate, sub: nextGameOpponent },
+    { label: nextLabel, value: nextGameDate, sub: nextGameOpponent },
     { label: 'Last Result', value: latestResult || '—' },
     { label: 'Season', value: seasonYear, sub: seasonSub },
   ];
