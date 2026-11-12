@@ -111,7 +111,7 @@ export default function AboutPage() {
       <div className={styles.hero}>
         <div
           className={styles.heroImg}
-          style={{ backgroundImage: "url('/photos/tz-headshot.jpg')" }}
+          style={{ backgroundImage: "url('/photos/tz-headshot-studio.jpg')" }}
         />
         <div className={styles.heroText}>
           <p className="eyebrow">About Tom Zarcone</p>

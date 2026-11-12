@@ -10,7 +10,7 @@ export const metadata = {
     url: 'https://www.zarconephotography.com/about',
     images: [
       {
-        url: 'https://www.zarconephotography.com/photos/tz-headshot.jpg',
+        url: 'https://www.zarconephotography.com/photos/tz-headshot-studio.jpg',
         width: 1200,
         height: 800,
         alt: 'Tom Zarcone — NJ Photographer',
@@ -19,7 +19,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://www.zarconephotography.com/photos/tz-headshot.jpg'],
+    images: ['https://www.zarconephotography.com/photos/tz-headshot-studio.jpg'],
   },
 };
 

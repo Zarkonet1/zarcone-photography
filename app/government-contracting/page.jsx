@@ -32,7 +32,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://www.zarconephotography.com/photos/tz-headshot.jpg',
+        url: 'https://www.zarconephotography.com/photos/tz-headshot-suit.jpg',
         width: 1200,
         height: 800,
         alt: 'Zarcone Photography — Government Practice',
@@ -41,7 +41,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://www.zarconephotography.com/photos/tz-headshot.jpg'],
+    images: ['https://www.zarconephotography.com/photos/tz-headshot-suit.jpg'],
   },
   alternates: {
     canonical: 'https://www.zarconephotography.com/government-contracting',
