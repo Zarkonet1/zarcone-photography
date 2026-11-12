@@ -78,6 +78,14 @@ export default function EventsPage() {
         imageSrc="/photos/i-q7LzKSb.jpg"
       />
 
+      <p style={{ padding: '40px 60px 8px', maxWidth: 760, fontSize: 'clamp(15px, 1.3vw, 22px)', lineHeight: 1.75, color: 'rgba(236,232,225,0.55)', letterSpacing: '0.02em' }}>
+        Planning a gala, fundraiser, or company event? See how I work as a{' '}
+        <Link href="/event-photographer-nj" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
+          corporate &amp; event photographer in NJ
+        </Link>
+        {' '}— coverage, delivery, and pricing. Everything below is a real event I photographed.
+      </p>
+
       <div className={styles.filterBar}>
         {CATEGORIES.map(cat => (
           <button

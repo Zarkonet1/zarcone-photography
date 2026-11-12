@@ -3,10 +3,10 @@ import PageHero from '@/components/PageHero';
 import styles from '@/app/seo-page.module.css';
 
 export const metadata = {
-  title: 'Event Photographer — New Jersey | Zarcone Photography',
+  title: 'Corporate & Event Photographer NJ | Zarcone Photography',
   description: '30+ years of photography experience. Corporate events, galas & private celebrations across Central NJ. Fast, private online gallery delivery. Based in Bridgewater, NJ.',
   openGraph: {
-    title: 'Event Photographer — New Jersey | Zarcone Photography',
+    title: 'Corporate & Event Photographer NJ | Zarcone Photography',
     description: 'Event photographer based in Bridgewater, NJ. Proms, corporate events, live music, and milestone celebrations across New Jersey.',
     url: 'https://www.zarconephotography.com/event-photographer-nj',
     type: 'website',

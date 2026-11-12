@@ -32,7 +32,7 @@ export default function Footer() {
             <span className={styles.navLabel}>Services</span>
             <Link href="/senior-portrait-photographer-nj">Senior Portraits</Link>
             <Link href="/sports-photographer-nj">Sports Coverage</Link>
-            <Link href="/event-photographer-nj">Event Coverage</Link>
+            <Link href="/event-photographer-nj">Corporate &amp; Event Photography</Link>
             <Link href="/schools-athletic-programs-nj">Schools &amp; Programs</Link>
             <Link href="/sports-media-day-nj">Sports Media Day</Link>
             <Link href="/portrait-parties">Portrait Parties</Link>

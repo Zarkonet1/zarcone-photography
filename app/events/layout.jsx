@@ -1,19 +1,19 @@
 export const metadata = {
-  title: 'Event Photographer NJ | Corporate & Charity | Zarcone',
-  description: 'Professional event photographer in New Jersey — corporate events, charity fundraisers, galas, and celebrations. Bridgewater, NJ.',
+  title: 'Event Photography Portfolio | Galas, Fundraisers & Celebrations | Zarcone Photography',
+  description: 'A portfolio of real events photographed by Zarcone Photography — charity fundraisers, galas, live music, and milestone celebrations. Booking a corporate or private event? See our NJ event photography services.',
   alternates: {
     canonical: '/events',
   },
   openGraph: {
-    title: 'Event Photographer NJ | Corporate & Charity | Zarcone',
-    description: 'Professional event photographer in New Jersey — corporate events, charity fundraisers, galas, and celebrations.',
+    title: 'Event Photography Portfolio | Galas, Fundraisers & Celebrations | Zarcone Photography',
+    description: 'A portfolio of real events photographed by Zarcone Photography — fundraisers, galas, live music, and celebrations.',
     url: 'https://www.zarconephotography.com/events',
     images: [
       {
         url: 'https://www.zarconephotography.com/photos/EVENT-Zarcone-Photography-28.jpg',
         width: 1200,
         height: 800,
-        alt: 'Event photography New Jersey — Zarcone Photography',
+        alt: 'Event photography portfolio — Zarcone Photography',
       },
     ],
   },
