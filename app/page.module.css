@@ -239,7 +239,12 @@
 }
 .aboutImgWrap {
   position: relative;
-  height: 580px;
+  /* Portrait frame matching the 4:5 headshot, so the full head and beard
+     show instead of a landscape crop through the forehead. */
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 4 / 5;
+  justify-self: end;
   overflow: hidden;
 }
 .aboutImg {
@@ -437,7 +442,7 @@
   .card { height: 55vw; min-height: 300px; }
   .workGrid { grid-template-columns: 1fr 1fr; }
   .aboutStrip { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
-  .aboutImgWrap { height: 360px; }
+  .aboutImgWrap { max-width: 420px; justify-self: center; }
   .heroContent { padding: 0 24px 60px; }
   /* Text spans the full width on small screens, so lean on the bottom fade instead of the side scrim */
   .heroOverlay {
