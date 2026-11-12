@@ -132,9 +132,7 @@ const MEDIA_CENTER_TILES = [
   { label: 'News', sub: 'Latest Coverage', href: '#news', img: '/photos/SPORTS-Zarcone-Photography-0007.jpg' },
 ];
 
-// Coach bios supplied by Tom Zarcone (2026-11-12), in staff order.
-// Sammy Alvarez kept from the earlier sourced roster pending confirmation
-// that he is still on the 2026-27 staff.
+// 2026-27 coaching staff — bios supplied by Tom Zarcone (2026-11-12), in staff order.
 const COACHES = [
   {
     name: 'Kyle Murphy',
@@ -161,12 +159,6 @@ const COACHES = [
     name: 'Shane Raymond',
     title: 'Assistant Coach',
     bio: 'The newest addition to the Panthers’ coaching staff, Shane Raymond spent several seasons as the lead varsity assistant for South Plainfield’s boys’ and girls’ wrestling programs. He comes to Bridgewater-Raritan after earning District 14 Assistant Coach of the Year honors in 2026.',
-  },
-  {
-    name: 'Sammy Alvarez',
-    title: 'Assistant Coach · Joined December 2025',
-    bio: 'A 2025 NCAA All-America wrestler at Rider University (7th at 149 lbs) and the Mid-American Conference Wrestler of the Year, Alvarez joined Coach Murphy\'s staff after his bid for a fifth year of college eligibility was denied. A 2019 NJ state champion at 126 lbs for St. Joseph Regional, he also wrestled at Rutgers and Oklahoma State, training under coaches John Smith and Scott Goodale. He now works full-time at BRHS as an Instructional Assistant.',
-    philosophy: '',
   },
 ];
 
