@@ -22,7 +22,7 @@ export const metadata = {
     url: 'https://www.zarconephotography.com',
     images: [
       {
-        url: 'https://www.zarconephotography.com/photos/tz-headshot.jpg',
+        url: 'https://www.zarconephotography.com/photos/tz-headshot-studio.jpg',
         width: 1200,
         height: 800,
         alt: 'Zarcone Photography — NJ Photographer',
@@ -33,7 +33,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Zarcone Photography — NJ Portrait & Sports Photographer',
     description: 'Sports, senior portrait and event photographer in Bridgewater, NJ. Media partner to Bridgewater-Raritan athletics. Serving Somerset County and Central New Jersey.',
-    images: ['https://www.zarconephotography.com/photos/tz-headshot.jpg'],
+    images: ['https://www.zarconephotography.com/photos/tz-headshot-studio.jpg'],
   },
 };
 
@@ -46,7 +46,7 @@ const jsonLd = {
   url: 'https://www.zarconephotography.com',
   telephone: '(908) 777-0631',
   email: 'info@zarconephotography.com',
-  image: 'https://www.zarconephotography.com/photos/tz-headshot.jpg',
+  image: 'https://www.zarconephotography.com/photos/tz-headshot-studio.jpg',
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',

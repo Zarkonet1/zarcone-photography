@@ -129,11 +129,11 @@ Metadata is set per-page via Next.js `export const metadata` in each layout or p
 **OG images by page:**
 | Page | Image |
 |------|-------|
-| Homepage / default | `/photos/tz-headshot.jpg` |
+| Homepage / default | `/photos/tz-headshot-studio.jpg` |
 | Sports | `/photos/i-s7zBdzk.jpg` |
 | Portraits | `/photos/PORTRAIT-Zarcone-Photography-0002.jpg` |
 | Events | `/photos/EVENT-Zarcone-Photography-28.jpg` |
-| Design / About / FAQ / News | `/photos/tz-headshot.jpg` |
+| Design / About / FAQ / News | `/photos/tz-headshot-studio.jpg` |
 | Senior portrait landing | `/photos/i-rvRX82g.jpg` |
 | Sports photographer landing | `/photos/i-s7zBdzk.jpg` |
 | Event photographer landing | `/photos/EVENT-Zarcone-Photography-28.jpg` |

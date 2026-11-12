@@ -251,7 +251,7 @@ Your post content goes here. Write in plain markdown.
 
 Open `app/about/page.jsx`:
 
-- **Hero photo** (approachable headshot): find `url('/photos/tz-headshot.jpg')` — replace filename
+- **Hero photo** (approachable headshot): find `url('/photos/tz-headshot-studio.jpg')` — replace filename
 - **Pullquote break** (dramatic B&W): find `url('/photos/tom-portrait.jpg')` — replace filename
 - **Contact section** (on a shoot): find `url('/photos/tz-shoot-portrait.jpg')` — replace filename
 

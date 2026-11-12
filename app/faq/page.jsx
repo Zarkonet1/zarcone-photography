@@ -178,7 +178,7 @@ export default function FAQPage() {
         eyebrow="Support"
         title="Frequently Asked Questions"
         description="Everything you need to know before booking. Don't see your question? Just ask."
-        imageSrc="/photos/tz-headshot.jpg"
+        imageSrc="/photos/tz-headshot-studio.jpg"
       />
 
       <div className={styles.page}>
