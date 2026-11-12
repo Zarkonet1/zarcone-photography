@@ -122,6 +122,10 @@ export default function SportsPage() {
         <Link href="/brhs-panther-volleyball" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
           BRHS Panther volleyball photography →
         </Link>
+        {', plus an independent media hub for '}
+        <Link href="/brhs-panther-girls-basketball" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>
+          Panther Girls Basketball →
+        </Link>
       </p>
 
       <p className={styles.painLine} style={{ paddingTop: 0 }}>
