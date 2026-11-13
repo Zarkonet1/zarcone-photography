@@ -16,7 +16,7 @@ import MediaCenterGrid from '@/components/team-dashboard/MediaCenterGrid';
 import LatestFromPanthers from '@/components/team-dashboard/LatestFromPanthers';
 import CompactSchedule from '@/components/team-dashboard/CompactSchedule';
 import { sortArticlesByDate, isRecentArticle } from '@/lib/articles';
-import { DUAL_SCHEDULE_2026_27 } from '@/lib/wrestlingSchedule';
+import { DUAL_SCHEDULE_2026_27, FULL_SCHEDULE_2026_27 } from '@/lib/wrestlingSchedule';
 
 const GALLERY_URL = 'https://galleries.zarconephotography.com';
 const SEASON_GALLERY_URL = 'https://zarconephotography.smugmug.com/2025-2026-BRHS-Wrestling';
@@ -106,7 +106,17 @@ const STAT_BAR = [
 // dates are added there. Until the first dual meet is on the schedule, the
 // "Next Up" slot falls back to the next upcoming wrestling-tagged event in
 // lib/events.js (Media Day, Dec 8-9) — status flips automatically, no edit.
-const DASHBOARD_NEXT_GAME = getNextGame(DUAL_SCHEDULE_2026_27);
+// Next Match draws from the FULL schedule (tournaments, quads and postseason
+// included) — added 2026-11-13 when the tentative schedule went in. Record
+// still derives from duals only.
+const DASHBOARD_NEXT_GAME = getNextGame(FULL_SCHEDULE_2026_27);
+// Compact preview: drop past-dated rows with no result (tournaments/events
+// never get a W-L result, so they'd otherwise sit in "upcoming" forever).
+const COMPACT_SCHEDULE_GAMES = (() => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return FULL_SCHEDULE_2026_27.filter((g) => g.result || resolveScheduleDate(g.date) >= today);
+})();
 const DASHBOARD_LAST_PLAYED = getLastPlayedGame(DUAL_SCHEDULE_2026_27);
 const NEXT_WRESTLING_EVENT = EVENTS.find((e) => e.team === 'wrestling' && e.status === 'upcoming') || null;
 const DASHBOARD_RECORD = getRecord(DUAL_SCHEDULE_2026_27, '0–0');
@@ -363,7 +373,7 @@ export default function BRHSPantherWrestlingPage() {
         <LatestFromPanthers items={DASHBOARD_EDITORIAL_ITEMS} />
 
         <CompactSchedule
-          games={DUAL_SCHEDULE_2026_27}
+          games={COMPACT_SCHEDULE_GAMES}
           emptyMessage="2026-27 dual-meet schedule not yet published. Media Day is Dec 8–9; the season traditionally opens at the Mike Dessino Invitational in mid-December."
         />
       </div>
@@ -385,7 +395,48 @@ export default function BRHSPantherWrestlingPage() {
       </section>
 
       {/* ── Results & Season Outlook ─────────────────────────────── */}
+      {/* ── 2026-27 Schedule (TENTATIVE) — added 2026-11-13 ─────────
+          Data: FULL_SCHEDULE_2026_27 in lib/wrestlingSchedule.js. Every row
+          is tentative until an independent source confirms it; the label
+          below disappears on its own once no row is tentative. */}
       <span id="schedule" style={{ position: 'relative', top: -120, display: 'block' }} aria-hidden="true" />
+      <section id="schedule-2026-27" style={{ scrollMarginTop: 120 }}>
+        <div className={styles.sectionHead}>
+          <div>
+            <span className={styles.eyebrowRed}>2026-27 Season{FULL_SCHEDULE_2026_27.some((g) => g.tentative) ? ' · Tentative' : ''}</span>
+            <h2 className={styles.sectionH2} style={{ marginTop: 12 }}>Season <em>Schedule</em></h2>
+          </div>
+          <p className={styles.sectionSub}>
+            {FULL_SCHEDULE_2026_27.some((g) => g.tentative)
+              ? 'Tentative schedule from the coaching staff’s preliminary calendar. Dates, sites and opponents may change until confirmed by the school or MaxPreps. Times to be announced.'
+              : 'Duals, tournaments and the postseason road for 2026-27.'}
+          </p>
+        </div>
+        <table className={styles.scheduleTable}>
+          <thead>
+            <tr><th>Date</th><th>Opponent / Event</th><th>Team</th><th>Site</th><th>Type</th></tr>
+          </thead>
+          <tbody>
+            {FULL_SCHEDULE_2026_27.map((g, i) => (
+              <tr key={i}>
+                <td data-label="Date">{g.date}</td>
+                <td data-label="Opponent / Event">
+                  {g.opponent}
+                  {g.note ? <span style={{ display: 'block', fontSize: '0.85em', opacity: 0.75 }}>{g.note}</span> : null}
+                  {g.location && !g.home ? <span style={{ display: 'block', fontSize: '0.85em', opacity: 0.75 }}>{g.location}</span> : null}
+                </td>
+                <td data-label="Team">{g.squad || '—'}</td>
+                <td data-label="Site">{g.siteLabel}</td>
+                <td className={styles.resultCell} data-label="Type">
+                  {g.result ? `${g.result.win == null ? 'T' : g.result.win ? 'W' : 'L'} ${g.result.score}` : g.type}
+                  {g.tentative ? <span style={{ display: 'block', fontSize: '0.8em', opacity: 0.7 }}>Tentative</span> : null}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
       <section id="results" style={{ scrollMarginTop: 120 }}>
         <div className={styles.sectionHead}>
           <div>
@@ -421,7 +472,7 @@ export default function BRHSPantherWrestlingPage() {
         </table>
         <p className={styles.sampleCaption}>
           Juniors Trent Levash (6th, heavyweight) and Matt McCann (8th, 165 lbs) both medaled at the 2026 NJSIAA Individual State Tournament and are confirmed to return for 2026-27, aiming for a third straight sectional title.
-          A full 2026-27 dual-meet schedule had not yet been published by <a href="https://www.maxpreps.com/nj/bridgewater/bridgewater-raritan-panthers/wrestling/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--bp-navy)' }}>MaxPreps</a> as of this writing — practice is expected to begin in late November 2026, mirroring last year&rsquo;s Nov. 24 start, with the season traditionally opening at the Mike Dessino Invitational in mid-December. Dates will be added here once released.
+          The tentative 2026-27 schedule is posted above; it will be confirmed against <a href="https://www.maxpreps.com/nj/bridgewater/bridgewater-raritan-panthers/wrestling/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--bp-navy)' }}>MaxPreps</a> and the school as official dates are published.
         </p>
       </section>
 

@@ -221,7 +221,7 @@ export default function NextGameHero({
       {state === 'next' && (
         <div className={styles.content}>
           {pageTitleEl}
-          <span className={styles.eyebrow}>{nextGame ? 'Next Game' : noGameLabel}</span>
+          <span className={styles.eyebrow}>{nextGame ? (nextGame.tentative ? 'Next Match · Tentative' : 'Next Game') : noGameLabel}</span>
           {nextGame ? (
             <>
               <HeadTag className={styles.matchup}>

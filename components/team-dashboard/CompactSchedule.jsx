@@ -39,10 +39,10 @@ export default function CompactSchedule({ games, emptyMessage = 'Schedule coming
           <div key={i} className={styles.row}>
             <span className={styles.date}>{g.date}</span>
             <span className={styles.opponent}>{g.opponent}</span>
-            <span className={styles.badge}>{g.home ? 'Home' : 'Away'}</span>
+            <span className={styles.badge}>{g.siteLabel || (g.home ? 'Home' : 'Away')}</span>
             <span className={styles.time}>{g.time}</span>
             <span className={g.result ? (g.result.win == null ? styles.pending : (g.result.win ? styles.win : styles.loss)) : styles.pending}>
-              {g.result ? `${g.result.win == null ? 'T' : (g.result.win ? 'W' : 'L')} ${g.result.score}` : '—'}
+              {g.result ? `${g.result.win == null ? 'T' : (g.result.win ? 'W' : 'L')} ${g.result.score}` : (g.tentative ? 'Tentative' : '—')}
             </span>
           </div>
         ))}

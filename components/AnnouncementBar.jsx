@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { EVENTS } from '@/lib/events';
 import { SCHEDULE_2026 as FOOTBALL_SCHEDULE } from '@/lib/footballSchedule';
-import { DUAL_SCHEDULE_2026_27 as WRESTLING_SCHEDULE } from '@/lib/wrestlingSchedule';
+import { FULL_SCHEDULE_2026_27 as WRESTLING_SCHEDULE } from '@/lib/wrestlingSchedule';
 import { SCHEDULE_2026 as VOLLEYBALL_SCHEDULE } from '@/lib/volleyballSchedule';
 import { SCHEDULE_2026_27 as GIRLS_BASKETBALL_SCHEDULE, countedGames as girlsBasketballCounted } from '@/lib/girlsBasketballSchedule';
 import { getNextMatch } from '@/lib/teamSchedule';
@@ -32,7 +32,7 @@ const TEAM_BANNERS = [
     pathPrefix: '/brhs-panther-wrestling',
     team: 'wrestling',
     schedule: WRESTLING_SCHEDULE,
-    scheduleHref: '/brhs-panther-wrestling#results',
+    scheduleHref: '/brhs-panther-wrestling#schedule',
     nextLabel: 'Next Match',
     // WRESTLING_SCHEDULE (lib/wrestlingSchedule.js) is empty as of this
     // writing — MaxPreps hasn't published 2026-27 dual dates yet — so until
@@ -74,7 +74,7 @@ function getTeamBannerItems(config) {
   if (nextDate) {
     const seasonUnderway = config.schedule.some((g) => g.result);
     items.push({
-      title: seasonUnderway ? config.nextLabel : 'Season Opener',
+      title: (seasonUnderway ? config.nextLabel : 'Season Opener') + (config.schedule.some((g) => g.tentative) ? ' (Tentative)' : ''),
       date: nextDate,
       href: config.scheduleHref,
     });
