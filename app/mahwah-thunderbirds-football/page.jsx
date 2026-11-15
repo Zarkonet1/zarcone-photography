@@ -206,7 +206,8 @@ const PROGRAM_FACTS = [
   { label: 'Conference', value: 'Super Football Conference — American Red' },
   { label: 'Athletic Director', value: 'Roger Pelletier' },
   { label: 'Location', value: '50 Ridge Road, Mahwah, NJ 07430' },
-  { label: 'Enrollment', value: '~880 students (2023–24, per Wikipedia)' },
+  // Updated 2026-11-15 sweep spot-check: Wikipedia now lists 829 students (2024-25), up from the ~880 (2023-24) figure first used.
+  { label: 'Enrollment', value: '~830 students (2024–25, per Wikipedia)' },
   // Added 2026-09-17 per Tom's direct request — flagged as an open item
   // since the 2026-08-27 BRHS sweep found it (On3's Mahwah root hub,
   // on3.com/high-school/mahwah-mahwah-nj-6286/, Notable Alumni tab) and
